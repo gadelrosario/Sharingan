@@ -1,5 +1,5 @@
-# Gerard Fantasy HQ — Version 2.0 Alpha 2
+# Gerard Fantasy HQ — Version 2.0 Alpha 3
 
-New: 17 rounds, full 10-manager assignment, dark purple/gold theme, dynamic pick accents, first Mamba Score, Steal Risk, run detector, and league-aware mock behavior.
+New: live roster panel on phone Draft page, position counts, remaining needs, and Wait Meter for QB/TE/DST/K.
 
-Install only on the `Version-2` branch. Commit as: `Version 2 Alpha 2 - League Intelligence`.
+Commit: Version 2 Alpha 3 - Sharingan Draft Awareness
