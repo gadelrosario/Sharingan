@@ -1,53 +1,28 @@
-# Gerard Fantasy HQ — Version 2.0 Alpha 5
+# Gerard Fantasy HQ — Version 2.0 Alpha 6
 
-## Sharingan Player Intelligence
+## Complete Pool Cache Fix
 
-This is a complete replacement build. It does not require installing earlier Alpha versions first.
+The Alpha 5 database already contained 32 D/STs and 32 kickers, but an older cached `players.json` could remain active on phones.
 
-### Draft pool
-- 249 total draftable entries
-- 27 quarterbacks
-- 57 running backs
-- 76 wide receivers
-- 25 tight ends
-- 32 kickers
-- 32 defenses
-- Supports all 170 selections in a 10-team, 17-round draft
+This release:
+- Forces a fresh player database download
+- Uses network-first loading for `players.json`
+- Deletes older service-worker caches
+- Adds a setup-screen pool verification count
+- Retains all Alpha 5 Sharingan Scan and ranking features
 
-### Ranking configuration
-- Fantasyland and BDGE information remains attached to evaluated offensive players.
-- FantasyPros extends the depth of the offensive player pool.
-- FantasyPros is the positional baseline for kickers and defenses.
-- FantasyPros data does not overwrite existing Fantasyland or BDGE rankings.
-- Gerard preferences can later be layered above all external sources.
-
-### New player intelligence
-- Tap any player name or the Scan button.
-- Sharingan Scan shows:
-  - Mamba Score
-  - Steal Risk
-  - Weekly ceiling
-  - Floor
-  - Current board rank
-  - Recommendation status
-  - Fantasyland ranking/tier
-  - BDGE ranking, tier, and flags
-  - FantasyPros positional rank
-  - Explanation and draft actions
-
-### Existing features retained
-- Practice and Live Draft modes
-- 17-round snake board
-- Full 10-manager league assignments
-- Manager-specific mock behavior
-- Live roster panel on the phone Draft page
-- Wait Meter for QB, TE, D/ST, and K
-- Kicker and defense roster slots
-- Black/red Sharingan presentation
+Expected verification:
+- 249 total players
+- QB 27
+- RB 57
+- WR 76
+- TE 25
+- D/ST 32
+- K 32
 
 ## Install
-1. Extract the ZIP.
-2. Copy all contents into your beta repository.
-3. Replace existing files.
-4. Commit: `Version 2 Alpha 5 - Sharingan Player Intelligence`
-5. Push origin.
+1. Replace the beta repository files with this full build.
+2. Commit: `Version 2 Alpha 6 - Complete Pool Cache Fix`
+3. Push origin.
+4. Wait for GitHub Pages deployment.
+5. Open the website in Safari and confirm the pool count before starting a draft.
