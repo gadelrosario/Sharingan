@@ -1,6 +1,6 @@
 {
-  "name": "Gerard Fantasy HQ 2",
-  "short_name": "Fantasy HQ 2",
+  "name": "Gerard Fantasy HQ \u2014 Sharingan",
+  "short_name": "Fantasy HQ",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -13,5 +13,6 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "description": "League-aware fantasy football draft assistant with Sharingan player scans."
 }

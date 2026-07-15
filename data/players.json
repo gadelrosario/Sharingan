@@ -28,7 +28,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 1,
+    "fantasyProsOverallRank": 1,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 2,
@@ -59,7 +68,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 2,
+    "fantasyProsOverallRank": 2,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 3,
@@ -90,7 +108,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 1,
+    "fantasyProsOverallRank": 3,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 4,
@@ -121,7 +148,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 2,
+    "fantasyProsOverallRank": 4,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 5,
@@ -152,7 +188,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 3,
+    "fantasyProsOverallRank": 5,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 6,
@@ -183,7 +228,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 3,
+    "fantasyProsOverallRank": 6,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 7,
@@ -214,7 +268,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 4,
+    "fantasyProsOverallRank": 7,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 8,
@@ -245,7 +308,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 5,
+    "fantasyProsOverallRank": 8,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 9,
@@ -276,7 +348,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 4,
+    "fantasyProsOverallRank": 9,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 10,
@@ -307,7 +388,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 6,
+    "fantasyProsOverallRank": 10,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 11,
@@ -338,7 +428,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 5,
+    "fantasyProsOverallRank": 11,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 12,
@@ -369,7 +468,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 6,
+    "fantasyProsOverallRank": 12,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 13,
@@ -396,7 +504,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 7,
+    "fantasyProsOverallRank": 13,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 14,
@@ -423,7 +540,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 8,
+    "fantasyProsOverallRank": 14,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 15,
@@ -454,7 +580,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 9,
+    "fantasyProsOverallRank": 15,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 16,
@@ -485,7 +620,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 10,
+    "fantasyProsOverallRank": 16,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 17,
@@ -512,7 +656,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 11,
+    "fantasyProsOverallRank": 17,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 18,
@@ -539,7 +692,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 7,
+    "fantasyProsOverallRank": 18,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 19,
@@ -566,7 +728,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 1,
+    "fantasyProsOverallRank": 19,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 20,
@@ -593,7 +764,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 12,
+    "fantasyProsOverallRank": 20,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 21,
@@ -620,7 +800,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 8,
+    "fantasyProsOverallRank": 21,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 22,
@@ -647,7 +836,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 9,
+    "fantasyProsOverallRank": 22,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 23,
@@ -678,7 +876,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 13,
+    "fantasyProsOverallRank": 23,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 24,
@@ -705,7 +912,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 10,
+    "fantasyProsOverallRank": 24,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 25,
@@ -732,7 +948,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 11,
+    "fantasyProsOverallRank": 25,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 26,
@@ -759,7 +984,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 2,
+    "fantasyProsOverallRank": 26,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 27,
@@ -790,7 +1024,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 14,
+    "fantasyProsOverallRank": 27,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 28,
@@ -821,7 +1064,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 12,
+    "fantasyProsOverallRank": 28,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 29,
@@ -848,7 +1100,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 13,
+    "fantasyProsOverallRank": 29,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 30,
@@ -879,7 +1140,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 15,
+    "fantasyProsOverallRank": 30,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 31,
@@ -910,7 +1180,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 14,
+    "fantasyProsOverallRank": 31,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 32,
@@ -937,7 +1216,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 1,
+    "fantasyProsOverallRank": 32,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 33,
@@ -964,7 +1252,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 16,
+    "fantasyProsOverallRank": 33,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 34,
@@ -991,7 +1288,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 15,
+    "fantasyProsOverallRank": 34,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 35,
@@ -1018,7 +1324,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 17,
+    "fantasyProsOverallRank": 35,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 36,
@@ -1045,7 +1360,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 16,
+    "fantasyProsOverallRank": 36,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 37,
@@ -1076,7 +1400,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 3,
+    "fantasyProsOverallRank": 37,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 38,
@@ -1107,7 +1440,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 17,
+    "fantasyProsOverallRank": 38,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 39,
@@ -1134,7 +1476,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 18,
+    "fantasyProsOverallRank": 39,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 40,
@@ -1167,7 +1518,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 19,
+    "fantasyProsOverallRank": 40,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 41,
@@ -1194,7 +1554,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 18,
+    "fantasyProsOverallRank": 41,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 42,
@@ -1225,7 +1594,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 20,
+    "fantasyProsOverallRank": 42,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 43,
@@ -1252,7 +1630,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 21,
+    "fantasyProsOverallRank": 43,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 44,
@@ -1283,7 +1670,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 19,
+    "fantasyProsOverallRank": 44,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 45,
@@ -1310,7 +1706,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 22,
+    "fantasyProsOverallRank": 45,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 46,
@@ -1343,7 +1748,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 23,
+    "fantasyProsOverallRank": 46,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 47,
@@ -1370,7 +1784,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 24,
+    "fantasyProsOverallRank": 47,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 48,
@@ -1401,7 +1824,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 20,
+    "fantasyProsOverallRank": 48,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 49,
@@ -1434,7 +1866,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 21,
+    "fantasyProsOverallRank": 49,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 50,
@@ -1461,7 +1902,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 2,
+    "fantasyProsOverallRank": 50,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 51,
@@ -1488,7 +1938,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 25,
+    "fantasyProsOverallRank": 51,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 52,
@@ -1515,7 +1974,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 22,
+    "fantasyProsOverallRank": 52,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 53,
@@ -1542,7 +2010,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 26,
+    "fantasyProsOverallRank": 53,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 54,
@@ -1573,7 +2050,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 23,
+    "fantasyProsOverallRank": 54,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 55,
@@ -1606,7 +2092,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 24,
+    "fantasyProsOverallRank": 55,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 56,
@@ -1637,7 +2132,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 27,
+    "fantasyProsOverallRank": 56,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 57,
@@ -1668,7 +2172,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 25,
+    "fantasyProsOverallRank": 57,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 58,
@@ -1699,7 +2212,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 26,
+    "fantasyProsOverallRank": 58,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 59,
@@ -1726,7 +2248,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 28,
+    "fantasyProsOverallRank": 59,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 60,
@@ -1759,7 +2290,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 29,
+    "fantasyProsOverallRank": 60,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 61,
@@ -1786,7 +2326,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 30,
+    "fantasyProsOverallRank": 61,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 62,
@@ -1817,7 +2366,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 31,
+    "fantasyProsOverallRank": 62,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 63,
@@ -1844,7 +2402,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 4,
+    "fantasyProsOverallRank": 63,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 64,
@@ -1871,7 +2438,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 3,
+    "fantasyProsOverallRank": 64,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 65,
@@ -1898,7 +2474,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 4,
+    "fantasyProsOverallRank": 65,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 66,
@@ -1925,7 +2510,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 5,
+    "fantasyProsOverallRank": 66,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 67,
@@ -1958,7 +2552,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 32,
+    "fantasyProsOverallRank": 67,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 68,
@@ -1989,7 +2592,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 33,
+    "fantasyProsOverallRank": 68,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 69,
@@ -2016,7 +2628,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 27,
+    "fantasyProsOverallRank": 69,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 70,
@@ -2043,7 +2664,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 6,
+    "fantasyProsOverallRank": 70,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 71,
@@ -2070,7 +2700,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 7,
+    "fantasyProsOverallRank": 71,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 72,
@@ -2097,7 +2736,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 34,
+    "fantasyProsOverallRank": 72,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 73,
@@ -2124,7 +2772,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 28,
+    "fantasyProsOverallRank": 73,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 74,
@@ -2155,7 +2812,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 29,
+    "fantasyProsOverallRank": 74,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 75,
@@ -2186,7 +2852,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 35,
+    "fantasyProsOverallRank": 75,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 76,
@@ -2213,7 +2888,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 5,
+    "fantasyProsOverallRank": 76,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 77,
@@ -2240,7 +2924,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 36,
+    "fantasyProsOverallRank": 77,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 78,
@@ -2271,7 +2964,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 8,
+    "fantasyProsOverallRank": 78,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 79,
@@ -2298,7 +3000,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 30,
+    "fantasyProsOverallRank": 79,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 80,
@@ -2325,7 +3036,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 37,
+    "fantasyProsOverallRank": 80,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 81,
@@ -2352,7 +3072,16 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 9,
+    "fantasyProsOverallRank": 81,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 82,
@@ -2379,11 +3108,56 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 10,
+    "fantasyProsOverallRank": 82,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 157,
+    "overall": 83,
+    "name": "Jauan Jennings",
+    "pos": "WR",
+    "team": "SF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 38,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 38,
+    "fantasyProsOverallRank": 83,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 83,
-    "overall": 83,
+    "overall": 84,
     "name": "Jordan Addison",
     "pos": "WR",
     "team": "MIN",
@@ -2406,11 +3180,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 38,
+    "fantasyProsOverallRank": 84,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 84,
-    "overall": 84,
+    "overall": 85,
     "name": "Courtland Sutton",
     "pos": "WR",
     "team": "DEN",
@@ -2433,11 +3216,56 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 39,
+    "fantasyProsOverallRank": 85,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 158,
+    "overall": 86,
+    "name": "Khalil Shakir",
+    "pos": "WR",
+    "team": "BUF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 41,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 41,
+    "fantasyProsOverallRank": 86,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 85,
-    "overall": 85,
+    "overall": 87,
     "name": "Michael Pittman Jr.",
     "pos": "WR",
     "team": "PIT",
@@ -2460,11 +3288,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 40,
+    "fantasyProsOverallRank": 87,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 86,
-    "overall": 86,
+    "overall": 88,
     "name": "Chris Godwin",
     "pos": "WR",
     "team": "TB",
@@ -2487,11 +3324,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 41,
+    "fantasyProsOverallRank": 88,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 87,
-    "overall": 87,
+    "overall": 89,
     "name": "Brock Purdy",
     "pos": "QB",
     "team": "SF",
@@ -2514,11 +3360,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 11,
+    "fantasyProsOverallRank": 89,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 88,
-    "overall": 88,
+    "overall": 90,
     "name": "Rachaad White",
     "pos": "RB",
     "team": "WAS",
@@ -2541,11 +3396,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 31,
+    "fantasyProsOverallRank": 90,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 89,
-    "overall": 89,
+    "overall": 91,
     "name": "Michael Wilson",
     "pos": "WR",
     "team": "ARI",
@@ -2568,11 +3432,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 42,
+    "fantasyProsOverallRank": 91,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 90,
-    "overall": 90,
+    "overall": 92,
     "name": "Sam LaPorta",
     "pos": "TE",
     "team": "DET",
@@ -2595,11 +3468,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 6,
+    "fantasyProsOverallRank": 92,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 91,
-    "overall": 91,
+    "overall": 93,
     "name": "Kyle Pitts",
     "pos": "TE",
     "team": "ATL",
@@ -2626,11 +3508,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 7,
+    "fantasyProsOverallRank": 93,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 92,
-    "overall": 92,
+    "overall": 94,
     "name": "Josh Downs",
     "pos": "WR",
     "team": "IND",
@@ -2657,11 +3548,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 43,
+    "fantasyProsOverallRank": 94,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 93,
-    "overall": 93,
+    "overall": 95,
     "name": "J.K. Dobbins",
     "pos": "RB",
     "team": "DEN",
@@ -2684,11 +3584,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 32,
+    "fantasyProsOverallRank": 95,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 94,
-    "overall": 94,
+    "overall": 96,
     "name": "Jaxson Dart",
     "pos": "QB",
     "team": "NYG",
@@ -2711,11 +3620,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 12,
+    "fantasyProsOverallRank": 96,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 95,
-    "overall": 95,
+    "overall": 97,
     "name": "Kyle Monangai",
     "pos": "RB",
     "team": "CHI",
@@ -2738,11 +3656,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 33,
+    "fantasyProsOverallRank": 97,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 96,
-    "overall": 96,
+    "overall": 98,
     "name": "Parker Washington",
     "pos": "WR",
     "team": "JAX",
@@ -2765,11 +3692,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 44,
+    "fantasyProsOverallRank": 98,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 97,
-    "overall": 97,
+    "overall": 99,
     "name": "Rico Dowdle",
     "pos": "RB",
     "team": "PIT",
@@ -2792,11 +3728,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 34,
+    "fantasyProsOverallRank": 99,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 98,
-    "overall": 98,
+    "overall": 100,
     "name": "Bo Nix",
     "pos": "QB",
     "team": "DEN",
@@ -2819,11 +3764,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 13,
+    "fantasyProsOverallRank": 100,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 99,
-    "overall": 99,
+    "overall": 101,
     "name": "Harold Fannin Jr.",
     "pos": "TE",
     "team": "CLE",
@@ -2846,11 +3800,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 8,
+    "fantasyProsOverallRank": 101,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 100,
-    "overall": 100,
+    "overall": 102,
     "name": "Ricky Pearsall",
     "pos": "WR",
     "team": "SF",
@@ -2873,11 +3836,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 45,
+    "fantasyProsOverallRank": 102,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 101,
-    "overall": 101,
+    "overall": 103,
     "name": "RJ Harvey",
     "pos": "RB",
     "team": "DEN",
@@ -2900,11 +3872,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 35,
+    "fantasyProsOverallRank": 103,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 102,
-    "overall": 102,
+    "overall": 104,
     "name": "Wandale Robinson",
     "pos": "WR",
     "team": "TEN",
@@ -2927,11 +3908,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 46,
+    "fantasyProsOverallRank": 104,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 103,
-    "overall": 103,
+    "overall": 105,
     "name": "Patrick Mahomes",
     "pos": "QB",
     "team": "KC",
@@ -2954,11 +3944,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 14,
+    "fantasyProsOverallRank": 105,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 104,
-    "overall": 104,
+    "overall": 106,
     "name": "Jayden Reed",
     "pos": "WR",
     "team": "GB",
@@ -2981,11 +3980,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 47,
+    "fantasyProsOverallRank": 106,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 105,
-    "overall": 105,
+    "overall": 107,
     "name": "Xavier Worthy",
     "pos": "WR",
     "team": "KC",
@@ -3008,11 +4016,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 48,
+    "fantasyProsOverallRank": 107,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 106,
-    "overall": 106,
+    "overall": 108,
     "name": "K.C. Concepcion",
     "pos": "WR",
     "team": "CLE",
@@ -3035,11 +4052,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 49,
+    "fantasyProsOverallRank": 108,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 107,
-    "overall": 107,
+    "overall": 109,
     "name": "Matthew Stafford",
     "pos": "QB",
     "team": "LAR",
@@ -3066,11 +4092,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 15,
+    "fantasyProsOverallRank": 109,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 108,
-    "overall": 108,
+    "overall": 110,
     "name": "Jonathon Brooks",
     "pos": "RB",
     "team": "CAR",
@@ -3097,11 +4132,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 36,
+    "fantasyProsOverallRank": 110,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 109,
-    "overall": 109,
+    "overall": 111,
     "name": "Blake Corum",
     "pos": "RB",
     "team": "LAR",
@@ -3124,11 +4168,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 37,
+    "fantasyProsOverallRank": 111,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 110,
-    "overall": 110,
+    "overall": 112,
     "name": "Aaron Jones",
     "pos": "RB",
     "team": "MIN",
@@ -3151,11 +4204,56 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 38,
+    "fantasyProsOverallRank": 112,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 155,
+    "overall": 113,
+    "name": "Luther Burden III",
+    "pos": "WR",
+    "team": "CHI",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 52,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 52,
+    "fantasyProsOverallRank": 113,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 111,
-    "overall": 111,
+    "overall": 114,
     "name": "Kyler Murray",
     "pos": "QB",
     "team": "MIN",
@@ -3178,11 +4276,56 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 16,
+    "fantasyProsOverallRank": 114,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 156,
+    "overall": 115,
+    "name": "Cooper Kupp",
+    "pos": "WR",
+    "team": "SEA",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 53,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 53,
+    "fantasyProsOverallRank": 115,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 112,
-    "overall": 112,
+    "overall": 116,
     "name": "George Kittle",
     "pos": "TE",
     "team": "SF",
@@ -3205,11 +4348,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 9,
+    "fantasyProsOverallRank": 116,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 113,
-    "overall": 113,
+    "overall": 117,
     "name": "Jakobi Meyers",
     "pos": "WR",
     "team": "JAX",
@@ -3232,11 +4384,92 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 50,
+    "fantasyProsOverallRank": 117,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 152,
+    "overall": 118,
+    "name": "Keon Coleman",
+    "pos": "WR",
+    "team": "BUF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 55,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 55,
+    "fantasyProsOverallRank": 118,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 153,
+    "overall": 119,
+    "name": "Brandon Aiyuk",
+    "pos": "WR",
+    "team": "SF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 56,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 56,
+    "fantasyProsOverallRank": 119,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 114,
-    "overall": 114,
+    "overall": 120,
     "name": "Jared Goff",
     "pos": "QB",
     "team": "DET",
@@ -3259,11 +4492,56 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 17,
+    "fantasyProsOverallRank": 120,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 154,
+    "overall": 121,
+    "name": "Darnell Mooney",
+    "pos": "WR",
+    "team": "ATL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 57,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 57,
+    "fantasyProsOverallRank": 121,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 115,
-    "overall": 115,
+    "overall": 122,
     "name": "Kenneth Gainwell",
     "pos": "RB",
     "team": "TB",
@@ -3286,11 +4564,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 39,
+    "fantasyProsOverallRank": 122,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 116,
-    "overall": 116,
+    "overall": 123,
     "name": "Jordan Mason",
     "pos": "RB",
     "team": "MIN",
@@ -3313,11 +4600,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 40,
+    "fantasyProsOverallRank": 123,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 117,
-    "overall": 117,
+    "overall": 124,
     "name": "Travis Kelce",
     "pos": "TE",
     "team": "KC",
@@ -3340,11 +4636,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 10,
+    "fantasyProsOverallRank": 124,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 118,
-    "overall": 118,
+    "overall": 125,
     "name": "Matthew Golden",
     "pos": "WR",
     "team": "GB",
@@ -3367,11 +4672,56 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 51,
+    "fantasyProsOverallRank": 125,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 127,
+    "overall": 126,
+    "name": "Jaydon Blue",
+    "pos": "RB",
+    "team": "DAL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 41,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 41,
+    "fantasyProsOverallRank": 126,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 119,
-    "overall": 119,
+    "overall": 127,
     "name": "Romeo Doubs",
     "pos": "WR",
     "team": "NE",
@@ -3394,11 +4744,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 52,
+    "fantasyProsOverallRank": 127,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 120,
-    "overall": 120,
+    "overall": 128,
     "name": "Travis Hunter",
     "pos": "WR",
     "team": "JAX",
@@ -3421,11 +4780,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 53,
+    "fantasyProsOverallRank": 128,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 121,
-    "overall": 121,
+    "overall": 129,
     "name": "Jacory Croskey-Merritt",
     "pos": "RB",
     "team": "WAS",
@@ -3448,11 +4816,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 41,
+    "fantasyProsOverallRank": 129,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 122,
-    "overall": 122,
+    "overall": 130,
     "name": "Baker Mayfield",
     "pos": "QB",
     "team": "TB",
@@ -3475,11 +4852,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 18,
+    "fantasyProsOverallRank": 130,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 123,
-    "overall": 123,
+    "overall": 131,
     "name": "Jayden Higgins",
     "pos": "WR",
     "team": "HOU",
@@ -3502,11 +4888,56 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 54,
+    "fantasyProsOverallRank": 131,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 146,
+    "overall": 132,
+    "name": "J.J. McCarthy",
+    "pos": "QB",
+    "team": "MIN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 19,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 19,
+    "fantasyProsOverallRank": 132,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 124,
-    "overall": 124,
+    "overall": 133,
     "name": "Tyler Shough",
     "pos": "QB",
     "team": "NO",
@@ -3529,11 +4960,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 19,
+    "fantasyProsOverallRank": 133,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 125,
-    "overall": 125,
+    "overall": 134,
     "name": "Jalen Coker",
     "pos": "WR",
     "team": "CAR",
@@ -3556,11 +4996,20 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 55,
+    "fantasyProsOverallRank": 134,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
   },
   {
     "id": 126,
-    "overall": 126,
+    "overall": 135,
     "name": "Jake Ferguson",
     "pos": "TE",
     "team": "DAL",
@@ -3583,6 +5032,4375 @@
     "collegeProfile": "Pending",
     "offseasonImpact": 0,
     "opportunityTrend": "Pending",
-    "evidenceConfidence": "Developing"
+    "evidenceConfidence": "Developing",
+    "fantasyProsPosRank": 11,
+    "fantasyProsOverallRank": 135,
+    "rankingRole": "Fantasyland + BDGE evaluated",
+    "sourceCoverage": {
+      "fantasyland": true,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 128,
+    "overall": 136,
+    "name": "Braelon Allen",
+    "pos": "RB",
+    "team": "NYJ",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 43,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 43,
+    "fantasyProsOverallRank": 136,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 129,
+    "overall": 137,
+    "name": "Brian Robinson Jr.",
+    "pos": "RB",
+    "team": "WAS",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 44,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 44,
+    "fantasyProsOverallRank": 137,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 130,
+    "overall": 138,
+    "name": "Tyjae Spears",
+    "pos": "RB",
+    "team": "TEN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 45,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 45,
+    "fantasyProsOverallRank": 138,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 136,
+    "overall": 139,
+    "name": "Dalton Kincaid",
+    "pos": "TE",
+    "team": "BUF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 12,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 12,
+    "fantasyProsOverallRank": 139,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 137,
+    "overall": 140,
+    "name": "Brenton Strange",
+    "pos": "TE",
+    "team": "JAX",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 13,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 13,
+    "fantasyProsOverallRank": 140,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 138,
+    "overall": 141,
+    "name": "Zach Ertz",
+    "pos": "TE",
+    "team": "WAS",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 14,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 14,
+    "fantasyProsOverallRank": 141,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 144,
+    "overall": 142,
+    "name": "C.J. Stroud",
+    "pos": "QB",
+    "team": "HOU",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 21,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 21,
+    "fantasyProsOverallRank": 142,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 145,
+    "overall": 143,
+    "name": "Michael Penix Jr.",
+    "pos": "QB",
+    "team": "ATL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 22,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 22,
+    "fantasyProsOverallRank": 143,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 147,
+    "overall": 144,
+    "name": "Aaron Rodgers",
+    "pos": "QB",
+    "team": "PIT",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 23,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 23,
+    "fantasyProsOverallRank": 144,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 131,
+    "overall": 145,
+    "name": "Isaac Guerendo",
+    "pos": "RB",
+    "team": "SF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 46,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 46,
+    "fantasyProsOverallRank": 145,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 132,
+    "overall": 146,
+    "name": "Ray Davis",
+    "pos": "RB",
+    "team": "BUF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 47,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 47,
+    "fantasyProsOverallRank": 146,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 133,
+    "overall": 147,
+    "name": "Najee Harris",
+    "pos": "RB",
+    "team": "LAC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 48,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 48,
+    "fantasyProsOverallRank": 147,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 134,
+    "overall": 148,
+    "name": "Dylan Sampson",
+    "pos": "RB",
+    "team": "CLE",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 49,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 49,
+    "fantasyProsOverallRank": 148,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 135,
+    "overall": 149,
+    "name": "Woody Marks",
+    "pos": "RB",
+    "team": "HOU",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 50,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 50,
+    "fantasyProsOverallRank": 149,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 148,
+    "overall": 150,
+    "name": "Geno Smith",
+    "pos": "QB",
+    "team": "LV",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 24,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 24,
+    "fantasyProsOverallRank": 150,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 139,
+    "overall": 151,
+    "name": "Isaiah Likely",
+    "pos": "TE",
+    "team": "BAL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 15,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 15,
+    "fantasyProsOverallRank": 151,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 149,
+    "overall": 152,
+    "name": "Bryce Young",
+    "pos": "QB",
+    "team": "CAR",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 25,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 25,
+    "fantasyProsOverallRank": 152,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 150,
+    "overall": 153,
+    "name": "Tua Tagovailoa",
+    "pos": "QB",
+    "team": "MIA",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 26,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 26,
+    "fantasyProsOverallRank": 153,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 140,
+    "overall": 154,
+    "name": "Dallas Goedert",
+    "pos": "TE",
+    "team": "PHI",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 16,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 16,
+    "fantasyProsOverallRank": 154,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 159,
+    "overall": 155,
+    "name": "Hollywood Brown",
+    "pos": "WR",
+    "team": "KC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 63,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 63,
+    "fantasyProsOverallRank": 155,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 160,
+    "overall": 156,
+    "name": "Rashod Bateman",
+    "pos": "WR",
+    "team": "BAL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 64,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 64,
+    "fantasyProsOverallRank": 156,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 151,
+    "overall": 157,
+    "name": "Russell Wilson",
+    "pos": "QB",
+    "team": "NYG",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 27,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 27,
+    "fantasyProsOverallRank": 157,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 161,
+    "overall": 158,
+    "name": "Wan'Dale Robinson",
+    "pos": "WR",
+    "team": "NYG",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 65,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 65,
+    "fantasyProsOverallRank": 158,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 162,
+    "overall": 159,
+    "name": "Cedric Tillman",
+    "pos": "WR",
+    "team": "CLE",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 66,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 66,
+    "fantasyProsOverallRank": 159,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 163,
+    "overall": 160,
+    "name": "Tre Harris",
+    "pos": "WR",
+    "team": "LAC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 67,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 67,
+    "fantasyProsOverallRank": 160,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 164,
+    "overall": 161,
+    "name": "Pat Bryant",
+    "pos": "WR",
+    "team": "DEN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 68,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 68,
+    "fantasyProsOverallRank": 161,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 165,
+    "overall": 162,
+    "name": "Dontayvion Wicks",
+    "pos": "WR",
+    "team": "GB",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 69,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 69,
+    "fantasyProsOverallRank": 162,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 166,
+    "overall": 163,
+    "name": "Marvin Mims Jr.",
+    "pos": "WR",
+    "team": "DEN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 70,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 70,
+    "fantasyProsOverallRank": 163,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 141,
+    "overall": 164,
+    "name": "Mason Taylor",
+    "pos": "TE",
+    "team": "NYJ",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 17,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 17,
+    "fantasyProsOverallRank": 164,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 142,
+    "overall": 165,
+    "name": "Elijah Arroyo",
+    "pos": "TE",
+    "team": "SEA",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 18,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 18,
+    "fantasyProsOverallRank": 165,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 143,
+    "overall": 166,
+    "name": "Terrance Ferguson",
+    "pos": "TE",
+    "team": "LAR",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 19,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 19,
+    "fantasyProsOverallRank": 166,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 167,
+    "overall": 167,
+    "name": "Kendre Miller",
+    "pos": "RB",
+    "team": "NO",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 51,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 51,
+    "fantasyProsOverallRank": 167,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 168,
+    "overall": 168,
+    "name": "Roschon Johnson",
+    "pos": "RB",
+    "team": "CHI",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 52,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 52,
+    "fantasyProsOverallRank": 168,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 169,
+    "overall": 169,
+    "name": "Kimani Vidal",
+    "pos": "RB",
+    "team": "LAC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 53,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 53,
+    "fantasyProsOverallRank": 169,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 170,
+    "overall": 170,
+    "name": "MarShawn Lloyd",
+    "pos": "RB",
+    "team": "GB",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 54,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 54,
+    "fantasyProsOverallRank": 170,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 171,
+    "overall": 171,
+    "name": "Ty Johnson",
+    "pos": "RB",
+    "team": "BUF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 55,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 55,
+    "fantasyProsOverallRank": 171,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 172,
+    "overall": 172,
+    "name": "Jaleel McLaughlin",
+    "pos": "RB",
+    "team": "DEN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 56,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 56,
+    "fantasyProsOverallRank": 172,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 173,
+    "overall": 173,
+    "name": "Elijah Mitchell",
+    "pos": "RB",
+    "team": "KC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 57,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 57,
+    "fantasyProsOverallRank": 173,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 174,
+    "overall": 174,
+    "name": "Tre Tucker",
+    "pos": "WR",
+    "team": "LV",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 71,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 71,
+    "fantasyProsOverallRank": 174,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 175,
+    "overall": 175,
+    "name": "Demario Douglas",
+    "pos": "WR",
+    "team": "NE",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 72,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 72,
+    "fantasyProsOverallRank": 175,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 176,
+    "overall": 176,
+    "name": "Andrei Iosivas",
+    "pos": "WR",
+    "team": "CIN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 73,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 73,
+    "fantasyProsOverallRank": 176,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 177,
+    "overall": 177,
+    "name": "Jalen McMillan",
+    "pos": "WR",
+    "team": "TB",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 74,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 74,
+    "fantasyProsOverallRank": 177,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 178,
+    "overall": 178,
+    "name": "Roman Wilson",
+    "pos": "WR",
+    "team": "PIT",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 75,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 75,
+    "fantasyProsOverallRank": 178,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 179,
+    "overall": 179,
+    "name": "Malachi Corley",
+    "pos": "WR",
+    "team": "NYJ",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 76,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 76,
+    "fantasyProsOverallRank": 179,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 180,
+    "overall": 180,
+    "name": "Luke Musgrave",
+    "pos": "TE",
+    "team": "GB",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 20,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 20,
+    "fantasyProsOverallRank": 180,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 181,
+    "overall": 181,
+    "name": "Hunter Henry",
+    "pos": "TE",
+    "team": "NE",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 21,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 21,
+    "fantasyProsOverallRank": 181,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 182,
+    "overall": 182,
+    "name": "Cade Otton",
+    "pos": "TE",
+    "team": "TB",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 22,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 22,
+    "fantasyProsOverallRank": 182,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 183,
+    "overall": 183,
+    "name": "Jonnu Smith",
+    "pos": "TE",
+    "team": "MIA",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 23,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 23,
+    "fantasyProsOverallRank": 183,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 184,
+    "overall": 184,
+    "name": "Mike Gesicki",
+    "pos": "TE",
+    "team": "CIN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 24,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 24,
+    "fantasyProsOverallRank": 184,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 185,
+    "overall": 185,
+    "name": "Noah Gray",
+    "pos": "TE",
+    "team": "KC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 25,
+    "posTier": "Depth",
+    "rookie": false,
+    "bdge": "Depth pool",
+    "fantasyland": "Depth pool",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [],
+    "bdgeSources": [],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "Pending",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Pending",
+    "evidenceConfidence": "Depth",
+    "fantasyProsPosRank": 25,
+    "fantasyProsOverallRank": 185,
+    "rankingRole": "FantasyPros depth extension",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": false,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 186,
+    "overall": 186,
+    "name": "Houston Texans D/ST",
+    "pos": "DST",
+    "team": "HOU",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 1,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 1,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 187,
+    "overall": 187,
+    "name": "Denver Broncos D/ST",
+    "pos": "DST",
+    "team": "DEN",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 2,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 2,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 188,
+    "overall": 188,
+    "name": "Seattle Seahawks D/ST",
+    "pos": "DST",
+    "team": "SEA",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 3,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 3,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 189,
+    "overall": 189,
+    "name": "Los Angeles Rams D/ST",
+    "pos": "DST",
+    "team": "LAR",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 4,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 4,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 190,
+    "overall": 190,
+    "name": "Philadelphia Eagles D/ST",
+    "pos": "DST",
+    "team": "PHI",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 5,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 5,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 191,
+    "overall": 191,
+    "name": "New England Patriots D/ST",
+    "pos": "DST",
+    "team": "NE",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 6,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 6,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 192,
+    "overall": 192,
+    "name": "Minnesota Vikings D/ST",
+    "pos": "DST",
+    "team": "MIN",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 7,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 7,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 193,
+    "overall": 193,
+    "name": "Pittsburgh Steelers D/ST",
+    "pos": "DST",
+    "team": "PIT",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 8,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 8,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 194,
+    "overall": 194,
+    "name": "Jacksonville Jaguars D/ST",
+    "pos": "DST",
+    "team": "JAX",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 9,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 9,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 195,
+    "overall": 195,
+    "name": "Los Angeles Chargers D/ST",
+    "pos": "DST",
+    "team": "LAC",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 10,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 10,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 196,
+    "overall": 196,
+    "name": "Cleveland Browns D/ST",
+    "pos": "DST",
+    "team": "CLE",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 11,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 11,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 197,
+    "overall": 197,
+    "name": "Baltimore Ravens D/ST",
+    "pos": "DST",
+    "team": "BAL",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 12,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 12,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 198,
+    "overall": 198,
+    "name": "Buffalo Bills D/ST",
+    "pos": "DST",
+    "team": "BUF",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 13,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 13,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 199,
+    "overall": 199,
+    "name": "Kansas City Chiefs D/ST",
+    "pos": "DST",
+    "team": "KC",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 14,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 14,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 200,
+    "overall": 200,
+    "name": "Detroit Lions D/ST",
+    "pos": "DST",
+    "team": "DET",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 15,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 15,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 201,
+    "overall": 201,
+    "name": "San Francisco 49ers D/ST",
+    "pos": "DST",
+    "team": "SF",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 16,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 16,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 202,
+    "overall": 202,
+    "name": "Green Bay Packers D/ST",
+    "pos": "DST",
+    "team": "GB",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 17,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 17,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 203,
+    "overall": 203,
+    "name": "Tampa Bay Buccaneers D/ST",
+    "pos": "DST",
+    "team": "TB",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 18,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 18,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 204,
+    "overall": 204,
+    "name": "Dallas Cowboys D/ST",
+    "pos": "DST",
+    "team": "DAL",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 19,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 19,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 205,
+    "overall": 205,
+    "name": "New York Jets D/ST",
+    "pos": "DST",
+    "team": "NYJ",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 20,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 20,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 206,
+    "overall": 206,
+    "name": "Indianapolis Colts D/ST",
+    "pos": "DST",
+    "team": "IND",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 21,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 21,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 207,
+    "overall": 207,
+    "name": "Atlanta Falcons D/ST",
+    "pos": "DST",
+    "team": "ATL",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 22,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 22,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 208,
+    "overall": 208,
+    "name": "Arizona Cardinals D/ST",
+    "pos": "DST",
+    "team": "ARI",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 23,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 23,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 209,
+    "overall": 209,
+    "name": "Washington Commanders D/ST",
+    "pos": "DST",
+    "team": "WAS",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 24,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 24,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 210,
+    "overall": 210,
+    "name": "Chicago Bears D/ST",
+    "pos": "DST",
+    "team": "CHI",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 25,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 25,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 211,
+    "overall": 211,
+    "name": "Miami Dolphins D/ST",
+    "pos": "DST",
+    "team": "MIA",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 26,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 26,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 212,
+    "overall": 212,
+    "name": "Cincinnati Bengals D/ST",
+    "pos": "DST",
+    "team": "CIN",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 27,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 27,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 213,
+    "overall": 213,
+    "name": "New Orleans Saints D/ST",
+    "pos": "DST",
+    "team": "NO",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 28,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 28,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 214,
+    "overall": 214,
+    "name": "Tennessee Titans D/ST",
+    "pos": "DST",
+    "team": "TEN",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 29,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 29,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 215,
+    "overall": 215,
+    "name": "Carolina Panthers D/ST",
+    "pos": "DST",
+    "team": "CAR",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 30,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 30,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 216,
+    "overall": 216,
+    "name": "New York Giants D/ST",
+    "pos": "DST",
+    "team": "NYG",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 31,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 31,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 217,
+    "overall": 217,
+    "name": "Las Vegas Raiders D/ST",
+    "pos": "DST",
+    "team": "LV",
+    "bye": "TBD",
+    "overallTier": "DST",
+    "posRank": 32,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros D/ST baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 D/ST"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late / stream",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 32,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 218,
+    "overall": 218,
+    "name": "Brandon Aubrey",
+    "pos": "K",
+    "team": "DAL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 1,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 1,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 219,
+    "overall": 219,
+    "name": "Ka'imi Fairbairn",
+    "pos": "K",
+    "team": "HOU",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 2,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 2,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 220,
+    "overall": 220,
+    "name": "Cameron Dicker",
+    "pos": "K",
+    "team": "LAC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 3,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 3,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 221,
+    "overall": 221,
+    "name": "Jason Myers",
+    "pos": "K",
+    "team": "SEA",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 4,
+    "posTier": 1,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 4,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 222,
+    "overall": 222,
+    "name": "Eddy Pineiro",
+    "pos": "K",
+    "team": "SF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 5,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 5,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 223,
+    "overall": 223,
+    "name": "Jake Bates",
+    "pos": "K",
+    "team": "DET",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 6,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 6,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 224,
+    "overall": 224,
+    "name": "Chris Boswell",
+    "pos": "K",
+    "team": "PIT",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 7,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 7,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 225,
+    "overall": 225,
+    "name": "Harrison Butker",
+    "pos": "K",
+    "team": "KC",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 8,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 8,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 226,
+    "overall": 226,
+    "name": "Will Reichard",
+    "pos": "K",
+    "team": "MIN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 9,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 9,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 227,
+    "overall": 227,
+    "name": "Chase McLaughlin",
+    "pos": "K",
+    "team": "TB",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 10,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 10,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 228,
+    "overall": 228,
+    "name": "Wil Lutz",
+    "pos": "K",
+    "team": "DEN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 11,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 11,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 229,
+    "overall": 229,
+    "name": "Younghoe Koo",
+    "pos": "K",
+    "team": "ATL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 12,
+    "posTier": 2,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 12,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 230,
+    "overall": 230,
+    "name": "Tyler Bass",
+    "pos": "K",
+    "team": "BUF",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 13,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 13,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 231,
+    "overall": 231,
+    "name": "Jake Elliott",
+    "pos": "K",
+    "team": "PHI",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 14,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 14,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 232,
+    "overall": 232,
+    "name": "Matt Gay",
+    "pos": "K",
+    "team": "WAS",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 15,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 15,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 233,
+    "overall": 233,
+    "name": "Brandon McManus",
+    "pos": "K",
+    "team": "GB",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 16,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 16,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 234,
+    "overall": 234,
+    "name": "Daniel Carlson",
+    "pos": "K",
+    "team": "LV",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 17,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 17,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 235,
+    "overall": 235,
+    "name": "Cairo Santos",
+    "pos": "K",
+    "team": "CHI",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 18,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 18,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 236,
+    "overall": 236,
+    "name": "Blake Grupe",
+    "pos": "K",
+    "team": "NO",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 19,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 19,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 237,
+    "overall": 237,
+    "name": "Cam Little",
+    "pos": "K",
+    "team": "JAX",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 20,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 20,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 238,
+    "overall": 238,
+    "name": "Joshua Karty",
+    "pos": "K",
+    "team": "LAR",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 21,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 21,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 239,
+    "overall": 239,
+    "name": "Nick Folk",
+    "pos": "K",
+    "team": "NYJ",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 22,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 22,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 240,
+    "overall": 240,
+    "name": "Evan McPherson",
+    "pos": "K",
+    "team": "CIN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 23,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 23,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 241,
+    "overall": 241,
+    "name": "Chad Ryland",
+    "pos": "K",
+    "team": "ARI",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 24,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 24,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 242,
+    "overall": 242,
+    "name": "Andy Borregales",
+    "pos": "K",
+    "team": "NE",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 25,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 25,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 243,
+    "overall": 243,
+    "name": "Graham Gano",
+    "pos": "K",
+    "team": "NYG",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 26,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 26,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 244,
+    "overall": 244,
+    "name": "Jason Sanders",
+    "pos": "K",
+    "team": "MIA",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 27,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 27,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 245,
+    "overall": 245,
+    "name": "Spencer Shrader",
+    "pos": "K",
+    "team": "IND",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 28,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 28,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 246,
+    "overall": 246,
+    "name": "Ryan Fitzgerald",
+    "pos": "K",
+    "team": "CAR",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 29,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 29,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 247,
+    "overall": 247,
+    "name": "Joey Slye",
+    "pos": "K",
+    "team": "TEN",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 30,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 30,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 248,
+    "overall": 248,
+    "name": "Baltimore Kicker",
+    "pos": "K",
+    "team": "BAL",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 31,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 31,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
+  },
+  {
+    "id": 249,
+    "overall": 249,
+    "name": "Cleveland Kicker",
+    "pos": "K",
+    "team": "CLE",
+    "bye": "TBD",
+    "overallTier": "K",
+    "posRank": 32,
+    "posTier": 3,
+    "rookie": false,
+    "bdge": "FantasyPros kicker baseline",
+    "fantasyland": "N/A",
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "bdgeLabels": [
+      "FantasyPros"
+    ],
+    "bdgeSources": [
+      "FantasyPros 2026 K"
+    ],
+    "bdgeBoost": 0,
+    "bdgeAvoid": false,
+    "bdgeFirstRound": null,
+    "mixedIntel": false,
+    "gerardPreference": "neutral",
+    "collegeProfile": "N/A",
+    "offseasonImpact": 0,
+    "opportunityTrend": "Draft late",
+    "evidenceConfidence": "FantasyPros baseline",
+    "fantasyProsPosRank": 32,
+    "fantasyProsOverallRank": null,
+    "rankingRole": "FantasyPros positional baseline",
+    "sourceCoverage": {
+      "fantasyland": false,
+      "bdge": true,
+      "fantasyPros": true,
+      "gerard": false
+    }
   }
 ]

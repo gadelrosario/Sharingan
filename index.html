@@ -29,9 +29,29 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .rec.state-normal{border-color:var(--purple)}.rec.state-value{border-color:var(--gold);box-shadow:0 0 0 1px rgba(243,200,91,.2)}.rec.state-confidence{border-color:var(--green)}.rec.state-warning{border-color:var(--red)}.mambaScore{font-size:12px;font-weight:900;color:var(--gold);margin-bottom:4px}.confbar{height:8px;background:#2c2530;border-radius:999px;overflow:hidden;margin:8px 0}.confbar span{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--gold))}.managerSetup{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.managerSlot{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center}.managerSlot b{color:var(--gold)}@media(max-width:900px){.managerSetup{grid-template-columns:1fr}}
 
 .liveRosterGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:8px}.liveRosterSlot{background:#111017;border:1px solid #3a303f;border-radius:9px;padding:7px}.liveRosterSlot .slot{font-size:9px;color:var(--muted);font-weight:800}.liveRosterSlot .player{font-size:11px;font-weight:850;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.liveRosterSlot.need{border-color:#7d1f2a}.liveRosterSlot.filled{border-color:#3f774f}.rosterSummary{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:8px}.rosterCount{background:#0f0d13;border:1px solid #3a303f;border-radius:8px;padding:6px 2px;text-align:center;font-size:9px}.rosterCount b{display:block;font-size:14px;color:#f3c85b}.needLine{font-size:10px;color:#f0c7cb;margin-top:7px}.waitGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.waitBox{background:#111017;border:1px solid #3a303f;border-radius:9px;padding:7px;text-align:center}.waitBox .pos{font-size:10px;font-weight:900}.waitBox .meter{height:6px;background:#2c2530;border-radius:999px;overflow:hidden;margin:5px 0}.waitBox .meter span{display:block;height:100%;background:linear-gradient(90deg,#7c111f,#e2364f)}.waitBox .decision{font-size:9px;color:var(--muted)}.waitBox.wait{border-color:#3f774f}.waitBox.now{border-color:#9b7b26}.waitBox.urgent{border-color:#9b2430}@media(max-width:900px){.liveRosterGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.rosterSummary{grid-template-columns:repeat(6,1fr)}.waitGrid{grid-template-columns:repeat(4,1fr)}}
+
+.scanLink{cursor:pointer;text-decoration:underline;text-decoration-color:#8d1f2b;text-underline-offset:3px}
+.scanBtn{background:#261116;border:1px solid #8e2936;color:#ffd9de;border-radius:9px;padding:8px 10px;font-weight:800}
+.modalBackdrop{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:14px}
+.scanCard{width:min(720px,100%);max-height:90vh;overflow:auto;background:linear-gradient(160deg,#1c1014,#0d0c0f);border:1px solid #a72c3c;border-radius:18px;padding:17px;box-shadow:0 0 40px rgba(188,31,53,.23)}
+.scanHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.scanEye{font-size:11px;font-weight:950;letter-spacing:1.8px;color:#e34c5f}
+.scanName{font-size:28px;font-weight:950;margin:5px 0}
+.scanGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
+.scanMetric{background:#120f12;border:1px solid #38262c;border-radius:10px;padding:9px}
+.scanMetric span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.7px}
+.scanMetric b{display:block;margin-top:3px;font-size:14px}
+.sourceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}
+.sourceBox{background:#110e11;border:1px solid #3b2930;border-radius:10px;padding:9px;text-align:center}
+.sourceBox .source{font-size:9px;color:var(--muted)}
+.sourceBox b{display:block;margin-top:3px}
+.scanNotes{background:#120f12;border-left:3px solid #b52e40;border-radius:8px;padding:10px;line-height:1.5}
+.scanActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+@media(max-width:600px){.scanGrid{grid-template-columns:1fr 1fr}.sourceGrid{grid-template-columns:1fr}.scanName{font-size:23px}}
+
 </style></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 3 • Sharingan Draft Awareness</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 4 • Complete Draft Pool</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">AI drafts the other nine teams and stops when it is your turn.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">You manually enter every real selection. No computer picks.</p></div></div>
@@ -43,7 +63,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 <main class="stack">
 <section id="mobileDraft" class="mobilePage active"><div class="mobileOnly card"><div class="stats"><div class="stat"><b id="mRound">1</b>Round</div><div class="stat"><b id="mPickLabel">1.01</b>Pick</div><div class="stat"><b id="mUntil">0</b>Until you</div></div></div><div class="card"><div id="recommendation" class="rec"></div><div id="alternatives"></div></div><div class="card mobileOnly"><b>Your team — live</b><div id="mobileRosterSummary" class="rosterSummary"></div><div id="mobileLiveRoster" class="liveRosterGrid"></div><div id="mobileNeeds" class="needLine"></div></div><div class="card"><b>Wait Meter</b><div class="meta">Higher percentage means it is safer to wait until your next pick.</div><div id="waitMeter" class="waitGrid"></div></div><div class="card" id="practiceControls"><button class="primary greenBtn" style="width:100%" onclick="simulateToMe()">Simulate until my pick</button></div><div class="card" id="liveHelp"><div class="meta">Use the player board and press Other for league-mate selections or Mine for your own.</div></div></section>
 <section id="mobileBoard" class="mobilePage"><div class="card"><b>Visual snake board</b><div class="boardWrap"><div id="draftBoard" class="board"></div></div></div></section>
-<section id="mobilePlayers" class="mobilePage"><div class="card"><b>Available players</b><input id="search" placeholder="Search players" oninput="renderPlayers()" style="width:100%;margin:8px 0"><div style="display:flex;gap:5px;overflow:auto"><button class="ghost" onclick="setPos('ALL')">ALL</button><button class="ghost" onclick="setPos('RB')">RB</button><button class="ghost" onclick="setPos('WR')">WR</button><button class="ghost" onclick="setPos('QB')">QB</button><button class="ghost" onclick="setPos('TE')">TE</button></div><div id="playersList" class="boardList"></div></div></section>
+<section id="mobilePlayers" class="mobilePage"><div class="card"><b>Available players</b><input id="search" placeholder="Search players" oninput="renderPlayers()" style="width:100%;margin:8px 0"><div style="display:flex;gap:5px;overflow:auto"><button class="ghost" onclick="setPos('ALL')">ALL</button><button class="ghost" onclick="setPos('RB')">RB</button><button class="ghost" onclick="setPos('WR')">WR</button><button class="ghost" onclick="setPos('QB')">QB</button><button class="ghost" onclick="setPos('TE')">TE</button><button class="ghost" onclick="setPos('DST')">D/ST</button><button class="ghost" onclick="setPos('K')">K</button></div><div id="playersList" class="boardList"></div></div></section>
 </main>
 <aside class="stack desktopSide"><div class="card"><b>Visual snake board</b><div class="boardWrap"><div id="desktopBoard" class="board"></div></div></div><div class="card"><b>Available players</b><input id="dSearch" placeholder="Search players" oninput="renderPlayers()" style="width:100%;margin:8px 0"><div id="dPlayersList" class="boardList"></div></div></aside>
 </div><section id="mobileTeam" class="mobilePage mobileOnly"><div class="card"><b>Your roster</b><div id="mRoster"></div></div><div class="card"><b>AI strategies</b><div id="mStrategies"></div></div></section></section></div>
@@ -76,10 +96,10 @@ function teamForPick(p){let r=Math.ceil(p/10),x=(p-1)%10+1;return r%2?x:11-x}
 function info(){let r=Math.ceil(pick/10),ip=(pick-1)%10+1,next=pick;while(teamForPick(next)!==slot)next++;return{r,ip,until:next-pick}}
 function available(){return players.filter(p=>!drafted.includes(p.id))}
 function myPlayers(){return history.filter(h=>h.team===slot).map(h=>players.find(p=>p.id===h.id)).filter(Boolean)}
-function counts(){let c={QB:0,RB:0,WR:0,TE:0};myPlayers().forEach(p=>c[p.pos]++);return c}
+function counts(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{if(c[p.pos]!==undefined)c[p.pos]++});return c}
 function expected(){return blueprint[Math.min(info().r-1,5)]||"BPA"}
 function fit(p){let e=expected();return e==="BPA"?0:e===p.pos?18:e.includes(p.pos)?15:-4}
-function gerardScore(p){let c=counts(),s=180-p.overall*1.12+fit(p)+(p.bdgeBoost||0);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=25;if(p.pos==="TE"&&c.TE>=1)s-=18;if(p.pos==="QB"&&info().r<3)s-=20;if(p.pos==="TE"&&info().r<2)s-=10;if(p.bdgeAvoid)s-=10;return s}
+function gerardScore(p){let c=counts(),round=info().r,s=180-p.overall*1.12+fit(p)+(p.bdgeBoost||0);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=25;if(p.pos==="TE"&&c.TE>=1)s-=18;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;return s}
 function recommendations(){return [...available()].sort((a,b)=>gerardScore(b)-gerardScore(a)).slice(0,5)}
 function rationale(p){let b=[],e=expected();if(e===p.pos||e.includes(p.pos))b.push("fits Gerard Blueprint");let fall=Math.max(0,pick-p.overall);if(fall>=8)b.push(`value fall: ${fall} picks`);if(p.bdgeLabels?.length)b.push(`BDGE: ${p.bdgeLabels[0]}`);if(p.overallTier==="S"||p.overallTier==="A")b.push("top-tier talent");if(["RB","WR"].includes(p.pos))b.push("weekly-ceiling core");return b.slice(0,3).join(" • ")||"best blended value available"}
 
@@ -88,22 +108,103 @@ function mambaScore(p){let raw=gerardScore(p),tier=p.overallTier==="S"?10:p.over
 function recommendationState(p){let s=mambaScore(p),fall=Math.max(0,pick-p.overall),c=counts();if(s>=92)return{cls:"state-confidence",label:"🟢 HIGH CONFIDENCE"};if(fall>=10)return{cls:"state-value",label:"🟡 VALUE ALERT"};if((p.pos==="QB"&&c.QB>=1)||(p.pos==="TE"&&c.TE>=1))return{cls:"state-warning",label:"🔴 ROSTER WARNING"};return{cls:"state-normal",label:"🟣 MAMBA RECOMMENDATION"}}
 function runSignal(){let r=history.slice(-6).map(h=>players.find(p=>p.id===h.id)?.pos).filter(Boolean),t={QB:0,RB:0,WR:0,TE:0};r.forEach(x=>t[x]++);let top=Object.entries(t).sort((a,b)=>b[1]-a[1])[0];return top&&top[1]>=3?top[0]+" run detected":"No major positional run"}
 function selectPlayer(id,team){if(drafted.includes(id))return;drafted.push(id);history.push({pick,id,team});pick++;renderAll()}
-function aiScore(p,team){let profile=aiProfiles[team]||"Balanced",m=getManager(team),s=150-p.overall+Math.random()*(style==="chaotic"?35:style==="conservative"?8:18),owned=history.filter(h=>h.team===team).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),c={QB:0,RB:0,WR:0,TE:0};owned.forEach(x=>c[x.pos]++);if(profile==="Hero RB"&&p.pos==="RB"&&c.RB<1)s+=30;if(profile==="Zero RB"&&p.pos==="WR"&&c.WR<4)s+=25;if(profile==="WR Heavy"&&p.pos==="WR")s+=20;if(profile==="Early QB"&&p.pos==="QB"&&c.QB<1&&Math.ceil(pick/10)<=5)s+=28;if(profile==="Elite TE"&&p.pos==="TE"&&c.TE<1)s+=25;if(profile==="Rookie Chaser"&&p.rookie)s+=25;if(profile==="Chaos")s+=Math.random()*45;if(p.team===m.homerTeam)s+=m.homer*3;if(p.pos==="QB"&&c.QB>=1)s+=m.qbHoard*2-12;if(m.archetype.includes("AI"))s+=Math.max(0,25-p.overall/8);if(m.archetype.includes("Reactionary")&&p.rookie)s+=12;if(m.archetype.includes("Conviction"))s+=Math.random()*18;if(c[p.pos]>=3&&["QB","TE"].includes(p.pos))s-=Math.max(10,45-m.qbHoard*3);return s}
+function aiScore(p,team){let profile=aiProfiles[team]||"Balanced",m=getManager(team),s=150-p.overall+Math.random()*(style==="chaotic"?35:style==="conservative"?8:18),owned=history.filter(h=>h.team===team).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};owned.forEach(x=>{if(c[x.pos]!==undefined)c[x.pos]++});if(profile==="Hero RB"&&p.pos==="RB"&&c.RB<1)s+=30;if(profile==="Zero RB"&&p.pos==="WR"&&c.WR<4)s+=25;if(profile==="WR Heavy"&&p.pos==="WR")s+=20;if(profile==="Early QB"&&p.pos==="QB"&&c.QB<1&&Math.ceil(pick/10)<=5)s+=28;if(profile==="Elite TE"&&p.pos==="TE"&&c.TE<1)s+=25;if(profile==="Rookie Chaser"&&p.rookie)s+=25;if(profile==="Chaos")s+=Math.random()*45;if(p.team===m.homerTeam)s+=m.homer*3;if(p.pos==="QB"&&c.QB>=1)s+=m.qbHoard*2-12;if(m.archetype.includes("AI"))s+=Math.max(0,25-p.overall/8);if(m.archetype.includes("Reactionary")&&p.rookie)s+=12;if(m.archetype.includes("Conviction"))s+=Math.random()*18;if(c[p.pos]>=3&&["QB","TE"].includes(p.pos))s-=Math.max(10,45-m.qbHoard*3);let rd=Math.ceil(pick/10);if(p.pos==="DST"){s-=rd<15?90:0;if(c.DST>=1)s-=100;if(rd>=16&&c.DST<1)s+=55}if(p.pos==="K"){s-=rd<16?100:0;if(c.K>=1)s-=100;if(rd>=17&&c.K<1)s+=65}return s}
 async function simulateToMe(){if(mode!=="practice")return;while(teamForPick(pick)!==slot&&pick<=170){let team=teamForPick(pick),pool=available().slice(0,Math.min(28,available().length));pool.sort((a,b)=>aiScore(b,team)-aiScore(a,team));selectPlayer(pool[0].id,team);await new Promise(r=>setTimeout(r,130))}}
-function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let p=ps.find(x=>x.pos===pos&&!used.includes(x.id));if(p)used.push(p.id);return p}for(let s of rosterSlots){let p=null;if(s==="QB")p=take("QB");else if(s.startsWith("RB"))p=take("RB");else if(s.startsWith("WR"))p=take("WR");else if(s==="TE")p=take("TE");else if(s.startsWith("FLEX")){p=ps.find(x=>["RB","WR","TE"].includes(x.pos)&&!used.includes(x.id));if(p)used.push(p.id)}else if(s.startsWith("BENCH")){p=ps.find(x=>!used.includes(x.id));if(p)used.push(p.id)}rows.push([s,p])}return rows}
+function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let p=ps.find(x=>x.pos===pos&&!used.includes(x.id));if(p)used.push(p.id);return p}for(let s of rosterSlots){let p=null;if(s==="QB")p=take("QB");else if(s.startsWith("RB"))p=take("RB");else if(s.startsWith("WR"))p=take("WR");else if(s==="TE")p=take("TE");else if(s==="K")p=take("K");else if(s==="DEF")p=take("DST");else if(s.startsWith("FLEX")){p=ps.find(x=>["RB","WR","TE"].includes(x.pos)&&!used.includes(x.id));if(p)used.push(p.id)}else if(s.startsWith("BENCH")){p=ps.find(x=>!used.includes(x.id));if(p)used.push(p.id)}rows.push([s,p])}return rows}
 
 function positionalCountsAll(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{let key=p.pos==="DEF"?"DST":p.pos;if(c[key]!==undefined)c[key]++});return c}
 function rosterNeeds(){let c=positionalCountsAll(),needs=[];if(c.QB<1)needs.push("QB");if(c.RB<2)needs.push("RB");if(c.WR<3)needs.push("WR");if(c.TE<1)needs.push("TE");if(c.K<1)needs.push("K");if(c.DST<1)needs.push("D/ST");return needs}
 function waitScore(pos){let c=positionalCountsAll(),avail=available().filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos),top=avail.slice(0,8),needers=0,n=pick+1;while(n<=170&&teamForPick(n)!==slot){let t=teamForPick(n),owned=history.filter(h=>h.team===t).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),has=owned.some(p=>(p.pos==="DEF"?"DST":p.pos)===pos);if(!has)needers++;n++}let base=(pos==="QB"||pos==="TE")?62:88;if(c[pos]>=1)base=96;base-=needers*6;if(top.length<=3)base-=25;if(top.length<=1)base-=25;let recent=history.slice(-6).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),run=recent.filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).length;base-=run*8;return Math.max(5,Math.min(98,Math.round(base)))}
 function renderLiveRoster(){let rows=rosterRows(),keySlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF"],htmlRows=rows.filter(([s])=>keySlots.includes(s)).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";if(document.getElementById("mobileLiveRoster"))mobileLiveRoster.innerHTML=htmlRows;if(document.getElementById("mobileRosterSummary"))mobileRosterSummary.innerHTML=summary;if(document.getElementById("mobileNeeds"))mobileNeeds.textContent=needsText}
 function renderWaitMeter(){let positions=["QB","TE","DST","K"],boxes=positions.map(pos=>{let score=waitScore(pos),cls=score>=70?"wait":score>=40?"now":"urgent",label=score>=70?"WAIT":score>=40?"CONSIDER NOW":"DRAFT SOON";return `<div class="waitBox ${cls}"><div class="pos">${pos==="DST"?"D/ST":pos}</div><div class="meter"><span style="width:${score}%"></span></div><div><b>${score}%</b></div><div class="decision">${label}</div></div>`}).join("");if(document.getElementById("waitMeter"))waitMeter.innerHTML=boxes}
-function renderRecommendation(){let recs=recommendations(),p=recs[0],onClock=teamForPick(pick)===slot,state=recommendationState(p),score=mambaScore(p),risk=survivalRisk(p);recommendation.className="rec "+state.cls;recommendation.innerHTML=`<div style="font-weight:900">${state.label}</div><div class="mambaScore">Mamba Score ${score}/100 • Steal Risk ${risk}%</div><div class="confbar"><span style="width:${score}%"></span></div><h2>${p.name}</h2><div class="tagrow"><span class="tag">${p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">FL ${p.overallTier}</span>${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}</div><div class="reason">${rationale(p)}<br><span class="meta">${runSignal()}</span></div><button class="primary" style="width:100%" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button>`;alternatives.innerHTML=recs.slice(1).map((x,i)=>`<div class="alt"><div class="rank">${i+2}</div><div class="info"><b>${x.name}</b><div class="meta">${x.pos}${x.posRank||""} • ${x.team} • ${rationale(x)}</div></div><button class="ghost" onclick="selectPlayer(${x.id},${slot})">Mine</button><button class="ghost" onclick="selectPlayer(${x.id},${teamForPick(pick)})">Other</button></div>`).join("")}
+
+function normalizedPos(p){return p.pos==="DEF"?"DST":p.pos}
+function coverageText(p){
+ let parts=[];
+ if(p.sourceCoverage?.fantasyland)parts.push("Fantasyland");
+ if(p.sourceCoverage?.bdge)parts.push("BDGE");
+ if(p.sourceCoverage?.fantasyPros)parts.push("FantasyPros");
+ if(p.sourceCoverage?.gerard)parts.push("Gerard");
+ return parts.join(" + ")||"Depth database";
+}
+function scoreComponents(p){
+ let value=Math.max(45,Math.min(99,Math.round(102-(p.overall||200)/3)));
+ let ceiling=Math.max(45,Math.min(99,value+(p.bdgeBoost||0)*2+(p.overallTier==="S"?8:p.overallTier==="A"?5:0)));
+ let floor=Math.max(40,Math.min(98,value-(p.rookie?7:0)-(p.bdgeAvoid?10:0)));
+ let fit=mambaScore(p);
+ return {value,ceiling,floor,fit};
+}
+function sourceRankLabel(p,source){
+ if(source==="Fantasyland"){
+   if(p.fantasyland==="N/A"||p.fantasyland==="Depth pool")return "—";
+   return p.pos==="K"||p.pos==="DST"?"—":`${p.pos}${p.posRank||"—"} / Tier ${p.posTier||p.overallTier||"—"}`;
+ }
+ if(source==="BDGE"){
+   return p.bdgeRank?`${p.pos}${p.bdgeRank}${p.bdgeTier?` • ${p.bdgeTier}`:""}`:"—";
+ }
+ if(source==="FantasyPros"){
+   return `${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank||"—"}`;
+ }
+ return "—";
+}
+function openScan(id){
+ let p=players.find(x=>x.id===id);if(!p)return;
+ let s=scoreComponents(p),risk=survivalRisk(p),state=recommendationState(p);
+ let labels=(p.bdgeLabels||[]).length?p.bdgeLabels.join(" • "):"No additional BDGE flag";
+ let notes=[
+   p.rankingRole,
+   labels,
+   p.opportunityTrend&&p.opportunityTrend!=="Pending"?p.opportunityTrend:null,
+   p.gerardPreference&&p.gerardPreference!=="neutral"?`Gerard preference: ${p.gerardPreference}`:null
+ ].filter(Boolean).join(". ");
+ scanContent.innerHTML=`
+ <div class="scanHeader"><div><div class="scanEye">👁 SHARINGAN SCAN</div><div class="scanName">${p.name}</div><div class="tagrow"><span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">${coverageText(p)}</span></div></div><button class="ghost" onclick="closeScan()">Close</button></div>
+ <div class="scanGrid">
+   <div class="scanMetric"><span>Mamba Score</span><b>${s.fit}/100</b></div>
+   <div class="scanMetric"><span>Steal Risk</span><b>${risk}%</b></div>
+   <div class="scanMetric"><span>Weekly Ceiling</span><b>${s.ceiling}/100</b></div>
+   <div class="scanMetric"><span>Floor</span><b>${s.floor}/100</b></div>
+   <div class="scanMetric"><span>Current Board Rank</span><b>#${p.overall||"—"}</b></div>
+   <div class="scanMetric"><span>Recommendation</span><b>${state.label.replace(/[^\w\s]/g,"").trim()}</b></div>
+ </div>
+ <b>Source breakdown</b>
+ <div class="sourceGrid">
+   <div class="sourceBox"><div class="source">FANTASYLAND</div><b>${sourceRankLabel(p,"Fantasyland")}</b></div>
+   <div class="sourceBox"><div class="source">BDGE</div><b>${sourceRankLabel(p,"BDGE")}</b></div>
+   <div class="sourceBox"><div class="source">FANTASYPROS</div><b>${sourceRankLabel(p,"FantasyPros")}</b></div>
+ </div>
+ <div class="scanNotes"><b>Why Sharingan sees him this way</b><br>${notes}. ${rationale(p)}.</div>
+ <div class="scanActions"><button class="primary" onclick="selectPlayer(${p.id},${slot});closeScan()">Draft to My Team</button><button class="ghost" onclick="selectPlayer(${p.id},${teamForPick(pick)});closeScan()">Record for Current Team</button></div>`;
+ scanModal.classList.remove("hidden");
+}
+function closeScan(e){if(e&&e.target!==scanModal)return;scanModal.classList.add("hidden")}
+
+function renderRecommendation(){
+ let recs=recommendations(),p=recs[0];
+ if(!p){recommendation.innerHTML="<b>Draft complete.</b>";alternatives.innerHTML="";return}
+ let onClock=teamForPick(pick)===slot,state=recommendationState(p),score=mambaScore(p),risk=survivalRisk(p);
+ recommendation.className="rec "+state.cls;
+ recommendation.innerHTML=`<div style="font-weight:900">${state.label}</div><div class="mambaScore">Mamba Score ${score}/100 • Steal Risk ${risk}%</div><div class="confbar"><span style="width:${score}%"></span></div><h2 class="scanLink" onclick="openScan(${p.id})">${p.name}</h2><div class="tagrow"><span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">FL ${p.overallTier}</span>${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}<span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span></div><div class="reason">${rationale(p)}<br><span class="meta">${runSignal()}</span></div><div style="display:grid;grid-template-columns:1fr auto;gap:8px"><button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button><button class="scanBtn" onclick="openScan(${p.id})">Scan</button></div>`;
+ alternatives.innerHTML=recs.slice(1).map((x,i)=>`<div class="alt"><div class="rank">${i+2}</div><div class="info"><b class="scanLink" onclick="openScan(${x.id})">${x.name}</b><div class="meta">${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • FP ${x.fantasyProsPosRank||x.posRank} • ${rationale(x)}</div></div><button class="scanBtn" onclick="openScan(${x.id})">Scan</button><button class="ghost" onclick="selectPlayer(${x.id},${slot})">Mine</button><button class="ghost" onclick="selectPlayer(${x.id},${teamForPick(pick)})">Other</button></div>`).join("");
+}
 function renderBoard(){let cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=17;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=history.find(x=>x.pick===pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div class="pickCell ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
 function renderRoster(){let rows=rosterRows().map(([s,p])=>`<div class="rosterRow"><span>${s}</span><span class="${p?"":"empty"}">${p?p.name:"—"}</span></div>`).join("");roster.innerHTML=rows;mRoster.innerHTML=rows;let ss=[];for(let t=1;t<=10;t++)ss.push(`<div class="strategy"><span>${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}</span><span class="pill">${t===slot?"Gerard Blueprint":aiProfiles[t]||"Manual"}</span></div>`);strategies.innerHTML=ss.join("");mStrategies.innerHTML=ss.join("")}
 function setPos(p){posFilter=p;renderPlayers()}
-function renderPlayers(){let q=((document.getElementById("search")?.value||document.getElementById("dSearch")?.value||"")).toLowerCase(),list=available().filter(p=>(posFilter==="ALL"||p.pos===posFilter)&&p.name.toLowerCase().includes(q)).slice(0,140),markup=list.map(p=>`<div class="playerRow"><span>${p.overall}</span><div><b>${p.name}</b><div class="meta">${p.team} • Bye ${p.bye} • FL ${p.overallTier}</div></div><span>${p.pos}${p.posRank||""}</span><div><button class="ghost" onclick="selectPlayer(${p.id},${slot})">Mine</button> <button class="ghost" onclick="selectPlayer(${p.id},${teamForPick(pick)})">Other</button></div></div>`).join("");playersList.innerHTML=markup;dPlayersList.innerHTML=markup}
+function renderPlayers(){
+ let q=((document.getElementById("search")?.value||document.getElementById("dSearch")?.value||"")).toLowerCase();
+ let list=available().filter(p=>(posFilter==="ALL"||p.pos===posFilter)&&p.name.toLowerCase().includes(q)).slice(0,300);
+ let markup=list.map(p=>`<div class="playerRow"><span>${p.overall}</span><div><b class="scanLink" onclick="openScan(${p.id})">${p.name}</b><div class="meta">${p.team} • Bye ${p.bye} • ${p.rankingRole}</div></div><span>${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><div><button class="scanBtn" onclick="openScan(${p.id})">Scan</button> <button class="ghost" onclick="selectPlayer(${p.id},${slot})">Mine</button> <button class="ghost" onclick="selectPlayer(${p.id},${teamForPick(pick)})">Other</button></div></div>`).join("");
+ playersList.innerHTML=markup;dPlayersList.innerHTML=markup;
+}
 function renderMeta(){let i=info();round.textContent=i.r;mRound.textContent=i.r;pickLabel.textContent=i.r+"."+String(i.ip).padStart(2,"0");mPickLabel.textContent=pickLabel.textContent;until.textContent=i.until;mUntil.textContent=i.until}
 function renderAll(){renderMeta();renderRecommendation();renderBoard();renderRoster();renderLiveRoster();renderWaitMeter();renderPlayers()}
 function showPage(id){document.querySelectorAll(".mobilePage").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
 init();
-</script></body></html>
+</script>
+<div id="scanModal" class="modalBackdrop hidden" onclick="closeScan(event)">
+  <div class="scanCard" onclick="event.stopPropagation()">
+    <div id="scanContent"></div>
+  </div>
+</div>
+
+</body></html>
