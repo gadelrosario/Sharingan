@@ -1,28 +1,49 @@
-# Gerard Fantasy HQ — Version 2.0 Alpha 6
+# Gerard Fantasy HQ — Version 2.0 Alpha 9
 
-## Complete Pool Cache Fix
+## Sharingan Draft Room Scan
 
-The Alpha 5 database already contained 32 D/STs and 32 kickers, but an older cached `players.json` could remain active on phones.
+### Main Draft page
+- Persistent compact Draft Room Scan on mobile
+- Persistent detailed Draft Room Scan on desktop
+- Live market pressure for RB, WR, QB, and TE
+- Levels: Cold, Calm, Rising, Hot, and Critical
+- One-sentence actionable room interpretation
+- Alerts appear when positional pressure affects the current recommendation
 
-This release:
-- Forces a fresh player database download
-- Uses network-first loading for `players.json`
-- Deletes older service-worker caches
-- Adds a setup-screen pool verification count
-- Retains all Alpha 5 Sharingan Scan and ranking features
+### Full league view
+- One-tap `View all teams`
+- Every manager's QB, RB, WR, and TE counts
+- Color-coded starter needs, depth openings, and hoarding
+- Live manager labels:
+  - Balanced
+  - RB heavy
+  - WR heavy
+  - QB hoarding
+  - TE hoarding
+- Tap a manager to see their complete roster
 
-Expected verification:
-- 249 total players
-- QB 27
-- RB 57
-- WR 76
-- TE 25
-- D/ST 32
-- K 32
+### Intelligence
+Market pressure uses:
+- Managers picking before Gerard's next selection
+- Unfilled starting positions
+- Reasonable depth needs
+- Recent positional runs
+- Remaining player depth
+- Known elite-QB hoarding behavior
+
+The pressure score now contributes to the Mamba recommendation so the mock and live draft react to the room.
+
+### Retained
+- Complete 249-player pool
+- 17-round drafting
+- D/ST and kicker timing locks
+- Sharingan player scans
+- Alternative-player highlighting
+- Live roster panel
+- League Draft Report
 
 ## Install
-1. Replace the beta repository files with this full build.
-2. Commit: `Version 2 Alpha 6 - Complete Pool Cache Fix`
-3. Push origin.
-4. Wait for GitHub Pages deployment.
-5. Open the website in Safari and confirm the pool count before starting a draft.
+1. Replace all files in the beta repository with this complete build.
+2. Leave `.DS_Store` unchecked.
+3. Commit: `Version 2 Alpha 9 - Sharingan Draft Room Scan`
+4. Push origin.
