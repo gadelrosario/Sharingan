@@ -93,9 +93,33 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
  .bottomSheet{align-items:center;padding:20px}.bottomSheetPanel{border-radius:18px;max-height:88vh}
 }
 
+
+.sectionHeader{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.compactStatus{padding:10px 12px}
+.recommendationCard{padding:12px}
+.recommendationCard .rec{padding:14px}
+.recommendationCard .rec h2{font-size:27px;margin:8px 0}
+.recommendationCard .reason{font-size:12px;line-height:1.35;margin:8px 0 11px}
+.recommendationCard .tag{font-size:9px;padding:5px 8px}
+.recommendationCard .confbar{margin:6px 0}
+.teamCompactCard .rosterSummary{margin-top:9px}
+.teamCompactCard .needLine{margin-top:8px}
+#mobileRosterExpandable{margin-top:9px}
+.alternativesCard .alt{transition:background .15s,border-color .15s,box-shadow .15s}
+.alt.highlightedOption{background:#32131a!important;border:1px solid #d03a50!important;box-shadow:0 0 0 2px rgba(208,58,80,.15)}
+.alt.highlightedOption .info b{color:#ffdce2}
+.alt.highlightedOption .rank{background:#b22f43;color:#fff;border-radius:999px}
+.highlightFlag{display:inline-block;margin-top:4px;font-size:8px;font-weight:950;color:#f4d35e;letter-spacing:.8px;text-transform:uppercase}
+@media(max-width:900px){
+  .recommendationCard .mambaScore{font-size:11px}
+  .recommendationCard .primary{padding:12px 8px}
+  .alternativesCard .alt{grid-template-columns:34px minmax(0,1fr) auto auto auto}
+  .alternativesCard .scanBtn,.alternativesCard .ghost{padding:8px 9px}
+}
+
 </style></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 9 • Draft Room Scan</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 10 • Mobile Draft Command Center</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">AI drafts the other nine teams and stops when it is your turn.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">You manually enter every real selection. No computer picks.</p></div></div>
@@ -109,7 +133,62 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 <section id="appScreen" class="hidden"><div id="modeBanner"></div><div class="appgrid">
 <aside class="stack desktopSide"><div class="card"><div class="stats"><div class="stat"><b id="round">1</b>Round</div><div class="stat"><b id="pickLabel">1.01</b>Pick</div><div class="stat"><b id="until">0</b>Until you</div></div></div><div class="card"><b>Your roster</b><div id="roster"></div></div><div class="card"><b>AI strategies</b><div id="strategies"></div></div></aside>
 <main class="stack">
-<section id="mobileDraft" class="mobilePage active"><div class="mobileOnly card"><div class="stats"><div class="stat"><b id="mRound">1</b>Round</div><div class="stat"><b id="mPickLabel">1.01</b>Pick</div><div class="stat"><b id="mUntil">0</b>Until you</div></div></div><div class="card"><div id="recommendation" class="rec"></div><div id="alternatives"></div></div><div class="card mobileOnly"><b>Your team — live</b><div id="mobileRosterSummary" class="rosterSummary"></div><div id="mobileLiveRoster" class="liveRosterGrid"></div><div id="mobileNeeds" class="needLine"></div></div><div class="card"><b>Wait Meter</b><div class="meta">Higher percentage means it is safer to wait until your next pick.</div><div id="waitMeter" class="waitGrid"></div></div><div class="card" id="practiceControls"><button class="primary greenBtn" style="width:100%" onclick="simulateToMe()">Simulate until my pick</button></div><div class="card" id="liveHelp"><div class="meta">Use the player board and press Other for league-mate selections or Mine for your own.</div></div></section>
+<section id="mobileDraft" class="mobilePage active">
+  <div class="card compactStatus">
+    <div class="stats">
+      <div class="stat"><b id="mRound">1</b>Round</div>
+      <div class="stat"><b id="mPickLabel">1.01</b>Pick</div>
+      <div class="stat"><b id="mUntil">0</b>Until you</div>
+    </div>
+  </div>
+
+  <div class="card recommendationCard">
+    <div id="recommendation" class="rec"></div>
+  </div>
+
+  <div class="card mobileOnly teamCompactCard">
+    <div class="sectionHeader">
+      <b>Your team — live</b>
+      <button id="teamToggleBtn" class="scanBtn" onclick="toggleMobileTeam()">Expand</button>
+    </div>
+    <div id="mobileRosterSummary" class="rosterSummary"></div>
+    <div id="mobileNeeds" class="needLine"></div>
+    <div id="mobileRosterExpandable" class="hidden">
+      <div id="mobileLiveRoster" class="liveRosterGrid"></div>
+    </div>
+  </div>
+
+  <div class="card mobileOnly roomScanCard">
+    <div class="roomScanTop">
+      <b>👁 Draft Room Scan</b>
+      <button class="scanBtn" onclick="openRoomScan()">View all teams</button>
+    </div>
+    <div id="mobileRoomAlert"></div>
+    <div id="mobileMarketGrid" class="roomScanGrid"></div>
+    <div id="mobileRoomInsight" class="roomInsight"></div>
+  </div>
+
+  <div class="card alternativesCard">
+    <div class="sectionHeader">
+      <b>Other options</b>
+      <span class="meta">Tap a row to highlight it</span>
+    </div>
+    <div id="alternatives"></div>
+  </div>
+
+  <div class="card">
+    <b>Wait Meter</b>
+    <div class="meta">Higher percentage means it is safer to wait until your next pick.</div>
+    <div id="waitMeter" class="waitGrid"></div>
+  </div>
+
+  <div class="card" id="practiceControls">
+    <button class="primary greenBtn" style="width:100%" onclick="simulateToMe()">Simulate until my pick</button>
+  </div>
+  <div class="card" id="liveHelp">
+    <div class="meta">Use the player board and press Other for league-mate selections or Mine for your own.</div>
+  </div>
+</section>
 <section id="mobileBoard" class="mobilePage"><div class="card"><b>Visual snake board</b><div class="boardWrap"><div id="draftBoard" class="board"></div></div></div></section>
 <section id="mobilePlayers" class="mobilePage"><div class="card"><b>Available players</b><input id="search" placeholder="Search players" oninput="renderPlayers()" style="width:100%;margin:8px 0"><div style="display:flex;gap:5px;overflow:auto"><button class="ghost" onclick="setPos('ALL')">ALL</button><button class="ghost" onclick="setPos('RB')">RB</button><button class="ghost" onclick="setPos('WR')">WR</button><button class="ghost" onclick="setPos('QB')">QB</button><button class="ghost" onclick="setPos('TE')">TE</button><button class="ghost" onclick="setPos('DST')">D/ST</button><button class="ghost" onclick="setPos('K')">K</button></div><div id="playersList" class="boardList"></div></div></section>
 </main>
@@ -117,7 +196,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 </div><section id="draftReport" class="hidden"><div class="reportHero"><div class="scanEye">👁 SHARINGAN LEAGUE REPORT</div><h2>Draft Complete</h2><div class="projectionNote">Draft-day projection based on roster strength, value, positional balance, ceiling, and bench construction. It is not a guarantee of season results.</div></div><div id="myDraftReport"></div><div class="card"><b>Projected League Rankings</b><div id="leagueProjection"></div></div><div class="card"><b>All Team Report Cards</b><div id="allTeamReports"></div></div><button class="primary" style="width:100%;margin-top:10px" onclick="startAnotherMock()">Start Another Mock</button></section><section id="mobileTeam" class="mobilePage mobileOnly"><div class="card"><b>Your roster</b><div id="mRoster"></div></div><div class="card"><b>AI strategies</b><div id="mStrategies"></div></div></section></section></div>
 <nav id="tabs" class="tabs hidden"><button onclick="showPage('mobileDraft')">🏈<br>Draft</button><button onclick="showPage('mobileBoard')">🧩<br>Board</button><button onclick="showPage('mobilePlayers')">📋<br>Players</button><button onclick="showPage('mobileTeam')">👥<br>Team</button></nav>
 <script>
-let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null;
+let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false;
 const managers=[
 {name:"Gerard",archetype:"Championship Value",skill:9.6,predictability:7,homerTeam:"",homer:0,qbHoard:2,waiver:10},
 {name:"Marc",archetype:"Calculated Ceiling",skill:8,predictability:8,homerTeam:"NYJ",homer:2,qbHoard:2,waiver:7},
@@ -137,7 +216,7 @@ function renderManagerSetup(){const pref=["Kalani","Marc","Ray","Fritz","Michael
 function captureManagers(){slotManagers={};for(let i=1;i<=10;i++){let e=document.getElementById("mgr"+i);slotManagers[i]=e?e.value:"Team "+i}let old=Object.keys(slotManagers).find(k=>slotManagers[k]==="Gerard");if(old&&+old!==slot){let tmp=slotManagers[slot];slotManagers[old]=tmp}slotManagers[slot]="Gerard"}
 function getManager(t){return managers.find(m=>m.name===slotManagers[t])||managers[0]}
 function chooseMode(m){mode=m;practiceChoice.classList.toggle("selected",m==="practice");liveChoice.classList.toggle("selected",m==="live")}
-function startDraft(){slot=+draftSlot.value;style=roomStyle.value;captureManagers();pick=1;drafted=[];history=[];selectedCandidateId=null;buildProfiles();setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll()}
+function startDraft(){mobileTeamExpanded=false;slot=+draftSlot.value;style=roomStyle.value;captureManagers();pick=1;drafted=[];history=[];selectedCandidateId=null;buildProfiles();setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll()}
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
 function teamForPick(p){let r=Math.ceil(p/10),x=(p-1)%10+1;return r%2?x:11-x}
@@ -233,22 +312,61 @@ function closeScan(e){if(e&&e.target!==scanModal)return;scanModal.classList.add(
 
 function selectCandidate(id){
  if(drafted.includes(id))return;
- selectedCandidateId=id;
+ selectedCandidateId=(selectedCandidateId===id?null:id);
  renderRecommendation();
- window.scrollTo({top:document.getElementById("recommendation").getBoundingClientRect().top+window.scrollY-90,behavior:"smooth"});
+}
+
+
+function toggleMobileTeam(){
+ mobileTeamExpanded=!mobileTeamExpanded;
+ let panel=document.getElementById("mobileRosterExpandable");
+ let btn=document.getElementById("teamToggleBtn");
+ if(panel)panel.classList.toggle("hidden",!mobileTeamExpanded);
+ if(btn)btn.textContent=mobileTeamExpanded?"Collapse":"Expand";
 }
 
 function renderRecommendation(){
  let recs=recommendations();
- if(!recs.length){recommendation.innerHTML="<b>Draft complete.</b>";alternatives.innerHTML="";return}
- let selected=selectedCandidateId?players.find(x=>x.id===selectedCandidateId&&!drafted.includes(x.id)):null;
- let p=selected||recs[0];
- let onClock=teamForPick(pick)===slot,state=recommendationState(p),score=mambaScore(p),risk=survivalRisk(p);
+ if(!recs.length){
+   recommendation.innerHTML="<b>Draft complete.</b>";
+   alternatives.innerHTML="";
+   return;
+ }
+ let p=recs[0];
+ let state=recommendationState(p),score=mambaScore(p),risk=survivalRisk(p);
  recommendation.className="rec "+state.cls;
- recommendation.innerHTML=`${selected?`<div class="selectedNotice">Alternative selected for comparison</div>`:""}<div style="font-weight:900">${state.label}</div><div class="mambaScore">Mamba Score ${score}/100 • Steal Risk ${risk}%</div><div class="confbar"><span style="width:${score}%"></span></div><h2 class="scanLink" onclick="openScan(${p.id})">${p.name}</h2><div class="tagrow"><span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">FL ${p.overallTier}</span>${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}<span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span></div><div class="reason">${rationale(p)}<br><span class="meta">${runSignal()}</span></div><div style="display:grid;grid-template-columns:1fr auto;gap:8px"><button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button><button class="scanBtn" onclick="openScan(${p.id})">Scan</button></div>`;
- let altPool=recs.filter(x=>x.id!==p.id);
- if(selected && !recs.some(x=>x.id===selected.id))altPool=[recs[0],...recs.slice(1)];
- alternatives.innerHTML=altPool.slice(0,4).map((x,i)=>`<div class="alt selectable ${selectedCandidateId===x.id?"selectedOption":""}" onclick="selectCandidate(${x.id})"><div class="rank">${i+2}</div><div class="info"><b>${x.name}</b><div class="meta">${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • FP ${x.fantasyProsPosRank||x.posRank} • ${rationale(x)}</div></div><button class="scanBtn" onclick="event.stopPropagation();openScan(${x.id})">Scan</button><button class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${slot})">Mine</button><button class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${teamForPick(pick)})">Other</button></div>`).join("");
+ recommendation.innerHTML=`
+   <div style="font-weight:900">${state.label}</div>
+   <div class="mambaScore">Mamba Score ${score}/100 • Steal Risk ${risk}%</div>
+   <div class="confbar"><span style="width:${score}%"></span></div>
+   <h2 class="scanLink" onclick="openScan(${p.id})">${p.name}</h2>
+   <div class="tagrow">
+     <span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span>
+     <span class="tag">${p.team}</span>
+     <span class="tag">Bye ${p.bye}</span>
+     ${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}
+     <span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span>
+   </div>
+   <div class="reason">${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
+   <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
+     <button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button>
+     <button class="scanBtn" onclick="openScan(${p.id})">Scan</button>
+   </div>`;
+
+ alternatives.innerHTML=recs.slice(1,5).map((x,i)=>{
+   let highlighted=selectedCandidateId===x.id;
+   return `<div class="alt selectable ${highlighted?"highlightedOption":""}" onclick="selectCandidate(${x.id})">
+     <div class="rank">${i+2}</div>
+     <div class="info">
+       <b>${x.name}</b>
+       <div class="meta">${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • FP ${x.fantasyProsPosRank||x.posRank} • ${rationale(x)}</div>
+       ${highlighted?`<span class="highlightFlag">Highlighted for comparison</span>`:""}
+     </div>
+     <button class="scanBtn" onclick="event.stopPropagation();openScan(${x.id})">Scan</button>
+     <button class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${slot})">Mine</button>
+     <button class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${teamForPick(pick)})">Other</button>
+   </div>`;
+ }).join("");
 }
 function renderBoard(){let cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=17;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=history.find(x=>x.pick===pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div class="pickCell ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
 function renderRoster(){let rows=rosterRows().map(([s,p])=>`<div class="rosterRow"><span>${s}</span><span class="${p?"":"empty"}">${p?p.name:"—"}</span></div>`).join("");roster.innerHTML=rows;mRoster.innerHTML=rows;let ss=[];for(let t=1;t<=10;t++)ss.push(`<div class="strategy"><span>${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}</span><span class="pill">${t===slot?"Gerard Blueprint":aiProfiles[t]||"Manual"}</span></div>`);strategies.innerHTML=ss.join("");mStrategies.innerHTML=ss.join("")}

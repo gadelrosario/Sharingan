@@ -1,49 +1,45 @@
-# Gerard Fantasy HQ — Version 2.0 Alpha 9
+# Gerard Fantasy HQ — Version 2.0 Alpha 10
 
-## Sharingan Draft Room Scan
+## Mobile Draft Command Center
 
-### Main Draft page
-- Persistent compact Draft Room Scan on mobile
-- Persistent detailed Draft Room Scan on desktop
-- Live market pressure for RB, WR, QB, and TE
-- Levels: Cold, Calm, Rising, Hot, and Critical
-- One-sentence actionable room interpretation
-- Alerts appear when positional pressure affects the current recommendation
+### Mobile layout correction
+The phone Draft page now always follows this order:
 
-### Full league view
-- One-tap `View all teams`
-- Every manager's QB, RB, WR, and TE counts
-- Color-coded starter needs, depth openings, and hoarding
-- Live manager labels:
-  - Balanced
-  - RB heavy
-  - WR heavy
-  - QB hoarding
-  - TE hoarding
-- Tap a manager to see their complete roster
+1. Pick status
+2. Main recommendation
+3. Compact live team
+4. Draft Room Scan
+5. Other options
+6. Wait Meter
+7. Mock/live controls
 
-### Intelligence
-Market pressure uses:
-- Managers picking before Gerard's next selection
-- Unfilled starting positions
-- Reasonable depth needs
-- Recent positional runs
-- Remaining player depth
-- Known elite-QB hoarding behavior
+The Draft Room Scan is no longer dependent on a fragile automatic insertion point.
 
-The pressure score now contributes to the Mamba recommendation so the mock and live draft react to the room.
+### Compact live roster
+- Position totals and remaining needs stay visible.
+- Full starter cards are collapsed by default.
+- Tap `Expand` to see the complete roster.
+- Tap `Collapse` to return to the compact view.
+
+### Alternative-player highlighting
+- The original recommendation always remains at the top.
+- Alternative order never changes.
+- Tap an alternative row to highlight it.
+- Tap it again to remove the highlight.
+- Highlighting does not draft the player.
+- Scan, Mine, and Other buttons remain available.
 
 ### Retained
+- Full mobile and desktop Draft Room Scan
+- Market pressure and positional-run alerts
 - Complete 249-player pool
-- 17-round drafting
-- D/ST and kicker timing locks
-- Sharingan player scans
-- Alternative-player highlighting
-- Live roster panel
-- League Draft Report
+- 17-round draft support
+- D/ST and kicker late-round locks
+- Sharingan player cards
+- All-team League Draft Report
 
 ## Install
-1. Replace all files in the beta repository with this complete build.
+1. Replace the beta repository files with this complete build.
 2. Leave `.DS_Store` unchecked.
-3. Commit: `Version 2 Alpha 9 - Sharingan Draft Room Scan`
+3. Commit: `Version 2 Alpha 10 - Mobile Draft Command Center`
 4. Push origin.
