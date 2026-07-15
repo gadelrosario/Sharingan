@@ -37,7 +37,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 2,
@@ -77,7 +79,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 3,
@@ -117,7 +121,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 4,
@@ -157,7 +163,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 5,
@@ -197,7 +205,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 6,
@@ -237,7 +247,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 7,
@@ -277,7 +289,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 8,
@@ -317,7 +331,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 9,
@@ -357,7 +373,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 10,
@@ -397,7 +415,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 11,
@@ -437,7 +457,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 12,
@@ -477,7 +499,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 13,
@@ -513,7 +537,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 14,
@@ -549,7 +575,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 15,
@@ -589,7 +617,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 16,
@@ -629,7 +659,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 17,
@@ -665,7 +697,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 18,
@@ -701,7 +735,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 19,
@@ -737,7 +773,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 20,
@@ -773,7 +811,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 21,
@@ -809,7 +849,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 22,
@@ -845,7 +887,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 23,
@@ -885,7 +929,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 24,
@@ -921,7 +967,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 25,
@@ -957,7 +1005,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 26,
@@ -993,7 +1043,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 27,
@@ -1033,7 +1085,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 28,
@@ -1073,7 +1127,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 29,
@@ -1109,7 +1165,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 30,
@@ -1149,7 +1207,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 31,
@@ -1189,7 +1249,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 32,
@@ -1225,7 +1287,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 33,
@@ -1261,7 +1325,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 34,
@@ -1297,7 +1363,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 35,
@@ -1333,7 +1401,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 36,
@@ -1369,7 +1439,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 37,
@@ -1409,7 +1481,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 38,
@@ -1449,7 +1523,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 39,
@@ -1485,7 +1561,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 40,
@@ -1527,7 +1605,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 41,
@@ -1563,7 +1643,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 42,
@@ -1603,7 +1685,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 43,
@@ -1639,7 +1723,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 44,
@@ -1679,7 +1765,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 45,
@@ -1715,7 +1803,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 46,
@@ -1757,7 +1847,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 47,
@@ -1793,7 +1885,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 48,
@@ -1833,7 +1927,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 49,
@@ -1875,7 +1971,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 50,
@@ -1911,7 +2009,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 51,
@@ -1947,7 +2047,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 52,
@@ -1983,7 +2085,11 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": [
+      "Jahmyr Gibbs"
+    ]
   },
   {
     "id": 53,
@@ -2019,7 +2125,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 54,
@@ -2059,7 +2167,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 55,
@@ -2101,7 +2211,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 56,
@@ -2141,7 +2253,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 57,
@@ -2181,7 +2295,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 58,
@@ -2221,7 +2337,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 59,
@@ -2257,7 +2375,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 60,
@@ -2299,7 +2419,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 61,
@@ -2335,7 +2457,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 62,
@@ -2375,7 +2499,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 63,
@@ -2411,7 +2537,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 64,
@@ -2447,7 +2575,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 65,
@@ -2483,7 +2613,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 66,
@@ -2519,7 +2651,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 67,
@@ -2561,7 +2695,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 68,
@@ -2601,7 +2737,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 69,
@@ -2637,7 +2775,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 70,
@@ -2673,7 +2813,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 71,
@@ -2709,7 +2851,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 72,
@@ -2745,7 +2889,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 73,
@@ -2781,7 +2927,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 74,
@@ -2821,7 +2969,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 75,
@@ -2861,7 +3011,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 76,
@@ -2897,7 +3049,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 77,
@@ -2933,7 +3087,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 78,
@@ -2973,7 +3129,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 79,
@@ -3009,7 +3167,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 80,
@@ -3045,7 +3205,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 81,
@@ -3081,7 +3243,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 82,
@@ -3117,7 +3281,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 157,
@@ -3153,7 +3319,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 83,
@@ -3189,7 +3357,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 84,
@@ -3225,7 +3395,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 158,
@@ -3261,7 +3433,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 85,
@@ -3297,7 +3471,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 86,
@@ -3333,7 +3509,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 87,
@@ -3369,7 +3547,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 88,
@@ -3405,7 +3585,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": [
+      "Bucky Irving"
+    ]
   },
   {
     "id": 89,
@@ -3441,7 +3625,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 90,
@@ -3477,7 +3663,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 91,
@@ -3517,7 +3705,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 92,
@@ -3557,7 +3747,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 93,
@@ -3593,7 +3785,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 94,
@@ -3629,7 +3823,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 95,
@@ -3665,7 +3861,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 96,
@@ -3701,7 +3899,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 97,
@@ -3737,7 +3937,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": [
+      "Chuba Hubbard"
+    ]
   },
   {
     "id": 98,
@@ -3773,7 +3977,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 99,
@@ -3809,7 +4015,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 100,
@@ -3845,7 +4053,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 101,
@@ -3881,7 +4091,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 102,
@@ -3917,7 +4129,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 103,
@@ -3953,7 +4167,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 104,
@@ -3989,7 +4205,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 105,
@@ -4025,7 +4243,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 106,
@@ -4061,7 +4281,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 107,
@@ -4101,7 +4323,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 108,
@@ -4141,7 +4365,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 109,
@@ -4177,7 +4403,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": [
+      "Kyren Williams"
+    ]
   },
   {
     "id": 110,
@@ -4213,7 +4443,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 155,
@@ -4249,7 +4481,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 111,
@@ -4285,7 +4519,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 156,
@@ -4321,7 +4557,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 112,
@@ -4357,7 +4595,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 113,
@@ -4393,7 +4633,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 152,
@@ -4429,7 +4671,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 153,
@@ -4465,7 +4709,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 114,
@@ -4501,7 +4747,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 154,
@@ -4537,7 +4785,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 115,
@@ -4573,7 +4823,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 116,
@@ -4609,7 +4861,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 117,
@@ -4645,7 +4899,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 118,
@@ -4681,7 +4937,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 127,
@@ -4717,7 +4975,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 119,
@@ -4753,7 +5013,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 120,
@@ -4789,7 +5051,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 121,
@@ -4825,7 +5089,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 122,
@@ -4861,7 +5127,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 123,
@@ -4897,7 +5165,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 146,
@@ -4933,7 +5203,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 124,
@@ -4969,7 +5241,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 125,
@@ -5005,7 +5279,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 126,
@@ -5041,7 +5317,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 128,
@@ -5077,7 +5355,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": [
+      "Breece Hall"
+    ]
   },
   {
     "id": 129,
@@ -5113,7 +5395,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": [
+      "Christian McCaffrey"
+    ]
   },
   {
     "id": 130,
@@ -5149,7 +5435,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 136,
@@ -5185,7 +5473,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 137,
@@ -5221,7 +5511,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 138,
@@ -5257,7 +5549,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 144,
@@ -5293,7 +5587,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 145,
@@ -5329,7 +5625,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 147,
@@ -5365,7 +5663,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 131,
@@ -5401,7 +5701,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": [
+      "Christian McCaffrey"
+    ]
   },
   {
     "id": 132,
@@ -5437,7 +5741,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": [
+      "James Cook"
+    ]
   },
   {
     "id": 133,
@@ -5473,7 +5781,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": [
+      "Omarion Hampton"
+    ]
   },
   {
     "id": 134,
@@ -5509,7 +5821,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 135,
@@ -5545,7 +5859,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 148,
@@ -5581,7 +5897,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 139,
@@ -5617,7 +5935,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 149,
@@ -5653,7 +5973,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 150,
@@ -5689,7 +6011,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 140,
@@ -5725,7 +6049,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 159,
@@ -5761,7 +6087,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 160,
@@ -5797,7 +6125,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 151,
@@ -5833,7 +6163,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 161,
@@ -5869,7 +6201,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 162,
@@ -5905,7 +6239,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 163,
@@ -5941,7 +6277,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 164,
@@ -5977,7 +6315,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 165,
@@ -6013,7 +6353,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 166,
@@ -6049,7 +6391,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 141,
@@ -6085,7 +6429,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 142,
@@ -6121,7 +6467,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 143,
@@ -6157,7 +6505,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 167,
@@ -6193,7 +6543,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 168,
@@ -6229,7 +6581,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 169,
@@ -6265,7 +6619,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 170,
@@ -6301,7 +6657,11 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": [
+      "Josh Jacobs"
+    ]
   },
   {
     "id": 171,
@@ -6337,7 +6697,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 172,
@@ -6373,7 +6735,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 173,
@@ -6409,7 +6773,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 174,
@@ -6445,7 +6811,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 175,
@@ -6481,7 +6849,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 176,
@@ -6517,7 +6887,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 177,
@@ -6553,7 +6925,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 178,
@@ -6589,7 +6963,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 179,
@@ -6625,7 +7001,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 180,
@@ -6661,7 +7039,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 181,
@@ -6697,7 +7077,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 182,
@@ -6733,7 +7115,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 183,
@@ -6769,7 +7153,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 184,
@@ -6805,7 +7191,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 185,
@@ -6841,7 +7229,9 @@
       "bdge": false,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 186,
@@ -6881,7 +7271,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 187,
@@ -6921,7 +7313,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 188,
@@ -6961,7 +7355,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 189,
@@ -7001,7 +7397,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 190,
@@ -7041,7 +7439,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 191,
@@ -7081,7 +7481,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 192,
@@ -7121,7 +7523,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 193,
@@ -7161,7 +7565,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 194,
@@ -7201,7 +7607,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 195,
@@ -7241,7 +7649,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 196,
@@ -7281,7 +7691,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 197,
@@ -7321,7 +7733,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 198,
@@ -7361,7 +7775,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 199,
@@ -7401,7 +7817,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 200,
@@ -7441,7 +7859,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 201,
@@ -7481,7 +7901,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 202,
@@ -7521,7 +7943,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 203,
@@ -7561,7 +7985,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 204,
@@ -7601,7 +8027,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 205,
@@ -7641,7 +8069,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 206,
@@ -7681,7 +8111,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 207,
@@ -7721,7 +8153,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 208,
@@ -7761,7 +8195,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 209,
@@ -7801,7 +8237,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 210,
@@ -7841,7 +8279,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 211,
@@ -7881,7 +8321,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 212,
@@ -7921,7 +8363,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 213,
@@ -7961,7 +8405,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 214,
@@ -8001,7 +8447,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 215,
@@ -8041,7 +8489,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 216,
@@ -8081,7 +8531,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 217,
@@ -8121,7 +8573,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 218,
@@ -8161,7 +8615,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 219,
@@ -8201,7 +8657,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 220,
@@ -8241,7 +8699,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 221,
@@ -8281,7 +8741,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 222,
@@ -8321,7 +8783,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 223,
@@ -8361,7 +8825,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 224,
@@ -8401,7 +8867,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 225,
@@ -8441,7 +8909,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 226,
@@ -8481,7 +8951,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 227,
@@ -8521,7 +8993,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 228,
@@ -8561,7 +9035,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 229,
@@ -8601,7 +9077,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 230,
@@ -8641,7 +9119,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 231,
@@ -8681,7 +9161,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 232,
@@ -8721,7 +9203,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 233,
@@ -8761,7 +9245,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 234,
@@ -8801,7 +9287,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 235,
@@ -8841,7 +9329,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 236,
@@ -8881,7 +9371,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 237,
@@ -8921,7 +9413,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 238,
@@ -8961,7 +9455,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 239,
@@ -9001,7 +9497,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 240,
@@ -9041,7 +9539,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 241,
@@ -9081,7 +9581,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 242,
@@ -9121,7 +9623,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 243,
@@ -9161,7 +9665,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 244,
@@ -9201,7 +9707,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 245,
@@ -9241,7 +9749,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "average",
+    "handcuffFor": []
   },
   {
     "id": 246,
@@ -9281,7 +9791,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 247,
@@ -9321,7 +9833,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   },
   {
     "id": 248,
@@ -9361,7 +9875,9 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "strong",
+    "handcuffFor": []
   },
   {
     "id": 249,
@@ -9401,6 +9917,8 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false
-    }
+    },
+    "offenseQuality": "weak",
+    "handcuffFor": []
   }
 ]

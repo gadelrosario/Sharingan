@@ -117,14 +117,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
   .alternativesCard .scanBtn,.alternativesCard .ghost{padding:8px 9px}
 }
 
+
+.exposureList{display:flex;flex-direction:column;gap:6px;margin-top:8px}.exposureRow{display:grid;grid-template-columns:45px 1fr auto;gap:8px;align-items:center;background:#110e11;border:1px solid #382830;border-radius:9px;padding:7px 8px}.exposureRow.warn{border-color:#8c742d}.exposureRow.heavy{border-color:#b42d40;background:#231014}.exposureBar{height:6px;background:#2c2530;border-radius:999px;overflow:hidden}.exposureBar span{display:block;height:100%;background:linear-gradient(90deg,#6d1a28,#d63b52)}.exposureNote{font-size:9px;color:var(--muted);line-height:1.35;margin-top:7px}.blueprintBreakdown{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:9px 0}.blueprintFactor{background:#100d10;border:1px solid #39272d;border-radius:8px;padding:7px}.blueprintFactor span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase}.blueprintFactor b{display:block;margin-top:2px}
 </style></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 10 • Mobile Draft Command Center</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 11 • Gerard Blueprint</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">AI drafts the other nine teams and stops when it is your turn.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">You manually enter every real selection. No computer picks.</p></div></div>
 <div class="controls"><label>Your draft position<select id="draftSlot"></select></label><label>Draft room style<select id="roomStyle"><option value="balanced">Balanced</option><option value="chaotic" selected>Chaotic</option><option value="conservative">Conservative</option></select></label><label>Teams<select><option>10 teams</option></select></label></div>
-<div class="card" style="background:#111017;margin-bottom:12px"><b>Assign managers to draft slots</b><div class="meta" style="margin-top:4px">Saved league profiles power mock-draft behavior and steal-risk estimates.</div><div id="managerSetup" class="managerSetup"></div></div>
+<div class="card" style="background:#111017;margin-bottom:12px"><b>Assign managers to draft slots</b><div class="meta" style="margin-top:4px">Saved league profiles power mock-draft behavior and steal-risk estimates.</div><div id="managerSetup" class="managerSetup"></div><div id="mockRandomizer" style="display:flex;gap:8px;align-items:center;margin-top:9px"><button class="scanBtn" onclick="randomizeManagerOrder()">Randomize Mock Order</button><span class="meta">Gerard stays in your selected slot. Live Draft keeps manual assignments.</span></div></div>
 <div id="poolStatus" class="card" style="background:#111017;margin-bottom:12px">
   <b>Draft pool loading…</b>
 </div>
@@ -158,7 +160,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
     </div>
   </div>
 
-  <div class="card mobileOnly roomScanCard">
+  <div class="card mobileOnly exposureCard"><div class="sectionHeader"><b>NFL Team Exposure</b><span class="meta">Value still overrides</span></div><div id="mobileExposure"></div></div><div class="card mobileOnly roomScanCard">
     <div class="roomScanTop">
       <b>👁 Draft Room Scan</b>
       <button class="scanBtn" onclick="openRoomScan()">View all teams</button>
@@ -215,7 +217,7 @@ async function init(){players=await fetch("data/players.json?v=alpha6",{cache:"n
 function renderManagerSetup(){const pref=["Kalani","Marc","Ray","Fritz","Michael","Gerard","Josh","Raoul","Rob","AJ"];managerSetup.innerHTML="";for(let i=1;i<=10;i++){let w=document.createElement("div");w.className="managerSlot";let b=document.createElement("b");b.textContent="Pick "+i;let s=document.createElement("select");s.id="mgr"+i;managers.forEach(m=>{let o=document.createElement("option");o.value=m.name;o.textContent=m.name+" — "+m.archetype;s.appendChild(o)});s.value=pref[i-1];w.append(b,s);managerSetup.appendChild(w)}}
 function captureManagers(){slotManagers={};for(let i=1;i<=10;i++){let e=document.getElementById("mgr"+i);slotManagers[i]=e?e.value:"Team "+i}let old=Object.keys(slotManagers).find(k=>slotManagers[k]==="Gerard");if(old&&+old!==slot){let tmp=slotManagers[slot];slotManagers[old]=tmp}slotManagers[slot]="Gerard"}
 function getManager(t){return managers.find(m=>m.name===slotManagers[t])||managers[0]}
-function chooseMode(m){mode=m;practiceChoice.classList.toggle("selected",m==="practice");liveChoice.classList.toggle("selected",m==="live")}
+function chooseMode(m){mode=m;practiceChoice.classList.toggle("selected",m==="practice");liveChoice.classList.toggle("selected",m==="live");if(document.getElementById("mockRandomizer"))mockRandomizer.classList.toggle("hidden",m!=="practice")}
 function startDraft(){mobileTeamExpanded=false;slot=+draftSlot.value;style=roomStyle.value;captureManagers();pick=1;drafted=[];history=[];selectedCandidateId=null;buildProfiles();setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll()}
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
@@ -226,7 +228,9 @@ function myPlayers(){return history.filter(h=>h.team===slot).map(h=>players.find
 function counts(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{if(c[p.pos]!==undefined)c[p.pos]++});return c}
 function expected(){return blueprint[Math.min(info().r-1,5)]||"BPA"}
 function fit(p){let e=expected();return e==="BPA"?0:e===p.pos?18:e.includes(p.pos)?15:-4}
-function gerardScore(p){let c=counts(),round=info().r,s=180-p.overall*1.12+fit(p)+(p.bdgeBoost||0);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=25;if(p.pos==="TE"&&c.TE>=1)s-=18;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;if(["RB","WR","QB","TE"].includes(p.pos)){let mp=marketPressure(p.pos);s+=mp.pressure*.16}return s}
+function gerardScore(p){let c=counts(),round=info().r,s=180-p.overall*1.12+fit(p)+(p.bdgeBoost||0);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=25;if(p.pos==="TE"&&c.TE>=1)s-=18;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;if(["RB","WR","QB","TE"].includes(p.pos)){let mp=marketPressure(p.pos);s+=mp.pressure*.16}
+ let bp=blueprintFactors(p);s+=bp.stack.points+bp.hand.points;if(bp.exp?.severity==="moderate")s-=2;if(bp.exp?.severity==="heavy")s-=5;if(bp.exp?.severity==="heavy"&&p.offenseQuality==="weak")s-=3;if(bp.bye)s-=2;
+return s}
 function recommendations(){return [...available()].sort((a,b)=>gerardScore(b)-gerardScore(a)).slice(0,5)}
 function rationale(p){let b=[],e=expected();if(e===p.pos||e.includes(p.pos))b.push("fits Gerard Blueprint");let fall=Math.max(0,pick-p.overall);if(fall>=8)b.push(`value fall: ${fall} picks`);if(p.bdgeLabels?.length)b.push(`BDGE: ${p.bdgeLabels[0]}`);if(p.overallTier==="S"||p.overallTier==="A")b.push("top-tier talent");if(["RB","WR"].includes(p.pos))b.push("weekly-ceiling core");return b.slice(0,3).join(" • ")||"best blended value available"}
 
@@ -325,6 +329,17 @@ function toggleMobileTeam(){
  if(btn)btn.textContent=mobileTeamExpanded?"Collapse":"Expand";
 }
 
+
+function randomizeManagerOrder(){if(mode==="live"){alert("Randomization is for Practice Mock Drafts. Live Draft keeps manual assignments.");return}let names=managers.map(m=>m.name).filter(n=>n!=="Gerard");for(let i=names.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[names[i],names[j]]=[names[j],names[i]]}let idx=0;for(let i=1;i<=10;i++){let el=document.getElementById("mgr"+i);if(!el)continue;el.value=(i===+draftSlot.value)?"Gerard":names[idx++]}}
+function teamExposure(){let map={};myPlayers().forEach(p=>{if(!p.team||p.pos==="DST")return;map[p.team]=(map[p.team]||0)+1});return Object.entries(map).sort((a,b)=>b[1]-a[1])}
+function byeExposure(){let map={};myPlayers().forEach(p=>{if(p.bye)map[p.bye]=(map[p.bye]||0)+1});return Object.entries(map).sort((a,b)=>b[1]-a[1])}
+function exposureWarningFor(p){if(!p.team||p.pos==="DST")return null;let count=(teamExposure().find(([t])=>t===p.team)||[null,0])[1],after=count+1,severity=after>=4?"heavy":after===3?"moderate":"normal",quality=p.offenseQuality||"average",text=after>=4?`Heavy ${p.team} exposure (${after} players).`:after===3?`Moderate ${p.team} exposure (${after} players).`:"";if(text&&quality==="weak")text+=" Weaker offense increases the risk.";if(text&&quality==="strong")text+=" Strong offense softens the risk.";return text?{severity,text}:null}
+function stackBonusFor(p){if(p.pos==="QB"){let mates=myPlayers().filter(x=>x.team===p.team&&["WR","TE"].includes(x.pos));if(mates.length)return{points:3,label:`Creates QB stack with ${mates[0].name}`}}if(["WR","TE"].includes(p.pos)){let qb=myPlayers().find(x=>x.team===p.team&&x.pos==="QB");if(qb)return{points:3,label:`Adds pass catcher to ${qb.name} stack`}}return{points:0,label:"No stack bonus"}}
+function handcuffBonusFor(p){let r=Math.ceil(pick/10);if(r<11||p.pos!=="RB")return{points:0,label:"No handcuff bonus"};let owned=myPlayers().map(x=>x.name),protects=(p.handcuffFor||[]).find(n=>owned.includes(n));return protects?{points:4,label:`Protects ${protects}`}:{points:0,label:"No handcuff bonus"}}
+function byeWarningFor(p){let existing=(byeExposure().find(([b])=>String(b)===String(p.bye))||[null,0])[1];return existing>=3?`Would create ${existing+1} players on Week ${p.bye} bye.`:null}
+function blueprintFactors(p){let stack=stackBonusFor(p),hand=handcuffBonusFor(p),exp=exposureWarningFor(p),bye=byeWarningFor(p);return{stack,hand,exp,bye}}
+function renderExposure(){let rows=teamExposure(),markup=rows.length?`<div class="exposureList">${rows.slice(0,6).map(([team,count])=>{let cls=count>=4?"heavy":count===3?"warn":"",label=count>=4?"Heavy":count===3?"Caution":"Normal";return `<div class="exposureRow ${cls}"><b>${team}</b><div class="exposureBar"><span style="width:${Math.min(100,count*25)}%"></span></div><span>${count} • ${label}</span></div>`}).join("")}</div>`:`<div class="meta">No team concentration yet.</div>`;let bye=byeExposure().find(([,c])=>c>=4);if(bye)markup+=`<div class="exposureNote">Bye warning: ${bye[1]} players are off in Week ${bye[0]}.</div>`;["mobileExposure","desktopExposure"].forEach(id=>{let el=document.getElementById(id);if(el)el.innerHTML=markup})}
+function simpleMarketLabel(x){if(x.pressure>=82)return"Likely gone";if(x.pressure>=65)return"Draft soon";if(x.pressure>=45)return"Monitor";return"Safe to wait"}
 function renderRecommendation(){
  let recs=recommendations();
  if(!recs.length){
@@ -347,7 +362,7 @@ function renderRecommendation(){
      ${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}
      <span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span>
    </div>
-   <div class="reason">${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
+   <div class="reason">${rationale(p)}<br><span class="meta">${runSignal()}</span></div>${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
      <button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button>
      <button class="scanBtn" onclick="openScan(${p.id})">Scan</button>
@@ -471,15 +486,10 @@ function roomAlertText(){
  if(top.pressure>=70)return`<div class="roomAlert">${top.pos} RUN RISK: The room is becoming ${top.level.toLowerCase()} at ${top.pos}. Sharingan has adjusted availability estimates.</div>`;
  return"";
 }
-function roomInsightText(){
- let vals=["RB","WR","QB","TE"].map(marketPressure).sort((a,b)=>b.pressure-a.pressure);
- let top=vals[0],low=vals[vals.length-1];
- if(top.pressure>=65)return`${top.pos} pressure is ${top.level.toLowerCase()}. ${top.starterNeed} upcoming managers need a starter and ${top.depthNeed} could add depth. Consider acting sooner on a preferred ${top.pos}.`;
- return`${top.pos} has the most room pressure, but no market is critical. ${low.pos} is currently safest to wait on.`;
-}
+function roomInsightText(){let vals=["RB","WR","QB","TE"].map(marketPressure).sort((a,b)=>b.pressure-a.pressure),top=vals[0],low=vals[vals.length-1];if(top.pressure>=82)return `${top.pos}: likely gone before your next pick. ${top.starterNeed} upcoming managers still need a starter.`;if(top.pressure>=65)return `${top.pos}: consider drafting soon. ${top.recent} were selected in the last 8 picks.`;if(top.pressure>=45)return `${top.pos}: monitor the room, but you do not need to panic yet.`;return `No urgent positional run. ${low.pos} is safest to wait on right now.`}
 function marketBoxMarkup(x){
  let cls=x.level.toLowerCase();
- return`<div class="marketBox ${cls}"><div class="marketPos">${x.pos}</div><div class="marketLevel">${x.level}</div><div><b>${x.pressure}%</b></div><div class="marketMeta">${x.starterNeed} starter needs</div></div>`;
+ return`<div class="marketBox ${cls}"><div class="marketPos">${x.pos}</div><div class="marketLevel">${simpleMarketLabel(x)}</div><div><b>${x.pressure}%</b></div><div class="marketMeta">${x.starterNeed} need starters</div></div>`;
 }
 function managerTendency(team){
  let c=managerPositionCounts(team),m=getManager(team);
@@ -518,7 +528,7 @@ function renderRoomScan(){
 function openRoomScan(){renderRoomScan();roomScanSheet.classList.remove("hidden")}
 function closeRoomScan(e){if(e&&e.target!==roomScanSheet)return;roomScanSheet.classList.add("hidden");if(document.getElementById("managerRosterDetail"))managerRosterDetail.innerHTML=""}
 
-function renderAll(){renderMeta();renderRecommendation();renderBoard();renderRoster();renderLiveRoster();renderRoomScan();renderWaitMeter();renderPlayers()}
+function renderAll(){renderMeta();renderRecommendation();renderBoard();renderRoster();renderLiveRoster();renderExposure();renderRoomScan();renderWaitMeter();renderPlayers()}
 function showPage(id){document.querySelectorAll(".mobilePage").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
 init();
 </script>
