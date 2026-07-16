@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07111f"><meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg">
-<title>Gerard Fantasy HQ — Sharingan Alpha 12.2</title>
+<title>Gerard Fantasy HQ — Sharingan Alpha 12.3</title>
 <style>
 :root{--bg:#070709;--panel:#141116;--line:#3d2830;--text:#f8f5f7;--muted:#b1a4aa;--purple:#b3263d;--purple2:#ff8797;--gold:#f2c65d;--green:#61d58f;--yellow:#f2c65d;--red:#ff6678}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#321019 0,#070709 48%);color:var(--text);font:14px system-ui,-apple-system,Segoe UI,sans-serif}
@@ -123,14 +123,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .exposureList{display:flex;flex-direction:column;gap:6px;margin-top:8px}.exposureRow{display:grid;grid-template-columns:45px 1fr auto;gap:8px;align-items:center;background:#110e11;border:1px solid #382830;border-radius:9px;padding:7px 8px}.exposureRow.warn{border-color:#8c742d}.exposureRow.heavy{border-color:#b42d40;background:#231014}.exposureBar{height:6px;background:#2c2530;border-radius:999px;overflow:hidden}.exposureBar span{display:block;height:100%;background:linear-gradient(90deg,#6d1a28,#d63b52)}.exposureNote{font-size:9px;color:var(--muted);line-height:1.35;margin-top:7px}.blueprintBreakdown{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:9px 0}.blueprintFactor{background:#100d10;border:1px solid #39272d;border-radius:8px;padding:7px}.blueprintFactor span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase}.blueprintFactor b{display:block;margin-top:2px}
 </style></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 12.2 • Decision Card & Roster Logic</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 12.3 • League Personality Simulator</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">AI drafts the other nine teams and stops when it is your turn.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">You manually enter every real selection. No computer picks.</p></div></div>
 <div class="controls"><label>Your draft position<select id="draftSlot"></select></label><label>Draft room style<select id="roomStyle"><option value="balanced">Balanced</option><option value="chaotic" selected>Chaotic</option><option value="conservative">Conservative</option></select></label><label>Teams<select id="teamCount"><option value="10">10 teams</option></select></label></div>
 <div class="controls"><label>Scoring<select id="scoring"><option value="half" selected>Half PPR</option><option value="full">Full PPR</option><option value="standard">Standard</option></select></label><label>Starting WRs<select id="startWR"><option value="2">2 WR</option><option value="3" selected>3 WR</option></select></label><label>Flex spots<select id="flexSpots"><option value="1">1 Flex</option><option value="2" selected>2 Flex</option></select></label></div>
 <div class="controls"><label>Passing TDs<select id="passTD"><option value="4" selected>4 points</option><option value="6">6 points</option></select></label><label>Risk profile<select id="riskProfile"><option value="safe">Safer</option><option value="balanced" selected>Balanced</option><option value="aggressive">Aggressive</option></select></label><label>Draft strategy<select id="strategyPreset"><option value="auto" selected>Auto — Stay Water</option><option value="balanced">Balanced</option><option value="heroRB">Hero RB</option><option value="anchorWR">Anchor WR</option><option value="doubleRB">Double Anchor RB</option></select></label></div>
-<div class="card" style="background:#111017;margin-bottom:12px"><b>Assign managers to draft slots</b><div class="meta" style="margin-top:4px">Saved league profiles power mock-draft behavior and steal-risk estimates.</div><div id="managerSetup" class="managerSetup"></div><div id="mockRandomizer" style="display:flex;gap:8px;align-items:center;margin-top:9px"><button class="scanBtn" onclick="randomizeManagerOrder()">Randomize Mock Order</button><span class="meta">Gerard stays in your selected slot. Live Draft keeps manual assignments.</span></div></div>
+<div class="card" style="background:#111017;margin-bottom:12px"><b>Assign managers to draft slots</b><div class="meta" style="margin-top:4px">Each mock now gives every manager a temporary strategy, mood, reach tolerance, and reaction to position runs. Their underlying league profile stays intact.</div><div id="managerSetup" class="managerSetup"></div><div id="mockRandomizer" style="display:flex;gap:8px;align-items:center;margin-top:9px"><button class="scanBtn" onclick="randomizeManagerOrder()">Randomize Mock Order</button><span class="meta">Gerard stays in your selected slot. Live Draft keeps manual assignments.</span></div></div>
 <div id="poolStatus" class="card" style="background:#111017;margin-bottom:12px">
   <b>Draft pool loading…</b>
 </div>
@@ -203,23 +203,23 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 </div><section id="draftReport" class="hidden"><div class="reportHero"><div class="scanEye">👁 SHARINGAN LEAGUE REPORT</div><h2>Draft Complete</h2><div class="projectionNote">Draft-day projection based on roster strength, value, positional balance, ceiling, and bench construction. It is not a guarantee of season results.</div></div><div id="myDraftReport"></div><div class="card"><b>Projected League Rankings</b><div id="leagueProjection"></div></div><div class="card"><b>All Team Report Cards</b><div id="allTeamReports"></div></div><button class="primary" style="width:100%;margin-top:10px" onclick="startAnotherMock()">Start Another Mock</button></section><section id="mobileTeam" class="mobilePage mobileOnly"><div class="card"><b>Your roster</b><div id="mRoster"></div></div><div class="card"><b>AI strategies</b><div id="mStrategies"></div></div></section></section></div>
 <nav id="tabs" class="tabs hidden"><button onclick="showPage('mobileDraft')">🏈<br>Draft</button><button onclick="showPage('mobileBoard')">🧩<br>Board</button><button onclick="showPage('mobilePlayers')">📋<br>Players</button><button onclick="showPage('mobileTeam')">👥<br>Team</button></nav>
 <script>
-let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startWR:3,flex:2,passTD:4,risk:"balanced",strategy:"auto"};
+let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],posFilter="ALL",aiProfiles={},aiRunTraits={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startWR:3,flex:2,passTD:4,risk:"balanced",strategy:"auto"};
 const managers=[
-{name:"Gerard",archetype:"Championship Value",skill:9.6,predictability:7,homerTeam:"",homer:0,qbHoard:2,waiver:10},
-{name:"Marc",archetype:"Calculated Ceiling",skill:8,predictability:8,homerTeam:"NYJ",homer:2,qbHoard:2,waiver:7},
-{name:"Kalani",archetype:"Resource Controller",skill:8,predictability:6,homerTeam:"PIT",homer:5,qbHoard:10,waiver:9},
-{name:"Ray",archetype:"Value Drafter",skill:8.3,predictability:9,homerTeam:"LAC",homer:4,qbHoard:3,waiver:9},
-{name:"Fritz",archetype:"AI Consensus",skill:7.4,predictability:8,homerTeam:"",homer:0,qbHoard:3,waiver:6},
-{name:"Michael",archetype:"Instinct / Eagles",skill:7.9,predictability:4,homerTeam:"PHI",homer:10,qbHoard:5,waiver:4},
-{name:"Josh",archetype:"Reactionary Hype",skill:6.8,predictability:5,homerTeam:"",homer:0,qbHoard:5,waiver:8},
-{name:"Raoul",archetype:"Balanced Value",skill:7.5,predictability:8,homerTeam:"LAC",homer:6,qbHoard:3,waiver:7},
-{name:"Rob",archetype:"Conviction Drafter",skill:6.5,predictability:9,homerTeam:"DEN",homer:7,qbHoard:3,waiver:6},
-{name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7}
+{name:"Gerard",archetype:"Championship Value",skill:9.6,predictability:7,homerTeam:"",homer:0,qbHoard:2,waiver:10,reach:2,rookie:6,upside:9,safe:7,positionBias:"WR"},
+{name:"Marc",archetype:"Calculated Ceiling",skill:8,predictability:8,homerTeam:"NYJ",homer:2,qbHoard:2,waiver:7,reach:5,rookie:7,upside:9,safe:5,positionBias:"RB"},
+{name:"Kalani",archetype:"Resource Controller",skill:8,predictability:6,homerTeam:"PIT",homer:5,qbHoard:10,waiver:9,reach:7,rookie:5,upside:7,safe:6,positionBias:"QB"},
+{name:"Ray",archetype:"Value Drafter",skill:8.3,predictability:9,homerTeam:"LAC",homer:4,qbHoard:3,waiver:9,reach:3,rookie:4,upside:6,safe:8,positionBias:"RB"},
+{name:"Fritz",archetype:"Consensus Follower",skill:7.4,predictability:8,homerTeam:"",homer:0,qbHoard:3,waiver:6,reach:2,rookie:5,upside:5,safe:8,positionBias:"WR"},
+{name:"Michael",archetype:"Instinct / Eagles",skill:7.9,predictability:4,homerTeam:"PHI",homer:10,qbHoard:5,waiver:4,reach:9,rookie:7,upside:9,safe:3,positionBias:"WR"},
+{name:"Josh",archetype:"Reactionary Hype",skill:6.8,predictability:5,homerTeam:"",homer:0,qbHoard:5,waiver:8,reach:9,rookie:10,upside:10,safe:2,positionBias:"WR"},
+{name:"Raoul",archetype:"Balanced Value",skill:7.5,predictability:8,homerTeam:"LAC",homer:6,qbHoard:3,waiver:7,reach:4,rookie:5,upside:6,safe:8,positionBias:"RB"},
+{name:"Rob",archetype:"Conviction Drafter",skill:6.5,predictability:9,homerTeam:"DEN",homer:7,qbHoard:3,waiver:6,reach:10,rookie:4,upside:6,safe:6,positionBias:"RB"},
+{name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7,reach:6,rookie:6,upside:7,safe:6,positionBias:"WR"}
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5"];
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=alpha12_2",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=alpha12_3",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;
@@ -254,10 +254,21 @@ function startDraft(){
   setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
   modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll();
- }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please install the Alpha 12.2 decision-card hotfix. Technical detail: "+err.message)}
+ }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please install the Alpha 12.3 League Personality Simulator update. Technical detail: "+err.message)}
 }
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
-function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
+function weightedChoice(items){let total=items.reduce((a,x)=>a+x[1],0),r=Math.random()*total;for(const [v,w] of items){r-=w;if(r<=0)return v}return items[items.length-1][0]}
+function buildProfiles(){
+ aiProfiles={};aiRunTraits={};
+ for(let t=1;t<=10;t++){
+  if(t===slot)continue;
+  let m=getManager(t),base=m.archetype;
+  let strategyPool=[["Balanced",5],["Hero RB",m.positionBias==="RB"?5:2],["WR Heavy",m.positionBias==="WR"?5:2],["Early QB",m.qbHoard>=7?6:1],["Elite TE",2],["Rookie Chaser",m.rookie>=8?5:1],["Value Drafter",m.skill>=8?5:2],["Chaos",m.predictability<=5?5:1]];
+  let mood=weightedChoice([["disciplined",m.skill],["aggressive",m.upside],["patient",m.safe],["homer",m.homer/2+1],["panic",Math.max(1,10-m.predictability)]]);
+  aiProfiles[t]=weightedChoice(strategyPool);
+  aiRunTraits[t]={base,mood,reach:m.reach+(Math.random()*4-2),rookie:m.rookie+(Math.random()*3-1.5),upside:m.upside+(Math.random()*3-1.5),safe:m.safe+(Math.random()*3-1.5),runReaction:Math.max(0,Math.min(10,(10-m.predictability)+Math.random()*4)),teamAffinity:m.homerTeam,variance:Math.max(5,(10-m.skill)*5+(10-m.predictability)*2)};
+ }
+}
 function teamForPick(p){let r=Math.ceil(p/10),x=(p-1)%10+1;return r%2?x:11-x}
 function info(){let r=Math.ceil(pick/10),ip=(pick-1)%10+1,next=pick;while(teamForPick(next)!==slot)next++;return{r,ip,until:next-pick}}
 function available(){return players.filter(p=>!drafted.includes(p.id))}
@@ -287,14 +298,90 @@ function mambaScore(p){let raw=gerardScore(p),tier=p.overallTier==="S"?10:p.over
 function recommendationState(p){let s=mambaScore(p),fall=Math.max(0,pick-p.overall),c=counts();if(s>=92)return{cls:"state-confidence",label:"🟢 HIGH CONFIDENCE"};if(fall>=10)return{cls:"state-value",label:"🟡 VALUE ALERT"};if((p.pos==="QB"&&c.QB>=1)||(p.pos==="TE"&&c.TE>=1))return{cls:"state-warning",label:"🔴 ROSTER WARNING"};return{cls:"state-normal",label:"🟣 MAMBA RECOMMENDATION"}}
 function runSignal(){let r=history.slice(-6).map(h=>players.find(p=>p.id===h.id)?.pos).filter(Boolean),t={QB:0,RB:0,WR:0,TE:0};r.forEach(x=>t[x]++);let top=Object.entries(t).sort((a,b)=>b[1]-a[1])[0];return top&&top[1]>=3?top[0]+" run detected":"No major positional run"}
 function selectPlayer(id,team){if(drafted.includes(id)||pick>170)return;drafted.push(id);history.push({pick,id,team});pick++;selectedCandidateId=null;if(pick>170){finishDraft();return}renderAll()}
-function aiScore(p,team){let profile=aiProfiles[team]||"Balanced",m=getManager(team),s=150-p.overall+Math.random()*(style==="chaotic"?35:style==="conservative"?8:18),owned=history.filter(h=>h.team===team).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};owned.forEach(x=>{if(c[x.pos]!==undefined)c[x.pos]++});if(profile==="Hero RB"&&p.pos==="RB"&&c.RB<1)s+=30;if(profile==="Zero RB"&&p.pos==="WR"&&c.WR<4)s+=25;if(profile==="WR Heavy"&&p.pos==="WR")s+=20;if(profile==="Early QB"&&p.pos==="QB"&&c.QB<1&&Math.ceil(pick/10)<=5)s+=28;if(profile==="Elite TE"&&p.pos==="TE"&&c.TE<1)s+=25;if(profile==="Rookie Chaser"&&p.rookie)s+=25;if(profile==="Chaos")s+=Math.random()*45;if(p.team===m.homerTeam)s+=m.homer*3;if(p.pos==="QB"&&c.QB>=1)s+=m.qbHoard*2-12;if(m.archetype.includes("AI"))s+=Math.max(0,25-p.overall/8);if(m.archetype.includes("Reactionary")&&p.rookie)s+=12;if(m.archetype.includes("Conviction"))s+=Math.random()*18;if(c[p.pos]>=3&&["QB","TE"].includes(p.pos))s-=Math.max(10,45-m.qbHoard*3);let rd=Math.ceil(pick/10);if(p.pos==="DST"){s-=rd<15?90:0;if(c.DST>=1)s-=100;if(rd>=16&&c.DST<1)s+=55}if(p.pos==="K"){s-=rd<16?100:0;if(c.K>=1)s-=100;if(rd>=17&&c.K<1)s+=65}return s}
-async function simulateToMe(){if(mode!=="practice")return;while(teamForPick(pick)!==slot&&pick<=170){let team=teamForPick(pick),pool=available().slice(0,Math.min(28,available().length));pool.sort((a,b)=>aiScore(b,team)-aiScore(a,team));selectPlayer(pool[0].id,team);await new Promise(r=>setTimeout(r,130))}}
-function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let p=ps.find(x=>x.pos===pos&&!used.includes(x.id));if(p)used.push(p.id);return p}for(let s of rosterSlots){let p=null;if(s==="QB")p=take("QB");else if(s.startsWith("RB"))p=take("RB");else if(s.startsWith("WR"))p=take("WR");else if(s==="TE")p=take("TE");else if(s==="K")p=take("K");else if(s==="DEF")p=take("DST");else if(s.startsWith("FLEX")){p=ps.find(x=>["RB","WR","TE"].includes(x.pos)&&!used.includes(x.id));if(p)used.push(p.id)}else if(s.startsWith("BENCH")){p=ps.find(x=>!used.includes(x.id));if(p)used.push(p.id)}rows.push([s,p])}return rows}
-
-function positionalCountsAll(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{let key=p.pos==="DEF"?"DST":p.pos;if(c[key]!==undefined)c[key]++});return c}
-function rosterNeeds(){let c=positionalCountsAll(),needs=[];if(c.QB<1)needs.push("QB");if(c.RB<2)needs.push("RB");if(c.WR<3)needs.push("WR");if(c.TE<1)needs.push("TE");if(c.K<1)needs.push("K");if(c.DST<1)needs.push("D/ST");return needs}
-function waitScore(pos){let c=positionalCountsAll(),avail=available().filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos),top=avail.slice(0,8),needers=0,n=pick+1;while(n<=170&&teamForPick(n)!==slot){let t=teamForPick(n),owned=history.filter(h=>h.team===t).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),has=owned.some(p=>(p.pos==="DEF"?"DST":p.pos)===pos);if(!has)needers++;n++}let base=(pos==="QB"||pos==="TE")?62:88;if(c[pos]>=1)base=96;base-=needers*6;if(top.length<=3)base-=25;if(top.length<=1)base-=25;let recent=history.slice(-6).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),run=recent.filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).length;base-=run*8;return Math.max(5,Math.min(98,Math.round(base)))}
-function renderLiveRoster(){let rows=rosterRows(),keySlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF"],htmlRows=rows.filter(([s])=>keySlots.includes(s)).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText}
+function teamStackBonus(p,owned){
+ let same=owned.filter(x=>x.team===p.team),bonus=0;
+ if(p.pos==="QB"&&same.some(x=>["WR","TE"].includes(x.pos)))bonus+=13;
+ if(["WR","TE"].includes(p.pos)&&same.some(x=>x.pos==="QB"))bonus+=11;
+ if(same.length>=2)bonus-=5;
+ return bonus;
+}
+function aiRosterTargets(profile,round){
+ let t={QB:1,RB:4,WR:5,TE:1,K:1,DST:1};
+ if(profile==="Hero RB")t.RB=5;
+ if(profile==="Zero RB"){t.WR=6;t.RB=3}
+ if(profile==="WR Heavy")t.WR=6;
+ if(profile==="Early QB")t.QB=2;
+ if(profile==="Elite TE")t.TE=2;
+ return t;
+}
+function aiScore(p,team){
+ let profile=aiProfiles[team]||"Balanced",m=getManager(team),tr=aiRunTraits[team]||{},rd=Math.ceil(pick/10);
+ let owned=history.filter(h=>h.team===team).map(h=>players.find(x=>x.id===h.id)).filter(Boolean),c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};
+ owned.forEach(x=>{if(c[x.pos]!==undefined)c[x.pos]++});
+ let skill=Math.max(1,Math.min(10,m.skill)),rankWeight=1.05+(skill/10)*.55;
+ let s=175-p.overall*rankWeight;
+ let noise=(Math.random()-.5)*(tr.variance||18)*(style==="chaotic"?1.45:style==="conservative"?.55:1);
+ s+=noise;
+ // Every manager gets a temporary draft-day mood so mocks do not repeat the same script.
+ if(tr.mood==="aggressive"){if(p.leagueBreaker||p.rookie)s+=10;if(p.availabilityRisk==="high")s+=3}
+ if(tr.mood==="patient")s+=(p.availabilityRisk==="low"?7:-4);
+ if(tr.mood==="homer"&&p.team===m.homerTeam)s+=18;
+ if(tr.mood==="panic"&&recentPositionCount(p.pos,6)>=3)s+=10+(tr.runReaction||0);
+ // Strategy and roster construction.
+ if(profile==="Hero RB"&&p.pos==="RB"&&c.RB<2)s+=26;
+ if(profile==="Zero RB"&&p.pos==="WR"&&c.WR<5)s+=23;
+ if(profile==="WR Heavy"&&p.pos==="WR")s+=18;
+ if(profile==="Early QB"&&p.pos==="QB"&&c.QB<1&&rd<=6)s+=30;
+ if(profile==="Elite TE"&&p.pos==="TE"&&c.TE<1&&rd<=7)s+=25;
+ if(profile==="Rookie Chaser"&&p.rookie)s+=18+(tr.rookie||5);
+ if(profile==="Value Drafter")s+=Math.max(0,28-p.overall/7);
+ if(profile==="Chaos")s+=Math.random()*38;
+ // Personal biases.
+ if(p.team===m.homerTeam)s+=m.homer*2.5;
+ if(p.pos===m.positionBias)s+=4;
+ if(p.rookie)s+=(tr.rookie||5)-5;
+ if(p.leagueBreaker)s+=(tr.upside||5)-4;
+ if(p.availabilityRisk==="low")s+=(tr.safe||5)-5;
+ s+=teamStackBonus(p,owned);
+ // Need and redundancy controls, intentionally imperfect based on manager tendencies.
+ let targets=aiRosterTargets(profile,rd);
+ if(["RB","WR"].includes(p.pos)&&c[p.pos]<2)s+=14;
+ if(p.pos==="QB"&&c.QB===0&&rd>=7)s+=20;
+ if(p.pos==="TE"&&c.TE===0&&rd>=8)s+=18;
+ if(p.pos==="QB"&&c.QB>=1)s+=m.qbHoard*2-22;
+ if(p.pos==="TE"&&c.TE>=1)s-=profile==="Elite TE"?8:28;
+ if(c[p.pos]>=targets[p.pos])s-=12+(c[p.pos]-targets[p.pos])*9;
+ if(c.RB<2&&rd>=7&&p.pos==="RB")s+=20;
+ if(c.WR<3&&rd>=7&&p.pos==="WR")s+=20;
+ // Some managers reach for "their guys," while value drafters stay closer to the board.
+ let reachWindow=Math.max(0,(tr.reach||5)-5);
+ if(reachWindow>0&&p.overall>pick&&p.overall<=pick+reachWindow*4)s+=reachWindow*2;
+ // K/DST remain late, but weaker or old-school rooms occasionally jump a round early.
+ if(p.pos==="DST"){
+  let early=Math.max(0,8-skill)+(tr.mood==="panic"?2:0);
+  s-=rd<14?95-early*5:0;if(c.DST>=1)s-=110;if(rd>=15&&c.DST<1)s+=42+early*3;
+ }
+ if(p.pos==="K"){
+  let early=Math.max(0,8-skill)+(tr.mood==="panic"?2:0);
+  s-=rd<15?100-early*5:0;if(c.K>=1)s-=110;if(rd>=16&&c.K<1)s+=48+early*3;
+ }
+ return s;
+}
+async function simulateToMe(){
+ if(mode!=="practice")return;
+ while(teamForPick(pick)!==slot&&pick<=170){
+  let team=teamForPick(pick),m=getManager(team),tr=aiRunTraits[team]||{};
+  let poolSize=Math.round(16+(10-m.skill)*2+(style==="chaotic"?10:style==="conservative"?-3:3));
+  let pool=available().slice(0,Math.min(Math.max(14,poolSize),available().length));
+  pool.sort((a,b)=>aiScore(b,team)-aiScore(a,team));
+  let choiceIndex=0;
+  // Controlled imperfection: lower-skill and unpredictable managers occasionally choose their 2nd–4th favorite option.
+  let mistakeChance=Math.max(0.03,Math.min(.32,(10-m.skill)*.025+(10-m.predictability)*.018+(style==="chaotic"?.06:0)));
+  if(Math.random()<mistakeChance){let max=Math.min(pool.length-1,Math.max(1,Math.round((10-m.skill)/2+2)));choiceIndex=Math.floor(Math.random()*max)+1}
+  selectPlayer(pool[choiceIndex].id,team);
+  await new Promise(r=>setTimeout(r,110));
+ }
+}
 function renderWaitMeter(){
  let positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10),c=positionalCountsAll();
  let boxes=positions.map(pos=>{
