@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07111f"><meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg">
-<title>Gerard Fantasy HQ — Sharingan Alpha 12</title>
+<title>Gerard Fantasy HQ — Sharingan Alpha 12.2</title>
 <style>
 :root{--bg:#070709;--panel:#141116;--line:#3d2830;--text:#f8f5f7;--muted:#b1a4aa;--purple:#b3263d;--purple2:#ff8797;--gold:#f2c65d;--green:#61d58f;--yellow:#f2c65d;--red:#ff6678}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#321019 0,#070709 48%);color:var(--text);font:14px system-ui,-apple-system,Segoe UI,sans-serif}
@@ -110,6 +110,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .alt.highlightedOption .info b{color:#ffdce2}
 .alt.highlightedOption .rank{background:#b22f43;color:#fff;border-radius:999px}
 .highlightFlag{display:inline-block;margin-top:4px;font-size:8px;font-weight:950;color:#f4d35e;letter-spacing:.8px;text-transform:uppercase}
+.comparisonCard{margin:0 0 10px;padding:12px;border:1px solid #d03a50;border-radius:16px;background:linear-gradient(145deg,#25101a,#15101d);box-shadow:0 0 0 2px rgba(208,58,80,.12)}
+.comparisonHeader{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}.comparisonHeader .eyebrow{font-size:10px;font-weight:950;letter-spacing:1px;color:#f4d35e}.comparisonCard h3{font-size:25px;margin:5px 0}.comparisonGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:9px 0}.comparisonMetric{border:1px solid #543744;border-radius:10px;padding:8px;background:#100d12}.comparisonMetric span{display:block;font-size:8px;text-transform:uppercase;color:var(--muted);font-weight:900}.comparisonMetric b{display:block;margin-top:3px;font-size:12px}.filledPosition{opacity:.72}.filledPosition .marketLevel{color:#67d68a}.filledPosition .marketMeta{color:#67d68a}@media(max-width:700px){.comparisonGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.comparisonCard h3{font-size:21px}}
 @media(max-width:900px){
   .recommendationCard .mambaScore{font-size:11px}
   .recommendationCard .primary{padding:12px 8px}
@@ -121,7 +123,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .exposureList{display:flex;flex-direction:column;gap:6px;margin-top:8px}.exposureRow{display:grid;grid-template-columns:45px 1fr auto;gap:8px;align-items:center;background:#110e11;border:1px solid #382830;border-radius:9px;padding:7px 8px}.exposureRow.warn{border-color:#8c742d}.exposureRow.heavy{border-color:#b42d40;background:#231014}.exposureBar{height:6px;background:#2c2530;border-radius:999px;overflow:hidden}.exposureBar span{display:block;height:100%;background:linear-gradient(90deg,#6d1a28,#d63b52)}.exposureNote{font-size:9px;color:var(--muted);line-height:1.35;margin-top:7px}.blueprintBreakdown{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:9px 0}.blueprintFactor{background:#100d10;border:1px solid #39272d;border-radius:8px;padding:7px}.blueprintFactor span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase}.blueprintFactor b{display:block;margin-top:2px}
 </style></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 12.1 • Sharingan Intelligence Hotfix</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 12.2 • Decision Card & Roster Logic</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">AI drafts the other nine teams and stops when it is your turn.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">You manually enter every real selection. No computer picks.</p></div></div>
@@ -217,7 +219,7 @@ const managers=[
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5"];
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=alpha12_1",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=alpha12_2",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;
@@ -252,7 +254,7 @@ function startDraft(){
   setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
   modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll();
- }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please install the Alpha 12.1 hotfix. Technical detail: "+err.message)}
+ }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please install the Alpha 12.2 decision-card hotfix. Technical detail: "+err.message)}
 }
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
@@ -261,6 +263,8 @@ function info(){let r=Math.ceil(pick/10),ip=(pick-1)%10+1,next=pick;while(teamFo
 function available(){return players.filter(p=>!drafted.includes(p.id))}
 function myPlayers(){return history.filter(h=>h.team===slot).map(h=>players.find(p=>p.id===h.id)).filter(Boolean)}
 function counts(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{if(c[p.pos]!==undefined)c[p.pos]++});return c}
+function userPositionFilled(pos){let c=counts();return (pos==="QB"&&c.QB>=1)||(pos==="TE"&&c.TE>=1)}
+function recommendationEligible(p){if(userPositionFilled(p.pos))return false;return true}
 function expected(){return blueprint[Math.min(info().r-1,5)]||"BPA"}
 function fit(p){let e=expected();return e==="BPA"?0:e===p.pos?18:e.includes(p.pos)?15:-4}
 function sourceBlend(p){
@@ -272,10 +276,10 @@ function formatModifier(p){let m=0;if(leagueContext.scoring==="full"&&p.pos==="W
 function draftPhase(){let r=info().r;return r<=5?{name:"Foundation",text:"Take value and build dependable starters."}:r<=9?{name:"Structure",text:"Balance the roster, monitor tiers, and use stacks as tie-breakers."}:{name:"Endgame Hunter",text:"Chase upside, paths to larger roles, and premium handcuffs."}}
 function strategyHealth(){let c=counts(),r=info().r,msg="Stay flexible — value can override the plan.";if(r<=3&&c.WR>=1&&c.RB>=2)msg="Anchor WR + Double RB is on track.";else if(r<=4&&c.RB>=2)msg="Strong RB foundation. Add WR value next.";else if(r>=5&&c.WR<2)msg="WR depth is behind. Prefer WR when value is close.";else if(r>=7&&c.QB===0)msg="Late-QB plan active; draft only when the tier starts thinning.";return msg}
 function renderDraftPlan(){let d=draftPhase(),html=`<div class="strategy"><span><b>${d.name} Mode</b><small style="display:block;color:var(--muted);margin-top:3px">${d.text}</small></span><span class="pill">R${info().r}</span></div>`;["mobileDraftPhase","desktopDraftPhase"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=html});["mobileStrategyHealth","desktopStrategyHealth"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=strategyHealth()})}
-function gerardScore(p){let c=counts(),round=info().r,s=150-p.overall*.82+sourceBlend(p)+(p.bdgeBoost||0)+(p.flockBoost||0)+formatModifier(p)+fit(p);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=25;if(p.pos==="TE"&&c.TE>=1)s-=18;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;if(p.priceFade)s-=7;if(p.coreTarget)s+=5;if(p.leagueBreaker&&round>=7)s+=5;if(p.availabilityRisk==="high")s-=9;if(p.ambiguity==="high")s-=3;if(["RB","WR","QB","TE"].includes(p.pos)){let mp=marketPressure(p.pos);s+=mp.pressure*.16}
+function gerardScore(p){let c=counts(),round=info().r,s=150-p.overall*.82+sourceBlend(p)+(p.bdgeBoost||0)+(p.flockBoost||0)+formatModifier(p)+fit(p);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=120;if(p.pos==="TE"&&c.TE>=1)s-=120;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;if(p.priceFade)s-=7;if(p.coreTarget)s+=5;if(p.leagueBreaker&&round>=7)s+=5;if(p.availabilityRisk==="high")s-=9;if(p.ambiguity==="high")s-=3;if(["RB","WR","QB","TE"].includes(p.pos)){let mp=marketPressure(p.pos);s+=mp.pressure*.16}
  let bp=blueprintFactors(p);s+=bp.stack.points+bp.hand.points;if(bp.exp?.severity==="moderate")s-=2;if(bp.exp?.severity==="heavy")s-=5;if(bp.exp?.severity==="heavy"&&p.offenseQuality==="weak")s-=3;if(bp.bye)s-=2;
 return s}
-function recommendations(){return [...available()].sort((a,b)=>gerardScore(b)-gerardScore(a)).slice(0,5)}
+function recommendations(){let pool=available().filter(recommendationEligible);if(pool.length<5)pool=available();return [...pool].sort((a,b)=>gerardScore(b)-gerardScore(a)).slice(0,5)}
 function rationale(p){let b=[],e=expected();if(e===p.pos||e.includes(p.pos))b.push("fits Gerard Blueprint");let fall=Math.max(0,pick-p.overall);if(fall>=8)b.push(`value fall: ${fall} picks`);if(p.bdgeLabels?.length)b.push(`BDGE: ${p.bdgeLabels[0]}`);if(p.overallTier==="S"||p.overallTier==="A")b.push("top-tier talent");if(["RB","WR"].includes(p.pos))b.push("weekly-ceiling core");return b.slice(0,3).join(" • ")||"best blended value available"}
 
 function survivalRisk(p){let risk=0,n=pick+1,seen=0;while(seen<10&&n<=170){let t=teamForPick(n);if(t===slot)break;let m=getManager(t);if(p.team===m.homerTeam)risk+=m.homer*2.5;if(p.pos==="QB")risk+=m.qbHoard*1.7;risk+=(10-m.predictability)*.7;seen++;n++}return Math.min(95,Math.round(risk))}
@@ -290,10 +294,13 @@ function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let 
 function positionalCountsAll(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{let key=p.pos==="DEF"?"DST":p.pos;if(c[key]!==undefined)c[key]++});return c}
 function rosterNeeds(){let c=positionalCountsAll(),needs=[];if(c.QB<1)needs.push("QB");if(c.RB<2)needs.push("RB");if(c.WR<3)needs.push("WR");if(c.TE<1)needs.push("TE");if(c.K<1)needs.push("K");if(c.DST<1)needs.push("D/ST");return needs}
 function waitScore(pos){let c=positionalCountsAll(),avail=available().filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos),top=avail.slice(0,8),needers=0,n=pick+1;while(n<=170&&teamForPick(n)!==slot){let t=teamForPick(n),owned=history.filter(h=>h.team===t).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),has=owned.some(p=>(p.pos==="DEF"?"DST":p.pos)===pos);if(!has)needers++;n++}let base=(pos==="QB"||pos==="TE")?62:88;if(c[pos]>=1)base=96;base-=needers*6;if(top.length<=3)base-=25;if(top.length<=1)base-=25;let recent=history.slice(-6).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),run=recent.filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).length;base-=run*8;return Math.max(5,Math.min(98,Math.round(base)))}
-function renderLiveRoster(){let rows=rosterRows(),keySlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF"],htmlRows=rows.filter(([s])=>keySlots.includes(s)).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";if(document.getElementById("mobileLiveRoster"))mobileLiveRoster.innerHTML=htmlRows;if(document.getElementById("mobileRosterSummary"))mobileRosterSummary.innerHTML=summary;if(document.getElementById("mobileNeeds"))mobileNeeds.textContent=needsText}
+function renderLiveRoster(){let rows=rosterRows(),keySlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF"],htmlRows=rows.filter(([s])=>keySlots.includes(s)).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText}
 function renderWaitMeter(){
- let positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10);
+ let positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10),c=positionalCountsAll();
  let boxes=positions.map(pos=>{
+   if((pos==="QB"&&c.QB>=1)||(pos==="TE"&&c.TE>=1)){
+     return `<div class="waitBox filledPosition"><div class="pos">${pos}</div><div class="meter"><span style="width:100%"></span></div><div><b>FILLED</b></div><div class="decision">FOCUS ELSEWHERE</div></div>`;
+   }
    let locked=(pos==="DST"&&roundNow<15)||(pos==="K"&&roundNow<16);
    if(locked){
      let unlock=pos==="DST"?15:16;
@@ -303,7 +310,7 @@ function renderWaitMeter(){
    let label=score>=70?"WAIT":score>=40?"CONSIDER NOW":"DRAFT SOON";
    return `<div class="waitBox ${cls}"><div class="pos">${pos==="DST"?"D/ST":pos}</div><div class="meter"><span style="width:${score}%"></span></div><div><b>${score}%</b></div><div class="decision">${label}</div></div>`;
  }).join("");
- if(document.getElementById("waitMeter"))waitMeter.innerHTML=boxes;
+ let el=document.getElementById("waitMeter");if(el)el.innerHTML=boxes;
 }
 function scoreComponents(p){
  let value=Math.max(45,Math.min(99,Math.round(102-(p.overall||200)/3)));
@@ -327,7 +334,8 @@ function sourceRankLabel(p,source){
  return "—";
 }
 function openScan(id){
- let p=players.find(x=>x.id===id);if(!p)return;
+ const modal=document.getElementById("scanModal"),content=document.getElementById("scanContent");
+ let p=players.find(x=>x.id===id);if(!p||!modal||!content)return;
  let s=scoreComponents(p),risk=survivalRisk(p),state=recommendationState(p);
  let labels=(p.bdgeLabels||[]).length?p.bdgeLabels.join(" • "):"No additional BDGE flag";
  let notes=[
@@ -336,7 +344,7 @@ function openScan(id){
    p.opportunityTrend&&p.opportunityTrend!=="Pending"?p.opportunityTrend:null,
    p.gerardPreference&&p.gerardPreference!=="neutral"?`Gerard preference: ${p.gerardPreference}`:null
  ].filter(Boolean).join(". ");
- scanContent.innerHTML=`
+ content.innerHTML=`
  <div class="scanHeader"><div><div class="scanEye">👁 SHARINGAN SCAN</div><div class="scanName">${p.name}</div><div class="tagrow"><span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">${coverageText(p)}</span></div></div><button class="ghost" onclick="closeScan()">Close</button></div>
  <div class="scanGrid">
    <div class="scanMetric"><span>Mamba Score</span><b>${s.fit}/100</b></div>
@@ -354,9 +362,9 @@ function openScan(id){
  </div>
  <div class="scanNotes"><b>Why Sharingan sees him this way</b><br>${notes}. ${rationale(p)}.</div>
  <div class="scanActions"><button class="primary" onclick="selectPlayer(${p.id},${slot});closeScan()">Draft to My Team</button><button class="ghost" onclick="selectPlayer(${p.id},${teamForPick(pick)});closeScan()">Record for Current Team</button></div>`;
- scanModal.classList.remove("hidden");
+ modal.classList.remove("hidden");
 }
-function closeScan(e){if(e&&e.target!==scanModal)return;scanModal.classList.add("hidden")}
+function closeScan(e){const modal=document.getElementById("scanModal");if(!modal)return;if(e&&e.target!==modal)return;modal.classList.add("hidden")}
 
 
 function selectCandidate(id){
@@ -385,6 +393,17 @@ function byeWarningFor(p){let existing=(byeExposure().find(([b])=>String(b)===St
 function blueprintFactors(p){let stack=stackBonusFor(p),hand=handcuffBonusFor(p),exp=exposureWarningFor(p),bye=byeWarningFor(p);return{stack,hand,exp,bye}}
 function renderExposure(){let rows=teamExposure(),markup=rows.length?`<div class="exposureList">${rows.slice(0,6).map(([team,count])=>{let cls=count>=4?"heavy":count===3?"warn":"",label=count>=4?"Heavy":count===3?"Caution":"Normal";return `<div class="exposureRow ${cls}"><b>${team}</b><div class="exposureBar"><span style="width:${Math.min(100,count*25)}%"></span></div><span>${count} • ${label}</span></div>`}).join("")}</div>`:`<div class="meta">No team concentration yet.</div>`;let bye=byeExposure().find(([,c])=>c>=4);if(bye)markup+=`<div class="exposureNote">Bye warning: ${bye[1]} players are off in Week ${bye[0]}.</div>`;["mobileExposure","desktopExposure"].forEach(id=>{let el=document.getElementById(id);if(el)el.innerHTML=markup})}
 function simpleMarketLabel(x){if(x.pressure>=82)return"Likely gone";if(x.pressure>=65)return"Draft soon";if(x.pressure>=45)return"Monitor";return"Safe to wait"}
+function comparisonCardMarkup(p,primary){
+ let state=recommendationState(p),score=mambaScore(p),risk=survivalRisk(p),bp=blueprintFactors(p);
+ return `<div class="comparisonCard">
+   <div class="comparisonHeader"><div><div class="eyebrow">HIGHLIGHTED COMPARISON</div><div class="meta">Top recommendation remains ${primary.name}</div></div><button class="ghost" onclick="selectCandidate(${p.id})">Clear</button></div>
+   <h3 class="scanLink" onclick="openScan(${p.id})">${p.name}</h3>
+   <div class="tagrow"><span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span>${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}<span class="tag">FP ${p.fantasyProsPosRank||p.posRank}</span></div>
+   <div class="comparisonGrid"><div class="comparisonMetric"><span>Mamba</span><b>${score}/100</b></div><div class="comparisonMetric"><span>Steal Risk</span><b>${risk}%</b></div><div class="comparisonMetric"><span>Stack</span><b>${bp.stack.label}</b></div><div class="comparisonMetric"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>
+   <div class="reason">${rationale(p)}</div>
+   <div style="display:grid;grid-template-columns:1fr auto;gap:8px"><button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button><button class="scanBtn" onclick="openScan(${p.id})">Full Scan</button></div>
+ </div>`;
+}
 function renderRecommendation(){
  let recs=recommendations();
  if(!recs.length){
@@ -413,7 +432,8 @@ function renderRecommendation(){
      <button class="scanBtn" onclick="openScan(${p.id})">Scan</button>
    </div>`;
 
- alternatives.innerHTML=recs.slice(1,5).map((x,i)=>{
+ let highlightedPlayer=selectedCandidateId?players.find(x=>x.id===selectedCandidateId&&!drafted.includes(x.id)):null;
+ alternatives.innerHTML=(highlightedPlayer?comparisonCardMarkup(highlightedPlayer,p):"")+recs.slice(1,5).map((x,i)=>{
    let highlighted=selectedCandidateId===x.id;
    return `<div class="alt selectable ${highlighted?"highlightedOption":""}" onclick="selectCandidate(${x.id})">
      <div class="rank">${i+2}</div>
@@ -422,9 +442,9 @@ function renderRecommendation(){
        <div class="meta">${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • FP ${x.fantasyProsPosRank||x.posRank} • ${rationale(x)}</div>
        ${highlighted?`<span class="highlightFlag">Highlighted for comparison</span>`:""}
      </div>
-     <button class="scanBtn" onclick="event.stopPropagation();openScan(${x.id})">Scan</button>
-     <button class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${slot})">Mine</button>
-     <button class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${teamForPick(pick)})">Other</button>
+     <button type="button" class="scanBtn" onclick="event.stopPropagation();openScan(${x.id})">Scan</button>
+     <button type="button" class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${slot})">Mine</button>
+     <button type="button" class="ghost" onclick="event.stopPropagation();selectPlayer(${x.id},${teamForPick(pick)})">Other</button>
    </div>`;
  }).join("");
 }
@@ -521,7 +541,8 @@ function marketPressure(pos){
  return{pos,pressure,level,starterNeed,depthNeed,recent,teams:before.length,avail};
 }
 function highestRoomPressure(){
- return ["RB","WR","QB","TE"].map(marketPressure).sort((a,b)=>b.pressure-a.pressure)[0];
+ let positions=["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos));
+ return positions.map(marketPressure).sort((a,b)=>b.pressure-a.pressure)[0]||marketPressure("RB");
 }
 function roomAlertText(){
  let top=highestRoomPressure(),target=recommendations()[0];
@@ -531,8 +552,9 @@ function roomAlertText(){
  if(top.pressure>=70)return`<div class="roomAlert">${top.pos} RUN RISK: The room is becoming ${top.level.toLowerCase()} at ${top.pos}. Sharingan has adjusted availability estimates.</div>`;
  return"";
 }
-function roomInsightText(){let vals=["RB","WR","QB","TE"].map(marketPressure).sort((a,b)=>b.pressure-a.pressure),top=vals[0],low=vals[vals.length-1];if(top.pressure>=82)return `${top.pos}: likely gone before your next pick. ${top.starterNeed} upcoming managers still need a starter.`;if(top.pressure>=65)return `${top.pos}: consider drafting soon. ${top.recent} were selected in the last 8 picks.`;if(top.pressure>=45)return `${top.pos}: monitor the room, but you do not need to panic yet.`;return `No urgent positional run. ${low.pos} is safest to wait on right now.`}
+function roomInsightText(){let positions=["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos));let vals=positions.map(marketPressure).sort((a,b)=>b.pressure-a.pressure),top=vals[0]||marketPressure("RB"),low=vals[vals.length-1]||top;if(top.pressure>=82)return `${top.pos}: likely gone before your next pick. ${top.starterNeed} upcoming managers still need a starter.`;if(top.pressure>=65)return `${top.pos}: consider drafting soon. ${top.recent} were selected in the last 8 picks.`;if(top.pressure>=45)return `${top.pos}: monitor the room, but you do not need to panic yet.`;return `No urgent positional run. ${low.pos} is safest to wait on right now.`}
 function marketBoxMarkup(x){
+ if(userPositionFilled(x.pos))return`<div class="marketBox filled filledPosition"><div class="marketPos">${x.pos}</div><div class="marketLevel">Filled</div><div><b>✓</b></div><div class="marketMeta">Focus on other positions</div></div>`;
  let cls=x.level.toLowerCase();
  return`<div class="marketBox ${cls}"><div class="marketPos">${x.pos}</div><div class="marketLevel">${simpleMarketLabel(x)}</div><div><b>${x.pressure}%</b></div><div class="marketMeta">${x.starterNeed} need starters</div></div>`;
 }
@@ -570,8 +592,8 @@ function renderRoomScan(){
  if(document.getElementById("desktopManagerTable"))desktopManagerTable.innerHTML=managerTableMarkup(false);
  if(document.getElementById("sheetManagerTable"))sheetManagerTable.innerHTML=table;
 }
-function openRoomScan(){renderRoomScan();roomScanSheet.classList.remove("hidden")}
-function closeRoomScan(e){if(e&&e.target!==roomScanSheet)return;roomScanSheet.classList.add("hidden");if(document.getElementById("managerRosterDetail"))managerRosterDetail.innerHTML=""}
+function openRoomScan(){renderRoomScan();let sheet=document.getElementById("roomScanSheet");if(sheet)sheet.classList.remove("hidden")}
+function closeRoomScan(e){let sheet=document.getElementById("roomScanSheet");if(!sheet)return;if(e&&e.target!==sheet)return;sheet.classList.add("hidden");let detail=document.getElementById("managerRosterDetail");if(detail)detail.innerHTML=""}
 
 function renderAll(){renderMeta();renderRecommendation();renderBoard();renderRoster();renderLiveRoster();renderExposure();renderRoomScan();renderWaitMeter();renderPlayers()}
 function showPage(id){document.querySelectorAll(".mobilePage").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}

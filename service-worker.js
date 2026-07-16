@@ -1,4 +1,4 @@
-const CACHE='gfh-v2-alpha-11';
+const CACHE='gfh-v2-alpha-12-2';
 const STATIC=['./','./index.html','./manifest.webmanifest','./icons/icon.svg'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(STATIC)).then(()=>self.skipWaiting()));
