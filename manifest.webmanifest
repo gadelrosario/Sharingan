@@ -1,11 +1,11 @@
 {
-  "name": "Gerard Fantasy HQ \u2014 Sharingan",
-  "short_name": "Fantasy HQ",
+  "name": "Gerard Fantasy HQ \u2014 Sharingan Alpha 12",
+  "short_name": "Fantasy HQ A12",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#07111f",
-  "theme_color": "#07111f",
+  "theme_color": "#070709",
   "icons": [
     {
       "src": "icons/icon.svg",

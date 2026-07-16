@@ -1,5 +1,5 @@
-# Gerard Fantasy HQ — Version 2.0 Alpha 11
+# Gerard Fantasy HQ — Version 2.0 Alpha 12: Sharingan Intelligence
 
-Adds the Gerard Blueprint tie-breakers: stacking, late-round handcuffs, team exposure, bye concentration, clearer Draft Room Scan wording, and a one-tap mock manager-order randomizer. Value remains the dominant input.
+Install this folder directly; no earlier version is required. This update preserves Alpha 11 and adds Flock rankings, league-aware scoring, draft phases, strategy health, expanded Sharingan scans, price/availability/ambiguity controls, and simpler live-draft guidance.
 
-Commit: `Version 2 Alpha 11 - Gerard Blueprint`
+Upload all files and folders together to GitHub Pages or your existing host. Clear the old site cache once after deployment if the prior version remains visible.

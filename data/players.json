@@ -36,10 +36,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 1,
+    "flockTier": "S",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 2,
@@ -78,10 +90,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 2,
+    "flockTier": "S",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 3,
@@ -120,10 +144,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 1,
+    "flockTier": "S",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 4,
@@ -162,10 +198,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 2,
+    "flockTier": "S",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 5,
@@ -204,10 +252,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 3,
+    "flockTier": "S",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 6,
@@ -246,10 +306,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 7,
@@ -288,10 +360,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 4,
+    "flockTier": "A",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 8,
@@ -330,10 +414,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 5,
+    "flockTier": "A",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 9,
@@ -372,10 +468,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 10,
@@ -414,10 +522,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 6,
+    "flockTier": "A",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 11,
@@ -456,10 +576,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": true,
+    "leagueBreaker": true,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "high",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 12,
@@ -498,10 +630,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 13,
@@ -536,10 +680,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": true,
+    "leagueBreaker": true,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 14,
@@ -574,10 +730,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 4,
+    "flockTier": "A",
+    "flockBoost": 2.2,
+    "coreTarget": true,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 15,
@@ -616,10 +784,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 3,
+    "flockTier": "S",
+    "flockBoost": 3.3000000000000003,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "medium",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 16,
@@ -658,10 +838,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 5,
+    "flockTier": "A",
+    "flockBoost": 2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 17,
@@ -696,10 +888,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 6,
+    "flockTier": "A",
+    "flockBoost": 2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "high",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 18,
@@ -734,10 +938,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 7,
+    "flockTier": "B",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 19,
@@ -772,10 +988,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 20,
@@ -810,10 +1038,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 7,
+    "flockTier": "B",
+    "flockBoost": 2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 21,
@@ -848,10 +1088,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 22,
@@ -886,10 +1138,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 8,
+    "flockTier": "B",
+    "flockBoost": 0.55,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 23,
@@ -928,10 +1192,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 24,
@@ -966,10 +1242,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 11,
+    "flockTier": "B",
+    "flockBoost": -0.55,
+    "coreTarget": false,
+    "leagueBreaker": true,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 25,
@@ -1004,10 +1292,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 10,
+    "flockTier": "B",
+    "flockBoost": 0.55,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 26,
@@ -1042,10 +1342,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 27,
@@ -1084,10 +1396,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 9,
+    "flockTier": "B",
+    "flockBoost": 2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "medium",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 28,
@@ -1126,10 +1450,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 12,
+    "flockTier": "B",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 29,
@@ -1164,10 +1500,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 13,
+    "flockTier": "B",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 30,
@@ -1206,10 +1554,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 11,
+    "flockTier": "B",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "medium",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 31,
@@ -1248,10 +1608,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 14,
+    "flockTier": "B",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 32,
@@ -1286,10 +1658,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 33,
@@ -1324,10 +1708,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 12,
+    "flockTier": "B",
+    "flockBoost": 2.2,
+    "coreTarget": true,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "high",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 34,
@@ -1362,10 +1758,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 15,
+    "flockTier": "C",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 35,
@@ -1400,10 +1808,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 13,
+    "flockTier": "B",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 36,
@@ -1438,10 +1858,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 16,
+    "flockTier": "C",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "high",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 37,
@@ -1480,10 +1912,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": true,
+    "leagueBreaker": true,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 38,
@@ -1522,10 +1966,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 20,
+    "flockTier": "C",
+    "flockBoost": -1.6500000000000001,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 39,
@@ -1560,10 +2016,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 23,
+    "flockTier": "C",
+    "flockBoost": -2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 40,
@@ -1604,10 +2072,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 18,
+    "flockTier": "C",
+    "flockBoost": 0.55,
+    "coreTarget": true,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 41,
@@ -1642,10 +2122,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 10,
+    "flockTier": "B",
+    "flockBoost": 4.4,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "high",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 42,
@@ -1684,10 +2176,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 17,
+    "flockTier": "C",
+    "flockBoost": 1.6500000000000001,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 43,
@@ -1722,10 +2226,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 19,
+    "flockTier": "C",
+    "flockBoost": 1.1,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 44,
@@ -1764,10 +2280,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 14,
+    "flockTier": "B",
+    "flockBoost": 2.75,
+    "coreTarget": true,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 45,
@@ -1802,10 +2330,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 22,
+    "flockTier": "C",
+    "flockBoost": 0.0,
+    "coreTarget": true,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 46,
@@ -1846,10 +2386,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 25,
+    "flockTier": "D",
+    "flockBoost": -1.1,
+    "coreTarget": false,
+    "leagueBreaker": true,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "high",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 47,
@@ -1884,10 +2436,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 26,
+    "flockTier": "D",
+    "flockBoost": -1.1,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 48,
@@ -1926,10 +2490,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 49,
@@ -1970,10 +2546,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 15,
+    "flockTier": "C",
+    "flockBoost": 3.3000000000000003,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "medium",
+    "ambiguity": "high",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 50,
@@ -2008,10 +2596,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 51,
@@ -2046,10 +2646,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 21,
+    "flockTier": "C",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 52,
@@ -2084,12 +2696,24 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
     "handcuffFor": [
       "Jahmyr Gibbs"
-    ]
+    ],
+    "flockRank": 17,
+    "flockTier": "C",
+    "flockBoost": 2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 53,
@@ -2124,10 +2748,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 24,
+    "flockTier": "C",
+    "flockBoost": 1.1,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 54,
@@ -2166,10 +2802,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 18,
+    "flockTier": "C",
+    "flockBoost": 2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "high",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 55,
@@ -2210,10 +2858,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 20,
+    "flockTier": "C",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": true,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "high",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 56,
@@ -2252,10 +2912,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 27,
+    "flockTier": "D",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 57,
@@ -2294,10 +2966,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 21,
+    "flockTier": "C",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 58,
@@ -2336,10 +3020,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 19,
+    "flockTier": "C",
+    "flockBoost": 3.8500000000000005,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 59,
@@ -2374,10 +3070,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 30,
+    "flockTier": "D",
+    "flockBoost": -1.1,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 60,
@@ -2418,10 +3126,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 29,
+    "flockTier": "D",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "high",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 61,
@@ -2456,10 +3176,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 32,
+    "flockTier": "D",
+    "flockBoost": -1.1,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 62,
@@ -2498,10 +3230,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 28,
+    "flockTier": "D",
+    "flockBoost": 1.6500000000000001,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 4
   },
   {
     "id": 63,
@@ -2536,10 +3280,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 64,
@@ -2574,10 +3330,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 65,
@@ -2612,10 +3380,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 66,
@@ -2650,10 +3430,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 67,
@@ -2694,10 +3486,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 33,
+    "flockTier": "D",
+    "flockBoost": -0.55,
+    "coreTarget": false,
+    "leagueBreaker": true,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 68,
@@ -2736,10 +3540,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 2
   },
   {
     "id": 69,
@@ -2774,10 +3590,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 23,
+    "flockTier": "C",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 4
   },
   {
     "id": 70,
@@ -2812,10 +3640,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 71,
@@ -2850,10 +3690,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 72,
@@ -2888,10 +3740,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 34,
+    "flockTier": "D",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 73,
@@ -2926,10 +3790,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 22,
+    "flockTier": "C",
+    "flockBoost": 3.3000000000000003,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 74,
@@ -2968,10 +3844,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 25,
+    "flockTier": "D",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 75,
@@ -3010,10 +3898,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 76,
@@ -3048,10 +3948,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 77,
@@ -3086,10 +3998,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 78,
@@ -3128,10 +4052,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 79,
@@ -3166,10 +4102,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 24,
+    "flockTier": "C",
+    "flockBoost": 3.3000000000000003,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "high",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 4
   },
   {
     "id": 80,
@@ -3204,10 +4152,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 81,
@@ -3242,10 +4202,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 82,
@@ -3280,10 +4252,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 157,
@@ -3318,10 +4302,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 83,
@@ -3356,10 +4352,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 84,
@@ -3394,10 +4402,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 158,
@@ -3432,10 +4452,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 85,
@@ -3470,10 +4502,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 86,
@@ -3508,10 +4552,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 2
   },
   {
     "id": 87,
@@ -3546,10 +4602,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 88,
@@ -3584,12 +4652,24 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
     "handcuffFor": [
       "Bucky Irving"
-    ]
+    ],
+    "flockRank": 31,
+    "flockTier": "D",
+    "flockBoost": 0.0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 89,
@@ -3624,10 +4704,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 90,
@@ -3662,10 +4754,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 91,
@@ -3704,10 +4808,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": true,
+    "availabilityRisk": "medium",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 92,
@@ -3746,10 +4862,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 93,
@@ -3784,10 +4912,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 94,
@@ -3822,10 +4962,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 95,
@@ -3860,10 +5012,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 28,
+    "flockTier": "D",
+    "flockBoost": 2.75,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 96,
@@ -3898,10 +5062,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 35,
+    "flockTier": "D",
+    "flockBoost": 4.95,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 97,
@@ -3936,12 +5112,24 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
     "handcuffFor": [
       "Chuba Hubbard"
-    ]
+    ],
+    "flockRank": 27,
+    "flockTier": "D",
+    "flockBoost": 3.8500000000000005,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 98,
@@ -3976,10 +5164,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 99,
@@ -4014,10 +5214,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 100,
@@ -4052,10 +5264,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 2
   },
   {
     "id": 101,
@@ -4090,10 +5314,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 26,
+    "flockTier": "D",
+    "flockBoost": 4.95,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 102,
@@ -4128,10 +5364,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 2
   },
   {
     "id": 103,
@@ -4166,10 +5414,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 104,
@@ -4204,10 +5464,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "high",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 2
   },
   {
     "id": 105,
@@ -4242,10 +5514,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 2
   },
   {
     "id": 106,
@@ -4280,10 +5564,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 2
   },
   {
     "id": 107,
@@ -4322,10 +5618,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 108,
@@ -4364,10 +5672,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 2
   },
   {
     "id": 109,
@@ -4402,12 +5722,24 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
     "handcuffFor": [
       "Kyren Williams"
-    ]
+    ],
+    "flockRank": 29,
+    "flockTier": "D",
+    "flockBoost": 4.4,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 110,
@@ -4442,10 +5774,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 34,
+    "flockTier": "D",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 155,
@@ -4480,10 +5824,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 111,
@@ -4518,10 +5874,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 156,
@@ -4556,10 +5924,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 112,
@@ -4594,10 +5974,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 113,
@@ -4632,10 +6024,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 152,
@@ -4670,10 +6074,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 153,
@@ -4708,10 +6124,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 114,
@@ -4746,10 +6174,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 154,
@@ -4784,10 +6224,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 115,
@@ -4822,10 +6274,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 32,
+    "flockTier": "D",
+    "flockBoost": 3.8500000000000005,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 116,
@@ -4860,10 +6324,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 36,
+    "flockTier": "D",
+    "flockBoost": 2.2,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 3
   },
   {
     "id": 117,
@@ -4898,10 +6374,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 118,
@@ -4936,10 +6424,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "high",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 2
   },
   {
     "id": 127,
@@ -4974,10 +6474,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 119,
@@ -5012,10 +6524,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 2
   },
   {
     "id": 120,
@@ -5050,10 +6574,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 2
   },
   {
     "id": 121,
@@ -5088,10 +6624,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": true
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": 35,
+    "flockTier": "D",
+    "flockBoost": 3.3000000000000003,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 122,
@@ -5126,10 +6674,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 2
   },
   {
     "id": 123,
@@ -5164,10 +6724,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 2
   },
   {
     "id": 146,
@@ -5202,10 +6774,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 124,
@@ -5240,10 +6824,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": true,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 3
   },
   {
     "id": 125,
@@ -5278,10 +6874,22 @@
       "fantasyland": true,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 2
   },
   {
     "id": 126,
@@ -5316,10 +6924,22 @@
       "fantasyland": true,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 3
   },
   {
     "id": 128,
@@ -5354,12 +6974,24 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
     "handcuffFor": [
       "Breece Hall"
-    ]
+    ],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 129,
@@ -5394,12 +7026,24 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
     "handcuffFor": [
       "Christian McCaffrey"
-    ]
+    ],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 130,
@@ -5434,10 +7078,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 136,
@@ -5472,10 +7128,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 137,
@@ -5510,10 +7178,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 138,
@@ -5548,10 +7228,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 144,
@@ -5586,10 +7278,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 145,
@@ -5624,10 +7328,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 147,
@@ -5662,10 +7378,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 131,
@@ -5700,12 +7428,24 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
     "handcuffFor": [
       "Christian McCaffrey"
-    ]
+    ],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 132,
@@ -5740,12 +7480,24 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
     "handcuffFor": [
       "James Cook"
-    ]
+    ],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 133,
@@ -5780,12 +7532,24 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
     "handcuffFor": [
       "Omarion Hampton"
-    ]
+    ],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 134,
@@ -5820,10 +7584,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 135,
@@ -5858,10 +7634,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 148,
@@ -5896,10 +7684,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 139,
@@ -5934,10 +7734,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 149,
@@ -5972,10 +7784,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 150,
@@ -6010,10 +7834,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 140,
@@ -6048,10 +7884,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 159,
@@ -6086,10 +7934,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 160,
@@ -6124,10 +7984,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 151,
@@ -6162,10 +8034,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 161,
@@ -6200,10 +8084,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 162,
@@ -6238,10 +8134,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 163,
@@ -6276,10 +8184,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 164,
@@ -6314,10 +8234,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 165,
@@ -6352,10 +8284,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 166,
@@ -6390,10 +8334,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 141,
@@ -6428,10 +8384,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 142,
@@ -6466,10 +8434,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 143,
@@ -6504,10 +8484,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 167,
@@ -6542,10 +8534,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 168,
@@ -6580,10 +8584,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 169,
@@ -6618,10 +8634,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 170,
@@ -6656,12 +8684,24 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
     "handcuffFor": [
       "Josh Jacobs"
-    ]
+    ],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 171,
@@ -6696,10 +8736,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 172,
@@ -6734,10 +8786,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 173,
@@ -6772,10 +8836,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 174,
@@ -6810,10 +8886,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 175,
@@ -6848,10 +8936,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 176,
@@ -6886,10 +8986,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 177,
@@ -6924,10 +9036,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 178,
@@ -6962,10 +9086,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 179,
@@ -7000,10 +9136,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 180,
@@ -7038,10 +9186,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 181,
@@ -7076,10 +9236,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 182,
@@ -7114,10 +9286,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 183,
@@ -7152,10 +9336,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 184,
@@ -7190,10 +9386,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 185,
@@ -7228,10 +9436,22 @@
       "fantasyland": false,
       "bdge": false,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 186,
@@ -7270,10 +9490,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 187,
@@ -7312,10 +9544,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 188,
@@ -7354,10 +9598,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 189,
@@ -7396,10 +9652,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 190,
@@ -7438,10 +9706,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 191,
@@ -7480,10 +9760,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 192,
@@ -7522,10 +9814,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 193,
@@ -7564,10 +9868,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 194,
@@ -7606,10 +9922,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 195,
@@ -7648,10 +9976,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 196,
@@ -7690,10 +10030,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 197,
@@ -7732,10 +10084,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 198,
@@ -7774,10 +10138,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 199,
@@ -7816,10 +10192,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 200,
@@ -7858,10 +10246,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 201,
@@ -7900,10 +10300,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 202,
@@ -7942,10 +10354,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 203,
@@ -7984,10 +10408,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 204,
@@ -8026,10 +10462,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 205,
@@ -8068,10 +10516,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 206,
@@ -8110,10 +10570,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 207,
@@ -8152,10 +10624,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 208,
@@ -8194,10 +10678,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 209,
@@ -8236,10 +10732,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 210,
@@ -8278,10 +10786,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 211,
@@ -8320,10 +10840,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 212,
@@ -8362,10 +10894,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 213,
@@ -8404,10 +10948,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 214,
@@ -8446,10 +11002,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 215,
@@ -8488,10 +11056,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 216,
@@ -8530,10 +11110,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 217,
@@ -8572,10 +11164,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 218,
@@ -8614,10 +11218,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 219,
@@ -8656,10 +11272,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 220,
@@ -8698,10 +11326,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 221,
@@ -8740,10 +11380,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 222,
@@ -8782,10 +11434,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 223,
@@ -8824,10 +11488,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 224,
@@ -8866,10 +11542,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 225,
@@ -8908,10 +11596,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 226,
@@ -8950,10 +11650,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 227,
@@ -8992,10 +11704,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 228,
@@ -9034,10 +11758,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 229,
@@ -9076,10 +11812,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 230,
@@ -9118,10 +11866,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 231,
@@ -9160,10 +11920,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 232,
@@ -9202,10 +11974,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 233,
@@ -9244,10 +12028,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 234,
@@ -9286,10 +12082,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 235,
@@ -9328,10 +12136,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 236,
@@ -9370,10 +12190,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 237,
@@ -9412,10 +12244,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 238,
@@ -9454,10 +12298,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 239,
@@ -9496,10 +12352,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 240,
@@ -9538,10 +12406,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 241,
@@ -9580,10 +12460,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 242,
@@ -9622,10 +12514,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 243,
@@ -9664,10 +12568,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 244,
@@ -9706,10 +12622,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 245,
@@ -9748,10 +12676,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "average",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 74,
+    "analystCoverage": 1
   },
   {
     "id": 246,
@@ -9790,10 +12730,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 247,
@@ -9832,10 +12784,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   },
   {
     "id": 248,
@@ -9874,10 +12838,22 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "strong",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 90,
+    "analystCoverage": 1
   },
   {
     "id": 249,
@@ -9916,9 +12892,21 @@
       "fantasyland": false,
       "bdge": true,
       "fantasyPros": true,
-      "gerard": false
+      "gerard": false,
+      "flock": false
     },
     "offenseQuality": "weak",
-    "handcuffFor": []
+    "handcuffFor": [],
+    "flockRank": null,
+    "flockTier": null,
+    "flockBoost": 0,
+    "coreTarget": false,
+    "leagueBreaker": false,
+    "priceFade": false,
+    "availabilityRisk": "low",
+    "ambiguity": "low",
+    "contractConfidence": "medium",
+    "offenseScore": 58,
+    "analystCoverage": 1
   }
 ]

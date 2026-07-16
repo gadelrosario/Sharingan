@@ -4,10 +4,10 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07111f"><meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg">
-<title>Gerard Fantasy HQ 2</title>
+<title>Gerard Fantasy HQ — Sharingan Alpha 12</title>
 <style>
-:root{--bg:#09090d;--panel:#15131b;--line:#383141;--text:#f7f4fb;--muted:#aaa1b3;--purple:#7d4cff;--purple2:#b59cff;--gold:#f3c85b;--green:#55d98b;--yellow:#f3c85b;--red:#ff6f7d}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#21162e 0,#09090d 48%);color:var(--text);font:14px system-ui,-apple-system,Segoe UI,sans-serif}
+:root{--bg:#070709;--panel:#141116;--line:#3d2830;--text:#f8f5f7;--muted:#b1a4aa;--purple:#b3263d;--purple2:#ff8797;--gold:#f2c65d;--green:#61d58f;--yellow:#f2c65d;--red:#ff6678}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#321019 0,#070709 48%);color:var(--text);font:14px system-ui,-apple-system,Segoe UI,sans-serif}
 button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
 header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-bottom:1px solid var(--line);padding:calc(12px + env(safe-area-inset-top)) 16px 12px}
 .headerRow{max-width:1550px;margin:auto;display:flex;justify-content:space-between;align-items:center}h1{font-size:19px;margin:0}.version{font-size:11px;color:var(--muted)}
@@ -15,7 +15,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .card{background:linear-gradient(145deg,rgba(20,36,58,.98),rgba(14,27,45,.98));border:1px solid var(--line);border-radius:15px;padding:13px}
 .setup{max-width:820px;margin:25px auto}.modeGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.modeCard{border:1px solid var(--line);border-radius:14px;padding:18px;background:#131017}.modeCard.selected{outline:2px solid var(--green)}.modeCard.live.selected{outline-color:var(--blue)}
 .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:11px}select,input{background:#0f0d13;color:var(--text);border:1px solid #344967;border-radius:9px;padding:10px}
-.primary{background:#6b3fd4;border:1px solid #b59cff;color:#fff;border-radius:10px;padding:11px 14px;font-weight:850}.greenBtn{background:#8d6a17;border-color:#f3c85b}.ghost{background:#120f16;border:1px solid #4c4057;color:#e9f0fa;border-radius:9px;padding:8px 10px;font-weight:750}
+.primary{background:#9b1f32;border:1px solid #ff8797;color:#fff;border-radius:10px;padding:11px 14px;font-weight:850}.greenBtn{background:#8d6a17;border-color:#f3c85b}.ghost{background:#120f16;border:1px solid #4c4057;color:#e9f0fa;border-radius:9px;padding:8px 10px;font-weight:750}
 .appgrid{display:grid;grid-template-columns:310px minmax(560px,1fr) 330px;gap:11px}.stack{display:flex;flex-direction:column;gap:11px}
 .banner{padding:9px 11px;border-radius:10px;font-weight:850;display:flex;justify-content:space-between}.practiceBanner{background:#2b2211;border:1px solid #a98932;color:#ffe49a}.liveBanner{background:#241738;border:1px solid #7d4cff;color:#d8c9ff}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.stat{background:#111017;border-radius:10px;padding:9px;text-align:center}.stat b{display:block;font-size:20px}
@@ -41,7 +41,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .scanMetric{background:#120f12;border:1px solid #38262c;border-radius:10px;padding:9px}
 .scanMetric span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.7px}
 .scanMetric b{display:block;margin-top:3px;font-size:14px}
-.sourceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}
+.sourceGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0}
 .sourceBox{background:#110e11;border:1px solid #3b2930;border-radius:10px;padding:9px;text-align:center}
 .sourceBox .source{font-size:9px;color:var(--muted)}
 .sourceBox b{display:block;margin-top:3px}
@@ -121,7 +121,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .exposureList{display:flex;flex-direction:column;gap:6px;margin-top:8px}.exposureRow{display:grid;grid-template-columns:45px 1fr auto;gap:8px;align-items:center;background:#110e11;border:1px solid #382830;border-radius:9px;padding:7px 8px}.exposureRow.warn{border-color:#8c742d}.exposureRow.heavy{border-color:#b42d40;background:#231014}.exposureBar{height:6px;background:#2c2530;border-radius:999px;overflow:hidden}.exposureBar span{display:block;height:100%;background:linear-gradient(90deg,#6d1a28,#d63b52)}.exposureNote{font-size:9px;color:var(--muted);line-height:1.35;margin-top:7px}.blueprintBreakdown{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:9px 0}.blueprintFactor{background:#100d10;border:1px solid #39272d;border-radius:8px;padding:7px}.blueprintFactor span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase}.blueprintFactor b{display:block;margin-top:2px}
 </style></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 11 • Gerard Blueprint</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 12 • Sharingan Intelligence</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">AI drafts the other nine teams and stops when it is your turn.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">You manually enter every real selection. No computer picks.</p></div></div>
@@ -133,7 +133,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 <div class="card" style="background:#111017;margin-bottom:12px"><b>Gerard Blueprint</b><div class="meta" style="margin-top:5px">RB → WR → WR → RB → TE/QB → QB/TE, with Value Override when elite talent falls.</div></div>
 <button class="primary greenBtn" style="width:100%" onclick="startDraft()">Start Draft</button></div></section>
 <section id="appScreen" class="hidden"><div id="modeBanner"></div><div class="appgrid">
-<aside class="stack desktopSide"><div class="card"><div class="stats"><div class="stat"><b id="round">1</b>Round</div><div class="stat"><b id="pickLabel">1.01</b>Pick</div><div class="stat"><b id="until">0</b>Until you</div></div></div><div class="card"><b>Your roster</b><div id="roster"></div></div><div class="card"><b>AI strategies</b><div id="strategies"></div></div></aside>
+<aside class="stack desktopSide"><div class="card"><div class="stats"><div class="stat"><b id="round">1</b>Round</div><div class="stat"><b id="pickLabel">1.01</b>Pick</div><div class="stat"><b id="until">0</b>Until you</div></div></div><div class="card"><b>Your roster</b><div id="roster"></div></div><div class="card"><b>Draft Plan</b><div id="desktopDraftPhase"></div><div id="desktopStrategyHealth" class="roomInsight"></div></div><div class="card"><b>AI strategies</b><div id="strategies"></div></div></aside>
 <main class="stack">
 <section id="mobileDraft" class="mobilePage active">
   <div class="card compactStatus">
@@ -170,6 +170,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
     <div id="mobileRoomInsight" class="roomInsight"></div>
   </div>
 
+  <div class="card mobileOnly" id="mobileDecisionCard"><div class="sectionHeader"><b>Draft Plan</b><span class="meta">Simple live guidance</span></div><div id="mobileDraftPhase"></div><div id="mobileStrategyHealth" class="roomInsight"></div></div>
   <div class="card alternativesCard">
     <div class="sectionHeader">
       <b>Other options</b>
@@ -198,7 +199,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 </div><section id="draftReport" class="hidden"><div class="reportHero"><div class="scanEye">👁 SHARINGAN LEAGUE REPORT</div><h2>Draft Complete</h2><div class="projectionNote">Draft-day projection based on roster strength, value, positional balance, ceiling, and bench construction. It is not a guarantee of season results.</div></div><div id="myDraftReport"></div><div class="card"><b>Projected League Rankings</b><div id="leagueProjection"></div></div><div class="card"><b>All Team Report Cards</b><div id="allTeamReports"></div></div><button class="primary" style="width:100%;margin-top:10px" onclick="startAnotherMock()">Start Another Mock</button></section><section id="mobileTeam" class="mobilePage mobileOnly"><div class="card"><b>Your roster</b><div id="mRoster"></div></div><div class="card"><b>AI strategies</b><div id="mStrategies"></div></div></section></section></div>
 <nav id="tabs" class="tabs hidden"><button onclick="showPage('mobileDraft')">🏈<br>Draft</button><button onclick="showPage('mobileBoard')">🧩<br>Board</button><button onclick="showPage('mobilePlayers')">📋<br>Players</button><button onclick="showPage('mobileTeam')">👥<br>Team</button></nav>
 <script>
-let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false;
+let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startWR:3,flex:2,passTD:4,risk:"balanced",strategy:"auto"};
 const managers=[
 {name:"Gerard",archetype:"Championship Value",skill:9.6,predictability:7,homerTeam:"",homer:0,qbHoard:2,waiver:10},
 {name:"Marc",archetype:"Calculated Ceiling",skill:8,predictability:8,homerTeam:"NYJ",homer:2,qbHoard:2,waiver:7},
@@ -212,13 +213,13 @@ const managers=[
 {name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7}
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5"];
-async function init(){players=await fetch("data/players.json?v=alpha6",{cache:"no-store"}).then(r=>r.json());for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;draftSlot.appendChild(o)}draftSlot.value=10;renderManagerSetup()}
+async function init(){players=await fetch("data/players.json?v=alpha12",{cache:"no-store"}).then(r=>r.json());for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;draftSlot.appendChild(o)}draftSlot.value=10;renderManagerSetup()}
 
 function renderManagerSetup(){const pref=["Kalani","Marc","Ray","Fritz","Michael","Gerard","Josh","Raoul","Rob","AJ"];managerSetup.innerHTML="";for(let i=1;i<=10;i++){let w=document.createElement("div");w.className="managerSlot";let b=document.createElement("b");b.textContent="Pick "+i;let s=document.createElement("select");s.id="mgr"+i;managers.forEach(m=>{let o=document.createElement("option");o.value=m.name;o.textContent=m.name+" — "+m.archetype;s.appendChild(o)});s.value=pref[i-1];w.append(b,s);managerSetup.appendChild(w)}}
 function captureManagers(){slotManagers={};for(let i=1;i<=10;i++){let e=document.getElementById("mgr"+i);slotManagers[i]=e?e.value:"Team "+i}let old=Object.keys(slotManagers).find(k=>slotManagers[k]==="Gerard");if(old&&+old!==slot){let tmp=slotManagers[slot];slotManagers[old]=tmp}slotManagers[slot]="Gerard"}
 function getManager(t){return managers.find(m=>m.name===slotManagers[t])||managers[0]}
 function chooseMode(m){mode=m;practiceChoice.classList.toggle("selected",m==="practice");liveChoice.classList.toggle("selected",m==="live");if(document.getElementById("mockRandomizer"))mockRandomizer.classList.toggle("hidden",m!=="practice")}
-function startDraft(){mobileTeamExpanded=false;slot=+draftSlot.value;style=roomStyle.value;captureManagers();pick=1;drafted=[];history=[];selectedCandidateId=null;buildProfiles();setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll()}
+function startDraft(){mobileTeamExpanded=false;slot=+draftSlot.value;style=roomStyle.value;leagueContext={scoring:scoring.value,startWR:+startWR.value,flex:+flexSpots.value,passTD:+passTD.value,risk:riskProfile.value,strategy:strategyPreset.value};captureManagers();pick=1;drafted=[];history=[];selectedCandidateId=null;buildProfiles();setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll()}
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
 function teamForPick(p){let r=Math.ceil(p/10),x=(p-1)%10+1;return r%2?x:11-x}
@@ -228,7 +229,16 @@ function myPlayers(){return history.filter(h=>h.team===slot).map(h=>players.find
 function counts(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{if(c[p.pos]!==undefined)c[p.pos]++});return c}
 function expected(){return blueprint[Math.min(info().r-1,5)]||"BPA"}
 function fit(p){let e=expected();return e==="BPA"?0:e===p.pos?18:e.includes(p.pos)?15:-4}
-function gerardScore(p){let c=counts(),round=info().r,s=180-p.overall*1.12+fit(p)+(p.bdgeBoost||0);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=25;if(p.pos==="TE"&&c.TE>=1)s-=18;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;if(["RB","WR","QB","TE"].includes(p.pos)){let mp=marketPressure(p.pos);s+=mp.pressure*.16}
+function sourceBlend(p){
+ let fp=p.fantasyProsPosRank||p.posRank||50, fl=p.posRank||fp, bd=p.bdgeRank||fl, fk=p.flockRank||fl;
+ // Gerard trusts analyst intelligence more than generic consensus.
+ return 100-((bd*.35+fl*.30+fk*.25+fp*.10)*1.35);
+}
+function formatModifier(p){let m=0;if(leagueContext.scoring==="full"&&p.pos==="WR")m+=4;if(leagueContext.scoring==="full"&&p.pos==="RB"&&p.opportunityTrend&&/receiv|target/i.test(p.opportunityTrend))m+=3;if(leagueContext.scoring==="standard"&&p.pos==="RB")m+=5;if(leagueContext.startWR===3&&p.pos==="WR")m+=5;if(leagueContext.flex===2&&["RB","WR"].includes(p.pos))m+=3;if(leagueContext.passTD===6&&p.pos==="QB")m+=2;if(leagueContext.risk==="aggressive"&&(p.leagueBreaker||p.rookie))m+=5;if(leagueContext.risk==="safe"&&p.availabilityRisk==="high")m-=10;return m}
+function draftPhase(){let r=info().r;return r<=5?{name:"Foundation",text:"Take value and build dependable starters."}:r<=9?{name:"Structure",text:"Balance the roster, monitor tiers, and use stacks as tie-breakers."}:{name:"Endgame Hunter",text:"Chase upside, paths to larger roles, and premium handcuffs."}}
+function strategyHealth(){let c=counts(),r=info().r,msg="Stay flexible — value can override the plan.";if(r<=3&&c.WR>=1&&c.RB>=2)msg="Anchor WR + Double RB is on track.";else if(r<=4&&c.RB>=2)msg="Strong RB foundation. Add WR value next.";else if(r>=5&&c.WR<2)msg="WR depth is behind. Prefer WR when value is close.";else if(r>=7&&c.QB===0)msg="Late-QB plan active; draft only when the tier starts thinning.";return msg}
+function renderDraftPlan(){let d=draftPhase(),html=`<div class="strategy"><span><b>${d.name} Mode</b><small style="display:block;color:var(--muted);margin-top:3px">${d.text}</small></span><span class="pill">R${info().r}</span></div>`;["mobileDraftPhase","desktopDraftPhase"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=html});["mobileStrategyHealth","desktopStrategyHealth"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=strategyHealth()})}
+function gerardScore(p){let c=counts(),round=info().r,s=150-p.overall*.82+sourceBlend(p)+(p.bdgeBoost||0)+(p.flockBoost||0)+formatModifier(p)+fit(p);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=25;if(p.pos==="TE"&&c.TE>=1)s-=18;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;if(p.priceFade)s-=7;if(p.coreTarget)s+=5;if(p.leagueBreaker&&round>=7)s+=5;if(p.availabilityRisk==="high")s-=9;if(p.ambiguity==="high")s-=3;if(["RB","WR","QB","TE"].includes(p.pos)){let mp=marketPressure(p.pos);s+=mp.pressure*.16}
  let bp=blueprintFactors(p);s+=bp.stack.points+bp.hand.points;if(bp.exp?.severity==="moderate")s-=2;if(bp.exp?.severity==="heavy")s-=5;if(bp.exp?.severity==="heavy"&&p.offenseQuality==="weak")s-=3;if(bp.bye)s-=2;
 return s}
 function recommendations(){return [...available()].sort((a,b)=>gerardScore(b)-gerardScore(a)).slice(0,5)}
@@ -276,6 +286,7 @@ function sourceRankLabel(p,source){
  if(source==="BDGE"){
    return p.bdgeRank?`${p.pos}${p.bdgeRank}${p.bdgeTier?` • ${p.bdgeTier}`:""}`:"—";
  }
+ if(source==="Flock"){ return p.flockRank?`${p.pos}${p.flockRank} • Tier ${p.flockTier||"—"}`:"—"; }
  if(source==="FantasyPros"){
    return `${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank||"—"}`;
  }
@@ -299,13 +310,13 @@ function openScan(id){
    <div class="scanMetric"><span>Weekly Ceiling</span><b>${s.ceiling}/100</b></div>
    <div class="scanMetric"><span>Floor</span><b>${s.floor}/100</b></div>
    <div class="scanMetric"><span>Current Board Rank</span><b>#${p.overall||"—"}</b></div>
-   <div class="scanMetric"><span>Recommendation</span><b>${state.label.replace(/[^\w\s]/g,"").trim()}</b></div>
+   <div class="scanMetric"><span>Recommendation</span><b>${state.label.replace(/[^\w\s]/g,"").trim()}</b></div><div class="scanMetric"><span>Offense</span><b>${p.offenseScore||72}/100</b></div><div class="scanMetric"><span>Availability</span><b>${p.availabilityRisk||"low"}</b></div><div class="scanMetric"><span>Projection Confidence</span><b>${p.ambiguity==="high"?"Low":p.ambiguity==="medium"?"Medium":"High"}</b></div><div class="scanMetric"><span>Analyst Alignment</span><b>${p.analystCoverage||2}/4 sources</b></div>
  </div>
  <b>Source breakdown</b>
  <div class="sourceGrid">
    <div class="sourceBox"><div class="source">FANTASYLAND</div><b>${sourceRankLabel(p,"Fantasyland")}</b></div>
    <div class="sourceBox"><div class="source">BDGE</div><b>${sourceRankLabel(p,"BDGE")}</b></div>
-   <div class="sourceBox"><div class="source">FANTASYPROS</div><b>${sourceRankLabel(p,"FantasyPros")}</b></div>
+   <div class="sourceBox"><div class="source">FLOCK</div><b>${sourceRankLabel(p,"Flock")}</b></div><div class="sourceBox"><div class="source">FANTASYPROS</div><b>${sourceRankLabel(p,"FantasyPros")}</b></div>
  </div>
  <div class="scanNotes"><b>Why Sharingan sees him this way</b><br>${notes}. ${rationale(p)}.</div>
  <div class="scanActions"><button class="primary" onclick="selectPlayer(${p.id},${slot});closeScan()">Draft to My Team</button><button class="ghost" onclick="selectPlayer(${p.id},${teamForPick(pick)});closeScan()">Record for Current Team</button></div>`;
@@ -359,7 +370,7 @@ function renderRecommendation(){
      <span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span>
      <span class="tag">${p.team}</span>
      <span class="tag">Bye ${p.bye}</span>
-     ${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}
+     ${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}${p.coreTarget?`<span class="tag">Core Target</span>`:""}${p.priceFade?`<span class="tag">Price Caution</span>`:""}
      <span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span>
    </div>
    <div class="reason">${rationale(p)}<br><span class="meta">${runSignal()}</span></div>${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
