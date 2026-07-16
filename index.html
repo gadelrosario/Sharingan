@@ -121,11 +121,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .exposureList{display:flex;flex-direction:column;gap:6px;margin-top:8px}.exposureRow{display:grid;grid-template-columns:45px 1fr auto;gap:8px;align-items:center;background:#110e11;border:1px solid #382830;border-radius:9px;padding:7px 8px}.exposureRow.warn{border-color:#8c742d}.exposureRow.heavy{border-color:#b42d40;background:#231014}.exposureBar{height:6px;background:#2c2530;border-radius:999px;overflow:hidden}.exposureBar span{display:block;height:100%;background:linear-gradient(90deg,#6d1a28,#d63b52)}.exposureNote{font-size:9px;color:var(--muted);line-height:1.35;margin-top:7px}.blueprintBreakdown{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:9px 0}.blueprintFactor{background:#100d10;border:1px solid #39272d;border-radius:8px;padding:7px}.blueprintFactor span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase}.blueprintFactor b{display:block;margin-top:2px}
 </style></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 12 • Sharingan Intelligence</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Version 2.0 Alpha 12.1 • Sharingan Intelligence Hotfix</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">AI drafts the other nine teams and stops when it is your turn.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">You manually enter every real selection. No computer picks.</p></div></div>
-<div class="controls"><label>Your draft position<select id="draftSlot"></select></label><label>Draft room style<select id="roomStyle"><option value="balanced">Balanced</option><option value="chaotic" selected>Chaotic</option><option value="conservative">Conservative</option></select></label><label>Teams<select><option>10 teams</option></select></label></div>
+<div class="controls"><label>Your draft position<select id="draftSlot"></select></label><label>Draft room style<select id="roomStyle"><option value="balanced">Balanced</option><option value="chaotic" selected>Chaotic</option><option value="conservative">Conservative</option></select></label><label>Teams<select id="teamCount"><option value="10">10 teams</option></select></label></div>
+<div class="controls"><label>Scoring<select id="scoring"><option value="half" selected>Half PPR</option><option value="full">Full PPR</option><option value="standard">Standard</option></select></label><label>Starting WRs<select id="startWR"><option value="2">2 WR</option><option value="3" selected>3 WR</option></select></label><label>Flex spots<select id="flexSpots"><option value="1">1 Flex</option><option value="2" selected>2 Flex</option></select></label></div>
+<div class="controls"><label>Passing TDs<select id="passTD"><option value="4" selected>4 points</option><option value="6">6 points</option></select></label><label>Risk profile<select id="riskProfile"><option value="safe">Safer</option><option value="balanced" selected>Balanced</option><option value="aggressive">Aggressive</option></select></label><label>Draft strategy<select id="strategyPreset"><option value="auto" selected>Auto — Stay Water</option><option value="balanced">Balanced</option><option value="heroRB">Hero RB</option><option value="anchorWR">Anchor WR</option><option value="doubleRB">Double Anchor RB</option></select></label></div>
 <div class="card" style="background:#111017;margin-bottom:12px"><b>Assign managers to draft slots</b><div class="meta" style="margin-top:4px">Saved league profiles power mock-draft behavior and steal-risk estimates.</div><div id="managerSetup" class="managerSetup"></div><div id="mockRandomizer" style="display:flex;gap:8px;align-items:center;margin-top:9px"><button class="scanBtn" onclick="randomizeManagerOrder()">Randomize Mock Order</button><span class="meta">Gerard stays in your selected slot. Live Draft keeps manual assignments.</span></div></div>
 <div id="poolStatus" class="card" style="background:#111017;margin-bottom:12px">
   <b>Draft pool loading…</b>
@@ -213,13 +215,45 @@ const managers=[
 {name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7}
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5"];
-async function init(){players=await fetch("data/players.json?v=alpha12",{cache:"no-store"}).then(r=>r.json());for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;draftSlot.appendChild(o)}draftSlot.value=10;renderManagerSetup()}
+async function init(){
+ try{
+  const response=await fetch("data/players.json?v=alpha12_1",{cache:"no-store"});
+  if(!response.ok)throw new Error("Player database returned "+response.status);
+  players=await response.json();
+  poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;
+ }catch(err){
+  console.error("Fantasy HQ player pool failed to load:",err);
+  poolStatus.innerHTML=`<b style="color:#ff8c9a">Draft pool could not load</b><div class="meta" style="margin-top:4px">Open the installed/deployed website rather than the HTML file by itself, then refresh. Error: ${err.message}</div>`;
+ }
+ for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;draftSlot.appendChild(o)}
+ draftSlot.value=10;
+ renderManagerSetup();
+}
 
 function renderManagerSetup(){const pref=["Kalani","Marc","Ray","Fritz","Michael","Gerard","Josh","Raoul","Rob","AJ"];managerSetup.innerHTML="";for(let i=1;i<=10;i++){let w=document.createElement("div");w.className="managerSlot";let b=document.createElement("b");b.textContent="Pick "+i;let s=document.createElement("select");s.id="mgr"+i;managers.forEach(m=>{let o=document.createElement("option");o.value=m.name;o.textContent=m.name+" — "+m.archetype;s.appendChild(o)});s.value=pref[i-1];w.append(b,s);managerSetup.appendChild(w)}}
 function captureManagers(){slotManagers={};for(let i=1;i<=10;i++){let e=document.getElementById("mgr"+i);slotManagers[i]=e?e.value:"Team "+i}let old=Object.keys(slotManagers).find(k=>slotManagers[k]==="Gerard");if(old&&+old!==slot){let tmp=slotManagers[slot];slotManagers[old]=tmp}slotManagers[slot]="Gerard"}
 function getManager(t){return managers.find(m=>m.name===slotManagers[t])||managers[0]}
 function chooseMode(m){mode=m;practiceChoice.classList.toggle("selected",m==="practice");liveChoice.classList.toggle("selected",m==="live");if(document.getElementById("mockRandomizer"))mockRandomizer.classList.toggle("hidden",m!=="practice")}
-function startDraft(){mobileTeamExpanded=false;slot=+draftSlot.value;style=roomStyle.value;leagueContext={scoring:scoring.value,startWR:+startWR.value,flex:+flexSpots.value,passTD:+passTD.value,risk:riskProfile.value,strategy:strategyPreset.value};captureManagers();pick=1;drafted=[];history=[];selectedCandidateId=null;buildProfiles();setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll()}
+function startDraft(){
+ try{
+  if(!players.length){alert("The player pool has not loaded yet. Refresh the installed website and wait for ‘Draft pool ready.’");return}
+  mobileTeamExpanded=false;
+  slot=+(document.getElementById("draftSlot")?.value||10);
+  style=document.getElementById("roomStyle")?.value||"chaotic";
+  leagueContext={
+   scoring:document.getElementById("scoring")?.value||"half",
+   startWR:+(document.getElementById("startWR")?.value||3),
+   flex:+(document.getElementById("flexSpots")?.value||2),
+   passTD:+(document.getElementById("passTD")?.value||4),
+   risk:document.getElementById("riskProfile")?.value||"balanced",
+   strategy:document.getElementById("strategyPreset")?.value||"auto"
+  };
+  captureManagers();pick=1;drafted=[];history=[];selectedCandidateId=null;buildProfiles();
+  setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
+  modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${mode==="practice"?"🟢 PRACTICE MOCK DRAFT":"🔵 LIVE DRAFT DAY"}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
+  practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode!=="live");renderAll();
+ }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please install the Alpha 12.1 hotfix. Technical detail: "+err.message)}
+}
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
 function teamForPick(p){let r=Math.ceil(p/10),x=(p-1)%10+1;return r%2?x:11-x}

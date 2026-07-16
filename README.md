@@ -1,4 +1,4 @@
-# Gerard Fantasy HQ — Version 2.0 Alpha 12: Sharingan Intelligence
+# Gerard Fantasy HQ — Version 2.0 Alpha 12.1: Sharingan Intelligence
 
 Install this folder directly; no earlier version is required. This update preserves Alpha 11 and adds Flock rankings, league-aware scoring, draft phases, strategy health, expanded Sharingan scans, price/availability/ambiguity controls, and simpler live-draft guidance.
 
