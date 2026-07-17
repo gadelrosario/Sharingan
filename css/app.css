@@ -130,3 +130,49 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .exposureList{display:flex;flex-direction:column;gap:6px;margin-top:8px}.exposureRow{display:grid;grid-template-columns:45px 1fr auto;gap:8px;align-items:center;background:#110e11;border:1px solid #382830;border-radius:9px;padding:7px 8px}.exposureRow.warn{border-color:#8c742d}.exposureRow.heavy{border-color:#b42d40;background:#231014}.exposureBar{height:6px;background:#2c2530;border-radius:999px;overflow:hidden}.exposureBar span{display:block;height:100%;background:linear-gradient(90deg,#6d1a28,#d63b52)}.exposureNote{font-size:9px;color:var(--muted);line-height:1.35;margin-top:7px}.blueprintBreakdown{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:9px 0}.blueprintFactor{background:#100d10;border:1px solid #39272d;border-radius:8px;padding:7px}.blueprintFactor span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase}.blueprintFactor b{display:block;margin-top:2px}
 
 .quickPickGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}.quickPick{display:flex;align-items:center;justify-content:space-between;gap:7px;background:#110e11;border:1px solid #463039;border-radius:10px;padding:8px;text-align:left;color:var(--text)}.quickPick:hover{border-color:#c63a4d}.quickPick .qname{font-weight:850;font-size:11px}.quickPick .qmeta{font-size:9px;color:var(--muted);margin-top:2px}.clockStrip{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#241116;border:1px solid #8e2936;border-radius:10px;padding:9px;margin-top:8px}.recentPicks{display:flex;flex-direction:column;gap:5px;margin-top:8px}.recentPick{display:grid;grid-template-columns:38px 1fr auto;gap:7px;align-items:center;background:#100e11;border:1px solid #382830;border-radius:8px;padding:7px}.playerRow.fast{grid-template-columns:34px 1fr auto}.autoPickBtn{background:#8d1f31;border:1px solid #e35b6d;color:#fff;border-radius:8px;padding:7px 9px;font-weight:850}.quickSectionTitle{display:flex;align-items:center;justify-content:space-between;margin-top:10px}.filterActive{border-color:#f2c65d!important;color:#f2c65d!important}@media(max-width:900px){.quickPickGrid{grid-template-columns:1fr 1fr}.boardList{max-height:none}}@media(max-width:430px){.quickPickGrid{grid-template-columns:1fr}}
+
+
+/* Chūnin Reforged 2.2 — War Room Cleanup */
+.desktopOnly{display:block}
+#mobileBoard,#mobilePlayers,#mobileTeam{display:none}
+.desktopBoardSection{margin-top:11px}
+.fullBoardCard{padding:13px}
+.fullBoardCard .boardWrap{margin-top:10px;overflow-x:auto;overflow-y:hidden}
+.fullBoardCard .board{min-width:0;width:100%;grid-template-columns:repeat(10,minmax(92px,1fr));gap:5px}
+.fullBoardCard .teamHead{font-size:10px;padding:7px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fullBoardCard .pickCell{min-height:38px;padding:4px 5px}
+.fullBoardCard .pickCell .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.boardClockBadge{background:#2a1117;border:1px solid #a52a3a;border-radius:999px;padding:6px 10px;font-size:10px;font-weight:900;color:#ffdce2}
+.desktopCommandRail .boardList{max-height:360px}
+.desktopCommandRail .playerRow{grid-template-columns:30px minmax(0,1fr) 96px}
+.desktopCommandRail .desktopRoomPanel{max-height:520px}
+
+/* Sharingan Scan 2.0 */
+.scanCard{width:min(680px,100%)}
+.scanVerdict{border:1px solid #7f2c39;background:linear-gradient(145deg,#2b1118,#160e12);border-radius:14px;padding:14px;margin:12px 0}
+.scanVerdictLabel{font-size:12px;font-weight:950;letter-spacing:1.2px;text-transform:uppercase;color:#f4d35e}
+.scanVerdictLabel.go{color:#75dda0}.scanVerdictLabel.wait{color:#f4d35e}.scanVerdictLabel.pass{color:#ff8d9b}
+.scanVerdictText{font-size:12px;line-height:1.4;color:#eadfe3;margin-top:5px}
+.scanQuickGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 13px}
+.scanQuickMetric{background:#100d10;border:1px solid #3b2930;border-radius:11px;padding:10px;text-align:center}
+.scanQuickMetric span{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:900}
+.scanQuickMetric b{display:block;font-size:17px;margin-top:4px;color:#fff}
+.scanWhy{background:#100d10;border:1px solid #382830;border-radius:11px;padding:11px;margin:10px 0}
+.scanWhy ul{margin:7px 0 0;padding-left:18px}.scanWhy li{margin:5px 0;line-height:1.35}
+.scanAlternative{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#181116;border:1px solid #48313a;border-radius:11px;padding:10px;margin:10px 0}
+.scanAlternative .meta{margin-top:3px}
+.scanPrimaryAction{width:100%;font-size:15px;padding:13px;margin-top:4px}
+.scanDetails{margin-top:10px;border-top:1px solid #3b2930;padding-top:10px}
+.scanDetails summary{cursor:pointer;font-weight:900;color:#ffd6dc;padding:5px 0}
+.scanDetails[open] summary{margin-bottom:10px}
+.scanDetails .scanGrid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1100px) and (min-width:901px){
+ .appgrid{grid-template-columns:250px minmax(480px,1fr) 300px}
+ .fullBoardCard .board{grid-template-columns:repeat(10,minmax(84px,1fr))}
+}
+@media(max-width:900px){
+ .desktopOnly{display:none!important}
+ #mobileBoard.mobilePage.active,#mobilePlayers.mobilePage.active,#mobileTeam.mobilePage.active{display:block}
+ .scanQuickGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .scanDetails .scanGrid{grid-template-columns:repeat(2,1fr)}
+}

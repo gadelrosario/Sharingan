@@ -1,15 +1,10 @@
-# Gerard Fantasy HQ — Chūnin Reforged 2.1
+# Fantasy HQ — Chūnin Reforged 2.2
 
-This is the **Gold Master migration build**. It preserves the complete Chūnin 1.3.1 experience while moving the styling and application logic out of the single HTML file.
+War Room Cleanup release.
 
-## Structure
+- Removes duplicate desktop snake board and available-player sections.
+- Adds one full-width desktop snake board with all ten teams visible.
+- Keeps a compact player command rail with live on-the-clock status.
+- Redesigns Sharingan Scan with verdict-first hierarchy, four quick metrics, concise reasons, best alternative, and expandable full analysis.
 
-- `index.html` — page structure
-- `css/app.css` — all visual styling
-- `js/app.js` — complete draft application logic
-- `data/players.json` — player database
-- `service-worker.js` — PWA/offline cache
-
-## Deployment
-
-Upload every file and folder in this directory to the root of the GitHub Pages repository.
+Upload all files and folders to the root of the GitHub Pages repository.

@@ -178,35 +178,44 @@ function sourceRankLabel(p,source){
 function openScan(id){
  const modal=document.getElementById("scanModal"),content=document.getElementById("scanContent");
  let p=players.find(x=>x.id===Number(id));if(!p||!modal||!content)return;
- let s=scoreComponents(p),risk=survivalRisk(p),state=recommendationState(p);
+ let s=scoreComponents(p),risk=survivalRisk(p),state=recommendationState(p),market=["QB","RB","WR","TE"].includes(p.pos)?marketPressure(p.pos):null;
+ let windowLabel=market?positionWindow(market):"Late Round";
+ let fitLabel=s.fit>=92?"Elite":s.fit>=84?"Strong":s.fit>=75?"Good":"Neutral";
+ let verdict=risk>=70||valueOverride(p)?{label:"DRAFT NOW",cls:"go",text:`${p.name} is strong value and is unlikely to survive to your next selection.`}:risk>=42||windowLabel==="Closing"?{label:"GOOD VALUE — CONSIDER NOW",cls:"wait",text:`The value is solid, but the position window is beginning to tighten.`}:{label:"SAFE TO WAIT",cls:"wait",text:`The board still offers alternatives and the current position window remains manageable.`};
+ let alternatives=available().filter(x=>x.id!==p.id&&recommendationEligible(x)).sort((a,b)=>finalPickScore(b)-finalPickScore(a));
+ let alt=alternatives[0];
  let labels=(p.bdgeLabels||[]).length?p.bdgeLabels.join(" • "):"No additional BDGE flag";
- let notes=[
-   p.rankingRole,
-   labels,
-   p.opportunityTrend&&p.opportunityTrend!=="Pending"?p.opportunityTrend:null,
-   p.gerardPreference&&p.gerardPreference!=="neutral"?`Gerard preference: ${p.gerardPreference}`:null
- ].filter(Boolean).join(". ");
+ let notes=[p.rankingRole,labels,p.opportunityTrend&&p.opportunityTrend!=="Pending"?p.opportunityTrend:null,p.gerardPreference&&p.gerardPreference!=="neutral"?`Gerard preference: ${p.gerardPreference}`:null].filter(Boolean).join(". ");
+ let why=[];
+ if(valueOverride(p))why.push("Value Override is active — talent gap outweighs roster balance.");
+ if(p.overallTier==="S"||p.overallTier==="A")why.push(`${p.overallTier}-tier talent is still available.`);
+ if(risk>=60)why.push(`${risk}% steal risk before your next selection.`); else why.push(`${100-risk}% estimated chance to remain available.`);
+ if(windowLabel==="Closing"||windowLabel==="Thinning")why.push(`${p.pos} position window is ${windowLabel.toLowerCase()}.`);
+ why.push(fitLabel==="Elite"||fitLabel==="Strong"?`Strong fit with your current roster and draft blueprint.`:`Board value remains the primary reason for this recommendation.`);
  content.innerHTML=`
  <div class="scanHeader"><div><div class="scanEye"><span class="sharinganIcon"></span> SHARINGAN SCAN</div><div class="scanName">${p.name}</div><div class="tagrow">${tierBadge(p)}<span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">${coverageText(p)}</span></div></div><button class="ghost" onclick="closeScan()">Close</button></div>
- <div class="scanGrid">
-   <div class="scanMetric"><span>Mamba Score</span><b>${s.fit}/100</b></div><div class="scanMetric"><span>Final Pick Score</span><b>${finalPickScore(p)}/100</b></div><div class="scanMetric"><span>Position Window</span><b>${["QB","RB","WR","TE"].includes(p.pos)?positionWindow(marketPressure(p.pos)):"Late Round"}</b></div><div class="scanMetric"><span>Sharingan State</span><b>${sharinganStage(p).meaning}</b></div>
-   <div class="scanMetric"><span>Steal Risk</span><b>${risk}%</b></div>
-   <div class="scanMetric"><span>Weekly Ceiling</span><b>${s.ceiling}/100</b></div>
-   <div class="scanMetric"><span>Floor</span><b>${s.floor}/100</b></div>
-   <div class="scanMetric"><span>Current Board Rank</span><b>#${p.overall||"—"}</b></div>
-   <div class="scanMetric"><span>Recommendation</span><b>${state.label.replace(/[^\w\s]/g,"").trim()}</b></div><div class="scanMetric"><span>Offense</span><b>${p.offenseScore||72}/100</b></div><div class="scanMetric"><span>Availability</span><b>${p.availabilityRisk||"low"}</b></div><div class="scanMetric"><span>Projection Confidence</span><b>${p.ambiguity==="high"?"Low":p.ambiguity==="medium"?"Medium":"High"}</b></div><div class="scanMetric"><span>Analyst Alignment</span><b>${p.analystCoverage||2}/4 sources</b></div>
+ <div class="scanVerdict"><div class="scanVerdictLabel ${verdict.cls}">${verdict.label}</div><div class="scanVerdictText">${verdict.text}</div></div>
+ <div class="scanQuickGrid">
+   <div class="scanQuickMetric"><span>Mamba</span><b>${s.fit}</b></div>
+   <div class="scanQuickMetric"><span>Chance Gone</span><b>${risk}%</b></div>
+   <div class="scanQuickMetric"><span>Roster Fit</span><b>${fitLabel}</b></div>
+   <div class="scanQuickMetric"><span>Window</span><b>${windowLabel}</b></div>
  </div>
- <b>Source breakdown</b>
- <div class="sourceGrid">
-   <div class="sourceBox"><div class="source">FANTASYLAND</div><b>${sourceRankLabel(p,"Fantasyland")}</b></div>
-   <div class="sourceBox"><div class="source">BDGE</div><b>${sourceRankLabel(p,"BDGE")}</b></div>
-   <div class="sourceBox"><div class="source">FLOCK</div><b>${sourceRankLabel(p,"Flock")}</b></div><div class="sourceBox"><div class="source">FANTASYPROS</div><b>${sourceRankLabel(p,"FantasyPros")}</b></div>
- </div>
- <div class="scanNotes"><b>Sharingan says</b><br>${valueOverride(p)?"Take the value. Roster balance does not outweigh this gap.":roomBoost(p)>=4?`Take ${p.pos} now if values are close; the Position Window is thinning.`:"This is one of the best blended values for your roster."}<br><br><b>Full explanation</b><br>${notes}. ${rationale(p)}.</div>
- <div class="scanActions"><button class="primary" onclick="selectPlayer(${p.id},${slot});closeScan()">Draft to My Team</button><button class="ghost" onclick="selectPlayer(${p.id},${teamForPick(pick)});closeScan()">Record for Current Team</button></div>`;
+ <div class="scanWhy"><b>Why this matters</b><ul>${why.slice(0,4).map(x=>`<li>${x}</li>`).join("")}</ul></div>
+ ${alt?`<div class="scanAlternative"><div><b>Best alternative: ${alt.name}</b><div class="meta">${alt.pos} • ${alt.team} • ${tierLabel(alt)} Tier • ${finalPickScore(alt)}/100</div></div><button class="scanBtn" onclick="openScan(${alt.id})">Compare</button></div>`:""}
+ <button class="primary scanPrimaryAction" onclick="selectPlayer(${p.id},${slot});closeScan()">Draft ${p.name}</button>
+ <details class="scanDetails"><summary>Show Full Sharingan Analysis</summary>
+   <div class="scanGrid">
+     <div class="scanMetric"><span>Final Pick Score</span><b>${finalPickScore(p)}/100</b></div><div class="scanMetric"><span>Weekly Ceiling</span><b>${s.ceiling}/100</b></div><div class="scanMetric"><span>Floor</span><b>${s.floor}/100</b></div>
+     <div class="scanMetric"><span>Board Rank</span><b>#${p.overall||"—"}</b></div><div class="scanMetric"><span>Sharingan State</span><b>${sharinganStage(p).meaning}</b></div><div class="scanMetric"><span>Confidence</span><b>${p.ambiguity==="high"?"Low":p.ambiguity==="medium"?"Medium":"High"}</b></div>
+   </div>
+   <b>Source breakdown</b>
+   <div class="sourceGrid"><div class="sourceBox"><div class="source">FANTASYLAND</div><b>${sourceRankLabel(p,"Fantasyland")}</b></div><div class="sourceBox"><div class="source">BDGE</div><b>${sourceRankLabel(p,"BDGE")}</b></div><div class="sourceBox"><div class="source">FLOCK</div><b>${sourceRankLabel(p,"Flock")}</b></div><div class="sourceBox"><div class="source">FANTASYPROS</div><b>${sourceRankLabel(p,"FantasyPros")}</b></div></div>
+   <div class="scanNotes"><b>Full explanation</b><br>${notes}. ${rationale(p)}.</div>
+   <button class="ghost" style="width:100%;margin-top:9px" onclick="selectPlayer(${p.id},${teamForPick(pick)});closeScan()">Record for Current Team</button>
+ </details>`;
  modal.classList.remove("hidden");modal.setAttribute("aria-hidden","false");
 }
-
 function closeScan(e){const modal=document.getElementById("scanModal");if(!modal)return;if(e&&e.target!==modal)return;modal.classList.add("hidden");modal.setAttribute("aria-hidden","true")}
 
 
@@ -472,7 +481,7 @@ function recentPicksMarkup(){let rows=history.slice(-10).reverse();if(!rows.leng
 function renderQuickDraftBoard(){
  const q=likelyNextPicks().map(quickPickMarkup).join(''), clock=clockStripMarkup(), recent=recentPicksMarkup();
  ['mobileQuickPicks','desktopQuickPicks'].forEach(id=>{let e=el(id);if(e)e.innerHTML=q});
- ['mobileClockStrip','desktopClockStrip','mobilePlayersClock'].forEach(id=>{let e=el(id);if(e)e.innerHTML=clock});
+ ['mobileClockStrip','desktopClockStrip','mobilePlayersClock'].forEach(id=>{let e=el(id);if(e)e.innerHTML=clock});let boardClock=el('desktopBoardClock');if(boardClock){let x=currentPickLabel();boardClock.textContent=`${x.name} • Pick ${x.label}`;}
  ['mobileRecentPicks','desktopRecentPicks'].forEach(id=>{let e=el(id);if(e)e.innerHTML=recent});
 }
 function recordCurrentPick(id){selectPlayer(id,currentPickOwner())}
