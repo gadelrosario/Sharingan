@@ -4,10 +4,10 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07111f"><meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg">
-<title>Gerard Fantasy HQ — Chūnin Reforged 2.8</title>
-<link rel="stylesheet" href="css/app.css?v=2.4.0"></head>
+<title>Gerard Fantasy HQ — Jōnin 2.9</title>
+<link rel="stylesheet" href="css/app.css?v=2.9.0"></head>
 <body>
-<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Chūnin Reforged 2.8 • Unity Core</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
+<header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Jōnin 2.9 • Unity Core</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
 <section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
 <div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">Fantasy HQ controls the computer opponents.</p></div><div id="yahooChoice" class="modeCard live" onclick="chooseMode('yahoo')"><h3>🟣 Yahoo Live Mock</h3><p class="meta">Draft against real people on Yahoo and record every selection here.</p></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">Use for your real league draft. You manually enter every selection.</p></div></div>
@@ -15,6 +15,18 @@
 <div class="controls"><label>Scoring<select id="scoring"><option value="half" selected>Half PPR</option><option value="full">Full PPR</option><option value="standard">Standard</option></select></label><label>Starting WRs<select id="startWR"><option value="2">2 WR</option><option value="3" selected>3 WR</option></select></label><label>Flex spots<select id="flexSpots"><option value="1">1 Flex</option><option value="2" selected>2 Flex</option></select></label></div>
 <div class="controls"><label>Passing TDs<select id="passTD"><option value="4">4 points</option><option value="6" selected>6 points</option></select></label><label>Risk profile<select id="riskProfile"><option value="safe">Safer</option><option value="balanced" selected>Balanced</option><option value="aggressive">Aggressive</option></select></label><label>Draft strategy<select id="strategyPreset"><option value="auto" selected>Auto — Stay Water</option><option value="balanced">Balanced</option><option value="heroRB">Hero RB</option><option value="anchorWR">Anchor WR</option><option value="doubleRB">Double Anchor RB</option></select></label></div>
 <div class="card" style="background:#111017;margin-bottom:12px"><b>Assign managers to draft slots</b><div class="meta" style="margin-top:4px">Saved league profiles power mock-draft behavior and steal-risk estimates.</div><div id="managerSetup" class="managerSetup"></div><div id="mockRandomizer" style="display:flex;gap:8px;align-items:center;margin-top:9px"><button class="scanBtn" onclick="randomizeManagerOrder()">Randomize Mock Order</button><span class="meta">Gerard stays in your selected slot. Yahoo Live Mock and Live Draft keep manual assignments.</span></div></div>
+
+<div class="card syncFoundationCard" style="background:#111017;margin-bottom:12px">
+  <div class="sectionHeader"><div><b>League Sync Foundation</b><div class="meta">Canonical league state for Yahoo, Sleeper, and snapshot imports.</div></div><span id="syncStatusBadge" class="leagueProfileBadge">LOCAL</span></div>
+  <div id="syncStatusText" class="meta" style="margin:8px 0">Ready for league snapshot import.</div>
+  <div class="syncActions">
+    <button class="ghost" onclick="downloadLeagueSnapshot()">Export Snapshot</button>
+    <button class="ghost" onclick="document.getElementById('leagueSnapshotInput').click()">Import Snapshot</button>
+    <button class="scanBtn" onclick="prepareYahooConnection()">Prepare Yahoo</button>
+  </div>
+  <input id="leagueSnapshotInput" type="file" accept="application/json,.json" class="hidden" onchange="importLeagueSnapshot(event)">
+  <div class="meta" style="margin-top:8px">Yahoo authorization is intentionally not stored in this browser build. The data model and import path are now ready for a secure backend connection.</div>
+</div>
 <div id="poolStatus" class="card" style="background:#111017;margin-bottom:12px">
   <b>Draft pool loading…</b>
 </div>
@@ -129,7 +141,8 @@
 </section>
 <section id="draftReport" class="hidden"><div class="reportHero"><div class="scanEye">👁 SHARINGAN LEAGUE REPORT</div><h2>Draft Complete</h2><div class="projectionNote">Draft-day projection based on roster strength, value, positional balance, ceiling, and bench construction. It is not a guarantee of season results.</div></div><div id="myDraftReport"></div><div class="card"><b>Projected League Rankings</b><div id="leagueProjection"></div></div><div class="card"><b>All Team Report Cards</b><div id="allTeamReports"></div></div><div id="yahooExportCard" class="card hidden"><b>Yahoo Mock Saved</b><div class="meta" style="margin:6px 0 10px">This draft was against real people. Export the JSON file and upload it here so the draft can be analyzed and used to improve Fantasy HQ.</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="primary" onclick="exportCurrentYahooJSON()">Download This Mock JSON</button><button class="ghost" onclick="exportAllYahooJSON()">Download All Yahoo Mocks</button></div><button class="ghost" style="width:100%;margin-top:8px" onclick="exportCurrentYahooCSV()">Download Picks CSV</button><div class="meta" id="archiveCount" style="margin-top:8px"></div></div><button class="primary" style="width:100%;margin-top:10px" onclick="startAnotherMock()">Start Another Mock</button></section><section id="mobileTeam" class="mobilePage mobileOnly"><div class="card"><b>Your roster</b><div id="mRoster"></div></div><div class="card"><b>AI strategies</b><div id="mStrategies"></div></div></section></section></div>
 <nav id="tabs" class="tabs hidden"><button onclick="showPage('mobileDraft')">🏈<br>Draft</button><button onclick="showPage('mobileBoard')">🧩<br>Board</button><button onclick="showPage('mobilePlayers')">📋<br>Players</button><button onclick="showPage('mobileTeam')">👥<br>Team</button></nav>
-<script src="js/app.js?v=2.4.0"></script>
+<script src="js/fantasy-hq-core.js?v=2.9.0"></script>
+<script src="js/app.js?v=2.9.0"></script>
 
 <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
   <div class="bottomSheetPanel" onclick="event.stopPropagation()">

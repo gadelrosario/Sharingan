@@ -1,12 +1,27 @@
-# Fantasy HQ — Chūnin Reforged 2.8: Unity Core
+# Fantasy HQ — Jōnin 2.9: Intelligence Foundation
 
-This release introduces one shared intelligence cache and one canonical player evaluation used by the recommendation, Sharingan Scan, Wait Meter, Room Intel, Peek Ahead, and player displays.
+This is the current GitHub-ready build.
 
-## Core changes
-- One canonical tier selector for every panel.
-- One cached Mamba and Final Pick score per player per draft state.
-- One intelligence snapshot per pick.
-- Snapshot invalidation immediately after every recorded, simulated, or undone pick.
-- Shared market-pressure and wait-meter values.
-- BDGE and Flock remain in the source blend and source breakdown.
-- Reduced duplicate calculations to improve phone performance.
+## What changed
+- Added a canonical, versioned League State stored locally.
+- Added snapshot import/export for league settings, teams, rosters, available players, transactions, matchups, standings, and waivers.
+- Added a provider-neutral sync abstraction so Yahoo, Sleeper, and local snapshots can feed the same decision engine.
+- Added reusable Team Strength, TeamFit, and before/after transaction simulation APIs.
+- Draft picks and undos now update the canonical League State automatically.
+- Added visible sync status and a Yahoo preparation control without storing credentials in the browser.
+- Preserved the 2.8 Unity Core draft interface and recommendation behavior.
+
+## Important limitation
+True Yahoo OAuth syncing requires a secure backend for client secrets, access tokens, refresh tokens, and scheduled API refreshes. This static GitHub Pages build intentionally does not embed those secrets. It is now architecturally ready to consume that backend.
+
+## Core API
+`window.FantasyHQCore` exposes:
+- `getState()` / `setState()` / `patchState()`
+- `importSnapshot()` / `exportSnapshot()`
+- `updateDraftContext()` / `recordTransaction()`
+- `calculateTeamStrength()`
+- `teamFit()`
+- `simulateMove()`
+
+## Deploy
+Upload the contents of this ZIP to the repository root and enable GitHub Pages from the main branch/root directory.

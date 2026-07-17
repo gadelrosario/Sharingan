@@ -248,3 +248,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 @media(min-width:901px) and (max-width:1180px){
   #desktopMarketGrid{grid-template-columns:minmax(0,.72fr) minmax(0,1.08fr) minmax(0,.88fr)}
 }
+/* Jōnin 2.9 — Intelligence Foundation */
+.syncActions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.syncFoundationCard{border:1px solid rgba(104,183,255,.22)}
+@media(max-width:640px){.syncActions{grid-template-columns:1fr}.syncActions button{width:100%}}

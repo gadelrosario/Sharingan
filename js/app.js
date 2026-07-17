@@ -13,7 +13,7 @@ const managers=[
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5","BENCH6"];
 const TOTAL_ROUNDS=rosterSlots.length,TOTAL_PICKS=TOTAL_ROUNDS*10;
-const APP_VERSION="Chūnin Reforged 2.8 • Unity Core";
+const APP_VERSION="Jōnin 2.9 • Intelligence Foundation";
 let renderInProgress=false,simulationInProgress=false,activeMobilePage="mobileDraft";
 const dirtyViews={players:true,room:true,wait:true,team:true};
 let heavyRenderTimer=null;
@@ -48,7 +48,7 @@ window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error|
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=chunin_reforged_2_8",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=jonin_2_9",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
@@ -660,5 +660,34 @@ function showPage(id){
   }catch(err){reportRuntimeError('Opening mobile tab',err)}
  });
 }
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=chunin_reforged_2_8").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
+
+
+// Jōnin 2.9 — canonical league-state and sync-ready foundation.
+function fantasyHQPlayerIndex(){return new Map(players.flatMap(p=>[[Number(p.id),p],[String(p.id),p]]))}
+function updateSyncFoundationUI(){
+ if(!window.FantasyHQCore)return;
+ const state=FantasyHQCore.getState(),badge=el('syncStatusBadge'),text=el('syncStatusText');
+ if(badge){badge.textContent=(state.sync?.status||'local').toUpperCase();badge.title=`Schema v${state.schemaVersion}`}
+ if(text){const stamp=state.sync?.lastSyncedAt?new Date(state.sync.lastSyncedAt).toLocaleString():'Not connected';text.textContent=`${state.name} • ${state.provider.toUpperCase()} • ${stamp} • ${state.sync?.message||'Ready'}`}
+}
+function downloadLeagueSnapshot(){
+ const blob=new Blob([FantasyHQCore.exportSnapshot()],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='fantasy-hq-league-snapshot.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+async function importLeagueSnapshot(event){
+ try{const file=event.target.files?.[0];if(!file)return;FantasyHQCore.importSnapshot(await file.text());updateSyncFoundationUI();alert('League snapshot imported. Fantasy HQ is now using the updated canonical league state.')}catch(err){alert('Snapshot import failed: '+err.message)}finally{event.target.value=''}
+}
+function prepareYahooConnection(){FantasyHQCore.markSyncAttempt('Yahoo');updateSyncFoundationUI();alert('Yahoo sync foundation is ready. Live OAuth requires the secure backend connector planned for the next integration stage.')}
+function syncDraftIntoLeagueState(){
+ if(!window.FantasyHQCore||!players.length)return;
+ const teams=Array.from({length:10},(_,i)=>({id:String(i+1),name:slotManagers[i+1]||`Team ${i+1}`,isUser:i+1===slot}));
+ const rosters={};teams.forEach(t=>rosters[t.id]=history.filter(h=>String(h.team)===t.id).map(h=>h.id));
+ FantasyHQCore.updateDraftContext({settings:{...leagueContext,rosterSlots:[...rosterSlots]},teams,rosters,availablePlayerIds:available().map(p=>p.id),playerMeta:Object.fromEntries(players.map(p=>[p.id,{name:p.name,pos:positionKey(p),team:p.team,overall:p.overall}]))});
+ updateSyncFoundationUI();
+}
+if(window.FantasyHQCore){FantasyHQCore.subscribe(()=>updateSyncFoundationUI());window.addEventListener('load',updateSyncFoundationUI)}
+const originalStartDraft=startDraft;startDraft=function(){const result=originalStartDraft.apply(this,arguments);syncDraftIntoLeagueState();return result};
+const originalSelectPlayer=selectPlayer;selectPlayer=function(id,team){const result=originalSelectPlayer.apply(this,arguments);syncDraftIntoLeagueState();return result};
+const originalUndoLastPick=undoLastPick;undoLastPick=function(){const result=originalUndoLastPick.apply(this,arguments);syncDraftIntoLeagueState();return result};
+
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_2_9").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
 init();

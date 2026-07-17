@@ -1,5 +1,5 @@
 {
-  "name": "Gerard Fantasy HQ — Chūnin Reforged 2.4",
+  "name": "Gerard Fantasy HQ — Jōnin 2.9",
   "short_name": "Fantasy HQ",
   "start_url": "./",
   "scope": "./",
@@ -14,5 +14,5 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "Value-first fantasy football draft companion with Yahoo Live Mock capture, Sharingan Vision, dynamic tiers, Room Intel, Peek Ahead, and exportable training data."
+  "description": "Sync-ready fantasy football decision engine with canonical league state, Sharingan Vision, Flight Control foundations, and personalized roster intelligence."
 }
