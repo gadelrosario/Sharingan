@@ -13,8 +13,33 @@ const managers=[
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5","BENCH6"];
 const TOTAL_ROUNDS=rosterSlots.length,TOTAL_PICKS=TOTAL_ROUNDS*10;
-const APP_VERSION="Chūnin Reforged 2.5";
-let renderInProgress=false;
+const APP_VERSION="Chūnin Reforged 2.8 • Unity Core";
+let renderInProgress=false,simulationInProgress=false,activeMobilePage="mobileDraft";
+const dirtyViews={players:true,room:true,wait:true,team:true};
+let heavyRenderTimer=null;
+// Jōnin Unity Core: one cached evaluation layer powers every visible decision.
+let intelligenceEpoch=0;
+let scoreCache=new Map(),evaluationCache=new Map(),marketCache=new Map(),snapshotCache=null;
+function invalidateIntelligence(){intelligenceEpoch++;scoreCache.clear();evaluationCache.clear();marketCache.clear();snapshotCache=null}
+function validTier(value){let t=String(value||"").trim().toUpperCase();return ["S","A","B","C","D","E","F"].includes(t)?t:null}
+function sourceTierSummary(p){return {fantasyHQ:tierLabel(p),gerard:validTier(p.posTier)||validTier(p.overallTier),bdge:validTier(p.bdgeTier),flock:validTier(p.flockTier),fantasyPros:null}}
+function getPlayerEvaluation(playerOrId){
+ const p=typeof playerOrId==="object"?playerOrId:players.find(x=>x.id===Number(playerOrId));
+ if(!p)return null;
+ const key=`${intelligenceEpoch}:${p.id}`;if(evaluationCache.has(key))return evaluationCache.get(key);
+ const tier=tierLabel(p),mamba=mambaScore(p),final=finalPickScore(p),risk=survivalRisk(p),stage=sharinganStage(p);
+ const out=Object.freeze({player:p,playerId:p.id,tier,sourceTiers:sourceTierSummary(p),mamba,final,risk,stage,roomBoost:roomBoost(p),rosterFit:rosterFitModifier(p)});
+ evaluationCache.set(key,out);return out;
+}
+function getIntelligenceSnapshot(){
+ if(snapshotCache&&snapshotCache.epoch===intelligenceEpoch)return snapshotCache;
+ const recPlayers=recommendations(),recIds=recPlayers.map(p=>p.id);
+ const markets={};["RB","WR","QB","TE"].forEach(pos=>markets[pos]=marketPressure(pos));
+ const wait={};["QB","TE","DST","K"].forEach(pos=>wait[pos]=waitScore(pos));
+ snapshotCache=Object.freeze({epoch:intelligenceEpoch,pick,round:info().r,recommendationIds:Object.freeze(recIds),markets:Object.freeze(markets),wait:Object.freeze(wait),createdAt:Date.now()});
+ return snapshotCache;
+}
+function snapshotRecommendations(){return getIntelligenceSnapshot().recommendationIds.map(id=>players.find(p=>p.id===id)).filter(Boolean)}
 function el(id){return document.getElementById(id)}
 function safeText(id,value){const node=el(id);if(node)node.textContent=value}
 function safeHTML(id,value){const node=el(id);if(node)node.innerHTML=value}
@@ -23,7 +48,7 @@ window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error|
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=chunin_reforged_2_5",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=chunin_reforged_2_8",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
@@ -55,7 +80,7 @@ function startDraft(){
    risk:document.getElementById("riskProfile")?.value||"balanced",
    strategy:document.getElementById("strategyPreset")?.value||"auto"
   };
-  captureManagers();pick=1;drafted=[];history=[];decisionSnapshots=[];currentYahooRecord=null;selectedCandidateId=null;buildProfiles();if(typeof rosterRows!=="function")throw new Error("Roster engine did not initialize");
+  captureManagers();pick=1;drafted=[];history=[];decisionSnapshots=[];currentYahooRecord=null;selectedCandidateId=null;invalidateIntelligence();buildProfiles();if(typeof rosterRows!=="function")throw new Error("Roster engine did not initialize");
   setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
   let modeName=mode==="practice"?"🟢 PRACTICE MOCK DRAFT":mode==="yahoo"?"🟣 YAHOO LIVE MOCK • REAL PEOPLE":"🔵 LIVE DRAFT DAY";
   modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
@@ -71,7 +96,7 @@ function available(){return players.filter(p=>!drafted.includes(p.id))}
 function myPlayers(){return history.filter(h=>h.team===slot).map(h=>players.find(p=>p.id===h.id)).filter(Boolean)}
 function counts(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{if(c[p.pos]!==undefined)c[p.pos]++});return c}
 function userPositionFilled(pos){let c=counts();return (pos==="QB"&&c.QB>=1)||(pos==="TE"&&c.TE>=1)}
-function tierLabel(p){let t=String(p?.overallTier||p?.posTier||"C").toUpperCase();return ["S","A","B","C","D","E","F"].includes(t)?t:"C"}
+function tierLabel(p){let t=String(p?.posTier||p?.overallTier||"C").toUpperCase();return ["S","A","B","C","D","E","F"].includes(t)?t:"C"}
 function tierWeight(t){return ({S:5,A:4,B:3,C:2,D:1,E:0,F:0})[t]??2}
 function tierBadge(p){let t=tierLabel(p);return `<span class="tierBadge tier-${t}">${t} Tier</span>`}
 function positionTierCounts(pos,team=slot){let out={S:0,A:0,B:0,C:0,D:0};managerRoster(team).filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).forEach(p=>{let t=tierLabel(p);out[t]=(out[t]||0)+1});return out}
@@ -82,7 +107,7 @@ function baseFinalScore(p){return Math.max(1,Math.min(110,mambaScore(p)+roomBoos
 function valueGap(p){let pool=available().filter(x=>x.id!==p.id&&recommendationEligible(x)).map(x=>mambaScore(x)).sort((a,b)=>b-a);return mambaScore(p)-(pool[0]||0)}
 function valueOverride(p){let fall=Math.max(0,pick-(p.overall||pick)),gap=valueGap(p),t=tierLabel(p);return (gap>=7)||((t==="S"||t==="A")&&fall>=20)}
 function eternalValue(p){let fall=Math.max(0,pick-(p.overall||pick)),t=tierLabel(p);return (t==="S"||t==="A")&&fall>=40&&mambaScore(p)>=90}
-function finalPickScore(p){let score=baseFinalScore(p);if(valueOverride(p))score+=3;if(eternalValue(p))score+=4;return Math.round(Math.max(1,Math.min(115,score)))}
+function finalPickScore(p){let key=`f:${intelligenceEpoch}:${p.id}`;if(scoreCache.has(key))return scoreCache.get(key);let score=baseFinalScore(p);if(valueOverride(p))score+=3;if(eternalValue(p))score+=4;score=Math.round(Math.max(1,Math.min(115,score)));scoreCache.set(key,score);return score}
 function sharinganIconMarkup(stage="three"){
  const key=["one","two","three","mangekyo","eternal"].includes(stage)?stage:"three";
  let inner="";
@@ -144,13 +169,45 @@ function recommendations(){
 function rationale(p){let b=[],e=expected();if(e===p.pos||e.includes(p.pos))b.push("fits Gerard Blueprint");let fall=Math.max(0,pick-p.overall);if(fall>=8)b.push(`value fall: ${fall} picks`);if(p.bdgeLabels?.length)b.push(`BDGE: ${p.bdgeLabels[0]}`);if(p.overallTier==="S"||p.overallTier==="A")b.push("top-tier talent");if(["RB","WR"].includes(p.pos))b.push("weekly-ceiling core");return b.slice(0,3).join(" • ")||"best blended value available"}
 
 function survivalRisk(p){let risk=0,n=pick+1,seen=0;while(seen<10&&n<=TOTAL_PICKS){let t=teamForPick(n);if(t===slot)break;let m=getManager(t);if(p.team===m.homerTeam)risk+=m.homer*2.5;if(p.pos==="QB")risk+=m.qbHoard*1.7;risk+=(10-m.predictability)*.7;seen++;n++}return Math.min(95,Math.round(risk))}
-function mambaScore(p){let raw=gerardScore(p),tier=p.overallTier==="S"?10:p.overallTier==="A"?6:0,fall=Math.max(0,pick-p.overall),risk=survivalRisk(p);return Math.round(Math.max(1,Math.min(99,55+raw/5+tier+Math.min(10,fall/2)-risk/8)))}
+function mambaScore(p){let key=`m:${intelligenceEpoch}:${p.id}`;if(scoreCache.has(key))return scoreCache.get(key);let raw=gerardScore(p),canonicalTier=tierLabel(p),tier=canonicalTier==="S"?10:canonicalTier==="A"?6:0,fall=Math.max(0,pick-p.overall),risk=survivalRisk(p),score=Math.round(Math.max(1,Math.min(99,55+raw/5+tier+Math.min(10,fall/2)-risk/8)));scoreCache.set(key,score);return score}
 function recommendationState(p){let st=sharinganStage(p);if(st.key==="eternal")return{cls:"state-value",label:"🖤 ETERNAL MANGEKYŌ • SEASON-CHANGING VALUE"};if(st.key==="mangekyo")return{cls:"state-value",label:"👁 MANGEKYŌ • VALUE OVERRIDE"};if(st.key==="three")return{cls:"state-confidence",label:"👁 THREE TOMOE • ELITE VALUE"};if(st.key==="two")return{cls:"state-confidence",label:"👁 TWO TOMOE • EXCELLENT VALUE"};return{cls:"state-normal",label:"👁 ONE TOMOE • GOOD PICK"}}
 function runSignal(){let r=history.slice(-6).map(h=>players.find(p=>p.id===h.id)?.pos).filter(Boolean),t={QB:0,RB:0,WR:0,TE:0};r.forEach(x=>t[x]++);let top=Object.entries(t).sort((a,b)=>b[1]-a[1])[0];return top&&top[1]>=3?top[0]+" run detected":"No major positional run"}
-function selectPlayer(id,team){
+function markHeavyViewsDirty(){dirtyViews.players=true;dirtyViews.room=true;dirtyViews.wait=true;dirtyViews.team=true}
+function updateBoardIncremental(record){
+ const roots=[desktopBoard,draftBoard].filter(Boolean),oldPick=record.pick,newPick=pick,pl=players.find(x=>x.id===record.id);
+ roots.forEach(root=>{
+  root.querySelectorAll('.pickCell.current').forEach(cell=>cell.classList.remove('current'));
+  const used=root.querySelector(`[data-pick="${oldPick}"]`);
+  if(used){used.classList.toggle('mine',record.team===slot);const name=used.querySelector('.name');if(name)name.textContent=pl?.name||'Unknown';}
+  const next=root.querySelector(`[data-pick="${newPick}"]`);
+  if(next&&newPick<=TOTAL_PICKS){next.classList.add('current');const name=next.querySelector('.name');if(name&&!history.some(x=>x.pick===newPick))name.textContent='ON CLOCK';}
+ });
+}
+function scheduleHeavyRefresh(delay=80){
+ clearTimeout(heavyRenderTimer);
+ heavyRenderTimer=setTimeout(()=>{
+  try{
+   if(dirtyViews.room){renderRoomScan();dirtyViews.room=false}
+   if(dirtyViews.wait){renderWaitMeter();dirtyViews.wait=false}
+   if(dirtyViews.players&&activeMobilePage==='mobilePlayers'){renderPlayers();dirtyViews.players=false}
+   if(dirtyViews.team&&activeMobilePage==='mobileTeam'){renderRoster();renderLiveRoster();renderExposure();dirtyViews.team=false}
+  }catch(err){reportRuntimeError('Deferred interface refresh',err)}
+ },delay);
+}
+function renderAfterPick(record,{full=false}={}){
+ renderMeta();
+ updateBoardIncremental(record);
+ renderRecommendation();
+ renderQuickDraftBoard();
+ markHeavyViewsDirty();
+ if(record.team===slot){renderRoster();renderLiveRoster();renderExposure();renderDraftPlan();dirtyViews.team=false}
+ if(full){renderRoomScan();renderWaitMeter();renderPlayers();dirtyViews.room=dirtyViews.wait=dirtyViews.players=false}
+ else if(!simulationInProgress)scheduleHeavyRefresh();
+}
+function selectPlayer(id,team,options={}){
  try{
-  if(drafted.includes(id)||pick>170)return;
-  const player=players.find(p=>p.id===id);if(!player)return;
+  if(drafted.includes(id)||pick>TOTAL_PICKS)return false;
+  const player=players.find(p=>p.id===id);if(!player)return false;
   if(mode==="yahoo"&&team===slot){
     decisionSnapshots.push({
       beforePick:pick,
@@ -160,21 +217,62 @@ function selectPlayer(id,team){
       rosterBefore:myPlayers().map(x=>({id:x.id,name:x.name,pos:x.pos,tier:tierLabel(x)}))
     });
   }
-  drafted.push(id);history.push({pick,id,team});pick++;selectedCandidateId=null;
-  if(pick>170){finishDraft();return}
-  renderAll();
- }catch(err){reportRuntimeError("Recording draft pick",err)}
+  const record={pick,id,team};drafted.push(id);history.push(record);pick++;selectedCandidateId=null;invalidateIntelligence();
+  if(pick>TOTAL_PICKS){finishDraft();return true}
+  renderAfterPick(record,{full:options.full===true});
+  return true;
+ }catch(err){reportRuntimeError("Recording draft pick",err);return false}
 }
 function aiScore(p,team){let profile=aiProfiles[team]||"Balanced",m=getManager(team),s=150-p.overall+Math.random()*(style==="chaotic"?35:style==="conservative"?8:18),owned=history.filter(h=>h.team===team).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};owned.forEach(x=>{if(c[x.pos]!==undefined)c[x.pos]++});if(profile==="Hero RB"&&p.pos==="RB"&&c.RB<1)s+=30;if(profile==="Zero RB"&&p.pos==="WR"&&c.WR<4)s+=25;if(profile==="WR Heavy"&&p.pos==="WR")s+=20;if(profile==="Early QB"&&p.pos==="QB"&&c.QB<1&&Math.ceil(pick/10)<=5)s+=28;if(profile==="Elite TE"&&p.pos==="TE"&&c.TE<1)s+=25;if(profile==="Rookie Chaser"&&p.rookie)s+=25;if(profile==="Chaos")s+=Math.random()*45;if(p.team===m.homerTeam)s+=m.homer*3;if(p.pos==="QB"&&c.QB>=1)s+=m.qbHoard*2-12;if(m.archetype.includes("AI"))s+=Math.max(0,25-p.overall/8);if(m.archetype.includes("Reactionary")&&p.rookie)s+=12;if(m.archetype.includes("Conviction"))s+=Math.random()*18;if(c[p.pos]>=3&&["QB","TE"].includes(p.pos))s-=Math.max(10,45-m.qbHoard*3);let rd=Math.ceil(pick/10);if(p.pos==="DST"){s-=rd<15?90:0;if(c.DST>=1)s-=100;if(rd>=16&&c.DST<1)s+=55}if(p.pos==="K"){s-=rd<16?100:0;if(c.K>=1)s-=100;if(rd>=17&&c.K<1)s+=65}return s}
-async function simulateToMe(){if(mode!=="practice")return;while(teamForPick(pick)!==slot&&pick<=170){let team=teamForPick(pick),pool=available().slice(0,Math.min(28,available().length));pool.sort((a,b)=>aiScore(b,team)-aiScore(a,team));selectPlayer(pool[0].id,team);await new Promise(r=>setTimeout(r,130))}}
+async function simulateToMe(){
+ if(mode!=="practice"||simulationInProgress||teamForPick(pick)===slot)return;
+ simulationInProgress=true;
+ const btn=el("simulateBtn"),original=btn?.textContent||"Simulate until my pick";
+ if(btn){btn.disabled=true;btn.textContent="Simulating…"}
+ try{
+  while(teamForPick(pick)!==slot&&pick<=TOTAL_PICKS){
+   let team=teamForPick(pick),pool=available().slice(0,Math.min(28,available().length));
+   pool.sort((a,b)=>aiScore(b,team)-aiScore(a,team));
+   if(!pool.length)break;
+   selectPlayer(pool[0].id,team);
+   await new Promise(requestAnimationFrame);
+   await new Promise(r=>setTimeout(r,35));
+  }
+ }finally{
+  simulationInProgress=false;
+  if(btn){btn.disabled=false;btn.textContent=original}
+  renderRoomScan();renderWaitMeter();renderPlayers();renderRoster();renderLiveRoster();renderExposure();renderDraftPlan();
+  dirtyViews.players=dirtyViews.room=dirtyViews.wait=dirtyViews.team=false;
+ }
+}
 function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let p=ps.find(x=>x.pos===pos&&!used.includes(x.id));if(p)used.push(p.id);return p}for(let s of rosterSlots){let p=null;if(s==="QB")p=take("QB");else if(s.startsWith("RB"))p=take("RB");else if(s.startsWith("WR"))p=take("WR");else if(s==="TE")p=take("TE");else if(s==="K")p=take("K");else if(s==="DEF")p=take("DST");else if(s.startsWith("FLEX")){p=ps.find(x=>["RB","WR","TE"].includes(x.pos)&&!used.includes(x.id));if(p)used.push(p.id)}else if(s.startsWith("BENCH")){p=ps.find(x=>!used.includes(x.id));if(p)used.push(p.id)}rows.push([s,p])}return rows}
 
 function positionalCountsAll(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{let key=p.pos==="DEF"?"DST":p.pos;if(c[key]!==undefined)c[key]++});return c}
 function rosterNeeds(){let c=positionalCountsAll(),needs=[];if(c.QB<1)needs.push("QB");if(c.RB<2)needs.push("RB");if(c.WR<3)needs.push("WR");if(c.TE<1)needs.push("TE");if(c.K<1)needs.push("K");if(c.DST<1)needs.push("D/ST");return needs}
-function waitScore(pos){let c=positionalCountsAll(),avail=available().filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos),top=avail.slice(0,8),needers=0,n=pick+1;while(n<=TOTAL_PICKS&&teamForPick(n)!==slot){let t=teamForPick(n),owned=history.filter(h=>h.team===t).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),has=owned.some(p=>(p.pos==="DEF"?"DST":p.pos)===pos);if(!has)needers++;n++}let base=(pos==="QB"||pos==="TE")?62:88;if(c[pos]>=1)base=96;base-=needers*6;if(top.length<=3)base-=25;if(top.length<=1)base-=25;let recent=history.slice(-6).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),run=recent.filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).length;base-=run*8;return Math.max(5,Math.min(98,Math.round(base)))}
+function waitScore(pos){
+ let c=positionalCountsAll(),roundNow=Math.ceil(pick/10),avail=available().filter(p=>positionKey(p)===pos).sort((a,b)=>finalPickScore(b)-finalPickScore(a));
+ if(c[pos]>=1)return 96;
+ let before=teamsBeforeMyNextPick().length,projectedLoss=Math.min(avail.length,expectedDraftedBeforeNext(pos));
+ let eliteNow=avail.filter(p=>["S","A"].includes(tierLabel(p))).length;
+ let eliteAfter=avail.slice(projectedLoss).filter(p=>["S","A"].includes(tierLabel(p))).length;
+ let recent=history.slice(-8).map(h=>players.find(p=>p.id===h.id)).filter(Boolean).filter(p=>positionKey(p)===pos).length;
+ let score;
+ if(pos==="QB"){
+  score=roundNow<=3?90:roundNow<=5?80:roundNow<=7?68:roundNow<=9?55:42;
+  if(roundNow<=4&&eliteNow>0&&eliteAfter===0)score=Math.min(score,58);
+  else if(roundNow<=5&&eliteNow>0&&eliteAfter<eliteNow)score-=8;
+ }else if(pos==="TE"){
+  score=roundNow<=3?91:roundNow<=5?78:roundNow<=7?64:roundNow<=9?52:40;
+  if(roundNow<=4&&eliteNow>0&&eliteAfter===0)score=Math.min(score,56);
+  else if(roundNow<=5&&eliteNow>0&&eliteAfter<eliteNow)score-=8;
+ }else{
+  score=88-before*3-recent*6;
+ }
+ return Math.max(10,Math.min(98,Math.round(score)));
+}
 function renderLiveRoster(){let rows=rosterRows(),keySlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF"],htmlRows=rows.filter(([s])=>keySlots.includes(s)).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText}
 function renderWaitMeter(){
- let positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10),c=positionalCountsAll();
+ let snap=getIntelligenceSnapshot(),positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10),c=positionalCountsAll();
  let boxes=positions.map(pos=>{
    if((pos==="QB"&&c.QB>=1)||(pos==="TE"&&c.TE>=1)){
      return `<div class="waitBox filledPosition"><div class="pos">${pos}</div><div class="meter"><span style="width:100%"></span></div><div><b>FILLED</b></div><div class="decision">FOCUS ELSEWHERE</div></div>`;
@@ -184,8 +282,8 @@ function renderWaitMeter(){
      let unlock=pos==="DST"?15:16;
      return `<div class="waitBox locked"><div class="pos">${pos==="DST"?"D/ST":pos}</div><div class="meter"><span style="width:100%"></span></div><div><b>WAIT</b></div><div class="decision">TOO EARLY • R${unlock}+</div></div>`;
    }
-   let score=waitScore(pos),cls=score>=70?"wait":score>=40?"now":"urgent";
-   let label=score>=70?"WAIT":score>=40?"CONSIDER NOW":"DRAFT SOON";
+   let score=snap.wait[pos],cls=score>=70?"wait":score>=48?"now":"urgent";
+   let label=score>=70?"SAFE TO WAIT":score>=48?(roundNow<=4?"ELITE ONLY":"MONITOR TIER"):"DRAFT SOON";
    return `<div class="waitBox ${cls}"><div class="pos">${pos==="DST"?"D/ST":pos}</div><div class="meter"><span style="width:${score}%"></span></div><div><b>${score}%</b></div><div class="decision">${label}</div></div>`;
  }).join("");
  let el=document.getElementById("waitMeter");if(el)el.innerHTML=boxes;
@@ -218,7 +316,7 @@ function sourceRankLabel(p,source){
 function openScan(id){
  const modal=document.getElementById("scanModal"),content=document.getElementById("scanContent");
  let p=players.find(x=>x.id===Number(id));if(!p||!modal||!content)return;
- let s=scoreComponents(p),risk=survivalRisk(p),state=recommendationState(p),market=["QB","RB","WR","TE"].includes(p.pos)?marketPressure(p.pos):null;
+ let ev=getPlayerEvaluation(p),s=scoreComponents(p),risk=ev.risk,state=recommendationState(p),market=["QB","RB","WR","TE"].includes(p.pos)?getIntelligenceSnapshot().markets[p.pos]:null;
  let windowLabel=market?positionWindow(market):"Late Round";
  let fitLabel=s.fit>=92?"Elite":s.fit>=84?"Strong":s.fit>=75?"Good":"Neutral";
  let verdict=risk>=70||valueOverride(p)?{label:"DRAFT NOW",cls:"go",text:`${p.name} is strong value and is unlikely to survive to your next selection.`}:risk>=42||windowLabel==="Closing"?{label:"GOOD VALUE — CONSIDER NOW",cls:"wait",text:`The value is solid, but the position window is beginning to tighten.`}:{label:"SAFE TO WAIT",cls:"wait",text:`The board still offers alternatives and the current position window remains manageable.`};
@@ -228,7 +326,7 @@ function openScan(id){
  let notes=[p.rankingRole,labels,p.opportunityTrend&&p.opportunityTrend!=="Pending"?p.opportunityTrend:null,p.gerardPreference&&p.gerardPreference!=="neutral"?`Gerard preference: ${p.gerardPreference}`:null].filter(Boolean).join(". ");
  let why=[];
  if(valueOverride(p))why.push("Value Override is active — talent gap outweighs roster balance.");
- if(p.overallTier==="S"||p.overallTier==="A")why.push(`${p.overallTier}-tier talent is still available.`);
+ if(tierLabel(p)==="S"||tierLabel(p)==="A")why.push(`${tierLabel(p)}-tier talent is still available.`);
  if(risk>=60)why.push(`${risk}% steal risk before your next selection.`); else why.push(`${100-risk}% estimated chance to remain available.`);
  if(windowLabel==="Closing"||windowLabel==="Thinning")why.push(`${p.pos} position window is ${windowLabel.toLowerCase()}.`);
  why.push(fitLabel==="Elite"||fitLabel==="Strong"?`Strong fit with your current roster and draft blueprint.`:`Board value remains the primary reason for this recommendation.`);
@@ -297,14 +395,14 @@ function comparisonCardMarkup(p,primary){
  </div>`;
 }
 function renderRecommendation(){
- let recs=recommendations();
+ let recs=snapshotRecommendations();
  if(!recs.length){
    recommendation.innerHTML="<b>Draft complete.</b>";
    alternatives.innerHTML="";
    return;
  }
  let p=recs[0];
- let state=recommendationState(p),score=mambaScore(p),risk=survivalRisk(p);
+ let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk;
  recommendation.className="rec "+state.cls;
  recommendation.innerHTML=`
    <div style="font-weight:900">${state.label}</div>
@@ -339,7 +437,7 @@ function renderRecommendation(){
    </div>`;
  }).join("");
 }
-function renderBoard(){let cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=TOTAL_ROUNDS;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=history.find(x=>x.pick===pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div class="pickCell ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
+function renderBoard(){let byPick=new Map(history.map(x=>[x.pick,x])),cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=TOTAL_ROUNDS;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=byPick.get(pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div data-pick="${pnum}" class="pickCell ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
 function teamTierMarkup(){let positions=["QB","RB","WR","TE"],lines=positions.map(pos=>{let c=positionTierCounts(pos),bits=["S","A","B","C"].filter(t=>c[t]).map(t=>`${t}×${c[t]}`).join("  ")||"—";return `<div class="tierLine"><b>${pos}</b><span class="tierDots">${bits}</span><span>${positionStrength(pos)}</span></div>`}).join("");let rb=positionStrength("RB"),wr=positionStrength("WR"),advice=rb==="Elite"||rb==="Strong"?"RB quality is secure. Shift toward WR when values are close. Value Override still wins.":wr==="Elite"||wr==="Strong"?"WR quality is secure. Add RB when values are close. Value Override still wins.":"Build the best available starting tier. Value remains the priority.";return `<div class="teamTierSummary"><b>Team Tier Quality</b>${lines}<div class="teamAdvice">${advice}</div></div>`}
 function renderRoster(){let rows=rosterRows().map(([s,p])=>`<div class="rosterRow"><span>${s}</span><span class="${p?"":"empty"}">${p?`${p.name} <small>(${tierLabel(p)})</small>`:"—"}</span></div>`).join("")+teamTierMarkup();roster.innerHTML=rows;mRoster.innerHTML=rows;let ss=[];for(let t=1;t<=10;t++)ss.push(`<div class="strategy"><span>${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}</span><span class="pill">${t===slot?"Gerard Blueprint":aiProfiles[t]||"Manual"}</span></div>`);strategies.innerHTML=ss.join("");mStrategies.innerHTML=ss.join("")}
 function renderMeta(){let i=info();round.textContent=`${Math.min(i.r,TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;mRound.textContent=`${Math.min(i.r,TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;pickLabel.textContent=i.r+"."+String(i.ip).padStart(2,"0");mPickLabel.textContent=pickLabel.textContent;until.textContent=i.until;mUntil.textContent=i.until}
@@ -438,7 +536,7 @@ function teamsBeforeMyNextPick(){
  }
  return teams;
 }
-function marketPressure(pos){
+function marketPressure(pos){let cacheKey=`${intelligenceEpoch}:${pos}`;if(marketCache.has(cacheKey))return marketCache.get(cacheKey);
  let before=teamsBeforeMyNextPick(),starterNeed=0,depthNeed=0,hoardRisk=0;
  before.forEach(t=>{
   let c=managerPositionCounts(t),s=managerPositionStatus(t,pos),m=getManager(t);
@@ -452,7 +550,7 @@ function marketPressure(pos){
  if(avail<8)pressure+=12;if(avail<4)pressure+=18;
  pressure=Math.max(0,Math.min(100,Math.round(pressure)));
  let level=pressure>=82?"Critical":pressure>=65?"Hot":pressure>=45?"Rising":pressure>=22?"Calm":"Cold";
- return{pos,pressure,level,starterNeed,depthNeed,recent,teams:before.length,avail};
+ let result={pos,pressure,level,starterNeed,depthNeed,recent,teams:before.length,avail};marketCache.set(cacheKey,result);return result;
 }
 function marketBoxMarkup(x){
  const levelClass=String(x.level||"cold").toLowerCase();
@@ -493,10 +591,12 @@ function showManagerRoster(team){
  managerRosterDetail.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 function expectedDraftedBeforeNext(pos){let x=marketPressure(pos),picks=teamsBeforeMyNextPick().length;if(!picks)return 0;let est=Math.round((x.pressure/100)*Math.max(1,picks*.75));return Math.max(0,Math.min(picks,est))}
-function projectedTierRemaining(pos){let pool=available().filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).sort((a,b)=>finalPickScore(b)-finalPickScore(a)),lost=expectedDraftedBeforeNext(pos),remain=pool.slice(lost),c={S:0,A:0,B:0,C:0,D:0};remain.forEach(p=>{let t=tierLabel(p);c[t]=(c[t]||0)+1});return c}
+function availableTierCounts(pos){let c={S:0,A:0,B:0,C:0,D:0,E:0,F:0};available().filter(p=>positionKey(p)===pos).forEach(p=>{let t=tierLabel(p);c[t]=(c[t]||0)+1});return c}
+function projectedTierRemaining(pos){let pool=available().filter(p=>positionKey(p)===pos).sort((a,b)=>finalPickScore(b)-finalPickScore(a)),lost=expectedDraftedBeforeNext(pos),remain=pool.slice(lost),c={S:0,A:0,B:0,C:0,D:0,E:0,F:0};remain.forEach(p=>{let t=tierLabel(p);c[t]=(c[t]||0)+1});return c}
+function tierCountText(c){return ["S","A","B","C"].filter(t=>(c[t]||0)>0).map(t=>`${t}: ${c[t]}`).join(" • ")||"No S–C players"}
 function roomIntelMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let x=marketPressure(pos),run=x.recent>=4?"Run is happening":x.recent>=2?"Some movement":"No run";return `<div class="intelItem"><b>${pos} — ${run}</b><span>${x.recent} drafted in the last 8 picks. ${x.starterNeed} teams before your next pick still need a starter.</span></div>`}).join("")}
-function peekAheadMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let n=expectedDraftedBeforeNext(pos),c=projectedTierRemaining(pos),top=["S","A","B","C"].filter(t=>c[t]>0).slice(0,3).map(t=>`${t}: ${c[t]}`).join(" • ")||"No starter tiers";return `<div class="peekItem"><b>${pos}: ${n} expected to be drafted</b><span>Likely remaining tiers — ${top}</span></div>`}).join("")}
-function renderRoomScan(){let markets=["RB","WR","QB","TE"].map(marketPressure),grid=`<div class="visionPanel">${markets.map(marketBoxMarkup).join("")}</div><div style="margin-top:10px"><b>Room Intel</b><div class="roomIntelList">${roomIntelMarkup()}</div></div><div style="margin-top:10px"><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,insight=roomInsightText(),alert=roomAlertText(),table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});["mobileRoomInsight","desktopRoomInsight","sheetRoomInsight"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=`Sharingan says: ${insight}`});["mobileRoomAlert","desktopRoomAlert"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=alert});if(document.getElementById("desktopManagerTable"))desktopManagerTable.innerHTML=managerTableMarkup(false);if(document.getElementById("sheetManagerTable"))sheetManagerTable.innerHTML=table}
+function peekAheadMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let n=expectedDraftedBeforeNext(pos),now=availableTierCounts(pos),later=projectedTierRemaining(pos);return `<div class="peekItem"><b>${pos}: ${n} expected before your next pick</b><span>Available now — ${tierCountText(now)}</span><span>Projected then — ${tierCountText(later)}</span></div>`}).join("")}
+function renderRoomScan(){let snap=getIntelligenceSnapshot(),markets=["RB","WR","QB","TE"].map(pos=>snap.markets[pos]),grid=`<div class="visionPanel">${markets.map(marketBoxMarkup).join("")}</div><div style="margin-top:10px"><b>Room Intel</b><div class="roomIntelList">${roomIntelMarkup()}</div></div><div style="margin-top:10px"><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,insight=roomInsightText(),alert=roomAlertText(),table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});["mobileRoomInsight","desktopRoomInsight","sheetRoomInsight"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=`Sharingan says: ${insight}`});["mobileRoomAlert","desktopRoomAlert"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=alert});if(document.getElementById("desktopManagerTable"))desktopManagerTable.innerHTML=managerTableMarkup(false);if(document.getElementById("sheetManagerTable"))sheetManagerTable.innerHTML=table}
 function openRoomScan(){renderRoomScan();let sheet=document.getElementById("roomScanSheet");if(sheet)sheet.classList.remove("hidden")}
 function closeRoomScan(e){let sheet=document.getElementById("roomScanSheet");if(!sheet)return;if(e&&e.target!==sheet)return;sheet.classList.add("hidden");let detail=document.getElementById("managerRosterDetail");if(detail)detail.innerHTML=""}
 
@@ -527,7 +627,7 @@ function renderQuickDraftBoard(){
 function recordCurrentPick(id){selectPlayer(id,currentPickOwner())}
 function undoLastPick(){
  if(!history.length)return;
- const last=history.pop();drafted=drafted.filter(id=>id!==last.id);pick=Math.max(1,last.pick);selectedCandidateId=null;renderAll();
+ const last=history.pop();drafted=drafted.filter(id=>id!==last.id);pick=Math.max(1,last.pick);selectedCandidateId=null;invalidateIntelligence();renderAll();
 }
 function syncSearch(source){let a=el('search'),b=el('dSearch');if(source==='mobile'&&b)b.value=a?.value||'';if(source==='desktop'&&a)a.value=b?.value||'';renderPlayers()}
 function setPos(pos){posFilter=pos;document.querySelectorAll('[data-pos]').forEach(b=>b.classList.toggle('filterActive',b.dataset.pos===pos));renderPlayers()}
@@ -544,9 +644,21 @@ function renderAll(){
  renderInProgress=true;
  try{
   renderMeta();renderRecommendation();renderBoard();renderRoster();renderLiveRoster();renderExposure();renderRoomScan();renderWaitMeter();renderQuickDraftBoard();renderPlayers();renderDraftPlan();
+  dirtyViews.players=dirtyViews.room=dirtyViews.wait=dirtyViews.team=false;
  }catch(err){reportRuntimeError("Rendering draft room",err);throw err}
  finally{renderInProgress=false}
 }
-function showPage(id){document.querySelectorAll(".mobilePage").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=chunin_1_3").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
+function showPage(id){
+ activeMobilePage=id;
+ document.querySelectorAll(".mobilePage").forEach(x=>x.classList.remove("active"));
+ const page=document.getElementById(id);if(page)page.classList.add("active");
+ requestAnimationFrame(()=>{
+  try{
+   if(id==='mobilePlayers'&&dirtyViews.players){renderPlayers();dirtyViews.players=false}
+   else if(id==='mobileTeam'&&dirtyViews.team){renderRoster();renderLiveRoster();renderExposure();dirtyViews.team=false}
+   else if(id==='mobileDraft'){renderMeta();renderRecommendation();if(dirtyViews.wait){renderWaitMeter();dirtyViews.wait=false}}
+  }catch(err){reportRuntimeError('Opening mobile tab',err)}
+ });
+}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=chunin_reforged_2_8").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
 init();

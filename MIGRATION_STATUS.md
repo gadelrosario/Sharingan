@@ -1,3 +1,13 @@
-# Migration status — 2.3
+# Unity Core migration status
 
-The full feature-rich Chūnin application remains the source of truth. Version 2.3 reorganizes desktop layout only and preserves the existing draft, recommendation, Sharingan, export, archive, and mobile behavior.
+Completed in 2.8:
+- Canonical tier selector
+- Cached player evaluation layer
+- Shared per-pick intelligence snapshot
+- Shared recommendation, market, wait, and scan inputs
+- Automatic invalidation on draft-state changes
+
+Next migration targets:
+- Move core state and engines into separate JS modules
+- Add automated consistency tests
+- Add a developer diagnostics panel

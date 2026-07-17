@@ -1,4 +1,4 @@
-const CACHE="fantasy-hq-chunin-reforged-2-5";
+const CACHE="fantasy-hq-chunin-reforged-2-8";
 const ASSETS = [
   "./",
   "./index.html",
