@@ -1,10 +1,10 @@
-# Fantasy HQ — Chūnin Reforged 2.2
+# Fantasy HQ — Chūnin Reforged 2.4
 
-War Room Cleanup release.
+Royal Rumble League DNA update.
 
-- Removes duplicate desktop snake board and available-player sections.
-- Adds one full-width desktop snake board with all ten teams visible.
-- Keeps a compact player command rail with live on-the-clock status.
-- Redesigns Sharingan Scan with verdict-first hierarchy, four quick metrics, concise reasons, best alternative, and expandable full analysis.
-
-Upload all files and folders to the root of the GitHub Pages repository.
+- Locks the real league model to 10 active teams.
+- Defaults to Half-PPR, 3 WR, 2 FLEX, and 6-point passing touchdowns.
+- Adds league-specific scoring influence for completions, first downs, explosive plays, and enhanced D/ST scoring.
+- Adds an active League DNA strip in setup and the War Room.
+- Replaces the distorted CSS eye with vector Sharingan stages inspired by Sasuke: tomoe, Mangekyō, and Eternal Mangekyō.
+- Preserves the 2.3 Command Center and full-width snake board.

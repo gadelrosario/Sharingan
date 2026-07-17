@@ -132,7 +132,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .quickPickGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}.quickPick{display:flex;align-items:center;justify-content:space-between;gap:7px;background:#110e11;border:1px solid #463039;border-radius:10px;padding:8px;text-align:left;color:var(--text)}.quickPick:hover{border-color:#c63a4d}.quickPick .qname{font-weight:850;font-size:11px}.quickPick .qmeta{font-size:9px;color:var(--muted);margin-top:2px}.clockStrip{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#241116;border:1px solid #8e2936;border-radius:10px;padding:9px;margin-top:8px}.recentPicks{display:flex;flex-direction:column;gap:5px;margin-top:8px}.recentPick{display:grid;grid-template-columns:38px 1fr auto;gap:7px;align-items:center;background:#100e11;border:1px solid #382830;border-radius:8px;padding:7px}.playerRow.fast{grid-template-columns:34px 1fr auto}.autoPickBtn{background:#8d1f31;border:1px solid #e35b6d;color:#fff;border-radius:8px;padding:7px 9px;font-weight:850}.quickSectionTitle{display:flex;align-items:center;justify-content:space-between;margin-top:10px}.filterActive{border-color:#f2c65d!important;color:#f2c65d!important}@media(max-width:900px){.quickPickGrid{grid-template-columns:1fr 1fr}.boardList{max-height:none}}@media(max-width:430px){.quickPickGrid{grid-template-columns:1fr}}
 
 
-/* Chūnin Reforged 2.2 — War Room Cleanup */
+/* Chūnin Reforged 2.4 — Royal Rumble League DNA */
 .desktopOnly{display:block}
 #mobileBoard,#mobilePlayers,#mobileTeam{display:none}
 .desktopBoardSection{margin-top:11px}
@@ -176,3 +176,61 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
  .scanQuickGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .scanDetails .scanGrid{grid-template-columns:repeat(2,1fr)}
 }
+
+
+/* Chūnin Reforged 2.3 — Command Center Layout */
+@media(min-width:901px){
+  .appgrid{grid-template-columns:310px minmax(0,1fr);align-items:start}
+  .desktopCommandCenter{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.45fr);gap:11px;margin-top:11px}
+  .desktopCommandCenter .card{min-width:0}
+  .desktopRoomPanel{max-height:none;overflow:visible}
+  #desktopMarketGrid{display:grid;grid-template-columns:minmax(210px,.82fr) minmax(250px,1fr) minmax(250px,1fr);gap:10px;align-items:start;margin-top:10px}
+  #desktopMarketGrid>div{margin-top:0!important;min-width:0}
+  #desktopMarketGrid .visionPanel{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  #desktopMarketGrid .marketBox{text-align:left;padding:9px 10px}
+  #desktopMarketGrid .marketPos{font-size:11px}
+  #desktopMarketGrid .marketLevel{font-size:10px}
+  #desktopMarketGrid .marketMeta{font-size:9px;line-height:1.25}
+  #desktopMarketGrid .roomIntelList,#desktopMarketGrid .peekList{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  #desktopMarketGrid .intelItem,#desktopMarketGrid .peekItem{padding:9px;min-height:72px}
+  #desktopMarketGrid .intelItem span,#desktopMarketGrid .peekItem span{line-height:1.32}
+  .desktopManagerTable{margin-top:9px;overflow:auto;max-height:150px}
+  .desktopDraftCommand{display:flex;flex-direction:column}
+  .draftCommandBody{display:grid;grid-template-columns:minmax(270px,.8fr) minmax(370px,1.2fr);gap:12px;margin-top:4px;min-height:0}
+  .draftCommandQuick,.draftCommandPlayers{min-width:0}
+  .desktopDraftCommand .quickPickGrid{grid-template-columns:repeat(2,minmax(0,1fr));max-height:224px;overflow:auto;padding-right:2px}
+  .desktopDraftCommand .recentPicks{max-height:112px;overflow:auto}
+  .desktopDraftCommand .boardList{max-height:330px}
+  .desktopDraftCommand .playerRow{grid-template-columns:30px minmax(0,1fr) 96px}
+  .desktopPositionFilters{display:flex;gap:5px;overflow:auto;margin-bottom:4px}
+  .desktopBoardSection{margin-top:11px}
+}
+@media(min-width:901px) and (max-width:1180px){
+  .desktopCommandCenter{grid-template-columns:1fr}
+  #desktopMarketGrid{grid-template-columns:minmax(200px,.8fr) 1fr 1fr}
+  .draftCommandBody{grid-template-columns:minmax(240px,.8fr) minmax(340px,1.2fr)}
+}
+
+
+/* 2.4 League DNA + Sasuke Sharingan evolution */
+.leagueDnaSetup{border-color:#70551b!important;background:linear-gradient(145deg,#17130b,#100e10)!important}
+.leagueProfileBadge{font-size:9px;font-weight:950;letter-spacing:.8px;color:#111;background:#f4d35e;border-radius:999px;padding:5px 8px}
+.leagueDnaFacts{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.leagueDnaFacts span,.leagueDnaSignals span{border:1px solid #5a4720;background:#231c0e;color:#ffe9a3;border-radius:999px;padding:5px 8px;font-size:9px;font-weight:850}
+.leagueDnaBar{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid #70551b;background:linear-gradient(90deg,#1e170b,#151018);border-radius:12px;padding:9px 12px;margin:0 0 10px}
+.leagueDnaBar>div:first-child{display:flex;flex-direction:column;gap:2px}.leagueDnaBar b{color:#f4d35e}.leagueDnaBar>div:first-child span{font-size:10px;color:var(--muted)}
+.leagueDnaSignals{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px}
+.sharinganIcon{width:24px;height:24px;border:0;background:none;box-shadow:none;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;flex:0 0 auto}
+.sharinganIcon:before,.sharinganIcon:after{display:none!important}
+.sharinganIcon svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 3px rgba(230,40,65,.42))}
+.sharinganIcon .iris{fill:#bd2338;stroke:#f06a7c;stroke-width:1}
+.sharinganIcon .ring{fill:none;stroke:#160609;stroke-width:1.15}
+.sharinganIcon .pupil,.sharinganIcon .tomoeDot,.sharinganIcon .tomoeTail,.sharinganIcon .ms-core,.sharinganIcon .ems-outer{fill:#090708}
+.sharinganIcon .ms-cut{fill:#bd2338;stroke:#090708;stroke-width:.7}
+.sharinganIcon .ems-inner{fill:#bd2338;stroke:#090708;stroke-width:1.2}
+.sharingan-mangekyo svg{filter:drop-shadow(0 0 4px rgba(255,45,75,.58))}
+.sharingan-eternal svg{filter:drop-shadow(0 0 5px rgba(244,211,94,.42))}
+.sharingan-eternal .iris{stroke:#f4d35e}
+.sharinganStage .sharinganIcon{width:20px;height:20px}
+.scanEye .sharinganIcon{width:29px;height:29px;margin-right:5px}
+@media(max-width:700px){.leagueDnaBar{align-items:flex-start;flex-direction:column}.leagueDnaSignals{justify-content:flex-start}}

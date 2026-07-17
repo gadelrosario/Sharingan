@@ -1,4 +1,4 @@
-let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],decisionSnapshots=[],currentYahooRecord=null,posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startWR:3,flex:2,passTD:4,risk:"balanced",strategy:"auto"};
+let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],decisionSnapshots=[],currentYahooRecord=null,posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startWR:3,flex:2,passTD:6,risk:"balanced",strategy:"auto"};
 const managers=[
 {name:"Gerard",archetype:"Championship Value",skill:9.6,predictability:7,homerTeam:"",homer:0,qbHoard:2,waiver:10},
 {name:"Marc",archetype:"Calculated Ceiling",skill:8,predictability:8,homerTeam:"NYJ",homer:2,qbHoard:2,waiver:7},
@@ -12,7 +12,7 @@ const managers=[
 {name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7}
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5","BENCH6"];
-const APP_VERSION="Chūnin Reforged 2.1";
+const APP_VERSION="Chūnin Reforged 2.4";
 let renderInProgress=false;
 function el(id){return document.getElementById(id)}
 function safeText(id,value){const node=el(id);if(node)node.textContent=value}
@@ -22,7 +22,7 @@ window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error|
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=chunin_reforged_2_1",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=chunin_reforged_2_4",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
@@ -49,7 +49,8 @@ function startDraft(){
    scoring:document.getElementById("scoring")?.value||"half",
    startWR:+(document.getElementById("startWR")?.value||3),
    flex:+(document.getElementById("flexSpots")?.value||2),
-   passTD:+(document.getElementById("passTD")?.value||4),
+   passTD:+(document.getElementById("passTD")?.value||6),
+   teams:10,completionPoint:.1,firstDownPoint:.1,bigPlayBonuses:true,enhancedDST:true,customKicker:true,
    risk:document.getElementById("riskProfile")?.value||"balanced",
    strategy:document.getElementById("strategyPreset")?.value||"auto"
   };
@@ -57,6 +58,7 @@ function startDraft(){
   setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
   let modeName=mode==="practice"?"🟢 PRACTICE MOCK DRAFT":mode==="yahoo"?"🟣 YAHOO LIVE MOCK • REAL PEOPLE":"🔵 LIVE DRAFT DAY";
   modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
+  renderLeagueDnaBar();
   practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode==="practice");renderAll();
  }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please refresh the Chūnin Reforged 2.1 build. Technical detail: "+err.message)}
 }
@@ -80,6 +82,43 @@ function valueGap(p){let pool=available().filter(x=>x.id!==p.id&&recommendationE
 function valueOverride(p){let fall=Math.max(0,pick-(p.overall||pick)),gap=valueGap(p),t=tierLabel(p);return (gap>=7)||((t==="S"||t==="A")&&fall>=20)}
 function eternalValue(p){let fall=Math.max(0,pick-(p.overall||pick)),t=tierLabel(p);return (t==="S"||t==="A")&&fall>=40&&mambaScore(p)>=90}
 function finalPickScore(p){let score=baseFinalScore(p);if(valueOverride(p))score+=3;if(eternalValue(p))score+=4;return Math.round(Math.max(1,Math.min(115,score)))}
+function sharinganIconMarkup(stage="three"){
+ const key=["one","two","three","mangekyo","eternal"].includes(stage)?stage:"three";
+ let inner="";
+ if(key==="mangekyo"){
+  inner='<path class="ms-core" d="M12 2.2c1.5 3.5 3.7 5.7 7.4 7.4-3.5 1.4-5.7 3.7-7.4 7.4-1.5-3.7-3.8-6-7.4-7.4C8.2 8 10.5 5.7 12 2.2Z"/><path class="ms-cut" d="M12 4.1 14.2 10 20 12l-5.8 2L12 19.9 9.8 14 4 12l5.8-2L12 4.1Z"/>';
+ }else if(key==="eternal"){
+  inner='<path class="ems-outer" d="M12 1.9 15 7.5l6.1.8-4.4 4.3 1 6.1-5.7-2.9-5.7 2.9 1-6.1-4.4-4.3 6.1-.8L12 1.9Z"/><path class="ems-inner" d="M12 4.3c1.1 3 2.9 4.8 5.8 5.8-2.9 1.1-4.7 2.9-5.8 5.8-1.1-2.9-2.9-4.7-5.8-5.8C9.1 9 10.9 7.2 12 4.3Z"/><circle cx="12" cy="12" r="2.1" class="pupil"/>';
+ }else{
+  const count=key==="one"?1:key==="two"?2:3;
+  let tomoe="";
+  for(let i=0;i<count;i++){
+   const a=i*(360/count);
+   tomoe+=`<g transform="rotate(${a} 12 12)"><circle cx="12" cy="5.6" r="1.65" class="tomoeDot"/><path d="M13.2 6.1c2 .8 2.9 2.1 3 3.8-1.1-1.2-2.2-1.7-3.7-1.8Z" class="tomoeTail"/></g>`;
+  }
+  inner=tomoe+'<circle cx="12" cy="12" r="2.15" class="pupil"/>';
+ }
+ return `<span class="sharinganIcon sharingan-${key}" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="10.5" class="iris"/><circle cx="12" cy="12" r="8.6" class="ring"/>${inner}</svg></span>`;
+}
+function renderLeagueDnaBar(){
+ const node=document.getElementById("leagueDnaBar");if(!node)return;
+ node.innerHTML=`<div><b>Royal Rumble League DNA</b><span>10 teams • Half-PPR • 3 WR • 2 FLEX • 6-point pass TD</span></div><div class="leagueDnaSignals"><span>Elite QB ↑</span><span>WR depth ↑</span><span>Explosive upside ↑</span><span>D/ST above average</span></div>`;
+}
+function leagueSpecificModifier(p){
+ let m=0,t=tierLabel(p),pr=+(p.posRank||99);
+ if(p.pos==="QB"){
+  if(pr<=4)m+=5;else if(pr<=8)m+=2;else if(pr>12)m-=2;
+  if(p.leagueBreaker)m+=2;
+ }
+ if(["RB","WR"].includes(p.pos)){
+  if(p.leagueBreaker)m+=3;
+  if(t==="S"||t==="A")m+=2;
+  m+=1;
+ }
+ if(p.pos==="TE"&&(t==="S"||t==="A"))m+=2;
+ if(p.pos==="DST")m+=2;
+ return m;
+}
 function sharinganStage(p){if(eternalValue(p))return{key:"eternal",label:"ETERNAL MANGEKYŌ",meaning:"Season-Changing Value"};if(valueOverride(p))return{key:"mangekyo",label:"MANGEKYŌ",meaning:"Value Override"};let s=finalPickScore(p);if(s>=96)return{key:"three",label:"THREE TOMOE",meaning:"Elite Value"};if(s>=90)return{key:"two",label:"TWO TOMOE",meaning:"Excellent Value"};return{key:"one",label:"ONE TOMOE",meaning:"Good Pick"}}
 function recommendationEligible(p){if(userPositionFilled(p.pos))return false;return true}
 function expected(){return blueprint[Math.min(info().r-1,5)]||"BPA"}
@@ -89,7 +128,7 @@ function sourceBlend(p){
  // Gerard trusts analyst intelligence more than generic consensus.
  return 100-((bd*.35+fl*.30+fk*.25+fp*.10)*1.35);
 }
-function formatModifier(p){let m=0;if(leagueContext.scoring==="full"&&p.pos==="WR")m+=4;if(leagueContext.scoring==="full"&&p.pos==="RB"&&p.opportunityTrend&&/receiv|target/i.test(p.opportunityTrend))m+=3;if(leagueContext.scoring==="standard"&&p.pos==="RB")m+=5;if(leagueContext.startWR===3&&p.pos==="WR")m+=5;if(leagueContext.flex===2&&["RB","WR"].includes(p.pos))m+=3;if(leagueContext.passTD===6&&p.pos==="QB")m+=2;if(leagueContext.risk==="aggressive"&&(p.leagueBreaker||p.rookie))m+=5;if(leagueContext.risk==="safe"&&p.availabilityRisk==="high")m-=10;return m}
+function formatModifier(p){let m=0;if(leagueContext.scoring==="full"&&p.pos==="WR")m+=4;if(leagueContext.scoring==="full"&&p.pos==="RB"&&p.opportunityTrend&&/receiv|target/i.test(p.opportunityTrend))m+=3;if(leagueContext.scoring==="standard"&&p.pos==="RB")m+=5;if(leagueContext.startWR===3&&p.pos==="WR")m+=5;if(leagueContext.flex===2&&["RB","WR"].includes(p.pos))m+=3;if(leagueContext.passTD===6&&p.pos==="QB")m+=2;if(leagueContext.risk==="aggressive"&&(p.leagueBreaker||p.rookie))m+=5;if(leagueContext.risk==="safe"&&p.availabilityRisk==="high")m-=10;m+=leagueSpecificModifier(p);return m}
 function draftPhase(){let r=info().r;return r<=5?{name:"Foundation",text:"Take value and build dependable starters."}:r<=9?{name:"Structure",text:"Balance the roster, monitor tiers, and use stacks as tie-breakers."}:{name:"Endgame Hunter",text:"Chase upside, paths to larger roles, and premium handcuffs."}}
 function strategyHealth(){let c=counts(),r=info().r,msg="Stay flexible — value can override the plan.";if(r<=3&&c.WR>=1&&c.RB>=2)msg="Anchor WR + Double RB is on track.";else if(r<=4&&c.RB>=2)msg="Strong RB foundation. Add WR value next.";else if(r>=5&&c.WR<2)msg="WR depth is behind. Prefer WR when value is close.";else if(r>=7&&c.QB===0)msg="Late-QB plan active; draft only when the tier starts thinning.";return msg}
 function renderDraftPlan(){let d=draftPhase(),html=`<div class="strategy"><span><b>${d.name} Mode</b><small style="display:block;color:var(--muted);margin-top:3px">${d.text}</small></span><span class="pill">R${info().r}</span></div>`;["mobileDraftPhase","desktopDraftPhase"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=html});["mobileStrategyHealth","desktopStrategyHealth"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=strategyHealth()})}
@@ -193,7 +232,7 @@ function openScan(id){
  if(windowLabel==="Closing"||windowLabel==="Thinning")why.push(`${p.pos} position window is ${windowLabel.toLowerCase()}.`);
  why.push(fitLabel==="Elite"||fitLabel==="Strong"?`Strong fit with your current roster and draft blueprint.`:`Board value remains the primary reason for this recommendation.`);
  content.innerHTML=`
- <div class="scanHeader"><div><div class="scanEye"><span class="sharinganIcon"></span> SHARINGAN SCAN</div><div class="scanName">${p.name}</div><div class="tagrow">${tierBadge(p)}<span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">${coverageText(p)}</span></div></div><button class="ghost" onclick="closeScan()">Close</button></div>
+ <div class="scanHeader"><div><div class="scanEye">${sharinganIconMarkup(sharinganStage(p).key)} SHARINGAN SCAN</div><div class="scanName">${p.name}</div><div class="tagrow">${tierBadge(p)}<span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span><span class="tag">${coverageText(p)}</span></div></div><button class="ghost" onclick="closeScan()">Close</button></div>
  <div class="scanVerdict"><div class="scanVerdictLabel ${verdict.cls}">${verdict.label}</div><div class="scanVerdictText">${verdict.text}</div></div>
  <div class="scanQuickGrid">
    <div class="scanQuickMetric"><span>Mamba</span><b>${s.fit}</b></div>
@@ -251,9 +290,9 @@ function comparisonCardMarkup(p,primary){
    <div class="comparisonHeader"><div><div class="eyebrow">HIGHLIGHTED COMPARISON</div><div class="meta">Top recommendation remains ${primary.name}</div></div><button class="ghost" onclick="selectCandidate(${p.id})">Clear</button></div>
    <h3 class="scanLink" onclick="openScan(${p.id})">${p.name}</h3>
    <div class="tagrow">${tierBadge(p)}<span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span>${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}<span class="tag">FP ${p.fantasyProsPosRank||p.posRank}</span></div>
-   <div class="tagrow" style="margin-top:7px">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}"><span class="sharinganIcon"></span>${sharinganStage(p).meaning}</span></div><div class="comparisonGrid"><div class="comparisonMetric"><span>Mamba</span><b>${score}/100</b></div><div class="comparisonMetric"><span>Final Pick</span><b>${finalPickScore(p)}/100</b></div><div class="comparisonMetric"><span>Steal Risk</span><b>${risk}%</b></div><div class="comparisonMetric"><span>Stack</span><b>${bp.stack.label}</b></div><div class="comparisonMetric"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>
+   <div class="tagrow" style="margin-top:7px">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}">${sharinganIconMarkup(sharinganStage(p).key)}${sharinganStage(p).meaning}</span></div><div class="comparisonGrid"><div class="comparisonMetric"><span>Mamba</span><b>${score}/100</b></div><div class="comparisonMetric"><span>Final Pick</span><b>${finalPickScore(p)}/100</b></div><div class="comparisonMetric"><span>Steal Risk</span><b>${risk}%</b></div><div class="comparisonMetric"><span>Stack</span><b>${bp.stack.label}</b></div><div class="comparisonMetric"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>
    <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div><div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}</div>
-   <div style="display:grid;grid-template-columns:1fr auto;gap:8px"><button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button><button type="button" class="sharinganBtn" onclick="openScan(${p.id})"><span class="sharinganIcon"></span> Sharingan Scan</button></div>
+   <div style="display:grid;grid-template-columns:1fr auto;gap:8px"><button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button><button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(sharinganStage(p).key)} Sharingan Scan</button></div>
  </div>`;
 }
 function renderRecommendation(){
@@ -270,7 +309,7 @@ function renderRecommendation(){
    <div style="font-weight:900">${state.label}</div>
    <div class="mambaScore">Mamba ${score}/100 • Final Pick ${finalPickScore(p)}/100 • Steal Risk ${risk}%</div>
    <div class="confbar"><span style="width:${score}%"></span></div>
-   <h2 class="scanLink" onclick="openScan(${p.id})">${p.name}</h2><div class="tagrow">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}"><span class="sharinganIcon"></span>${sharinganStage(p).meaning}</span></div>
+   <h2 class="scanLink" onclick="openScan(${p.id})">${p.name}</h2><div class="tagrow">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}">${sharinganIconMarkup(sharinganStage(p).key)}${sharinganStage(p).meaning}</span></div>
    <div class="tagrow">
      <span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span>
      <span class="tag">${p.team}</span>
@@ -281,7 +320,7 @@ function renderRecommendation(){
    <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div><div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
      <button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button>
-     <button type="button" class="sharinganBtn" onclick="openScan(${p.id})"><span class="sharinganIcon"></span> Sharingan Scan</button>
+     <button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(sharinganStage(p).key)} Sharingan Scan</button>
    </div>`;
 
  let highlightedPlayer=selectedCandidateId?players.find(x=>x.id===selectedCandidateId&&!drafted.includes(x.id)):null;
@@ -294,7 +333,7 @@ function renderRecommendation(){
        <div class="meta">${tierLabel(x)} Tier • ${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • FP ${x.fantasyProsPosRank||x.posRank} • ${rationale(x)}</div>
        ${highlighted?`<span class="highlightFlag">Highlighted for comparison</span>`:""}
      </div>
-     <button type="button" class="scanBtn" onclick="openScan(${x.id});return false"><span class="sharinganIcon"></span> Sharingan Scan</button>
+     <button type="button" class="scanBtn" onclick="openScan(${x.id});return false">${sharinganIconMarkup(sharinganStage(x).key)} Sharingan Scan</button>
      <button type="button" class="autoPickBtn" onclick="recordCurrentPick(${x.id});return false">Record Current Pick</button>
    </div>`;
  }).join("");
@@ -341,7 +380,7 @@ function buildYahooRecord(){
   id:`yahoo-${now.toISOString()}-${Math.random().toString(36).slice(2,8)}`,
   createdAt:now.toISOString(),
   source:"Yahoo public mock draft against real people",
-  league:{teams:10,draftSlot:slot,scoring:leagueContext.scoring,passingTD:leagueContext.passTD,startingWR:leagueContext.startWR,flex:leagueContext.flex,riskProfile:leagueContext.risk,strategy:leagueContext.strategy},
+  league:{id:164770,name:"SQUAAA! ROYAL RUMBLE 2025–2026",teams:10,draftSlot:slot,scoring:leagueContext.scoring,receptions:.5,passingTD:leagueContext.passTD,completionPoint:.1,startingWR:leagueContext.startWR,flex:leagueContext.flex,firstDownPoint:.1,bigPlayBonuses:true,enhancedDST:true,customKicker:true,riskProfile:leagueContext.risk,strategy:leagueContext.strategy},
   managers:slotManagers,
   picks:history.map(h=>{const p=players.find(x=>x.id===h.id)||{};return {overallPick:h.pick,round:Math.ceil(h.pick/10),pickInRound:(h.pick-1)%10+1,teamSlot:h.team,isGerard:h.team===slot,playerId:h.id,playerName:p.name||"Unknown",position:p.pos||"",nflTeam:p.team||"",tier:tierLabel(p),mambaAtExport:mambaScore(p)} }),
   gerardDecisions:decisionSnapshots,
