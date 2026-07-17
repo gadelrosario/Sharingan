@@ -1,18 +1,11 @@
 {
-  "name": "Gerard Fantasy HQ \u2014 Sharingan Alpha 12.2",
-  "short_name": "Fantasy HQ 12.2",
+  "name": "Gerard Fantasy HQ — Chūnin 1.1 Live Mock Lab",
+  "short_name": "Fantasy HQ Chūnin",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#07111f",
+  "background_color": "#070709",
   "theme_color": "#070709",
-  "icons": [
-    {
-      "src": "icons/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ],
-  "description": "League-aware fantasy football draft assistant with Sharingan player scans."
+  "icons": [{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],
+  "description": "Value-first fantasy football draft companion with Yahoo Live Mock capture, Sharingan Vision, dynamic tiers, Room Intel, Peek Ahead, and exportable training data."
 }
