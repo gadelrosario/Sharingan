@@ -632,6 +632,11 @@ function marketPressure(pos){
  let level=pressure>=82?"Critical":pressure>=65?"Hot":pressure>=45?"Rising":pressure>=22?"Calm":"Cold";
  return{pos,pressure,level,starterNeed,depthNeed,recent,teams:before.length,avail};
 }
+function marketBoxMarkup(x){
+ const levelClass=String(x.level||"cold").toLowerCase();
+ const windowLabel=positionWindow(x);
+ return `<div class="marketBox ${levelClass}"><div class="marketPos">${x.pos}</div><div class="marketLevel">${windowLabel}</div><div class="marketMeta">${x.recent} in last 8 • ${x.starterNeed} need starter</div></div>`;
+}
 function highestRoomPressure(){
  let positions=["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos));
  return positions.map(marketPressure).sort((a,b)=>b.pressure-a.pressure)[0]||marketPressure("RB");

@@ -1,12 +1,10 @@
-# Gerard Fantasy HQ — Chūnin 1.3
+# Gerard Fantasy HQ — Chūnin 1.3.1
 
-## Yahoo Live Mock workflow
-1. Open **Yahoo Live Mock** in Fantasy HQ.
-2. Join a Yahoo public mock with real people.
-3. Record every Yahoo selection in Fantasy HQ using **Other** or **Mine**.
-4. At draft completion, use **Download This Mock JSON**.
-5. Upload that JSON to ChatGPT for analysis.
+Hotfix release for the Live Draft Board.
 
-The app also stores up to 75 Yahoo mocks locally in the current browser. Use **Download All Yahoo Mocks** regularly so the history is not lost when browser data is cleared or when changing devices.
+## Fixed
+- Restored the missing `marketBoxMarkup` renderer that prevented drafts from starting.
+- Bumped cache identifiers so GitHub Pages and the service worker load the corrected build.
 
-Chūnin 1.3 currently supports the 10-team draft engine. Additional Yahoo team counts will be enabled after the dynamic-board update is validated.
+## Deploy
+Upload the contents of this folder to the root of the GitHub Pages repository, replacing the old files. Then hard-refresh the site.
