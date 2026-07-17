@@ -1,1 +1,18 @@
-{"name":"Fantasy HQ — Chūnin Reforged","short_name":"Fantasy HQ","start_url":"./","display":"standalone","background_color":"#09090d","theme_color":"#09090d","icons":[{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml"}]}
+{
+  "name": "Gerard Fantasy HQ — Chūnin Reforged 2.1",
+  "short_name": "Fantasy HQ",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070709",
+  "theme_color": "#070709",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "description": "Value-first fantasy football draft companion with Yahoo Live Mock capture, Sharingan Vision, dynamic tiers, Room Intel, Peek Ahead, and exportable training data."
+}
