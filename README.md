@@ -1,4 +1,4 @@
-# Fantasy HQ — Jōnin 2.9: Intelligence Foundation
+# Fantasy HQ — Jōnin 3.0: Draft Speed Hotfix
 
 This is the current GitHub-ready build.
 
@@ -25,3 +25,13 @@ True Yahoo OAuth syncing requires a secure backend for client secrets, access to
 
 ## Deploy
 Upload the contents of this ZIP to the repository root and enable GitHub Pages from the main branch/root directory.
+
+
+## Jōnin 3.0 draft-speed changes
+
+- Search fields clear automatically after a pick is recorded from search.
+- Focus returns to the same search field for immediate entry of the next Yahoo pick.
+- Press Escape to clear search instantly.
+- Press Enter to record a player when the search is an exact name match or produces only one result.
+- League DNA now reflects the selected scoring, WR, FLEX, passing-TD, and round settings instead of hard-coded text.
+- The board remains configured for the 17-round Royal Rumble roster.

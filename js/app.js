@@ -13,7 +13,7 @@ const managers=[
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5","BENCH6"];
 const TOTAL_ROUNDS=rosterSlots.length,TOTAL_PICKS=TOTAL_ROUNDS*10;
-const APP_VERSION="Jōnin 2.9 • Intelligence Foundation";
+const APP_VERSION="Jōnin 3.0 • Draft Speed Hotfix";
 let renderInProgress=false,simulationInProgress=false,activeMobilePage="mobileDraft";
 const dirtyViews={players:true,room:true,wait:true,team:true};
 let heavyRenderTimer=null;
@@ -48,7 +48,7 @@ window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error|
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=jonin_2_9",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=jonin_3_0",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
@@ -128,7 +128,8 @@ function sharinganIconMarkup(stage="three"){
 }
 function renderLeagueDnaBar(){
  const node=document.getElementById("leagueDnaBar");if(!node)return;
- node.innerHTML=`<div><b>Royal Rumble League DNA</b><span>10 teams • Half-PPR • 3 WR • 2 FLEX • 6-point pass TD</span></div><div class="leagueDnaSignals"><span>Elite QB ↑</span><span>WR depth ↑</span><span>Explosive upside ↑</span><span>D/ST above average</span></div>`;
+ const scoringLabel=leagueContext.scoring==="full"?"Full PPR":leagueContext.scoring==="standard"?"Standard":"Half-PPR";
+ node.innerHTML=`<div><b>Royal Rumble League DNA</b><span>${leagueContext.teams||10} teams • ${scoringLabel} • ${leagueContext.startWR} WR • ${leagueContext.flex} FLEX • ${leagueContext.passTD}-point pass TD • ${TOTAL_ROUNDS} rounds</span></div><div class="leagueDnaSignals"><span>Elite QB ↑</span><span>WR depth ↑</span><span>Explosive upside ↑</span><span>D/ST above average</span></div>`;
 }
 function leagueSpecificModifier(p){
  let m=0,t=tierLabel(p),pr=+(p.posRank||99);
@@ -624,12 +625,33 @@ function renderQuickDraftBoard(){
  ['mobileClockStrip','desktopClockStrip','mobilePlayersClock'].forEach(id=>{let e=el(id);if(e)e.innerHTML=clock});let boardClock=el('desktopBoardClock');if(boardClock){let x=currentPickLabel();boardClock.textContent=`${x.name} • Pick ${x.label}`;}
  ['mobileRecentPicks','desktopRecentPicks'].forEach(id=>{let e=el(id);if(e)e.innerHTML=recent});
 }
-function recordCurrentPick(id){selectPlayer(id,currentPickOwner())}
+function clearDraftSearch({refocus=true}={}){
+ const mobile=el('search'),desktop=el('dSearch'),active=document.activeElement;
+ if(mobile)mobile.value='';if(desktop)desktop.value='';
+ if(refocus){
+  const target=active===mobile?mobile:active===desktop?desktop:(window.matchMedia('(min-width: 900px)').matches?desktop:mobile);
+  requestAnimationFrame(()=>{if(target&&target.offsetParent!==null){target.focus();target.select();}});
+ }
+}
+function recordCurrentPick(id){
+ const recorded=selectPlayer(id,currentPickOwner());
+ if(recorded){clearDraftSearch({refocus:true});renderPlayers();}
+ return recorded;
+}
 function undoLastPick(){
  if(!history.length)return;
  const last=history.pop();drafted=drafted.filter(id=>id!==last.id);pick=Math.max(1,last.pick);selectedCandidateId=null;invalidateIntelligence();renderAll();
 }
 function syncSearch(source){let a=el('search'),b=el('dSearch');if(source==='mobile'&&b)b.value=a?.value||'';if(source==='desktop'&&a)a.value=b?.value||'';renderPlayers()}
+function handleSearchKey(event){
+ if(event.key==='Escape'){event.preventDefault();clearDraftSearch({refocus:true});renderPlayers();return;}
+ if(event.key!=='Enter')return;
+ const q=String(event.currentTarget.value||'').trim().toLowerCase();if(!q)return;
+ const matches=available().filter(p=>(p.name||'').toLowerCase().includes(q)||(p.team||'').toLowerCase()===q).sort((a,b)=>(a.overall||999)-(b.overall||999));
+ const exact=matches.find(p=>(p.name||'').toLowerCase()===q);
+ const choice=exact||(matches.length===1?matches[0]:null);
+ if(choice){event.preventDefault();recordCurrentPick(choice.id);}
+}
 function setPos(pos){posFilter=pos;document.querySelectorAll('[data-pos]').forEach(b=>b.classList.toggle('filterActive',b.dataset.pos===pos));renderPlayers()}
 function renderPlayers(){
  let q=((el('search')?.value||el('dSearch')?.value||'')).trim().toLowerCase();
@@ -689,5 +711,5 @@ const originalStartDraft=startDraft;startDraft=function(){const result=originalS
 const originalSelectPlayer=selectPlayer;selectPlayer=function(id,team){const result=originalSelectPlayer.apply(this,arguments);syncDraftIntoLeagueState();return result};
 const originalUndoLastPick=undoLastPick;undoLastPick=function(){const result=originalUndoLastPick.apply(this,arguments);syncDraftIntoLeagueState();return result};
 
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_2_9").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_0").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
 init();
