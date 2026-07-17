@@ -1,4 +1,4 @@
-let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],decisionSnapshots=[],currentYahooRecord=null,posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startWR:3,flex:2,passTD:6,risk:"balanced",strategy:"auto"};
+let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],decisionSnapshots=[],currentYahooRecord=null,posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startQB:1,startRB:2,startWR:3,startTE:1,flex:2,startK:1,startDST:1,bench:6,passTD:6,risk:"balanced",strategy:"auto"};
 const managers=[
 {name:"Gerard",archetype:"Championship Value",skill:9.6,predictability:7,homerTeam:"",homer:0,qbHoard:2,waiver:10},
 {name:"Marc",archetype:"Calculated Ceiling",skill:8,predictability:8,homerTeam:"NYJ",homer:2,qbHoard:2,waiver:7},
@@ -11,9 +11,15 @@ const managers=[
 {name:"Rob",archetype:"Conviction Drafter",skill:6.5,predictability:9,homerTeam:"DEN",homer:7,qbHoard:3,waiver:6},
 {name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7}
 ];
-const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5","BENCH6"];
-const TOTAL_ROUNDS=rosterSlots.length,TOTAL_PICKS=TOTAL_ROUNDS*10;
-const APP_VERSION="Jōnin 3.0 • Draft Speed Hotfix";
+const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"];
+let rosterSlots=[],TOTAL_ROUNDS=17,TOTAL_PICKS=170;
+const APP_VERSION="Jōnin 3.2 • Responsive Draft Command";
+function buildRosterSlots(settings={}){
+ const q=+(settings.startQB??1),rb=+(settings.startRB??2),wr=+(settings.startWR??3),te=+(settings.startTE??1),flex=+(settings.flex??2),k=+(settings.startK??1),dst=+(settings.startDST??1),bench=+(settings.bench??6),slots=[];
+ for(let i=1;i<=q;i++)slots.push(i===1?"QB":`QB${i}`);for(let i=1;i<=rb;i++)slots.push(`RB${i}`);for(let i=1;i<=wr;i++)slots.push(`WR${i}`);for(let i=1;i<=te;i++)slots.push(i===1?"TE":`TE${i}`);for(let i=1;i<=flex;i++)slots.push(`FLEX${i}`);for(let i=1;i<=k;i++)slots.push(i===1?"K":`K${i}`);for(let i=1;i<=dst;i++)slots.push(i===1?"DEF":`DEF${i}`);for(let i=1;i<=bench;i++)slots.push(`BENCH${i}`);return slots;
+}
+function applyDraftStructure(){rosterSlots=buildRosterSlots(leagueContext);TOTAL_ROUNDS=rosterSlots.length;TOTAL_PICKS=TOTAL_ROUNDS*(leagueContext.teams||10)}
+rosterSlots=buildRosterSlots(leagueContext);
 let renderInProgress=false,simulationInProgress=false,activeMobilePage="mobileDraft";
 const dirtyViews={players:true,room:true,wait:true,team:true};
 let heavyRenderTimer=null;
@@ -46,9 +52,10 @@ function safeHTML(id,value){const node=el(id);if(node)node.innerHTML=value}
 function reportRuntimeError(context,err){console.error(`[${APP_VERSION}] ${context}:`,err);const status=el("runtimeStatus");if(status){status.classList.remove("hidden");status.innerHTML=`<b>Fantasy HQ recovered from an interface error.</b><div class="meta">${context}: ${err.message}. Refresh once if a section does not update.</div>`}}
 window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error||new Error(e.message)));
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
+function updateSetupRoundPreview(){const settings={startQB:+(el("startQB")?.value||1),startRB:+(el("startRB")?.value||2),startWR:+(el("startWR")?.value||3),startTE:+(el("startTE")?.value||1),flex:+(el("flexSpots")?.value||2),startK:+(el("startK")?.value||1),startDST:+(el("startDST")?.value||1),bench:+(el("benchSpots")?.value||6)};const rounds=buildRosterSlots(settings).length,teams=+(el("teamCount")?.value||10);safeText("calculatedRounds",`${rounds} rounds • ${rounds*teams} picks`)}
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=jonin_3_0",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=jonin_3_2",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
@@ -58,7 +65,7 @@ async function init(){
  }
  for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;draftSlot.appendChild(o)}
  draftSlot.value=10;
- renderManagerSetup();
+ renderManagerSetup();updateSetupRoundPreview();
 }
 
 function renderManagerSetup(){const pref=["Kalani","Marc","Ray","Fritz","Michael","Gerard","Josh","Raoul","Rob","AJ"];managerSetup.innerHTML="";for(let i=1;i<=10;i++){let w=document.createElement("div");w.className="managerSlot";let b=document.createElement("b");b.textContent="Pick "+i;let s=document.createElement("select");s.id="mgr"+i;managers.forEach(m=>{let o=document.createElement("option");o.value=m.name;o.textContent=m.name+" — "+m.archetype;s.appendChild(o)});s.value=pref[i-1];w.append(b,s);managerSetup.appendChild(w)}}
@@ -73,20 +80,20 @@ function startDraft(){
   style=document.getElementById("roomStyle")?.value||"chaotic";
   leagueContext={
    scoring:document.getElementById("scoring")?.value||"half",
-   startWR:+(document.getElementById("startWR")?.value||3),
-   flex:+(document.getElementById("flexSpots")?.value||2),
+   startQB:+(document.getElementById("startQB")?.value||1),startRB:+(document.getElementById("startRB")?.value||2),startWR:+(document.getElementById("startWR")?.value||3),startTE:+(document.getElementById("startTE")?.value||1),flex:+(document.getElementById("flexSpots")?.value||2),startK:+(document.getElementById("startK")?.value||1),startDST:+(document.getElementById("startDST")?.value||1),bench:+(document.getElementById("benchSpots")?.value||6),
    passTD:+(document.getElementById("passTD")?.value||6),
    teams:10,completionPoint:.1,firstDownPoint:.1,bigPlayBonuses:true,enhancedDST:true,customKicker:true,
    risk:document.getElementById("riskProfile")?.value||"balanced",
    strategy:document.getElementById("strategyPreset")?.value||"auto"
   };
+  applyDraftStructure();
   captureManagers();pick=1;drafted=[];history=[];decisionSnapshots=[];currentYahooRecord=null;selectedCandidateId=null;invalidateIntelligence();buildProfiles();if(typeof rosterRows!=="function")throw new Error("Roster engine did not initialize");
   setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
   let modeName=mode==="practice"?"🟢 PRACTICE MOCK DRAFT":mode==="yahoo"?"🟣 YAHOO LIVE MOCK • REAL PEOPLE":"🔵 LIVE DRAFT DAY";
   modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   renderLeagueDnaBar();
   practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode==="practice");renderAll();
- }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please refresh the Chūnin Reforged 2.1 build. Technical detail: "+err.message)}
+ }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please refresh the Jōnin 3.2 build. Technical detail: "+err.message)}
 }
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
@@ -246,7 +253,7 @@ async function simulateToMe(){
   dirtyViews.players=dirtyViews.room=dirtyViews.wait=dirtyViews.team=false;
  }
 }
-function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let p=ps.find(x=>x.pos===pos&&!used.includes(x.id));if(p)used.push(p.id);return p}for(let s of rosterSlots){let p=null;if(s==="QB")p=take("QB");else if(s.startsWith("RB"))p=take("RB");else if(s.startsWith("WR"))p=take("WR");else if(s==="TE")p=take("TE");else if(s==="K")p=take("K");else if(s==="DEF")p=take("DST");else if(s.startsWith("FLEX")){p=ps.find(x=>["RB","WR","TE"].includes(x.pos)&&!used.includes(x.id));if(p)used.push(p.id)}else if(s.startsWith("BENCH")){p=ps.find(x=>!used.includes(x.id));if(p)used.push(p.id)}rows.push([s,p])}return rows}
+function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let p=ps.find(x=>x.pos===pos&&!used.includes(x.id));if(p)used.push(p.id);return p}for(let s of rosterSlots){let p=null;if(s.startsWith("QB"))p=take("QB");else if(s.startsWith("RB"))p=take("RB");else if(s.startsWith("WR"))p=take("WR");else if(s.startsWith("TE"))p=take("TE");else if(s.startsWith("K"))p=take("K");else if(s.startsWith("DEF"))p=take("DST");else if(s.startsWith("FLEX")){p=ps.find(x=>["RB","WR","TE"].includes(x.pos)&&!used.includes(x.id));if(p)used.push(p.id)}else if(s.startsWith("BENCH")){p=ps.find(x=>!used.includes(x.id));if(p)used.push(p.id)}rows.push([s,p])}return rows}
 
 function positionalCountsAll(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{let key=p.pos==="DEF"?"DST":p.pos;if(c[key]!==undefined)c[key]++});return c}
 function rosterNeeds(){let c=positionalCountsAll(),needs=[];if(c.QB<1)needs.push("QB");if(c.RB<2)needs.push("RB");if(c.WR<3)needs.push("WR");if(c.TE<1)needs.push("TE");if(c.K<1)needs.push("K");if(c.DST<1)needs.push("D/ST");return needs}
@@ -271,7 +278,7 @@ function waitScore(pos){
  }
  return Math.max(10,Math.min(98,Math.round(score)));
 }
-function renderLiveRoster(){let rows=rosterRows(),keySlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF"],htmlRows=rows.filter(([s])=>keySlots.includes(s)).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText}
+function renderLiveRoster(){let rows=rosterRows(),htmlRows=rows.filter(([s])=>!s.startsWith("BENCH")).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText}
 function renderWaitMeter(){
  let snap=getIntelligenceSnapshot(),positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10),c=positionalCountsAll();
  let boxes=positions.map(pos=>{
@@ -287,7 +294,7 @@ function renderWaitMeter(){
    let label=score>=70?"SAFE TO WAIT":score>=48?(roundNow<=4?"ELITE ONLY":"MONITOR TIER"):"DRAFT SOON";
    return `<div class="waitBox ${cls}"><div class="pos">${pos==="DST"?"D/ST":pos}</div><div class="meter"><span style="width:${score}%"></span></div><div><b>${score}%</b></div><div class="decision">${label}</div></div>`;
  }).join("");
- let el=document.getElementById("waitMeter");if(el)el.innerHTML=boxes;
+ ["mobileWaitMeter","desktopWaitMeter"].forEach(id=>{let node=document.getElementById(id);if(node)node.innerHTML=boxes});
 }
 function scoreComponents(p){
  let value=Math.max(45,Math.min(99,Math.round(102-(p.overall||200)/3)));
@@ -642,19 +649,10 @@ function undoLastPick(){
  if(!history.length)return;
  const last=history.pop();drafted=drafted.filter(id=>id!==last.id);pick=Math.max(1,last.pick);selectedCandidateId=null;invalidateIntelligence();renderAll();
 }
-function syncSearch(source){let a=el('search'),b=el('dSearch');if(source==='mobile'&&b)b.value=a?.value||'';if(source==='desktop'&&a)a.value=b?.value||'';renderPlayers()}
-function handleSearchKey(event){
- if(event.key==='Escape'){event.preventDefault();clearDraftSearch({refocus:true});renderPlayers();return;}
- if(event.key!=='Enter')return;
- const q=String(event.currentTarget.value||'').trim().toLowerCase();if(!q)return;
- const matches=available().filter(p=>(p.name||'').toLowerCase().includes(q)||(p.team||'').toLowerCase()===q).sort((a,b)=>(a.overall||999)-(b.overall||999));
- const exact=matches.find(p=>(p.name||'').toLowerCase()===q);
- const choice=exact||(matches.length===1?matches[0]:null);
- if(choice){event.preventDefault();recordCurrentPick(choice.id);}
-}
+function syncSearch(source){let a=el('search'),b=el('dSearch'),c=el('browseSearch'),src=source==='desktop'?b:source==='browse'?c:a,value=src?.value||'';[a,b,c].forEach(x=>{if(x&&x!==src)x.value=value});renderPlayers()}
 function setPos(pos){posFilter=pos;document.querySelectorAll('[data-pos]').forEach(b=>b.classList.toggle('filterActive',b.dataset.pos===pos));renderPlayers()}
 function renderPlayers(){
- let q=((el('search')?.value||el('dSearch')?.value||'')).trim().toLowerCase();
+ let q=((el('search')?.value||el('dSearch')?.value||el('browseSearch')?.value||'')).trim().toLowerCase();
  let pool=available().filter(p=>posFilter==='ALL'||positionKey(p)===posFilter).filter(p=>!q||p.name.toLowerCase().includes(q)||(p.team||'').toLowerCase().includes(q)).sort((a,b)=>(a.overall||999)-(b.overall||999)).slice(0,q?80:55);
  let owner=currentPickOwner(),ownerLabel=owner===slot?'Draft for Me':'Record Pick';
  let html=pool.map(p=>`<div class="playerRow fast"><div class="meta">${p.overall||'—'}</div><div><b class="scanLink" onclick="openScan(${p.id})">${p.name}</b><div class="meta">${positionKey(p)} • ${p.team} • ${tierLabel(p)} Tier</div></div><button class="autoPickBtn" onclick="recordCurrentPick(${p.id})">${ownerLabel}</button></div>`).join('')||'<div class="meta" style="padding:12px">No available players match.</div>';

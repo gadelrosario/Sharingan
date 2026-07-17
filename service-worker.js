@@ -1,4 +1,4 @@
-const CACHE="fantasy-hq-jonin-3-0";
+const CACHE="fantasy-hq-jonin-3-1";
 const ASSETS=["./","./index.html","./css/app.css","./js/fantasy-hq-core.js","./js/app.js","./data/players.json","./manifest.webmanifest","./icons/icon.svg"];
 self.addEventListener("install",event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));self.skipWaiting()});
 self.addEventListener("activate",event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))));self.clients.claim()});
