@@ -1,11 +1,1 @@
-{
-  "name": "Gerard Fantasy HQ — Chūnin 1.1 Live Mock Lab",
-  "short_name": "Fantasy HQ Chūnin",
-  "start_url": "./index.html",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#070709",
-  "theme_color": "#070709",
-  "icons": [{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}],
-  "description": "Value-first fantasy football draft companion with Yahoo Live Mock capture, Sharingan Vision, dynamic tiers, Room Intel, Peek Ahead, and exportable training data."
-}
+{"name":"Fantasy HQ — Chūnin Reforged","short_name":"Fantasy HQ","start_url":"./","display":"standalone","background_color":"#09090d","theme_color":"#09090d","icons":[{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml"}]}
