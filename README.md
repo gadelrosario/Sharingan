@@ -1,4 +1,4 @@
-# Fantasy HQ — Chūnin Reforged 2.4
+# Fantasy HQ — Chūnin Reforged 2.5
 
 Royal Rumble League DNA update.
 

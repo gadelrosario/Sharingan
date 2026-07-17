@@ -12,7 +12,8 @@ const managers=[
 {name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7}
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"],rosterSlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF","BENCH1","BENCH2","BENCH3","BENCH4","BENCH5","BENCH6"];
-const APP_VERSION="Chūnin Reforged 2.4";
+const TOTAL_ROUNDS=rosterSlots.length,TOTAL_PICKS=TOTAL_ROUNDS*10;
+const APP_VERSION="Chūnin Reforged 2.5";
 let renderInProgress=false;
 function el(id){return document.getElementById(id)}
 function safeText(id,value){const node=el(id);if(node)node.textContent=value}
@@ -22,7 +23,7 @@ window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error|
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 async function init(){
  try{
-  const response=await fetch("data/players.json?v=chunin_reforged_2_4",{cache:"no-store"});
+  const response=await fetch("data/players.json?v=chunin_reforged_2_5",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
@@ -65,7 +66,7 @@ function startDraft(){
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
 function teamForPick(p){let r=Math.ceil(p/10),x=(p-1)%10+1;return r%2?x:11-x}
-function info(){let r=Math.ceil(pick/10),ip=(pick-1)%10+1,next=pick;while(teamForPick(next)!==slot)next++;return{r,ip,until:next-pick}}
+function info(){let r=Math.ceil(pick/10),ip=(pick-1)%10+1,next=pick;while(next<=TOTAL_PICKS&&teamForPick(next)!==slot)next++;return{r,ip,until:Math.max(0,Math.min(TOTAL_PICKS,next)-pick)}}
 function available(){return players.filter(p=>!drafted.includes(p.id))}
 function myPlayers(){return history.filter(h=>h.team===slot).map(h=>players.find(p=>p.id===h.id)).filter(Boolean)}
 function counts(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{if(c[p.pos]!==undefined)c[p.pos]++});return c}
@@ -142,7 +143,7 @@ function recommendations(){
 }
 function rationale(p){let b=[],e=expected();if(e===p.pos||e.includes(p.pos))b.push("fits Gerard Blueprint");let fall=Math.max(0,pick-p.overall);if(fall>=8)b.push(`value fall: ${fall} picks`);if(p.bdgeLabels?.length)b.push(`BDGE: ${p.bdgeLabels[0]}`);if(p.overallTier==="S"||p.overallTier==="A")b.push("top-tier talent");if(["RB","WR"].includes(p.pos))b.push("weekly-ceiling core");return b.slice(0,3).join(" • ")||"best blended value available"}
 
-function survivalRisk(p){let risk=0,n=pick+1,seen=0;while(seen<10&&n<=170){let t=teamForPick(n);if(t===slot)break;let m=getManager(t);if(p.team===m.homerTeam)risk+=m.homer*2.5;if(p.pos==="QB")risk+=m.qbHoard*1.7;risk+=(10-m.predictability)*.7;seen++;n++}return Math.min(95,Math.round(risk))}
+function survivalRisk(p){let risk=0,n=pick+1,seen=0;while(seen<10&&n<=TOTAL_PICKS){let t=teamForPick(n);if(t===slot)break;let m=getManager(t);if(p.team===m.homerTeam)risk+=m.homer*2.5;if(p.pos==="QB")risk+=m.qbHoard*1.7;risk+=(10-m.predictability)*.7;seen++;n++}return Math.min(95,Math.round(risk))}
 function mambaScore(p){let raw=gerardScore(p),tier=p.overallTier==="S"?10:p.overallTier==="A"?6:0,fall=Math.max(0,pick-p.overall),risk=survivalRisk(p);return Math.round(Math.max(1,Math.min(99,55+raw/5+tier+Math.min(10,fall/2)-risk/8)))}
 function recommendationState(p){let st=sharinganStage(p);if(st.key==="eternal")return{cls:"state-value",label:"🖤 ETERNAL MANGEKYŌ • SEASON-CHANGING VALUE"};if(st.key==="mangekyo")return{cls:"state-value",label:"👁 MANGEKYŌ • VALUE OVERRIDE"};if(st.key==="three")return{cls:"state-confidence",label:"👁 THREE TOMOE • ELITE VALUE"};if(st.key==="two")return{cls:"state-confidence",label:"👁 TWO TOMOE • EXCELLENT VALUE"};return{cls:"state-normal",label:"👁 ONE TOMOE • GOOD PICK"}}
 function runSignal(){let r=history.slice(-6).map(h=>players.find(p=>p.id===h.id)?.pos).filter(Boolean),t={QB:0,RB:0,WR:0,TE:0};r.forEach(x=>t[x]++);let top=Object.entries(t).sort((a,b)=>b[1]-a[1])[0];return top&&top[1]>=3?top[0]+" run detected":"No major positional run"}
@@ -170,7 +171,7 @@ function rosterRows(){let ps=myPlayers(),used=[],rows=[];function take(pos){let 
 
 function positionalCountsAll(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{let key=p.pos==="DEF"?"DST":p.pos;if(c[key]!==undefined)c[key]++});return c}
 function rosterNeeds(){let c=positionalCountsAll(),needs=[];if(c.QB<1)needs.push("QB");if(c.RB<2)needs.push("RB");if(c.WR<3)needs.push("WR");if(c.TE<1)needs.push("TE");if(c.K<1)needs.push("K");if(c.DST<1)needs.push("D/ST");return needs}
-function waitScore(pos){let c=positionalCountsAll(),avail=available().filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos),top=avail.slice(0,8),needers=0,n=pick+1;while(n<=170&&teamForPick(n)!==slot){let t=teamForPick(n),owned=history.filter(h=>h.team===t).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),has=owned.some(p=>(p.pos==="DEF"?"DST":p.pos)===pos);if(!has)needers++;n++}let base=(pos==="QB"||pos==="TE")?62:88;if(c[pos]>=1)base=96;base-=needers*6;if(top.length<=3)base-=25;if(top.length<=1)base-=25;let recent=history.slice(-6).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),run=recent.filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).length;base-=run*8;return Math.max(5,Math.min(98,Math.round(base)))}
+function waitScore(pos){let c=positionalCountsAll(),avail=available().filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos),top=avail.slice(0,8),needers=0,n=pick+1;while(n<=TOTAL_PICKS&&teamForPick(n)!==slot){let t=teamForPick(n),owned=history.filter(h=>h.team===t).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),has=owned.some(p=>(p.pos==="DEF"?"DST":p.pos)===pos);if(!has)needers++;n++}let base=(pos==="QB"||pos==="TE")?62:88;if(c[pos]>=1)base=96;base-=needers*6;if(top.length<=3)base-=25;if(top.length<=1)base-=25;let recent=history.slice(-6).map(h=>players.find(p=>p.id===h.id)).filter(Boolean),run=recent.filter(p=>(p.pos==="DEF"?"DST":p.pos)===pos).length;base-=run*8;return Math.max(5,Math.min(98,Math.round(base)))}
 function renderLiveRoster(){let rows=rosterRows(),keySlots=["QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX1","FLEX2","K","DEF"],htmlRows=rows.filter(([s])=>keySlots.includes(s)).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText}
 function renderWaitMeter(){
  let positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10),c=positionalCountsAll();
@@ -338,10 +339,10 @@ function renderRecommendation(){
    </div>`;
  }).join("");
 }
-function renderBoard(){let cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=17;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=history.find(x=>x.pick===pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div class="pickCell ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
+function renderBoard(){let cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=TOTAL_ROUNDS;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=history.find(x=>x.pick===pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div class="pickCell ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
 function teamTierMarkup(){let positions=["QB","RB","WR","TE"],lines=positions.map(pos=>{let c=positionTierCounts(pos),bits=["S","A","B","C"].filter(t=>c[t]).map(t=>`${t}×${c[t]}`).join("  ")||"—";return `<div class="tierLine"><b>${pos}</b><span class="tierDots">${bits}</span><span>${positionStrength(pos)}</span></div>`}).join("");let rb=positionStrength("RB"),wr=positionStrength("WR"),advice=rb==="Elite"||rb==="Strong"?"RB quality is secure. Shift toward WR when values are close. Value Override still wins.":wr==="Elite"||wr==="Strong"?"WR quality is secure. Add RB when values are close. Value Override still wins.":"Build the best available starting tier. Value remains the priority.";return `<div class="teamTierSummary"><b>Team Tier Quality</b>${lines}<div class="teamAdvice">${advice}</div></div>`}
 function renderRoster(){let rows=rosterRows().map(([s,p])=>`<div class="rosterRow"><span>${s}</span><span class="${p?"":"empty"}">${p?`${p.name} <small>(${tierLabel(p)})</small>`:"—"}</span></div>`).join("")+teamTierMarkup();roster.innerHTML=rows;mRoster.innerHTML=rows;let ss=[];for(let t=1;t<=10;t++)ss.push(`<div class="strategy"><span>${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}</span><span class="pill">${t===slot?"Gerard Blueprint":aiProfiles[t]||"Manual"}</span></div>`);strategies.innerHTML=ss.join("");mStrategies.innerHTML=ss.join("")}
-function renderMeta(){let i=info();round.textContent=i.r;mRound.textContent=i.r;pickLabel.textContent=i.r+"."+String(i.ip).padStart(2,"0");mPickLabel.textContent=pickLabel.textContent;until.textContent=i.until;mUntil.textContent=i.until}
+function renderMeta(){let i=info();round.textContent=`${Math.min(i.r,TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;mRound.textContent=`${Math.min(i.r,TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;pickLabel.textContent=i.r+"."+String(i.ip).padStart(2,"0");mPickLabel.textContent=pickLabel.textContent;until.textContent=i.until;mUntil.textContent=i.until}
 
 function teamPlayers(team){return history.filter(h=>h.team===team).map(h=>players.find(p=>p.id===h.id)).filter(Boolean)}
 function gradeFromScore(s){return s>=94?'A+':s>=90?'A':s>=87?'A-':s>=83?'B+':s>=80?'B':s>=77?'B-':s>=73?'C+':s>=70?'C':s>=67?'C-':s>=63?'D+':s>=60?'D':'F'}

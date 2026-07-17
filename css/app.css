@@ -234,3 +234,17 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,9,13,.96);border-botto
 .sharinganStage .sharinganIcon{width:20px;height:20px}
 .scanEye .sharinganIcon{width:29px;height:29px;margin-right:5px}
 @media(max-width:700px){.leagueDnaBar{align-items:flex-start;flex-direction:column}.leagueDnaSignals{justify-content:flex-start}}
+
+
+/* Chūnin Reforged 2.5 — containment + roster-derived round count */
+.boardRoundsBadge{background:#121a28;border:1px solid #365170;border-radius:999px;padding:6px 10px;font-size:10px;font-weight:850;color:#dbe9fb;white-space:nowrap}
+@media(min-width:901px){
+  .desktopRoomPanel{overflow:hidden;contain:layout paint}
+  #desktopMarketGrid{grid-template-columns:minmax(0,.78fr) minmax(0,1.12fr) minmax(0,.92fr);width:100%;max-width:100%;overflow:hidden}
+  #desktopMarketGrid>div,#desktopMarketGrid .visionPanel,#desktopMarketGrid .roomIntelList,#desktopMarketGrid .peekList{min-width:0;max-width:100%}
+  #desktopMarketGrid .intelItem,#desktopMarketGrid .peekItem,#desktopMarketGrid .marketBox{min-width:0;overflow:hidden;overflow-wrap:anywhere;word-break:normal}
+  #desktopMarketGrid .intelItem span,#desktopMarketGrid .peekItem span{display:block}
+}
+@media(min-width:901px) and (max-width:1180px){
+  #desktopMarketGrid{grid-template-columns:minmax(0,.72fr) minmax(0,1.08fr) minmax(0,.88fr)}
+}
