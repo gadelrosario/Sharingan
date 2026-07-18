@@ -116,7 +116,7 @@ function valueOverride(p){let fall=Math.max(0,pick-(p.overall||pick)),gap=valueG
 function eternalValue(p){let fall=Math.max(0,pick-(p.overall||pick)),t=tierLabel(p);return (t==="S"||t==="A")&&fall>=40&&mambaScore(p)>=90}
 function finalPickScore(p){let key=`f:${intelligenceEpoch}:${p.id}`;if(scoreCache.has(key))return scoreCache.get(key);let score=baseFinalScore(p);if(valueOverride(p))score+=3;if(eternalValue(p))score+=4;score=Math.round(Math.max(1,Math.min(115,score)));scoreCache.set(key,score);return score}
 function sharinganIconMarkup(stage="three"){
- const key=["one","two","three","mangekyo","eternal"].includes(stage)?stage:"three";
+ const key=["one","two","three","mangekyo","eternal","dormant"].includes(stage)?stage:"three";
  let inner="";
  if(key==="mangekyo"){
   inner='<path class="ms-core" d="M12 2.2c1.5 3.5 3.7 5.7 7.4 7.4-3.5 1.4-5.7 3.7-7.4 7.4-1.5-3.7-3.8-6-7.4-7.4C8.2 8 10.5 5.7 12 2.2Z"/><path class="ms-cut" d="M12 4.1 14.2 10 20 12l-5.8 2L12 19.9 9.8 14 4 12l5.8-2L12 4.1Z"/>';
@@ -153,8 +153,130 @@ function leagueSpecificModifier(p){
  if(p.pos==="DST")m+=2;
  return m;
 }
-function sharinganStage(p){if(eternalValue(p))return{key:"eternal",label:"ETERNAL MANGEKYŌ",meaning:"Season-Changing Value"};if(valueOverride(p))return{key:"mangekyo",label:"MANGEKYŌ",meaning:"Value Override"};let s=finalPickScore(p);if(s>=96)return{key:"three",label:"THREE TOMOE",meaning:"Elite Value"};if(s>=90)return{key:"two",label:"TWO TOMOE",meaning:"Excellent Value"};return{key:"one",label:"ONE TOMOE",meaning:"Good Pick"}}
+function sharinganStage(p){if(eternalValue(p))return{key:"eternal",label:"ETERNAL MANGEKYŌ",meaning:"Season-Changing Value"};if(valueOverride(p))return{key:"mangekyo",label:"MANGEKYŌ",meaning:"Value Override"};let s=finalPickScore(p);if(s>=96)return{key:"three",label:"THREE TOMOE",meaning:"Elite Value"};if(s>=90)return{key:"two",label:"TWO TOMOE",meaning:"Excellent Value"};if(s<80)return{key:"dormant",label:"DORMANT",meaning:"Watch and wait"};return{key:"one",label:"ONE TOMOE",meaning:"Good Pick"}}
+const prefersReducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let lastSharinganStageKey=null,sharinganActivationTimer=null;
+function sharinganActivationReason(p){const score=finalPickScore(p),risk=survivalRisk(p),fall=Math.max(0,pick-(p.overall||pick)),pressure=( ["QB","RB","WR","TE"].includes(p.pos)?getIntelligenceSnapshot().markets[p.pos].pressure:0);if(eternalValue(p))return"Tier Collapse Detected";if(valueOverride(p)&&fall>=20)return"Falling Value Detected";if(valueOverride(p))return"Tier Collapse Detected";if(risk>=70)return"Opponent Snipe Risk";if(pressure>=65)return"Major Reach Warning";return""}
+function applySharinganActivation(stageKey){
+  const node = el("recommendation");
+  if(!node) return;
+  // Determine targets: recommendation card, sharingan panel, and the eye element inside it.
+  const panel = node.querySelector('.sharinganPanel');
+  const eye = node.querySelector('.sharinganEye');
+  const targets = [node, panel, eye].filter(Boolean);
+
+  // Respect reduced motion but still provide a brief visual state change.
+  const reduced = prefersReducedMotion;
+
+  // Clear any existing timers and classes so we can reliably restart.
+  clearTimeout(sharinganActivationTimer);
+
+  // Remove both activation classes first.
+  targets.forEach(t=>{ t.classList.remove('activation'); t.classList.remove('activation-reduced'); });
+
+  // Force reflow to ensure removal is processed by browser.
+  // Reading offsetWidth for each target is enough to flush layout.
+  targets.forEach(t=>{ void t.offsetWidth; });
+
+  // Console trace for developer confirmation.
+  try{ console.log('Sharingan activation animation triggered'); }catch(e){}
+
+  const DURATION = 800; // ms, within 600-900ms requirement
+
+  if(reduced){
+    targets.forEach(t=>t.classList.add('activation-reduced'));
+    // Remove reduced class after a short visible interval.
+    sharinganActivationTimer = setTimeout(()=>{
+      targets.forEach(t=>t.classList.remove('activation-reduced'));
+    }, Math.min(300, DURATION));
+    return;
+  }
+
+  // Add full animation class to all targets.
+  targets.forEach(t=>t.classList.add('activation'));
+
+  // Ensure the class is removed after animation finishes so it can be retriggered.
+  sharinganActivationTimer = setTimeout(()=>{
+    targets.forEach(t=>t.classList.remove('activation'));
+  }, DURATION + 50);
+}
 function recommendationEligible(p){if(userPositionFilled(p.pos))return false;return true}
+
+// Developer-only visual override (debug panel toggles these). These do NOT change draft logic.
+window.__devSharinganStage = null; // e.g. 'one','two','three','mangekyo','eternal','dormant'
+window.__devSharinganReason = null;
+
+function setDevSharinganStage(key, reason){
+  window.__devSharinganStage = key || null;
+  window.__devSharinganReason = reason || null;
+  try{ renderRecommendation(); }catch(e){console.error('renderRecommendation error',e)}
+}
+
+function triggerDevSharinganActivation(){
+  // Trigger activation for the developer-chosen visual stage if present,
+  // otherwise determine the current visible stage from the DOM and trigger.
+  const key = window.__devSharinganStage || null;
+  if(key){ applySharinganActivation(key); return; }
+  // No override: inspect DOM to find the current sharingan panel class
+  const node = el('recommendation');
+  if(!node) return;
+  const panel = node.querySelector('.sharinganPanel');
+  if(panel){
+    // panel has a class like 'one','two','three','mangekyo','eternal','dormant'
+    const classes = Array.from(panel.classList);
+    const stage = classes.find(c=>['one','two','three','mangekyo','eternal','dormant'].includes(c));
+    applySharinganActivation(stage||null);
+    return;
+  }
+  // Fallback: trigger on recommendation card only
+  applySharinganActivation(null);
+}
+
+function createSharinganDebugPanel(){
+  try{
+    const params = new URLSearchParams(window.location.search);
+    if(!params.get('debug') || !params.get('debug').includes('sharingan')) return;
+    if(document.getElementById('devSharinganPanel')) return;
+    const panel = document.createElement('div');
+    panel.id = 'devSharinganPanel';
+    panel.className = 'devSharinganPanel';
+    panel.innerHTML = `
+      <div class="devHeader">Sharingan Debug</div>
+      <div class="devButtons">
+        <button class="dbgBtn" data-stage="dormant">Dormant</button>
+        <button class="dbgBtn" data-stage="one">One Tomoe</button>
+        <button class="dbgBtn" data-stage="two">Two Tomoe</button>
+        <button class="dbgBtn" data-stage="three">Three Tomoe</button>
+        <button class="dbgBtn" data-stage="mangekyo">Mangekyō</button>
+        <button class="dbgBtn" data-stage="eternal">Eternal Mangekyō</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button id="dbgTrigger" class="primary">Trigger Activation Animation</button>
+        <button id="dbgClear" class="ghost">Clear Override</button>
+      </div>
+      <div class="devNote">Debug only — visible when <code>?debug=sharingan</code> is present</div>
+    `;
+    document.body.appendChild(panel);
+    panel.querySelectorAll('.dbgBtn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const key = btn.dataset.stage;
+        const reasonMap = {
+          one: 'Falling Value Detected',
+          two: 'Positional Run Developing',
+          three: 'Tier Collapse Detected',
+          mangekyo: 'Opponent Snipe Risk',
+          eternal: 'Critical Draft Decision',
+          dormant: 'Hold Pattern'
+        };
+        setDevSharinganStage(key, reasonMap[key]||'');
+      });
+    });
+    document.getElementById('dbgTrigger').addEventListener('click',()=>triggerDevSharinganActivation());
+    document.getElementById('dbgClear').addEventListener('click',()=>{ setDevSharinganStage(null,null); });
+  }catch(e){console.error('createSharinganDebugPanel',e)}
+}
+
+window.addEventListener('load',createSharinganDebugPanel);
 function expected(){return blueprint[Math.min(info().r-1,5)]||"BPA"}
 function fit(p){let e=expected();return e==="BPA"?0:e===p.pos?18:e.includes(p.pos)?15:-4}
 function sourceBlend(p){
@@ -178,7 +300,7 @@ function rationale(p){let b=[],e=expected();if(e===p.pos||e.includes(p.pos))b.pu
 
 function survivalRisk(p){let risk=0,n=pick+1,seen=0;while(seen<10&&n<=TOTAL_PICKS){let t=teamForPick(n);if(t===slot)break;let m=getManager(t);if(p.team===m.homerTeam)risk+=m.homer*2.5;if(p.pos==="QB")risk+=m.qbHoard*1.7;risk+=(10-m.predictability)*.7;seen++;n++}return Math.min(95,Math.round(risk))}
 function mambaScore(p){let key=`m:${intelligenceEpoch}:${p.id}`;if(scoreCache.has(key))return scoreCache.get(key);let raw=gerardScore(p),canonicalTier=tierLabel(p),tier=canonicalTier==="S"?10:canonicalTier==="A"?6:0,fall=Math.max(0,pick-p.overall),risk=survivalRisk(p),score=Math.round(Math.max(1,Math.min(99,55+raw/5+tier+Math.min(10,fall/2)-risk/8)));scoreCache.set(key,score);return score}
-function recommendationState(p){let st=sharinganStage(p);if(st.key==="eternal")return{cls:"state-value",label:"🖤 ETERNAL MANGEKYŌ • SEASON-CHANGING VALUE"};if(st.key==="mangekyo")return{cls:"state-value",label:"👁 MANGEKYŌ • VALUE OVERRIDE"};if(st.key==="three")return{cls:"state-confidence",label:"👁 THREE TOMOE • ELITE VALUE"};if(st.key==="two")return{cls:"state-confidence",label:"👁 TWO TOMOE • EXCELLENT VALUE"};return{cls:"state-normal",label:"👁 ONE TOMOE • GOOD PICK"}}
+function recommendationState(p){let st=sharinganStage(p);if(st.key==="eternal")return{cls:"state-value",label:"🖤 ETERNAL MANGEKYŌ • SEASON-CHANGING VALUE"};if(st.key==="mangekyo")return{cls:"state-value",label:"👁 MANGEKYŌ • VALUE OVERRIDE"};if(st.key==="three")return{cls:"state-confidence",label:"👁 THREE TOMOE • ELITE VALUE"};if(st.key==="two")return{cls:"state-confidence",label:"👁 TWO TOMOE • EXCELLENT VALUE"};if(st.key==="dormant")return{cls:"state-dormant",label:"🖤 DORMANT • HOLD PATTERN"};return{cls:"state-normal",label:"👁 ONE TOMOE • GOOD PICK"}}
 function runSignal(){let r=history.slice(-6).map(h=>players.find(p=>p.id===h.id)?.pos).filter(Boolean),t={QB:0,RB:0,WR:0,TE:0};r.forEach(x=>t[x]++);let top=Object.entries(t).sort((a,b)=>b[1]-a[1])[0];return top&&top[1]>=3?top[0]+" run detected":"No major positional run"}
 function markHeavyViewsDirty(){dirtyViews.players=true;dirtyViews.room=true;dirtyViews.wait=true;dirtyViews.team=true}
 function updateBoardIncremental(record){
@@ -410,26 +532,48 @@ function renderRecommendation(){
    return;
  }
  let p=recs[0];
- let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk;
- recommendation.className="rec "+state.cls;
+ let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk,stage=sharinganStage(p);
+ // Allow a developer visual override without changing draft logic.
+ let visualStage = (function(){
+   const k = window.__devSharinganStage;
+   if(!k) return stage;
+   const map = {
+     dormant: {key:'dormant',label:'DORMANT',meaning:'Hold Pattern'},
+     one: {key:'one',label:'ONE TOMOE',meaning:'Good Pick'},
+     two: {key:'two',label:'TWO TOMOE',meaning:'Excellent Value'},
+     three: {key:'three',label:'THREE TOMOE',meaning:'Elite Value'},
+     mangekyo: {key:'mangekyo',label:'MANGEKYŌ',meaning:'Value Override'},
+     eternal: {key:'eternal',label:'ETERNAL MANGEKYŌ',meaning:'Season-Changing Value'}
+   };
+   return map[k]||stage;
+ })();
+ let activationReason = window.__devSharinganReason || sharinganActivationReason(p);
+ applySharinganActivation(visualStage.key);
+ recommendation.className="rec "+state.cls+" sharingan-"+visualStage.key;
  recommendation.innerHTML=`
+  <div class="sharinganPanel ${visualStage.key}">
+     <div class="sharinganEyeWrap">
+      <div class="sharinganEye ${visualStage.key}" aria-hidden="true">${sharinganIconMarkup(visualStage.key)}</div>
+     </div>
+     <div class="sharinganInfo">
+      <div class="sharinganLevel">${visualStage.label}</div>
+      <div class="sharinganMeaning">${visualStage.meaning}</div>
+      ${activationReason?`<div class="sharinganReason">${activationReason}</div>`:""}
+       <div class="sharinganNote">Important decision alert — not an automatic command.</div>
+     </div>
+   </div>
    <div style="font-weight:900">${state.label}</div>
    <div class="mambaScore">Mamba ${score}/100 • Final Pick ${finalPickScore(p)}/100 • Steal Risk ${risk}%</div>
    <div class="confbar"><span style="width:${score}%"></span></div>
-   <h2 class="scanLink" onclick="openScan(${p.id})">${p.name}</h2><div class="tagrow">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}">${sharinganIconMarkup(sharinganStage(p).key)}${sharinganStage(p).meaning}</span></div>
-   <div class="tagrow">
-     <span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span>
-     <span class="tag">${p.team}</span>
-     <span class="tag">Bye ${p.bye}</span>
-     ${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}${p.coreTarget?`<span class="tag">Core Target</span>`:""}${p.priceFade?`<span class="tag">Price Caution</span>`:""}
-     <span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span>
-   </div>
-   <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div><div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
+   <h2 class="scanLink" onclick="openScan(${p.id})">${p.name}</h2>
+   <div class="tagrow">${tierBadge(p)}<span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span>${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}${p.coreTarget?`<span class="tag">Core Target</span>`:""}${p.priceFade?`<span class="tag">Price Caution</span>`:""}<span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span></div>
+   <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div>
+   <div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
+   ${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
      <button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button>
-     <button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(sharinganStage(p).key)} Sharingan Scan</button>
+     <button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(stage.key)} Sharingan Scan</button>
    </div>`;
-
  let highlightedPlayer=selectedCandidateId?players.find(x=>x.id===selectedCandidateId&&!drafted.includes(x.id)):null;
  alternatives.innerHTML=(highlightedPlayer?comparisonCardMarkup(highlightedPlayer,p):"")+recs.slice(1,5).map((x,i)=>{
    let highlighted=selectedCandidateId===x.id;
