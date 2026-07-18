@@ -1,0 +1,6 @@
+# Draft Lab outputs
+outputs/draft_lab/
+
+# Byte-compiled / cache
+__pycache__/
+*.pyc
