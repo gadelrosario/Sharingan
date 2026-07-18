@@ -1,0 +1,2 @@
+# V1 uses only Python's standard library.
+# FastAPI and other packages can be added later.

@@ -1,42 +1,78 @@
-# Fantasy HQ — Jōnin 3.2: Draft Speed Hotfix
+# Fantasy HQ Backend V1
 
-This is the current GitHub-ready build.
+This is the first real local backend foundation for Fantasy HQ.
 
-## What changed
-- Added a canonical, versioned League State stored locally.
-- Added snapshot import/export for league settings, teams, rosters, available players, transactions, matchups, standings, and waivers.
-- Added a provider-neutral sync abstraction so Yahoo, Sleeper, and local snapshots can feed the same decision engine.
-- Added reusable Team Strength, TeamFit, and before/after transaction simulation APIs.
-- Draft picks and undos now update the canonical League State automatically.
-- Added visible sync status and a Yahoo preparation control without storing credentials in the browser.
-- Preserved the 2.8 Unity Core draft interface and recommendation behavior.
+## What is already included
 
-## Important limitation
-True Yahoo OAuth syncing requires a secure backend for client secrets, access tokens, refresh tokens, and scheduled API refreshes. This static GitHub Pages build intentionally does not embed those secrets. It is now architecturally ready to consume that backend.
+- SQLite database: `database/fantasyhq.db`
+- 134 canonical player records
+- 229 BDGE/Flock ranking records
+- 134 initial Fantasy HQ score records
+- Normalized tables for rankings, ADP, projections, SOS, external IDs, import history, and derived scores
+- CSV templates for BDGE, Flock, Sleeper, Yahoo, and consensus
+- Reusable CSV importer
+- Read-only local API
+- Export script
+- Smoke test
 
-## Core API
-`window.FantasyHQCore` exposes:
-- `getState()` / `setState()` / `patchState()`
-- `importSnapshot()` / `exportSnapshot()`
-- `updateDraftContext()` / `recordTransaction()`
-- `calculateTeamStrength()`
-- `teamFit()`
-- `simulateMove()`
+## No earlier installation is required
 
-## Deploy
-Upload the contents of this ZIP to the repository root and enable GitHub Pages from the main branch/root directory.
+You may keep the earlier browser prototype, but this backend does not depend on it. This package starts from the current player dataset and can become the source of truth going forward.
 
+## Offline use
 
-## Jōnin 3.2 draft-speed changes
+The database, importer, scoring, exports, and local API work offline. Internet is only needed for live Yahoo authorization/sync, automatic ADP updates, live injuries/news, or cloud access from multiple devices.
 
-- Search fields clear automatically after a pick is recorded from search.
-- Focus returns to the same search field for immediate entry of the next Yahoo pick.
-- Press Escape to clear search instantly.
-- Press Enter to record a player when the search is an exact name match or produces only one result.
-- League DNA now reflects the selected scoring, WR, FLEX, passing-TD, and round settings instead of hard-coded text.
-- The board remains configured for the 17-round Royal Rumble roster.
+## First run
 
+You only need Python 3 installed.
 
-## 3.2 league-settings propagation fix
+### macOS / Windows
 
-The live mock now rebuilds its actual roster slots, board length, round count, and total picks from the setup selections. Starting WR, FLEX, and total-round selections are no longer display-only. Bench slots are calculated automatically from the selected total rounds after all required starters are created.
+Open a terminal in this folder and run:
+
+```bash
+python tests/smoke_test.py
+python scripts/export_master.py
+python api/server.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8765
+```
+
+Useful endpoints:
+
+```text
+/health
+/players
+/players?position=RB
+/players?search=Cook
+/recommendations?limit=3
+```
+
+## Import saved rankings or ADP
+
+Fill one of the CSV templates under `imports/<source>/`, then run:
+
+```bash
+python scripts/import_csv.py sleeper imports/sleeper/sleeper_template.csv
+python scripts/import_csv.py yahoo imports/yahoo/yahoo_template.csv
+python scripts/import_csv.py consensus imports/consensus/consensus_template.csv
+```
+
+The importer updates existing players instead of duplicating them.
+
+## 30-second draft requirement
+
+The local recommendation endpoint uses indexed SQLite queries and returns only the small amount of information needed by the draft screen. The target is under one second, leaving the rest of the 30-second window for reading and deciding.
+
+## Current limitation
+
+The exact Sleeper, Yahoo, and consensus ADP values are not populated in this database yet. Their schema, templates, import workflow, and external-ID support are ready. We should import the previously supplied raw values once we locate or reconstruct those exact rows.
+
+## Yahoo sync readiness
+
+The database is ready for Yahoo player keys through `external_ids` and for league data in a later module. Yahoo OAuth and live league sync are intentionally not included yet because they require online authorization and app credentials.

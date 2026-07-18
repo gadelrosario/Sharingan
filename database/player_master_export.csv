@@ -1,0 +1,135 @@
+player_id,canonical_key,full_name,position,nfl_team,bdge_rank,bdge_tier,flock_rank,flock_tier,hq_grade,expert_agreement
+1,josh-allen-qb,Josh Allen,QB,,1.0,Elite QB1,1.0,S,100.0,100.0
+2,lamar-jackson-qb,Lamar Jackson,QB,,2.0,Elite QB1,2.0,A,98.0,100.0
+3,jayden-daniels-qb,Jayden Daniels,QB,,4.0,Strong QB1,3.0,A,95.0,93.0
+4,joe-burrow-qb,Joe Burrow,QB,,3.0,Strong QB1,6.0,B,93.0,79.0
+6,drake-maye-qb,Drake Maye,QB,,6.0,Strong QB1,5.0,A,91.0,93.0
+5,jalen-hurts-qb,Jalen Hurts,QB,,8.0,Strong QB1,4.0,A,90.0,72.0
+7,justin-herbert-qb,Justin Herbert,QB,,5.0,Strong QB1,11.0,C,86.0,58.0
+9,trevor-lawrence-qb,Trevor Lawrence,QB,,7.0,Strong QB1,10.0,C,85.0,79.0
+10,dak-prescott-qb,Dak Prescott,QB,,10.0,Strong QB1,8.0,B,84.0,86.0
+8,caleb-williams-qb,Caleb Williams,QB,,12.0,Strong QB1,7.0,B,83.0,65.0
+12,patrick-mahomes-qb,Patrick Mahomes,QB,,14.0,Strong Streamer,9.0,C,79.0,65.0
+13,brock-purdy-qb,Brock Purdy,QB,,11.0,Strong QB1,13.0,C,78.0,86.0
+11,matthew-stafford-qb,Matthew Stafford,QB,,9.0,Strong QB1,16.0,D,77.0,51.0
+14,jaxson-dart-qb,Jaxson Dart,QB,,13.0,Strong QB1,12.0,C,77.0,93.0
+15,bo-nix-qb,Bo Nix,QB,,15.0,Strong Streamer,14.0,C,73.0,93.0
+16,kyler-murray-qb,Kyler Murray,QB,,17.0,Strong Streamer,15.0,C,70.0,86.0
+17,jordan-love-qb,Jordan Love,QB,,16.0,Strong Streamer,18.0,E,68.0,86.0
+18,jared-goff-qb,Jared Goff,QB,,19.0,Strong Streamer,17.0,D,66.0,86.0
+19,tyler-shough-qb,Tyler Shough,QB,,18.0,Strong Streamer,19.0,E,65.0,93.0
+20,baker-mayfield-qb,Baker Mayfield,QB,,,,20.0,E,48.2,50.0
+21,malik-willis-qb,Malik Willis,QB,,,,21.0,E,46.0,50.0
+22,sam-darnold-qb,Sam Darnold,QB,,,,22.0,F,43.8,50.0
+23,cam-ward-qb,Cam Ward,QB,,,,23.0,F,41.6,50.0
+24,c-j-stroud-qb,C.J. Stroud,QB,,,,24.0,F,39.4,50.0
+25,daniel-jones-qb,Daniel Jones,QB,,,,25.0,F,37.2,50.0
+26,bryce-young-qb,Bryce Young,QB,,,,26.0,F,35.0,50.0
+27,fernando-mendoza-qb,Fernando Mendoza,QB,,,,27.0,F,32.8,50.0
+28,geno-smith-qb,Geno Smith,QB,,,,28.0,G,30.6,50.0
+29,aaron-rodgers-qb,Aaron Rodgers,QB,,,,29.0,G,28.4,50.0
+30,jacoby-brissett-qb,Jacoby Brissett,QB,,,,30.0,G,26.2,50.0
+31,jahmyr-gibbs-rb,Jahmyr Gibbs,RB,,1.0,Elite RB1,1.0,S,100.0,100.0
+32,bijan-robinson-rb,Bijan Robinson,RB,,2.0,Elite RB1,2.0,S,98.0,100.0
+33,christian-mccaffrey-rb,Christian McCaffrey,RB,,3.0,Elite RB1,4.0,A,95.0,93.0
+34,jonathan-taylor-rb,Jonathan Taylor,RB,,5.0,Feel Good RB1,3.0,A,94.0,86.0
+35,james-cook-rb,James Cook,RB,,4.0,Feel Good RB1,6.0,A,92.0,86.0
+36,ashton-jeanty-rb,Ashton Jeanty,RB,,7.0,Feel Good RB1,5.0,A,90.0,86.0
+37,saquon-barkley-rb,Saquon Barkley,RB,,6.0,Feel Good RB1,10.0,B,86.0,72.0
+39,chase-brown-rb,Chase Brown,RB,,8.0,Feel Good RB1,9.0,B,85.0,93.0
+38,omarion-hampton-rb,Omarion Hampton,RB,,11.0,Borderline RB1/2,7.0,B,84.0,72.0
+40,de-von-achane-rb,De'Von Achane,RB,,12.0,Borderline RB1/2,8.0,B,82.0,72.0
+41,derrick-henry-rb,Derrick Henry,RB,,9.0,Feel Good RB1,12.0,B,81.0,79.0
+42,kenneth-walker-iii-rb,Kenneth Walker III,RB,,10.0,Borderline RB1/2,11.0,B,81.0,93.0
+43,jeremiyah-love-rb,Jeremiyah Love,RB,,13.0,Borderline RB1/2,13.0,C,76.0,100.0
+44,breece-hall-rb,Breece Hall,RB,,18.0,RB2,14.0,C,70.0,72.0
+45,josh-jacobs-rb,Josh Jacobs,RB,,14.0,Borderline RB1/2,18.0,D,70.0,72.0
+46,javonte-williams-rb,Javonte Williams,RB,,15.0,Borderline RB1/2,17.0,D,70.0,86.0
+49,kyren-williams-rb,Kyren Williams,RB,,17.0,Borderline RB1/2,16.0,C,69.0,93.0
+47,travis-etienne-jr-rb,Travis Etienne Jr.,RB,,20.0,RB2,15.0,C,67.0,65.0
+48,cam-skattebo-rb,Cam Skattebo,RB,,16.0,Borderline RB1/2,19.0,D,67.0,79.0
+50,quinshon-judkins-rb,Quinshon Judkins,RB,,19.0,RB2,24.0,E,59.0,65.0
+53,d-andre-swift-rb,D'Andre Swift,RB,,22.0,RB2,21.0,E,59.0,93.0
+52,bucky-irving-rb,Bucky Irving,RB,,21.0,RB2,23.0,E,58.0,86.0
+54,david-montgomery-rb,David Montgomery,RB,,23.0,Strong Flex,22.0,E,57.0,93.0
+51,treveyon-henderson-rb,TreVeyon Henderson,RB,,26.0,Strong Flex,20.0,E,56.0,58.0
+55,bhayshul-tuten-rb,Bhayshul Tuten,RB,,24.0,Strong Flex,25.0,E,53.0,93.0
+57,jadarian-price-rb,Jadarian Price,RB,,28.0,Strong Flex,26.0,E,48.0,86.0
+56,tony-pollard-rb,Tony Pollard,RB,,25.0,Strong Flex,30.0,F,47.0,65.0
+59,jaylen-warren-rb,Jaylen Warren,RB,,27.0,Strong Flex,28.0,F,47.0,93.0
+60,rhamondre-stevenson-rb,Rhamondre Stevenson,RB,,29.0,Strong Flex,29.0,F,44.0,100.0
+58,chuba-hubbard-rb,Chuba Hubbard,RB,,,,27.0,F,32.8,50.0
+61,rj-harvey-rb,RJ Harvey,RB,,,,31.0,F,24.0,50.0
+62,rico-dowdle-rb,Rico Dowdle,RB,,,,32.0,G,21.8,50.0
+63,kyle-monangai-rb,Kyle Monangai,RB,,,,33.0,G,19.6,50.0
+64,blake-corum-rb,Blake Corum,RB,,,,34.0,G,17.4,50.0
+65,j-k-dobbins-rb,J.K. Dobbins,RB,,,,35.0,G,15.2,50.0
+66,rachaad-white-rb,Rachaad White,RB,,,,36.0,G,13.0,50.0
+67,kenneth-gainwell-rb,Kenneth Gainwell,RB,,,,37.0,H,10.8,50.0
+68,jonathan-brooks-rb,Jonathan Brooks,RB,,,,38.0,H,8.6,50.0
+69,aaron-jones-rb,Aaron Jones,RB,,,,39.0,H,6.4,50.0
+70,jacory-croskey-merritt-rb,Jacory Croskey-Merritt,RB,,,,40.0,H,4.2,50.0
+71,jordan-mason-rb,Jordan Mason,RB,,,,41.0,H,2.0,50.0
+72,chris-rodriguez-rb,Chris Rodriguez,RB,,,,42.0,H,0.0,50.0
+73,brock-bowers-te,Brock Bowers,TE,,1.0,Elite TE1,1.0,S,100.0,100.0
+74,trey-mcbride-te,Trey McBride,TE,,2.0,Elite TE1,2.0,S,98.0,100.0
+75,colston-loveland-te,Colston Loveland,TE,,3.0,Strong TE1,3.0,A,96.0,100.0
+76,tyler-warren-te,Tyler Warren,TE,,4.0,Strong TE1,4.0,A,94.0,100.0
+77,harold-fannin-jr-te,Harold Fannin Jr.,TE,,5.0,Strong TE1,6.0,B,91.0,93.0
+78,tucker-kraft-te,Tucker Kraft,TE,,7.0,Strong TE1,5.0,B,90.0,86.0
+79,sam-laporta-te,Sam LaPorta,TE,,6.0,Strong TE1,8.0,B,88.0,86.0
+80,kyle-pitts-te,Kyle Pitts,TE,,9.0,Strong TE1,7.0,B,86.0,86.0
+81,dallas-goedert-te,Dallas Goedert,TE,,8.0,Strong TE1,14.0,D,80.0,58.0
+84,travis-kelce-te,Travis Kelce,TE,,10.0,Strong Streamer,12.0,D,80.0,86.0
+85,dalton-kincaid-te,Dalton Kincaid,TE,,11.0,Strong Streamer,13.0,D,78.0,86.0
+86,george-kittle-te,George Kittle,TE,,13.0,Strong Streamer,11.0,C,78.0,86.0
+83,jake-ferguson-te,Jake Ferguson,TE,,15.0,Strong Streamer,10.0,C,77.0,65.0
+87,isaiah-likely-te,Isaiah Likely,TE,,12.0,Strong Streamer,16.0,D,74.0,72.0
+82,oronde-gadsden-ii-te,Oronde Gadsden II,TE,,,,9.0,C,72.4,50.0
+88,brenton-strange-te,Brenton Strange,TE,,14.0,Strong Streamer,18.0,E,70.0,72.0
+89,mark-andrews-te,Mark Andrews,TE,,19.0,Strong Streamer,15.0,D,68.0,72.0
+90,juwan-johnson-te,Juwan Johnson,TE,,16.0,Strong Streamer,19.0,E,67.0,79.0
+93,hunter-henry-te,Hunter Henry,TE,,18.0,Strong Streamer,20.0,E,64.0,86.0
+91,chigoziem-okonkwo-te,Chigoziem Okonkwo,TE,,17.0,Strong Streamer,22.0,E,63.0,65.0
+92,kenyon-sadiq-te,Kenyon Sadiq,TE,,,,17.0,D,54.8,50.0
+94,dalton-schultz-te,Dalton Schultz,TE,,,,21.0,E,46.0,50.0
+95,t-j-hockenson-te,T.J. Hockenson,TE,,,,23.0,E,41.6,50.0
+96,aj-barner-te,AJ Barner,TE,,,,24.0,E,39.4,50.0
+97,ja-marr-chase-wr,Ja'Marr Chase,WR,,2.0,Elite WR1,1.0,S,99.0,93.0
+98,puka-nacua-wr,Puka Nacua,WR,,1.0,Elite WR1,2.0,S,99.0,93.0
+99,jaxon-smith-njigba-wr,Jaxon Smith-Njigba,WR,,3.0,Elite WR1,3.0,S,96.0,100.0
+100,amon-ra-st-brown-wr,Amon-Ra St. Brown,WR,,4.0,Strong WR1,4.0,A,94.0,100.0
+101,ceedee-lamb-wr,CeeDee Lamb,WR,,5.0,Strong WR1,5.0,A,92.0,100.0
+102,justin-jefferson-wr,Justin Jefferson,WR,,6.0,Borderline WR1/2,6.0,A,90.0,100.0
+103,drake-london-wr,Drake London,WR,,7.0,Borderline WR1/2,7.0,B,88.0,100.0
+105,nico-collins-wr,Nico Collins,WR,,10.0,Borderline WR1/2,8.0,B,84.0,86.0
+106,rashee-rice-wr,Rashee Rice,WR,,9.0,Borderline WR1/2,9.0,B,84.0,100.0
+107,george-pickens-wr,George Pickens,WR,,11.0,Borderline WR1/2,10.0,C,81.0,93.0
+108,devonta-smith-wr,DeVonta Smith,WR,,12.0,Borderline WR1/2,11.0,C,79.0,93.0
+104,a-j-brown-wr,A.J. Brown,WR,,8.0,Borderline WR1/2,,,76.6,50.0
+109,chris-olave-wr,Chris Olave,WR,,14.0,WR2,12.0,C,76.0,86.0
+110,tee-higgins-wr,Tee Higgins,WR,,13.0,WR2,13.0,C,76.0,100.0
+111,zay-flowers-wr,Zay Flowers,WR,,16.0,WR2,14.0,D,72.0,86.0
+115,ladd-mcconkey-wr,Ladd McConkey,WR,,17.0,WR2,17.0,D,68.0,100.0
+114,tetairoa-mcmillan-wr,Tetairoa McMillan,WR,,19.0,WR2,16.0,D,67.0,79.0
+116,garrett-wilson-wr,Garrett Wilson,WR,,18.0,WR2,18.0,D,66.0,100.0
+113,malik-nabers-wr,Malik Nabers,WR,,24.0,Borderline WR2/3,15.0,D,63.0,37.0
+117,emeka-egbuka-wr,Emeka Egbuka,WR,,20.0,WR2,19.0,D,63.0,93.0
+112,davante-adams-wr,Davante Adams,WR,,15.0,WR2,25.0,E,62.0,30.0
+118,mike-evans-wr,Mike Evans,WR,,22.0,WR2,20.0,E,60.0,86.0
+119,terry-mclaurin-wr,Terry McLaurin,WR,,21.0,WR2,21.0,E,60.0,100.0
+120,jaylen-waddle-wr,Jaylen Waddle,WR,,25.0,Borderline WR2/3,22.0,E,55.0,79.0
+122,luther-burden-iii-wr,Luther Burden III,WR,,23.0,Borderline WR2/3,24.0,E,55.0,93.0
+121,jameson-williams-wr,Jameson Williams,WR,,27.0,Borderline WR2/3,23.0,E,52.0,72.0
+125,christian-watson-wr,Christian Watson,WR,,29.0,Borderline WR2/3,27.0,F,46.0,86.0
+126,rome-odunze-wr,Rome Odunze,WR,,28.0,Borderline WR2/3,28.0,F,46.0,100.0
+124,marvin-harrison-jr-wr,Marvin Harrison Jr.,WR,,26.0,Borderline WR2/3,32.0,G,44.0,58.0
+123,carnell-tate-wr,Carnell Tate,WR,,,,26.0,F,35.0,50.0
+127,brian-thomas-jr-wr,Brian Thomas Jr.,WR,,,,29.0,F,28.4,50.0
+128,d-j-moore-wr,D.J. Moore,WR,,,,31.0,F,24.0,50.0
+129,parker-washington-wr,Parker Washington,WR,,,,34.0,G,17.4,50.0
+130,dk-metcalf-wr,DK Metcalf,WR,,,,35.0,G,15.2,50.0
+131,quentin-johnston-wr,Quentin Johnston,WR,,,,36.0,G,13.0,50.0
+132,alec-pierce-wr,Alec Pierce,WR,,,,37.0,G,10.8,50.0
+133,courtland-sutton-wr,Courtland Sutton,WR,,,,38.0,G,8.6,50.0
+134,jordan-addison-wr,Jordan Addison,WR,,,,39.0,G,6.4,50.0
