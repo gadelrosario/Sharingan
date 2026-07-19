@@ -580,6 +580,36 @@ function getCommandCenterScores(recs) {
  }));
 }
 
+function joninScoreBreakdown(p){
+ const final=finalPickScore(p),value=(valueOverride(p)?3:0)+(eternalValue(p)?4:0),rosterFit=rosterFitModifier(p),scarcity=roomBoost(p),risk=0;
+ // Projection is the exact residual of the existing score after its exposed modifiers.
+ // Survival risk already participates inside Mamba; it is not subtracted twice here.
+ const projection=final-value-rosterFit-scarcity-risk;
+ return {projection,value,rosterFit,scarcity,risk,final,mamba:mambaScore(p)};
+}
+function joninRecommendationInsight(recs){
+ if(!window.JoninInsightEngineV1||!recs.length)return null;
+ const candidates=recs.map(player=>({player,finalScore:finalPickScore(player),breakdown:joninScoreBreakdown(player)}));
+ const p=recs[0];
+ return JoninInsightEngineV1.buildRecommendationInsight({
+  player:p,candidates,availablePlayers:available(),counts:counts(),positionStrength:positionStrength(p.pos),
+  picksUntil:info().until,pick,survivalRisk:survivalRisk(p),breakdown:candidates[0].breakdown
+ });
+}
+function signedScore(value){return `${value>0?'+':''}${value}`}
+function joninInsightMarkup(insight,ccScored){
+ if(!insight)return '';
+ const b=insight.breakdown,w=insight.whyNot,o=insight.opportunityWindow,c=insight.confidence;
+ const whyNot=w.alternative?`<div class="whyNot"><div class="insightHeader"><b>Why Not ${w.alternative.name}?</b><span class="scoreDelta">${signedScore(w.scoreDifference)} edge</span></div><div>${w.preferred}</div><div class="whyNotGrid"><span><b>Stronger</b>${w.stronger}</span><span><b>Weaker</b>${w.weaker}</span></div></div>`:`<div class="whyNot neutralInsight"><b>Why Not?</b><span>${w.preferred}</span></div>`;
+ return `<div class="joninInsight">
+  <div class="insightHeader"><div><div class="insightEyebrow">JŌNIN INSIGHT ENGINE V1</div><b>Why this recommendation</b></div><div class="confidenceBadge"><strong>${c.score}</strong><span>${c.label}</span></div></div>
+  <div class="insightSections">${[['Value',insight.sections.value],['Team Fit',insight.sections.teamFit],['Scarcity',insight.sections.scarcity],['Risk',insight.sections.risk],['Confidence',insight.sections.confidence]].map(([label,text])=>`<div class="insightSection"><b>${label}</b><span>${text}</span></div>`).join('')}</div>
+  <div class="opportunity ${o.label==='Draft now'?'urgent':o.label==='Risky to wait'?'watch':'safe'}"><div><span>CAN I WAIT?</span><b>${o.label}</b></div><p>${o.reason}</p></div>
+  <div class="scoreBreakdown"><div class="insightHeader"><b>Existing score breakdown</b><span>Final ${b.final}</span></div><div class="scoreRows">${[['Projection',b.projection],['Value',b.value],['Roster Fit',b.rosterFit],['Scarcity',b.scarcity],['Risk',b.risk]].map(([label,value])=>`<div><span>${label}</span><b>${signedScore(value)}</b></div>`).join('')}<div class="scoreFinal"><span>Final Pick</span><b>${b.final}</b></div></div><div class="insightMeta">Risk is already embedded in the existing Mamba projection. Command Center V1: ${ccScored?`${ccScored.commandCenterScore.total}/100 • ${ccScored.commandCenterExplanation}`:'neutral'}</div></div>
+  ${whyNot}
+ </div>`;
+}
+
 function renderRecommendation(){
  let recs=snapshotRecommendations();
  if(!recs.length){
@@ -589,6 +619,7 @@ function renderRecommendation(){
  }
  let p=recs[0];
  let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk;
+ const ccScored=getCommandCenterScores([p])[0]||null,insight=joninRecommendationInsight(recs);
  recommendation.className="rec "+state.cls;
  recommendation.innerHTML=`
    <div style="font-weight:900">${state.label}</div>
@@ -603,23 +634,7 @@ function renderRecommendation(){
      <span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span>
    </div>
    <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div>
-   ${(() => {
-     if (!DraftCommandCenterV1) return '';
-     const ccScored = getCommandCenterScores([p])[0];
-     if (!ccScored) return '';
-     const cc = ccScored.commandCenterScore;
-     return `<div class="commandCenterScoring" style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;font-size:12px">
-       <div style="font-weight:bold;margin-bottom:6px">Command Center V1 Scoring</div>
-       <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
-         <div><span style="color:#666">Value</span><br><b>${cc.components.value}</b></div>
-         <div><span style="color:#666">Fit</span><br><b>${cc.components.teamFit}</b></div>
-         <div><span style="color:#666">Scarcity</span><br><b>${cc.components.scarcity}</b></div>
-         <div><span style="color:#666">Urgency</span><br><b>${cc.components.urgency}</b></div>
-       </div>
-       <div style="margin-top:6px;color:#333"><b>Overall: ${cc.total}/100</b></div>
-       <div style="margin-top:6px;color:#666;font-style:italic">${ccScored.commandCenterExplanation}</div>
-     </div>`;
-   })()}
+   ${joninInsightMarkup(insight,ccScored)}
    <div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
    ${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
@@ -665,11 +680,16 @@ function evaluateTeam(team){
  let score=Math.round(starterStrength*.34+value*.22+construction*.18+ceiling*.17+benchUpside*.09);if(team===slot){if(c.QB===1)score+=2;if(c.TE===1)score+=2;if(ceilingPlayers>=3)score+=3}score=Math.max(45,Math.min(99,score));
  let strengths=[],weaknesses=[];if(starterStrength>=85)strengths.push('strong starting lineup');if(ceiling>=85)strengths.push('elite weekly ceiling');if(value>=85)strengths.push('excellent draft value');if(construction>=90)strengths.push('clean roster construction');if(benchUpside>=80)strengths.push('high-upside bench');if(starterStrength<75)weaknesses.push('starting lineup quality');if(c.RB<4)weaknesses.push('RB depth');if(c.WR<5)weaknesses.push('WR depth');if(c.QB>2)weaknesses.push('too many QBs');if(c.TE>2)weaknesses.push('too many TEs');if(c.K>1)weaknesses.push('duplicate kickers');if(c.DST>1)weaknesses.push('duplicate defenses');if(!strengths.length)strengths.push('balanced overall roster');if(!weaknesses.length)weaknesses.push('no major structural weakness');
  const bp=ps.map(p=>({p,v:(history.find(h=>h.team===team&&h.id===p.id)?.pick||999)-(p.overall||999)})).sort((a,b)=>b.v-a.v)[0]?.p;
- return {team,name:slotManagers[team]||('Team '+team),score,grade:gradeFromScore(score),starterStrength:Math.round(starterStrength),value:Math.round(value),construction:Math.round(construction),ceiling:Math.round(ceiling),benchUpside:Math.round(benchUpside),strengths,weaknesses,bestPick:bp};
+ const missingStarterPositions=[c.QB<1?'QB':null,c.RB<2?'RB':null,c.WR<3?'WR':null,c.TE<1?'TE':null,c.K<1?'K':null,c.DST<1?'D/ST':null].filter(Boolean);
+ const constructionNotes=[...missingStarterPositions.map(x=>`missing ${x}`),c.QB>2?`${c.QB} QBs`:null,c.TE>2?`${c.TE} TEs`:null,c.K>1?`${c.K} kickers`:null,c.DST>1?`${c.DST} defenses`:null].filter(Boolean);
+ const bestHistory=bp?history.find(h=>h.team===team&&h.id===bp.id):null,bestValueDelta=bp&&bestHistory&&bp.overall?bestHistory.pick-bp.overall:0;
+ const gradingContext={counts:c,starterCount:starters.length,benchCount:bench.length,ceilingPlayers,upsideBench:bench.filter(p=>p.rookie||p.overallTier==='A'||(p.bdgeBoost||0)>1).length,playerCount:ps.length,missingStarterPositions,constructionNotes,bestValueDelta,teamCount:10};
+ return {team,name:slotManagers[team]||('Team '+team),score,grade:gradeFromScore(score),starterStrength:Math.round(starterStrength),value:Math.round(value),construction:Math.round(construction),ceiling:Math.round(ceiling),benchUpside:Math.round(benchUpside),strengths,weaknesses,bestPick:bp,gradingContext};
 }
 function renderDraftReport(){
- const es=[];for(let t=1;t<=10;t++)es.push(evaluateTeam(t));es.sort((a,b)=>b.score-a.score);const me=es.find(x=>x.team===slot);const min=Math.min(...es.map(x=>x.score));const weights=es.map(x=>Math.max(1,(x.score-min+6)**2));const tw=weights.reduce((a,b)=>a+b,0);es.forEach((x,i)=>{x.rank=i+1;x.titleOdds=Math.round(weights[i]/tw*100)});
- myDraftReport.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div class="meta">YOUR DRAFT GRADE</div><div class="reportGrade">${me.grade}</div><b>${me.score}/100</b></div><div style="text-align:right"><div class="meta">PROJECTED FINISH</div><div style="font-size:28px;font-weight:950">#${me.rank}</div><div class="meta">${me.titleOdds}% draft-day title odds</div></div></div><div class="reportGrid"><div class="reportMetric"><b>${me.starterStrength}</b>Starters</div><div class="reportMetric"><b>${me.ceiling}</b>Ceiling</div><div class="reportMetric"><b>${me.value}</b>Value</div><div class="reportMetric"><b>${me.construction}</b>Construction</div><div class="reportMetric"><b>${me.benchUpside}</b>Bench Upside</div><div class="reportMetric"><b>${me.bestPick?me.bestPick.name:'—'}</b>Best Value</div></div><div class="scanNotes" style="margin-top:10px"><b>Summary</b><br>Strengths: ${me.strengths.join(', ')}.<br>Watch: ${me.weaknesses.join(', ')}.</div></div>`;
+ const es=[];for(let t=1;t<=10;t++)es.push(evaluateTeam(t));es.sort((a,b)=>b.score-a.score);const me=es.find(x=>x.team===slot);const min=Math.min(...es.map(x=>x.score));const weights=es.map(x=>Math.max(1,(x.score-min+6)**2));const tw=weights.reduce((a,b)=>a+b,0);es.forEach((x,i)=>{x.rank=i+1;x.titleOdds=Math.round(weights[i]/tw*100);x.explanations=window.JoninInsightEngineV1?JoninInsightEngineV1.explainDraftGrade(x,x.gradingContext):{}});
+ const reportItems=[['Starters',me.starterStrength,me.explanations.starters],['Ceiling',me.ceiling,me.explanations.ceiling],['Value',me.value,me.explanations.value],['Construction',me.construction,me.explanations.construction],['Bench Upside',me.benchUpside,me.explanations.benchUpside],['Best Value',me.bestPick?me.bestPick.name:'—',me.explanations.bestValue],['Projected Finish',`#${me.rank}`,me.explanations.projectedFinish]];
+ myDraftReport.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div class="meta">YOUR DRAFT GRADE</div><div class="reportGrade">${me.grade}</div><b>${me.score}/100</b></div><div style="text-align:right"><div class="meta">PROJECTED FINISH</div><div style="font-size:28px;font-weight:950">#${me.rank}</div><div class="meta">${me.titleOdds}% draft-day title odds</div></div></div><div class="reportExplanationGrid">${reportItems.map(([label,value,text])=>`<div class="reportExplanation"><div><span>${label}</span><b>${value}</b></div><p>${text||'No meaningful grading signal is available.'}</p></div>`).join('')}</div><div class="scanNotes" style="margin-top:10px"><b>Summary</b><br>Strengths: ${me.strengths.join(', ')}.<br>Watch: ${me.weaknesses.join(', ')}.</div></div>`;
  leagueProjection.innerHTML=`<table class="leagueTable"><thead><tr><th>Rank</th><th>Manager</th><th>Grade</th><th>Score</th><th>Title odds</th></tr></thead><tbody>${es.map(x=>`<tr class="${x.team===slot?'youRow':''}"><td><span class="rankBadge">${x.rank}</span></td><td><b>${x.name}</b>${x.rank===1?' <span style="color:#f4d35e">Projected Champion</span>':''}</td><td><span class="gradeBadge">${x.grade}</span></td><td>${x.score}</td><td>${x.titleOdds}%</td></tr>`).join('')}</tbody></table>`;
  allTeamReports.innerHTML=es.map(x=>`<div class="teamReport ${x.team===slot?'youRow':''}"><div class="teamReportHead"><div><b>#${x.rank} ${x.name}</b><div class="meta">${x.team===slot?'Your roster':'Draft slot '+x.team}</div></div><div><span class="gradeBadge">${x.grade}</span> <b>${x.score}</b></div></div><div class="meta" style="margin-top:7px">Starters ${x.starterStrength} • Ceiling ${x.ceiling} • Value ${x.value} • Construction ${x.construction}</div><div style="margin-top:6px"><span class="strength">Strength:</span> ${x.strengths.join(', ')}<br><span class="weakness">Watch:</span> ${x.weaknesses.join(', ')}</div></div>`).join('');
 }
