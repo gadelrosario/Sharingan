@@ -58,6 +58,7 @@ async function init(){
   const response=await fetch("data/players.json?v=jonin_3_2",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
+  buildPlayerSearchIndex();
   poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
  }catch(err){
   console.error("Fantasy HQ player pool failed to load:",err);
@@ -103,6 +104,28 @@ function available(){return players.filter(p=>!drafted.includes(p.id))}
 function myPlayers(){return history.filter(h=>h.team===slot).map(h=>players.find(p=>p.id===h.id)).filter(Boolean)}
 function counts(){let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};myPlayers().forEach(p=>{if(c[p.pos]!==undefined)c[p.pos]++});return c}
 function userPositionFilled(pos){let c=counts();return (pos==="QB"&&c.QB>=1)||(pos==="TE"&&c.TE>=1)}
+
+const searchNormalizations = [
+  [/\./g, ''],
+  [/\bjr\b/gi, ''],
+  [/\bii\b/gi, ''],
+  [/\biii\b/gi, ''],
+  [/\biv\b/gi, ''],
+  [/\bvi\b/gi, ''],
+  [/\bthe\b/gi, ''],
+  [/[^a-z0-9 ]+/gi, ' '],
+  [/\s+/g, ' ']
+];
+function normalizeSearchText(text){return String(text||'').toLowerCase().trim().replace(/['’]/g, '').replace(/\./g, ' ').replace(/\b(jr|ii|iii|iv|vi)\b/gi, '').replace(/[^a-z0-9 ]+/gi, ' ').replace(/\s+/g, ' ').trim();}
+function buildPlayerSearchIndex(){
+  players.forEach(p=>{p.__searchKey = normalizeSearchText(p.name || '') + ' ' + normalizeSearchText(p.team || '') + ' ' + normalizeSearchText(String(p.id));
+    p.__stableId = p.id != null ? String(p.id) : normalizeSearchText(p.name) + '|' + normalizeSearchText(p.team);
+  });
+}
+function playerMatchesQuery(p, query){
+  const q = normalizeSearchText(query);
+  return !q || (p.__searchKey||'').includes(q);
+}
 function tierLabel(p){let t=String(p?.posTier||p?.overallTier||"C").toUpperCase();return ["S","A","B","C","D","E","F"].includes(t)?t:"C"}
 function tierWeight(t){return ({S:5,A:4,B:3,C:2,D:1,E:0,F:0})[t]??2}
 function tierBadge(p){let t=tierLabel(p);return `<span class="tierBadge tier-${t}">${t} Tier</span>`}
@@ -155,6 +178,126 @@ function leagueSpecificModifier(p){
 }
 function sharinganStage(p){if(eternalValue(p))return{key:"eternal",label:"ETERNAL MANGEKYŌ",meaning:"Season-Changing Value"};if(valueOverride(p))return{key:"mangekyo",label:"MANGEKYŌ",meaning:"Value Override"};let s=finalPickScore(p);if(s>=96)return{key:"three",label:"THREE TOMOE",meaning:"Elite Value"};if(s>=90)return{key:"two",label:"TWO TOMOE",meaning:"Excellent Value"};return{key:"one",label:"ONE TOMOE",meaning:"Good Pick"}}
 function recommendationEligible(p){if(userPositionFilled(p.pos))return false;return true}
+
+// Developer-only visual override (debug panel toggles these). These do NOT change draft logic.
+window.__devSharinganStage = null; // e.g. 'one','two','three','mangekyo','eternal','dormant'
+window.__devSharinganReason = null;
+
+function setDevSharinganStage(key, reason){
+  window.__devSharinganStage = key || null;
+  window.__devSharinganReason = reason || null;
+  try{ renderRecommendation(); }catch(e){console.error('renderRecommendation error',e)}
+}
+
+function triggerDevSharinganActivation(){
+  // Trigger activation for the developer-chosen visual stage if present,
+  // otherwise determine the current visible stage from the DOM and trigger.
+  const key = window.__devSharinganStage || null;
+  if(key){ applySharinganActivation(key); return; }
+  // No override: inspect DOM to find the current sharingan panel class
+  const node = el('recommendation');
+  if(!node) return;
+  const panel = node.querySelector('.sharinganPanel');
+  if(panel){
+    // panel has a class like 'one','two','three','mangekyo','eternal','dormant'
+    const classes = Array.from(panel.classList);
+    const stage = classes.find(c=>['one','two','three','mangekyo','eternal','dormant'].includes(c));
+    applySharinganActivation(stage||null);
+    return;
+  }
+  // Fallback: trigger on recommendation card only
+  applySharinganActivation(null);
+}
+
+function createSharinganDebugPanel(){
+  try{
+    const params = new URLSearchParams(window.location.search);
+    if(!params.get('debug') || !params.get('debug').includes('sharingan')) return;
+    if(document.getElementById('devSharinganPanel')) return;
+    const panel = document.createElement('div');
+    panel.id = 'devSharinganPanel';
+    panel.className = 'devSharinganPanel';
+    panel.innerHTML = `
+      <div class="devHeader">Sharingan Debug</div>
+      <div class="devButtons">
+        <button class="dbgBtn" data-stage="dormant">Dormant</button>
+        <button class="dbgBtn" data-stage="one">One Tomoe</button>
+        <button class="dbgBtn" data-stage="two">Two Tomoe</button>
+        <button class="dbgBtn" data-stage="three">Three Tomoe</button>
+        <button class="dbgBtn" data-stage="mangekyo">Mangekyō</button>
+        <button class="dbgBtn" data-stage="eternal">Eternal Mangekyō</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button id="dbgTrigger" class="primary">Trigger Activation Animation</button>
+        <button id="dbgClear" class="ghost">Clear Override</button>
+      </div>
+      <div class="devNote">Debug only — visible when <code>?debug=sharingan</code> is present</div>
+    `;
+    document.body.appendChild(panel);
+    panel.querySelectorAll('.dbgBtn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const key = btn.dataset.stage;
+        const reasonMap = {
+          one: 'Falling Value Detected',
+          two: 'Positional Run Developing',
+          three: 'Tier Collapse Detected',
+          mangekyo: 'Opponent Snipe Risk',
+          eternal: 'Critical Draft Decision',
+          dormant: 'Hold Pattern'
+        };
+        setDevSharinganStage(key, reasonMap[key]||'');
+      });
+    });
+    document.getElementById('dbgTrigger').addEventListener('click',()=>triggerDevSharinganActivation());
+    document.getElementById('dbgClear').addEventListener('click',()=>{ setDevSharinganStage(null,null); });
+  }catch(e){console.error('createSharinganDebugPanel',e)}
+}
+
+function buildPlayerAuditPanel(){
+  try{
+    const params = new URLSearchParams(window.location.search);
+    if(!params.get('debug') || !params.get('debug').includes('players')) return;
+    if(document.getElementById('playerAuditPanel')) return;
+    const panel = document.createElement('div');
+    panel.id = 'playerAuditPanel';
+    panel.className = 'devSharinganPanel';
+    const required = ['Mark Andrews','Jordan Love','Bijan Robinson','Justin Jefferson','Trey McBride','Caleb Williams','Terry McLaurin','Rhamondre Stevenson','Jake Ferguson'];
+    const positionCounts = players.reduce((acc,p)=>{const pos=p.pos||'<missing>';acc[pos]=(acc[pos]||0)+1;return acc;},{ });
+    const duplicateKeys = players.reduce((acc,p)=>{const key=String(p.id!=null?p.id:(normalizeSearchText(p.name||'')+'|'+normalizeSearchText(p.team||'')));acc[key]=(acc[key]||0)+1;return acc;},{});
+    const duplicateList = Object.entries(duplicateKeys).filter(([k,v])=>v>1).map(([k,v])=>`${k} (${v})`);
+    const requiredStatus = required.map(name=>({name,found:players.some(p=>normalizeSearchText(p.name)===normalizeSearchText(name))}));
+    panel.innerHTML = `
+      <div class="devHeader">Player Data Audit</div>
+      <div class="devNote">Developer mode only — use <code>?debug=players</code>.</div>
+      <div style="margin-top:10px"><b>Total players:</b> ${players.length}</div>
+      <div style="margin-top:8px"><b>Position counts:</b> ${Object.entries(positionCounts).map(([pos,count])=>`${pos}:${count}`).join(', ')}</div>
+      <div style="margin-top:8px"><b>Players missing IDs:</b> ${players.filter(p=>p.id==null||p.id==='').length}</div>
+      <div style="margin-top:8px"><b>Duplicate stable IDs:</b> ${duplicateList.length?duplicateList.join(', '):'None'}</div>
+      <div style="margin-top:8px"><b>Required players:</b><ul>${requiredStatus.map(item=>`<li>${item.name}: ${item.found?'<span style="color:#8cf">FOUND</span>':'<span style="color:#f88">MISSING</span>'}</li>`).join('')}</ul></div>
+      <div style="margin-top:8px"><button class="primary" id="runPlayerAudit">Run audit</button></div>
+      <div id="playerAuditResults" style="margin-top:10px;max-height:280px;overflow:auto;background:#0f141d;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.08)"></div>
+    `;
+    document.body.appendChild(panel);
+    document.getElementById('runPlayerAudit').addEventListener('click',()=>{
+      const lines = [];
+      lines.push(`Total players: ${players.length}`);
+      lines.push(`Duplicate stable IDs: ${duplicateList.length?duplicateList.join(', '):'None'}`);
+      lines.push('Required players:');
+      requiredStatus.forEach(item=>lines.push(`  ${item.name}: ${item.found?'FOUND':'MISSING'}`));
+      lines.push('');
+      lines.push('Search normalization examples:');
+      const examples = ['Mark Andrews','mark andrews','Jordan Love','jordan love','D.J. Moore','DJ Moore','Chris Godwin Jr','Chris Godwin'];
+      examples.forEach(ex=>{
+        const match = players.find(p=>playerMatchesQuery(p,ex));
+        lines.push(`  "${ex}" -> ${match?`${match.name} (${match.team||'?'})`:'NO MATCH'}`);
+      });
+      document.getElementById('playerAuditResults').innerHTML = `<pre style="white-space:pre-wrap;word-break:break-word;color:#d1d4e0">${lines.join('\n')}</pre>`;
+    });
+  }catch(e){console.error('buildPlayerAuditPanel',e)}
+}
+
+window.addEventListener('load',createSharinganDebugPanel);
+window.addEventListener('load',buildPlayerAuditPanel);
 function expected(){return blueprint[Math.min(info().r-1,5)]||"BPA"}
 function fit(p){let e=expected();return e==="BPA"?0:e===p.pos?18:e.includes(p.pos)?15:-4}
 function sourceBlend(p){
@@ -402,6 +545,41 @@ function comparisonCardMarkup(p,primary){
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px"><button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button><button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(sharinganStage(p).key)} Sharingan Scan</button></div>
  </div>`;
 }
+
+/**
+ * Draft Command Center V1 - Get recommendation context and scoring
+ * Used for transparent recommendation display
+ */
+function getCommandCenterContext() {
+ const c = counts(), r = info();
+ const availablePlayers = available();
+ let teamsUntilNextPick = r.until;
+ 
+ return {
+  availablePlayers,
+  counts: c,
+  round: r.r,
+  teamsUntilNextPick,
+  rosterNeeds: DraftCommandCenterV1 ? DraftCommandCenterV1.calculatePositionNeeds(c, TOTAL_ROUNDS, r.r) : {}
+ };
+}
+
+/**
+ * Get detailed recommendation scores using Command Center V1
+ */
+function getCommandCenterScores(recs) {
+ if (!DraftCommandCenterV1 || !recs.length) return [];
+ 
+ const context = getCommandCenterContext();
+ return recs.map(p => ({
+  ...p,
+  commandCenterScore: DraftCommandCenterV1.scoreRecommendation(p, context),
+  commandCenterExplanation: DraftCommandCenterV1.generateExplanation(p, 
+   DraftCommandCenterV1.scoreRecommendation(p, context), 
+   {counts: context.counts, round: context.round, teamsUntilNextPick: context.teamsUntilNextPick})
+ }));
+}
+
 function renderRecommendation(){
  let recs=snapshotRecommendations();
  if(!recs.length){
@@ -424,20 +602,42 @@ function renderRecommendation(){
      ${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}${p.coreTarget?`<span class="tag">Core Target</span>`:""}${p.priceFade?`<span class="tag">Price Caution</span>`:""}
      <span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span>
    </div>
-   <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div><div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
+   <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div>
+   ${(() => {
+     if (!DraftCommandCenterV1) return '';
+     const ccScored = getCommandCenterScores([p])[0];
+     if (!ccScored) return '';
+     const cc = ccScored.commandCenterScore;
+     return `<div class="commandCenterScoring" style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;font-size:12px">
+       <div style="font-weight:bold;margin-bottom:6px">Command Center V1 Scoring</div>
+       <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
+         <div><span style="color:#666">Value</span><br><b>${cc.components.value}</b></div>
+         <div><span style="color:#666">Fit</span><br><b>${cc.components.teamFit}</b></div>
+         <div><span style="color:#666">Scarcity</span><br><b>${cc.components.scarcity}</b></div>
+         <div><span style="color:#666">Urgency</span><br><b>${cc.components.urgency}</b></div>
+       </div>
+       <div style="margin-top:6px;color:#333"><b>Overall: ${cc.total}/100</b></div>
+       <div style="margin-top:6px;color:#666;font-style:italic">${ccScored.commandCenterExplanation}</div>
+     </div>`;
+   })()}
+   <div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
+   ${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
      <button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button>
      <button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(sharinganStage(p).key)} Sharingan Scan</button>
    </div>`;
 
  let highlightedPlayer=selectedCandidateId?players.find(x=>x.id===selectedCandidateId&&!drafted.includes(x.id)):null;
+ const ccScoresAll = getCommandCenterScores(recs);
  alternatives.innerHTML=(highlightedPlayer?comparisonCardMarkup(highlightedPlayer,p):"")+recs.slice(1,5).map((x,i)=>{
    let highlighted=selectedCandidateId===x.id;
+   const ccScored = ccScoresAll.find(cc => cc.id === x.id);
+   const ccScore = ccScored ? ccScored.commandCenterScore.total : '—';
    return `<div class="alt selectable ${highlighted?"highlightedOption":""}" onclick="selectCandidate(${x.id})">
      <div class="rank">${i+2}</div>
      <div class="info">
        <b>${x.name}</b>
-       <div class="meta">${tierLabel(x)} Tier • ${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • FP ${x.fantasyProsPosRank||x.posRank} • ${rationale(x)}</div>
+       <div class="meta">${tierLabel(x)} Tier • ${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • CC ${ccScore}/100 • ${rationale(x)}</div>
        ${highlighted?`<span class="highlightFlag">Highlighted for comparison</span>`:""}
      </div>
      <button type="button" class="scanBtn" onclick="openScan(${x.id});return false">${sharinganIconMarkup(sharinganStage(x).key)} Sharingan Scan</button>
@@ -652,8 +852,24 @@ function undoLastPick(){
 function syncSearch(source){let a=el('search'),b=el('dSearch'),c=el('browseSearch'),src=source==='desktop'?b:source==='browse'?c:a,value=src?.value||'';[a,b,c].forEach(x=>{if(x&&x!==src)x.value=value});renderPlayers()}
 function setPos(pos){posFilter=pos;document.querySelectorAll('[data-pos]').forEach(b=>b.classList.toggle('filterActive',b.dataset.pos===pos));renderPlayers()}
 function renderPlayers(){
- let q=((el('search')?.value||el('dSearch')?.value||el('browseSearch')?.value||'')).trim().toLowerCase();
- let pool=available().filter(p=>posFilter==='ALL'||positionKey(p)===posFilter).filter(p=>!q||p.name.toLowerCase().includes(q)||(p.team||'').toLowerCase().includes(q)).sort((a,b)=>(a.overall||999)-(b.overall||999)).slice(0,q?80:55);
+ let q=(el('search')?.value||el('dSearch')?.value||el('browseSearch')?.value||'');
+ let available_pool=available();
+ let pool_before_filter=available_pool.filter(p=>posFilter==='ALL'||positionKey(p)===posFilter).filter(p=>playerMatchesQuery(p,q));
+ 
+ // Include ranked players (with overall) plus unranked players (with BDGE/Flock ranks)
+ let with_overall=pool_before_filter.filter(p=>p.overall!==null&&p.overall!==undefined);
+ let without_overall=pool_before_filter.filter(p=>p.overall===null||p.overall===undefined);
+ 
+ // Sort ranked by overall, unranked by best alternative source
+ let sorted=with_overall.sort((a,b)=>(a.overall||999)-(b.overall||999));
+ let unranked=without_overall.sort((a,b)=>{
+  let a_rank=Math.min(a.bdgeRank||999, a.flockRank||999, a.sleeperAdp||999, a.yahooAdp||999, a.consensusAdp||999);
+  let b_rank=Math.min(b.bdgeRank||999, b.flockRank||999, b.sleeperAdp||999, b.yahooAdp||999, b.consensusAdp||999);
+  return a_rank-b_rank;
+ });
+ 
+ // Include both ranked (top 30) and unranked (top 25) to ensure visibility of new players
+ let pool=(sorted.slice(0,30)).concat(unranked.slice(0,25)).slice(0,q?80:55);
  let owner=currentPickOwner(),ownerLabel=owner===slot?'Draft for Me':'Record Pick';
  let html=pool.map(p=>`<div class="playerRow fast"><div class="meta">${p.overall||'—'}</div><div><b class="scanLink" onclick="openScan(${p.id})">${p.name}</b><div class="meta">${positionKey(p)} • ${p.team} • ${tierLabel(p)} Tier</div></div><button class="autoPickBtn" onclick="recordCurrentPick(${p.id})">${ownerLabel}</button></div>`).join('')||'<div class="meta" style="padding:12px">No available players match.</div>';
  ['playersList','dPlayersList'].forEach(id=>{let e=el(id);if(e)e.innerHTML=html});
