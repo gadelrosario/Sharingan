@@ -596,6 +596,15 @@ function joninRecommendationInsight(recs){
   picksUntil:info().until,pick,survivalRisk:survivalRisk(p),breakdown:candidates[0].breakdown
  });
 }
+function sharinganVisionForecast(recs){
+ if(!window.SharinganVisionV1||!recs.length)return null;
+ const candidates=recs.map(player=>({player,finalScore:finalPickScore(player),breakdown:joninScoreBreakdown(player)}));
+ return SharinganVisionV1.forecast({
+  player:recs[0],candidates,breakdown:candidates[0].breakdown,availablePlayers:available(),
+  recentPicks:history.slice(-8).map(entry=>players.find(player=>player.id===entry.id)).filter(Boolean),
+  teamsBeforeNext:teamsBeforeMyNextPick().map(team=>({team,counts:managerPositionCounts(team)})),picksUntil:info().until
+ });
+}
 function signedScore(value){return `${value>0?'+':''}${value}`}
 function safeInsightText(value){if(window.JoninInsightEngineV1)return JoninInsightEngineV1.escapeHTML(value);const node=document.createElement('span');node.textContent=String(value??'');return node.innerHTML}
 function joninInsightMarkup(insight,ccScored){
@@ -610,6 +619,18 @@ function joninInsightMarkup(insight,ccScored){
   ${whyNot}
  </div>`;
 }
+function sharinganVisionMarkup(vision){
+ if(!vision)return '';
+ const cliff=vision.tierCliff,forecast=vision.availability,why=vision.whyNot;
+ const comparison=why.alternative?`<div class="visionWhyNot"><div class="visionLabel">Why Not ${safeInsightText(why.alternative.name||'unnamed alternative')}?</div><p>${safeInsightText(why.preferred)}</p><div class="visionCompare"><span>${safeInsightText(why.alternativeStrength)}</span><span>${safeInsightText(why.alternativeWeakness)}</span></div></div>`:`<div class="visionWhyNot"><div class="visionLabel">Why Not?</div><p>${safeInsightText(why.preferred)}</p></div>`;
+ return `<section class="sharinganVisionV1" aria-label="Sharingan Vision">
+  <div class="visionV1Header"><div><div class="visionV1Eyebrow">SHARINGAN VISION</div><b>What happens if I don't draft ${safeInsightText(vision.player?.name||'this player')}?</b></div><span class="visionOpportunity ${vision.opportunity.label==='Draft Now'?'urgent':vision.opportunity.label==='Risky To Wait'?'watch':'safe'}">${safeInsightText(vision.opportunity.label)}</span></div>
+  <p class="visionOpportunityReason">${safeInsightText(vision.opportunity.reason)}</p>
+  <div class="visionSignalGrid"><div><span>Tier Cliff</span><b>${safeInsightText(cliff.currentTier)} → ${safeInsightText(cliff.nextTier)}</b><small>${safeInsightText(cliff.reason)}</small></div><div><span>Availability Forecast</span><b>${safeInsightText(forecast.label)}</b><small>${safeInsightText(forecast.reason)}</small></div></div>
+  <div class="visionWhyNow"><div class="visionLabel">Why Now</div>${vision.whyNow.map(item=>`<div><b>${safeInsightText(item.label)}</b><span>${safeInsightText(item.text)}</span></div>`).join('')}</div>
+  ${comparison}
+ </section>`;
+}
 
 function renderRecommendation(){
  let recs=snapshotRecommendations();
@@ -620,7 +641,7 @@ function renderRecommendation(){
  }
  let p=recs[0];
  let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk;
- const ccScored=getCommandCenterScores([p])[0]||null,insight=joninRecommendationInsight(recs);
+ const ccScored=getCommandCenterScores([p])[0]||null,insight=joninRecommendationInsight(recs),vision=sharinganVisionForecast(recs);
  recommendation.className="rec "+state.cls;
  recommendation.innerHTML=`
    <div style="font-weight:900">${state.label}</div>
@@ -636,6 +657,7 @@ function renderRecommendation(){
    </div>
    <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div>
    ${joninInsightMarkup(insight,ccScored)}
+   ${sharinganVisionMarkup(vision)}
    <div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
    ${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
