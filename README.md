@@ -73,6 +73,23 @@ The local recommendation endpoint uses indexed SQLite queries and returns only t
 
 The exact Sleeper, Yahoo, and consensus ADP values are not populated in this database yet. Their schema, templates, import workflow, and external-ID support are ready. We should import the previously supplied raw values once we locate or reconstruct those exact rows.
 
+## Generate the live player pool
+
+`data/players.json` must be generated from the canonical database, with the
+current JSON used only to retain its stable live IDs and Fantasy HQ analysis:
+
+```bash
+python scripts/generate_live_pool.py \
+  --out outputs/player_audit/players_review_232.json \
+  --report outputs/player_audit/pipeline_generation_report_232.json
+```
+
+The default review output deliberately differs from the deployed `players.json` path.
+After reviewing the report and generated diff, release automation can pass
+`--out data/players.json`. The generator never updates the SQLite database.
+Players do not need coverage from BDGE, Flock, or an ADP source to be emitted;
+missing source values are JSON `null`.
+
 ## Yahoo sync readiness
 
 The database is ready for Yahoo player keys through `external_ids` and for league data in a later module. Yahoo OAuth and live league sync are intentionally not included yet because they require online authorization and app credentials.
