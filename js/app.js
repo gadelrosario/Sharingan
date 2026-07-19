@@ -93,7 +93,7 @@ function startDraft(){
   let modeName=mode==="practice"?"🟢 PRACTICE MOCK DRAFT":mode==="yahoo"?"🟣 YAHOO LIVE MOCK • REAL PEOPLE":"🔵 LIVE DRAFT DAY";
   modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   renderLeagueDnaBar();
-  practiceControls.classList.toggle("hidden",mode!=="practice");liveHelp.classList.toggle("hidden",mode==="practice");renderAll();
+  el("practiceControls")?.classList.toggle("hidden",mode!=="practice");el("liveHelp")?.classList.toggle("hidden",mode==="practice");renderAll();
  }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please refresh the Jōnin 3.2 build. Technical detail: "+err.message)}
 }
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
@@ -378,7 +378,7 @@ function aiScore(p,team){let profile=aiProfiles[team]||"Balanced",m=getManager(t
 async function simulateToMe(){
  if(mode!=="practice"||simulationInProgress||teamForPick(pick)===slot)return;
  simulationInProgress=true;
- const btn=el("simulateBtn"),original=btn?.textContent||"Simulate until my pick";
+ const btn=el("simulateBtn"),original=btn?.textContent||"Simulate To My Next Pick";
  if(btn){btn.disabled=true;btn.textContent="Simulating…"}
  try{
   while(teamForPick(pick)!==slot&&pick<=TOTAL_PICKS){
