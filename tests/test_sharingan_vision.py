@@ -17,7 +17,14 @@ const result=window.SharinganVisionTests.run();if(result.failCount)process.exit(
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("Sharingan Vision: 7 passed, 0 failed", result.stdout)
+        self.assertIn("Sharingan Vision: 11 passed, 0 failed", result.stdout)
+
+    def test_manager_table_columns_and_immediate_refresh_contract(self):
+        source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        self.assertIn('data-position="${pos}"', source)
+        self.assertIn('["QB","RB","WR","TE"].map(pos=>', source)
+        render_after_pick = source[source.index("function renderAfterPick"):source.index("function selectPlayer")]
+        self.assertIn("renderManagerTables();", render_after_pick)
 
 
 if __name__ == "__main__":

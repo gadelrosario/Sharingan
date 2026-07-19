@@ -53,6 +53,48 @@ const SharinganVisionTests = (() => {
     assert(JSON.stringify(first)===JSON.stringify(second),'forecast is not deterministic');
     assert(JSON.stringify(input)===before,'forecast mutated inputs');
   });
+  test('all-WR and all-RB histories preserve authoritative positions',()=>{
+    const rosterPlayers=[...Array(5)].map((_,i)=>player(100+i,`WR ${i+1}`,'WR',20+i,'B')).concat([...Array(5)].map((_,i)=>player(200+i,`RB ${i+1}`,'RB',30+i,'B')));
+    const wrHistory=rosterPlayers.slice(0,5).map((p,i)=>({pick:i+1,id:p.id,team:1}));
+    const wrCounts=SharinganVisionV1.rosterPositionCounts({history:wrHistory,players:rosterPlayers,team:1});
+    assert(wrCounts.WR===5&&wrCounts.RB===0,'five WRs did not remain five WRs');
+    assert(SharinganVisionV1.rosterConstruction(wrCounts).liveRead==='WR heavy','all-WR live read incorrect');
+    const wrNeed=SharinganVisionV1.assessUserNeed({position:'WR',counts:wrCounts});
+    assert(!wrNeed.starterNeed&&wrNeed.reason.includes('unfilled QB, RB, TE'),'WR surplus did not redirect attention');
+    const rbHistory=rosterPlayers.slice(5).map((p,i)=>({pick:i+1,id:p.id,team:1}));
+    const rbCounts=SharinganVisionV1.rosterPositionCounts({history:rbHistory,players:rosterPlayers,team:1});
+    assert(rbCounts.RB===5&&rbCounts.WR===0,'five RBs did not remain five RBs');
+    assert(SharinganVisionV1.rosterConstruction(rbCounts).liveRead==='RB heavy','all-RB live read incorrect');
+  });
+  test('mixed roster counts and filled QB/TE needs are exact',()=>{
+    const positions=['QB','RB','RB','WR','WR','WR','TE'];
+    const rosterPlayers=positions.map((pos,i)=>player(300+i,`${pos} ${i}`,pos,40+i,'B'));
+    const history=rosterPlayers.map((p,i)=>({pick:i+1,id:p.id,team:'3'}));
+    const counts=SharinganVisionV1.rosterPositionCounts({history,players:rosterPlayers,team:3});
+    assert(JSON.stringify(counts)===JSON.stringify({QB:1,RB:2,WR:3,TE:1,K:0,DST:0}),'mixed roster counts incorrect');
+    assert(!SharinganVisionV1.assessUserNeed({position:'QB',counts}).starterNeed,'filled QB shown as need');
+    assert(!SharinganVisionV1.assessUserNeed({position:'TE',counts}).starterNeed,'filled TE shown as need');
+  });
+  test('undo, reset, simulated picks, and CPU teams recompute from history',()=>{
+    const rosterPlayers=[player(401,'User WR','WR',40,'B'),player(402,'CPU RB','RB',41,'B'),player(403,'CPU QB','QB',42,'B')];
+    const history=[{pick:1,id:401,team:1},{pick:2,id:402,team:2},{pick:3,id:403,team:2}];
+    assert(SharinganVisionV1.rosterPositionCounts({history,players:rosterPlayers,team:2}).RB===1,'simulated CPU RB missing');
+    assert(SharinganVisionV1.rosterPositionCounts({history,players:rosterPlayers,team:2}).QB===1,'simulated CPU QB missing');
+    const undone=SharinganVisionV1.rosterPositionCounts({history:history.slice(0,-1),players:rosterPlayers,team:2});
+    assert(undone.QB===0&&undone.RB===1,'undo did not immediately recompute counts');
+    const reset=SharinganVisionV1.rosterPositionCounts({history:[],players:rosterPlayers,team:1});
+    assert(Object.values(reset).every(value=>value===0),'reset did not clear counts');
+  });
+  test('active run with zero starter-needy teams is restrained depth demand',()=>{
+    const teams=[1,2,3].map(team=>({team,counts:{QB:1,RB:2,WR:3,TE:1}}));
+    const needs=SharinganVisionV1.assessTeamNeeds({position:'RB',teamsBeforeNext:teams});
+    const run=SharinganVisionV1.detectPositionalRun({position:'RB',recentPicks:[1,2,3,4].map(i=>player(500+i,`RB ${i}`,'RB',50+i,'B'))});
+    const forecast=SharinganVisionV1.availabilityForecast({player:primary,availablePlayers:pool,picksUntil:4,tierCliff:{nearCliff:false,remainingInTier:3},run,teamNeeds:needs});
+    const opportunity=SharinganVisionV1.opportunityWindow({forecast,tierCliff:{nearCliff:false},run,teamNeeds:needs});
+    assert(needs.starterNeeds===0&&needs.reason.includes('depth'),'zero-starter need not labeled as depth');
+    assert(opportunity.label!=='Draft Now','run alone created strong starter urgency');
+    assert(opportunity.reason.includes('immediate starter pressure is limited'),'conflict explanation is not restrained');
+  });
 
   function run(){let passCount=0,failCount=0;tests.forEach(({name,fn})=>{try{fn();console.log(`✓ ${name}`);passCount++}catch(error){console.error(`✗ ${name}: ${error.message}`);failCount++}});console.log(`Sharingan Vision: ${passCount} passed, ${failCount} failed`);return{passCount,failCount,total:tests.length}}
   return{run};
