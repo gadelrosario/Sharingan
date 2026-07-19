@@ -1,0 +1,2021 @@
+{
+  "canonical_count": 232,
+  "before_count": 264,
+  "after_count": 264,
+  "canonical_missing_before": 0,
+  "canonical_added": 0,
+  "unresolved_exclusions": [],
+  "unexplained_canonical_exclusions": [],
+  "position_counts": {
+    "DST": 32,
+    "K": 32,
+    "QB": 34,
+    "RB": 59,
+    "TE": 33,
+    "WR": 74
+  },
+  "missing_team_players": [],
+  "canonical_missing_team_players": [
+    {
+      "canonical_id": 17,
+      "canonical_key": "jordan-love-qb",
+      "name": "Jordan Love",
+      "position": "QB",
+      "team": null
+    },
+    {
+      "canonical_id": 21,
+      "canonical_key": "malik-willis-qb",
+      "name": "Malik Willis",
+      "position": "QB",
+      "team": null
+    },
+    {
+      "canonical_id": 22,
+      "canonical_key": "sam-darnold-qb",
+      "name": "Sam Darnold",
+      "position": "QB",
+      "team": null
+    },
+    {
+      "canonical_id": 23,
+      "canonical_key": "cam-ward-qb",
+      "name": "Cam Ward",
+      "position": "QB",
+      "team": null
+    },
+    {
+      "canonical_id": 25,
+      "canonical_key": "daniel-jones-qb",
+      "name": "Daniel Jones",
+      "position": "QB",
+      "team": null
+    },
+    {
+      "canonical_id": 27,
+      "canonical_key": "fernando-mendoza-qb",
+      "name": "Fernando Mendoza",
+      "position": "QB",
+      "team": null
+    },
+    {
+      "canonical_id": 30,
+      "canonical_key": "jacoby-brissett-qb",
+      "name": "Jacoby Brissett",
+      "position": "QB",
+      "team": null
+    },
+    {
+      "canonical_id": 42,
+      "canonical_key": "kenneth-walker-iii-rb",
+      "name": "Kenneth Walker III",
+      "position": "RB",
+      "team": null
+    },
+    {
+      "canonical_id": 47,
+      "canonical_key": "travis-etienne-jr-rb",
+      "name": "Travis Etienne Jr.",
+      "position": "RB",
+      "team": null
+    },
+    {
+      "canonical_id": 68,
+      "canonical_key": "jonathan-brooks-rb",
+      "name": "Jonathan Brooks",
+      "position": "RB",
+      "team": null
+    },
+    {
+      "canonical_id": 72,
+      "canonical_key": "chris-rodriguez-rb",
+      "name": "Chris Rodriguez",
+      "position": "RB",
+      "team": null
+    },
+    {
+      "canonical_id": 82,
+      "canonical_key": "oronde-gadsden-ii-te",
+      "name": "Oronde Gadsden II",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 89,
+      "canonical_key": "mark-andrews-te",
+      "name": "Mark Andrews",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 90,
+      "canonical_key": "juwan-johnson-te",
+      "name": "Juwan Johnson",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 91,
+      "canonical_key": "chigoziem-okonkwo-te",
+      "name": "Chigoziem Okonkwo",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 92,
+      "canonical_key": "kenyon-sadiq-te",
+      "name": "Kenyon Sadiq",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 94,
+      "canonical_key": "dalton-schultz-te",
+      "name": "Dalton Schultz",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 95,
+      "canonical_key": "t-j-hockenson-te",
+      "name": "T.J. Hockenson",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 96,
+      "canonical_key": "aj-barner-te",
+      "name": "AJ Barner",
+      "position": "TE",
+      "team": null
+    },
+    {
+      "canonical_id": 128,
+      "canonical_key": "d-j-moore-wr",
+      "name": "D.J. Moore",
+      "position": "WR",
+      "team": null
+    }
+  ],
+  "team_patch_resolutions": [],
+  "duplicate_resolutions": [],
+  "classifications": [
+    {
+      "canonical_id": 1,
+      "canonical_key": "josh-allen-qb",
+      "name": "Josh Allen",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 2,
+      "canonical_key": "lamar-jackson-qb",
+      "name": "Lamar Jackson",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 3,
+      "canonical_key": "jayden-daniels-qb",
+      "name": "Jayden Daniels",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 4,
+      "canonical_key": "joe-burrow-qb",
+      "name": "Joe Burrow",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 5,
+      "canonical_key": "jalen-hurts-qb",
+      "name": "Jalen Hurts",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 6,
+      "canonical_key": "drake-maye-qb",
+      "name": "Drake Maye",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 7,
+      "canonical_key": "justin-herbert-qb",
+      "name": "Justin Herbert",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 8,
+      "canonical_key": "caleb-williams-qb",
+      "name": "Caleb Williams",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 9,
+      "canonical_key": "trevor-lawrence-qb",
+      "name": "Trevor Lawrence",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 10,
+      "canonical_key": "dak-prescott-qb",
+      "name": "Dak Prescott",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 11,
+      "canonical_key": "matthew-stafford-qb",
+      "name": "Matthew Stafford",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 12,
+      "canonical_key": "patrick-mahomes-qb",
+      "name": "Patrick Mahomes",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 13,
+      "canonical_key": "brock-purdy-qb",
+      "name": "Brock Purdy",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 14,
+      "canonical_key": "jaxson-dart-qb",
+      "name": "Jaxson Dart",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 15,
+      "canonical_key": "bo-nix-qb",
+      "name": "Bo Nix",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 16,
+      "canonical_key": "kyler-murray-qb",
+      "name": "Kyler Murray",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 17,
+      "canonical_key": "jordan-love-qb",
+      "name": "Jordan Love",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 18,
+      "canonical_key": "jared-goff-qb",
+      "name": "Jared Goff",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 19,
+      "canonical_key": "tyler-shough-qb",
+      "name": "Tyler Shough",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 20,
+      "canonical_key": "baker-mayfield-qb",
+      "name": "Baker Mayfield",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 21,
+      "canonical_key": "malik-willis-qb",
+      "name": "Malik Willis",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 22,
+      "canonical_key": "sam-darnold-qb",
+      "name": "Sam Darnold",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 23,
+      "canonical_key": "cam-ward-qb",
+      "name": "Cam Ward",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 24,
+      "canonical_key": "c-j-stroud-qb",
+      "name": "C.J. Stroud",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 25,
+      "canonical_key": "daniel-jones-qb",
+      "name": "Daniel Jones",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 26,
+      "canonical_key": "bryce-young-qb",
+      "name": "Bryce Young",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 27,
+      "canonical_key": "fernando-mendoza-qb",
+      "name": "Fernando Mendoza",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 28,
+      "canonical_key": "geno-smith-qb",
+      "name": "Geno Smith",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 29,
+      "canonical_key": "aaron-rodgers-qb",
+      "name": "Aaron Rodgers",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 30,
+      "canonical_key": "jacoby-brissett-qb",
+      "name": "Jacoby Brissett",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 31,
+      "canonical_key": "jahmyr-gibbs-rb",
+      "name": "Jahmyr Gibbs",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 32,
+      "canonical_key": "bijan-robinson-rb",
+      "name": "Bijan Robinson",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 33,
+      "canonical_key": "christian-mccaffrey-rb",
+      "name": "Christian McCaffrey",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 34,
+      "canonical_key": "jonathan-taylor-rb",
+      "name": "Jonathan Taylor",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 35,
+      "canonical_key": "james-cook-rb",
+      "name": "James Cook",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 36,
+      "canonical_key": "ashton-jeanty-rb",
+      "name": "Ashton Jeanty",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 37,
+      "canonical_key": "saquon-barkley-rb",
+      "name": "Saquon Barkley",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 38,
+      "canonical_key": "omarion-hampton-rb",
+      "name": "Omarion Hampton",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 39,
+      "canonical_key": "chase-brown-rb",
+      "name": "Chase Brown",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 40,
+      "canonical_key": "de-von-achane-rb",
+      "name": "De'Von Achane",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 41,
+      "canonical_key": "derrick-henry-rb",
+      "name": "Derrick Henry",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 42,
+      "canonical_key": "kenneth-walker-iii-rb",
+      "name": "Kenneth Walker III",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 43,
+      "canonical_key": "jeremiyah-love-rb",
+      "name": "Jeremiyah Love",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 44,
+      "canonical_key": "breece-hall-rb",
+      "name": "Breece Hall",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 45,
+      "canonical_key": "josh-jacobs-rb",
+      "name": "Josh Jacobs",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 46,
+      "canonical_key": "javonte-williams-rb",
+      "name": "Javonte Williams",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 47,
+      "canonical_key": "travis-etienne-jr-rb",
+      "name": "Travis Etienne Jr.",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 48,
+      "canonical_key": "cam-skattebo-rb",
+      "name": "Cam Skattebo",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 49,
+      "canonical_key": "kyren-williams-rb",
+      "name": "Kyren Williams",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 50,
+      "canonical_key": "quinshon-judkins-rb",
+      "name": "Quinshon Judkins",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 51,
+      "canonical_key": "treveyon-henderson-rb",
+      "name": "TreVeyon Henderson",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 52,
+      "canonical_key": "bucky-irving-rb",
+      "name": "Bucky Irving",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 53,
+      "canonical_key": "d-andre-swift-rb",
+      "name": "D'Andre Swift",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 54,
+      "canonical_key": "david-montgomery-rb",
+      "name": "David Montgomery",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 55,
+      "canonical_key": "bhayshul-tuten-rb",
+      "name": "Bhayshul Tuten",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 56,
+      "canonical_key": "tony-pollard-rb",
+      "name": "Tony Pollard",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 57,
+      "canonical_key": "jadarian-price-rb",
+      "name": "Jadarian Price",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 58,
+      "canonical_key": "chuba-hubbard-rb",
+      "name": "Chuba Hubbard",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 59,
+      "canonical_key": "jaylen-warren-rb",
+      "name": "Jaylen Warren",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 60,
+      "canonical_key": "rhamondre-stevenson-rb",
+      "name": "Rhamondre Stevenson",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 61,
+      "canonical_key": "rj-harvey-rb",
+      "name": "RJ Harvey",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 62,
+      "canonical_key": "rico-dowdle-rb",
+      "name": "Rico Dowdle",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 63,
+      "canonical_key": "kyle-monangai-rb",
+      "name": "Kyle Monangai",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 64,
+      "canonical_key": "blake-corum-rb",
+      "name": "Blake Corum",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 65,
+      "canonical_key": "j-k-dobbins-rb",
+      "name": "J.K. Dobbins",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 66,
+      "canonical_key": "rachaad-white-rb",
+      "name": "Rachaad White",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 67,
+      "canonical_key": "kenneth-gainwell-rb",
+      "name": "Kenneth Gainwell",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 68,
+      "canonical_key": "jonathan-brooks-rb",
+      "name": "Jonathan Brooks",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 69,
+      "canonical_key": "aaron-jones-rb",
+      "name": "Aaron Jones",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 70,
+      "canonical_key": "jacory-croskey-merritt-rb",
+      "name": "Jacory Croskey-Merritt",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 71,
+      "canonical_key": "jordan-mason-rb",
+      "name": "Jordan Mason",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 72,
+      "canonical_key": "chris-rodriguez-rb",
+      "name": "Chris Rodriguez",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 73,
+      "canonical_key": "brock-bowers-te",
+      "name": "Brock Bowers",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 74,
+      "canonical_key": "trey-mcbride-te",
+      "name": "Trey McBride",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 75,
+      "canonical_key": "colston-loveland-te",
+      "name": "Colston Loveland",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 76,
+      "canonical_key": "tyler-warren-te",
+      "name": "Tyler Warren",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 77,
+      "canonical_key": "harold-fannin-jr-te",
+      "name": "Harold Fannin Jr.",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 78,
+      "canonical_key": "tucker-kraft-te",
+      "name": "Tucker Kraft",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 79,
+      "canonical_key": "sam-laporta-te",
+      "name": "Sam LaPorta",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 80,
+      "canonical_key": "kyle-pitts-te",
+      "name": "Kyle Pitts",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 81,
+      "canonical_key": "dallas-goedert-te",
+      "name": "Dallas Goedert",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 82,
+      "canonical_key": "oronde-gadsden-ii-te",
+      "name": "Oronde Gadsden II",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 83,
+      "canonical_key": "jake-ferguson-te",
+      "name": "Jake Ferguson",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 84,
+      "canonical_key": "travis-kelce-te",
+      "name": "Travis Kelce",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 85,
+      "canonical_key": "dalton-kincaid-te",
+      "name": "Dalton Kincaid",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 86,
+      "canonical_key": "george-kittle-te",
+      "name": "George Kittle",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 87,
+      "canonical_key": "isaiah-likely-te",
+      "name": "Isaiah Likely",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 88,
+      "canonical_key": "brenton-strange-te",
+      "name": "Brenton Strange",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 89,
+      "canonical_key": "mark-andrews-te",
+      "name": "Mark Andrews",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 90,
+      "canonical_key": "juwan-johnson-te",
+      "name": "Juwan Johnson",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 91,
+      "canonical_key": "chigoziem-okonkwo-te",
+      "name": "Chigoziem Okonkwo",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 92,
+      "canonical_key": "kenyon-sadiq-te",
+      "name": "Kenyon Sadiq",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 93,
+      "canonical_key": "hunter-henry-te",
+      "name": "Hunter Henry",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 94,
+      "canonical_key": "dalton-schultz-te",
+      "name": "Dalton Schultz",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 95,
+      "canonical_key": "t-j-hockenson-te",
+      "name": "T.J. Hockenson",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 96,
+      "canonical_key": "aj-barner-te",
+      "name": "AJ Barner",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 97,
+      "canonical_key": "ja-marr-chase-wr",
+      "name": "Ja'Marr Chase",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 98,
+      "canonical_key": "puka-nacua-wr",
+      "name": "Puka Nacua",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 99,
+      "canonical_key": "jaxon-smith-njigba-wr",
+      "name": "Jaxon Smith-Njigba",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 100,
+      "canonical_key": "amon-ra-st-brown-wr",
+      "name": "Amon-Ra St. Brown",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 101,
+      "canonical_key": "ceedee-lamb-wr",
+      "name": "CeeDee Lamb",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 102,
+      "canonical_key": "justin-jefferson-wr",
+      "name": "Justin Jefferson",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 103,
+      "canonical_key": "drake-london-wr",
+      "name": "Drake London",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 104,
+      "canonical_key": "a-j-brown-wr",
+      "name": "A.J. Brown",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 105,
+      "canonical_key": "nico-collins-wr",
+      "name": "Nico Collins",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 106,
+      "canonical_key": "rashee-rice-wr",
+      "name": "Rashee Rice",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 107,
+      "canonical_key": "george-pickens-wr",
+      "name": "George Pickens",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 108,
+      "canonical_key": "devonta-smith-wr",
+      "name": "DeVonta Smith",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 109,
+      "canonical_key": "chris-olave-wr",
+      "name": "Chris Olave",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 110,
+      "canonical_key": "tee-higgins-wr",
+      "name": "Tee Higgins",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 111,
+      "canonical_key": "zay-flowers-wr",
+      "name": "Zay Flowers",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 112,
+      "canonical_key": "davante-adams-wr",
+      "name": "Davante Adams",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 113,
+      "canonical_key": "malik-nabers-wr",
+      "name": "Malik Nabers",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 114,
+      "canonical_key": "tetairoa-mcmillan-wr",
+      "name": "Tetairoa McMillan",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 115,
+      "canonical_key": "ladd-mcconkey-wr",
+      "name": "Ladd McConkey",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 116,
+      "canonical_key": "garrett-wilson-wr",
+      "name": "Garrett Wilson",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 117,
+      "canonical_key": "emeka-egbuka-wr",
+      "name": "Emeka Egbuka",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 118,
+      "canonical_key": "mike-evans-wr",
+      "name": "Mike Evans",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 119,
+      "canonical_key": "terry-mclaurin-wr",
+      "name": "Terry McLaurin",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 120,
+      "canonical_key": "jaylen-waddle-wr",
+      "name": "Jaylen Waddle",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 121,
+      "canonical_key": "jameson-williams-wr",
+      "name": "Jameson Williams",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 122,
+      "canonical_key": "luther-burden-iii-wr",
+      "name": "Luther Burden III",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 123,
+      "canonical_key": "carnell-tate-wr",
+      "name": "Carnell Tate",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 124,
+      "canonical_key": "marvin-harrison-jr-wr",
+      "name": "Marvin Harrison Jr.",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 125,
+      "canonical_key": "christian-watson-wr",
+      "name": "Christian Watson",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 126,
+      "canonical_key": "rome-odunze-wr",
+      "name": "Rome Odunze",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 127,
+      "canonical_key": "brian-thomas-jr-wr",
+      "name": "Brian Thomas Jr.",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 128,
+      "canonical_key": "d-j-moore-wr",
+      "name": "D.J. Moore",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 129,
+      "canonical_key": "parker-washington-wr",
+      "name": "Parker Washington",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 130,
+      "canonical_key": "dk-metcalf-wr",
+      "name": "DK Metcalf",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 131,
+      "canonical_key": "quentin-johnston-wr",
+      "name": "Quentin Johnston",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 132,
+      "canonical_key": "alec-pierce-wr",
+      "name": "Alec Pierce",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 133,
+      "canonical_key": "courtland-sutton-wr",
+      "name": "Courtland Sutton",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 134,
+      "canonical_key": "jordan-addison-wr",
+      "name": "Jordan Addison",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 135,
+      "canonical_key": "jauan-jennings-wr",
+      "name": "Jauan Jennings",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 136,
+      "canonical_key": "khalil-shakir-wr",
+      "name": "Khalil Shakir",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 137,
+      "canonical_key": "cooper-kupp-wr",
+      "name": "Cooper Kupp",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 138,
+      "canonical_key": "keon-coleman-wr",
+      "name": "Keon Coleman",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 139,
+      "canonical_key": "brandon-aiyuk-wr",
+      "name": "Brandon Aiyuk",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 140,
+      "canonical_key": "darnell-mooney-wr",
+      "name": "Darnell Mooney",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 141,
+      "canonical_key": "j-j-mccarthy-qb",
+      "name": "J.J. McCarthy",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 142,
+      "canonical_key": "zach-ertz-te",
+      "name": "Zach Ertz",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 143,
+      "canonical_key": "woody-marks-rb",
+      "name": "Woody Marks",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 144,
+      "canonical_key": "tua-tagovailoa-qb",
+      "name": "Tua Tagovailoa",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 145,
+      "canonical_key": "rashod-bateman-wr",
+      "name": "Rashod Bateman",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 146,
+      "canonical_key": "russell-wilson-qb",
+      "name": "Russell Wilson",
+      "position": "QB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 147,
+      "canonical_key": "wan-dale-robinson-wr",
+      "name": "Wan'Dale Robinson",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 148,
+      "canonical_key": "cedric-tillman-wr",
+      "name": "Cedric Tillman",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 149,
+      "canonical_key": "pat-bryant-wr",
+      "name": "Pat Bryant",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 150,
+      "canonical_key": "dontayvion-wicks-wr",
+      "name": "Dontayvion Wicks",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 151,
+      "canonical_key": "mason-taylor-te",
+      "name": "Mason Taylor",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 152,
+      "canonical_key": "elijah-arroyo-te",
+      "name": "Elijah Arroyo",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 153,
+      "canonical_key": "kendre-miller-rb",
+      "name": "Kendre Miller",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 154,
+      "canonical_key": "roschon-johnson-rb",
+      "name": "Roschon Johnson",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 155,
+      "canonical_key": "kimani-vidal-rb",
+      "name": "Kimani Vidal",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 156,
+      "canonical_key": "marshawn-lloyd-rb",
+      "name": "MarShawn Lloyd",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 157,
+      "canonical_key": "ty-johnson-rb",
+      "name": "Ty Johnson",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 158,
+      "canonical_key": "jaleel-mclaughlin-rb",
+      "name": "Jaleel McLaughlin",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 159,
+      "canonical_key": "elijah-mitchell-rb",
+      "name": "Elijah Mitchell",
+      "position": "RB",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 160,
+      "canonical_key": "tre-tucker-wr",
+      "name": "Tre Tucker",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 161,
+      "canonical_key": "demario-douglas-wr",
+      "name": "Demario Douglas",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 162,
+      "canonical_key": "andrei-iosivas-wr",
+      "name": "Andrei Iosivas",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 163,
+      "canonical_key": "malachi-corley-wr",
+      "name": "Malachi Corley",
+      "position": "WR",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 164,
+      "canonical_key": "luke-musgrave-te",
+      "name": "Luke Musgrave",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 165,
+      "canonical_key": "cade-otton-te",
+      "name": "Cade Otton",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 166,
+      "canonical_key": "jonnu-smith-te",
+      "name": "Jonnu Smith",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 167,
+      "canonical_key": "mike-gesicki-te",
+      "name": "Mike Gesicki",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 168,
+      "canonical_key": "noah-gray-te",
+      "name": "Noah Gray",
+      "position": "TE",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 169,
+      "canonical_key": "houston-texans-d-st-dst",
+      "name": "Houston Texans D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 170,
+      "canonical_key": "denver-broncos-d-st-dst",
+      "name": "Denver Broncos D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 171,
+      "canonical_key": "seattle-seahawks-d-st-dst",
+      "name": "Seattle Seahawks D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 172,
+      "canonical_key": "los-angeles-rams-d-st-dst",
+      "name": "Los Angeles Rams D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 173,
+      "canonical_key": "philadelphia-eagles-d-st-dst",
+      "name": "Philadelphia Eagles D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 174,
+      "canonical_key": "new-england-patriots-d-st-dst",
+      "name": "New England Patriots D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 175,
+      "canonical_key": "minnesota-vikings-d-st-dst",
+      "name": "Minnesota Vikings D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 176,
+      "canonical_key": "pittsburgh-steelers-d-st-dst",
+      "name": "Pittsburgh Steelers D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 177,
+      "canonical_key": "jacksonville-jaguars-d-st-dst",
+      "name": "Jacksonville Jaguars D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 178,
+      "canonical_key": "los-angeles-chargers-d-st-dst",
+      "name": "Los Angeles Chargers D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 179,
+      "canonical_key": "cleveland-browns-d-st-dst",
+      "name": "Cleveland Browns D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 180,
+      "canonical_key": "baltimore-ravens-d-st-dst",
+      "name": "Baltimore Ravens D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 181,
+      "canonical_key": "buffalo-bills-d-st-dst",
+      "name": "Buffalo Bills D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 182,
+      "canonical_key": "kansas-city-chiefs-d-st-dst",
+      "name": "Kansas City Chiefs D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 183,
+      "canonical_key": "detroit-lions-d-st-dst",
+      "name": "Detroit Lions D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 184,
+      "canonical_key": "san-francisco-49ers-d-st-dst",
+      "name": "San Francisco 49ers D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 185,
+      "canonical_key": "green-bay-packers-d-st-dst",
+      "name": "Green Bay Packers D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 186,
+      "canonical_key": "tampa-bay-buccaneers-d-st-dst",
+      "name": "Tampa Bay Buccaneers D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 187,
+      "canonical_key": "dallas-cowboys-d-st-dst",
+      "name": "Dallas Cowboys D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 188,
+      "canonical_key": "new-york-jets-d-st-dst",
+      "name": "New York Jets D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 189,
+      "canonical_key": "indianapolis-colts-d-st-dst",
+      "name": "Indianapolis Colts D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 190,
+      "canonical_key": "atlanta-falcons-d-st-dst",
+      "name": "Atlanta Falcons D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 191,
+      "canonical_key": "arizona-cardinals-d-st-dst",
+      "name": "Arizona Cardinals D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 192,
+      "canonical_key": "washington-commanders-d-st-dst",
+      "name": "Washington Commanders D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 193,
+      "canonical_key": "chicago-bears-d-st-dst",
+      "name": "Chicago Bears D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 194,
+      "canonical_key": "miami-dolphins-d-st-dst",
+      "name": "Miami Dolphins D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 195,
+      "canonical_key": "cincinnati-bengals-d-st-dst",
+      "name": "Cincinnati Bengals D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 196,
+      "canonical_key": "new-orleans-saints-d-st-dst",
+      "name": "New Orleans Saints D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 197,
+      "canonical_key": "tennessee-titans-d-st-dst",
+      "name": "Tennessee Titans D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 198,
+      "canonical_key": "carolina-panthers-d-st-dst",
+      "name": "Carolina Panthers D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 199,
+      "canonical_key": "new-york-giants-d-st-dst",
+      "name": "New York Giants D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 200,
+      "canonical_key": "las-vegas-raiders-d-st-dst",
+      "name": "Las Vegas Raiders D/ST",
+      "position": "DST",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 201,
+      "canonical_key": "brandon-aubrey-k",
+      "name": "Brandon Aubrey",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 202,
+      "canonical_key": "ka-imi-fairbairn-k",
+      "name": "Ka'imi Fairbairn",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 203,
+      "canonical_key": "cameron-dicker-k",
+      "name": "Cameron Dicker",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 204,
+      "canonical_key": "jason-myers-k",
+      "name": "Jason Myers",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 205,
+      "canonical_key": "eddy-pineiro-k",
+      "name": "Eddy Pineiro",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 206,
+      "canonical_key": "jake-bates-k",
+      "name": "Jake Bates",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 207,
+      "canonical_key": "chris-boswell-k",
+      "name": "Chris Boswell",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 208,
+      "canonical_key": "harrison-butker-k",
+      "name": "Harrison Butker",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 209,
+      "canonical_key": "will-reichard-k",
+      "name": "Will Reichard",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 210,
+      "canonical_key": "chase-mclaughlin-k",
+      "name": "Chase McLaughlin",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 211,
+      "canonical_key": "wil-lutz-k",
+      "name": "Wil Lutz",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 212,
+      "canonical_key": "younghoe-koo-k",
+      "name": "Younghoe Koo",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 213,
+      "canonical_key": "tyler-bass-k",
+      "name": "Tyler Bass",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 214,
+      "canonical_key": "jake-elliott-k",
+      "name": "Jake Elliott",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 215,
+      "canonical_key": "matt-gay-k",
+      "name": "Matt Gay",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 216,
+      "canonical_key": "brandon-mcmanus-k",
+      "name": "Brandon McManus",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 217,
+      "canonical_key": "daniel-carlson-k",
+      "name": "Daniel Carlson",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 218,
+      "canonical_key": "cairo-santos-k",
+      "name": "Cairo Santos",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 219,
+      "canonical_key": "blake-grupe-k",
+      "name": "Blake Grupe",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 220,
+      "canonical_key": "cam-little-k",
+      "name": "Cam Little",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 221,
+      "canonical_key": "joshua-karty-k",
+      "name": "Joshua Karty",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 222,
+      "canonical_key": "nick-folk-k",
+      "name": "Nick Folk",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 223,
+      "canonical_key": "evan-mcpherson-k",
+      "name": "Evan McPherson",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 224,
+      "canonical_key": "chad-ryland-k",
+      "name": "Chad Ryland",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 225,
+      "canonical_key": "andy-borregales-k",
+      "name": "Andy Borregales",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 226,
+      "canonical_key": "graham-gano-k",
+      "name": "Graham Gano",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 227,
+      "canonical_key": "jason-sanders-k",
+      "name": "Jason Sanders",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 228,
+      "canonical_key": "spencer-shrader-k",
+      "name": "Spencer Shrader",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 229,
+      "canonical_key": "ryan-fitzgerald-k",
+      "name": "Ryan Fitzgerald",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 230,
+      "canonical_key": "joey-slye-k",
+      "name": "Joey Slye",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 231,
+      "canonical_key": "baltimore-kicker-k",
+      "name": "Baltimore Kicker",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    },
+    {
+      "canonical_id": 232,
+      "canonical_key": "cleveland-kicker-k",
+      "name": "Cleveland Kicker",
+      "position": "K",
+      "classification": "present",
+      "reason": "canonical identity is present"
+    }
+  ],
+  "output": "outputs/player_audit/players_review_232.json"
+}
