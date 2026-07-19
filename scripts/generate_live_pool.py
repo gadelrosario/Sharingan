@@ -24,7 +24,7 @@ from typing import Any
 BASE = Path(__file__).resolve().parents[1]
 DB_PATH = BASE / "database" / "fantasyhq.db"
 LIVE_PATH = BASE / "data" / "players.json"
-OUTPUT_PATH = BASE / "outputs" / "player_audit" / "players_review_232.json"
+OUTPUT_PATH = BASE / "outputs" / "player_audit" / "players_review.json"
 TEAM_PATCH_PATH = BASE / "data" / "team_patch_2026.csv"
 SUPPORTED_POSITIONS = {"QB", "RB", "WR", "TE", "K", "DST"}
 CANONICAL_ID_OFFSET = 1_000_000
