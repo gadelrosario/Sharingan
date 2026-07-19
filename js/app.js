@@ -85,7 +85,7 @@ function startDraft(){
    passTD:+(document.getElementById("passTD")?.value||6),
    teams:10,completionPoint:.1,firstDownPoint:.1,bigPlayBonuses:true,enhancedDST:true,customKicker:true,
    risk:document.getElementById("riskProfile")?.value||"balanced",
-   strategy:document.getElementById("strategyPreset")?.value||"auto"
+   strategy:"auto"
   };
   applyDraftStructure();
   captureManagers();pick=1;drafted=[];history=[];decisionSnapshots=[];currentYahooRecord=null;selectedCandidateId=null;invalidateIntelligence();buildProfiles();if(typeof rosterRows!=="function")throw new Error("Roster engine did not initialize");
@@ -308,7 +308,11 @@ function sourceBlend(p){
 function formatModifier(p){let m=0;if(leagueContext.scoring==="full"&&p.pos==="WR")m+=4;if(leagueContext.scoring==="full"&&p.pos==="RB"&&p.opportunityTrend&&/receiv|target/i.test(p.opportunityTrend))m+=3;if(leagueContext.scoring==="standard"&&p.pos==="RB")m+=5;if(leagueContext.startWR===3&&p.pos==="WR")m+=5;if(leagueContext.flex===2&&["RB","WR"].includes(p.pos))m+=3;if(leagueContext.passTD===6&&p.pos==="QB")m+=2;if(leagueContext.risk==="aggressive"&&(p.leagueBreaker||p.rookie))m+=5;if(leagueContext.risk==="safe"&&p.availabilityRisk==="high")m-=10;m+=leagueSpecificModifier(p);return m}
 function draftPhase(){let r=info().r;return r<=5?{name:"Foundation",text:"Take value and build dependable starters."}:r<=9?{name:"Structure",text:"Balance the roster, monitor tiers, and use stacks as tie-breakers."}:{name:"Endgame Hunter",text:"Chase upside, paths to larger roles, and premium handcuffs."}}
 function strategyHealth(){let c=counts(),r=info().r,msg="Stay flexible — value can override the plan.";if(r<=3&&c.WR>=1&&c.RB>=2)msg="Anchor WR + Double RB is on track.";else if(r<=4&&c.RB>=2)msg="Strong RB foundation. Add WR value next.";else if(r>=5&&c.WR<2)msg="WR depth is behind. Prefer WR when value is close.";else if(r>=7&&c.QB===0)msg="Late-QB plan active; draft only when the tier starts thinning.";return msg}
-function renderDraftPlan(){let d=draftPhase(),html=`<div class="strategy"><span><b>${d.name} Mode</b><small style="display:block;color:var(--muted);margin-top:3px">${d.text}</small></span><span class="pill">R${info().r}</span></div>`;["mobileDraftPhase","desktopDraftPhase"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=html});["mobileStrategyHealth","desktopStrategyHealth"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=strategyHealth()})}
+function inferredStrategy(){if(!window.JoninUXPolish)return{name:"Balanced",confidence:50,note:"Draft still developing."};return JoninUXPolish.inferStrategy({counts:counts(),round:info().r,draftedCount:myPlayers().length})}
+function strategyCardMarkup(){let s=inferredStrategy();return `<div class="strategySummary"><span>Current Strategy</span><strong>${s.name}</strong><div><b>Confidence</b><em>${s.confidence}%</em></div><p>${s.note}</p></div>`}
+function renderDraftPlan(){let d=draftPhase(),html=`<div class="strategy"><span><b>${d.name} Mode</b><small style="display:block;color:var(--muted);margin-top:3px">${d.text}</small></span><span class="pill">R${info().r}</span></div>`;["mobileDraftPhase","desktopDraftPhase"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=html});["mobileStrategyHealth","desktopStrategyHealth"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=strategyHealth()});["desktopStrategyCard","mobileStrategyCard"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=strategyCardMarkup()})}
+function teamBuildMarkup(){if(!window.JoninUXPolish)return"";return JoninUXPolish.teamBuild({counts:positionalCountsAll(),settings:leagueContext}).map(row=>`<div class="teamBuildRow ${row.complete?"complete":"missing"}"><span>${row.position}</span><b aria-label="${row.filled} of ${row.target} filled">${row.target?`${"●".repeat(row.filled)}${"○".repeat(row.missing)}`:"—"}</b><small>${row.complete?"Filled":`${row.missing} needed`}</small></div>`).join("")}
+function renderTeamBuild(){["desktopTeamBuild","mobileTeamBuild"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=teamBuildMarkup()})}
 function gerardScore(p){let c=counts(),round=info().r,s=150-p.overall*.82+sourceBlend(p)+(p.bdgeBoost||0)+(p.flockBoost||0)+formatModifier(p)+fit(p);if(p.pos==="RB"&&c.RB<2)s+=13;if(p.pos==="WR"&&c.WR<3)s+=13;if(p.pos==="QB"&&c.QB>=1)s-=120;if(p.pos==="TE"&&c.TE>=1)s-=120;if(p.pos==="QB"&&round<3)s-=20;if(p.pos==="TE"&&round<2)s-=10;if(p.pos==="DST"){s-=round<15?95:round===15?25:0;if(c.DST>=1)s-=80}else if(p.pos==="K"){s-=round<16?105:round===16?20:0;if(c.K>=1)s-=80}if(p.bdgeAvoid)s-=10;if(p.priceFade)s-=7;if(p.coreTarget)s+=5;if(p.leagueBreaker&&round>=7)s+=5;if(p.availabilityRisk==="high")s-=9;if(p.ambiguity==="high")s-=3;if(["RB","WR","QB","TE"].includes(p.pos)){let mp=marketPressure(p.pos);s+=mp.pressure*.16}
  let bp=blueprintFactors(p);s+=bp.stack.points+bp.hand.points;if(bp.exp?.severity==="moderate")s-=2;if(bp.exp?.severity==="heavy")s-=5;if(bp.exp?.severity==="heavy"&&p.offenseQuality==="weak")s-=3;if(bp.bye)s-=2;
 return s}
@@ -422,7 +426,7 @@ function waitScore(pos){
  }
  return Math.max(10,Math.min(98,Math.round(score)));
 }
-function renderLiveRoster(){let rows=rosterRows(),htmlRows=rows.filter(([s])=>!s.startsWith("BENCH")).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText}
+function renderLiveRoster(){let rows=rosterRows(),htmlRows=rows.filter(([s])=>!s.startsWith("BENCH")).map(([s,p])=>`<div class="liveRosterSlot ${p?"filled":"need"}"><div class="slot">${s}</div><div class="player">${p?p.name:"NEEDED"}</div></div>`).join(""),c=positionalCountsAll(),summary=["QB","RB","WR","TE","K","DST"].map(x=>`<div class="rosterCount"><b>${c[x]||0}</b>${x}</div>`).join(""),needs=rosterNeeds(),needsText=needs.length?`Remaining needs: ${needs.join(", ")}`:"Starting lineup requirements filled — focus on upside and bench value.";let lr=document.getElementById("mobileLiveRoster"),rs=document.getElementById("mobileRosterSummary"),mn=document.getElementById("mobileNeeds");if(lr)lr.innerHTML=htmlRows;if(rs)rs.innerHTML=summary;if(mn)mn.textContent=needsText;renderTeamBuild()}
 function renderWaitMeter(){
  let snap=getIntelligenceSnapshot(),positions=["QB","TE","DST","K"],roundNow=Math.ceil(pick/10),c=positionalCountsAll();
  let boxes=positions.map(pos=>{
@@ -625,12 +629,17 @@ function sharinganVisionMarkup(vision){
  const cliff=vision.tierCliff,forecast=vision.availability,why=vision.whyNot;
  const comparison=why.alternative?`<div class="visionWhyNot"><div class="visionLabel">Why Not ${safeInsightText(why.alternative.name||'unnamed alternative')}?</div><p>${safeInsightText(why.preferred)}</p><div class="visionCompare"><span>${safeInsightText(why.alternativeStrength)}</span><span>${safeInsightText(why.alternativeWeakness)}</span></div></div>`:`<div class="visionWhyNot"><div class="visionLabel">Why Not?</div><p>${safeInsightText(why.preferred)}</p></div>`;
  return `<section class="sharinganVisionV1" aria-label="Sharingan Vision">
-  <div class="visionV1Header"><div><div class="visionV1Eyebrow">SHARINGAN VISION</div><b>What happens if I don't draft ${safeInsightText(vision.player?.name||'this player')}?</b></div><span class="visionOpportunity ${vision.opportunity.label==='Draft Now'?'urgent':vision.opportunity.label==='Risky To Wait'?'watch':'safe'}">${safeInsightText(vision.opportunity.label)}</span></div>
-  <p class="visionOpportunityReason">${safeInsightText(vision.opportunity.reason)}</p>
-  <div class="visionSignalGrid"><div><span>Tier Cliff</span><b>${safeInsightText(cliff.currentTier)} → ${safeInsightText(cliff.nextTier)}</b><small>${safeInsightText(cliff.reason)}</small></div><div><span>Availability Forecast</span><b>${safeInsightText(forecast.label)}</b><small>${safeInsightText(forecast.reason)}</small></div></div>
+  <div class="visionV1Header"><div><div class="visionV1Eyebrow">SHARINGAN VISION</div><b>What happens if I don't draft ${safeInsightText(vision.player?.name||'this player')}?</b></div></div>
+  <div class="visionOpportunityBlock"><span>Opportunity Window</span><b class="visionOpportunity ${vision.opportunity.label==='Draft Now'?'urgent':vision.opportunity.label==='Risky To Wait'?'watch':'safe'}">${safeInsightText(vision.opportunity.label)}</b><small>${safeInsightText(vision.opportunity.reason)}</small></div>
+  <div class="visionSignalGrid"><div><span>Availability Forecast</span><b>${safeInsightText(forecast.label)}</b><small>${safeInsightText(forecast.reason)}</small></div><div><span>Tier Cliff</span><b>${safeInsightText(cliff.currentTier)} → ${safeInsightText(cliff.nextTier)}</b><small>${safeInsightText(cliff.reason)}</small></div></div>
   <div class="visionWhyNow"><div class="visionLabel">Why Now</div>${vision.whyNow.map(item=>`<div><b>${safeInsightText(item.label)}</b><span>${safeInsightText(item.text)}</span></div>`).join('')}</div>
   ${comparison}
  </section>`;
+}
+function recommendationHeroMarkup(player,insight,vision,breakdown,state){
+ if(!window.JoninUXPolish)return'';
+ const hero=JoninUXPolish.hero({player,insight,vision,breakdown});
+ return `<div class="recommendationHero"><div class="heroEyebrow">RECOMMENDED PICK</div><div class="heroTop"><div><h2 class="scanLink" onclick="openScan(${player.id})">${safeInsightText(hero.name)}</h2><div class="heroIdentity">${safeInsightText(hero.identity)}</div></div><div class="heroConfidence"><strong>${safeInsightText(hero.confidence)}%</strong><span>Heuristic confidence</span><small>${safeInsightText(hero.confidenceLabel)}</small></div></div><div class="heroPrimary"><span>Primary Driver · ${safeInsightText(hero.primary.label)}</span><b>${safeInsightText(hero.primary.reason)}</b></div><div class="heroState">${safeInsightText(state.label)}</div></div>`;
 }
 
 function renderRecommendation(){
@@ -643,12 +652,13 @@ function renderRecommendation(){
  let p=recs[0];
  let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk;
  const ccScored=getCommandCenterScores([p])[0]||null,insight=joninRecommendationInsight(recs),vision=sharinganVisionForecast(recs);
+ const breakdown=joninScoreBreakdown(p);
  recommendation.className="rec "+state.cls;
  recommendation.innerHTML=`
-   <div style="font-weight:900">${state.label}</div>
+   ${recommendationHeroMarkup(p,insight,vision,breakdown,state)}
    <div class="mambaScore">Mamba ${score}/100 • Final Pick ${finalPickScore(p)}/100 • Steal Risk ${risk}%</div>
    <div class="confbar"><span style="width:${score}%"></span></div>
-   <h2 class="scanLink" onclick="openScan(${p.id})">${safeInsightText(p.name)}</h2><div class="tagrow">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}">${sharinganIconMarkup(sharinganStage(p).key)}${safeInsightText(sharinganStage(p).meaning)}</span></div>
+   <div class="tagrow">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}">${sharinganIconMarkup(sharinganStage(p).key)}${safeInsightText(sharinganStage(p).meaning)}</span></div>
    <div class="tagrow">
      <span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span>
      <span class="tag">${p.team}</span>
