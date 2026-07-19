@@ -1,0 +1,3 @@
+live_player_id,proposed_canonical_id,canonical_name,position,nfl_team,source,confidence,classification
+200,jordan-love-qb,Jordan Love,QB,GB,fixture,1.0,candidate
+300,mark-andrews-te,Mark Andrews,TE,BAL,fixture,1.0,candidate
