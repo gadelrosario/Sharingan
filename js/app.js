@@ -350,6 +350,7 @@ function renderAfterPick(record,{full=false}={}){
  updateBoardIncremental(record);
  renderRecommendation();
  renderQuickDraftBoard();
+ renderManagerTables();
  markHeavyViewsDirty();
  if(record.team===slot){renderRoster();renderLiveRoster();renderExposure();renderDraftPlan();dirtyViews.team=false}
  if(full){renderRoomScan();renderWaitMeter();renderPlayers();dirtyViews.room=dirtyViews.wait=dirtyViews.players=false}
@@ -596,6 +597,15 @@ function joninRecommendationInsight(recs){
   picksUntil:info().until,pick,survivalRisk:survivalRisk(p),breakdown:candidates[0].breakdown
  });
 }
+function sharinganVisionForecast(recs){
+ if(!window.SharinganVisionV1||!recs.length)return null;
+ const candidates=recs.map(player=>({player,finalScore:finalPickScore(player),breakdown:joninScoreBreakdown(player)}));
+ return SharinganVisionV1.forecast({
+  player:recs[0],candidates,breakdown:candidates[0].breakdown,availablePlayers:available(),
+  recentPicks:history.slice(-8).map(entry=>players.find(player=>player.id===entry.id)).filter(Boolean),
+  userCounts:managerPositionCounts(slot),teamsBeforeNext:teamsBeforeMyNextPick().map(team=>({team,counts:managerPositionCounts(team)})),picksUntil:info().until
+ });
+}
 function signedScore(value){return `${value>0?'+':''}${value}`}
 function safeInsightText(value){if(window.JoninInsightEngineV1)return JoninInsightEngineV1.escapeHTML(value);const node=document.createElement('span');node.textContent=String(value??'');return node.innerHTML}
 function joninInsightMarkup(insight,ccScored){
@@ -610,6 +620,18 @@ function joninInsightMarkup(insight,ccScored){
   ${whyNot}
  </div>`;
 }
+function sharinganVisionMarkup(vision){
+ if(!vision)return '';
+ const cliff=vision.tierCliff,forecast=vision.availability,why=vision.whyNot;
+ const comparison=why.alternative?`<div class="visionWhyNot"><div class="visionLabel">Why Not ${safeInsightText(why.alternative.name||'unnamed alternative')}?</div><p>${safeInsightText(why.preferred)}</p><div class="visionCompare"><span>${safeInsightText(why.alternativeStrength)}</span><span>${safeInsightText(why.alternativeWeakness)}</span></div></div>`:`<div class="visionWhyNot"><div class="visionLabel">Why Not?</div><p>${safeInsightText(why.preferred)}</p></div>`;
+ return `<section class="sharinganVisionV1" aria-label="Sharingan Vision">
+  <div class="visionV1Header"><div><div class="visionV1Eyebrow">SHARINGAN VISION</div><b>What happens if I don't draft ${safeInsightText(vision.player?.name||'this player')}?</b></div><span class="visionOpportunity ${vision.opportunity.label==='Draft Now'?'urgent':vision.opportunity.label==='Risky To Wait'?'watch':'safe'}">${safeInsightText(vision.opportunity.label)}</span></div>
+  <p class="visionOpportunityReason">${safeInsightText(vision.opportunity.reason)}</p>
+  <div class="visionSignalGrid"><div><span>Tier Cliff</span><b>${safeInsightText(cliff.currentTier)} → ${safeInsightText(cliff.nextTier)}</b><small>${safeInsightText(cliff.reason)}</small></div><div><span>Availability Forecast</span><b>${safeInsightText(forecast.label)}</b><small>${safeInsightText(forecast.reason)}</small></div></div>
+  <div class="visionWhyNow"><div class="visionLabel">Why Now</div>${vision.whyNow.map(item=>`<div><b>${safeInsightText(item.label)}</b><span>${safeInsightText(item.text)}</span></div>`).join('')}</div>
+  ${comparison}
+ </section>`;
+}
 
 function renderRecommendation(){
  let recs=snapshotRecommendations();
@@ -620,7 +642,7 @@ function renderRecommendation(){
  }
  let p=recs[0];
  let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk;
- const ccScored=getCommandCenterScores([p])[0]||null,insight=joninRecommendationInsight(recs);
+ const ccScored=getCommandCenterScores([p])[0]||null,insight=joninRecommendationInsight(recs),vision=sharinganVisionForecast(recs);
  recommendation.className="rec "+state.cls;
  recommendation.innerHTML=`
    <div style="font-weight:900">${state.label}</div>
@@ -636,6 +658,7 @@ function renderRecommendation(){
    </div>
    <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div>
    ${joninInsightMarkup(insight,ccScored)}
+   ${sharinganVisionMarkup(vision)}
    <div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
    ${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
    <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
@@ -731,6 +754,7 @@ function managerRoster(team){
  return history.filter(h=>h.team===team).map(h=>players.find(p=>p.id===h.id)).filter(Boolean);
 }
 function managerPositionCounts(team){
+ if(window.SharinganVisionV1?.rosterPositionCounts)return SharinganVisionV1.rosterPositionCounts({history,players,team});
  let c={QB:0,RB:0,WR:0,TE:0,K:0,DST:0};
  managerRoster(team).forEach(p=>{let k=p.pos==="DEF"?"DST":p.pos;if(c[k]!==undefined)c[k]++});
  return c;
@@ -790,11 +814,12 @@ function highestRoomPressure(){
  let positions=["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos));
  return positions.map(marketPressure).sort((a,b)=>b.pressure-a.pressure)[0]||marketPressure("RB");
 }
-function roomAlertText(){let top=highestRoomPressure();if(top.pressure>=65)return `<div class="roomAlert"><b>${top.pos} Position Window: ${positionWindow(top)}</b><div class="meta">${top.recent} drafted in the last 8 picks • ${top.starterNeed} upcoming teams still need a starter.</div></div>`;return""}
-function positionWindow(x){return x.pressure>=82?"Closing Fast":x.pressure>=65?"Starting to Thin":x.pressure>=45?"Watch Closely":"Still Open"}
-function roomInsightText(){let vals=["RB","WR","QB","TE"].filter(p=>!userPositionFilled(p)).map(marketPressure).sort((a,b)=>b.pressure-a.pressure),top=vals[0];if(!top)return "Starting positions filled. Best value wins.";if(top.pressure>=82)return `Take ${top.pos} now if value is close.`;if(top.pressure>=65)return `${top.pos} is thinning. Do not wait too long.`;return `No urgent run. Best value wins.`}
+function roomAlertText(){let top=highestRoomPressure();if(top.pressure<65)return"";let demand=top.starterNeed?`${top.starterNeed} upcoming teams still need a starter.`:`No intervening team has an unfilled starter slot. ${top.depthNeed} may still draft depth.`;return `<div class="roomAlert"><b>${top.pos} Position Window: ${positionWindow(top)}</b><div class="meta">${top.recent} drafted in the last 8 picks • ${demand}</div></div>`}
+function positionWindow(x){if(x.starterNeed===0)return x.depthNeed>0||x.recent>=2?"Depth Demand":"Still Open";return x.pressure>=82?"Closing Fast":x.pressure>=65?"Starting to Thin":x.pressure>=45?"Watch Closely":"Still Open"}
+function roomInsightText(){let vals=["RB","WR","QB","TE"].filter(p=>!userPositionFilled(p)).map(marketPressure).sort((a,b)=>b.pressure-a.pressure),top=vals[0];if(!top)return "Starting positions filled. Best value wins.";if(top.recent>=4&&top.starterNeed===0)return `${top.pos} run detected, but immediate starter pressure is limited; depth demand may continue.`;if(top.pressure>=82)return `Take ${top.pos} now if value is close.`;if(top.pressure>=65)return `${top.pos} is thinning. Do not wait too long.`;return `No urgent run. Best value wins.`}
 function managerTendency(team){
  let c=managerPositionCounts(team),m=getManager(team);
+ if(window.SharinganVisionV1?.rosterConstruction)return SharinganVisionV1.rosterConstruction(c).liveRead;
  if(c.QB>=2)return"QB hoarding";
  if(c.RB>=5)return"RB heavy";
  if(c.WR>=6)return"WR heavy";
@@ -808,11 +833,16 @@ function managerTendency(team){
 function managerTableMarkup(clickable=true){
  let rows=[];
  for(let t=1;t<=10;t++){
-  let cells=["QB","RB","WR","TE"].map(pos=>{let s=managerPositionStatus(t,pos);return`<td class="needCell ${s.cls}">${s.label}</td>`}).join("");
+  let cells=["QB","RB","WR","TE"].map(pos=>{let s=managerPositionStatus(t,pos);return`<td data-position="${pos}" class="needCell ${s.cls}">${s.label}</td>`}).join("");
   let name=t===slot?"Gerard":slotManagers[t]||("Team "+t);
   rows.push(`<tr ${clickable?`onclick="showManagerRoster(${t})" style="cursor:pointer"`:""} class="${t===slot?"youRow":""}"><td><b>${name}</b></td>${cells}<td><span class="tendencyPill">${managerTendency(t)}</span></td></tr>`);
  }
  return`<table class="managerTable"><thead><tr><th>Manager</th><th>QB</th><th>RB</th><th>WR</th><th>TE</th><th>Live read</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
+}
+function renderManagerTables(){
+ let desktop=document.getElementById("desktopManagerTable"),sheet=document.getElementById("sheetManagerTable");
+ if(desktop)desktop.innerHTML=managerTableMarkup(false);
+ if(sheet)sheet.innerHTML=managerTableMarkup(true);
 }
 function showManagerRoster(team){
  let ps=managerRoster(team),name=team===slot?"Gerard":slotManagers[team]||("Team "+team),c=managerPositionCounts(team);
@@ -900,7 +930,7 @@ function renderAll(){
  if(renderInProgress)return;
  renderInProgress=true;
  try{
-  renderMeta();renderRecommendation();renderBoard();renderRoster();renderLiveRoster();renderExposure();renderRoomScan();renderWaitMeter();renderQuickDraftBoard();renderPlayers();renderDraftPlan();
+  renderMeta();renderRecommendation();renderBoard();renderRoster();renderLiveRoster();renderExposure();renderRoomScan();renderWaitMeter();renderQuickDraftBoard();renderPlayers();renderDraftPlan();renderManagerTables();
   dirtyViews.players=dirtyViews.room=dirtyViews.wait=dirtyViews.team=false;
  }catch(err){reportRuntimeError("Rendering draft room",err);throw err}
  finally{renderInProgress=false}
