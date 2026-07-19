@@ -17,7 +17,12 @@ const result=window.JoninInsightTests.run();if(result.failCount)process.exit(1);
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("Jonin Insight: 8 passed, 0 failed", result.stdout)
+        self.assertIn("Jonin Insight: 14 passed, 0 failed", result.stdout)
+
+    def test_visible_confidence_label_is_explicitly_heuristic(self):
+        source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("['Heuristic confidence',insight.sections.confidence]", source)
+        self.assertIn("Heuristic • ${safeInsightText(c.label)}", source)
 
 
 if __name__ == "__main__":

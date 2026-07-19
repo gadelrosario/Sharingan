@@ -13,6 +13,48 @@ const JoninInsightTests = (() => {
     const insight = JoninInsightEngineV1.buildRecommendationInsight({player: primary, candidates:[{player:primary,finalScore:103,breakdown},{player:alternative,finalScore:97,breakdown:{...breakdown,final:97}}], availablePlayers:depth, counts:{WR:1}, positionStrength:'Thin', picksUntil:6, pick:28, breakdown, survivalRisk:40});
     ['value','teamFit','scarcity','risk','confidence'].forEach(key => assert(typeof insight.sections[key] === 'string' && insight.sections[key].trim(), `${key} missing`));
   });
+  test('HTML-like player names are escaped as text', () => {
+    const hostile = `<img src=x onerror="alert('x')"><script>alert(1)</script>`;
+    const escaped = JoninInsightEngineV1.escapeHTML(hostile);
+    assert(!escaped.includes('<img') && !escaped.includes('<script'), 'markup was not escaped');
+    assert(escaped.includes('&lt;img') && escaped.includes('&quot;') && escaped.includes('&#39;'), 'expected entities are missing');
+  });
+  test('escaped render fragments cannot create elements or executable attributes', () => {
+    const hostile = `<svg onload=alert(1)>Player</svg>`;
+    const rendered = `<div class="whyNot">${JoninInsightEngineV1.escapeHTML(hostile)}</div>`;
+    const openingTags = rendered.match(/<[^/][^>]*>/g) || [];
+    assert(openingTags.length === 1 && openingTags[0] === '<div class="whyNot">', `unexpected injected element: ${openingTags.join(', ')}`);
+    assert(!/<[^>]+\son(?:error|load)=/i.test(rendered), 'executable attribute was rendered');
+  });
+  test('null undefined and blank rankings use an honest fallback', () => {
+    [null, undefined, '', '   ', 0].forEach(overall => {
+      const incomplete = {...primary, overall};
+      const insight = JoninInsightEngineV1.buildRecommendationInsight({player:incomplete,candidates:[{player:incomplete,finalScore:103,breakdown}],availablePlayers:[incomplete],counts:{WR:0},positionStrength:'Critical',picksUntil:6,pick:28,breakdown,survivalRisk:0});
+      assert(insight.sections.value === 'Overall ranking is unavailable; no rank-based value claim is shown.', `dishonest rank fallback for ${String(overall)}`);
+      assert(!insight.sections.value.includes('Ranked 0'), 'null ranking became zero');
+    });
+  });
+  test('missing and blank tiers do not default to C', () => {
+    [undefined, null, '', '   '].forEach(tier => {
+      const incomplete = {...primary, overallTier:tier, posTier:tier};
+      const window = JoninInsightEngineV1.opportunityWindow({player:incomplete,availablePlayers:[incomplete],picksUntil:6,candidates:[{finalScore:103}]});
+      assert(window.label === 'Guidance unavailable', `unexpected wait label for missing tier: ${window.label}`);
+      assert(window.reason.includes('tier') && !window.reason.includes('C-tier'), 'missing tier was presented as C');
+    });
+  });
+  test('missing comparison and wait inputs return honest neutral text', () => {
+    const comparison = JoninInsightEngineV1.whyNot({recommended:primary,candidates:[{player:primary,finalScore:103,breakdown}]});
+    const window = JoninInsightEngineV1.opportunityWindow({player:{...primary,overall:null,overallTier:null},candidates:[{finalScore:103}]});
+    assert(comparison.preferred.includes('No available alternative'), 'Why Not fallback is not explicit');
+    assert(window.label === 'Guidance unavailable' && window.reason.includes('missing'), 'Can-I-wait fallback is not explicit');
+  });
+  test('complete-data explanations remain stable', () => {
+    const insight = JoninInsightEngineV1.buildRecommendationInsight({player:primary,candidates:[{player:primary,finalScore:103,breakdown},{player:alternative,finalScore:97,breakdown:{...breakdown,final:97}}],availablePlayers:depth,counts:{WR:1},positionStrength:'Thin',picksUntil:6,pick:28,breakdown,survivalRisk:40});
+    assert(insight.sections.value === 'Available 8 picks after overall rank 20; existing value modifiers add 8.', 'complete value explanation changed');
+    assert(insight.sections.teamFit === 'WR is thin on your roster; fit adds 4.', 'complete roster-fit explanation changed');
+    assert(insight.sections.risk === '40/95 current survival-risk signal before your next turn.', 'complete risk explanation changed');
+    assert(insight.sections.confidence.startsWith('Heuristic confidence — '), 'confidence is not visibly heuristic');
+  });
   test('confidence stays between 0 and 100', () => {
     const confidence = JoninInsightEngineV1.confidenceFor({player:primary,candidates:[{finalScore:103},{finalScore:100}],breakdown,tierDepth:2});
     assert(confidence.score >= 0 && confidence.score <= 100, 'confidence out of range');
