@@ -1,8 +1,19 @@
 # Player-data pipeline audit
 
-## 232-player reconciliation update
+## Committed baseline and historical 232-player snapshot
 
-On 2026-07-18 the audit was rerun against the intentionally expanded working
+The database committed on `main` contains 134 canonical players. The generator,
+validator, and four focused tests in this change work against that committed
+database and do not require the separately reviewed expansion.
+
+The 232-player results below are historical evidence from an uncommitted,
+expanded copy of `database/fantasyhq.db` in the original dirty audit worktree.
+That database expansion, its supporting audit files, and the additional tests
+that contributed to a 32-test run are not present in committed history. The
+historical report is retained for review only; it is not a statement of current
+`main` state and is not reproducible from this branch alone.
+
+On 2026-07-18 the audit was rerun against the expanded, uncommitted working
 database (232 active draftable players) and the current 264-record production
 JSON. Remote `main` remained at `a707fed` and was already an ancestor of this
 branch, so no history rewrite was required.
@@ -11,11 +22,12 @@ The generator now performs an explicit union keyed by normalized canonical
 identity across the current database and existing JSON. A documented
 `data/team_patch_2026.csv` may fill a blank team only when its row includes a
 team, confidence, notes, and the patch path as provenance. It never overwrites a
-non-blank live team. The generator writes by default to
-`outputs/player_audit/players_review_232.json`; neither production input is
-written.
+non-blank live team. That historical run wrote
+`outputs/player_audit/players_review_232.json`; neither production input was
+written. Current generator defaults use the count-neutral
+`outputs/player_audit/players_review.json` name.
 
-Current reconciliation results:
+Historical dirty-worktree reconciliation results (not current `main`):
 
 - canonical database: 232;
 - production JSON input: 264;
@@ -45,7 +57,7 @@ production JSON already reflects that resolution. A regression test reconstructs
 the two-record input and verifies ID 46, the richer analysis, and the unique
 depth-only field all survive.
 
-Machine-readable results are in
+Historical machine-readable results are in
 `outputs/player_audit/pipeline_generation_report_232.json`.
 
 Audit branch: `audit-player-data-pipeline`  
@@ -158,6 +170,8 @@ for every canonical player is in
 - Travis retains live ID 41 and arbitrary Fantasy HQ analysis fields;
 - new IDs are deterministic and independent of rank order.
 
-The focused tests pass. The complete unittest discovery run is documented in
-the review handoff, including pre-existing failures caused by the already
-expanded working database and its candidate-import fixtures.
+The four focused generator tests are the only `test_*.py` unit tests introduced
+by this committed pipeline change, and all four pass on the 134-row database
+branch. A previously reported 32-test run included 24 untracked audit tests and
+four simulation tests from an unrelated backend commit; it cannot be reproduced
+from this branch and is not a validation claim for `main`.

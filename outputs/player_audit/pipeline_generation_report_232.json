@@ -1,4 +1,11 @@
 {
+  "_provenance": {
+    "status": "historical_audit_snapshot",
+    "source_database": "uncommitted expanded database from the original dirty audit worktree",
+    "canonical_rows": 232,
+    "current_main_canonical_rows": 134,
+    "warning": "This report is not reproducible from committed main and must not be treated as current-main validation."
+  },
   "canonical_count": 232,
   "before_count": 264,
   "after_count": 264,

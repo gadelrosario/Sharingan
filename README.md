@@ -80,8 +80,8 @@ current JSON used only to retain its stable live IDs and Fantasy HQ analysis:
 
 ```bash
 python scripts/generate_live_pool.py \
-  --out outputs/player_audit/players_review_232.json \
-  --report outputs/player_audit/pipeline_generation_report_232.json
+  --out outputs/player_audit/players_review.json \
+  --report outputs/player_audit/pipeline_generation_report.json
 ```
 
 The default review output deliberately differs from the deployed `players.json` path.
@@ -89,6 +89,11 @@ After reviewing the report and generated diff, release automation can pass
 `--out data/players.json`. The generator never updates the SQLite database.
 Players do not need coverage from BDGE, Flock, or an ADP source to be emitted;
 missing source values are JSON `null`.
+
+The committed database currently contains 134 canonical players. The similarly
+named `pipeline_generation_report_232.json` is retained only as a historical
+audit snapshot from an uncommitted, expanded 232-row database; it does not
+describe the database on `main` and must not be used as current validation.
 
 ## Yahoo sync readiness
 
