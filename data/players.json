@@ -51,7 +51,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 31,
+    "canonicalKey": "jahmyr-gibbs-rb"
   },
   {
     "id": 2,
@@ -105,7 +107,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 32,
+    "canonicalKey": "bijan-robinson-rb"
   },
   {
     "id": 3,
@@ -159,7 +163,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 97,
+    "canonicalKey": "ja-marr-chase-wr"
   },
   {
     "id": 4,
@@ -213,7 +219,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 98,
+    "canonicalKey": "puka-nacua-wr"
   },
   {
     "id": 5,
@@ -267,7 +275,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 99,
+    "canonicalKey": "jaxon-smith-njigba-wr"
   },
   {
     "id": 6,
@@ -321,7 +331,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 33,
+    "canonicalKey": "christian-mccaffrey-rb"
   },
   {
     "id": 7,
@@ -375,7 +387,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 100,
+    "canonicalKey": "amon-ra-st-brown-wr"
   },
   {
     "id": 8,
@@ -429,7 +443,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 101,
+    "canonicalKey": "ceedee-lamb-wr"
   },
   {
     "id": 9,
@@ -483,7 +499,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 34,
+    "canonicalKey": "jonathan-taylor-rb"
   },
   {
     "id": 10,
@@ -537,7 +555,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 102,
+    "canonicalKey": "justin-jefferson-wr"
   },
   {
     "id": 11,
@@ -591,7 +611,9 @@
     "ambiguity": "low",
     "contractConfidence": "high",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 36,
+    "canonicalKey": "ashton-jeanty-rb"
   },
   {
     "id": 12,
@@ -645,7 +667,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 35,
+    "canonicalKey": "james-cook-rb"
   },
   {
     "id": 13,
@@ -695,7 +719,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 38,
+    "canonicalKey": "omarion-hampton-rb"
   },
   {
     "id": 14,
@@ -745,7 +771,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 39,
+    "canonicalKey": "chase-brown-rb"
   },
   {
     "id": 15,
@@ -799,7 +827,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 40,
+    "canonicalKey": "de-von-achane-rb"
   },
   {
     "id": 16,
@@ -853,14 +883,16 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 37,
+    "canonicalKey": "saquon-barkley-rb"
   },
   {
     "id": 17,
     "overall": 17,
-    "name": "Kenneth Walker",
+    "name": "Kenneth Walker III",
     "pos": "RB",
-    "team": "KC",
+    "team": "SEA",
     "bye": 5,
     "overallTier": "C",
     "posRank": 11,
@@ -903,7 +935,9 @@
     "ambiguity": "low",
     "contractConfidence": "high",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 42,
+    "canonicalKey": "kenneth-walker-iii-rb"
   },
   {
     "id": 18,
@@ -953,7 +987,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 103,
+    "canonicalKey": "drake-london-wr"
   },
   {
     "id": 19,
@@ -1003,7 +1039,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 73,
+    "canonicalKey": "brock-bowers-te"
   },
   {
     "id": 20,
@@ -1053,7 +1091,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 41,
+    "canonicalKey": "derrick-henry-rb"
   },
   {
     "id": 21,
@@ -1103,7 +1143,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 104,
+    "canonicalKey": "a-j-brown-wr"
   },
   {
     "id": 22,
@@ -1153,7 +1195,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 105,
+    "canonicalKey": "nico-collins-wr"
   },
   {
     "id": 23,
@@ -1207,7 +1251,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 43,
+    "canonicalKey": "jeremiyah-love-rb"
   },
   {
     "id": 24,
@@ -1257,7 +1303,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 106,
+    "canonicalKey": "rashee-rice-wr"
   },
   {
     "id": 25,
@@ -1307,7 +1355,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 107,
+    "canonicalKey": "george-pickens-wr"
   },
   {
     "id": 26,
@@ -1357,7 +1407,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 74,
+    "canonicalKey": "trey-mcbride-te"
   },
   {
     "id": 27,
@@ -1411,7 +1463,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 44,
+    "canonicalKey": "breece-hall-rb"
   },
   {
     "id": 28,
@@ -1465,7 +1519,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 108,
+    "canonicalKey": "devonta-smith-wr"
   },
   {
     "id": 29,
@@ -1515,7 +1571,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 109,
+    "canonicalKey": "chris-olave-wr"
   },
   {
     "id": 30,
@@ -1569,7 +1627,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 49,
+    "canonicalKey": "kyren-williams-rb"
   },
   {
     "id": 31,
@@ -1623,7 +1683,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 110,
+    "canonicalKey": "tee-higgins-wr"
   },
   {
     "id": 32,
@@ -1673,7 +1735,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 1,
+    "canonicalKey": "josh-allen-qb"
   },
   {
     "id": 33,
@@ -1723,7 +1787,9 @@
     "ambiguity": "low",
     "contractConfidence": "high",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 46,
+    "canonicalKey": "javonte-williams-rb"
   },
   {
     "id": 34,
@@ -1773,7 +1839,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 111,
+    "canonicalKey": "zay-flowers-wr"
   },
   {
     "id": 35,
@@ -1823,7 +1891,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 45,
+    "canonicalKey": "josh-jacobs-rb"
   },
   {
     "id": 36,
@@ -1873,7 +1943,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 113,
+    "canonicalKey": "malik-nabers-wr"
   },
   {
     "id": 37,
@@ -1927,7 +1999,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 75,
+    "canonicalKey": "colston-loveland-te"
   },
   {
     "id": 38,
@@ -1981,7 +2055,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 117,
+    "canonicalKey": "emeka-egbuka-wr"
   },
   {
     "id": 39,
@@ -2031,7 +2107,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 120,
+    "canonicalKey": "jaylen-waddle-wr"
   },
   {
     "id": 40,
@@ -2087,14 +2165,16 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 115,
+    "canonicalKey": "ladd-mcconkey-wr"
   },
   {
     "id": 41,
     "overall": 41,
-    "name": "Travis Etienne",
+    "name": "Travis Etienne Jr.",
     "pos": "RB",
-    "team": "NO",
+    "team": "JAX",
     "bye": 8,
     "overallTier": "F",
     "posRank": 18,
@@ -2137,7 +2217,9 @@
     "ambiguity": "low",
     "contractConfidence": "high",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 47,
+    "canonicalKey": "travis-etienne-jr-rb"
   },
   {
     "id": 42,
@@ -2191,7 +2273,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 114,
+    "canonicalKey": "tetairoa-mcmillan-wr"
   },
   {
     "id": 43,
@@ -2241,7 +2325,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 116,
+    "canonicalKey": "garrett-wilson-wr"
   },
   {
     "id": 44,
@@ -2295,7 +2381,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 48,
+    "canonicalKey": "cam-skattebo-rb"
   },
   {
     "id": 45,
@@ -2345,12 +2433,14 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 119,
+    "canonicalKey": "terry-mclaurin-wr"
   },
   {
     "id": 46,
     "overall": 46,
-    "name": "Luther Burden",
+    "name": "Luther Burden III",
     "pos": "WR",
     "team": "CHI",
     "bye": 10,
@@ -2401,7 +2491,9 @@
     "ambiguity": "high",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 122,
+    "canonicalKey": "luther-burden-iii-wr"
   },
   {
     "id": 47,
@@ -2451,7 +2543,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 112,
+    "canonicalKey": "davante-adams-wr"
   },
   {
     "id": 48,
@@ -2505,7 +2599,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 53,
+    "canonicalKey": "d-andre-swift-rb"
   },
   {
     "id": 49,
@@ -2561,7 +2657,9 @@
     "ambiguity": "high",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 51,
+    "canonicalKey": "treveyon-henderson-rb"
   },
   {
     "id": 50,
@@ -2611,7 +2709,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 2,
+    "canonicalKey": "lamar-jackson-qb"
   },
   {
     "id": 51,
@@ -2661,7 +2761,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 118,
+    "canonicalKey": "mike-evans-wr"
   },
   {
     "id": 52,
@@ -2713,7 +2815,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 54,
+    "canonicalKey": "david-montgomery-rb"
   },
   {
     "id": 53,
@@ -2763,7 +2867,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 121,
+    "canonicalKey": "jameson-williams-wr"
   },
   {
     "id": 54,
@@ -2817,7 +2923,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 52,
+    "canonicalKey": "bucky-irving-rb"
   },
   {
     "id": 55,
@@ -2873,7 +2981,9 @@
     "ambiguity": "high",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 55,
+    "canonicalKey": "bhayshul-tuten-rb"
   },
   {
     "id": 56,
@@ -2927,7 +3037,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 123,
+    "canonicalKey": "carnell-tate-wr"
   },
   {
     "id": 57,
@@ -2981,7 +3093,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 57,
+    "canonicalKey": "jadarian-price-rb"
   },
   {
     "id": 58,
@@ -3035,7 +3149,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 50,
+    "canonicalKey": "quinshon-judkins-rb"
   },
   {
     "id": 59,
@@ -3085,7 +3201,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 127,
+    "canonicalKey": "brian-thomas-jr-wr"
   },
   {
     "id": 60,
@@ -3141,14 +3259,16 @@
     "ambiguity": "high",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 126,
+    "canonicalKey": "rome-odunze-wr"
   },
   {
     "id": 61,
     "overall": 61,
-    "name": "DJ Moore",
+    "name": "D.J. Moore",
     "pos": "WR",
-    "team": "BUF",
+    "team": "CHI",
     "bye": 7,
     "overallTier": "H",
     "posRank": 30,
@@ -3191,7 +3311,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 128,
+    "canonicalKey": "d-j-moore-wr"
   },
   {
     "id": 62,
@@ -3245,7 +3367,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 125,
+    "canonicalKey": "christian-watson-wr"
   },
   {
     "id": 63,
@@ -3295,7 +3419,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 76,
+    "canonicalKey": "tyler-warren-te"
   },
   {
     "id": 64,
@@ -3345,7 +3471,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 3,
+    "canonicalKey": "jayden-daniels-qb"
   },
   {
     "id": 65,
@@ -3395,7 +3523,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 4,
+    "canonicalKey": "joe-burrow-qb"
   },
   {
     "id": 66,
@@ -3445,7 +3575,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 6,
+    "canonicalKey": "drake-maye-qb"
   },
   {
     "id": 67,
@@ -3501,7 +3633,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 124,
+    "canonicalKey": "marvin-harrison-jr-wr"
   },
   {
     "id": 68,
@@ -3605,7 +3739,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 59,
+    "canonicalKey": "jaylen-warren-rb"
   },
   {
     "id": 70,
@@ -3655,7 +3791,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 5,
+    "canonicalKey": "jalen-hurts-qb"
   },
   {
     "id": 71,
@@ -3705,7 +3843,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 8,
+    "canonicalKey": "caleb-williams-qb"
   },
   {
     "id": 72,
@@ -3805,7 +3945,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 58,
+    "canonicalKey": "chuba-hubbard-rb"
   },
   {
     "id": 74,
@@ -3859,7 +4001,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 56,
+    "canonicalKey": "tony-pollard-rb"
   },
   {
     "id": 75,
@@ -3913,7 +4057,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 132,
+    "canonicalKey": "alec-pierce-wr"
   },
   {
     "id": 76,
@@ -3963,7 +4109,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 78,
+    "canonicalKey": "tucker-kraft-te"
   },
   {
     "id": 77,
@@ -4013,7 +4161,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 131,
+    "canonicalKey": "quentin-johnston-wr"
   },
   {
     "id": 78,
@@ -4067,7 +4217,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 7,
+    "canonicalKey": "justin-herbert-qb"
   },
   {
     "id": 79,
@@ -4117,7 +4269,9 @@
     "ambiguity": "high",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 4
+    "analystCoverage": 4,
+    "canonicalId": 60,
+    "canonicalKey": "rhamondre-stevenson-rb"
   },
   {
     "id": 80,
@@ -4167,7 +4321,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 130,
+    "canonicalKey": "dk-metcalf-wr"
   },
   {
     "id": 81,
@@ -4217,7 +4373,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 9,
+    "canonicalKey": "trevor-lawrence-qb"
   },
   {
     "id": 82,
@@ -4267,7 +4425,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 10,
+    "canonicalKey": "dak-prescott-qb"
   },
   {
     "id": 157,
@@ -4317,7 +4477,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 135,
+    "canonicalKey": "jauan-jennings-wr"
   },
   {
     "id": 83,
@@ -4367,7 +4529,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 134,
+    "canonicalKey": "jordan-addison-wr"
   },
   {
     "id": 84,
@@ -4417,7 +4581,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 133,
+    "canonicalKey": "courtland-sutton-wr"
   },
   {
     "id": 158,
@@ -4467,7 +4633,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 136,
+    "canonicalKey": "khalil-shakir-wr"
   },
   {
     "id": 85,
@@ -4617,7 +4785,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 13,
+    "canonicalKey": "brock-purdy-qb"
   },
   {
     "id": 88,
@@ -4669,7 +4839,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 66,
+    "canonicalKey": "rachaad-white-rb"
   },
   {
     "id": 89,
@@ -4769,7 +4941,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 79,
+    "canonicalKey": "sam-laporta-te"
   },
   {
     "id": 91,
@@ -4823,7 +4997,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 80,
+    "canonicalKey": "kyle-pitts-te"
   },
   {
     "id": 92,
@@ -4927,7 +5103,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 65,
+    "canonicalKey": "j-k-dobbins-rb"
   },
   {
     "id": 94,
@@ -4977,7 +5155,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 14,
+    "canonicalKey": "jaxson-dart-qb"
   },
   {
     "id": 95,
@@ -5027,7 +5207,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 63,
+    "canonicalKey": "kyle-monangai-rb"
   },
   {
     "id": 96,
@@ -5077,7 +5259,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 129,
+    "canonicalKey": "parker-washington-wr"
   },
   {
     "id": 97,
@@ -5129,7 +5313,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 62,
+    "canonicalKey": "rico-dowdle-rb"
   },
   {
     "id": 98,
@@ -5179,7 +5365,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 15,
+    "canonicalKey": "bo-nix-qb"
   },
   {
     "id": 99,
@@ -5229,7 +5417,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 77,
+    "canonicalKey": "harold-fannin-jr-te"
   },
   {
     "id": 100,
@@ -5329,12 +5519,14 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 61,
+    "canonicalKey": "rj-harvey-rb"
   },
   {
     "id": 102,
     "overall": 104,
-    "name": "Wandale Robinson",
+    "name": "Wan'Dale Robinson",
     "pos": "WR",
     "team": "TEN",
     "bye": 9,
@@ -5379,7 +5571,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 147,
+    "canonicalKey": "wan-dale-robinson-wr"
   },
   {
     "id": 103,
@@ -5429,7 +5623,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 12,
+    "canonicalKey": "patrick-mahomes-qb"
   },
   {
     "id": 104,
@@ -5633,7 +5829,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 11,
+    "canonicalKey": "matthew-stafford-qb"
   },
   {
     "id": 108,
@@ -5739,7 +5937,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 64,
+    "canonicalKey": "blake-corum-rb"
   },
   {
     "id": 110,
@@ -5789,57 +5989,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
-  },
-  {
-    "id": 155,
-    "overall": 113,
-    "name": "Luther Burden III",
-    "pos": "WR",
-    "team": "CHI",
-    "bye": "TBD",
-    "overallTier": "K",
-    "posRank": 52,
-    "posTier": "Depth",
-    "rookie": false,
-    "bdge": "Depth pool",
-    "fantasyland": "Depth pool",
-    "bdgeRank": null,
-    "bdgeTier": null,
-    "bdgeLabels": [],
-    "bdgeSources": [],
-    "bdgeBoost": 0,
-    "bdgeAvoid": false,
-    "bdgeFirstRound": null,
-    "mixedIntel": false,
-    "gerardPreference": "neutral",
-    "collegeProfile": "Pending",
-    "offseasonImpact": 0,
-    "opportunityTrend": "Pending",
-    "evidenceConfidence": "Depth",
-    "fantasyProsPosRank": 52,
-    "fantasyProsOverallRank": 113,
-    "rankingRole": "FantasyPros depth extension",
-    "sourceCoverage": {
-      "fantasyland": false,
-      "bdge": false,
-      "fantasyPros": true,
-      "gerard": false,
-      "flock": false
-    },
-    "offenseQuality": "average",
-    "handcuffFor": [],
-    "flockRank": null,
-    "flockTier": null,
-    "flockBoost": 0,
-    "coreTarget": false,
-    "leagueBreaker": false,
-    "priceFade": false,
-    "availabilityRisk": "low",
-    "ambiguity": "low",
-    "contractConfidence": "medium",
-    "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 3,
+    "canonicalId": 69,
+    "canonicalKey": "aaron-jones-rb"
   },
   {
     "id": 111,
@@ -5889,7 +6041,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 16,
+    "canonicalKey": "kyler-murray-qb"
   },
   {
     "id": 156,
@@ -5939,7 +6093,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 137,
+    "canonicalKey": "cooper-kupp-wr"
   },
   {
     "id": 112,
@@ -5989,7 +6145,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 86,
+    "canonicalKey": "george-kittle-te"
   },
   {
     "id": 113,
@@ -6089,7 +6247,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 138,
+    "canonicalKey": "keon-coleman-wr"
   },
   {
     "id": 153,
@@ -6139,7 +6299,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 139,
+    "canonicalKey": "brandon-aiyuk-wr"
   },
   {
     "id": 114,
@@ -6189,7 +6351,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 18,
+    "canonicalKey": "jared-goff-qb"
   },
   {
     "id": 154,
@@ -6239,7 +6403,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 140,
+    "canonicalKey": "darnell-mooney-wr"
   },
   {
     "id": 115,
@@ -6289,7 +6455,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 67,
+    "canonicalKey": "kenneth-gainwell-rb"
   },
   {
     "id": 116,
@@ -6339,7 +6507,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 71,
+    "canonicalKey": "jordan-mason-rb"
   },
   {
     "id": 117,
@@ -6389,7 +6559,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 84,
+    "canonicalKey": "travis-kelce-te"
   },
   {
     "id": 118,
@@ -6639,7 +6811,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 70,
+    "canonicalKey": "jacory-croskey-merritt-rb"
   },
   {
     "id": 122,
@@ -6689,7 +6863,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 2
+    "analystCoverage": 2,
+    "canonicalId": 20,
+    "canonicalKey": "baker-mayfield-qb"
   },
   {
     "id": 123,
@@ -6789,7 +6965,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 141,
+    "canonicalKey": "j-j-mccarthy-qb"
   },
   {
     "id": 124,
@@ -6839,7 +7017,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 19,
+    "canonicalKey": "tyler-shough-qb"
   },
   {
     "id": 125,
@@ -6939,7 +7119,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 3
+    "analystCoverage": 3,
+    "canonicalId": 83,
+    "canonicalKey": "jake-ferguson-te"
   },
   {
     "id": 128,
@@ -7143,7 +7325,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 85,
+    "canonicalKey": "dalton-kincaid-te"
   },
   {
     "id": 137,
@@ -7193,7 +7377,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 88,
+    "canonicalKey": "brenton-strange-te"
   },
   {
     "id": 138,
@@ -7243,7 +7429,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 142,
+    "canonicalKey": "zach-ertz-te"
   },
   {
     "id": 144,
@@ -7293,7 +7481,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 24,
+    "canonicalKey": "c-j-stroud-qb"
   },
   {
     "id": 145,
@@ -7393,7 +7583,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 29,
+    "canonicalKey": "aaron-rodgers-qb"
   },
   {
     "id": 131,
@@ -7649,7 +7841,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 143,
+    "canonicalKey": "woody-marks-rb"
   },
   {
     "id": 148,
@@ -7699,7 +7893,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 28,
+    "canonicalKey": "geno-smith-qb"
   },
   {
     "id": 139,
@@ -7749,7 +7945,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 87,
+    "canonicalKey": "isaiah-likely-te"
   },
   {
     "id": 149,
@@ -7799,7 +7997,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 26,
+    "canonicalKey": "bryce-young-qb"
   },
   {
     "id": 150,
@@ -7849,7 +8049,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 144,
+    "canonicalKey": "tua-tagovailoa-qb"
   },
   {
     "id": 140,
@@ -7899,7 +8101,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 81,
+    "canonicalKey": "dallas-goedert-te"
   },
   {
     "id": 159,
@@ -7999,7 +8203,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 145,
+    "canonicalKey": "rashod-bateman-wr"
   },
   {
     "id": 151,
@@ -8049,57 +8255,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
-  },
-  {
-    "id": 161,
-    "overall": 158,
-    "name": "Wan'Dale Robinson",
-    "pos": "WR",
-    "team": "NYG",
-    "bye": "TBD",
-    "overallTier": "K",
-    "posRank": 65,
-    "posTier": "Depth",
-    "rookie": false,
-    "bdge": "Depth pool",
-    "fantasyland": "Depth pool",
-    "bdgeRank": null,
-    "bdgeTier": null,
-    "bdgeLabels": [],
-    "bdgeSources": [],
-    "bdgeBoost": 0,
-    "bdgeAvoid": false,
-    "bdgeFirstRound": null,
-    "mixedIntel": false,
-    "gerardPreference": "neutral",
-    "collegeProfile": "Pending",
-    "offseasonImpact": 0,
-    "opportunityTrend": "Pending",
-    "evidenceConfidence": "Depth",
-    "fantasyProsPosRank": 65,
-    "fantasyProsOverallRank": 158,
-    "rankingRole": "FantasyPros depth extension",
-    "sourceCoverage": {
-      "fantasyland": false,
-      "bdge": false,
-      "fantasyPros": true,
-      "gerard": false,
-      "flock": false
-    },
-    "offenseQuality": "weak",
-    "handcuffFor": [],
-    "flockRank": null,
-    "flockTier": null,
-    "flockBoost": 0,
-    "coreTarget": false,
-    "leagueBreaker": false,
-    "priceFade": false,
-    "availabilityRisk": "low",
-    "ambiguity": "low",
-    "contractConfidence": "medium",
-    "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 146,
+    "canonicalKey": "russell-wilson-qb"
   },
   {
     "id": 162,
@@ -8149,7 +8307,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 148,
+    "canonicalKey": "cedric-tillman-wr"
   },
   {
     "id": 163,
@@ -8249,7 +8409,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 149,
+    "canonicalKey": "pat-bryant-wr"
   },
   {
     "id": 165,
@@ -8299,7 +8461,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 150,
+    "canonicalKey": "dontayvion-wicks-wr"
   },
   {
     "id": 166,
@@ -8399,7 +8563,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 151,
+    "canonicalKey": "mason-taylor-te"
   },
   {
     "id": 142,
@@ -8449,7 +8615,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 152,
+    "canonicalKey": "elijah-arroyo-te"
   },
   {
     "id": 143,
@@ -8549,7 +8717,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 153,
+    "canonicalKey": "kendre-miller-rb"
   },
   {
     "id": 168,
@@ -8599,7 +8769,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 154,
+    "canonicalKey": "roschon-johnson-rb"
   },
   {
     "id": 169,
@@ -8649,7 +8821,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 155,
+    "canonicalKey": "kimani-vidal-rb"
   },
   {
     "id": 170,
@@ -8701,7 +8875,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 156,
+    "canonicalKey": "marshawn-lloyd-rb"
   },
   {
     "id": 171,
@@ -8751,7 +8927,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 157,
+    "canonicalKey": "ty-johnson-rb"
   },
   {
     "id": 172,
@@ -8801,7 +8979,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 158,
+    "canonicalKey": "jaleel-mclaughlin-rb"
   },
   {
     "id": 173,
@@ -8851,7 +9031,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 159,
+    "canonicalKey": "elijah-mitchell-rb"
   },
   {
     "id": 174,
@@ -8901,7 +9083,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 160,
+    "canonicalKey": "tre-tucker-wr"
   },
   {
     "id": 175,
@@ -8951,7 +9135,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 161,
+    "canonicalKey": "demario-douglas-wr"
   },
   {
     "id": 176,
@@ -9001,7 +9187,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 162,
+    "canonicalKey": "andrei-iosivas-wr"
   },
   {
     "id": 177,
@@ -9151,7 +9339,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 163,
+    "canonicalKey": "malachi-corley-wr"
   },
   {
     "id": 180,
@@ -9201,7 +9391,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 164,
+    "canonicalKey": "luke-musgrave-te"
   },
   {
     "id": 181,
@@ -9251,7 +9443,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 93,
+    "canonicalKey": "hunter-henry-te"
   },
   {
     "id": 182,
@@ -9301,7 +9495,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 165,
+    "canonicalKey": "cade-otton-te"
   },
   {
     "id": 183,
@@ -9351,7 +9547,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 166,
+    "canonicalKey": "jonnu-smith-te"
   },
   {
     "id": 184,
@@ -9401,7 +9599,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 167,
+    "canonicalKey": "mike-gesicki-te"
   },
   {
     "id": 185,
@@ -9451,7 +9651,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 168,
+    "canonicalKey": "noah-gray-te"
   },
   {
     "id": 186,
@@ -9505,7 +9707,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 169,
+    "canonicalKey": "houston-texans-d-st-dst"
   },
   {
     "id": 187,
@@ -9559,7 +9763,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 170,
+    "canonicalKey": "denver-broncos-d-st-dst"
   },
   {
     "id": 188,
@@ -9613,7 +9819,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 171,
+    "canonicalKey": "seattle-seahawks-d-st-dst"
   },
   {
     "id": 189,
@@ -9667,7 +9875,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 172,
+    "canonicalKey": "los-angeles-rams-d-st-dst"
   },
   {
     "id": 190,
@@ -9721,7 +9931,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 173,
+    "canonicalKey": "philadelphia-eagles-d-st-dst"
   },
   {
     "id": 191,
@@ -9775,7 +9987,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 174,
+    "canonicalKey": "new-england-patriots-d-st-dst"
   },
   {
     "id": 192,
@@ -9829,7 +10043,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 175,
+    "canonicalKey": "minnesota-vikings-d-st-dst"
   },
   {
     "id": 193,
@@ -9883,7 +10099,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 176,
+    "canonicalKey": "pittsburgh-steelers-d-st-dst"
   },
   {
     "id": 194,
@@ -9937,7 +10155,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 177,
+    "canonicalKey": "jacksonville-jaguars-d-st-dst"
   },
   {
     "id": 195,
@@ -9991,7 +10211,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 178,
+    "canonicalKey": "los-angeles-chargers-d-st-dst"
   },
   {
     "id": 196,
@@ -10045,7 +10267,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 179,
+    "canonicalKey": "cleveland-browns-d-st-dst"
   },
   {
     "id": 197,
@@ -10099,7 +10323,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 180,
+    "canonicalKey": "baltimore-ravens-d-st-dst"
   },
   {
     "id": 198,
@@ -10153,7 +10379,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 181,
+    "canonicalKey": "buffalo-bills-d-st-dst"
   },
   {
     "id": 199,
@@ -10207,7 +10435,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 182,
+    "canonicalKey": "kansas-city-chiefs-d-st-dst"
   },
   {
     "id": 200,
@@ -10261,7 +10491,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 183,
+    "canonicalKey": "detroit-lions-d-st-dst"
   },
   {
     "id": 201,
@@ -10315,7 +10547,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 184,
+    "canonicalKey": "san-francisco-49ers-d-st-dst"
   },
   {
     "id": 202,
@@ -10369,7 +10603,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 185,
+    "canonicalKey": "green-bay-packers-d-st-dst"
   },
   {
     "id": 203,
@@ -10423,7 +10659,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 186,
+    "canonicalKey": "tampa-bay-buccaneers-d-st-dst"
   },
   {
     "id": 204,
@@ -10477,7 +10715,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 187,
+    "canonicalKey": "dallas-cowboys-d-st-dst"
   },
   {
     "id": 205,
@@ -10531,7 +10771,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 188,
+    "canonicalKey": "new-york-jets-d-st-dst"
   },
   {
     "id": 206,
@@ -10585,7 +10827,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 189,
+    "canonicalKey": "indianapolis-colts-d-st-dst"
   },
   {
     "id": 207,
@@ -10639,7 +10883,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 190,
+    "canonicalKey": "atlanta-falcons-d-st-dst"
   },
   {
     "id": 208,
@@ -10693,7 +10939,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 191,
+    "canonicalKey": "arizona-cardinals-d-st-dst"
   },
   {
     "id": 209,
@@ -10747,7 +10995,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 192,
+    "canonicalKey": "washington-commanders-d-st-dst"
   },
   {
     "id": 210,
@@ -10801,7 +11051,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 193,
+    "canonicalKey": "chicago-bears-d-st-dst"
   },
   {
     "id": 211,
@@ -10855,7 +11107,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 194,
+    "canonicalKey": "miami-dolphins-d-st-dst"
   },
   {
     "id": 212,
@@ -10909,7 +11163,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 195,
+    "canonicalKey": "cincinnati-bengals-d-st-dst"
   },
   {
     "id": 213,
@@ -10963,7 +11219,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 196,
+    "canonicalKey": "new-orleans-saints-d-st-dst"
   },
   {
     "id": 214,
@@ -11017,7 +11275,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 197,
+    "canonicalKey": "tennessee-titans-d-st-dst"
   },
   {
     "id": 215,
@@ -11071,7 +11331,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 198,
+    "canonicalKey": "carolina-panthers-d-st-dst"
   },
   {
     "id": 216,
@@ -11125,7 +11387,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 199,
+    "canonicalKey": "new-york-giants-d-st-dst"
   },
   {
     "id": 217,
@@ -11179,7 +11443,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 200,
+    "canonicalKey": "las-vegas-raiders-d-st-dst"
   },
   {
     "id": 218,
@@ -11233,7 +11499,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 201,
+    "canonicalKey": "brandon-aubrey-k"
   },
   {
     "id": 219,
@@ -11287,7 +11555,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 202,
+    "canonicalKey": "ka-imi-fairbairn-k"
   },
   {
     "id": 220,
@@ -11341,7 +11611,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 203,
+    "canonicalKey": "cameron-dicker-k"
   },
   {
     "id": 221,
@@ -11395,7 +11667,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 204,
+    "canonicalKey": "jason-myers-k"
   },
   {
     "id": 222,
@@ -11449,7 +11723,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 205,
+    "canonicalKey": "eddy-pineiro-k"
   },
   {
     "id": 223,
@@ -11503,7 +11779,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 206,
+    "canonicalKey": "jake-bates-k"
   },
   {
     "id": 224,
@@ -11557,7 +11835,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 207,
+    "canonicalKey": "chris-boswell-k"
   },
   {
     "id": 225,
@@ -11611,7 +11891,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 208,
+    "canonicalKey": "harrison-butker-k"
   },
   {
     "id": 226,
@@ -11665,7 +11947,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 209,
+    "canonicalKey": "will-reichard-k"
   },
   {
     "id": 227,
@@ -11719,7 +12003,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 210,
+    "canonicalKey": "chase-mclaughlin-k"
   },
   {
     "id": 228,
@@ -11773,7 +12059,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 211,
+    "canonicalKey": "wil-lutz-k"
   },
   {
     "id": 229,
@@ -11827,7 +12115,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 212,
+    "canonicalKey": "younghoe-koo-k"
   },
   {
     "id": 230,
@@ -11881,7 +12171,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 213,
+    "canonicalKey": "tyler-bass-k"
   },
   {
     "id": 231,
@@ -11935,7 +12227,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 214,
+    "canonicalKey": "jake-elliott-k"
   },
   {
     "id": 232,
@@ -11989,7 +12283,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 215,
+    "canonicalKey": "matt-gay-k"
   },
   {
     "id": 233,
@@ -12043,7 +12339,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 216,
+    "canonicalKey": "brandon-mcmanus-k"
   },
   {
     "id": 234,
@@ -12097,7 +12395,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 217,
+    "canonicalKey": "daniel-carlson-k"
   },
   {
     "id": 235,
@@ -12151,7 +12451,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 218,
+    "canonicalKey": "cairo-santos-k"
   },
   {
     "id": 236,
@@ -12205,7 +12507,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 219,
+    "canonicalKey": "blake-grupe-k"
   },
   {
     "id": 237,
@@ -12259,7 +12563,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 220,
+    "canonicalKey": "cam-little-k"
   },
   {
     "id": 238,
@@ -12313,7 +12619,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 221,
+    "canonicalKey": "joshua-karty-k"
   },
   {
     "id": 239,
@@ -12367,7 +12675,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 222,
+    "canonicalKey": "nick-folk-k"
   },
   {
     "id": 240,
@@ -12421,7 +12731,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 223,
+    "canonicalKey": "evan-mcpherson-k"
   },
   {
     "id": 241,
@@ -12475,7 +12787,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 224,
+    "canonicalKey": "chad-ryland-k"
   },
   {
     "id": 242,
@@ -12529,7 +12843,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 225,
+    "canonicalKey": "andy-borregales-k"
   },
   {
     "id": 243,
@@ -12583,7 +12899,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 226,
+    "canonicalKey": "graham-gano-k"
   },
   {
     "id": 244,
@@ -12637,7 +12955,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 227,
+    "canonicalKey": "jason-sanders-k"
   },
   {
     "id": 245,
@@ -12691,7 +13011,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 74,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 228,
+    "canonicalKey": "spencer-shrader-k"
   },
   {
     "id": 246,
@@ -12745,7 +13067,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 229,
+    "canonicalKey": "ryan-fitzgerald-k"
   },
   {
     "id": 247,
@@ -12799,7 +13123,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 230,
+    "canonicalKey": "joey-slye-k"
   },
   {
     "id": 248,
@@ -12853,7 +13179,9 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 90,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 231,
+    "canonicalKey": "baltimore-kicker-k"
   },
   {
     "id": 249,
@@ -12907,6 +13235,620 @@
     "ambiguity": "low",
     "contractConfidence": "medium",
     "offenseScore": 58,
-    "analystCoverage": 1
+    "analystCoverage": 1,
+    "canonicalId": 232,
+    "canonicalKey": "cleveland-kicker-k"
+  },
+  {
+    "id": 1000017,
+    "canonicalId": 17,
+    "canonicalKey": "jordan-love-qb",
+    "overall": null,
+    "name": "Jordan Love",
+    "pos": "QB",
+    "team": "GB",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": 16.0,
+    "bdgeTier": "Strong Streamer",
+    "flockRank": 18.0,
+    "flockTier": "E",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 68.0,
+    "expertAgreement": 86.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": true,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000021,
+    "canonicalId": 21,
+    "canonicalKey": "malik-willis-qb",
+    "overall": null,
+    "name": "Malik Willis",
+    "pos": "QB",
+    "team": "GB",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 21.0,
+    "flockTier": "E",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 46.0,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000022,
+    "canonicalId": 22,
+    "canonicalKey": "sam-darnold-qb",
+    "overall": null,
+    "name": "Sam Darnold",
+    "pos": "QB",
+    "team": "MIN",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 22.0,
+    "flockTier": "F",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 43.8,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000023,
+    "canonicalId": 23,
+    "canonicalKey": "cam-ward-qb",
+    "overall": null,
+    "name": "Cam Ward",
+    "pos": "QB",
+    "team": "TEN",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 23.0,
+    "flockTier": "F",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 41.6,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000025,
+    "canonicalId": 25,
+    "canonicalKey": "daniel-jones-qb",
+    "overall": null,
+    "name": "Daniel Jones",
+    "pos": "QB",
+    "team": "CLE",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 25.0,
+    "flockTier": "F",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 37.2,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000027,
+    "canonicalId": 27,
+    "canonicalKey": "fernando-mendoza-qb",
+    "overall": null,
+    "name": "Fernando Mendoza",
+    "pos": "QB",
+    "team": "LAR",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 27.0,
+    "flockTier": "F",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 32.8,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000030,
+    "canonicalId": 30,
+    "canonicalKey": "jacoby-brissett-qb",
+    "overall": null,
+    "name": "Jacoby Brissett",
+    "pos": "QB",
+    "team": "WAS",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 30.0,
+    "flockTier": "G",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 26.2,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000068,
+    "canonicalId": 68,
+    "canonicalKey": "jonathan-brooks-rb",
+    "overall": null,
+    "name": "Jonathan Brooks",
+    "pos": "RB",
+    "team": "CAR",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 38.0,
+    "flockTier": "H",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 8.6,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000072,
+    "canonicalId": 72,
+    "canonicalKey": "chris-rodriguez-rb",
+    "overall": null,
+    "name": "Chris Rodriguez",
+    "pos": "RB",
+    "team": "WAS",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 42.0,
+    "flockTier": "H",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 0.0,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000082,
+    "canonicalId": 82,
+    "canonicalKey": "oronde-gadsden-ii-te",
+    "overall": null,
+    "name": "Oronde Gadsden II",
+    "pos": "TE",
+    "team": "JAX",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 9.0,
+    "flockTier": "C",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 72.4,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000089,
+    "canonicalId": 89,
+    "canonicalKey": "mark-andrews-te",
+    "overall": null,
+    "name": "Mark Andrews",
+    "pos": "TE",
+    "team": "BAL",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": 19.0,
+    "bdgeTier": "Strong Streamer",
+    "flockRank": 15.0,
+    "flockTier": "D",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 68.0,
+    "expertAgreement": 72.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": true,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000090,
+    "canonicalId": 90,
+    "canonicalKey": "juwan-johnson-te",
+    "overall": null,
+    "name": "Juwan Johnson",
+    "pos": "TE",
+    "team": "NO",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": 16.0,
+    "bdgeTier": "Strong Streamer",
+    "flockRank": 19.0,
+    "flockTier": "E",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 67.0,
+    "expertAgreement": 79.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": true,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000091,
+    "canonicalId": 91,
+    "canonicalKey": "chigoziem-okonkwo-te",
+    "overall": null,
+    "name": "Chigoziem Okonkwo",
+    "pos": "TE",
+    "team": "TEN",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": 17.0,
+    "bdgeTier": "Strong Streamer",
+    "flockRank": 22.0,
+    "flockTier": "E",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 63.0,
+    "expertAgreement": 65.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": true,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000092,
+    "canonicalId": 92,
+    "canonicalKey": "kenyon-sadiq-te",
+    "overall": null,
+    "name": "Kenyon Sadiq",
+    "pos": "TE",
+    "team": "LV",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 17.0,
+    "flockTier": "D",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 54.8,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000094,
+    "canonicalId": 94,
+    "canonicalKey": "dalton-schultz-te",
+    "overall": null,
+    "name": "Dalton Schultz",
+    "pos": "TE",
+    "team": "HOU",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 21.0,
+    "flockTier": "E",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 46.0,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000095,
+    "canonicalId": 95,
+    "canonicalKey": "t-j-hockenson-te",
+    "overall": null,
+    "name": "T.J. Hockenson",
+    "pos": "TE",
+    "team": "MIN",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 23.0,
+    "flockTier": "E",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 41.6,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
+  },
+  {
+    "id": 1000096,
+    "canonicalId": 96,
+    "canonicalKey": "aj-barner-te",
+    "overall": null,
+    "name": "AJ Barner",
+    "pos": "TE",
+    "team": "IND",
+    "bye": null,
+    "overallTier": null,
+    "posRank": null,
+    "posTier": null,
+    "bdgeRank": null,
+    "bdgeTier": null,
+    "flockRank": 24.0,
+    "flockTier": "E",
+    "sleeperAdp": null,
+    "yahooAdp": null,
+    "consensusAdp": null,
+    "hqGrade": 39.4,
+    "expertAgreement": 50.0,
+    "marketValue": null,
+    "tierScarcity": null,
+    "waitProbability": null,
+    "upside": null,
+    "risk": null,
+    "replacementValue": null,
+    "leagueWinnerScore": null,
+    "sourceCoverage": {
+      "bdge": false,
+      "flock": true,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
+    }
   }
 ]
