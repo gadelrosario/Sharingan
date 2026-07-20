@@ -10,28 +10,33 @@ const FlightControlTests=(()=>{
   };
 
   test('decision summary reduces existing signals to conclusions',()=>{
-    const summary=window.FlightControlV1.decisionSummary(complete);
-    assert(summary.opportunity.label==='Draft Now','opportunity label changed');
-    assert(summary.primary.label==='Tier Cliff','primary driver changed');
-    assert(summary.reasons.includes('Completes the starting lineup.'),'why-now signal missing');
-    assert(summary.availability.label==='Unlikely Available','availability changed');
+    const summary=window.FlightControlV1.decisionSummary({...complete,comparison:'Compared with Bijan: Gibbs narrowly wins on tier scarcity.'});
+    assert(summary.action==='DRAFT NOW','opportunity was not reduced to an action');
+    assert(summary.reasons.length<=3,'too many decision bullets');
+    assert(summary.reasons.includes('Unlikely to return next round.'),'wait conclusion missing');
+    assert(summary.comparison.includes('Compared with Bijan'),'comparison missing');
   });
   test('comparison summary uses the same decision model',()=>{
-    const summary=window.FlightControlV1.decisionSummary(complete);
+    const summary=window.FlightControlV1.decisionSummary({...complete,comparison:'Compared with Bijan.'});
     const card=window.FlightControlV1.comparisonSummary({hero:complete.hero,summary});
-    assert(card.name==='Brock Bowers'&&card.opportunity==='Draft Now','comparison lost decision context');
-    assert(card.confidence===91&&card.reason==='Last elite TE available.','comparison hierarchy differs');
+    assert(card.name==='Brock Bowers'&&card.action==='DRAFT NOW','comparison lost decision context');
+    assert(card.confidence===91&&card.reason.length>0,'comparison hierarchy differs');
   });
   test('missing intelligence produces explicit neutral states',()=>{
     const summary=window.FlightControlV1.decisionSummary({hero:{primary:{}}});
-    assert(summary.opportunity.label==='Decision context is still developing.','missing opportunity was hidden');
-    assert(summary.availability.reason==='Decision context is still developing.','missing availability was hidden');
-    assert(summary.whyNot==='Decision context is still developing.','missing comparison was hidden');
+    assert(summary.action==='LEAN DRAFT','missing opportunity did not use restrained action');
+    assert(summary.reasons.length>0,'missing decision context was hidden');
+    assert(summary.comparison==='Decision context is still developing.','missing comparison was hidden');
   });
   test('summary does not invent numeric probabilities',()=>{
     const summary=window.FlightControlV1.decisionSummary(complete);
     const text=JSON.stringify(summary);
     assert(!/%/.test(text),'decision conclusions invented a probability');
+  });
+  test('all supported opportunity states map to concise actions',()=>{
+    const labels=['Draft Now','Risky To Wait','Probably Safe To Wait','Avoid'];
+    const actions=labels.map(label=>window.FlightControlV1.actionLabel(label));
+    assert(actions.join('|')==='DRAFT NOW|LEAN DRAFT|SAFE TO WAIT|AVOID','action mapping changed');
   });
 
   function run(){let passCount=0,failCount=0;for(const {name,fn} of tests){try{fn();console.log(`✓ ${name}`);passCount++}catch(error){console.error(`✗ ${name}: ${error.message}`);failCount++}}console.log(`Flight Control: ${passCount} passed, ${failCount} failed`);return{passCount,failCount,total:tests.length}}

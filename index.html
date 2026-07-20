@@ -52,11 +52,11 @@
 </div>
 <section id="desktopCommandCenter" class="desktopOnly planningLayer">
  <details class="card planningDetails">
-  <summary><span><b>Planning</b><small>Peek Ahead • Room Intel • Team matrix • Player entry</small></span><span>Open planning tools</span></summary>
+  <summary><span><b>Planning</b><small>Peek Ahead • Safe-to-wait • Team matrix • Player entry</small></span><span>Open planning tools</span></summary>
   <div class="desktopCommandCenter planningGrid">
    <div class="card roomScanCard desktopRoomPanel">
-    <div class="roomScanTop"><div><b>Room Intel + Peek Ahead</b><div class="meta">Planning context between picks</div></div><button class="scanBtn" onclick="openRoomScan()">Expand</button></div>
-    <div id="desktopRoomAlert"></div><div id="desktopMarketGrid" class="roomScanGrid"></div><div id="desktopWaitMeter" class="waitGrid desktopWait"></div><div id="desktopRoomInsight" class="roomInsight"></div><div id="desktopManagerTable" class="desktopManagerTable"></div>
+    <div class="roomScanTop"><div><b>Peek Ahead + Safe-to-Wait</b><div class="meta">Planning context between picks</div></div><button class="scanBtn" onclick="openRoomScan()">Expand</button></div>
+    <div id="desktopMarketGrid" class="roomScanGrid"></div><div id="desktopWaitMeter" class="waitGrid desktopWait"></div><div id="desktopManagerTable" class="desktopManagerTable"></div>
    </div>
    <div class="card desktopDraftCommand">
     <div class="sectionHeader"><div><b>⚡ Draft Command Center</b><div class="meta">Record the room from one place</div></div><button class="ghost" onclick="undoLastPick()">Undo</button></div>
@@ -94,9 +94,8 @@
 
 <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
   <div class="bottomSheetPanel" onclick="event.stopPropagation()">
-    <div class="sheetHeader"><div><div class="scanEye">👁 SHARINGAN</div><b style="font-size:18px">Sharingan Vision — Full Room Intel</b></div><button class="ghost" onclick="closeRoomScan()">Close</button></div>
+    <div class="sheetHeader"><div><div class="scanEye">👁 SHARINGAN</div><b style="font-size:18px">Planning — Peek Ahead + Team Matrix</b></div><button class="ghost" onclick="closeRoomScan()">Close</button></div>
     <div id="sheetMarketGrid" class="roomScanGrid"></div>
-    <div id="sheetRoomInsight" class="roomInsight"></div>
     <div style="overflow:auto;margin-top:10px"><div id="sheetManagerTable"></div></div>
     <div id="managerRosterDetail"></div>
   </div>

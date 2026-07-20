@@ -17,18 +17,34 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("Flight Control: 4 passed, 0 failed", result.stdout)
+        self.assertIn("Flight Control: 5 passed, 0 failed", result.stdout)
 
     def test_progressive_disclosure_and_shared_player_renderer(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="advancedAnalysis"', app)
+        card_source = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
+        default_source, advanced_source = card_source.split('class="advancedAnalysis"', 1)
+        for metric in ("Mamba", "Final Pick", "Room Boost", "Roster Fit", "Steal Risk", "Stack", "Handcuff", "Exposure"):
+            self.assertNotIn(metric, default_source)
+            self.assertIn(metric, advanced_source)
+        self.assertIn("advancedAnalysisExpanded?'open'", app)
         self.assertIn("decisionCardMarkup(model,{recommended:displayed.id===primary.id})", app)
         self.assertIn("alternativeDecisionMarkup(playerDecisionModel(candidate,recs)", app)
         self.assertIn("recommendation.dataset.renderMs", app)
         self.assertIn('class="card planningDetails"', html)
         self.assertNotIn("mobileVisionCard", html)
         self.assertIn("js/flight-control-v1.js", html)
+
+    def test_planning_removes_redundant_pressure_and_room_intel_rows(self):
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        render_room = app.split("function renderRoomScan", 1)[1].split("function openRoomScan", 1)[0]
+        self.assertIn("peekAheadMarkup()", render_room)
+        self.assertNotIn("marketBoxMarkup", render_room)
+        self.assertNotIn("roomIntelMarkup", render_room)
+        self.assertNotIn('id="desktopRoomAlert"', html)
+        self.assertNotIn('id="desktopRoomInsight"', html)
 
     def test_decision_surface_preserves_required_controls(self):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
