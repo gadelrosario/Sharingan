@@ -11,6 +11,10 @@
     const sentence=text.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim()||text;
     return sentence.length>86?`${sentence.slice(0,83).trim()}…`:sentence;
   };
+  const shortLine = value => {
+    const text=clean(value).replace(/\s+/g,' ');
+    return text.length>118?`${text.slice(0,115).trim()}…`:text;
+  };
   const actionLabel = opportunity => {
     const label=String(opportunity??'').toLowerCase();
     if(label.includes('draft now'))return 'DRAFT NOW';
@@ -25,6 +29,13 @@
     if(label.includes('very likely'))return 'Likely to remain available next round.';
     if(label.includes('likely'))return 'May remain available next round.';
     return 'Availability next round is uncertain.';
+  };
+  const confidencePresentation = confidence => {
+    const score=Number.isFinite(confidence?.score)?confidence.score:0;
+    const label=score>=82?'High Confidence':score>=62?'Solid Lean':score>=42?'Close Call':'Very Close / Toss-Up';
+    const reason=String(confidence?.reason||'').toLowerCase();
+    const note=score<62&&(/separat(?:e|es) the top options|point lead/.test(reason))?'Top options are nearly equal.':'';
+    return {score,label,note};
   };
   function rosterConclusion(vision){
     const need=vision?.userNeed;
@@ -49,14 +60,19 @@
     const opportunity=vision?.opportunity||insight?.opportunityWindow||{};
     const availability=vision?.availability||{};
     const primary=hero?.primary||{label:'Best Available',reason:neutral};
-    const candidates=[tierConclusion(vision),rosterConclusion(vision),waitConclusion(availability.label),short(primary.reason)].filter(Boolean);
+    const tier=tierConclusion(vision),roster=rosterConclusion(vision),primaryLabel=String(primary.label||'').toLowerCase();
+    const primaryAddsContext=!((tier&&primaryLabel.includes('tier'))||(roster&&primaryLabel.includes('roster')));
+    const candidates=[tier,roster,primaryAddsContext?short(primary.reason):null].filter(Boolean);
+    const opportunityReason=short(opportunity.reason),availabilityReason=short(availability.reason);
     return {
       action:actionLabel(opportunity.label),
-      opportunity:{label:clean(opportunity.label),reason:clean(opportunity.reason)},
-      availability:{label:clean(availability.label),reason:clean(availability.reason)},
+      confidence:confidencePresentation(insight?.confidence),
+      opportunity:{label:clean(opportunity.label),reason:opportunityReason},
+      availability:{label:clean(availability.label),reason:availabilityReason===opportunityReason?'':availabilityReason},
       primary:{label:clean(primary.label),reason:clean(primary.reason)},
       reasons:candidates.filter((item,index,list)=>list.indexOf(item)===index).slice(0,3),
-      comparison:short(comparison),
+      wait:{action:actionLabel(opportunity.label),availability:clean(availability.label),conclusion:waitConclusion(availability.label)},
+      comparison:shortLine(comparison),
     };
   }
 
@@ -71,5 +87,5 @@
     };
   }
 
-  root.FlightControlV1={decisionSummary,comparisonSummary,actionLabel};
+  root.FlightControlV1={decisionSummary,comparisonSummary,actionLabel,confidencePresentation};
 })(typeof window!=='undefined'?window:globalThis);

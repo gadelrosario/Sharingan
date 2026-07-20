@@ -12,6 +12,13 @@ The live-draft surface leads with the player, action, confidence, and the few
 reasons needed to make the pick. Scores and component calculations remain
 available through progressive disclosure for users who want to inspect them.
 
+The default recommendation card answers four user questions: Who should I
+draft? How confident are you? Why? Can I wait? Information that does not answer
+one of those questions belongs in Advanced Analysis or the Planning layer.
+
+Default interfaces should contain only information that repeatedly changes
+draft decisions during real mock drafts.
+
 ## 2. The draft must remain playable above the fold
 
 On a typical laptop, a manager should see the current recommendation, primary
