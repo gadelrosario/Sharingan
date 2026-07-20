@@ -1,4 +1,4 @@
-let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],decisionSnapshots=[],currentYahooRecord=null,posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,leagueContext={scoring:"half",startQB:1,startRB:2,startWR:3,startTE:1,flex:2,startK:1,startDST:1,bench:6,passTD:6,risk:"balanced",strategy:"auto"};
+let players=[],mode="practice",style="chaotic",slot=10,pick=1,drafted=[],history=[],decisionSnapshots=[],currentYahooRecord=null,posFilter="ALL",aiProfiles={},slotManagers={},selectedCandidateId=null,mobileTeamExpanded=false,advancedAnalysisExpanded=false,leagueContext={scoring:"half",startQB:1,startRB:2,startWR:3,startTE:1,flex:2,startK:1,startDST:1,bench:6,passTD:6,risk:"balanced",strategy:"auto"};
 const managers=[
 {name:"Gerard",archetype:"Championship Value",skill:9.6,predictability:7,homerTeam:"",homer:0,qbHoard:2,waiver:10},
 {name:"Marc",archetype:"Calculated Ceiling",skill:8,predictability:8,homerTeam:"NYJ",homer:2,qbHoard:2,waiver:7},
@@ -93,7 +93,7 @@ function startDraft(){
   let modeName=mode==="practice"?"🟢 PRACTICE MOCK DRAFT":mode==="yahoo"?"🟣 YAHOO LIVE MOCK • REAL PEOPLE":"🔵 LIVE DRAFT DAY";
   modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   renderLeagueDnaBar();
-  el("practiceControls")?.classList.toggle("hidden",mode!=="practice");el("liveHelp")?.classList.toggle("hidden",mode==="practice");renderAll();
+  el("practiceControls")?.classList.toggle("hidden",mode!=="practice");el("liveHelp")?.classList.toggle("hidden",mode==="practice");renderAll();requestAnimationFrame(()=>window.scrollTo?.(0,0));
  }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please refresh the Jōnin 3.2 build. Technical detail: "+err.message)}
 }
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden")}
@@ -375,7 +375,7 @@ function selectPlayer(id,team,options={}){
   }
   const record={pick,id,team};drafted.push(id);history.push(record);pick++;selectedCandidateId=null;invalidateIntelligence();
   if(pick>TOTAL_PICKS){finishDraft();return true}
-  renderAfterPick(record,{full:options.full===true});
+  renderAfterPick(record,{full:options.full===true});if(team===slot)requestAnimationFrame(()=>window.scrollTo?.(0,0));
   return true;
  }catch(err){reportRuntimeError("Recording draft pick",err);return false}
 }
@@ -516,7 +516,7 @@ function closeScan(e){const modal=document.getElementById("scanModal");if(!modal
 function selectCandidate(id){
  if(drafted.includes(id))return;
  selectedCandidateId=(selectedCandidateId===id?null:id);
- renderRecommendation();
+ renderRecommendation();requestAnimationFrame(()=>window.scrollTo?.(0,0));
 }
 
 
@@ -539,18 +539,6 @@ function byeWarningFor(p){let existing=(byeExposure().find(([b])=>String(b)===St
 function blueprintFactors(p){let stack=stackBonusFor(p),hand=handcuffBonusFor(p),exp=exposureWarningFor(p),bye=byeWarningFor(p);return{stack,hand,exp,bye}}
 function renderExposure(){let rows=teamExposure(),markup=rows.length?`<div class="exposureList">${rows.slice(0,6).map(([team,count])=>{let cls=count>=4?"heavy":count===3?"warn":"",label=count>=4?"Heavy":count===3?"Caution":"Normal";return `<div class="exposureRow ${cls}"><b>${team}</b><div class="exposureBar"><span style="width:${Math.min(100,count*25)}%"></span></div><span>${count} • ${label}</span></div>`}).join("")}</div>`:`<div class="meta">No team concentration yet.</div>`;let bye=byeExposure().find(([,c])=>c>=4);if(bye)markup+=`<div class="exposureNote">Bye warning: ${bye[1]} players are off in Week ${bye[0]}.</div>`;["mobileExposure","desktopExposure"].forEach(id=>{let el=document.getElementById(id);if(el)el.innerHTML=markup})}
 function simpleMarketLabel(x){if(x.pressure>=82)return"Likely gone";if(x.pressure>=65)return"Draft soon";if(x.pressure>=45)return"Monitor";return"Safe to wait"}
-function comparisonCardMarkup(p,primary){
- let state=recommendationState(p),score=mambaScore(p),risk=survivalRisk(p),bp=blueprintFactors(p);
- return `<div class="comparisonCard">
-   <div class="comparisonHeader"><div><div class="eyebrow">HIGHLIGHTED COMPARISON</div><div class="meta">Top recommendation remains ${primary.name}</div></div><button class="ghost" onclick="selectCandidate(${p.id})">Clear</button></div>
-   <h3 class="scanLink" onclick="openScan(${p.id})">${p.name}</h3>
-   <div class="tagrow">${tierBadge(p)}<span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span><span class="tag">${p.team}</span><span class="tag">Bye ${p.bye}</span>${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}<span class="tag">FP ${p.fantasyProsPosRank||p.posRank}</span></div>
-   <div class="tagrow" style="margin-top:7px">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}">${sharinganIconMarkup(sharinganStage(p).key)}${sharinganStage(p).meaning}</span></div><div class="comparisonGrid"><div class="comparisonMetric"><span>Mamba</span><b>${score}/100</b></div><div class="comparisonMetric"><span>Final Pick</span><b>${finalPickScore(p)}/100</b></div><div class="comparisonMetric"><span>Steal Risk</span><b>${risk}%</b></div><div class="comparisonMetric"><span>Stack</span><b>${bp.stack.label}</b></div><div class="comparisonMetric"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>
-   <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div><div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}</div>
-   <div style="display:grid;grid-template-columns:1fr auto;gap:8px"><button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${p.name}</button><button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(sharinganStage(p).key)} Sharingan Scan</button></div>
- </div>`;
-}
-
 /**
  * Draft Command Center V1 - Get recommendation context and scoring
  * Used for transparent recommendation display
@@ -592,24 +580,26 @@ function joninScoreBreakdown(p){
  const projection=final-value-rosterFit-scarcity-risk;
  return {projection,value,rosterFit,scarcity,risk,final,mamba:mambaScore(p)};
 }
-function joninRecommendationInsight(recs){
- if(!window.JoninInsightEngineV1||!recs.length)return null;
- const candidates=recs.map(player=>({player,finalScore:finalPickScore(player),breakdown:joninScoreBreakdown(player)}));
- const p=recs[0];
+function orderedDecisionCandidates(player,recs){return [player,...recs.filter(candidate=>candidate.id!==player.id)]}
+function joninPlayerInsight(player,recs){
+ if(!window.JoninInsightEngineV1||!player)return null;
+ const candidates=orderedDecisionCandidates(player,recs).map(candidate=>({player:candidate,finalScore:finalPickScore(candidate),breakdown:joninScoreBreakdown(candidate)}));
  return JoninInsightEngineV1.buildRecommendationInsight({
-  player:p,candidates,availablePlayers:available(),counts:counts(),positionStrength:positionStrength(p.pos),
-  picksUntil:info().until,pick,survivalRisk:survivalRisk(p),breakdown:candidates[0].breakdown
+  player,candidates,availablePlayers:available(),counts:counts(),positionStrength:positionStrength(player.pos),
+  picksUntil:info().until,pick,survivalRisk:survivalRisk(player),breakdown:candidates[0].breakdown
  });
 }
-function sharinganVisionForecast(recs){
- if(!window.SharinganVisionV1||!recs.length)return null;
- const candidates=recs.map(player=>({player,finalScore:finalPickScore(player),breakdown:joninScoreBreakdown(player)}));
+function joninRecommendationInsight(recs){return recs.length?joninPlayerInsight(recs[0],recs):null}
+function sharinganPlayerForecast(player,recs){
+ if(!window.SharinganVisionV1||!player)return null;
+ const candidates=orderedDecisionCandidates(player,recs).map(candidate=>({player:candidate,finalScore:finalPickScore(candidate),breakdown:joninScoreBreakdown(candidate)}));
  return SharinganVisionV1.forecast({
-  player:recs[0],candidates,breakdown:candidates[0].breakdown,availablePlayers:available(),
+  player,candidates,breakdown:candidates[0].breakdown,availablePlayers:available(),
   recentPicks:history.slice(-8).map(entry=>players.find(player=>player.id===entry.id)).filter(Boolean),
   userCounts:managerPositionCounts(slot),teamsBeforeNext:teamsBeforeMyNextPick().map(team=>({team,counts:managerPositionCounts(team)})),picksUntil:info().until
  });
 }
+function sharinganVisionForecast(recs){return recs.length?sharinganPlayerForecast(recs[0],recs):null}
 function signedScore(value){return `${value>0?'+':''}${value}`}
 function safeInsightText(value){if(window.JoninInsightEngineV1)return JoninInsightEngineV1.escapeHTML(value);const node=document.createElement('span');node.textContent=String(value??'');return node.innerHTML}
 function joninInsightMarkup(insight,ccScored){
@@ -636,63 +626,52 @@ function sharinganVisionMarkup(vision){
   ${comparison}
  </section>`;
 }
-function recommendationHeroMarkup(player,insight,vision,breakdown,state){
- if(!window.JoninUXPolish)return'';
- const hero=JoninUXPolish.hero({player,insight,vision,breakdown});
- return `<div class="recommendationHero"><div class="heroEyebrow">RECOMMENDED PICK</div><div class="heroTop"><div><h2 class="scanLink" onclick="openScan(${player.id})">${safeInsightText(hero.name)}</h2><div class="heroIdentity">${safeInsightText(hero.identity)}</div></div><div class="heroConfidence"><strong>${safeInsightText(hero.confidence)}%</strong><span>Heuristic confidence</span><small>${safeInsightText(hero.confidenceLabel)}</small></div></div><div class="heroPrimary"><span>Primary Driver · ${safeInsightText(hero.primary.label)}</span><b>${safeInsightText(hero.primary.reason)}</b></div><div class="heroState">${safeInsightText(state.label)}</div></div>`;
+function concisePlayerComparison(player,primary,breakdown,primaryBreakdown,vision){
+ const alternative=player.id===primary.id?vision?.whyNot?.alternative:primary;
+ if(!alternative)return"No comparable alternative is available.";
+ const dimensions=[['projection','projection'],['value','value'],['rosterFit','roster fit'],['scarcity','tier scarcity']],other=player.id===primary.id?joninScoreBreakdown(alternative):breakdown,winner=primary,winnerBreakdown=primaryBreakdown,loserBreakdown=other;
+ const advantage=dimensions.map(([key,label])=>({label,edge:Number(winnerBreakdown?.[key]||0)-Number(loserBreakdown?.[key]||0)})).sort((a,b)=>b.edge-a.edge)[0];
+ const margin=Math.abs(finalPickScore(player)-finalPickScore(alternative)),tone=margin<=3?'narrowly ':'',reason=advantage?.edge>0?advantage.label:(vision?.tierCliff?.nearCliff?'tier scarcity':'overall fit');
+ return `Why not ${alternative.name}? ${winner.name} ${tone}wins on ${reason}.`;
 }
-
+function setAdvancedAnalysisExpanded(open){advancedAnalysisExpanded=Boolean(open)}
+function playerDecisionModel(player,recs){
+ const breakdown=joninScoreBreakdown(player),insight=joninPlayerInsight(player,recs),vision=sharinganPlayerForecast(player,recs),state=recommendationState(player);
+ const hero=window.JoninUXPolish?JoninUXPolish.hero({player,insight,vision,breakdown}):{playerId:player.id,name:player.name,identity:`${player.pos} • ${player.team||'Team unavailable'}`,confidence:50,confidenceLabel:'Developing',primary:{label:'Best Available',reason:rationale(player)}};
+ const primary=recs[0],comparison=concisePlayerComparison(player,primary,breakdown,joninScoreBreakdown(primary),vision);
+ const summary=window.FlightControlV1?FlightControlV1.decisionSummary({hero,vision,insight,comparison}):{action:'LEAN DRAFT',primary:hero.primary,reasons:[hero.primary.reason],wait:{action:'LEAN DRAFT',availability:'Uncertain',conclusion:'Availability is uncertain.'},comparison};
+ return {player,breakdown,insight,vision,state,hero,summary,ccScored:getCommandCenterScores([player])[0]||null};
+}
+function decisionCardMarkup(model,{recommended=false}={}){
+ const {player:p,breakdown,insight,vision,state,hero,summary,ccScored}=model,score=mambaScore(p),risk=survivalRisk(p),bp=blueprintFactors(p);
+ return `<div class="decisionCard ${recommended?'recommendedDecision':'comparisonDecision'}" data-recommendation-renderer="flight-control-1.1">
+  <div class="decisionHeader"><div class="sharinganConfidence">${sharinganIconMarkup(sharinganStage(p).key)}<div><strong>${safeInsightText(summary.confidence.score)}%</strong><span>${safeInsightText(summary.confidence.label)}</span>${summary.confidence.note?`<small>${safeInsightText(summary.confidence.note)}</small>`:''}</div></div><div class="decisionPlayer"><div class="heroEyebrow">${recommended?'RECOMMENDED PICK':'PLAYER COMPARISON'}</div><h2>${safeInsightText(hero.name)}</h2><div class="heroIdentity">${safeInsightText(hero.identity)}</div></div><div class="decisionAction">${safeInsightText(summary.action)}</div></div>
+  <div class="decisionSignals"><div><span>CAN I WAIT?</span><strong>${safeInsightText(summary.wait.action)}</strong></div><div><span>OPPORTUNITY WINDOW</span><strong>${safeInsightText(summary.opportunity.label)}</strong><small>${safeInsightText(summary.opportunity.reason)}</small></div><div><span>AVAILABILITY FORECAST</span><strong>${safeInsightText(summary.availability.label)}</strong>${summary.availability.reason?`<small>${safeInsightText(summary.availability.reason)}</small>`:''}</div></div>
+  <div class="compactComparison">${safeInsightText(summary.comparison)}</div>
+  <div class="decisionActions"><button class="primary decisionDraftBtn" onclick="selectPlayer(${p.id},${slot})">Draft ${safeInsightText(p.name)}</button>${recommended?'':`<button class="ghost returnRecommendation" onclick="selectCandidate(${p.id})">Return to recommendation</button>`}</div>
+  <details class="advancedAnalysis" ${advancedAnalysisExpanded?'open':''} ontoggle="setAdvancedAnalysisExpanded(this.open)"><summary>Advanced Analysis</summary><div class="advancedMetricStrip"><span>Mamba <b>${score}</b></span><span>Final Pick <b>${finalPickScore(p)}</b></span><span>Room Boost <b>${signedScore(roomBoost(p))}</b></span><span>Roster Fit <b>${signedScore(rosterFitModifier(p))}</b></span><span>Steal Risk <b>${risk}%</b></span><span>Stack <b>${safeInsightText(bp.stack.label)}</b></span><span>Handcuff <b>${safeInsightText(bp.hand.label)}</b></span><span>Exposure <b>${safeInsightText(bp.exp?bp.exp.text:'No concern')}</b></span></div>${joninInsightMarkup(insight,ccScored)}${sharinganVisionMarkup(vision)}${bp.bye?`<div class="roomAlert">${safeInsightText(bp.bye)}</div>`:''}<div class="tagrow">${tierBadge(p)}<span class="tag">${safeInsightText(p.pos)}${safeInsightText(p.posRank||'')}</span><span class="tag">${safeInsightText(p.team||'Team unavailable')}</span><span class="tag">Bye ${safeInsightText(p.bye??'—')}</span></div><div class="heroState">${safeInsightText(state.label)}</div><button type="button" class="scanBtn advancedScan" onclick="openScan(${p.id})">Full player scan</button></details>
+ </div>`;
+}
+function alternativeDecisionMarkup(model,rank){
+ const summary=window.FlightControlV1?FlightControlV1.comparisonSummary(model):{name:model.player.name,identity:model.player.pos,reason:model.summary.primary.reason};
+ return `<article class="alternativeDecision"><span class="rank">${rank}</span><div class="alternativeIdentity"><b>${safeInsightText(summary.name)}</b><small>${safeInsightText(summary.identity)}</small><p>${safeInsightText(summary.reason)}</p></div><button type="button" class="scanBtn compareBtn" onclick="selectCandidate(${model.player.id})">Compare</button><button type="button" class="autoPickBtn" onclick="selectPlayer(${model.player.id},${slot})">Draft</button></article>`;
+}
 function renderRecommendation(){
+ const renderStarted=performance.now();
  let recs=snapshotRecommendations();
  if(!recs.length){
    recommendation.innerHTML="<b>Draft complete.</b>";
    alternatives.innerHTML="";
+   recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
    return;
  }
- let p=recs[0];
- let ev=getPlayerEvaluation(p),state=recommendationState(p),score=ev.mamba,risk=ev.risk;
- const ccScored=getCommandCenterScores([p])[0]||null,insight=joninRecommendationInsight(recs),vision=sharinganVisionForecast(recs);
- const breakdown=joninScoreBreakdown(p);
- recommendation.className="rec "+state.cls;
- recommendation.innerHTML=`
-   ${recommendationHeroMarkup(p,insight,vision,breakdown,state)}
-   <div class="mambaScore">Mamba ${score}/100 • Final Pick ${finalPickScore(p)}/100 • Steal Risk ${risk}%</div>
-   <div class="confbar"><span style="width:${score}%"></span></div>
-   <div class="tagrow">${tierBadge(p)}<span class="sharinganStage stage-${sharinganStage(p).key}">${sharinganIconMarkup(sharinganStage(p).key)}${safeInsightText(sharinganStage(p).meaning)}</span></div>
-   <div class="tagrow">
-     <span class="tag">${p.pos==="DST"?"D/ST":p.pos}${p.posRank||""}</span>
-     <span class="tag">${p.team}</span>
-     <span class="tag">Bye ${p.bye}</span>
-     ${p.bdgeRank?`<span class="tag">BDGE ${p.pos}${p.bdgeRank}</span>`:""}${p.flockRank?`<span class="tag">Flock ${p.pos}${p.flockRank}</span>`:""}${p.coreTarget?`<span class="tag">Core Target</span>`:""}${p.priceFade?`<span class="tag">Price Caution</span>`:""}
-     <span class="tag">FP ${p.pos==="DST"?"D/ST":p.pos}${p.fantasyProsPosRank||p.posRank}</span>
-   </div>
-   <div class="scoreLine"><div class="scoreChip"><span>Mamba</span><b>${score}</b></div><div class="scoreChip"><span>Room Boost</span><b>+${roomBoost(p)}</b></div><div class="scoreChip"><span>Roster Fit</span><b>${rosterFitModifier(p)>=0?"+":""}${rosterFitModifier(p)}</b></div></div>
-   ${joninInsightMarkup(insight,ccScored)}
-   ${sharinganVisionMarkup(vision)}
-   <div class="reason">${valueOverride(p)?"<b>Value Override:</b> superior value beats roster balance. ":""}${rationale(p)}<br><span class="meta">${runSignal()}</span></div>
-   ${(()=>{let bp=blueprintFactors(p);return `<div class="blueprintBreakdown"><div class="blueprintFactor"><span>Value</span><b>Primary driver</b></div><div class="blueprintFactor"><span>Stack</span><b>${bp.stack.label}</b></div><div class="blueprintFactor"><span>Handcuff</span><b>${bp.hand.label}</b></div><div class="blueprintFactor"><span>Exposure</span><b>${bp.exp?bp.exp.text:"No concern"}</b></div></div>${bp.bye?`<div class="roomAlert">${bp.bye}</div>`:""}`})()}
-   <div style="display:grid;grid-template-columns:1fr auto;gap:8px">
-     <button class="primary" onclick="selectPlayer(${p.id},${slot})">Draft ${safeInsightText(p.name)}</button>
-     <button type="button" class="sharinganBtn" onclick="openScan(${p.id})">${sharinganIconMarkup(sharinganStage(p).key)} Sharingan Scan</button>
-   </div>`;
-
- let highlightedPlayer=selectedCandidateId?players.find(x=>x.id===selectedCandidateId&&!drafted.includes(x.id)):null;
- const ccScoresAll = getCommandCenterScores(recs);
- alternatives.innerHTML=(highlightedPlayer?comparisonCardMarkup(highlightedPlayer,p):"")+recs.slice(1,5).map((x,i)=>{
-   let highlighted=selectedCandidateId===x.id;
-   const ccScored = ccScoresAll.find(cc => cc.id === x.id);
-   const ccScore = ccScored ? ccScored.commandCenterScore.total : '—';
-   return `<div class="alt selectable ${highlighted?"highlightedOption":""}" onclick="selectCandidate(${x.id})">
-     <div class="rank">${i+2}</div>
-     <div class="info">
-       <b>${x.name}</b>
-       <div class="meta">${tierLabel(x)} Tier • ${x.pos==="DST"?"D/ST":x.pos}${x.posRank||""} • ${x.team} • CC ${ccScore}/100 • ${rationale(x)}</div>
-       ${highlighted?`<span class="highlightFlag">Highlighted for comparison</span>`:""}
-     </div>
-     <button type="button" class="scanBtn" onclick="openScan(${x.id});return false">${sharinganIconMarkup(sharinganStage(x).key)} Sharingan Scan</button>
-     <button type="button" class="autoPickBtn" onclick="recordCurrentPick(${x.id});return false">Record Current Pick</button>
-   </div>`;
- }).join("");
+ const primary=recs[0],selected=selectedCandidateId?players.find(candidate=>candidate.id===selectedCandidateId&&!drafted.includes(candidate.id)):null,displayed=selected||primary;
+ const model=playerDecisionModel(displayed,recs);
+ recommendation.className="rec "+model.state.cls;
+ recommendation.innerHTML=decisionCardMarkup(model,{recommended:displayed.id===primary.id});
+ const alternativesToShow=[primary,...recs.slice(1,5)].filter((candidate,index,list)=>candidate.id!==displayed.id&&list.findIndex(item=>item.id===candidate.id)===index).slice(0,4);
+ alternatives.innerHTML=alternativesToShow.map((candidate,index)=>alternativeDecisionMarkup(playerDecisionModel(candidate,recs),candidate.id===primary.id?1:index+2)).join('');
+ recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
 }
 function renderBoard(){let byPick=new Map(history.map(x=>[x.pick,x])),cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=TOTAL_ROUNDS;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=byPick.get(pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div data-pick="${pnum}" class="pickCell ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
 function teamTierMarkup(){let positions=["QB","RB","WR","TE"],lines=positions.map(pos=>{let c=positionTierCounts(pos),bits=["S","A","B","C"].filter(t=>c[t]).map(t=>`${t}×${c[t]}`).join("  ")||"—";return `<div class="tierLine"><b>${pos}</b><span class="tierDots">${bits}</span><span>${positionStrength(pos)}</span></div>`}).join("");let rb=positionStrength("RB"),wr=positionStrength("WR"),advice=rb==="Elite"||rb==="Strong"?"RB quality is secure. Shift toward WR when values are close. Value Override still wins.":wr==="Elite"||wr==="Strong"?"WR quality is secure. Add RB when values are close. Value Override still wins.":"Build the best available starting tier. Value remains the priority.";return `<div class="teamTierSummary"><b>Team Tier Quality</b>${lines}<div class="teamAdvice">${advice}</div></div>`}
@@ -865,7 +844,7 @@ function projectedTierRemaining(pos){let pool=available().filter(p=>positionKey(
 function tierCountText(c){return ["S","A","B","C"].filter(t=>(c[t]||0)>0).map(t=>`${t}: ${c[t]}`).join(" • ")||"No S–C players"}
 function roomIntelMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let x=marketPressure(pos),run=x.recent>=4?"Run is happening":x.recent>=2?"Some movement":"No run";return `<div class="intelItem"><b>${pos} — ${run}</b><span>${x.recent} drafted in the last 8 picks. ${x.starterNeed} teams before your next pick still need a starter.</span></div>`}).join("")}
 function peekAheadMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let n=expectedDraftedBeforeNext(pos),now=availableTierCounts(pos),later=projectedTierRemaining(pos);return `<div class="peekItem"><b>${pos}: ${n} expected before your next pick</b><span>Available now — ${tierCountText(now)}</span><span>Projected then — ${tierCountText(later)}</span></div>`}).join("")}
-function renderRoomScan(){let snap=getIntelligenceSnapshot(),markets=["RB","WR","QB","TE"].map(pos=>snap.markets[pos]),grid=`<div class="visionPanel">${markets.map(marketBoxMarkup).join("")}</div><div style="margin-top:10px"><b>Room Intel</b><div class="roomIntelList">${roomIntelMarkup()}</div></div><div style="margin-top:10px"><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,insight=roomInsightText(),alert=roomAlertText(),table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});["mobileRoomInsight","desktopRoomInsight","sheetRoomInsight"].forEach(id=>{let e=document.getElementById(id);if(e)e.textContent=`Sharingan says: ${insight}`});["mobileRoomAlert","desktopRoomAlert"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=alert});if(document.getElementById("desktopManagerTable"))desktopManagerTable.innerHTML=managerTableMarkup(false);if(document.getElementById("sheetManagerTable"))sheetManagerTable.innerHTML=table}
+function renderRoomScan(){let grid=`<div><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});if(document.getElementById("desktopManagerTable"))desktopManagerTable.innerHTML=managerTableMarkup(false);if(document.getElementById("sheetManagerTable"))sheetManagerTable.innerHTML=table}
 function openRoomScan(){renderRoomScan();let sheet=document.getElementById("roomScanSheet");if(sheet)sheet.classList.remove("hidden")}
 function closeRoomScan(e){let sheet=document.getElementById("roomScanSheet");if(!sheet)return;if(e&&e.target!==sheet)return;sheet.classList.add("hidden");let detail=document.getElementById("managerRosterDetail");if(detail)detail.innerHTML=""}
 
@@ -986,5 +965,5 @@ const originalStartDraft=startDraft;startDraft=function(){const result=originalS
 const originalSelectPlayer=selectPlayer;selectPlayer=function(id,team){const result=originalSelectPlayer.apply(this,arguments);syncDraftIntoLeagueState();return result};
 const originalUndoLastPick=undoLastPick;undoLastPick=function(){const result=originalUndoLastPick.apply(this,arguments);syncDraftIntoLeagueState();return result};
 
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_0").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=flight_control_1_1").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
 init();

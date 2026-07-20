@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#07111f"><meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg">
 <title>Gerard Fantasy HQ — Jōnin 3.2</title>
-<link rel="stylesheet" href="css/app.css?v=3.2.0"></head>
+<link rel="stylesheet" href="css/app.css?v=3.3.0"></head>
 <body>
 <header><div class="headerRow"><div><h1>Gerard Fantasy HQ</h1><div class="version">Jōnin 3.2 • Responsive Draft Command</div></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
 <div class="shell">
@@ -37,13 +37,12 @@
 </div>
 <div class="card" style="background:#111017;margin-bottom:12px"><b>Gerard Blueprint</b><div class="meta" style="margin-top:5px">RB → WR → WR → RB → TE/QB → QB/TE, with Value Override when elite talent falls.</div></div>
 <button id="startDraftBtn" class="primary greenBtn" style="width:100%" onclick="startDraft()" disabled>Loading player pool…</button></div></section>
-<section id="appScreen" class="hidden"><div id="modeBanner"></div><div id="practiceControls" class="card hidden"><button id="simulateBtn" class="primary greenBtn" style="width:100%" onclick="simulateToMe()">Simulate To My Next Pick</button></div><div id="leagueDnaBar" class="leagueDnaBar"></div><div id="runtimeStatus" class="roomAlert hidden" style="margin-bottom:10px"></div><div class="appgrid">
-<aside class="stack desktopSide"><div class="card compactStatus"><div class="stats"><div class="stat"><b id="round">1</b>Round</div><div class="stat"><b id="pickLabel">1.01</b>Pick</div><div class="stat"><b id="until">0</b>Until you</div></div></div><div class="card secondarySummary"><div id="desktopStrategyCard"></div></div><div class="card secondarySummary"><div class="secondaryTitle">Team Build</div><div id="desktopTeamBuild" class="teamBuildGrid"></div><details class="secondaryDetails"><summary>Roster details</summary><div id="roster"></div></details></div><details class="card secondaryDetails"><summary>Draft phase and room strategies</summary><div id="desktopDraftPhase"></div><div id="desktopStrategyHealth" class="roomInsight"></div><div id="strategies"></div></details></aside>
+<section id="appScreen" class="hidden"><div class="flightControlBar"><div id="modeBanner"></div><div id="practiceControls" class="hidden"><button id="simulateBtn" class="primary greenBtn" style="width:100%" onclick="simulateToMe()">Simulate To My Next Pick</button></div></div><div id="leagueDnaBar" class="leagueDnaBar"></div><div id="runtimeStatus" class="roomAlert hidden" style="margin-bottom:10px"></div><div class="appgrid" id="flightControlSurface">
+<aside class="stack desktopSide"><div class="card compactStatus"><div class="stats"><div class="stat"><b id="round">1</b>Round</div><div class="stat"><b id="pickLabel">1.01</b>Pick</div><div class="stat"><b id="until">0</b>Until you</div></div></div><div class="card secondarySummary rosterAtGlance"><div class="secondaryTitle">Current Roster</div><div id="desktopTeamBuild" class="teamBuildGrid"></div><details class="secondaryDetails"><summary>Player details</summary><div id="roster"></div></details></div><div class="card secondarySummary"><div id="desktopStrategyCard"></div></div><details class="card secondaryDetails"><summary>Draft phase and room strategies</summary><div id="desktopDraftPhase"></div><div id="desktopStrategyHealth" class="roomInsight"></div><div id="strategies"></div></details></aside>
 <main class="stack">
 <section id="mobileDraft" class="mobilePage active mobileLiveCommand">
   <div class="card compactStatus"><div class="stats"><div class="stat"><b id="mRound">1</b>Round</div><div class="stat"><b id="mPickLabel">1.01</b>Pick</div><div class="stat"><b id="mUntil">0</b>Until you</div></div></div>
-  <div class="card recommendationCard"><div id="recommendation" class="rec"></div><div class="mobileAlternatives"><div class="sectionHeader"><b>Other viable options</b><span class="meta">Tap to compare</span></div><div id="alternatives"></div></div></div>
-  <div class="card mobileOnly mobileVisionCard"><div class="sectionHeader"><div><b>👁 Sharingan Vision + Wait</b><div class="meta">Can you wait, and which position window is closing?</div></div><button class="scanBtn" onclick="openRoomScan()">Details</button></div><div id="mobileRoomAlert"></div><div id="mobileMarketGrid" class="compactVision"></div><div id="mobileWaitMeter" class="waitGrid compactWait"></div><div id="mobileRoomInsight" class="roomInsight"></div></div>
+  <div class="card recommendationCard"><div id="recommendation" class="rec"></div><div class="mobileAlternatives"><div class="sectionHeader"><b>Top Alternatives</b><span class="meta">Same decision view on selection</span></div><div id="alternatives"></div></div></div>
   <div class="card mobileOnly fastEntryCard" id="liveHelp"><div class="sectionHeader"><div><b>⚡ Fast Live Entry</b><div class="meta">Search is primary; likely picks are shortcuts.</div></div><button class="ghost" onclick="undoLastPick()">Undo</button></div><div id="mobileClockStrip"></div><input id="search" class="heroSearch" placeholder="Search any drafted player" oninput="syncSearch('mobile')" onkeydown="handleSearchKey(event)"><div class="quickSectionTitle"><b>Likely next</b><span class="meta">Quick access</span></div><div id="mobileQuickPicks" class="quickPickGrid compactQuick"></div><button class="ghost boardShortcut" onclick="showPage('mobileBoard')">Open Draft Board</button></div>
   <div class="card mobileOnly teamCompactCard"><div class="sectionHeader"><b>Your team</b><button id="teamToggleBtn" class="scanBtn" onclick="toggleMobileTeam()">Expand</button></div><div id="mobileStrategyCard" class="mobileStrategyCard"></div><div id="mobileTeamBuild" class="teamBuildGrid"></div><div id="mobileRosterSummary" class="rosterSummary accessibilityCounts"></div><div id="mobileNeeds" class="needLine"></div><div id="mobileRosterExpandable" class="hidden"><div id="mobileLiveRoster" class="liveRosterGrid"></div></div></div>
 </section>
@@ -51,12 +50,15 @@
 <section id="mobilePlayers" class="mobilePage"><div class="card"><div class="sectionHeader"><b>All Available Players</b><button class="ghost" onclick="undoLastPick()">Undo</button></div><div id="mobilePlayersClock"></div><input id="browseSearch" placeholder="Search all available players" oninput="syncSearch('browse')" onkeydown="handleSearchKey(event)" style="width:100%;margin:8px 0"><div style="display:flex;gap:5px;overflow:auto"><button class="ghost" onclick="setPos('ALL')">ALL</button><button class="ghost" onclick="setPos('RB')">RB</button><button class="ghost" onclick="setPos('WR')">WR</button><button class="ghost" onclick="setPos('QB')">QB</button><button class="ghost" onclick="setPos('TE')">TE</button><button class="ghost" onclick="setPos('DST')">D/ST</button><button class="ghost" onclick="setPos('K')">K</button></div><div id="playersList" class="boardList"></div></div></section>
 </main>
 </div>
-<section id="desktopCommandCenter" class="desktopOnly desktopCommandCenter">
-  <div class="card roomScanCard desktopRoomPanel">
-    <div class="roomScanTop"><div><b>👁 Sharingan Vision + Wait</b><div class="meta">Position pressure and survival in one decision panel</div></div><button class="scanBtn" onclick="openRoomScan()">Expand</button></div>
-    <div id="desktopRoomAlert"></div><div id="desktopMarketGrid" class="roomScanGrid"></div><div id="desktopWaitMeter" class="waitGrid desktopWait"></div><div id="desktopRoomInsight" class="roomInsight"></div><div id="desktopManagerTable" class="desktopManagerTable"></div>
-  </div>
-  <div class="card desktopDraftCommand">
+<section id="desktopCommandCenter" class="desktopOnly planningLayer">
+ <details class="card planningDetails">
+  <summary><span><b>Planning</b><small>Peek Ahead • Safe-to-wait • Team matrix • Player entry</small></span><span>Open planning tools</span></summary>
+  <div class="desktopCommandCenter planningGrid">
+   <div class="card roomScanCard desktopRoomPanel">
+    <div class="roomScanTop"><div><b>Peek Ahead + Safe-to-Wait</b><div class="meta">Planning context between picks</div></div><button class="scanBtn" onclick="openRoomScan()">Expand</button></div>
+    <div id="desktopMarketGrid" class="roomScanGrid"></div><div id="desktopWaitMeter" class="waitGrid desktopWait"></div><div id="desktopManagerTable" class="desktopManagerTable"></div>
+   </div>
+   <div class="card desktopDraftCommand">
     <div class="sectionHeader"><div><b>⚡ Draft Command Center</b><div class="meta">Record the room from one place</div></div><button class="ghost" onclick="undoLastPick()">Undo</button></div>
     <div id="desktopClockStrip"></div>
     <div class="draftCommandBody">
@@ -68,7 +70,9 @@
         <div id="dPlayersList" class="boardList"></div>
       </div>
     </div>
+   </div>
   </div>
+ </details>
 </section>
 <section id="desktopBoardSection" class="desktopOnly desktopBoardSection">
   <div class="card fullBoardCard">
@@ -83,15 +87,15 @@
 <script src="js/jonin-insight-engine-v1.js?v=1.0.0"></script>
 <script src="js/sharingan-vision-v1.js?v=1.0.0"></script>
 <script src="js/jonin-ux-polish.js?v=1.0.0"></script>
+<script src="js/flight-control-v1.js?v=1.1.0"></script>
 <script src="tests/command-center-tests.js?v=1.0.0"></script>
 <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-<script src="js/app.js?v=3.2.0"></script>
+<script src="js/app.js?v=3.3.0"></script>
 
 <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
   <div class="bottomSheetPanel" onclick="event.stopPropagation()">
-    <div class="sheetHeader"><div><div class="scanEye">👁 SHARINGAN</div><b style="font-size:18px">Sharingan Vision — Full Room Intel</b></div><button class="ghost" onclick="closeRoomScan()">Close</button></div>
+    <div class="sheetHeader"><div><div class="scanEye">👁 SHARINGAN</div><b style="font-size:18px">Planning — Peek Ahead + Team Matrix</b></div><button class="ghost" onclick="closeRoomScan()">Close</button></div>
     <div id="sheetMarketGrid" class="roomScanGrid"></div>
-    <div id="sheetRoomInsight" class="roomInsight"></div>
     <div style="overflow:auto;margin-top:10px"><div id="sheetManagerTable"></div></div>
     <div id="managerRosterDetail"></div>
   </div>
