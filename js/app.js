@@ -626,12 +626,6 @@ function sharinganVisionMarkup(vision){
   ${comparison}
  </section>`;
 }
-function recommendationHeroMarkup(player,insight,vision,breakdown,state){
- if(!window.JoninUXPolish)return'';
- const hero=JoninUXPolish.hero({player,insight,vision,breakdown});
- return `<div class="recommendationHero"><div class="heroEyebrow">RECOMMENDED PICK</div><div class="heroTop"><div><h2 class="scanLink" onclick="openScan(${player.id})">${safeInsightText(hero.name)}</h2><div class="heroIdentity">${safeInsightText(hero.identity)}</div></div><div class="heroConfidence"><strong>${safeInsightText(hero.confidence)}%</strong><span>Heuristic confidence</span><small>${safeInsightText(hero.confidenceLabel)}</small></div></div><div class="heroPrimary"><span>Primary Driver · ${safeInsightText(hero.primary.label)}</span><b>${safeInsightText(hero.primary.reason)}</b></div><div class="heroState">${safeInsightText(state.label)}</div></div>`;
-}
-
 function concisePlayerComparison(player,primary,breakdown,primaryBreakdown,vision){
  const alternative=player.id===primary.id?vision?.whyNot?.alternative:primary;
  if(!alternative)return"No comparable alternative is available.";
@@ -650,7 +644,7 @@ function playerDecisionModel(player,recs){
 }
 function decisionCardMarkup(model,{recommended=false}={}){
  const {player:p,breakdown,insight,vision,state,hero,summary,ccScored}=model,score=mambaScore(p),risk=survivalRisk(p),bp=blueprintFactors(p);
- return `<div class="decisionCard ${recommended?'recommendedDecision':'comparisonDecision'}">
+ return `<div class="decisionCard ${recommended?'recommendedDecision':'comparisonDecision'}" data-recommendation-renderer="flight-control-1.1">
   <div class="decisionHeader"><div class="sharinganConfidence">${sharinganIconMarkup(sharinganStage(p).key)}<div><strong>${safeInsightText(summary.confidence.score)}%</strong><span>${safeInsightText(summary.confidence.label)}</span>${summary.confidence.note?`<small>${safeInsightText(summary.confidence.note)}</small>`:''}</div></div><div class="decisionPlayer"><div class="heroEyebrow">${recommended?'RECOMMENDED PICK':'PLAYER COMPARISON'}</div><h2>${safeInsightText(hero.name)}</h2><div class="heroIdentity">${safeInsightText(hero.identity)}</div></div><div class="decisionAction">${safeInsightText(summary.action)}</div></div>
   <div class="decisionSignals"><div><span>CAN I WAIT?</span><strong>${safeInsightText(summary.wait.action)}</strong></div><div><span>OPPORTUNITY WINDOW</span><strong>${safeInsightText(summary.opportunity.label)}</strong><small>${safeInsightText(summary.opportunity.reason)}</small></div><div><span>AVAILABILITY FORECAST</span><strong>${safeInsightText(summary.availability.label)}</strong>${summary.availability.reason?`<small>${safeInsightText(summary.availability.reason)}</small>`:''}</div></div>
   <div class="compactComparison">${safeInsightText(summary.comparison)}</div>
@@ -971,5 +965,5 @@ const originalStartDraft=startDraft;startDraft=function(){const result=originalS
 const originalSelectPlayer=selectPlayer;selectPlayer=function(id,team){const result=originalSelectPlayer.apply(this,arguments);syncDraftIntoLeagueState();return result};
 const originalUndoLastPick=undoLastPick;undoLastPick=function(){const result=originalUndoLastPick.apply(this,arguments);syncDraftIntoLeagueState();return result};
 
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_0").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=flight_control_1_1").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
 init();

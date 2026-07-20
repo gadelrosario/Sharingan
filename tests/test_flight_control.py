@@ -38,11 +38,25 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
         self.assertIn("summary.confidence.label", default_source)
         self.assertIn("advancedAnalysisExpanded?'open'", app)
         self.assertIn("decisionCardMarkup(model,{recommended:displayed.id===primary.id})", app)
+        self.assertNotIn("function recommendationHeroMarkup", app)
+        self.assertIn('data-recommendation-renderer="flight-control-1.1"', app)
         self.assertIn("alternativeDecisionMarkup(playerDecisionModel(candidate,recs)", app)
         self.assertIn("recommendation.dataset.renderMs", app)
         self.assertIn('class="card planningDetails"', html)
         self.assertNotIn("mobileVisionCard", html)
         self.assertIn("js/flight-control-v1.js", html)
+
+    def test_deployed_assets_activate_the_flight_control_renderer(self):
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
+        worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
+        self.assertIn('css/app.css?v=3.3.0', html)
+        self.assertIn('js/flight-control-v1.js?v=1.1.0', html)
+        self.assertIn('js/app.js?v=3.3.0', html)
+        self.assertIn('service-worker.js?v=flight_control_1_1', app)
+        self.assertIn('fantasy-hq-flight-control-1-1', worker)
+        for asset in ('css/app.css?v=3.3.0', 'js/flight-control-v1.js?v=1.1.0', 'js/app.js?v=3.3.0'):
+            self.assertIn(asset, worker)
 
     def test_planning_removes_redundant_pressure_and_room_intel_rows(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
