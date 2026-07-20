@@ -49,13 +49,16 @@
     const opportunity=vision?.opportunity||insight?.opportunityWindow||{};
     const availability=vision?.availability||{};
     const primary=hero?.primary||{label:'Best Available',reason:neutral};
-    const candidates=[tierConclusion(vision),rosterConclusion(vision),waitConclusion(availability.label),short(primary.reason)].filter(Boolean);
+    const tier=tierConclusion(vision),roster=rosterConclusion(vision),primaryLabel=String(primary.label||'').toLowerCase();
+    const primaryAddsContext=!((tier&&primaryLabel.includes('tier'))||(roster&&primaryLabel.includes('roster')));
+    const candidates=[tier,roster,primaryAddsContext?short(primary.reason):null].filter(Boolean);
     return {
       action:actionLabel(opportunity.label),
       opportunity:{label:clean(opportunity.label),reason:clean(opportunity.reason)},
       availability:{label:clean(availability.label),reason:clean(availability.reason)},
       primary:{label:clean(primary.label),reason:clean(primary.reason)},
       reasons:candidates.filter((item,index,list)=>list.indexOf(item)===index).slice(0,3),
+      wait:{action:actionLabel(opportunity.label),availability:clean(availability.label),conclusion:waitConclusion(availability.label)},
       comparison:short(comparison),
     };
   }

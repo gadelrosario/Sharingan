@@ -25,9 +25,16 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
         self.assertIn('class="advancedAnalysis"', app)
         card_source = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
         default_source, advanced_source = card_source.split('class="advancedAnalysis"', 1)
+        for question in ("WHO SHOULD I DRAFT?", "HOW CONFIDENT ARE YOU?", "WHY?", "CAN I WAIT?"):
+            self.assertEqual(default_source.count(question), 1)
         for metric in ("Mamba", "Final Pick", "Room Boost", "Roster Fit", "Steal Risk", "Stack", "Handcuff", "Exposure"):
             self.assertNotIn(metric, default_source)
             self.assertIn(metric, advanced_source)
+        for ignored_section in ("VALUE", "SCARCITY", "RISK", "TEAM FIT", "SCORE BREAKDOWN"):
+            self.assertNotIn(ignored_section, default_source)
+        self.assertIn("compactComparison", default_source)
+        self.assertIn("Why not ${alternative.name}?", app)
+        self.assertIn("Availability:", default_source)
         self.assertIn("advancedAnalysisExpanded?'open'", app)
         self.assertIn("decisionCardMarkup(model,{recommended:displayed.id===primary.id})", app)
         self.assertIn("alternativeDecisionMarkup(playerDecisionModel(candidate,recs)", app)
