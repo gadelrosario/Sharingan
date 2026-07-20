@@ -37,6 +37,13 @@
     const note=score<62&&(/separat(?:e|es) the top options|point lead/.test(reason))?'Top options are nearly equal.':'';
     return {score,label,note};
   };
+  const normalizePosition = position => {
+    const value=String(position??'').trim().toUpperCase().replace(/[.\s_-]/g,'');
+    if(['DST','D/ST','DEF','DEFENSE'].includes(value))return 'dst';
+    if(['WR','RB','TE','QB','K'].includes(value))return value.toLowerCase();
+    return 'unknown';
+  };
+  const boardPositionClass = position => `board-pos-${normalizePosition(position)}`;
   function rosterConclusion(vision){
     const need=vision?.userNeed;
     if(!need||need.status==='Unavailable')return null;
@@ -87,5 +94,5 @@
     };
   }
 
-  root.FlightControlV1={decisionSummary,comparisonSummary,actionLabel,confidencePresentation};
+  root.FlightControlV1={decisionSummary,comparisonSummary,actionLabel,confidencePresentation,normalizePosition,boardPositionClass};
 })(typeof window!=='undefined'?window:globalThis);

@@ -56,6 +56,10 @@ const FlightControlTests=(()=>{
     assert(summary.opportunity.reason===repeated,'opportunity explanation was removed');
     assert(summary.availability.reason==='','duplicate availability explanation remained');
   });
+  test('snake-board positions normalize to one reusable class mapping',()=>{
+    const expected={WR:'board-pos-wr',RB:'board-pos-rb',TE:'board-pos-te',QB:'board-pos-qb',K:'board-pos-k',DST:'board-pos-dst','D/ST':'board-pos-dst',DEF:'board-pos-dst',Defense:'board-pos-dst',P:'board-pos-unknown','':'board-pos-unknown'};
+    Object.entries(expected).forEach(([position,className])=>assert(window.FlightControlV1.boardPositionClass(position)===className,`${position||'blank'} mapped incorrectly`));
+  });
 
   function run(){let passCount=0,failCount=0;for(const {name,fn} of tests){try{fn();console.log(`✓ ${name}`);passCount++}catch(error){console.error(`✗ ${name}: ${error.message}`);failCount++}}console.log(`Flight Control: ${passCount} passed, ${failCount} failed`);return{passCount,failCount,total:tests.length}}
   return{run};

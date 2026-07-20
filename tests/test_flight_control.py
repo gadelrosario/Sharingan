@@ -17,7 +17,7 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("Flight Control: 7 passed, 0 failed", result.stdout)
+        self.assertIn("Flight Control: 8 passed, 0 failed", result.stdout)
 
     def test_progressive_disclosure_and_shared_player_renderer(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
@@ -75,6 +75,17 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
             self.assertIn(f'id="{control}"', html)
         self.assertIn("selectPlayer(${p.id},${slot})", app)
         self.assertIn("renderRecommendation();", app)
+
+    def test_snake_board_uses_position_classes_without_styling_empty_cells(self):
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
+        board = app.split("function renderBoard", 1)[1].split("function teamTierMarkup", 1)[0]
+        self.assertIn("FlightControlV1.boardPositionClass(pl.pos)", board)
+        self.assertIn('pl?`draftedPlayer ${posClass}`:""', board)
+        for position in ("wr", "rb", "te", "qb", "k", "dst", "unknown"):
+            self.assertIn(f".pickCell.board-pos-{position}", css)
+        self.assertIn(".pickCell.board-pos-dst", css)
+        self.assertNotIn("board-pos-", board.split('pl?`draftedPlayer ${posClass}`:""', 1)[1].split("<span", 1)[0])
 
 
 if __name__ == "__main__":
