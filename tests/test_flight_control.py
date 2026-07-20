@@ -50,12 +50,12 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn('css/app.css?v=3.3.0', html)
-        self.assertIn('js/flight-control-v1.js?v=1.1.0', html)
-        self.assertIn('js/app.js?v=3.3.0', html)
-        self.assertIn('service-worker.js?v=flight_control_1_1', app)
-        self.assertIn('fantasy-hq-flight-control-1-1', worker)
-        for asset in ('css/app.css?v=3.3.0', 'js/flight-control-v1.js?v=1.1.0', 'js/app.js?v=3.3.0'):
+        self.assertIn('css/app.css?v=3.4.1', html)
+        self.assertIn('js/flight-control-v1.js?v=1.2.1', html)
+        self.assertIn('js/app.js?v=3.4.1', html)
+        self.assertIn('service-worker.js?v=snake_board_colors_1', app)
+        self.assertIn('fantasy-hq-snake-board-colors-1', worker)
+        for asset in ('css/app.css?v=3.4.1', 'js/flight-control-v1.js?v=1.2.1', 'js/app.js?v=3.4.1'):
             self.assertIn(asset, worker)
 
     def test_planning_removes_redundant_pressure_and_room_intel_rows(self):
@@ -80,12 +80,20 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
         board = app.split("function renderBoard", 1)[1].split("function teamTierMarkup", 1)[0]
-        self.assertIn("FlightControlV1.boardPositionClass(pl.pos)", board)
-        self.assertIn('pl?`draftedPlayer ${posClass}`:""', board)
+        incremental = app.split("function updateBoardIncremental", 1)[1].split("function scheduleHeavyRefresh", 1)[0]
+        self.assertIn("boardPlayerClasses(pl)", board)
+        self.assertIn("applyBoardPlayerClasses(used,pl)", incremental)
+        self.assertIn("function boardPlayerClasses(player)", app)
+        self.assertIn("classList.toggle('drafted-player',Boolean(player))", app)
+        undo = app.split("function undoLastPick", 1)[1].split("function syncSearch", 1)[0]
+        render_all = app.split("function renderAll", 1)[1].split("function invalidateIntelligence", 1)[0]
+        self.assertIn("renderAll()", undo)
+        self.assertIn("renderBoard()", render_all)
         for position in ("wr", "rb", "te", "qb", "k", "dst", "unknown"):
             self.assertIn(f".pickCell.board-pos-{position}", css)
         self.assertIn(".pickCell.board-pos-dst", css)
-        self.assertNotIn("board-pos-", board.split('pl?`draftedPlayer ${posClass}`:""', 1)[1].split("<span", 1)[0])
+        self.assertNotIn("#ff00ff", css)
+        self.assertIn(".pickCell.board-pos-k{background:#d62f45;border-left:4px solid #ffad52", css)
 
 
 if __name__ == "__main__":
