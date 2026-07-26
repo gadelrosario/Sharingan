@@ -13,7 +13,7 @@ const managers=[
 ];
 const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"];
 let rosterSlots=[],TOTAL_ROUNDS=17,TOTAL_PICKS=170;
-const APP_VERSION="Jōnin 3.2 • Responsive Draft Command";
+const APP_VERSION=window.FantasyHQAppVersion;
 function buildRosterSlots(settings={}){
  const q=+(settings.startQB??1),rb=+(settings.startRB??2),wr=+(settings.startWR??3),te=+(settings.startTE??1),flex=+(settings.flex??2),k=+(settings.startK??1),dst=+(settings.startDST??1),bench=+(settings.bench??6),slots=[];
  for(let i=1;i<=q;i++)slots.push(i===1?"QB":`QB${i}`);for(let i=1;i<=rb;i++)slots.push(`RB${i}`);for(let i=1;i<=wr;i++)slots.push(`WR${i}`);for(let i=1;i<=te;i++)slots.push(i===1?"TE":`TE${i}`);for(let i=1;i<=flex;i++)slots.push(`FLEX${i}`);for(let i=1;i<=k;i++)slots.push(i===1?"K":`K${i}`);for(let i=1;i<=dst;i++)slots.push(i===1?"DEF":`DEF${i}`);for(let i=1;i<=bench;i++)slots.push(`BENCH${i}`);return slots;
@@ -49,7 +49,7 @@ function snapshotRecommendations(){return getIntelligenceSnapshot().recommendati
 function el(id){return document.getElementById(id)}
 function safeText(id,value){const node=el(id);if(node)node.textContent=value}
 function safeHTML(id,value){const node=el(id);if(node)node.innerHTML=value}
-function reportRuntimeError(context,err){console.error(`[${APP_VERSION}] ${context}:`,err);const status=el("runtimeStatus");if(status){status.classList.remove("hidden");status.innerHTML=`<b>Fantasy HQ recovered from an interface error.</b><div class="meta">${context}: ${err.message}. Refresh once if a section does not update.</div>`}}
+function reportRuntimeError(context,err){console.error(`[${APP_VERSION.label}] ${context}:`,err);const status=el("runtimeStatus");if(status){status.classList.remove("hidden");status.innerHTML=`<b>Fantasy HQ recovered from an interface error.</b><div class="meta">${context}: ${err.message}. Refresh once if a section does not update.</div>`}}
 window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error||new Error(e.message)));
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 function updateSetupRoundPreview(){const settings={startQB:+(el("startQB")?.value||1),startRB:+(el("startRB")?.value||2),startWR:+(el("startWR")?.value||3),startTE:+(el("startTE")?.value||1),flex:+(el("flexSpots")?.value||2),startK:+(el("startK")?.value||1),startDST:+(el("startDST")?.value||1),bench:+(el("benchSpots")?.value||6)};const rounds=buildRosterSlots(settings).length,teams=+(el("teamCount")?.value||10);safeText("calculatedRounds",`${rounds} rounds • ${rounds*teams} picks`)}
@@ -91,10 +91,10 @@ function startDraft(){
   captureManagers();pick=1;drafted=[];history=[];decisionSnapshots=[];currentYahooRecord=null;selectedCandidateId=null;invalidateIntelligence();buildProfiles();if(typeof rosterRows!=="function")throw new Error("Roster engine did not initialize");
   setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
   let modeName=mode==="practice"?"🟢 PRACTICE MOCK DRAFT":mode==="yahoo"?"🟣 YAHOO LIVE MOCK • REAL PEOPLE":"🔵 LIVE DRAFT DAY";
-  modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
+  modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>${APP_VERSION.label} • Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   renderLeagueDnaBar();
   el("practiceControls")?.classList.toggle("hidden",mode!=="practice");el("liveHelp")?.classList.toggle("hidden",mode==="practice");renderAll();requestAnimationFrame(()=>window.scrollTo?.(0,0));
- }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please refresh the Jōnin 3.3 build. Technical detail: "+err.message)}
+ }catch(err){console.error("Unable to start draft:",err);alert(`Fantasy HQ could not start the draft. Please refresh the ${APP_VERSION.label} build. Technical detail: ${err.message}`)}
 }
 function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden");document.getElementById('headerDraftContext')?.classList.add('hidden')}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
@@ -758,7 +758,7 @@ function buildYahooRecord(){
  const now=new Date();
  return {
   schemaVersion:"fantasy-hq-yahoo-mock-1",
-  appVersion:APP_VERSION,
+  appVersion:APP_VERSION.label,
   id:`yahoo-${now.toISOString()}-${Math.random().toString(36).slice(2,8)}`,
   createdAt:now.toISOString(),
   source:"Yahoo public mock draft against real people",
@@ -1007,5 +1007,5 @@ const originalStartDraft=startDraft;startDraft=function(){const result=originalS
 const originalSelectPlayer=selectPlayer;selectPlayer=function(id,team){const result=originalSelectPlayer.apply(this,arguments);syncDraftIntoLeagueState();return result};
 const originalUndoLastPick=undoLastPick;undoLastPick=function(){const result=originalUndoLastPick.apply(this,arguments);syncDraftIntoLeagueState();return result};
 
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_5").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_7_1").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
 init();
