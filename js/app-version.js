@@ -5,7 +5,11 @@
     if(!documentRef)return;
     documentRef.title=`Gerard Fantasy HQ — ${APP_VERSION.label}`;
     documentRef.documentElement.dataset.appVersion=APP_VERSION.label;
-    documentRef.querySelectorAll('[data-app-version]').forEach(node=>{node.textContent=APP_VERSION.label;});
+    documentRef.querySelectorAll('[data-app-version]').forEach(node=>{
+  if(node !== documentRef.documentElement){
+    node.textContent=APP_VERSION.label;
+  }
+});
   }
   root.FantasyHQAppVersion=APP_VERSION;
   root.applyFantasyHQVersion=applyVersionMetadata;
