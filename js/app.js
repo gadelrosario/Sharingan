@@ -55,6 +55,7 @@ window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background t
 function updateSetupRoundPreview(){const settings={startQB:+(el("startQB")?.value||1),startRB:+(el("startRB")?.value||2),startWR:+(el("startWR")?.value||3),startTE:+(el("startTE")?.value||1),flex:+(el("flexSpots")?.value||2),startK:+(el("startK")?.value||1),startDST:+(el("startDST")?.value||1),bench:+(el("benchSpots")?.value||6)};const rounds=buildRosterSlots(settings).length,teams=+(el("teamCount")?.value||10);safeText("calculatedRounds",`${rounds} rounds • ${rounds*teams} picks`)}
 async function init(){
    const poolStatus=el("poolStatus");
+    const draftSlot=el("draftSlot");
  try{
   const response=await fetch("data/players.json?v=jonin_3_2",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
