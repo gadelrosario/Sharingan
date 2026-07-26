@@ -24,8 +24,9 @@ const result=window.AdaptiveCoachingEngineTests.run();if(result.failCount)proces
         card = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
         self.assertIn("AdaptiveCoachingEngineV1.buildCoachingDecision", app)
         self.assertIn('data-recommendation-renderer="adaptive-coaching-1.0"', card)
-        for field in ("phaseLabel", "headline", "targetPlayerName", "confidence", "reason"):
+        for field in ("phaseLabel", "headline", "confidence", "reason"):
             self.assertIn(f"decision.{field}", card)
+        self.assertIn("premiumPlayerCardMarkup(playerCard)", card)
         self.assertNotIn('<strong>${safeInsightText(summary.action)}</strong>', card)
         self.assertIn('aria-live="polite"', card)
         self.assertIn("js/adaptive-coaching-engine-v1.js?v=1.0.0", html)

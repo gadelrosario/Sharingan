@@ -57,8 +57,9 @@ if(!active)process.exit(1);
         self.assertIn("decisionCardMarkup(model,{recommended:displayed.id===primary.id})", app)
         self.assertNotIn("function recommendationHeroMarkup", app)
         self.assertIn('data-recommendation-renderer="adaptive-coaching-1.0"', app)
-        for label in ("FIGHT CONTROL", "ADAPTIVE COACHING", "RECOMMENDED PLAYER"):
+        for label in ("FIGHT CONTROL", "ADAPTIVE COACHING"):
             self.assertIn(label, card_source)
+        self.assertIn("Recommended player", app)
         self.assertIn("alternativeDecisionMarkup(playerDecisionModel(candidate,recs)", app)
         self.assertIn("recommendation.dataset.renderMs", app)
         self.assertIn('class="card planningDetails"', html)
@@ -69,13 +70,14 @@ if(!active)process.exit(1);
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn('css/app.css?v=3.6.1', html)
+        self.assertIn('css/app.css?v=3.7.1', html)
         self.assertIn('js/flight-control-v1.js?v=1.3.0', html)
         self.assertIn('js/adaptive-coaching-engine-v1.js?v=1.0.0', html)
-        self.assertIn('js/app.js?v=3.6.1', html)
-        self.assertIn('service-worker.js?v=jonin_3_3_1', app)
-        self.assertIn('fantasy-hq-jonin-3-3-1', worker)
-        for asset in ('css/app.css?v=3.6.1', 'js/flight-control-v1.js?v=1.3.0', 'js/adaptive-coaching-engine-v1.js?v=1.0.0', 'js/app.js?v=3.6.1'):
+        self.assertIn('js/premium-player-card-v1.js?v=1.0.0', html)
+        self.assertIn('js/app.js?v=3.7.1', html)
+        self.assertIn('service-worker.js?v=jonin_3_4_1', app)
+        self.assertIn('fantasy-hq-jonin-3-4-1', worker)
+        for asset in ('css/app.css?v=3.7.1', 'js/flight-control-v1.js?v=1.3.0', 'js/adaptive-coaching-engine-v1.js?v=1.0.0', 'js/premium-player-card-v1.js?v=1.0.0', 'js/app.js?v=3.7.1'):
             self.assertIn(asset, worker)
 
     def test_planning_removes_redundant_pressure_and_room_intel_rows(self):
