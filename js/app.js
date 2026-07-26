@@ -54,15 +54,16 @@ window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error|
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 function updateSetupRoundPreview(){const settings={startQB:+(el("startQB")?.value||1),startRB:+(el("startRB")?.value||2),startWR:+(el("startWR")?.value||3),startTE:+(el("startTE")?.value||1),flex:+(el("flexSpots")?.value||2),startK:+(el("startK")?.value||1),startDST:+(el("startDST")?.value||1),bench:+(el("benchSpots")?.value||6)};const rounds=buildRosterSlots(settings).length,teams=+(el("teamCount")?.value||10);safeText("calculatedRounds",`${rounds} rounds • ${rounds*teams} picks`)}
 async function init(){
+   const poolStatus=el("poolStatus");
  try{
   const response=await fetch("data/players.json?v=jonin_3_2",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   buildPlayerSearchIndex();
-  poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
+ if(poolStatus)poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
  }catch(err){
   console.error("Fantasy HQ player pool failed to load:",err);
-  poolStatus.innerHTML=`<b style="color:#ff8c9a">Draft pool could not load</b><div class="meta" style="margin-top:4px">Open the installed/deployed website rather than the HTML file by itself, then refresh. Error: ${err.message}</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=true;btn.textContent="Player pool unavailable";}
+  if(poolStatus)poolStatus.innerHTML=`<b style="color:#ff8c9a">Draft pool could not load</b><div class="meta" style="margin-top:4px">Open the installed/deployed website rather than the HTML file by itself, then refresh. Error: ${err.message}</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=true;btn.textContent="Player pool unavailable";}
  }
  for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;draftSlot.appendChild(o)}
  draftSlot.value=10;
