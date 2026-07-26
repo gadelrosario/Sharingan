@@ -11,6 +11,7 @@ class SharinganVisionTests(unittest.TestCase):
     def test_deterministic_javascript_suite(self):
         command = """
 global.window={};const fs=require('fs'),vm=require('vm');
+vm.runInThisContext(fs.readFileSync('js/player-tier-contract.js','utf8'));
 vm.runInThisContext(fs.readFileSync('js/sharingan-vision-v1.js','utf8'));
 vm.runInThisContext(fs.readFileSync('tests/sharingan-vision-tests.js','utf8'));
 const result=window.SharinganVisionTests.run();if(result.failCount)process.exit(1);

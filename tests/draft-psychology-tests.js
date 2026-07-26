@@ -1,0 +1,75 @@
+(function(root){
+  'use strict';
+  function run(){
+    const E=root.DraftPsychologyEngineV1,results=[];
+    const test=(name,condition)=>results.push({name,passed:Boolean(condition)});
+    const picks=positions=>positions.map((position,index)=>({id:index+1,position,tier:index<2?'A':'B'}));
+    const available=(position='RB',count=4,currentTier='A')=>Array.from({length:count},(_,index)=>({id:100+index,name:`${position} ${index+1}`,position,tier:index<2?currentTier:'B',overall:12+index}));
+    const managers=Array.from({length:10},(_,index)=>({team:index+1,name:`Manager ${index+1}`,archetype:'Balanced Value',counts:{QB:0,RB:0,WR:0,TE:0}}));
+    const base={currentPick:10,round:1,userSlot:10,leagueSize:10,totalPicks:170,recentPicks:picks(['QB','WR','RB','WR','TE','RB']),availablePlayers:[...available('RB'),...available('WR'),...available('QB'),...available('TE')],recommendation:{id:100,name:'RB 1',position:'RB',tier:'A',overall:5},recommendationConfidence:77,recommendationMamba:91,managers,rostersComplete:true,starterSlots:{QB:1,RB:2,WR:3,TE:1},userCounts:{QB:0,RB:0,WR:0,TE:0}};
+    const analyze=overrides=>E.analyze({...base,...overrides});
+
+    const opening=analyze({currentPick:1,userSlot:1,round:1,recentPicks:[]});
+    test('1 no run at opening pick',opening.runStatus==='NONE');
+    test('2 insufficient history is not established',opening.keyInsight==='Board behavior is not established yet.');
+    test('3 three-position cluster is not a run',analyze({recentPicks:picks(['QB','RB','WR'])}).runStatus==='NONE');
+    test('4 active RB run',analyze({recentPicks:picks(['WR','TE','RB','RB','RB','RB'])}).runStatus==='ACCELERATING');
+    test('5 accelerating WR run',analyze({recentPicks:picks(['RB','TE','WR','WR','WR','WR'])}).recentRun==='WR'&&analyze({recentPicks:picks(['RB','TE','WR','WR','WR','WR'])}).runStatus==='ACCELERATING');
+    test('6 slowing TE run',E.detectRun({recentPicks:picks(['TE','TE','WR','RB','TE','TE','QB','RB','WR','QB'])}).status==='SLOWING');
+    test('7 run ending',E.detectRun({recentPicks:picks(['TE','TE','TE','TE','WR','RB','QB','WR','RB','QB'])}).status==='ENDED');
+
+    const scarceAvailable=[{id:1,name:'A1',position:'RB',tier:'A'},{id:2,name:'B1',position:'RB',tier:'B'}],scarce=analyze({userSlot:1,availablePlayers:scarceAvailable,recommendation:{id:1,name:'A1',position:'RB',tier:'A'}});
+    test('8 Tier A depletion risk',scarce.currentTierRisk==='CRITICAL');
+    test('9 no tier-drop risk',analyze({availablePlayers:[...available('RB',8),...available('WR')]}).currentTierRisk==='LOW');
+    test('10 critical tier break',scarce.flightRisk.severity==='CRITICAL');
+    test('11 safe to wait',analyze({currentPick:10,userSlot:10,availablePlayers:[...available('RB',8),...available('WR')]}).timingRecommendation==='SAFE TO WAIT');
+    test('12 protect the tier',scarce.timingRecommendation==='PROTECT THE TIER');
+    const overreaction=analyze({recentPicks:picks(['TE','QB','RB','RB','RB','RB']),recommendation:{id:200,name:'WR A',position:'WR',tier:'A'},availablePlayers:[...available('WR',5),...available('RB',5)]});
+    test('13 exploit overreaction',overreaction.timingRecommendation==='EXPLOIT OVERREACTION');
+    test('14 high flight risk',E.flightRisk({recommendation:{name:'Target',position:'RB'},availability:{availabilityLabel:'UNLIKELY'},scarcity:{RB:{tierDropRisk:'LOW',currentTier:'A'}}}).severity==='HIGH');
+    test('15 low flight risk',E.flightRisk({recommendation:{name:'Target',position:'RB'},availability:{availabilityLabel:'LIKELY'},scarcity:{RB:{tierDropRisk:'LOW',currentTier:'A'}}}).severity==='LOW');
+    const likely=E.availabilityProjection({recommendation:{id:1,position:'WR'},window:{picksBetween:1},run:{status:'NONE'},scarcity:{WR:{tierDropRisk:'LOW'}},round:1,dataQuality:'HIGH'});
+    const uncertain=E.availabilityProjection({recommendation:{id:1,position:'WR'},window:{picksBetween:8},run:{position:'WR',status:'ACTIVE'},scarcity:{WR:{tierDropRisk:'MODERATE'}},round:4,dataQuality:'HIGH'});
+    const unlikely=E.availabilityProjection({recommendation:{id:1,position:'WR'},window:{picksBetween:15},run:{position:'WR',status:'ACCELERATING'},scarcity:{WR:{tierDropRisk:'CRITICAL'}},round:5,dataQuality:'HIGH'});
+    test('16 availability likely',likely.availabilityLabel==='LIKELY');
+    test('17 availability uncertain',uncertain.availabilityLabel==='UNCERTAIN');
+    test('18 availability unlikely',unlikely.availabilityLabel==='UNLIKELY');
+    const turn10=E.snakeWindow({currentPick:10,userSlot:10,leagueSize:10,totalPicks:170});
+    test('19 pick 10 snake turn',turn10.nextUserPick===11&&turn10.picksBetween===0&&turn10.isUserTurnBackToBack);
+    const turn1=E.snakeWindow({currentPick:1,userSlot:1,leagueSize:10,totalPicks:170});
+    test('20 pick 1 snake turn',turn1.nextUserPick===20&&turn1.picksBetween===18);
+    const opponentTurn=E.snakeWindow({currentPick:5,userSlot:5,leagueSize:10,totalPicks:170});
+    test('21 back-to-back opponent picks',opponentTurn.backToBackManagers.includes(10));
+    const weak=E.managerSignals([{team:2,name:'Ray',archetype:'Value Drafter',counts:{}}])[0];
+    test('22 manager tendency weak signal',weak.strength==='weak signal');
+    test('23 tendency does not override evidence',analyze({recentPicks:picks(['QB','TE','WR','WR','WR','WR']),managers:[{team:1,name:'Ray',archetype:'Value Drafter',counts:{QB:0,RB:0,WR:0,TE:0}},...managers.slice(1)]}).runStatus==='ACCELERATING');
+    test('24 unknown manager profile',E.managerSignals([{team:2,name:'Unknown manager',counts:{}}])[0].text==='Manager tendency is unavailable.');
+    test('25 incomplete rosters lower quality',analyze({rostersComplete:false,recentPicks:picks(['QB','WR','RB','TE','WR','RB'])}).dataQuality!=='HIGH');
+    test('26 low-quality language is softened',E.availabilityProjection({recommendation:{id:1,position:'RB'},window:{picksBetween:12},run:{status:'NONE'},scarcity:{RB:{tierDropRisk:'HIGH'}},round:5,dataQuality:'LOW'}).rationale.includes('may tighten'));
+    test('27 high-quality language is firmer',E.availabilityProjection({recommendation:{id:1,position:'RB'},window:{picksBetween:12},run:{status:'NONE'},scarcity:{RB:{tierDropRisk:'HIGH'}},round:5,dataQuality:'HIGH'}).rationale.includes('is projected to tighten'));
+    const rookie=analyze({recommendation:{...base.recommendation,rookie:true},userCounts:{QB:0,RB:0,WR:0,TE:0}});
+    test('28 rookie foundation restriction preserved',rookie.recommendationId===base.recommendation.id&&rookie.supportingInsights.some(text=>text.includes('not its only anchor')));
+    test('29 early need does not rescore value',analyze({round:2,userCounts:{QB:0,RB:0,WR:0,TE:0}}).recommendationId===base.recommendation.id);
+    test('30 late-round need sensitivity',analyze({round:12,userCounts:{QB:1,RB:0,WR:5,TE:1}}).supportingInsights.some(text=>text.includes('open starter slot')));
+    test('31 recommendation one unchanged',analyze({}).recommendationId===base.recommendation.id);
+    test('32 confidence unchanged',analyze({}).recommendationConfidence===77);
+    test('33 Mamba unchanged',analyze({}).recommendationMamba===91);
+    test('34 tier unchanged',analyze({}).recommendationTier==='A');
+    const before=analyze({recentPicks:picks(['QB','WR','RB'])}),afterPick=analyze({recentPicks:picks(['QB','WR','RB','RB','RB','RB'])}),undone=analyze({recentPicks:picks(['QB','WR','RB'])});
+    test('35 undo restores state',JSON.stringify(before)===JSON.stringify(undone));
+    test('36 reset clears signals',analyze({currentPick:1,recentPicks:[]}).runStatus==='NONE');
+    test('37 simulation updates signals',before.runStatus!==afterPick.runStatus);
+    test('38 comparison cannot alter recommendation psychology',analyze({selectedComparisonId:999}).recommendationId===base.recommendation.id);
+    test('39 no recommendation safe state',analyze({recommendation:null}).flightRisk.severity==='NONE');
+    const managerTeams=analyze({}).managerSignals.map(signal=>signal.team);
+    test('40 no duplicate manager IDs',new Set(managerTeams).size===managerTeams.length);
+    test('41 compact output limits visible insights',analyze({}).supportingInsights.length<=2);
+    test('42 probability uses supported band',/^(85–95%|70–85%|50–70%|30–50%|10–30%|under 10%)$/.test(analyze({}).projectedNextPickAvailability.probabilityBand));
+
+    const failCount=results.filter(result=>!result.passed).length;
+    console.log(`Draft Psychology: ${results.length-failCount} passed, ${failCount} failed`);
+    results.filter(result=>!result.passed).forEach(result=>console.error(`FAIL: ${result.name}`));
+    return {results,passCount:results.length-failCount,failCount};
+  }
+  root.DraftPsychologyTests={run};
+})(typeof window!=='undefined'?window:globalThis);

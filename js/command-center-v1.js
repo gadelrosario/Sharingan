@@ -229,7 +229,7 @@ const DraftCommandCenterV1 = (() => {
     
     // Value explanation
     if (raw.valueScore >= 50) {
-      const tier = player.overallTier || player.posTier || 'C';
+      const tier = typeof window !== 'undefined' && window.PlayerTierContract ? (window.PlayerTierContract.getOverallTier(player) ?? window.PlayerTierContract.getPositionTier(player)) : null;
       parts.push(`Elite-tier ${player.pos} with strong draft capital`);
     } else if (raw.valueScore >= 35) {
       parts.push(`Premium ${player.pos} value at this pick`);

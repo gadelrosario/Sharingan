@@ -11,6 +11,7 @@ class JoninInsightEngineTests(unittest.TestCase):
     def test_deterministic_javascript_suite(self):
         command = """
 global.window={};const fs=require('fs'),vm=require('vm');
+vm.runInThisContext(fs.readFileSync('js/player-tier-contract.js','utf8'));
 vm.runInThisContext(fs.readFileSync('js/jonin-insight-engine-v1.js','utf8'));
 vm.runInThisContext(fs.readFileSync('tests/jonin-insight-tests.js','utf8'));
 const result=window.JoninInsightTests.run();if(result.failCount)process.exit(1);
