@@ -52,7 +52,7 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
 
     def test_service_worker_caches_only_real_card_assets(self):
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn('fantasy-hq-jonin-3-4-1', worker)
+        self.assertIn('fantasy-hq-jonin-3-5', worker)
         self.assertIn('./js/premium-player-card-v1.js?v=1.0.0', worker)
         self.assertNotIn('assets/players/', worker)
         for name in ("generic", "qb", "rb", "wr", "te", "k", "dst"):
