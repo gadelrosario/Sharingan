@@ -45,6 +45,20 @@ const result=window.AdaptiveCoachingEngineTests.run();if(result.failCount)proces
         for forbidden in ("recommendations()", "finalPickScore", "mambaScore", "marketPressure", "waitScore", "Math.random", "Date.now", "document."):
             self.assertNotIn(forbidden, source)
 
+    def test_premium_renderer_teaches_strategy_without_repeating_the_pick(self):
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
+        card = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
+        self.assertIn("strategicInstruction=decision.reason||decision.instruction", card)
+        self.assertIn("supportingReason=decision.secondaryReason", card)
+        self.assertNotIn("safeInsightText(decision.instruction)</strong>", card)
+        self.assertIn("<summary>Why This Pick</summary>", card)
+        for event in ("OPPORTUNITY", "ROOM_OVERREACTION", "TIER_BREAK", "POSITIONAL_EDGE"):
+            self.assertIn(event, app)
+        self.assertIn(".coachPhase.coachEvent", css)
+        self.assertIn(".adaptiveCoach{gap:5px;padding:8px 11px}", css)
+        self.assertIn("font-size:34px!important", css)
+
 
 if __name__ == "__main__":
     unittest.main()
