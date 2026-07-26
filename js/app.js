@@ -11,7 +11,7 @@ const managers=[
 {name:"Rob",archetype:"Conviction Drafter",skill:6.5,predictability:9,homerTeam:"DEN",homer:7,qbHoard:3,waiver:6},
 {name:"AJ",archetype:"Balanced Variable",skill:7,predictability:4,homerTeam:"SF",homer:4,qbHoard:4,waiver:7}
 ];
-const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"],strategies=["Balanced","Hero RB","Zero RB","WR Heavy","Early QB","Elite TE","Rookie Chaser","Value Drafter","Chaos"];
+const blueprint=["RB","WR","WR","RB","TE/QB","QB/TE"];
 let rosterSlots=[],TOTAL_ROUNDS=17,TOTAL_PICKS=170;
 const APP_VERSION=window.FantasyHQAppVersion;
 function buildRosterSlots(settings={}){
@@ -47,6 +47,16 @@ function getIntelligenceSnapshot(){
 }
 function snapshotRecommendations(){return getIntelligenceSnapshot().recommendationIds.map(id=>players.find(p=>p.id===id)).filter(Boolean)}
 function el(id){return document.getElementById(id)}
+const DOM=Object.freeze({
+ poolStatus:el("poolStatus"),draftSlot:el("draftSlot"),managerSetup:el("managerSetup"),
+ practiceChoice:el("practiceChoice"),yahooChoice:el("yahooChoice"),liveChoice:el("liveChoice"),mockRandomizer:el("mockRandomizer"),
+ setupScreen:el("setupScreen"),appScreen:el("appScreen"),draftReport:el("draftReport"),changeBtn:el("changeBtn"),tabs:el("tabs"),modeBanner:el("modeBanner"),
+ recommendation:el("recommendation"),alternatives:el("alternatives"),desktopBoard:el("desktopBoard"),draftBoard:el("draftBoard"),
+ roster:el("roster"),mRoster:el("mRoster"),strategies:el("strategies"),mStrategies:el("mStrategies"),
+ round:el("round"),mRound:el("mRound"),pickLabel:el("pickLabel"),mPickLabel:el("mPickLabel"),until:el("until"),mUntil:el("mUntil"),
+ myDraftReport:el("myDraftReport"),leagueProjection:el("leagueProjection"),allTeamReports:el("allTeamReports"),yahooExportCard:el("yahooExportCard"),archiveCount:el("archiveCount"),
+ desktopManagerTable:el("desktopManagerTable"),sheetManagerTable:el("sheetManagerTable"),managerRosterDetail:el("managerRosterDetail")
+});
 function safeText(id,value){const node=el(id);if(node)node.textContent=value}
 function safeHTML(id,value){const node=el(id);if(node)node.innerHTML=value}
 function reportRuntimeError(context,err){console.error(`[${APP_VERSION.label}] ${context}:`,err);const status=el("runtimeStatus");if(status){status.classList.remove("hidden");status.innerHTML=`<b>Fantasy HQ recovered from an interface error.</b><div class="meta">${context}: ${err.message}. Refresh once if a section does not update.</div>`}}
@@ -54,27 +64,24 @@ window.addEventListener("error",e=>reportRuntimeError("Browser runtime",e.error|
 window.addEventListener("unhandledrejection",e=>reportRuntimeError("Background task",e.reason instanceof Error?e.reason:new Error(String(e.reason))));
 function updateSetupRoundPreview(){const settings={startQB:+(el("startQB")?.value||1),startRB:+(el("startRB")?.value||2),startWR:+(el("startWR")?.value||3),startTE:+(el("startTE")?.value||1),flex:+(el("flexSpots")?.value||2),startK:+(el("startK")?.value||1),startDST:+(el("startDST")?.value||1),bench:+(el("benchSpots")?.value||6)};const rounds=buildRosterSlots(settings).length,teams=+(el("teamCount")?.value||10);safeText("calculatedRounds",`${rounds} rounds • ${rounds*teams} picks`)}
 async function init(){
-   const poolStatus=el("poolStatus");
-    const draftSlot=el("draftSlot");
  try{
   const response=await fetch("data/players.json?v=jonin_3_2",{cache:"no-store"});
   if(!response.ok)throw new Error("Player database returned "+response.status);
   players=await response.json();
   buildPlayerSearchIndex();
- if(poolStatus)poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
+ if(DOM.poolStatus)DOM.poolStatus.innerHTML=`<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=false;btn.textContent="Start Draft";}
  }catch(err){
   console.error("Fantasy HQ player pool failed to load:",err);
-  if(poolStatus)poolStatus.innerHTML=`<b style="color:#ff8c9a">Draft pool could not load</b><div class="meta" style="margin-top:4px">Open the installed/deployed website rather than the HTML file by itself, then refresh. Error: ${err.message}</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=true;btn.textContent="Player pool unavailable";}
+  if(DOM.poolStatus)DOM.poolStatus.innerHTML=`<b style="color:#ff8c9a">Draft pool could not load</b><div class="meta" style="margin-top:4px">Open the installed/deployed website rather than the HTML file by itself, then refresh. Error: ${err.message}</div>`;const btn=el("startDraftBtn");if(btn){btn.disabled=true;btn.textContent="Player pool unavailable";}
  }
- for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;draftSlot.appendChild(o)}
- draftSlot.value=10;
+ if(DOM.draftSlot){for(let i=1;i<=10;i++){let o=document.createElement("option");o.value=i;o.textContent="Pick "+i;DOM.draftSlot.appendChild(o)}DOM.draftSlot.value=10}
  renderManagerSetup();updateSetupRoundPreview();
 }
 
-function renderManagerSetup(){const pref=["Kalani","Marc","Ray","Fritz","Michael","Gerard","Josh","Raoul","Rob","AJ"];managerSetup.innerHTML="";for(let i=1;i<=10;i++){let w=document.createElement("div");w.className="managerSlot";let b=document.createElement("b");b.textContent="Pick "+i;let s=document.createElement("select");s.id="mgr"+i;managers.forEach(m=>{let o=document.createElement("option");o.value=m.name;o.textContent=m.name+" — "+m.archetype;s.appendChild(o)});s.value=pref[i-1];w.append(b,s);managerSetup.appendChild(w)}}
+function renderManagerSetup(){if(!DOM.managerSetup)return;const pref=["Kalani","Marc","Ray","Fritz","Michael","Gerard","Josh","Raoul","Rob","AJ"];DOM.managerSetup.innerHTML="";for(let i=1;i<=10;i++){let w=document.createElement("div");w.className="managerSlot";let b=document.createElement("b");b.textContent="Pick "+i;let s=document.createElement("select");s.id="mgr"+i;managers.forEach(m=>{let o=document.createElement("option");o.value=m.name;o.textContent=m.name+" — "+m.archetype;s.appendChild(o)});s.value=pref[i-1];w.append(b,s);DOM.managerSetup.appendChild(w)}}
 function captureManagers(){slotManagers={};for(let i=1;i<=10;i++){let e=document.getElementById("mgr"+i);slotManagers[i]=e?e.value:"Team "+i}let old=Object.keys(slotManagers).find(k=>slotManagers[k]==="Gerard");if(old&&+old!==slot){let tmp=slotManagers[slot];slotManagers[old]=tmp}slotManagers[slot]="Gerard"}
 function getManager(t){return managers.find(m=>m.name===slotManagers[t])||managers[0]}
-function chooseMode(m){mode=m;practiceChoice.classList.toggle("selected",m==="practice");yahooChoice.classList.toggle("selected",m==="yahoo");liveChoice.classList.toggle("selected",m==="live");if(document.getElementById("mockRandomizer"))mockRandomizer.classList.toggle("hidden",m!=="practice")}
+function chooseMode(m){mode=m;DOM.practiceChoice?.classList.toggle("selected",m==="practice");DOM.yahooChoice?.classList.toggle("selected",m==="yahoo");DOM.liveChoice?.classList.toggle("selected",m==="live");DOM.mockRandomizer?.classList.toggle("hidden",m!=="practice")}
 function startDraft(){
  try{
   if(!players.length){alert("The player pool has not loaded yet. Refresh the installed website and wait for ‘Draft pool ready.’");return}
@@ -91,14 +98,14 @@ function startDraft(){
   };
   applyDraftStructure();
   captureManagers();pick=1;drafted=[];history=[];decisionSnapshots=[];currentYahooRecord=null;selectedCandidateId=null;invalidateIntelligence();buildProfiles();if(typeof rosterRows!=="function")throw new Error("Roster engine did not initialize");
-  setupScreen.classList.add("hidden");appScreen.classList.remove("hidden");draftReport.classList.add("hidden");document.querySelector('.appgrid').classList.remove('hidden');changeBtn.classList.remove("hidden");tabs.classList.remove("hidden");
+  DOM.setupScreen?.classList.add("hidden");DOM.appScreen?.classList.remove("hidden");DOM.draftReport?.classList.add("hidden");document.querySelector('.appgrid')?.classList.remove('hidden');DOM.changeBtn?.classList.remove("hidden");DOM.tabs?.classList.remove("hidden");
   let modeName=mode==="practice"?"🟢 PRACTICE MOCK DRAFT":mode==="yahoo"?"🟣 YAHOO LIVE MOCK • REAL PEOPLE":"🔵 LIVE DRAFT DAY";
-  modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>${APP_VERSION.label} • Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
+  if(DOM.modeBanner)DOM.modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>${APP_VERSION.label} • Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   renderLeagueDnaBar();
   el("practiceControls")?.classList.toggle("hidden",mode!=="practice");el("liveHelp")?.classList.toggle("hidden",mode==="practice");renderAll();requestAnimationFrame(()=>window.scrollTo?.(0,0));
  }catch(err){console.error("Unable to start draft:",err);alert(`Fantasy HQ could not start the draft. Please refresh the ${APP_VERSION.label} build. Technical detail: ${err.message}`)}
 }
-function backToSetup(){appScreen.classList.add("hidden");setupScreen.classList.remove("hidden");changeBtn.classList.add("hidden");tabs.classList.add("hidden");document.getElementById('headerDraftContext')?.classList.add('hidden')}
+function backToSetup(){DOM.appScreen?.classList.add("hidden");DOM.setupScreen?.classList.remove("hidden");DOM.changeBtn?.classList.add("hidden");DOM.tabs?.classList.add("hidden");document.getElementById('headerDraftContext')?.classList.add('hidden')}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
 function teamForPick(p){let r=Math.ceil(p/10),x=(p-1)%10+1;return r%2?x:11-x}
 function info(){let r=Math.ceil(pick/10),ip=(pick-1)%10+1,next=pick;while(next<=TOTAL_PICKS&&teamForPick(next)!==slot)next++;return{r,ip,until:Math.max(0,Math.min(TOTAL_PICKS,next)-pick)}}
@@ -336,7 +343,7 @@ function markHeavyViewsDirty(){dirtyViews.players=true;dirtyViews.room=true;dirt
 function boardPlayerClasses(player){return player?`drafted-player ${window.FlightControlV1?FlightControlV1.boardPositionClass(player.pos):'board-pos-unknown'}`:''}
 function applyBoardPlayerClasses(cell,player){[...cell.classList].filter(name=>name.startsWith('board-pos-')).forEach(name=>cell.classList.remove(name));cell.classList.toggle('drafted-player',Boolean(player));if(player)boardPlayerClasses(player).split(' ').forEach(name=>cell.classList.add(name))}
 function updateBoardIncremental(record){
- const roots=[desktopBoard,draftBoard].filter(Boolean),oldPick=record.pick,newPick=pick,pl=players.find(x=>x.id===record.id);
+ const roots=[DOM.desktopBoard,DOM.draftBoard].filter(Boolean),oldPick=record.pick,newPick=pick,pl=players.find(x=>x.id===record.id);
  roots.forEach(root=>{
   root.querySelectorAll('.pickCell.current').forEach(cell=>cell.classList.remove('current'));
   const used=root.querySelector(`[data-pick="${oldPick}"]`);
@@ -538,7 +545,7 @@ function toggleMobileTeam(){
 }
 
 
-function randomizeManagerOrder(){if(mode!=="practice"){alert("Randomization is for Practice Mock Drafts. Yahoo Live Mock and Live Draft keep manual assignments.");return}let names=managers.map(m=>m.name).filter(n=>n!=="Gerard");for(let i=names.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[names[i],names[j]]=[names[j],names[i]]}let idx=0;for(let i=1;i<=10;i++){let el=document.getElementById("mgr"+i);if(!el)continue;el.value=(i===+draftSlot.value)?"Gerard":names[idx++]}}
+function randomizeManagerOrder(){if(mode!=="practice"){alert("Randomization is for Practice Mock Drafts. Yahoo Live Mock and Live Draft keep manual assignments.");return}let names=managers.map(m=>m.name).filter(n=>n!=="Gerard");for(let i=names.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[names[i],names[j]]=[names[j],names[i]]}let idx=0;for(let i=1;i<=10;i++){let node=document.getElementById("mgr"+i);if(!node)continue;node.value=(i===+(DOM.draftSlot?.value||10))?"Gerard":names[idx++]}}
 function teamExposure(){let map={};myPlayers().forEach(p=>{if(!p.team||p.pos==="DST")return;map[p.team]=(map[p.team]||0)+1});return Object.entries(map).sort((a,b)=>b[1]-a[1])}
 function byeExposure(){let map={};myPlayers().forEach(p=>{if(p.bye)map[p.bye]=(map[p.bye]||0)+1});return Object.entries(map).sort((a,b)=>b[1]-a[1])}
 function exposureWarningFor(p){if(!p.team||p.pos==="DST")return null;let count=(teamExposure().find(([t])=>t===p.team)||[null,0])[1],after=count+1,severity=after>=4?"heavy":after===3?"moderate":"normal",quality=p.offenseQuality||"average",text=after>=4?`Heavy ${p.team} exposure (${after} players).`:after===3?`Moderate ${p.team} exposure (${after} players).`:"";if(text&&quality==="weak")text+=" Weaker offense increases the risk.";if(text&&quality==="strong")text+=" Strong offense softens the risk.";return text?{severity,text}:null}
@@ -702,25 +709,25 @@ function renderRecommendation(){
  const renderStarted=performance.now();
  let recs=snapshotRecommendations();
  if(!recs.length){
-   recommendation.innerHTML="<b>Draft complete.</b>";
-   alternatives.innerHTML="";
-   recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
+   if(DOM.recommendation){DOM.recommendation.innerHTML="<b>Draft complete.</b>";DOM.recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3)}
+   if(DOM.alternatives)DOM.alternatives.innerHTML="";
    return;
  }
  const primary=recs[0],selected=selectedCandidateId?players.find(candidate=>candidate.id===selectedCandidateId&&!drafted.includes(candidate.id)):null,displayed=selected||primary;
  const model=playerDecisionModel(displayed,recs);
- recommendation.className="rec "+model.state.cls;
- recommendation.innerHTML=decisionCardMarkup(model,{recommended:displayed.id===primary.id});
+ if(!DOM.recommendation||!DOM.alternatives)return;
+ DOM.recommendation.className="rec "+model.state.cls;
+ DOM.recommendation.innerHTML=decisionCardMarkup(model,{recommended:displayed.id===primary.id});
  const alternativesToShow=[primary,...recs.slice(1,5)].filter((candidate,index,list)=>candidate.id!==displayed.id&&list.findIndex(item=>item.id===candidate.id)===index).slice(0,4);
- alternatives.innerHTML=alternativesToShow.map((candidate,index)=>alternativeDecisionMarkup(playerDecisionModel(candidate,recs),candidate.id===primary.id?1:index+2)).join('');
- recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
+ DOM.alternatives.innerHTML=alternativesToShow.map((candidate,index)=>alternativeDecisionMarkup(playerDecisionModel(candidate,recs),candidate.id===primary.id?1:index+2)).join('');
+ DOM.recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
 }
-function renderBoard(){let byPick=new Map(history.map(x=>[x.pick,x])),cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=TOTAL_ROUNDS;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=byPick.get(pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div data-pick="${pnum}" class="pickCell ${boardPlayerClasses(pl)} ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}desktopBoard.innerHTML=cols.join("");draftBoard.innerHTML=cols.join("")}
+function renderBoard(){let byPick=new Map(history.map(x=>[x.pick,x])),cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=TOTAL_ROUNDS;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=byPick.get(pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div data-pick="${pnum}" class="pickCell ${boardPlayerClasses(pl)} ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}const markup=cols.join("");if(DOM.desktopBoard)DOM.desktopBoard.innerHTML=markup;if(DOM.draftBoard)DOM.draftBoard.innerHTML=markup}
 function teamTierMarkup(){let positions=["QB","RB","WR","TE"],lines=positions.map(pos=>{let c=positionTierCounts(pos),bits=["S","A","B","C"].filter(t=>c[t]).map(t=>`${t}×${c[t]}`).join("  ")||"—";return `<div class="tierLine"><b>${pos}</b><span class="tierDots">${bits}</span><span>${positionStrength(pos)}</span></div>`}).join("");let rb=positionStrength("RB"),wr=positionStrength("WR"),advice=rb==="Elite"||rb==="Strong"?"RB quality is secure. Shift toward WR when values are close. Value Override still wins.":wr==="Elite"||wr==="Strong"?"WR quality is secure. Add RB when values are close. Value Override still wins.":"Build the best available starting tier. Value remains the priority.";return `<div class="teamTierSummary"><b>Team Decision-Tier Quality</b>${lines}<div class="teamAdvice">${advice}</div></div>`}
 function rosterSlotMarkup(row){const p=row.player,label=row.slot.startsWith("DEF")?row.slot.replace("DEF","D/ST"):row.slot;if(!p){const missing=row.unresolved?`Unresolved player ID ${safeInsightText(row.playerId)}`:"Empty";return `<div class="myTeamSlot emptySlot" role="listitem"><span class="rosterSlotLabel">${safeInsightText(label)}</span><span class="rosterEmpty" aria-label="${safeInsightText(label)} empty">${missing}</span></div>`}const decisionTier=PlayerTierContract.getDecisionTier(p),position=positionKey(p),meta=[p.team||"Team unavailable",p.bye!=null?`Bye ${p.bye}`:null].filter(Boolean).join(" • ");return `<div class="myTeamSlot filledSlot" role="listitem"><span class="rosterSlotLabel">${safeInsightText(label)}</span><span class="rosterPlayer"><b>${safeInsightText(p.name)}</b><small>${safeInsightText(position)} • ${safeInsightText(meta)} • <span aria-label="Decision Tier ${decisionTier}">D:${decisionTier}</span></small></span></div>`}
 function rosterPanelMarkup(){const view=rosterViewState(),starters=view.starters.map(rosterSlotMarkup).join(""),bench=view.bench.map(rosterSlotMarkup).join(""),overflow=view.overflow.map(rosterSlotMarkup).join("");return `<div class="myTeamGroup" role="group" aria-label="Starting lineup"><div class="myTeamGroupTitle">STARTERS</div><div role="list">${starters}</div></div><div class="myTeamGroup benchGroup" role="group" aria-label="Bench"><div class="myTeamGroupTitle">BENCH</div><div role="list">${bench}</div></div>${overflow?`<div class="myTeamGroup overflowGroup" role="group" aria-label="Roster overflow"><div class="myTeamGroupTitle">UNASSIGNED</div><div role="list">${overflow}</div></div>`:""}`}
-function renderRoster(){let markup=rosterPanelMarkup();if(roster)roster.innerHTML=markup;if(mRoster)mRoster.innerHTML=markup;let ss=[];for(let t=1;t<=10;t++)ss.push(`<div class="strategy"><span>${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}</span><span class="pill">${t===slot?"Gerard Blueprint":aiProfiles[t]||"Manual"}</span></div>`);strategies.innerHTML=ss.join("");mStrategies.innerHTML=ss.join("")}
-function renderMeta(){let i=info(),pickText=i.r+"."+String(i.ip).padStart(2,"0"),scoringLabel=leagueContext.scoring==='full'?'Full PPR':leagueContext.scoring==='standard'?'Standard':'Half PPR',modeLabel=mode==='practice'?'Practice':mode==='yahoo'?'Yahoo Mock':'Live Draft';round.textContent=`${Math.min(i.r,TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;mRound.textContent=`${Math.min(i.r,TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;pickLabel.textContent=pickText;mPickLabel.textContent=pickText;until.textContent=i.until;mUntil.textContent=i.until;safeText('headerRound',Math.min(i.r,TOTAL_ROUNDS));safeText('headerPick',pickText);safeText('headerSlot',slot);safeText('headerMode',modeLabel);safeText('headerLeague',`${leagueContext.teams||10} teams • ${scoringLabel}`);document.getElementById('headerDraftContext')?.classList.remove('hidden')}
+function renderRoster(){let markup=rosterPanelMarkup();if(DOM.roster)DOM.roster.innerHTML=markup;if(DOM.mRoster)DOM.mRoster.innerHTML=markup;let ss=[];for(let t=1;t<=10;t++)ss.push(`<div class="strategy"><span>${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}</span><span class="pill">${t===slot?"Gerard Blueprint":aiProfiles[t]||"Manual"}</span></div>`);const strategyMarkup=ss.join("");if(DOM.strategies)DOM.strategies.innerHTML=strategyMarkup;if(DOM.mStrategies)DOM.mStrategies.innerHTML=strategyMarkup}
+function renderMeta(){let i=info(),pickText=i.r+"."+String(i.ip).padStart(2,"0"),scoringLabel=leagueContext.scoring==='full'?'Full PPR':leagueContext.scoring==='standard'?'Standard':'Half PPR',modeLabel=mode==='practice'?'Practice':mode==='yahoo'?'Yahoo Mock':'Live Draft';const roundText=`${Math.min(i.r,TOTAL_ROUNDS)} / ${TOTAL_ROUNDS}`;if(DOM.round)DOM.round.textContent=roundText;if(DOM.mRound)DOM.mRound.textContent=roundText;if(DOM.pickLabel)DOM.pickLabel.textContent=pickText;if(DOM.mPickLabel)DOM.mPickLabel.textContent=pickText;if(DOM.until)DOM.until.textContent=i.until;if(DOM.mUntil)DOM.mUntil.textContent=i.until;safeText('headerRound',Math.min(i.r,TOTAL_ROUNDS));safeText('headerPick',pickText);safeText('headerSlot',slot);safeText('headerMode',modeLabel);safeText('headerLeague',`${leagueContext.teams||10} teams • ${scoringLabel}`);document.getElementById('headerDraftContext')?.classList.remove('hidden')}
 
 function teamPlayers(team){return history.filter(h=>h.team===team).map(h=>players.find(p=>p.id===h.id)).filter(Boolean)}
 function gradeFromScore(s){return s>=94?'A+':s>=90?'A':s>=87?'A-':s>=83?'B+':s>=80?'B':s>=77?'B-':s>=73?'C+':s>=70?'C':s>=67?'C-':s>=63?'D+':s>=60?'D':'F'}
@@ -746,13 +753,13 @@ function evaluateTeam(team){
 function renderDraftReport(){
  const es=[];for(let t=1;t<=10;t++)es.push(evaluateTeam(t));es.sort((a,b)=>b.score-a.score);const me=es.find(x=>x.team===slot);const min=Math.min(...es.map(x=>x.score));const weights=es.map(x=>Math.max(1,(x.score-min+6)**2));const tw=weights.reduce((a,b)=>a+b,0);es.forEach((x,i)=>{x.rank=i+1;x.titleOdds=Math.round(weights[i]/tw*100);x.explanations=window.JoninInsightEngineV1?JoninInsightEngineV1.explainDraftGrade(x,x.gradingContext):{}});
  const reportItems=[['Starters',me.starterStrength,me.explanations.starters],['Ceiling',me.ceiling,me.explanations.ceiling],['Value',me.value,me.explanations.value],['Construction',me.construction,me.explanations.construction],['Bench Upside',me.benchUpside,me.explanations.benchUpside],['Best Value',me.bestPick?me.bestPick.name:'—',me.explanations.bestValue],['Projected Finish',`#${me.rank}`,me.explanations.projectedFinish]];
- myDraftReport.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div class="meta">YOUR DRAFT GRADE</div><div class="reportGrade">${safeInsightText(me.grade)}</div><b>${safeInsightText(me.score)}/100</b></div><div style="text-align:right"><div class="meta">PROJECTED FINISH</div><div style="font-size:28px;font-weight:950">#${safeInsightText(me.rank)}</div><div class="meta">${safeInsightText(me.titleOdds)}% draft-day title odds</div></div></div><div class="reportExplanationGrid">${reportItems.map(([label,value,text])=>`<div class="reportExplanation"><div><span>${safeInsightText(label)}</span><b>${safeInsightText(value)}</b></div><p>${safeInsightText(text||'No meaningful grading signal is available.')}</p></div>`).join('')}</div><div class="scanNotes" style="margin-top:10px"><b>Summary</b><br>Strengths: ${safeInsightText(me.strengths.join(', '))}.<br>Watch: ${safeInsightText(me.weaknesses.join(', '))}.</div></div>`;
- leagueProjection.innerHTML=`<table class="leagueTable"><thead><tr><th>Rank</th><th>Manager</th><th>Grade</th><th>Score</th><th>Title odds</th></tr></thead><tbody>${es.map(x=>`<tr class="${x.team===slot?'youRow':''}"><td><span class="rankBadge">${x.rank}</span></td><td><b>${x.name}</b>${x.rank===1?' <span style="color:#f4d35e">Projected Champion</span>':''}</td><td><span class="gradeBadge">${x.grade}</span></td><td>${x.score}</td><td>${x.titleOdds}%</td></tr>`).join('')}</tbody></table>`;
- allTeamReports.innerHTML=es.map(x=>`<div class="teamReport ${x.team===slot?'youRow':''}"><div class="teamReportHead"><div><b>#${x.rank} ${x.name}</b><div class="meta">${x.team===slot?'Your roster':'Draft slot '+x.team}</div></div><div><span class="gradeBadge">${x.grade}</span> <b>${x.score}</b></div></div><div class="meta" style="margin-top:7px">Starters ${x.starterStrength} • Ceiling ${x.ceiling} • Value ${x.value} • Construction ${x.construction}</div><div style="margin-top:6px"><span class="strength">Strength:</span> ${x.strengths.join(', ')}<br><span class="weakness">Watch:</span> ${x.weaknesses.join(', ')}</div></div>`).join('');
+ if(DOM.myDraftReport)DOM.myDraftReport.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div class="meta">YOUR DRAFT GRADE</div><div class="reportGrade">${safeInsightText(me.grade)}</div><b>${safeInsightText(me.score)}/100</b></div><div style="text-align:right"><div class="meta">PROJECTED FINISH</div><div style="font-size:28px;font-weight:950">#${safeInsightText(me.rank)}</div><div class="meta">${safeInsightText(me.titleOdds)}% draft-day title odds</div></div></div><div class="reportExplanationGrid">${reportItems.map(([label,value,text])=>`<div class="reportExplanation"><div><span>${safeInsightText(label)}</span><b>${safeInsightText(value)}</b></div><p>${safeInsightText(text||'No meaningful grading signal is available.')}</p></div>`).join('')}</div><div class="scanNotes" style="margin-top:10px"><b>Summary</b><br>Strengths: ${safeInsightText(me.strengths.join(', '))}.<br>Watch: ${safeInsightText(me.weaknesses.join(', '))}.</div></div>`;
+ if(DOM.leagueProjection)DOM.leagueProjection.innerHTML=`<table class="leagueTable"><thead><tr><th>Rank</th><th>Manager</th><th>Grade</th><th>Score</th><th>Title odds</th></tr></thead><tbody>${es.map(x=>`<tr class="${x.team===slot?'youRow':''}"><td><span class="rankBadge">${x.rank}</span></td><td><b>${x.name}</b>${x.rank===1?' <span style="color:#f4d35e">Projected Champion</span>':''}</td><td><span class="gradeBadge">${x.grade}</span></td><td>${x.score}</td><td>${x.titleOdds}%</td></tr>`).join('')}</tbody></table>`;
+ if(DOM.allTeamReports)DOM.allTeamReports.innerHTML=es.map(x=>`<div class="teamReport ${x.team===slot?'youRow':''}"><div class="teamReportHead"><div><b>#${x.rank} ${x.name}</b><div class="meta">${x.team===slot?'Your roster':'Draft slot '+x.team}</div></div><div><span class="gradeBadge">${x.grade}</span> <b>${x.score}</b></div></div><div class="meta" style="margin-top:7px">Starters ${x.starterStrength} • Ceiling ${x.ceiling} • Value ${x.value} • Construction ${x.construction}</div><div style="margin-top:6px"><span class="strength">Strength:</span> ${x.strengths.join(', ')}<br><span class="weakness">Watch:</span> ${x.weaknesses.join(', ')}</div></div>`).join('');
 }
 function finishDraft(){
- document.querySelector('.appgrid').classList.add('hidden');draftReport.classList.remove('hidden');tabs.classList.add('hidden');renderDraftReport();
- if(mode==="yahoo"){currentYahooRecord=buildYahooRecord();saveYahooRecord(currentYahooRecord);yahooExportCard.classList.remove("hidden");updateArchiveCount()}else{yahooExportCard.classList.add("hidden")}
+ document.querySelector('.appgrid')?.classList.add('hidden');DOM.draftReport?.classList.remove('hidden');DOM.tabs?.classList.add('hidden');renderDraftReport();
+ if(mode==="yahoo"){currentYahooRecord=buildYahooRecord();saveYahooRecord(currentYahooRecord);DOM.yahooExportCard?.classList.remove("hidden");updateArchiveCount()}else{DOM.yahooExportCard?.classList.add("hidden")}
  window.scrollTo({top:0,behavior:'smooth'})
 }
 function yahooArchive(){try{return JSON.parse(localStorage.getItem("fantasyHQYahooMocks")||"[]")}catch(e){return []}}
@@ -778,9 +785,9 @@ function exportCurrentYahooJSON(){if(!currentYahooRecord){alert("Finish a Yahoo 
 function exportAllYahooJSON(){const a=yahooArchive();if(!a.length){alert("No saved Yahoo mocks yet.");return}downloadBlob(`FantasyHQ_All_Yahoo_Mocks_${safeDateName()}.json`,JSON.stringify({schemaVersion:"fantasy-hq-yahoo-archive-1",exportedAt:new Date().toISOString(),mockCount:a.length,mocks:a},null,2),"application/json")}
 function csvEscape(v){const x=String(v??"");return /[",\n]/.test(x)?`"${x.replace(/"/g,'""')}"`:x}
 function exportCurrentYahooCSV(){if(!currentYahooRecord){alert("Finish a Yahoo Live Mock first.");return}const headers=["overallPick","round","pickInRound","teamSlot","isGerard","playerName","position","nflTeam","tier"];const rows=[headers.join(","),...currentYahooRecord.picks.map(p=>headers.map(h=>csvEscape(p[h])).join(","))];downloadBlob(`FantasyHQ_YahooMock_Picks_${safeDateName()}.csv`,rows.join("\n"),"text/csv")}
-function updateArchiveCount(){const a=yahooArchive();if(archiveCount)archiveCount.textContent=`Saved locally in this browser: ${a.length} Yahoo mock${a.length===1?"":"s"}. Use “Download All Yahoo Mocks” before clearing browser data or switching devices.`}
+function updateArchiveCount(){const a=yahooArchive();if(DOM.archiveCount)DOM.archiveCount.textContent=`Saved locally in this browser: ${a.length} Yahoo mock${a.length===1?"":"s"}. Use “Download All Yahoo Mocks” before clearing browser data or switching devices.`}
 
-function startAnotherMock(){draftReport.classList.add('hidden');document.querySelector('.appgrid').classList.remove('hidden');backToSetup()}
+function startAnotherMock(){DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');backToSetup()}
 
 
 function managerRoster(team){
@@ -879,16 +886,18 @@ function renderManagerTables(){
 }
 function showManagerRoster(team){
  let ps=managerRoster(team),name=team===slot?"Gerard":slotManagers[team]||("Team "+team),c=managerPositionCounts(team);
- managerRosterDetail.innerHTML=`<div class="teamReport" style="margin-top:12px"><div class="teamReportHead"><div><b>${name}</b><div class="meta">${managerTendency(team)} • QB ${c.QB} • RB ${c.RB} • WR ${c.WR} • TE ${c.TE}</div></div><button class="ghost" onclick="managerRosterDetail.innerHTML=''">Hide</button></div><div class="managerDetail">${ps.length?ps.map(p=>`<div class="managerPlayer"><b>${p.name}</b><div class="meta">${p.pos==="DST"?"D/ST":p.pos} • ${p.team}</div></div>`).join(""):`<div class="meta">No players drafted yet.</div>`}</div></div>`;
- managerRosterDetail.scrollIntoView({behavior:"smooth",block:"nearest"});
+ if(!DOM.managerRosterDetail)return;
+ DOM.managerRosterDetail.innerHTML=`<div class="teamReport" style="margin-top:12px"><div class="teamReportHead"><div><b>${name}</b><div class="meta">${managerTendency(team)} • QB ${c.QB} • RB ${c.RB} • WR ${c.WR} • TE ${c.TE}</div></div><button class="ghost" onclick="hideManagerRoster()">Hide</button></div><div class="managerDetail">${ps.length?ps.map(p=>`<div class="managerPlayer"><b>${p.name}</b><div class="meta">${p.pos==="DST"?"D/ST":p.pos} • ${p.team}</div></div>`).join(""):`<div class="meta">No players drafted yet.</div>`}</div></div>`;
+ DOM.managerRosterDetail.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
+function hideManagerRoster(){if(DOM.managerRosterDetail)DOM.managerRosterDetail.innerHTML=""}
 function expectedDraftedBeforeNext(pos){let x=marketPressure(pos),picks=teamsBeforeMyNextPick().length;if(!picks)return 0;let est=Math.round((x.pressure/100)*Math.max(1,picks*.75));return Math.max(0,Math.min(picks,est))}
 function availableTierCounts(pos){let c={S:0,A:0,B:0,C:0,D:0,E:0,F:0};available().filter(p=>positionKey(p)===pos).forEach(p=>{let t=tierLabel(p);c[t]=(c[t]||0)+1});return c}
 function projectedTierRemaining(pos){let pool=available().filter(p=>positionKey(p)===pos).sort((a,b)=>finalPickScore(b)-finalPickScore(a)),lost=expectedDraftedBeforeNext(pos),remain=pool.slice(lost),c={S:0,A:0,B:0,C:0,D:0,E:0,F:0};remain.forEach(p=>{let t=tierLabel(p);c[t]=(c[t]||0)+1});return c}
 function tierCountText(c){return ["S","A","B","C"].filter(t=>(c[t]||0)>0).map(t=>`${t}: ${c[t]}`).join(" • ")||"No S–C players"}
 function roomIntelMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let x=marketPressure(pos),run=x.recent>=4?"Run is happening":x.recent>=2?"Some movement":"No run";return `<div class="intelItem"><b>${pos} — ${run}</b><span>${x.recent} drafted in the last 8 picks. ${x.starterNeed} teams before your next pick still need a starter.</span></div>`}).join("")}
 function peekAheadMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let n=expectedDraftedBeforeNext(pos),now=availableTierCounts(pos),later=projectedTierRemaining(pos);return `<div class="peekItem"><b>${pos}: ${n} expected before your next pick</b><span>Available now — ${tierCountText(now)}</span><span>Projected then — ${tierCountText(later)}</span></div>`}).join("")}
-function renderRoomScan(){let grid=`<div><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});if(document.getElementById("desktopManagerTable"))desktopManagerTable.innerHTML=managerTableMarkup(false);if(document.getElementById("sheetManagerTable"))sheetManagerTable.innerHTML=table}
+function renderRoomScan(){let grid=`<div><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});if(DOM.desktopManagerTable)DOM.desktopManagerTable.innerHTML=managerTableMarkup(false);if(DOM.sheetManagerTable)DOM.sheetManagerTable.innerHTML=table}
 function openRoomScan(){renderRoomScan();let sheet=document.getElementById("roomScanSheet");if(sheet)sheet.classList.remove("hidden")}
 function closeRoomScan(e){let sheet=document.getElementById("roomScanSheet");if(!sheet)return;if(e&&e.target!==sheet)return;sheet.classList.add("hidden");let detail=document.getElementById("managerRosterDetail");if(detail)detail.innerHTML=""}
 
@@ -1009,5 +1018,5 @@ const originalStartDraft=startDraft;startDraft=function(){const result=originalS
 const originalSelectPlayer=selectPlayer;selectPlayer=function(id,team){const result=originalSelectPlayer.apply(this,arguments);syncDraftIntoLeagueState();return result};
 const originalUndoLastPick=undoLastPick;undoLastPick=function(){const result=originalUndoLastPick.apply(this,arguments);syncDraftIntoLeagueState();return result};
 
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_7_1").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_7_2").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
 init();
