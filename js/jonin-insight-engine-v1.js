@@ -12,7 +12,8 @@ const JoninInsightEngineV1 = (() => {
   })[character]);
   const finiteNumber = value => value == null || (typeof value === 'string' && !value.trim()) || !Number.isFinite(Number(value)) ? null : Number(value);
   const playerTier = player => {
-    const value = player?.overallTier ?? player?.posTier;
+    const contract = typeof window !== 'undefined' ? window.PlayerTierContract : null;
+    const value = contract ? (contract.getOverallTier(player) ?? contract.getPositionTier(player)) : null;
     return value == null || !String(value).trim() ? null : String(value).trim().toUpperCase();
   };
   const positionName = pos => pos === 'DST' ? 'D/ST' : (pos || 'position');
@@ -31,8 +32,9 @@ const JoninInsightEngineV1 = (() => {
     if (breakdown.value > 0 && breakdown.rosterFit > 0) { score += 10; reasons.push('value and roster fit agree'); }
     if (breakdown.value > 0 && breakdown.rosterFit < 0) { score -= 10; reasons.push('value conflicts with roster fit'); }
     if (tierDrop || (tierDepth != null && tierDepth <= 2)) { score += 8; reasons.push('a meaningful tier drop follows'); }
+    const contract = typeof window !== 'undefined' ? window.PlayerTierContract : null;
     const missing = ['name', 'pos', 'team'].filter(key => !player?.[key]).length +
-      (player?.overall == null && !player?.overallTier && !player?.posTier ? 1 : 0);
+      (player?.overall == null && !contract?.getOverallTier(player) && !contract?.getPositionTier(player) ? 1 : 0);
     if (missing) { score -= missing * 8; reasons.push('player data is incomplete'); }
     const modifiers = ['value', 'rosterFit', 'scarcity', 'risk'].map(key => Math.abs(Number(breakdown[key] || 0)));
     const modifierSum = modifiers.reduce((sum, value) => sum + value, 0);

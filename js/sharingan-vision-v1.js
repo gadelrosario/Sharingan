@@ -9,7 +9,8 @@ const SharinganVisionV1 = (() => {
   const SKILL_POSITIONS = new Set(['QB', 'RB', 'WR', 'TE']);
   const finiteNumber = value => value == null || (typeof value === 'string' && !value.trim()) || !Number.isFinite(Number(value)) ? null : Number(value);
   const tierOf = player => {
-    const raw = player?.overallTier ?? player?.posTier;
+    const contract = typeof window !== 'undefined' ? window.PlayerTierContract : null;
+    const raw = contract ? (contract.getOverallTier(player) ?? contract.getPositionTier(player)) : null;
     const tier = raw == null ? '' : String(raw).trim().toUpperCase();
     return TIERS.includes(tier) ? tier : null;
   };

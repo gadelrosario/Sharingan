@@ -1,3 +1,4 @@
+import json
 import pathlib
 import subprocess
 import unittest
@@ -17,7 +18,20 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("Flight Control: 8 passed, 0 failed", result.stdout)
+        self.assertIn("Fight Control: 10 passed, 0 failed", result.stdout)
+
+    def test_current_jahmyr_gibbs_pick_10_eternal_scenario(self):
+        players = json.loads((ROOT / "data" / "players.json").read_text(encoding="utf-8"))
+        gibbs = next(player for player in players if player["name"] == "Jahmyr Gibbs")
+        self.assertEqual((gibbs["overall"], gibbs["overallTier"], gibbs["posTier"]), (1, "S", "S"))
+        command = f"""
+global.window={{}};const fs=require('fs'),vm=require('vm');
+vm.runInThisContext(fs.readFileSync('js/flight-control-v1.js','utf8'));
+const active=window.FlightControlV1.eternalMangekyoActive({{tier:{json.dumps(gibbs['posTier'])},overall:{gibbs['overall']},pick:10,score:85}});
+if(!active)process.exit(1);
+"""
+        result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_progressive_disclosure_and_shared_player_renderer(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
@@ -26,20 +40,24 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
         card_source = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
         default_source, advanced_source = card_source.split('class="advancedAnalysis"', 1)
         for conclusion in ("CAN I WAIT?", "OPPORTUNITY WINDOW", "AVAILABILITY FORECAST"):
-            self.assertEqual(default_source.count(conclusion), 1)
+            self.assertNotIn(conclusion, default_source)
+        self.assertIn("joninInsightMarkup(insight,ccScored)", advanced_source)
+        self.assertIn("sharinganVisionMarkup(vision)", advanced_source)
         for metric in ("Mamba", "Final Pick", "Room Boost", "Roster Fit", "Steal Risk", "Stack", "Handcuff", "Exposure"):
             self.assertNotIn(metric, default_source)
             self.assertIn(metric, advanced_source)
         for ignored_section in ("VALUE", "SCARCITY", "RISK", "TEAM FIT", "SCORE BREAKDOWN"):
             self.assertNotIn(ignored_section, default_source)
-        self.assertIn("compactComparison", default_source)
+        self.assertIn("coachInstruction", default_source)
         self.assertIn("Why not ${alternative.name}?", app)
         self.assertIn("sharinganIconMarkup(sharinganStage(p).key)", default_source)
         self.assertIn("summary.confidence.label", default_source)
         self.assertIn("advancedAnalysisExpanded?'open'", app)
         self.assertIn("decisionCardMarkup(model,{recommended:displayed.id===primary.id})", app)
         self.assertNotIn("function recommendationHeroMarkup", app)
-        self.assertIn('data-recommendation-renderer="flight-control-1.1"', app)
+        self.assertIn('data-recommendation-renderer="adaptive-coaching-1.0"', app)
+        for label in ("FIGHT CONTROL", "ADAPTIVE COACHING", "RECOMMENDED PLAYER"):
+            self.assertIn(label, card_source)
         self.assertIn("alternativeDecisionMarkup(playerDecisionModel(candidate,recs)", app)
         self.assertIn("recommendation.dataset.renderMs", app)
         self.assertIn('class="card planningDetails"', html)
@@ -50,12 +68,13 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn('css/app.css?v=3.4.1', html)
-        self.assertIn('js/flight-control-v1.js?v=1.2.1', html)
-        self.assertIn('js/app.js?v=3.4.1', html)
-        self.assertIn('service-worker.js?v=snake_board_colors_1', app)
-        self.assertIn('fantasy-hq-snake-board-colors-1', worker)
-        for asset in ('css/app.css?v=3.4.1', 'js/flight-control-v1.js?v=1.2.1', 'js/app.js?v=3.4.1'):
+        self.assertIn('css/app.css?v=3.6.0', html)
+        self.assertIn('js/flight-control-v1.js?v=1.3.0', html)
+        self.assertIn('js/adaptive-coaching-engine-v1.js?v=1.0.0', html)
+        self.assertIn('js/app.js?v=3.6.0', html)
+        self.assertIn('service-worker.js?v=jonin_3_3', app)
+        self.assertIn('fantasy-hq-jonin-3-3', worker)
+        for asset in ('css/app.css?v=3.6.0', 'js/flight-control-v1.js?v=1.3.0', 'js/adaptive-coaching-engine-v1.js?v=1.0.0', 'js/app.js?v=3.6.0'):
             self.assertIn(asset, worker)
 
     def test_planning_removes_redundant_pressure_and_room_intel_rows(self):

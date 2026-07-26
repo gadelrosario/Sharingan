@@ -44,6 +44,39 @@
     return 'unknown';
   };
   const boardPositionClass = position => `board-pos-${normalizePosition(position)}`;
+  function eternalMangekyoActive({tier,overall,pick,score}){
+    const canonicalTier=String(tier??'').trim().toUpperCase();
+    const rank=typeof overall==='number'?overall:Number(overall);
+    const currentPick=typeof pick==='number'?pick:Number(pick);
+    const mamba=typeof score==='number'?score:Number(score);
+    const validRank=Number.isFinite(rank)&&rank>=1;
+    const valueFall=validRank&&Number.isFinite(currentPick)?Math.max(0,currentPick-rank):0;
+    const isEliteTier=canonicalTier==='S'||canonicalTier==='A';
+    const historicFall=isEliteTier&&valueFall>=40&&Number.isFinite(mamba)&&mamba>=90;
+    const earlyEliteFall=isEliteTier&&validRank&&rank<=3&&valueFall>=7&&Number.isFinite(mamba)&&mamba>=85;
+    return historicFall||earlyEliteFall;
+  }
+  const tacticalAction = action => {
+    if(action==='SAFE TO WAIT')return 'WAIT';
+    if(action==='AVOID')return 'PIVOT';
+    return 'ACT';
+  };
+  function missionFor({hero,vision,context={}}){
+    const round=Number(context.round)||1,need=vision?.userNeed,cliff=vision?.tierCliff,run=vision?.positionalRun;
+    if(cliff?.nearCliff)return `Secure your ${need?.position||'target'} before the current tier drops.`;
+    if(need?.position==='QB'&&!need.starterNeed)return 'Delay quarterback and protect value at positions with greater need.';
+    if(need?.starterNeed)return `Fill your ${need.position} starter slot without abandoning board value.`;
+    if(run?.active)return `Respond to the ${run.position} run without forcing a reach.`;
+    if(round<=3)return 'Build an elite WR/RB foundation.';
+    if(round>=11)return 'Attack upside while protecting remaining roster requirements.';
+    return `Strengthen roster balance with the best available ${need?.position||'player'}.`;
+  }
+  function bestPathFor({action,hero,pivot}){
+    const name=clean(hero?.name),pivotName=pivot?.name?clean(pivot.name):'';
+    if(action==='WAIT')return {label:'WAIT',text:pivotName?`Wait one turn; use ${pivotName} as the fallback if ${name} is taken.`:`Wait one turn while preserving the current tier.`};
+    if(action==='PIVOT')return {label:'PIVOT',text:pivotName?`Move to ${pivotName}; the current option does not justify the cost.`:'Move to the next available player in the same decision tier.'};
+    return {label:'ACT',text:`Draft ${name} now and preserve the stronger current path.`};
+  }
   function rosterConclusion(vision){
     const need=vision?.userNeed;
     if(!need||need.status==='Unavailable')return null;
@@ -63,7 +96,7 @@
     return null;
   }
 
-  function decisionSummary({hero,vision,insight,comparison}){
+  function decisionSummary({hero,vision,insight,comparison,pivot,context={}}){
     const opportunity=vision?.opportunity||insight?.opportunityWindow||{};
     const availability=vision?.availability||{};
     const primary=hero?.primary||{label:'Best Available',reason:neutral};
@@ -71,14 +104,24 @@
     const primaryAddsContext=!((tier&&primaryLabel.includes('tier'))||(roster&&primaryLabel.includes('roster')));
     const candidates=[tier,roster,primaryAddsContext?short(primary.reason):null].filter(Boolean);
     const opportunityReason=short(opportunity.reason),availabilityReason=short(availability.reason);
+    const recommendationAction=actionLabel(opportunity.label),action=tacticalAction(recommendationAction);
+    const mission=missionFor({hero,vision,context});
     return {
-      action:actionLabel(opportunity.label),
+      action,
+      headline:action==='WAIT'?'Hold this pick window':action==='PIVOT'?'Change the target':'Make the pick',
       confidence:confidencePresentation(insight?.confidence),
+      mission,
+      player:hero?.playerId?{id:hero.playerId,name:clean(hero.name),identity:clean(hero.identity)}:null,
+      pivot:pivot?{id:pivot.id,name:clean(pivot.name),identity:clean(pivot.identity),reason:short(pivot.reason)}:null,
+      reason:short(primary.reason),
+      urgency:clean(opportunity.label),
+      strategy:clean(context.strategy||'Draft strategy is still developing.'),
+      bestPath:bestPathFor({action,hero,pivot}),
       opportunity:{label:clean(opportunity.label),reason:opportunityReason},
       availability:{label:clean(availability.label),reason:availabilityReason===opportunityReason?'':availabilityReason},
       primary:{label:clean(primary.label),reason:clean(primary.reason)},
       reasons:candidates.filter((item,index,list)=>list.indexOf(item)===index).slice(0,3),
-      wait:{action:actionLabel(opportunity.label),availability:clean(availability.label),conclusion:waitConclusion(availability.label)},
+      wait:{action:recommendationAction,availability:clean(availability.label),conclusion:waitConclusion(availability.label)},
       comparison:shortLine(comparison),
     };
   }
@@ -94,5 +137,5 @@
     };
   }
 
-  root.FlightControlV1={decisionSummary,comparisonSummary,actionLabel,confidencePresentation,normalizePosition,boardPositionClass};
+  root.FlightControlV1={decisionSummary,comparisonSummary,actionLabel,tacticalAction,missionFor,bestPathFor,confidencePresentation,normalizePosition,boardPositionClass,eternalMangekyoActive};
 })(typeof window!=='undefined'?window:globalThis);
