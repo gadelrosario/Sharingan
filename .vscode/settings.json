@@ -1,0 +1,16 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "index.html": "index.orig.html, manifest.webmanifest, service-worker.js",
+    "app.js": "app-version.js, *.test.js",
+    "*.js": "${capture}.test.js, ${capture}.spec.js",
+    "README.md": "ROADMAP.md, MIGRATION_STATUS.md, 00_DELIVERY_COMPLETE.md"
+  },
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "workbench.editor.enablePreview": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}
