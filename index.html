@@ -1,118 +1,564 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07111f"><meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg">
-<body>
-<header><div class="headerRow"><div class="brandLockup"><h1>Gerard Fantasy HQ</h1><span class="version" data-app-version></span></div><div id="headerDraftContext" class="headerDraftContext hidden" aria-label="Current draft context"><span>Round <b id="headerRound">1</b></span><span>Pick <b id="headerPick">1.01</b></span><span>Slot <b id="headerSlot">1</b></span><span id="headerMode">Practice</span><span id="headerLeague">10 teams • Half PPR</span></div><button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button></div></header>
-<div class="shell">
-<section id="setupScreen" class="setup"><div class="card"><h2 style="margin-top:0">Start a draft</h2>
-<div class="modeGrid"><div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')"><h3>🟢 Practice Mock Draft</h3><p class="meta">Fantasy HQ controls the computer opponents.</p><span class="meta" data-app-version></span></div><div id="yahooChoice" class="modeCard live" onclick="chooseMode('yahoo')"><h3>🟣 Yahoo Live Mock</h3><p class="meta">Draft against real people on Yahoo and record every selection here.</p><span class="meta" data-app-version></span></div><div id="liveChoice" class="modeCard live" onclick="chooseMode('live')"><h3>🔵 Live Draft Day</h3><p class="meta">Use for your real league draft. You manually enter every selection.</p><span class="meta" data-app-version></span></div></div>
-<div class="controls"><label>Your draft position<select id="draftSlot"></select></label><label>Draft room style<select id="roomStyle"><option value="balanced">Balanced</option><option value="chaotic" selected>Chaotic</option><option value="conservative">Conservative</option></select></label><label>Teams<select id="teamCount"><option value="10">10 teams</option></select><span class="meta">Reforged 2.1 currently supports 10-team Yahoo rooms.</span></label></div>
-<div class="controls"><label>Scoring<select id="scoring"><option value="half" selected>Half PPR</option><option value="full">Full PPR</option><option value="standard">Standard</option></select></label><label>Passing TDs<select id="passTD"><option value="4">4 points</option><option value="6" selected>6 points</option></select></label><label>Risk profile<select id="riskProfile"><option value="safe">Safer</option><option value="balanced" selected>Balanced</option><option value="aggressive">Aggressive</option></select></label></div>
-<div class="card rosterBuilder"><div class="sectionHeader"><div><b>Roster Builder</b><div class="meta">Roster spots automatically determine draft rounds.</div></div><span id="calculatedRounds" class="boardRoundsBadge">17 rounds • 170 picks</span></div><div class="rosterBuilderGrid"><label>QB<select id="startQB" onchange="updateSetupRoundPreview()"><option value="1" selected>1</option><option value="2">2</option></select></label><label>RB<select id="startRB" onchange="updateSetupRoundPreview()"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></label><label>WR<select id="startWR" onchange="updateSetupRoundPreview()"><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option></select></label><label>TE<select id="startTE" onchange="updateSetupRoundPreview()"><option value="1" selected>1</option><option value="2">2</option></select></label><label>FLEX<select id="flexSpots" onchange="updateSetupRoundPreview()"><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></label><label>K<select id="startK" onchange="updateSetupRoundPreview()"><option value="0">0</option><option value="1" selected>1</option></select></label><label>D/ST<select id="startDST" onchange="updateSetupRoundPreview()"><option value="0">0</option><option value="1" selected>1</option></select></label><label>Bench<select id="benchSpots" onchange="updateSetupRoundPreview()"><option value="4">4</option><option value="5">5</option><option value="6" selected>6</option><option value="7">7</option><option value="8">8</option></select></label></div></div>
-<div class="card" style="background:#111017;margin-bottom:12px"><b>Assign managers to draft slots</b><div class="meta" style="margin-top:4px">Saved league profiles power mock-draft behavior and steal-risk estimates.</div><div id="managerSetup" class="managerSetup"></div><div id="mockRandomizer" style="display:flex;gap:8px;align-items:center;margin-top:9px"><button class="scanBtn" onclick="randomizeManagerOrder()">Randomize Mock Order</button><span class="meta">Gerard stays in your selected slot. Yahoo Live Mock and Live Draft keep manual assignments.</span></div></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#07111f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" />
+    <title>Gerard Fantasy HQ</title>
+    <script src="js/app-version.js?v=1.0.1"></script>
+    <link rel="stylesheet" href="css/app.css?v=3.8.0" />
+  </head>
+  <body>
+    <header>
+      <div class="headerRow">
+        <div class="brandLockup">
+          <h1>Gerard Fantasy HQ</h1>
+          <span class="version" data-app-version></span>
+        </div>
+        <div
+          id="headerDraftContext"
+          class="headerDraftContext hidden"
+          aria-label="Current draft context"
+        >
+          <span>Round <b id="headerRound">1</b></span
+          ><span>Pick <b id="headerPick">1.01</b></span
+          ><span>Slot <b id="headerSlot">1</b></span
+          ><span id="headerMode">Practice</span><span id="headerLeague">10 teams • Half PPR</span>
+        </div>
+        <button id="changeBtn" class="ghost hidden" onclick="backToSetup()">Change setup</button>
+      </div>
+    </header>
+    <div class="shell">
+      <section id="setupScreen" class="setup">
+        <div class="card">
+          <h2 style="margin-top: 0">Start a draft</h2>
+          <div class="modeGrid">
+            <div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')">
+              <h3>🟢 Practice Mock Draft</h3>
+              <p class="meta">Fantasy HQ controls the computer opponents.</p>
+              <span class="meta" data-app-version></span>
+            </div>
+            <div id="yahooChoice" class="modeCard live" onclick="chooseMode('yahoo')">
+              <h3>🟣 Yahoo Live Mock</h3>
+              <p class="meta">
+                Draft against real people on Yahoo and record every selection here.
+              </p>
+              <span class="meta" data-app-version></span>
+            </div>
+            <div id="liveChoice" class="modeCard live" onclick="chooseMode('live')">
+              <h3>🔵 Live Draft Day</h3>
+              <p class="meta">
+                Use for your real league draft. You manually enter every selection.
+              </p>
+              <span class="meta" data-app-version></span>
+            </div>
+          </div>
+          <div class="controls">
+            <label>Your draft position<select id="draftSlot"></select></label
+            ><label
+              >Draft room style<select id="roomStyle">
+                <option value="balanced">Balanced</option>
+                <option value="chaotic" selected>Chaotic</option>
+                <option value="conservative">Conservative</option>
+              </select></label
+            ><label
+              >Teams<select id="teamCount">
+                <option value="10">10 teams</option></select
+              ><span class="meta">Reforged 2.1 currently supports 10-team Yahoo rooms.</span></label
+            >
+          </div>
+          <div class="controls">
+            <label
+              >Scoring<select id="scoring">
+                <option value="half" selected>Half PPR</option>
+                <option value="full">Full PPR</option>
+                <option value="standard">Standard</option>
+              </select></label
+            ><label
+              >Passing TDs<select id="passTD">
+                <option value="4">4 points</option>
+                <option value="6" selected>6 points</option>
+              </select></label
+            ><label
+              >Risk profile<select id="riskProfile">
+                <option value="safe">Safer</option>
+                <option value="balanced" selected>Balanced</option>
+                <option value="aggressive">Aggressive</option>
+              </select></label
+            >
+          </div>
+          <div class="card rosterBuilder">
+            <div class="sectionHeader">
+              <div>
+                <b>Roster Builder</b>
+                <div class="meta">Roster spots automatically determine draft rounds.</div>
+              </div>
+              <span id="calculatedRounds" class="boardRoundsBadge">17 rounds • 170 picks</span>
+            </div>
+            <div class="rosterBuilderGrid">
+              <label
+                >QB<select id="startQB" onchange="updateSetupRoundPreview()">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                </select></label
+              ><label
+                >RB<select id="startRB" onchange="updateSetupRoundPreview()">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                </select></label
+              ><label
+                >WR<select id="startWR" onchange="updateSetupRoundPreview()">
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                </select></label
+              ><label
+                >TE<select id="startTE" onchange="updateSetupRoundPreview()">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                </select></label
+              ><label
+                >FLEX<select id="flexSpots" onchange="updateSetupRoundPreview()">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                </select></label
+              ><label
+                >K<select id="startK" onchange="updateSetupRoundPreview()">
+                  <option value="0">0</option>
+                  <option value="1" selected>1</option>
+                </select></label
+              ><label
+                >D/ST<select id="startDST" onchange="updateSetupRoundPreview()">
+                  <option value="0">0</option>
+                  <option value="1" selected>1</option>
+                </select></label
+              ><label
+                >Bench<select id="benchSpots" onchange="updateSetupRoundPreview()">
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6" selected>6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select></label
+              >
+            </div>
+          </div>
+          <div class="card" style="background: #111017; margin-bottom: 12px">
+            <b>Assign managers to draft slots</b>
+            <div class="meta" style="margin-top: 4px">
+              Saved league profiles power mock-draft behavior and steal-risk estimates.
+            </div>
+            <div id="managerSetup" class="managerSetup"></div>
+            <div
+              id="mockRandomizer"
+              style="display: flex; gap: 8px; align-items: center; margin-top: 9px"
+            >
+              <button class="scanBtn" onclick="randomizeManagerOrder()">Randomize Mock Order</button
+              ><span class="meta"
+                >Gerard stays in your selected slot. Yahoo Live Mock and Live Draft keep manual
+                assignments.</span
+              >
+            </div>
+          </div>
 
-<div class="card syncFoundationCard" style="background:#111017;margin-bottom:12px">
-  <div class="sectionHeader"><div><b>League Sync Foundation</b><div class="meta">Canonical league state for Yahoo, Sleeper, and snapshot imports.</div></div><span id="syncStatusBadge" class="leagueProfileBadge">LOCAL</span></div>
-  <div id="syncStatusText" class="meta" style="margin:8px 0">Ready for league snapshot import.</div>
-  <div class="syncActions">
-    <button class="ghost" onclick="downloadLeagueSnapshot()">Export Snapshot</button>
-    <button class="ghost" onclick="document.getElementById('leagueSnapshotInput').click()">Import Snapshot</button>
-    <button class="scanBtn" onclick="prepareYahooConnection()">Prepare Yahoo</button>
-  </div>
-  <input id="leagueSnapshotInput" type="file" accept="application/json,.json" class="hidden" onchange="importLeagueSnapshot(event)">
-  <div class="meta" style="margin-top:8px">Yahoo authorization is intentionally not stored in this browser build. The data model and import path are now ready for a secure backend connection.</div>
-</div>
-<div id="poolStatus" class="card" style="background:#111017;margin-bottom:12px">
-  <b>Draft pool loading…</b>
-</div>
-<div class="card leagueDnaSetup" style="background:#111017;margin-bottom:12px">
-  <div class="sectionHeader"><div><b>Royal Rumble Draft Rounds</b><div class="meta">SQUAAA! ROYAL RUMBLE 2025–2026</div></div><span class="leagueProfileBadge">ACTIVE</span></div>
-  <div class="leagueDnaFacts"><span>10 Teams</span><span>Half-PPR</span><span>3 WR</span><span>2 FLEX</span><span>6-Point Pass TD</span><span>Explosive-play bonuses</span><span>Enhanced D/ST</span></div>
-  <div class="meta" style="margin-top:8px">The recommendation engine will prioritize elite positional advantages, deep RB/WR starting requirements, high-volume quarterbacks, and explosive-play upside while preserving late-round kicker and defense discipline.</div>
-</div>
-<div class="card" style="background:#111017;margin-bottom:12px"><b>Gerard Blueprint</b><div class="meta" style="margin-top:5px">RB → WR → WR → RB → TE/QB → QB/TE, with Value Override when elite talent falls.</div></div>
-<button id="startDraftBtn" class="primary greenBtn" style="width:100%" onclick="startDraft()" disabled>Loading player pool…</button></div></section>
-<section id="appScreen" class="hidden"><div class="flightControlBar"><div id="modeBanner"></div><div id="practiceControls" class="hidden"><button id="simulateBtn" class="primary greenBtn" style="width:100%" onclick="simulateToMe()">Simulate To My Next Pick</button></div></div><div id="leagueDnaBar" class="leagueDnaBar"></div><div id="runtimeStatus" class="roomAlert hidden" style="margin-bottom:10px"></div><div class="appgrid" id="flightControlSurface">
+          <div class="card syncFoundationCard" style="background: #111017; margin-bottom: 12px">
+            <div class="sectionHeader">
+              <div>
+                <b>League Sync Foundation</b>
+                <div class="meta">
+                  Canonical league state for Yahoo, Sleeper, and snapshot imports.
+                </div>
+              </div>
+              <span id="syncStatusBadge" class="leagueProfileBadge">LOCAL</span>
+            </div>
+            <div id="syncStatusText" class="meta" style="margin: 8px 0">
+              Ready for league snapshot import.
+            </div>
+            <div class="syncActions">
+              <button class="ghost" onclick="downloadLeagueSnapshot()">Export Snapshot</button>
+              <button
+                class="ghost"
+                onclick="document.getElementById('leagueSnapshotInput').click()"
+              >
+                Import Snapshot
+              </button>
+              <button class="scanBtn" onclick="prepareYahooConnection()">Prepare Yahoo</button>
+            </div>
+            <input
+              id="leagueSnapshotInput"
+              type="file"
+              accept="application/json,.json"
+              class="hidden"
+              onchange="importLeagueSnapshot(event)"
+            />
+            <div class="meta" style="margin-top: 8px">
+              Yahoo authorization is intentionally not stored in this browser build. The data model
+              and import path are now ready for a secure backend connection.
+            </div>
+          </div>
+          <div id="poolStatus" class="card" style="background: #111017; margin-bottom: 12px">
+            <b>Draft pool loading…</b>
+          </div>
+          <div class="card leagueDnaSetup" style="background: #111017; margin-bottom: 12px">
+            <div class="sectionHeader">
+              <div>
+                <b>Royal Rumble Draft Rounds</b>
+                <div class="meta">SQUAAA! ROYAL RUMBLE 2025–2026</div>
+              </div>
+              <span class="leagueProfileBadge">ACTIVE</span>
+            </div>
+            <div class="leagueDnaFacts">
+              <span>10 Teams</span><span>Half-PPR</span><span>3 WR</span><span>2 FLEX</span
+              ><span>6-Point Pass TD</span><span>Explosive-play bonuses</span
+              ><span>Enhanced D/ST</span>
+            </div>
+            <div class="meta" style="margin-top: 8px">
+              The recommendation engine will prioritize elite positional advantages, deep RB/WR
+              starting requirements, high-volume quarterbacks, and explosive-play upside while
+              preserving late-round kicker and defense discipline.
+            </div>
+          </div>
+          <div class="card" style="background: #111017; margin-bottom: 12px">
+            <b>Gerard Blueprint</b>
+            <div class="meta" style="margin-top: 5px">
+              RB → WR → WR → RB → TE/QB → QB/TE, with Value Override when elite talent falls.
+            </div>
+          </div>
+          <button
+            id="startDraftBtn"
+            class="primary greenBtn"
+            style="width: 100%"
+            onclick="startDraft()"
+            disabled
+          >
+            Loading player pool…
+          </button>
+        </div>
+      </section>
+      <section id="appScreen" class="hidden">
+        <div class="flightControlBar">
+          <div id="modeBanner"></div>
+          <div id="practiceControls" class="hidden">
+            <button
+              id="simulateBtn"
+              class="primary greenBtn"
+              style="width: 100%"
+              onclick="simulateToMe()"
+            >
+              Simulate To My Next Pick
+            </button>
+          </div>
+        </div>
+        <div id="leagueDnaBar" class="leagueDnaBar"></div>
+        <div id="runtimeStatus" class="roomAlert hidden" style="margin-bottom: 10px"></div>
+        <div class="appgrid" id="flightControlSurface">
+          <aside class="stack desktopSide">
+            <div class="card compactStatus">
+              <div class="stats">
+                <div class="stat"><b id="round">1</b>Round</div>
+                <div class="stat"><b id="pickLabel">1.01</b>Pick</div>
+                <div class="stat"><b id="until">0</b>Until you</div>
+              </div>
+            </div>
+            <section class="card secondarySummary rosterAtGlance" aria-labelledby="myTeamHeading">
+              <h2 id="myTeamHeading" class="secondaryTitle">MY TEAM</h2>
+              <div id="roster" class="myTeamRoster" aria-live="polite"></div>
+              <details class="secondaryDetails">
+                <summary>Team build summary</summary>
+                <div id="desktopTeamBuild" class="teamBuildGrid"></div>
+              </details>
+            </section>
+            <div class="card secondarySummary"><div id="desktopStrategyCard"></div></div>
+            <details class="card secondaryDetails">
+              <summary>Draft phase and room strategies</summary>
+              <div id="desktopDraftPhase"></div>
+              <div id="desktopStrategyHealth" class="roomInsight"></div>
+              <div id="strategies"></div>
+            </details>
+          </aside>
 
-<aside class="stack desktopSide"><div class="card compactStatus"><div class="stats"><div class="stat"><b id="round">1</b>Round</div><div class="stat"><b id="pickLabel">1.01</b>Pick</div><div class="stat"><b id="until">0</b>Until you</div></div></div><section class="card secondarySummary rosterAtGlance" aria-labelledby="myTeamHeading"><h2 id="myTeamHeading" class="secondaryTitle">MY TEAM</h2><div id="roster" class="myTeamRoster" aria-live="polite"></div><details class="secondaryDetails"><summary>Team build summary</summary><div id="desktopTeamBuild" class="teamBuildGrid"></div></details></section><div class="card secondarySummary"><div id="desktopStrategyCard"></div></div><details class="card secondaryDetails"><summary>Draft phase and room strategies</summary><div id="desktopDraftPhase"></div><div id="desktopStrategyHealth" class="roomInsight"></div><div id="strategies"></div></details></aside>
+          <main class="stack">
+            <section id="mobileDraft" class="mobilePage active mobileLiveCommand">
+              <div class="card compactStatus">
+                <div class="stats">
+                  <div class="stat"><b id="mRound">1</b>Round</div>
+                  <div class="stat"><b id="mPickLabel">1.01</b>Pick</div>
+                  <div class="stat"><b id="mUntil">0</b>Until you</div>
+                </div>
+              </div>
+              <div class="card recommendationCard">
+                <div id="recommendation" class="rec"></div>
+                <div class="mobileAlternatives">
+                  <div class="sectionHeader">
+                    <b>Top Alternatives</b><span class="meta">Same decision view on selection</span>
+                  </div>
+                  <div id="alternatives"></div>
+                </div>
+              </div>
+              <div class="card mobileOnly fastEntryCard" id="liveHelp">
+                <div class="sectionHeader">
+                  <div>
+                    <b>⚡ Fast Live Entry</b>
+                    <div class="meta">Search is primary; likely picks are shortcuts.</div>
+                  </div>
+                  <button class="ghost" onclick="undoLastPick()">Undo</button>
+                </div>
+                <div id="mobileClockStrip"></div>
+                <input
+                  id="search"
+                  class="heroSearch"
+                  placeholder="Search any drafted player"
+                  oninput="syncSearch('mobile')"
+                  onkeydown="handleSearchKey(event)"
+                />
+                <div class="quickSectionTitle">
+                  <b>Likely next</b><span class="meta">Quick access</span>
+                </div>
+                <div id="mobileQuickPicks" class="quickPickGrid compactQuick"></div>
+                <button class="ghost boardShortcut" onclick="showPage('mobileBoard')">
+                  Open Draft Board
+                </button>
+              </div>
+              <section
+                class="card mobileOnly teamCompactCard"
+                aria-labelledby="mobileMyTeamHeading"
+              >
+                <div class="sectionHeader">
+                  <b id="mobileMyTeamHeading">MY TEAM</b
+                  ><button
+                    id="teamToggleBtn"
+                    class="scanBtn"
+                    onclick="toggleMobileTeam()"
+                    aria-controls="mobileRosterExpandable"
+                    aria-expanded="false"
+                  >
+                    Expand
+                  </button>
+                </div>
+                <div id="mobileStrategyCard" class="mobileStrategyCard"></div>
+                <div id="mobileTeamBuild" class="teamBuildGrid"></div>
+                <div id="mobileRosterSummary" class="rosterSummary accessibilityCounts"></div>
+                <div id="mobileNeeds" class="needLine"></div>
+                <div id="mobileRosterExpandable" class="hidden">
+                  <div id="mobileLiveRoster" class="myTeamRoster" aria-live="polite"></div>
+                </div>
+              </section>
+            </section>
+            <section id="mobileBoard" class="mobilePage">
+              <div class="card">
+                <b>Visual snake board</b>
+                <div class="boardWrap"><div id="draftBoard" class="board"></div></div>
+              </div>
+            </section>
+            <section id="mobilePlayers" class="mobilePage">
+              <div class="card">
+                <div class="sectionHeader">
+                  <b>All Available Players</b
+                  ><button class="ghost" onclick="undoLastPick()">Undo</button>
+                </div>
+                <div id="mobilePlayersClock"></div>
+                <input
+                  id="browseSearch"
+                  placeholder="Search all available players"
+                  oninput="syncSearch('browse')"
+                  onkeydown="handleSearchKey(event)"
+                  style="width: 100%; margin: 8px 0"
+                />
+                <div style="display: flex; gap: 5px; overflow: auto">
+                  <button class="ghost" onclick="setPos('ALL')">ALL</button
+                  ><button class="ghost" onclick="setPos('RB')">RB</button
+                  ><button class="ghost" onclick="setPos('WR')">WR</button
+                  ><button class="ghost" onclick="setPos('QB')">QB</button
+                  ><button class="ghost" onclick="setPos('TE')">TE</button
+                  ><button class="ghost" onclick="setPos('DST')">D/ST</button
+                  ><button class="ghost" onclick="setPos('K')">K</button>
+                </div>
+                <div id="playersList" class="boardList"></div>
+              </div>
+            </section>
+          </main>
+        </div>
+        <section id="desktopCommandCenter" class="desktopOnly planningLayer">
+          <details class="card planningDetails">
+            <summary>
+              <span
+                ><b>Planning</b
+                ><small>Peek Ahead • Safe-to-wait • Team matrix • Player entry</small></span
+              ><span>Open planning tools</span>
+            </summary>
+            <div class="desktopCommandCenter planningGrid">
+              <div class="card roomScanCard desktopRoomPanel">
+                <div class="roomScanTop">
+                  <div>
+                    <b>Peek Ahead + Safe-to-Wait</b>
+                    <div class="meta">Planning context between picks</div>
+                  </div>
+                  <button class="scanBtn" onclick="openRoomScan()">Expand</button>
+                </div>
+                <div id="desktopMarketGrid" class="roomScanGrid"></div>
+                <div id="desktopWaitMeter" class="waitGrid desktopWait"></div>
+                <div id="desktopManagerTable" class="desktopManagerTable"></div>
+              </div>
+              <div class="card desktopDraftCommand">
+                <div class="sectionHeader">
+                  <div>
+                    <b>⚡ Draft Command Center</b>
+                    <div class="meta">Record the room from one place</div>
+                  </div>
+                  <button class="ghost" onclick="undoLastPick()">Undo</button>
+                </div>
+                <div id="desktopClockStrip"></div>
+                <div class="draftCommandBody">
+                  <div class="draftCommandPlayers">
+                    <div class="quickSectionTitle">
+                      <b>Search Any Player</b><span class="meta">Primary live-entry control</span>
+                    </div>
+                    <input
+                      id="dSearch"
+                      class="heroSearch"
+                      placeholder="Search any drafted player"
+                      oninput="syncSearch('desktop')"
+                      onkeydown="handleSearchKey(event)"
+                    />
+                    <div class="quickSectionTitle">
+                      <b>Likely next</b><span class="meta">Shortcuts, not limits</span>
+                    </div>
+                    <div id="desktopQuickPicks" class="quickPickGrid desktopCompactQuick"></div>
+                    <div class="desktopPositionFilters">
+                      <button class="ghost" data-pos="ALL" onclick="setPos('ALL')">ALL</button
+                      ><button class="ghost" data-pos="RB" onclick="setPos('RB')">RB</button
+                      ><button class="ghost" data-pos="WR" onclick="setPos('WR')">WR</button
+                      ><button class="ghost" data-pos="QB" onclick="setPos('QB')">QB</button
+                      ><button class="ghost" data-pos="TE" onclick="setPos('TE')">TE</button
+                      ><button class="ghost" data-pos="DST" onclick="setPos('DST')">D/ST</button
+                      ><button class="ghost" data-pos="K" onclick="setPos('K')">K</button>
+                    </div>
+                    <div id="dPlayersList" class="boardList"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </section>
+        <section id="desktopBoardSection" class="desktopOnly desktopBoardSection">
+          <div class="card fullBoardCard">
+            <div class="sectionHeader">
+              <div>
+                <b>Visual Snake Board</b>
+                <div class="meta">Bird’s-eye view of the entire draft room</div>
+              </div>
+              <div id="desktopBoardClock" class="boardClockBadge">On the clock</div>
+            </div>
+            <div class="boardWrap"><div id="desktopBoard" class="board"></div></div>
+          </div>
+        </section>
+        <section id="draftReport" class="hidden">
+          <div class="reportHero">
+            <div class="scanEye">👁 SHARINGAN LEAGUE REPORT</div>
+            <h2>Draft Complete</h2>
+            <div class="projectionNote">
+              Draft-day projection based on roster strength, value, positional balance, ceiling, and
+              bench construction. It is not a guarantee of season results.
+            </div>
+          </div>
+          <div id="myDraftReport"></div>
+          <div class="card">
+            <b>Projected League Rankings</b>
+            <div id="leagueProjection"></div>
+          </div>
+          <div class="card">
+            <b>All Team Report Cards</b>
+            <div id="allTeamReports"></div>
+          </div>
+          <div id="yahooExportCard" class="card hidden">
+            <b>Yahoo Mock Saved</b>
+            <div class="meta" style="margin: 6px 0 10px">
+              This draft was against real people. Export the JSON file and upload it here so the
+              draft can be analyzed and used to improve Fantasy HQ.
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+              <button class="primary" onclick="exportCurrentYahooJSON()">
+                Download This Mock JSON</button
+              ><button class="ghost" onclick="exportAllYahooJSON()">
+                Download All Yahoo Mocks
+              </button>
+            </div>
+            <button
+              class="ghost"
+              style="width: 100%; margin-top: 8px"
+              onclick="exportCurrentYahooCSV()"
+            >
+              Download Picks CSV
+            </button>
+            <div class="meta" id="archiveCount" style="margin-top: 8px"></div>
+          </div>
+          <button
+            class="primary"
+            style="width: 100%; margin-top: 10px"
+            onclick="startAnotherMock()"
+          >
+            Start Another Mock
+          </button>
+        </section>
+        <section id="mobileTeam" class="mobilePage mobileOnly">
+          <div class="card">
+            <b>Your roster</b>
+            <div id="mRoster"></div>
+          </div>
+          <div class="card">
+            <b>AI strategies</b>
+            <div id="mStrategies"></div>
+          </div>
+        </section>
+      </section>
+    </div>
+    <nav id="tabs" class="tabs hidden">
+      <button onclick="showPage('mobileDraft')">🏈<br />Draft</button
+      ><button onclick="showPage('mobileBoard')">🧩<br />Board</button
+      ><button onclick="showPage('mobilePlayers')">📋<br />Players</button
+      ><button onclick="showPage('mobileTeam')">👥<br />Team</button>
+    </nav>
+    <script src="js/player-tier-contract.js?v=1.0.0"></script>
+    <script src="js/roster-view-v1.js?v=1.0.0"></script>
+    <script src="js/fantasy-hq-core.js?v=3.2.0"></script>
+    <script src="js/command-center-v1.js?v=1.0.0"></script>
+    <script src="js/jonin-insight-engine-v1.js?v=1.0.0"></script>
+    <script src="js/sharingan-vision-v1.js?v=1.0.0"></script>
+    <script src="js/jonin-ux-polish.js?v=1.0.0"></script>
 
-<main class="stack">
-<section id="mobileDraft" class="mobilePage active mobileLiveCommand">
-  <div class="card compactStatus"><div class="stats"><div class="stat"><b id="mRound">1</b>Round</div><div class="stat"><b id="mPickLabel">1.01</b>Pick</div><div class="stat"><b id="mUntil">0</b>Until you</div></div></div>
-  <div class="card recommendationCard"><div id="recommendation" class="rec"></div><div class="mobileAlternatives"><div class="sectionHeader"><b>Top Alternatives</b><span class="meta">Same decision view on selection</span></div><div id="alternatives"></div></div></div>
-  <div class="card mobileOnly fastEntryCard" id="liveHelp"><div class="sectionHeader"><div><b>⚡ Fast Live Entry</b><div class="meta">Search is primary; likely picks are shortcuts.</div></div><button class="ghost" onclick="undoLastPick()">Undo</button></div><div id="mobileClockStrip"></div><input id="search" class="heroSearch" placeholder="Search any drafted player" oninput="syncSearch('mobile')" onkeydown="handleSearchKey(event)"><div class="quickSectionTitle"><b>Likely next</b><span class="meta">Quick access</span></div><div id="mobileQuickPicks" class="quickPickGrid compactQuick"></div><button class="ghost boardShortcut" onclick="showPage('mobileBoard')">Open Draft Board</button></div>
-  <section class="card mobileOnly teamCompactCard" aria-labelledby="mobileMyTeamHeading"><div class="sectionHeader"><b id="mobileMyTeamHeading">MY TEAM</b><button id="teamToggleBtn" class="scanBtn" onclick="toggleMobileTeam()" aria-controls="mobileRosterExpandable" aria-expanded="false">Expand</button></div><div id="mobileStrategyCard" class="mobileStrategyCard"></div><div id="mobileTeamBuild" class="teamBuildGrid"></div><div id="mobileRosterSummary" class="rosterSummary accessibilityCounts"></div><div id="mobileNeeds" class="needLine"></div><div id="mobileRosterExpandable" class="hidden"><div id="mobileLiveRoster" class="myTeamRoster" aria-live="polite"></div></div></section>
-</section>
-<section id="mobileBoard" class="mobilePage"><div class="card"><b>Visual snake board</b><div class="boardWrap"><div id="draftBoard" class="board"></div></div></div></section>
-<section id="mobilePlayers" class="mobilePage"><div class="card"><div class="sectionHeader"><b>All Available Players</b><button class="ghost" onclick="undoLastPick()">Undo</button></div><div id="mobilePlayersClock"></div><input id="browseSearch" placeholder="Search all available players" oninput="syncSearch('browse')" onkeydown="handleSearchKey(event)" style="width:100%;margin:8px 0"><div style="display:flex;gap:5px;overflow:auto"><button class="ghost" onclick="setPos('ALL')">ALL</button><button class="ghost" onclick="setPos('RB')">RB</button><button class="ghost" onclick="setPos('WR')">WR</button><button class="ghost" onclick="setPos('QB')">QB</button><button class="ghost" onclick="setPos('TE')">TE</button><button class="ghost" onclick="setPos('DST')">D/ST</button><button class="ghost" onclick="setPos('K')">K</button></div><div id="playersList" class="boardList"></div></div></section>
-</main>
-</div>
-<section id="desktopCommandCenter" class="desktopOnly planningLayer">
- <details class="card planningDetails">
-  <summary><span><b>Planning</b><small>Peek Ahead • Safe-to-wait • Team matrix • Player entry</small></span><span>Open planning tools</span></summary>
-  <div class="desktopCommandCenter planningGrid">
-   <div class="card roomScanCard desktopRoomPanel">
-    <div class="roomScanTop"><div><b>Peek Ahead + Safe-to-Wait</b><div class="meta">Planning context between picks</div></div><button class="scanBtn" onclick="openRoomScan()">Expand</button></div>
-    <div id="desktopMarketGrid" class="roomScanGrid"></div><div id="desktopWaitMeter" class="waitGrid desktopWait"></div><div id="desktopManagerTable" class="desktopManagerTable"></div>
-   </div>
-   <div class="card desktopDraftCommand">
-    <div class="sectionHeader"><div><b>⚡ Draft Command Center</b><div class="meta">Record the room from one place</div></div><button class="ghost" onclick="undoLastPick()">Undo</button></div>
-    <div id="desktopClockStrip"></div>
-    <div class="draftCommandBody">
-      <div class="draftCommandPlayers">
-        <div class="quickSectionTitle"><b>Search Any Player</b><span class="meta">Primary live-entry control</span></div>
-        <input id="dSearch" class="heroSearch" placeholder="Search any drafted player" oninput="syncSearch('desktop')" onkeydown="handleSearchKey(event)">
-        <div class="quickSectionTitle"><b>Likely next</b><span class="meta">Shortcuts, not limits</span></div><div id="desktopQuickPicks" class="quickPickGrid desktopCompactQuick"></div>
-        <div class="desktopPositionFilters"><button class="ghost" data-pos="ALL" onclick="setPos('ALL')">ALL</button><button class="ghost" data-pos="RB" onclick="setPos('RB')">RB</button><button class="ghost" data-pos="WR" onclick="setPos('WR')">WR</button><button class="ghost" data-pos="QB" onclick="setPos('QB')">QB</button><button class="ghost" data-pos="TE" onclick="setPos('TE')">TE</button><button class="ghost" data-pos="DST" onclick="setPos('DST')">D/ST</button><button class="ghost" data-pos="K" onclick="setPos('K')">K</button></div>
-        <div id="dPlayersList" class="boardList"></div>
+    <script src="js/flight-control-v1.js?v=1.3.0"></script>
+    <script src="js/adaptive-coaching-engine-v1.js?v=1.0.0"></script>
+    <script src="js/premium-player-card-v1.js?v=1.0.0"></script>
+    <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
+    <script src="tests/command-center-tests.js?v=1.0.0"></script>
+    <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
+    <script src="js/app.js?v=3.8.2"></script>
+
+    <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
+      <div class="bottomSheetPanel" onclick="event.stopPropagation()">
+        <div class="sheetHeader">
+          <div>
+            <div class="scanEye">👁 SHARINGAN</div>
+            <b style="font-size: 18px">Planning — Peek Ahead + Team Matrix</b>
+          </div>
+          <button class="ghost" onclick="closeRoomScan()">Close</button>
+        </div>
+        <div id="sheetMarketGrid" class="roomScanGrid"></div>
+        <div style="overflow: auto; margin-top: 10px"><div id="sheetManagerTable"></div></div>
+        <div id="managerRosterDetail"></div>
       </div>
     </div>
-   </div>
-  </div>
- </details>
-</section>
-<section id="desktopBoardSection" class="desktopOnly desktopBoardSection">
-  <div class="card fullBoardCard">
-    <div class="sectionHeader"><div><b>Visual Snake Board</b><div class="meta">Bird’s-eye view of the entire draft room</div></div><div id="desktopBoardClock" class="boardClockBadge">On the clock</div></div>
-    <div class="boardWrap"><div id="desktopBoard" class="board"></div></div>
-  </div>
-</section>
-<section id="draftReport" class="hidden"><div class="reportHero"><div class="scanEye">👁 SHARINGAN LEAGUE REPORT</div><h2>Draft Complete</h2><div class="projectionNote">Draft-day projection based on roster strength, value, positional balance, ceiling, and bench construction. It is not a guarantee of season results.</div></div><div id="myDraftReport"></div><div class="card"><b>Projected League Rankings</b><div id="leagueProjection"></div></div><div class="card"><b>All Team Report Cards</b><div id="allTeamReports"></div></div><div id="yahooExportCard" class="card hidden"><b>Yahoo Mock Saved</b><div class="meta" style="margin:6px 0 10px">This draft was against real people. Export the JSON file and upload it here so the draft can be analyzed and used to improve Fantasy HQ.</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="primary" onclick="exportCurrentYahooJSON()">Download This Mock JSON</button><button class="ghost" onclick="exportAllYahooJSON()">Download All Yahoo Mocks</button></div><button class="ghost" style="width:100%;margin-top:8px" onclick="exportCurrentYahooCSV()">Download Picks CSV</button><div class="meta" id="archiveCount" style="margin-top:8px"></div></div><button class="primary" style="width:100%;margin-top:10px" onclick="startAnotherMock()">Start Another Mock</button></section><section id="mobileTeam" class="mobilePage mobileOnly"><div class="card"><b>Your roster</b><div id="mRoster"></div></div><div class="card"><b>AI strategies</b><div id="mStrategies"></div></div></section></section></div>
-<nav id="tabs" class="tabs hidden"><button onclick="showPage('mobileDraft')">🏈<br>Draft</button><button onclick="showPage('mobileBoard')">🧩<br>Board</button><button onclick="showPage('mobilePlayers')">📋<br>Players</button><button onclick="showPage('mobileTeam')">👥<br>Team</button></nav>
-<script src="js/player-tier-contract.js?v=1.0.0"></script>
-<script src="js/roster-view-v1.js?v=1.0.0"></script>
-<script src="js/fantasy-hq-core.js?v=3.2.0"></script>
-<script src="js/command-center-v1.js?v=1.0.0"></script>
-<script src="js/jonin-insight-engine-v1.js?v=1.0.0"></script>
-<script src="js/sharingan-vision-v1.js?v=1.0.0"></script>
-<script src="js/jonin-ux-polish.js?v=1.0.0"></script>
 
-
-<script src="js/flight-control-v1.js?v=1.3.0"></script>
-<script src="js/adaptive-coaching-engine-v1.js?v=1.0.0"></script>
-<script src="js/premium-player-card-v1.js?v=1.0.0"></script>
-<script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
-<script src="tests/command-center-tests.js?v=1.0.0"></script>
-<script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-<script src="js/app.js?v=3.8.2"></script>
-
-
-<div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
-  <div class="bottomSheetPanel" onclick="event.stopPropagation()">
-    <div class="sheetHeader"><div><div class="scanEye">👁 SHARINGAN</div><b style="font-size:18px">Planning — Peek Ahead + Team Matrix</b></div><button class="ghost" onclick="closeRoomScan()">Close</button></div>
-    <div id="sheetMarketGrid" class="roomScanGrid"></div>
-    <div style="overflow:auto;margin-top:10px"><div id="sheetManagerTable"></div></div>
-    <div id="managerRosterDetail"></div>
-  </div>
-</div>
-
-<div id="scanModal" class="modalBackdrop hidden" onclick="closeScan(event)">
-  <div class="scanCard" onclick="event.stopPropagation()">
-    <div id="scanContent"></div>
-  </div>
-</div>
-
-</body></html>
+    <div id="scanModal" class="modalBackdrop hidden" onclick="closeScan(event)">
+      <div class="scanCard" onclick="event.stopPropagation()">
+        <div id="scanContent"></div>
+      </div>
+    </div>
+  </body>
+</html>
