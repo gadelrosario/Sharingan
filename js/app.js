@@ -103,11 +103,7 @@ function startDraft(){
   if(DOM.modeBanner)DOM.modeBanner.innerHTML=`<div class="banner ${mode==="practice"?"practiceBanner":"liveBanner"}"><span>${modeName}</span><span>${APP_VERSION.label} • Draft Slot ${slot} • ${slotManagers[slot]}</span></div>`;
   renderLeagueDnaBar();
   el("practiceControls")?.classList.toggle("hidden",mode!=="practice");el("liveHelp")?.classList.toggle("hidden",mode==="practice");renderAll();requestAnimationFrame(()=>window.scrollTo?.(0,0));
-<<<<<<< HEAD
- }catch(err){console.error("Unable to start draft:",err);alert("Fantasy HQ could not start the draft. Please refresh the Jōnin 3.2 build. Technical detail: "+err.message)}
-=======
  }catch(err){console.error("Unable to start draft:",err);alert(`Fantasy HQ could not start the draft. Please refresh the ${APP_VERSION.label} build. Technical detail: ${err.message}`)}
->>>>>>> feature/flight-control-decision-surface
 }
 function backToSetup(){DOM.appScreen?.classList.add("hidden");DOM.setupScreen?.classList.remove("hidden");DOM.changeBtn?.classList.add("hidden");DOM.tabs?.classList.add("hidden");document.getElementById('headerDraftContext')?.classList.add('hidden')}
 function buildProfiles(){aiProfiles={};for(let t=1;t<=10;t++){if(t!==slot)aiProfiles[t]=getManager(t).archetype}}
@@ -655,23 +651,6 @@ function concisePlayerComparison(player,primary,breakdown,primaryBreakdown,visio
  return `Why not ${alternative.name}? ${winner.name} ${tone}wins on ${reason}.`;
 }
 function setAdvancedAnalysisExpanded(open){advancedAnalysisExpanded=Boolean(open)}
-<<<<<<< HEAD
-function playerDecisionModel(player,recs){
- const breakdown=joninScoreBreakdown(player),insight=joninPlayerInsight(player,recs),vision=sharinganPlayerForecast(player,recs),state=recommendationState(player);
- const hero=window.JoninUXPolish?JoninUXPolish.hero({player,insight,vision,breakdown}):{playerId:player.id,name:player.name,identity:`${player.pos} • ${player.team||'Team unavailable'}`,confidence:50,confidenceLabel:'Developing',primary:{label:'Best Available',reason:rationale(player)}};
- const primary=recs[0],comparison=concisePlayerComparison(player,primary,breakdown,joninScoreBreakdown(primary),vision);
- const summary=window.FlightControlV1?FlightControlV1.decisionSummary({hero,vision,insight,comparison}):{action:'LEAN DRAFT',primary:hero.primary,reasons:[hero.primary.reason],wait:{action:'LEAN DRAFT',availability:'Uncertain',conclusion:'Availability is uncertain.'},comparison};
- return {player,breakdown,insight,vision,state,hero,summary,ccScored:getCommandCenterScores([player])[0]||null};
-}
-function decisionCardMarkup(model,{recommended=false}={}){
- const {player:p,breakdown,insight,vision,state,hero,summary,ccScored}=model,score=mambaScore(p),risk=survivalRisk(p),bp=blueprintFactors(p);
- return `<div class="decisionCard ${recommended?'recommendedDecision':'comparisonDecision'}" data-recommendation-renderer="flight-control-1.1">
-  <div class="decisionHeader"><div class="sharinganConfidence">${sharinganIconMarkup(sharinganStage(p).key)}<div><strong>${safeInsightText(summary.confidence.score)}%</strong><span>${safeInsightText(summary.confidence.label)}</span>${summary.confidence.note?`<small>${safeInsightText(summary.confidence.note)}</small>`:''}</div></div><div class="decisionPlayer"><div class="heroEyebrow">${recommended?'RECOMMENDED PICK':'PLAYER COMPARISON'}</div><h2>${safeInsightText(hero.name)}</h2><div class="heroIdentity">${safeInsightText(hero.identity)}</div></div><div class="decisionAction">${safeInsightText(summary.action)}</div></div>
-  <div class="decisionSignals"><div><span>CAN I WAIT?</span><strong>${safeInsightText(summary.wait.action)}</strong></div><div><span>OPPORTUNITY WINDOW</span><strong>${safeInsightText(summary.opportunity.label)}</strong><small>${safeInsightText(summary.opportunity.reason)}</small></div><div><span>AVAILABILITY FORECAST</span><strong>${safeInsightText(summary.availability.label)}</strong>${summary.availability.reason?`<small>${safeInsightText(summary.availability.reason)}</small>`:''}</div></div>
-  <div class="compactComparison">${safeInsightText(summary.comparison)}</div>
-  <div class="decisionActions"><button class="primary decisionDraftBtn" onclick="selectPlayer(${p.id},${slot})">Draft ${safeInsightText(p.name)}</button>${recommended?'':`<button class="ghost returnRecommendation" onclick="selectCandidate(${p.id})">Return to recommendation</button>`}</div>
-  <details class="advancedAnalysis" ${advancedAnalysisExpanded?'open':''} ontoggle="setAdvancedAnalysisExpanded(this.open)"><summary>Advanced Analysis</summary><div class="advancedMetricStrip"><span>Mamba <b>${score}</b></span><span>Final Pick <b>${finalPickScore(p)}</b></span><span>Room Boost <b>${signedScore(roomBoost(p))}</b></span><span>Roster Fit <b>${signedScore(rosterFitModifier(p))}</b></span><span>Steal Risk <b>${risk}%</b></span><span>Stack <b>${safeInsightText(bp.stack.label)}</b></span><span>Handcuff <b>${safeInsightText(bp.hand.label)}</b></span><span>Exposure <b>${safeInsightText(bp.exp?bp.exp.text:'No concern')}</b></span></div>${joninInsightMarkup(insight,ccScored)}${sharinganVisionMarkup(vision)}${bp.bye?`<div class="roomAlert">${safeInsightText(bp.bye)}</div>`:''}<div class="tagrow">${tierBadge(p)}<span class="tag">${safeInsightText(p.pos)}${safeInsightText(p.posRank||'')}</span><span class="tag">${safeInsightText(p.team||'Team unavailable')}</span><span class="tag">Bye ${safeInsightText(p.bye??'—')}</span></div><div class="heroState">${safeInsightText(state.label)}</div><button type="button" class="scanBtn advancedScan" onclick="openScan(${p.id})">Full player scan</button></details>
-=======
 function coachingEventPresentation(eventType){const events={OPPORTUNITY:{icon:'⚡',label:'OPPORTUNITY'},ROOM_OVERREACTION:{icon:'🔥',label:'ROOM OVERREACTION'},TIER_BREAK:{icon:'🚨',label:'TIER BREAK'},POSITIONAL_EDGE:{icon:'◆',label:'POSITIONAL EDGE'}};return events[eventType]||null}
 function handlePlayerPortraitError(image){if(!image)return;const stage=Number(image.dataset.fallbackStage||0);if(stage===0){image.dataset.fallbackStage='1';image.src=image.dataset.positionFallback;image.alt=`Player portrait unavailable for ${image.dataset.playerName||'this player'}`;return}if(stage===1){image.dataset.fallbackStage='2';image.src=image.dataset.genericFallback;return}image.hidden=true;image.parentElement?.classList.add('portraitUnavailable')}
 function premiumPlayerCardMarkup(card){if(!card||card.empty)return `<section class="premiumPlayerCard emptyPlayerCard" aria-label="Recommended player"><p>${safeInsightText(card?.message||'No player recommendation is currently available.')}</p></section>`;const traits=card.traits.map(trait=>`<span class="playerTrait">${safeInsightText(trait)}</span>`).join(''),metrics=[card.tier?`<span class="premiumMetric premiumTierBadge"><small>Tier</small><b>${safeInsightText(card.tier)}</b></span>`:'',card.mambaScore!=null?`<span class="premiumMetric premiumMambaBadge"><small>Mamba</small><b>${safeInsightText(card.mambaScore)}</b></span>`:''].filter(Boolean).join(''),alt=card.imageStatus==='exact-local'?`Portrait of ${safeInsightText(card.name)}`:`Player portrait unavailable for ${safeInsightText(card.name)}`;return `<article class="premiumPlayerCard stage-${safeInsightText(card.sharinganStage)} ${card.comparisonMode?'isComparing':''}" aria-label="${card.comparisonMode?'Comparing':'Recommended player'} ${safeInsightText(card.name)}"><div class="playerPortrait"><img src="${safeInsightText(card.imageUrl)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl)}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl)}" data-fallback-stage="${safeInsightText(card.fallbackStage)}" data-player-name="${safeInsightText(card.name)}" alt="${alt}" onerror="handlePlayerPortraitError(this)"><span class="portraitLight" aria-hidden="true"></span><span class="portraitMonogram" aria-hidden="true">${safeInsightText(card.position)}</span></div><div class="playerCardBody">${card.comparisonMode?`<div class="playerCardState">COMPARING</div>`:''}<h2>${safeInsightText(card.name)}</h2><div class="playerIdentity"><span class="positionBadge">${safeInsightText(card.position)}</span><strong>${safeInsightText(card.nflTeam||'Team unavailable')}</strong>${card.rookie?`<span class="rookieBadge">ROOKIE</span>`:''}</div><div class="playerCardMetrics" aria-label="Player metrics">${metrics}</div>${traits?`<div class="playerTraits" aria-label="Player traits">${traits}</div>`:''}${card.byeWeek!=null?`<div class="playerCardBye">Bye week <strong>${safeInsightText(card.byeWeek)}</strong></div>`:''}<div class="playerCardAction"><button class="primary decisionDraftBtn" onclick="selectPlayer(${safeInsightText(card.playerId)},${slot})">Draft ${safeInsightText(card.name)}</button></div></div></article>`}
@@ -720,7 +699,6 @@ function decisionCardMarkup(model,{recommended=false}={}){
   ${draftPsychologyMarkup(psychology)}
   ${recommended?'':`<div class="decisionActions comparisonReturn"><button class="ghost returnRecommendation" onclick="selectCandidate(${p.id})">Return to recommendation</button></div>`}
   <details class="advancedAnalysis" ${advancedAnalysisExpanded?'open':''} ontoggle="setAdvancedAnalysisExpanded(this.open)"><summary>Why This Pick</summary><div class="advancedMetricStrip"><span>Mamba <b>${score}</b></span><span>Final Pick <b>${finalPickScore(p)}</b></span><span>Room Boost <b>${signedScore(roomBoost(p))}</b></span><span>Roster Fit <b>${signedScore(rosterFitModifier(p))}</b></span><span>Steal Risk <b>${risk}%</b></span><span>Stack <b>${safeInsightText(bp.stack.label)}</b></span><span>Handcuff <b>${safeInsightText(bp.hand.label)}</b></span><span>Exposure <b>${safeInsightText(bp.exp?bp.exp.text:'No concern')}</b></span></div>${joninInsightMarkup(insight,ccScored)}${sharinganVisionMarkup(vision)}${bp.bye?`<div class="roomAlert">${safeInsightText(bp.bye)}</div>`:''}<div class="tagrow">${tierBadge(p)}<span class="tag">${safeInsightText(p.pos)}${safeInsightText(p.posRank||'')}</span><span class="tag">${safeInsightText(p.team||'Team unavailable')}</span><span class="tag">Bye ${safeInsightText(p.bye??'—')}</span></div><div class="heroState">${safeInsightText(state.label)}</div><button type="button" class="scanBtn advancedScan" onclick="openScan(${p.id})">Full player scan</button></details>
->>>>>>> feature/flight-control-decision-surface
  </div>`;
 }
 function alternativeDecisionMarkup(model,rank){
@@ -731,32 +709,18 @@ function renderRecommendation(){
  const renderStarted=performance.now();
  let recs=snapshotRecommendations();
  if(!recs.length){
-<<<<<<< HEAD
-   recommendation.innerHTML="<b>Draft complete.</b>";
-   alternatives.innerHTML="";
-   recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
-=======
    if(DOM.recommendation){DOM.recommendation.innerHTML="<b>Draft complete.</b>";DOM.recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3)}
    if(DOM.alternatives)DOM.alternatives.innerHTML="";
->>>>>>> feature/flight-control-decision-surface
    return;
  }
  const primary=recs[0],selected=selectedCandidateId?players.find(candidate=>candidate.id===selectedCandidateId&&!drafted.includes(candidate.id)):null,displayed=selected||primary;
  const model=playerDecisionModel(displayed,recs);
-<<<<<<< HEAD
- recommendation.className="rec "+model.state.cls;
- recommendation.innerHTML=decisionCardMarkup(model,{recommended:displayed.id===primary.id});
- const alternativesToShow=[primary,...recs.slice(1,5)].filter((candidate,index,list)=>candidate.id!==displayed.id&&list.findIndex(item=>item.id===candidate.id)===index).slice(0,4);
- alternatives.innerHTML=alternativesToShow.map((candidate,index)=>alternativeDecisionMarkup(playerDecisionModel(candidate,recs),candidate.id===primary.id?1:index+2)).join('');
- recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
-=======
  if(!DOM.recommendation||!DOM.alternatives)return;
  DOM.recommendation.className="rec "+model.state.cls;
  DOM.recommendation.innerHTML=decisionCardMarkup(model,{recommended:displayed.id===primary.id});
  const alternativesToShow=[primary,...recs.slice(1,5)].filter((candidate,index,list)=>candidate.id!==displayed.id&&list.findIndex(item=>item.id===candidate.id)===index).slice(0,4);
  DOM.alternatives.innerHTML=alternativesToShow.map((candidate,index)=>alternativeDecisionMarkup(playerDecisionModel(candidate,recs),candidate.id===primary.id?1:index+2)).join('');
  DOM.recommendation.dataset.renderMs=(performance.now()-renderStarted).toFixed(3);
->>>>>>> feature/flight-control-decision-surface
 }
 function renderBoard(){let byPick=new Map(history.map(x=>[x.pick,x])),cols=[];for(let t=1;t<=10;t++){let cells=[];for(let r=1;r<=TOTAL_ROUNDS;r++){let pnum=(r-1)*10+(r%2?t:11-t),h=byPick.get(pnum),pl=h?players.find(x=>x.id===h.id):null;cells.push(`<div data-pick="${pnum}" class="pickCell ${boardPlayerClasses(pl)} ${pnum===pick?"current":""} ${h&&h.team===slot?"mine":""}"><span class="pn">${pnum}</span><span class="name">${pl?pl.name:(pnum===pick?"ON CLOCK":"—")}</span></div>`)}cols.push(`<div class="teamCol ${t===slot?"you":""}"><div class="teamHead">${t===slot?"⭐ YOU":slotManagers[t]||("Team "+t)}<small>${t===slot?"Gerard Mode":aiProfiles[t]||"Manual"}</small></div>${cells.join("")}</div>`)}const markup=cols.join("");if(DOM.desktopBoard)DOM.desktopBoard.innerHTML=markup;if(DOM.draftBoard)DOM.draftBoard.innerHTML=markup}
 function teamTierMarkup(){let positions=["QB","RB","WR","TE"],lines=positions.map(pos=>{let c=positionTierCounts(pos),bits=["S","A","B","C"].filter(t=>c[t]).map(t=>`${t}×${c[t]}`).join("  ")||"—";return `<div class="tierLine"><b>${pos}</b><span class="tierDots">${bits}</span><span>${positionStrength(pos)}</span></div>`}).join("");let rb=positionStrength("RB"),wr=positionStrength("WR"),advice=rb==="Elite"||rb==="Strong"?"RB quality is secure. Shift toward WR when values are close. Value Override still wins.":wr==="Elite"||wr==="Strong"?"WR quality is secure. Add RB when values are close. Value Override still wins.":"Build the best available starting tier. Value remains the priority.";return `<div class="teamTierSummary"><b>Team Decision-Tier Quality</b>${lines}<div class="teamAdvice">${advice}</div></div>`}
@@ -933,11 +897,7 @@ function projectedTierRemaining(pos){let pool=available().filter(p=>positionKey(
 function tierCountText(c){return ["S","A","B","C"].filter(t=>(c[t]||0)>0).map(t=>`${t}: ${c[t]}`).join(" • ")||"No S–C players"}
 function roomIntelMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let x=marketPressure(pos),run=x.recent>=4?"Run is happening":x.recent>=2?"Some movement":"No run";return `<div class="intelItem"><b>${pos} — ${run}</b><span>${x.recent} drafted in the last 8 picks. ${x.starterNeed} teams before your next pick still need a starter.</span></div>`}).join("")}
 function peekAheadMarkup(){return ["RB","WR","QB","TE"].filter(pos=>!userPositionFilled(pos)).map(pos=>{let n=expectedDraftedBeforeNext(pos),now=availableTierCounts(pos),later=projectedTierRemaining(pos);return `<div class="peekItem"><b>${pos}: ${n} expected before your next pick</b><span>Available now — ${tierCountText(now)}</span><span>Projected then — ${tierCountText(later)}</span></div>`}).join("")}
-<<<<<<< HEAD
-function renderRoomScan(){let grid=`<div><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});if(document.getElementById("desktopManagerTable"))desktopManagerTable.innerHTML=managerTableMarkup(false);if(document.getElementById("sheetManagerTable"))sheetManagerTable.innerHTML=table}
-=======
 function renderRoomScan(){let grid=`<div><b>Peek Ahead</b><div class="peekList">${peekAheadMarkup()}</div></div>`,table=managerTableMarkup(true);["mobileMarketGrid","desktopMarketGrid","sheetMarketGrid"].forEach(id=>{let e=document.getElementById(id);if(e)e.innerHTML=grid});if(DOM.desktopManagerTable)DOM.desktopManagerTable.innerHTML=managerTableMarkup(false);if(DOM.sheetManagerTable)DOM.sheetManagerTable.innerHTML=table}
->>>>>>> feature/flight-control-decision-surface
 function openRoomScan(){renderRoomScan();let sheet=document.getElementById("roomScanSheet");if(sheet)sheet.classList.remove("hidden")}
 function closeRoomScan(e){let sheet=document.getElementById("roomScanSheet");if(!sheet)return;if(e&&e.target!==sheet)return;sheet.classList.add("hidden");let detail=document.getElementById("managerRosterDetail");if(detail)detail.innerHTML=""}
 
@@ -1058,9 +1018,5 @@ const originalStartDraft=startDraft;startDraft=function(){const result=originalS
 const originalSelectPlayer=selectPlayer;selectPlayer=function(id,team){const result=originalSelectPlayer.apply(this,arguments);syncDraftIntoLeagueState();return result};
 const originalUndoLastPick=undoLastPick;undoLastPick=function(){const result=originalUndoLastPick.apply(this,arguments);syncDraftIntoLeagueState();return result};
 
-<<<<<<< HEAD
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=flight_control_1_1").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
-=======
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js?v=jonin_3_7_2").then(reg=>reg.update()).catch(err=>console.warn("Service worker update skipped",err)))}
->>>>>>> feature/flight-control-decision-surface
 init();
