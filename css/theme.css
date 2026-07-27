@@ -1,0 +1,72 @@
+:root {
+  /* ==========================
+     Brand
+  ========================== */
+
+  --fhq-purple: #7c3aed;
+  --fhq-purple-dark: #4c1d95;
+  --fhq-gold: #f5b942;
+  --fhq-gold-light: #ffd978;
+
+  /* ==========================
+     Backgrounds
+  ========================== */
+
+  --bg-main: #090b10;
+  --bg-surface: #11151d;
+  --bg-elevated: #181d27;
+  --bg-interactive: #202634;
+
+  /* ==========================
+     Text
+  ========================== */
+
+  --text-primary: #f7f8fa;
+  --text-secondary: #c5cbd6;
+  --text-muted: #8b95a7;
+
+  /* ==========================
+     Status
+  ========================== */
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #38bdf8;
+
+  /* ==========================
+     Confidence
+  ========================== */
+
+  --confidence-high: #22c55e;
+  --confidence-medium: #f5b942;
+  --confidence-low: #f97316;
+
+  /* ==========================
+     Radius
+  ========================== */
+
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 16px;
+
+  /* ==========================
+     Spacing
+  ========================== */
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* ==========================
+     Animation
+  ========================== */
+
+  --transition-fast: 120ms ease;
+  --transition-normal: 150ms ease;
+  --transition-panel: 200ms ease;
+}

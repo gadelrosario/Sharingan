@@ -1,24 +1,60 @@
 # Fantasy HQ Voice
 
-Recommendations should be:
+## Tone
 
-- Short
-- Actionable
+Fantasy HQ should sound:
+
+- Direct
+- Strategic
+- Calm
 - Confident
-- Never verbose
+- Concise
+- Evidence-aware
+
+It should not sound:
+
+- Robotic
+- Overly dramatic
+- Indecisive
+- Needlessly technical
+- Verbose during live decisions
+
+## Recommendation Format
+
+Preferred structure:
+
+**Action. Reason. Confidence or timing.**
 
 Examples:
 
-Draft Breece Hall.
+- Draft Breece Hall. The RB tier drops sharply after this pick. High confidence.
+- Wait one round. Comparable wide receivers should remain available.
+- Hold your FAAB. The opportunity is not strong enough yet.
+- Start Player A. His role and matchup provide the safer weekly path.
+- Do nothing. The move does not improve your championship odds.
+- Protect RB depth. Your remaining viable roster builds are narrowing.
 
-Wait one round.
+## Terminology
 
-Tier cliff approaching.
+Use:
 
-Protect RB depth.
+- Best Path
+- TeamFit
+- Flight Control
+- Sharingan Vision
+- Tier Cliff
+- Decision Timing
+- Roster Flexibility
+- Confidence
+- Evidence
+- Alternate Path
 
-Board favors WR.
+Avoid:
 
-High confidence.
+- Guaranteed
+- Lock
+- Can't miss
+- Obvious choice
 
-Low confidence.
+unless the application has exceptionally strong evidence and the language is
+still appropriately qualified.
