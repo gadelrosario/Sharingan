@@ -8,8 +8,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-    <script src="js/app-version.js?v=1.0.1"></script>
-    <link rel="stylesheet" href="css/app.css?v=3.8.0" />
+<script src="js/app-version.js?v=1.0.1"></script>
+<link rel="stylesheet" href="css/app.css?v=3.8.0">
   </head>
   <body>
     <header>
@@ -292,15 +292,72 @@
                   <div class="stat"><b id="mUntil">0</b>Until you</div>
                 </div>
               </div>
-              <div class="card recommendationCard">
-                <div id="recommendation" class="rec"></div>
-                <div class="mobileAlternatives">
-                  <div class="sectionHeader">
-                    <b>Top Alternatives</b><span class="meta">Same decision view on selection</span>
-                  </div>
-                  <div id="alternatives"></div>
-                </div>
-              </div>
+              <div class="commandSurface">
+  <div class="card recommendationCard fightControlPanel">
+    <div id="recommendation" class="rec"></div>
+  </div>
+
+  <div class="card desktopDraftCommand">
+    <div class="sectionHeader">
+      <div>
+        <b>⚡ Draft Command Center</b>
+        <div class="meta">Record the room from one place</div>
+      </div>
+      <button class="ghost" onclick="undoLastPick()">Undo</button>
+    </div>
+
+    <div id="desktopClockStrip"></div>
+
+    <div class="draftCommandBody">
+      <div class="draftCommandPlayers">
+        <div class="quickSectionTitle">
+          <b>Search Any Player</b>
+          <span class="meta">Primary live-entry control</span>
+        </div>
+
+        <input
+          id="dSearch"
+          class="heroSearch"
+          placeholder="Search any drafted player"
+          oninput="syncSearch('desktop')"
+          onkeydown="handleSearchKey(event)"
+        />
+
+        <div class="quickSectionTitle">
+          <b>Likely next</b>
+          <span class="meta">Shortcuts, not limits</span>
+        </div>
+
+        <div id="desktopQuickPicks" class="quickPickGrid desktopCompactQuick"></div>
+
+        <div class="desktopPositionFilters">
+          <button class="ghost" data-pos="ALL" onclick="setPos('ALL')">ALL</button>
+          <button class="ghost" data-pos="RB" onclick="setPos('RB')">RB</button>
+          <button class="ghost" data-pos="WR" onclick="setPos('WR')">WR</button>
+          <button class="ghost" data-pos="QB" onclick="setPos('QB')">QB</button>
+          <button class="ghost" data-pos="TE" onclick="setPos('TE')">TE</button>
+          <button class="ghost" data-pos="DST" onclick="setPos('DST')">D/ST</button>
+          <button class="ghost" data-pos="K" onclick="setPos('K')">K</button>
+        </div>
+
+        <div id="dPlayersList" class="boardList"></div>
+      </div>
+    </div>
+  </div>
+
+
+   <div class="card alternativesCard">
+  <div class="mobileAlternatives">
+    <div class="sectionHeader">
+      <b>Top Alternatives</b>
+      <span class="meta">Same decision view on selection</span>
+    </div>
+    <div id="alternatives"></div>
+  </div>
+</div>
+
+
+
               <div class="card mobileOnly fastEntryCard" id="liveHelp">
                 <div class="sectionHeader">
                   <div>
@@ -405,41 +462,7 @@
                 <div id="desktopWaitMeter" class="waitGrid desktopWait"></div>
                 <div id="desktopManagerTable" class="desktopManagerTable"></div>
               </div>
-              <div class="card desktopDraftCommand">
-                <div class="sectionHeader">
-                  <div>
-                    <b>⚡ Draft Command Center</b>
-                    <div class="meta">Record the room from one place</div>
-                  </div>
-                  <button class="ghost" onclick="undoLastPick()">Undo</button>
-                </div>
-                <div id="desktopClockStrip"></div>
-                <div class="draftCommandBody">
-                  <div class="draftCommandPlayers">
-                    <div class="quickSectionTitle">
-                      <b>Search Any Player</b><span class="meta">Primary live-entry control</span>
-                    </div>
-                    <input
-                      id="dSearch"
-                      class="heroSearch"
-                      placeholder="Search any drafted player"
-                      oninput="syncSearch('desktop')"
-                      onkeydown="handleSearchKey(event)"
-                    />
-                    <div class="quickSectionTitle">
-                      <b>Likely next</b><span class="meta">Shortcuts, not limits</span>
-                    </div>
-                    <div id="desktopQuickPicks" class="quickPickGrid desktopCompactQuick"></div>
-                    <div class="desktopPositionFilters">
-                      <button class="ghost" data-pos="ALL" onclick="setPos('ALL')">ALL</button
-                      ><button class="ghost" data-pos="RB" onclick="setPos('RB')">RB</button
-                      ><button class="ghost" data-pos="WR" onclick="setPos('WR')">WR</button
-                      ><button class="ghost" data-pos="QB" onclick="setPos('QB')">QB</button
-                      ><button class="ghost" data-pos="TE" onclick="setPos('TE')">TE</button
-                      ><button class="ghost" data-pos="DST" onclick="setPos('DST')">D/ST</button
-                      ><button class="ghost" data-pos="K" onclick="setPos('K')">K</button>
-                    </div>
-                    <div id="dPlayersList" class="boardList"></div>
+
                   </div>
                 </div>
               </div>
