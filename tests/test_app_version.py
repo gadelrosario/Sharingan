@@ -67,8 +67,8 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertIn('./js/app-version.js?v=1.0.1', worker)
-        self.assertIn('fantasy-hq-jonin-4-0-11', worker)
-        self.assertIn('service-worker.js?v=jonin_4_0_11', app)
+        self.assertIn('fantasy-hq-jonin-4-0-13', worker)
+        self.assertIn('service-worker.js?v=jonin_4_0_13', app)
 
     def test_architecture_remains_browser_isolated(self):
         sources = "\n".join((ROOT / path).read_text(encoding="utf-8") for path in ("index.html", "js/app.js", "service-worker.js"))

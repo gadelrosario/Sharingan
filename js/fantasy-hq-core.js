@@ -8,6 +8,13 @@
   const now=()=>new Date().toISOString();
   const uid=(prefix='id')=>`${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,8)}`;
   const normalizePos=pos=>String(pos||'').toUpperCase()==='DEF'?'DST':String(pos||'').toUpperCase();
+  const normalizeSlot=slot=>{
+    const value=String(slot||'').trim().toUpperCase();
+    if(value.startsWith('BENCH'))return 'BENCH';
+    if(value.startsWith('FLEX'))return 'FLEX';
+    if(value.startsWith('DEF')||value.startsWith('DST')||value==='D/ST')return 'DST';
+    return ['QB','RB','WR','TE','K'].find(position=>value.startsWith(position))||'UNKNOWN';
+  };
 
   function createLeagueState(overrides={}){
     return {
@@ -44,19 +51,27 @@
   function setState(next,reason='replace'){state=validateLeagueState(next);return save(reason)}
   function patchState(patch,reason='patch'){state=validateLeagueState({...state,...patch});return save(reason)}
 
-  function calculateTeamStrength(playerIds=[],playerIndex=new Map()){
+  function calculateTeamStrength(playerIds=[],playerIndex=new Map(),options={}){
     const weights={QB:1.05,RB:1.18,WR:1.2,TE:1.08,K:.22,DST:.28};
     const positional={QB:[],RB:[],WR:[],TE:[],K:[],DST:[]};
     playerIds.map(id=>playerIndex.get(Number(id))||playerIndex.get(String(id))).filter(Boolean).forEach(p=>{const pos=normalizePos(p.pos);if(positional[pos])positional[pos].push(p)});
     Object.values(positional).forEach(arr=>arr.sort((a,b)=>(a.overall||999)-(b.overall||999)));
     let total=0,used=0;
-    const starterCounts={QB:1,RB:2,WR:3,TE:1,K:1,DST:1};
+    const configuredSlots=Array.isArray(options.starterSlots)?options.starterSlots.map(normalizeSlot).filter(slot=>!['BENCH','UNKNOWN'].includes(slot)):null;
+    const starterCounts=configuredSlots?configuredSlots.reduce((counts,slot)=>{if(slot!=='FLEX')counts[slot]=(counts[slot]||0)+1;return counts},{}):{QB:1,RB:2,WR:3,TE:1,K:1,DST:1};
+    const selected=new Set();
     Object.entries(positional).forEach(([pos,arr])=>{
       const count=starterCounts[pos]||0;
-      arr.slice(0,count).forEach((p,i)=>{const rank=Math.max(1,Number(p.overall)||250);total+=(110-Math.min(rank,100))*(weights[pos]||1)*(1-i*.08);used++});
-      arr.slice(count).forEach((p,i)=>{const rank=Math.max(1,Number(p.overall)||250);total+=Math.max(0,85-Math.min(rank,120))*.18/(1+i*.2)});
+      arr.slice(0,count).forEach((p,i)=>{const rank=Math.max(1,Number(p.overall)||250);total+=(110-Math.min(rank,100))*(weights[pos]||1)*(1-i*.08);used++;selected.add(p)});
     });
-    const raw=used?total/(used*1.05):0;
+    if(configuredSlots){
+      const flexCount=configuredSlots.filter(slot=>slot==='FLEX').length;
+      const flexPool=['RB','WR','TE'].flatMap(pos=>positional[pos].filter(player=>!selected.has(player)).map(player=>({player,pos,score:(110-Math.min(Math.max(1,Number(player.overall)||250),100))*(weights[pos]||1)}))).sort((a,b)=>b.score-a.score);
+      flexPool.slice(0,flexCount).forEach(({player,score})=>{total+=score;used++;selected.add(player)});
+    }
+    Object.entries(positional).forEach(([,arr])=>arr.filter(player=>!selected.has(player)).forEach((p,i)=>{const rank=Math.max(1,Number(p.overall)||250);total+=Math.max(0,85-Math.min(rank,120))*.18/(1+i*.2)}));
+    const denominator=configuredSlots?configuredSlots.length:used;
+    const raw=denominator?total/(denominator*1.05):0;
     return Math.max(0,Math.min(100,Math.round((raw/100)*1000)/10));
   }
 

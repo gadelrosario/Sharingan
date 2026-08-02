@@ -595,7 +595,8 @@ function rosterViewState() {
 function counts() {
   let c = { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 };
   myPlayers().forEach(p => {
-    if (c[p.pos] !== undefined) c[p.pos]++;
+    const position = positionKey(p);
+    if (c[position] !== undefined) c[position]++;
   });
   return c;
 }
@@ -808,6 +809,26 @@ function sharinganStage(p) {
 function recommendationEligible(p) {
   if (userPositionFilled(p.pos)) return false;
   return true;
+}
+
+function rosterCompletionState() {
+  return RosterCompletionConstraintV1.buildState({
+    rosterState: rosterViewState(),
+    rosterSlots,
+    draftedEntries: myRosterEntries(),
+    availablePlayers: available(),
+    currentPick: pick,
+    totalPicks: TOTAL_PICKS,
+    userTeam: slot,
+    teamForPick,
+    rosterEngine: RosterViewV1,
+  });
+}
+function completionConstrainedPool(pool, state = rosterCompletionState()) {
+  return RosterCompletionConstraintV1.constrainPool(pool, state);
+}
+function recommendationSelectionAllowed(player, state = rosterCompletionState()) {
+  return RosterCompletionConstraintV1.candidateAllowed(player, state);
 }
 
 // Developer-only visual override (debug panel toggles these). These do NOT change draft logic.
@@ -1154,18 +1175,20 @@ function gerardScore(p) {
   return s;
 }
 function recommendations() {
-  let pool = available().filter(recommendationEligible);
+  const completion = rosterCompletionState();
+  let pool = completionConstrainedPool(available().filter(recommendationEligible), completion);
   if (!pool.length)
-    pool = available().filter(p => !['QB', 'TE'].includes(p.pos) || !userPositionFilled(p.pos));
-  if(!window.JoninDecisionIntelligenceV1)return [...pool].sort((a,b)=>finalPickScore(b)-finalPickScore(a)||mambaScore(b)-mambaScore(a)).slice(0,5);
+    pool = completionConstrainedPool(available().filter(p => !['QB', 'TE'].includes(p.pos) || !userPositionFilled(p.pos)), completion);
+  if(!window.JoninDecisionIntelligenceV1)return RosterCompletionConstraintV1.finalizeRecommendations([...pool].sort((a,b)=>finalPickScore(b)-finalPickScore(a)||mambaScore(b)-mambaScore(a)),completion,5);
   const decision=championshipDecision(pool),ordered=[...decision.recommended.map(item=>item.player),...decision.all.slice().sort((a,b)=>b.scores.championship-a.scores.championship).map(item=>item.player)];
-  return ordered.filter((player,index,list)=>player&&list.findIndex(item=>item.id===player.id)===index).slice(0,5);
+  return RosterCompletionConstraintV1.finalizeRecommendations(ordered,completion,5);
 }
 function championshipDecision(pool=available().filter(recommendationEligible)){
-  if(championshipDecisionCache?.epoch===intelligenceEpoch)return championshipDecisionCache.value;
-  const engine=window.JoninDecisionIntelligenceV1,index=fantasyHQPlayerIndex(),rosterIds=myPlayers().map(player=>player.id),before=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength(rosterIds,index):null;
-  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?PlayerTierContract.getOverallTier(replacement):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index):null;return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:overallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until}});
-  const value=engine.choose(inputs);championshipDecisionCache={epoch:intelligenceEpoch,value};return value;
+  const poolKey=pool.map(player=>player.id).join(',');
+  if(championshipDecisionCache?.epoch===intelligenceEpoch&&championshipDecisionCache.poolKey===poolKey)return championshipDecisionCache.value;
+  const engine=window.JoninDecisionIntelligenceV1,index=fantasyHQPlayerIndex(),rosterIds=myPlayers().map(player=>player.id),strengthOptions={starterSlots:rosterSlots},before=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength(rosterIds,index,strengthOptions):null;
+  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?PlayerTierContract.getOverallTier(replacement):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null;return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:overallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until}});
+  const value=engine.choose(inputs);championshipDecisionCache={epoch:intelligenceEpoch,poolKey,value};return value;
 }
 function rationale(p) {
   let b = [],
@@ -2424,7 +2447,9 @@ function renderRecommendation() {
 }
 function boardControlState(score){return score>=72?'HIGH':score>=55?'MEDIUM':'LOW'}
 function updateDraftDecisionChrome(model,displayed,primary){
-  const cc=Number(model.ccScored?.commandCenterScore?.total),decision=model.coaching||{},tags=compactStrategyTags(model),instruction=decision.reason||model.summary?.primary?.reason||'Follow the strongest value and roster-building path.';
+  const cc=Number(model.ccScored?.commandCenterScore?.total),decision=model.coaching||{},tags=compactStrategyTags(model),completion=rosterCompletionState();
+  let instruction=decision.reason||model.summary?.primary?.reason||'Follow the strongest value and roster-building path.';
+  if(completion.mode!=='NORMAL') instruction=completion.message;
   safeText('headerCommandScore',Number.isFinite(cc)?boardControlState(cc):'MEDIUM');safeText('headerCommandLabel',Number.isFinite(cc)?'Tier Advantage • Pick Flexibility • Roster Balance':'Board developing');
   if(DOM.boardInstruction)DOM.boardInstruction.innerHTML=`<b>BOARD INSTRUCTION</b><span>${safeInsightText(instruction)}</span><span>🎯 Foundation: ${safeInsightText(decision.phaseLabel||'Best roster path')}</span><span>🛡️ Strategy: ${safeInsightText(tags[1]?.label||tags[0]?.label||'Protect value')}</span><span>💎 Focus: ${safeInsightText(tags[0]?.label||'Best available')}</span>`;
   if(DOM.recordPickBtn){DOM.recordPickBtn.disabled=!displayed||drafted.includes(displayed.id);DOM.recordPickBtn.dataset.playerId=displayed?.id??'';DOM.recordPickBtn.setAttribute('aria-label',`Record ${displayed?.name||'selected player'} at pick ${pick}`)}
@@ -2433,6 +2458,7 @@ function updateDraftDecisionChrome(model,displayed,primary){
 function recordFightCardPlayer(){
   const id=Number(DOM.recordPickBtn?.dataset.playerId),player=players.find(candidate=>candidate.id===id&&!drafted.includes(candidate.id));
   if(!player){alert('Select an available player in Fight Card before recording the pick.');return false}
+  if(!recommendationSelectionAllowed(player)){alert(rosterCompletionState().message);return false}
   return recordCurrentPick(player.id);
 }
 function openFightCardDetails(){
@@ -2446,6 +2472,7 @@ function viewRecommendationPlayer(id){
 function draftRecommendationPlayer(id){
   const player=players.find(candidate=>candidate.id===Number(id)&&!drafted.includes(candidate.id));
   if(!player){alert('That player is no longer available.');return false}
+  if(!recommendationSelectionAllowed(player)){alert(rosterCompletionState().message);return false}
   selectCandidate(player.id);
   return recordFightCardPlayer();
 }
@@ -2566,220 +2593,31 @@ function teamPlayers(team) {
     .map(h => players.find(p => p.id === h.id))
     .filter(Boolean);
 }
-function gradeFromScore(s) {
-  return s >= 94
-    ? 'A+'
-    : s >= 90
-      ? 'A'
-      : s >= 87
-        ? 'A-'
-        : s >= 83
-          ? 'B+'
-          : s >= 80
-            ? 'B'
-            : s >= 77
-              ? 'B-'
-              : s >= 73
-                ? 'C+'
-                : s >= 70
-                  ? 'C'
-                  : s >= 67
-                    ? 'C-'
-                    : s >= 63
-                      ? 'D+'
-                      : s >= 60
-                        ? 'D'
-                        : 'F';
+function gradingInput() {
+  const teams = [];
+  for (let team = 1; team <= (leagueContext.teams || 10); team++)
+    teams.push({ teamId: team, managerName: slotManagers[team] || `Team ${team}`, playerIds: history.filter(entry => entry.team === team).map(entry => entry.id) });
+  return { teams, players, picks: history.map(entry => ({ overallPick: entry.pick, teamId: entry.team, playerId: entry.id })), settings: { ...leagueContext } };
 }
-function evaluateTeam(team) {
-  const ps = teamPlayers(team),
-    c = { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 };
-  ps.forEach(p => {
-    let k = p.pos === 'DEF' ? 'DST' : p.pos;
-    if (c[k] != null) c[k]++;
-  });
-  const starters = [];
-  const take = (pos, n) =>
-    ps
-      .filter(p => (p.pos === 'DEF' ? 'DST' : p.pos) === pos)
-      .sort((a, b) => (a.overall || 999) - (b.overall || 999))
-      .slice(0, n);
-  starters.push(
-    ...take('QB', 1),
-    ...take('RB', 2),
-    ...take('WR', 3),
-    ...take('TE', 1),
-    ...take('K', 1),
-    ...take('DST', 1)
-  );
-  starters.push(
-    ...ps
-      .filter(p => ['RB', 'WR', 'TE'].includes(p.pos) && !starters.includes(p))
-      .sort((a, b) => (a.overall || 999) - (b.overall || 999))
-      .slice(0, 2)
-  );
-  const avg = a => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 220),
-    sr = starters.map(p => p.overall || 220),
-    ar = ps.map(p => p.overall || 240);
-  const starterStrength = Math.max(35, Math.min(100, 100 - (avg(sr) - 40) * 0.42));
-  const value = Math.max(35, Math.min(100, 100 - (avg(ar) - 75) * 0.27));
-  let construction = 100;
-  if (c.QB < 1) construction -= 18;
-  if (c.RB < 2) construction -= 18;
-  if (c.WR < 3) construction -= 18;
-  if (c.TE < 1) construction -= 15;
-  if (c.K < 1) construction -= 7;
-  if (c.DST < 1) construction -= 7;
-  if (c.QB > 2) construction -= 8 * (c.QB - 2);
-  if (c.TE > 2) construction -= 6 * (c.TE - 2);
-  if (c.K > 1) construction -= 8 * (c.K - 1);
-  if (c.DST > 1) construction -= 7 * (c.DST - 1);
-  construction = Math.max(30, construction);
-  const ceilingPlayers = ps.filter(
-    p =>
-      (p.overallTier === 'S' || p.overallTier === 'A' || (p.bdgeBoost || 0) > 2) &&
-      ['QB', 'RB', 'WR', 'TE'].includes(p.pos)
-  ).length;
-  const ceiling = Math.max(
-    40,
-    Math.min(100, 56 + ceilingPlayers * 7 + (c.RB >= 4 ? 5 : 0) + (c.WR >= 5 ? 5 : 0))
-  );
-  const bench = ps.filter(p => !starters.includes(p));
-  const benchUpside = Math.max(
-    40,
-    Math.min(
-      100,
-      50 + bench.filter(p => p.rookie || p.overallTier === 'A' || (p.bdgeBoost || 0) > 1).length * 8
-    )
-  );
-  let score = Math.round(
-    starterStrength * 0.34 +
-      value * 0.22 +
-      construction * 0.18 +
-      ceiling * 0.17 +
-      benchUpside * 0.09
-  );
-  if (team === slot) {
-    if (c.QB === 1) score += 2;
-    if (c.TE === 1) score += 2;
-    if (ceilingPlayers >= 3) score += 3;
-  }
-  score = Math.max(45, Math.min(99, score));
-  let strengths = [],
-    weaknesses = [];
-  if (starterStrength >= 85) strengths.push('strong starting lineup');
-  if (ceiling >= 85) strengths.push('elite weekly ceiling');
-  if (value >= 85) strengths.push('excellent draft value');
-  if (construction >= 90) strengths.push('clean roster construction');
-  if (benchUpside >= 80) strengths.push('high-upside bench');
-  if (starterStrength < 75) weaknesses.push('starting lineup quality');
-  if (c.RB < 4) weaknesses.push('RB depth');
-  if (c.WR < 5) weaknesses.push('WR depth');
-  if (c.QB > 2) weaknesses.push('too many QBs');
-  if (c.TE > 2) weaknesses.push('too many TEs');
-  if (c.K > 1) weaknesses.push('duplicate kickers');
-  if (c.DST > 1) weaknesses.push('duplicate defenses');
-  if (!strengths.length) strengths.push('balanced overall roster');
-  if (!weaknesses.length) weaknesses.push('no major structural weakness');
-  const bp = ps
-    .map(p => ({
-      p,
-      v: (history.find(h => h.team === team && h.id === p.id)?.pick || 999) - (p.overall || 999),
-    }))
-    .sort((a, b) => b.v - a.v)[0]?.p;
-  const missingStarterPositions = [
-    c.QB < 1 ? 'QB' : null,
-    c.RB < 2 ? 'RB' : null,
-    c.WR < 3 ? 'WR' : null,
-    c.TE < 1 ? 'TE' : null,
-    c.K < 1 ? 'K' : null,
-    c.DST < 1 ? 'D/ST' : null,
-  ].filter(Boolean);
-  const constructionNotes = [
-    ...missingStarterPositions.map(x => `missing ${x}`),
-    c.QB > 2 ? `${c.QB} QBs` : null,
-    c.TE > 2 ? `${c.TE} TEs` : null,
-    c.K > 1 ? `${c.K} kickers` : null,
-    c.DST > 1 ? `${c.DST} defenses` : null,
-  ].filter(Boolean);
-  const bestHistory = bp ? history.find(h => h.team === team && h.id === bp.id) : null,
-    bestValueDelta = bp && bestHistory && bp.overall ? bestHistory.pick - bp.overall : 0;
-  const highRiskPlayers=ps.filter(p=>p.ambiguity==='high'||p.availabilityRisk==='high').length,
-    floor=Math.max(30,Math.min(100,Math.round(starterStrength-highRiskPlayers*3))),
-    consistency=Math.max(30,Math.min(100,Math.round(72+ps.filter(p=>p.roleSecurity==='high'||p.workhorse).length*3-highRiskPlayers*4))),
-    risk=Math.max(20,Math.min(100,100-highRiskPlayers*9)),
-    playoffValues=ps.map(p=>Number(p.playoffSchedule)).filter(Number.isFinite),
-    playoffOutlook=playoffValues.length?Math.round(playoffValues.reduce((sum,value)=>sum+value,0)/playoffValues.length):null,
-    positionalAdvantage=Math.max(30,Math.min(100,Math.round(45+starters.reduce((sum,p)=>sum+tierWeight(tierLabel(p))*3,0)))),
-    valueDeltas=ps.map(p=>{const entry=history.find(h=>h.team===team&&h.id===p.id);return entry&&Number.isFinite(Number(p.overall))?entry.pick-Number(p.overall):null}).filter(value=>value!==null),
-    draftEfficiency=Math.max(25,Math.min(100,Math.round(60+(valueDeltas.length?valueDeltas.reduce((sum,value)=>sum+value,0)/valueDeltas.length:0))));
-  const gradingContext = {
-    counts: c,
-    starterCount: starters.length,
-    benchCount: bench.length,
-    ceilingPlayers,
-    upsideBench: bench.filter(p => p.rookie || p.overallTier === 'A' || (p.bdgeBoost || 0) > 1)
-      .length,
-    playerCount: ps.length,
-    missingStarterPositions,
-    constructionNotes,
-    bestValueDelta,
-    teamCount: 10,
-  };
-  return {
-    team,
-    name: slotManagers[team] || 'Team ' + team,
-    score,
-    grade: gradeFromScore(score),
-    starterStrength: Math.round(starterStrength),
-    value: Math.round(value),
-    construction: Math.round(construction),
-    ceiling: Math.round(ceiling),
-    benchUpside: Math.round(benchUpside),
-    floor,consistency,risk,playoffOutlook,positionalAdvantage,draftEfficiency,
-    strengths,
-    weaknesses,
-    bestPick: bp,
-    gradingContext,
-  };
+function evaluateCompletedDraft() {
+  if (!window.DraftGradingEngineV1) throw new Error('Unified draft grading engine did not load.');
+  return DraftGradingEngineV1.evaluateDraft(gradingInput());
+}
+function reportList(label, values) {
+  return `<section class="gradingFeedback"><b>${safeInsightText(label)}</b><ul>${values.map(value => `<li>${safeInsightText(value)}</li>`).join('')}</ul></section>`;
+}
+function gradingCategoriesMarkup(team) {
+  return Object.entries(team.categories).map(([key, category]) => `<div class="gradingCategory"><div><b>${safeInsightText(DraftGradingEngineV1.CATEGORY_LABELS[key])}</b><span>${safeInsightText(category.grade)} · ${safeInsightText(category.score)}</span></div><p>${safeInsightText(category.explanation)}</p></div>`).join('');
 }
 function renderDraftReport() {
-  let es = [];
-  for (let t = 1; t <= 10; t++) es.push(evaluateTeam(t));
-  if(window.JoninDecisionIntelligenceV1)es=[...JoninDecisionIntelligenceV1.gradeLeague(es)];else es.sort((a,b)=>b.score-a.score);
-  const me = es.find(x => x.team === slot),min=Math.min(...es.map(x=>x.score)),weights=es.map(x=>Math.max(1,(x.score-min+6)**2)),tw=weights.reduce((a,b)=>a+b,0);
-  es.forEach((x, i) => {
-    x.rank = x.rank||i+1;
-    x.titleOdds = x.titleOdds??Math.round((weights[i]/tw)*100);
-    x.explanations = window.JoninInsightEngineV1
-      ? JoninInsightEngineV1.explainDraftGrade(x, x.gradingContext)
-      : {};
-  });
-  const reportItems = [
-    ['Starters', me.starterStrength, me.explanations.starters],
-    ['Ceiling', me.ceiling, me.explanations.ceiling],
-    ['Value', me.value, me.explanations.value],
-    ['Construction', me.construction, me.explanations.construction],
-    ['Bench Upside', me.benchUpside, me.explanations.benchUpside],
-    ['Floor', me.floor, `${me.risk}/100 risk control and starter stability produce this floor.`],
-    ['Weekly Consistency', me.consistency, 'Role security and lineup stability drive weekly consistency.'],
-    ['Risk', me.risk, 'Higher scores indicate fewer ambiguity and availability flags.'],
-    ['Playoff Outlook', me.playoffOutlook??'Unavailable', me.playoffOutlook==null?'No verified playoff-schedule inputs are available; this dimension was excluded.':'Available playoff-schedule inputs were averaged across the roster.'],
-    ['Positional Advantage', me.positionalAdvantage, 'Starter decision tiers determine positional leverage.'],
-    ['Draft Efficiency', me.draftEfficiency, 'Compares each selection point with its stored overall rank.'],
-    ['Best Value', me.bestPick ? me.bestPick.name : '—', me.explanations.bestValue],
-    ['Projected Finish', `#${me.rank}`, me.explanations.projectedFinish],
-  ];
+  const report = evaluateCompletedDraft(), es = [...report.teams], me = es.find(team => String(team.teamId) === String(slot));
   if (DOM.myDraftReport)
-    DOM.myDraftReport.innerHTML = `<div class="card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div class="meta">YOUR DRAFT GRADE</div><div class="reportGrade">${safeInsightText(me.grade)}</div><b>${safeInsightText(me.score)}/100</b></div><div style="text-align:right"><div class="meta">PROJECTED FINISH</div><div style="font-size:28px;font-weight:950">#${safeInsightText(me.rank)}</div><div class="meta">${safeInsightText(me.titleOdds)}% draft-day title odds</div></div></div><div class="reportExplanationGrid">${reportItems.map(([label, value, text]) => `<div class="reportExplanation"><div><span>${safeInsightText(label)}</span><b>${safeInsightText(value)}</b></div><p>${safeInsightText(text || 'No meaningful grading signal is available.')}</p></div>`).join('')}</div><div class="scanNotes" style="margin-top:10px"><b>Summary</b><br>Strengths: ${safeInsightText(me.strengths.join(', '))}.<br>Watch: ${safeInsightText(me.weaknesses.join(', '))}.</div></div>`;
+    DOM.myDraftReport.innerHTML = `<article class="card unifiedGradeHero"><div class="gradeSummary"><div><div class="meta">YOUR DRAFT GRADE</div><div class="reportGrade">${safeInsightText(me.grade)}</div><b>${safeInsightText(me.overallScore)}/100 · ${safeInsightText(me.draftPercentileLabel)} percentile</b></div><div class="gradeEstimate"><span><small>CHAMPIONSHIP ODDS</small><b>${safeInsightText(me.championshipOdds)}%</b></span><span><small>PROJECTED FINISH</small><b>${safeInsightText(me.projectedFinishRange)}</b></span><span><small>DRAFT-ROOM RANK</small><b>${safeInsightText(me.rank)} of ${safeInsightText(es.length)}</b></span></div></div><p class="estimateDisclaimer">${safeInsightText(me.estimateLabel)}</p><div class="gradingCategoryGrid">${gradingCategoriesMarkup(me)}</div><div class="gradingFeedbackGrid">${reportList('BIGGEST STRENGTHS', me.strengths)}${reportList('BIGGEST WEAKNESSES', me.weaknesses)}${reportList('ACTIONABLE IMPROVEMENTS', me.improvements)}</div><div class="gradeComparison"><b>Why this rank:</b> ${safeInsightText(me.comparison)}</div><details class="gradeDebug"><summary>Score breakdown</summary><pre>${safeInsightText(JSON.stringify({ categoryWeights: report.categoryWeights, categoryScores: Object.fromEntries(Object.entries(me.categories).map(([key, value]) => [key, value.score])), overallScore: me.overallScore, calibration: report.calibration }, null, 2))}</pre></details></article>`;
   if (DOM.leagueProjection)
-    DOM.leagueProjection.innerHTML = `<table class="leagueTable"><thead><tr><th>Rank</th><th>Manager</th><th>Grade</th><th>Score</th><th>Title odds</th></tr></thead><tbody>${es.map(x => `<tr class="${x.team === slot ? 'youRow' : ''}"><td><span class="rankBadge">${x.rank}</span></td><td><b>${x.name}</b>${x.rank === 1 ? ' <span style="color:#f4d35e">Projected Champion</span>' : ''}</td><td><span class="gradeBadge">${x.grade}</span></td><td>${x.score}</td><td>${x.titleOdds}%</td></tr>`).join('')}</tbody></table>`;
+    DOM.leagueProjection.innerHTML = `<table class="leagueTable"><thead><tr><th>Rank</th><th>Manager</th><th>Grade</th><th>Score</th><th>Championship Odds</th><th>Finish Range</th></tr></thead><tbody>${es.map(team => `<tr class="${String(team.teamId) === String(slot) ? 'youRow' : ''}"><td><span class="rankBadge">${safeInsightText(team.rank)}</span></td><td><b>${safeInsightText(team.managerName)}</b></td><td><span class="gradeBadge">${safeInsightText(team.grade)}</span></td><td>${safeInsightText(team.overallScore)}</td><td>${safeInsightText(team.championshipOdds)}%</td><td>${safeInsightText(team.projectedFinishRange)}</td></tr>`).join('')}</tbody></table><div class="estimateDisclaimer">Draft-day estimates; Championship Odds total ${safeInsightText(report.championshipOddsTotal)}%.</div>`;
   if (DOM.allTeamReports)
     DOM.allTeamReports.innerHTML = es
-      .map(
-        x =>
-          `<div class="teamReport ${x.team === slot ? 'youRow' : ''}"><div class="teamReportHead"><div><b>#${x.rank} ${x.name}</b><div class="meta">${x.team === slot ? 'Your roster' : 'Draft slot ' + x.team}</div></div><div><span class="gradeBadge">${x.grade}</span> <b>${x.score}</b></div></div><div class="meta" style="margin-top:7px">Starters ${x.starterStrength} • Ceiling ${x.ceiling} • Floor ${x.floor} • Efficiency ${x.draftEfficiency}</div><div style="margin-top:6px"><span class="strength">Strength:</span> ${x.strengths.join(', ')}<br><span class="weakness">Watch:</span> ${x.weaknesses.join(', ')}${x.team!==slot&&x.rank<me.rank?`<br><b>Why ahead:</b> ${x.score>me.score?'Higher comparative championship profile across this draft.':'Tiebreak advantage in roster dimensions.'}`:''}</div></div>`
-      )
+      .map(team => `<article class="teamReport ${String(team.teamId) === String(slot) ? 'youRow' : ''}"><div class="teamReportHead"><div><b>#${safeInsightText(team.rank)} ${safeInsightText(team.managerName)}</b><div class="meta">${safeInsightText(team.projectedFinishRange)} finish · ${safeInsightText(team.draftPercentileLabel)} percentile</div></div><div><span class="gradeBadge">${safeInsightText(team.grade)}</span> <b>${safeInsightText(team.overallScore)}</b> · ${safeInsightText(team.championshipOdds)}%</div></div><div class="compactCategoryRow">${Object.entries(team.categories).map(([key, value]) => `<span>${safeInsightText(DraftGradingEngineV1.CATEGORY_LABELS[key])} <b>${safeInsightText(value.grade)}</b></span>`).join('')}</div>${reportList('Strengths', team.strengths)}${reportList('Weaknesses', team.weaknesses)}${reportList('Next steps', team.improvements)}<p class="gradeComparison">${safeInsightText(team.comparison)}</p></article>`)
       .join('');
 }
 function finishDraft() {
@@ -2849,6 +2687,7 @@ function buildYahooRecord() {
       };
     }),
     gerardDecisions: decisionSnapshots,
+    gradingReport: evaluateCompletedDraft(),
     finalRoster: myPlayers().map(p => ({
       id: p.id,
       name: p.name,
@@ -3234,7 +3073,7 @@ function currentPickLabel() {
   return { team, name, label: `${i.r}.${String(i.ip).padStart(2, '0')}` };
 }
 function positionKey(p) {
-  return p.pos === 'DEF' ? 'DST' : p.pos;
+  return RosterCompletionConstraintV1.normalizePosition(p?.pos ?? p?.position);
 }
 function publicPickScore(p) {
   const owner = currentPickOwner(),
@@ -3635,7 +3474,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_0_11')
+      .register('./service-worker.js?v=jonin_4_0_13')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

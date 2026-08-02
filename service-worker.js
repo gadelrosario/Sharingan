@@ -1,14 +1,16 @@
-const CACHE = 'fantasy-hq-jonin-4-0-11';
+const CACHE = 'fantasy-hq-jonin-4-0-13';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.0.11',
+  './css/app.css?v=4.0.13',
   './js/app-version.js?v=1.0.1',
   './js/player-tier-contract.js?v=1.0.0',
   './js/roster-view-v1.js?v=1.0.0',
+  './js/roster-completion-constraint-v1.js?v=1.0.0',
   './js/fantasy-hq-core.js?v=3.2.0',
   './js/draft-session-v1.js?v=1.0.0',
   './js/jonin-decision-intelligence-v1.js?v=1.0.0',
+  './js/draft-grading-engine-v1.js?v=1.0.0',
   './js/command-center-v1.js?v=1.0.0',
   './js/jonin-insight-engine-v1.js?v=1.0.0',
   './js/sharingan-vision-v1.js?v=1.0.0',
@@ -17,7 +19,7 @@ const ASSETS = [
   './js/adaptive-coaching-engine-v1.js?v=1.0.0',
   './js/premium-player-card-v1.js?v=1.0.0',
   './js/draft-psychology-engine-v1.js?v=1.0.0',
-  './js/app.js?v=4.0.11',
+  './js/app.js?v=4.0.13',
   './assets/player-placeholders/generic.svg',
   './assets/player-placeholders/qb.svg',
   './assets/player-placeholders/rb.svg',
