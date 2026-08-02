@@ -11,11 +11,7 @@ const FlightControlTests=(()=>{
 
   test('decision summary reduces existing signals to conclusions',()=>{
     const summary=window.FlightControlV1.decisionSummary({...complete,comparison:'Why not Bijan? Gibbs narrowly wins on tier scarcity.'});
-<<<<<<< HEAD
-    assert(summary.action==='DRAFT NOW','opportunity was not reduced to an action');
-=======
     assert(summary.action==='ACT','opportunity was not reduced to a tactical action');
->>>>>>> feature/flight-control-decision-surface
     assert(summary.reasons.length<=3,'too many decision bullets');
     assert(summary.reasons.includes('Last S-tier TE available.'),'tier conclusion missing');
     assert(summary.reasons.includes('Fills your TE1 slot.'),'roster conclusion missing');
@@ -30,20 +26,12 @@ const FlightControlTests=(()=>{
   test('comparison summary uses the same decision model',()=>{
     const summary=window.FlightControlV1.decisionSummary({...complete,comparison:'Compared with Bijan.'});
     const card=window.FlightControlV1.comparisonSummary({hero:complete.hero,summary});
-<<<<<<< HEAD
-    assert(card.name==='Brock Bowers'&&card.action==='DRAFT NOW','comparison lost decision context');
-=======
     assert(card.name==='Brock Bowers'&&card.action==='ACT','comparison lost decision context');
->>>>>>> feature/flight-control-decision-surface
     assert(card.confidence===91&&card.reason.length>0,'comparison hierarchy differs');
   });
   test('missing intelligence produces explicit neutral states',()=>{
     const summary=window.FlightControlV1.decisionSummary({hero:{primary:{}}});
-<<<<<<< HEAD
-    assert(summary.action==='LEAN DRAFT','missing opportunity did not use restrained action');
-=======
     assert(summary.action==='ACT','missing opportunity did not use restrained action');
->>>>>>> feature/flight-control-decision-surface
     assert(summary.reasons.length>0,'missing decision context was hidden');
     assert(summary.comparison==='Decision context is still developing.','missing comparison was hidden');
   });
@@ -68,10 +56,6 @@ const FlightControlTests=(()=>{
     assert(summary.opportunity.reason===repeated,'opportunity explanation was removed');
     assert(summary.availability.reason==='','duplicate availability explanation remained');
   });
-<<<<<<< HEAD
-
-  function run(){let passCount=0,failCount=0;for(const {name,fn} of tests){try{fn();console.log(`✓ ${name}`);passCount++}catch(error){console.error(`✗ ${name}: ${error.message}`);failCount++}}console.log(`Flight Control: ${passCount} passed, ${failCount} failed`);return{passCount,failCount,total:tests.length}}
-=======
   test('snake-board positions normalize to one reusable class mapping',()=>{
     const expected={WR:'board-pos-wr',RB:'board-pos-rb',TE:'board-pos-te',QB:'board-pos-qb',K:'board-pos-k',DST:'board-pos-dst','D/ST':'board-pos-dst',DEF:'board-pos-dst',Defense:'board-pos-dst',P:'board-pos-unknown','':'board-pos-unknown'};
     Object.entries(expected).forEach(([position,className])=>assert(window.FlightControlV1.boardPositionClass(position)===className,`${position||'blank'} mapped incorrectly`));
@@ -101,7 +85,6 @@ const FlightControlTests=(()=>{
   });
 
   function run(){let passCount=0,failCount=0;for(const {name,fn} of tests){try{fn();console.log(`✓ ${name}`);passCount++}catch(error){console.error(`✗ ${name}: ${error.message}`);failCount++}}console.log(`Fight Control: ${passCount} passed, ${failCount} failed`);return{passCount,failCount,total:tests.length}}
->>>>>>> feature/flight-control-decision-surface
   return{run};
 })();
 if(typeof window!=='undefined')window.FlightControlTests=FlightControlTests;

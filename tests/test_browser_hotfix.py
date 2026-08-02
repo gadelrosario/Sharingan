@@ -22,10 +22,10 @@ class BrowserHotfixTests(unittest.TestCase):
             "myDraftReport", "leagueProjection", "allTeamReports", "yahooExportCard",
             "archiveCount", "desktopManagerTable", "sheetManagerTable", "managerRosterDetail",
         }
-        dom_block = source.split("const DOM=Object.freeze({", 1)[1].split("});", 1)[0]
+        dom_block = source.split("const DOM = Object.freeze({", 1)[1].split("});", 1)[0]
         for element_id in explicit_ids:
             self.assertIn(f'id="{element_id}"', html)
-            self.assertRegex(dom_block, rf"\b{element_id}:el\(\"{re.escape(element_id)}\"\)")
+            self.assertRegex(dom_block, rf"\b{element_id}:\s*el\(['\"]{re.escape(element_id)}['\"]\)")
             self.assertIsNone(
                 re.search(rf"(?<!DOM\.)\b{element_id}\.(?:classList|innerHTML|textContent|dataset|value|appendChild|scrollIntoView)", source),
                 f"implicit DOM reference remains: {element_id}",
@@ -71,11 +71,11 @@ setTimeout(()=>{
 
     def test_service_worker_filters_protocols_before_caching(self):
         source = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn('protocol!=="http:"&&protocol!=="https:"', source)
+        self.assertRegex(source, r"protocol\s*!==\s*['\"]http:['\"]\s*&&\s*protocol\s*!==\s*['\"]https:['\"]")
         for scheme in ("chrome-extension:", "data:", "blob:"):
             self.assertNotIn(f'protocol==="{scheme}"', source)
-        self.assertIn('cache.put(event.request,copy)', source)
-        self.assertIn('caches.match("./index.html")', source)
+        self.assertRegex(source, r'cache\.put\(event\.request,\s*copy\)')
+        self.assertRegex(source, r"caches\.match\(['\"]\./index\.html['\"]\)")
         command = r"""
 const fs=require('fs'),vm=require('vm'),handlers={},puts=[];
 const self={addEventListener:(type,handler)=>handlers[type]=handler,skipWaiting(){},clients:{claim(){}}};

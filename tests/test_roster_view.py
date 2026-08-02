@@ -1,4 +1,5 @@
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -18,7 +19,7 @@ class RosterViewTests(unittest.TestCase):
         for container in ('roster','mobileLiveRoster','mRoster'): self.assertEqual(html.count(f'id="{container}"'),1)
         self.assertIn('function rosterViewState()',app);self.assertIn('RosterViewV1.assignSlots',app);self.assertIn('function rosterPanelMarkup()',app)
         self.assertIn('aria-label="Starting lineup"',app);self.assertIn('aria-label="Bench"',app);self.assertIn('Unresolved player ID',app)
-        self.assertIn('renderRoster();renderLiveRoster()',app)
+        self.assertRegex(app,r'renderRoster\s*\(\s*\)\s*;\s*renderLiveRoster\s*\(\s*\)')
         undo=app.split('function undoLastPick',1)[1].split('function syncSearch',1)[0];self.assertIn('renderAll()',undo)
         start=app.split('function startDraft',1)[1].split('function backToSetup',1)[0];self.assertIn('renderAll()',start)
         self.assertIn('.myTeamSlot',css);self.assertIn('minmax(0,1fr)',css.replace(' ',''))

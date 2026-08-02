@@ -1,5 +1,6 @@
 import json
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -14,11 +15,10 @@ class SimulateToNextPickTests(unittest.TestCase):
     def test_mock_control_is_shared_and_clickable(self):
         markup = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertEqual(markup.count('id="simulateBtn"'), 1)
-        self.assertIn(
-            'id="simulateBtn" class="primary greenBtn" style="width:100%" '
-            'onclick="simulateToMe()">Simulate To My Next Pick</button>',
-            markup,
-        )
+        button = re.search(r'<button\b(?=[^>]*\bid="simulateBtn")[^>]*>(.*?)</button>', markup, re.S)
+        self.assertIsNotNone(button)
+        self.assertRegex(button.group(0), r'onclick="simulateToMe\(\)"')
+        self.assertIn('Simulate To My Next Pick', button.group(1))
         self.assertLess(markup.index('id="practiceControls"'), markup.index('class="appgrid"'))
 
     def test_cpu_simulation_stops_at_user_and_refreshes_recommendations(self):

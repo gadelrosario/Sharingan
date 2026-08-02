@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import json
->>>>>>> feature/flight-control-decision-surface
 import pathlib
 import subprocess
 import unittest
@@ -21,9 +18,6 @@ const result=window.FlightControlTests.run();if(result.failCount)process.exit(1)
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-<<<<<<< HEAD
-        self.assertIn("Flight Control: 7 passed, 0 failed", result.stdout)
-=======
         self.assertIn("Fight Control: 10 passed, 0 failed", result.stdout)
 
     def test_current_jahmyr_gibbs_pick_10_eternal_scenario(self):
@@ -38,51 +32,20 @@ if(!active)process.exit(1);
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
->>>>>>> feature/flight-control-decision-surface
 
     def test_progressive_disclosure_and_shared_player_renderer(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
-        self.assertIn('class="advancedAnalysis"', app)
         card_source = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
-        default_source, advanced_source = card_source.split('class="advancedAnalysis"', 1)
-        for conclusion in ("CAN I WAIT?", "OPPORTUNITY WINDOW", "AVAILABILITY FORECAST"):
-<<<<<<< HEAD
-            self.assertEqual(default_source.count(conclusion), 1)
-=======
-            self.assertNotIn(conclusion, default_source)
-        self.assertIn("joninInsightMarkup(insight,ccScored)", advanced_source)
-        self.assertIn("sharinganVisionMarkup(vision)", advanced_source)
->>>>>>> feature/flight-control-decision-surface
-        for metric in ("Mamba", "Final Pick", "Room Boost", "Roster Fit", "Steal Risk", "Stack", "Handcuff", "Exposure"):
-            self.assertNotIn(metric, default_source)
-            self.assertIn(metric, advanced_source)
-        for ignored_section in ("VALUE", "SCARCITY", "RISK", "TEAM FIT", "SCORE BREAKDOWN"):
-            self.assertNotIn(ignored_section, default_source)
-<<<<<<< HEAD
-        self.assertIn("compactComparison", default_source)
-        self.assertIn("Why not ${alternative.name}?", app)
-        self.assertIn("sharinganIconMarkup(sharinganStage(p).key)", default_source)
-        self.assertIn("summary.confidence.label", default_source)
-        self.assertIn("advancedAnalysisExpanded?'open'", app)
-        self.assertIn("decisionCardMarkup(model,{recommended:displayed.id===primary.id})", app)
+        for metric in ("Player Value", "Roster Fit", "Opportunity Cost", "Future Value", "Final Pick", "Room Boost", "Steal Risk", "Stack", "Handcuff", "Exposure"):
+            self.assertNotIn(metric, card_source)
+        self.assertIn('class="compactFightCard', card_source)
+        self.assertIn('class="fightTags"', card_source)
+        self.assertIn("confidenceIndicator(confidence)", card_source)
+        self.assertRegex(app, r"decisionCardMarkup\(model,\s*\{\s*recommended:\s*displayed\.id\s*===\s*primary\.id,?\s*\}\s*\)")
         self.assertNotIn("function recommendationHeroMarkup", app)
-        self.assertIn('data-recommendation-renderer="flight-control-1.1"', app)
-=======
-        self.assertIn("coachInstruction", default_source)
-        self.assertIn("Why not ${alternative.name}?", app)
-        self.assertIn("sharinganIconMarkup(sharinganStage(p).key)", default_source)
-        self.assertIn("decision.confidence", default_source)
-        self.assertIn("<span>confidence</span>", default_source)
-        self.assertIn("advancedAnalysisExpanded?'open'", app)
-        self.assertIn("decisionCardMarkup(model,{recommended:displayed.id===primary.id})", app)
-        self.assertNotIn("function recommendationHeroMarkup", app)
-        self.assertIn('data-recommendation-renderer="adaptive-coaching-1.0"', app)
-        for label in ("FIGHT CONTROL", "ADAPTIVE COACHING"):
-            self.assertIn(label, card_source)
-        self.assertIn("Recommended player", app)
->>>>>>> feature/flight-control-decision-surface
-        self.assertIn("alternativeDecisionMarkup(playerDecisionModel(candidate,recs)", app)
+        self.assertIn("recs.slice(0,5).map(candidate=>playerDecisionModel(candidate,recs))", app)
+        self.assertRegex(app, r"alternativeDecisionMarkup\(candidateModel,index\+1,categoryLabels\.get\(candidateModel\.player\.id\)\)")
         self.assertIn("recommendation.dataset.renderMs", app)
         self.assertIn('class="card planningDetails"', html)
         self.assertNotIn("mobileVisionCard", html)
@@ -92,24 +55,15 @@ if(!active)process.exit(1);
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-<<<<<<< HEAD
-        self.assertIn('css/app.css?v=3.3.0', html)
-        self.assertIn('js/flight-control-v1.js?v=1.1.0', html)
-        self.assertIn('js/app.js?v=3.3.0', html)
-        self.assertIn('service-worker.js?v=flight_control_1_1', app)
-        self.assertIn('fantasy-hq-flight-control-1-1', worker)
-        for asset in ('css/app.css?v=3.3.0', 'js/flight-control-v1.js?v=1.1.0', 'js/app.js?v=3.3.0'):
-=======
-        self.assertIn('css/app.css?v=3.8.0', html)
+        self.assertIn('css/app.css?v=4.0.11', html)
         self.assertIn('js/flight-control-v1.js?v=1.3.0', html)
         self.assertIn('js/adaptive-coaching-engine-v1.js?v=1.0.0', html)
         self.assertIn('js/premium-player-card-v1.js?v=1.0.0', html)
         self.assertIn('js/draft-psychology-engine-v1.js?v=1.0.0', html)
-        self.assertIn('js/app.js?v=3.8.2', html)
-        self.assertIn('service-worker.js?v=jonin_3_7_2', app)
-        self.assertIn('fantasy-hq-jonin-3-7-2', worker)
-        for asset in ('css/app.css?v=3.8.0', 'js/app-version.js?v=1.0.0', 'js/flight-control-v1.js?v=1.3.0', 'js/adaptive-coaching-engine-v1.js?v=1.0.0', 'js/premium-player-card-v1.js?v=1.0.0', 'js/draft-psychology-engine-v1.js?v=1.0.0', 'js/app.js?v=3.8.2'):
->>>>>>> feature/flight-control-decision-surface
+        self.assertIn('js/app.js?v=4.0.11', html)
+        self.assertIn('service-worker.js?v=jonin_4_0_11', app)
+        self.assertIn('fantasy-hq-jonin-4-0-11', worker)
+        for asset in ('css/app.css?v=4.0.11', 'js/app-version.js?v=1.0.1', 'js/flight-control-v1.js?v=1.3.0', 'js/adaptive-coaching-engine-v1.js?v=1.0.0', 'js/premium-player-card-v1.js?v=1.0.0', 'js/draft-psychology-engine-v1.js?v=1.0.0', 'js/app.js?v=4.0.11'):
             self.assertIn(asset, worker)
 
     def test_planning_removes_redundant_pressure_and_room_intel_rows(self):
@@ -130,17 +84,15 @@ if(!active)process.exit(1);
         self.assertIn("selectPlayer(${p.id},${slot})", app)
         self.assertIn("renderRecommendation();", app)
 
-<<<<<<< HEAD
-=======
     def test_snake_board_uses_position_classes_without_styling_empty_cells(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
         board = app.split("function renderBoard", 1)[1].split("function teamTierMarkup", 1)[0]
         incremental = app.split("function updateBoardIncremental", 1)[1].split("function scheduleHeavyRefresh", 1)[0]
         self.assertIn("boardPlayerClasses(pl)", board)
-        self.assertIn("applyBoardPlayerClasses(used,pl)", incremental)
+        self.assertRegex(incremental, r"applyBoardPlayerClasses\(used,\s*pl\)")
         self.assertIn("function boardPlayerClasses(player)", app)
-        self.assertIn("classList.toggle('drafted-player',Boolean(player))", app)
+        self.assertRegex(app, r"classList\.toggle\('drafted-player',\s*Boolean\(player\)\)")
         undo = app.split("function undoLastPick", 1)[1].split("function syncSearch", 1)[0]
         render_all = app.split("function renderAll", 1)[1].split("function invalidateIntelligence", 1)[0]
         self.assertIn("renderAll()", undo)
@@ -149,9 +101,7 @@ if(!active)process.exit(1);
             self.assertIn(f".pickCell.board-pos-{position}", css)
         self.assertIn(".pickCell.board-pos-dst", css)
         self.assertNotIn("#ff00ff", css)
-        self.assertIn(".pickCell.board-pos-k{background:#d62f45;border-left:4px solid #ffad52", css)
-
->>>>>>> feature/flight-control-decision-surface
+        self.assertRegex(css, r"(?s)\.pickCell\.board-pos-k\s*\{.*?background:\s*#d62f45;.*?border-left:\s*4px solid #ffad52")
 
 if __name__ == "__main__":
     unittest.main()

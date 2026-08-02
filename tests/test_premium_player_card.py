@@ -1,5 +1,6 @@
 import json
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -23,10 +24,11 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn("PremiumPlayerCardV1.buildPlayerCardModel", app)
-        self.assertIn("tier:PlayerTierContract.getDecisionTier(player)", app)
-        self.assertIn("premiumPlayerCardMarkup(playerCard)", app)
+        self.assertIn("tier:PlayerTierContract.getDecisionTier(player)", re.sub(r"\s+", "", app))
+        self.assertIn("playerCard,", app)
+        self.assertIn("card=model.playerCard", re.sub(r"\s+", "", app))
         self.assertIn("js/premium-player-card-v1.js?v=1.0.0", html)
-        self.assertIn("player.id!==primary.id", app)
+        self.assertRegex(app, r"player\.id\s*!==\s*primary\.id")
         self.assertIn("COMPARING", app)
 
     def test_portrait_fallback_never_leaves_a_broken_image(self):
@@ -34,7 +36,7 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
         self.assertIn("function handlePlayerPortraitError", app)
         self.assertIn("image.dataset.positionFallback", app)
         self.assertIn("image.dataset.genericFallback", app)
-        self.assertIn("image.hidden=true", app)
+        self.assertRegex(app, r"image\.hidden\s*=\s*true")
         self.assertIn("Player portrait unavailable for", app)
         for name in ("generic", "qb", "rb", "wr", "te", "k", "dst"):
             self.assertTrue((ROOT / "assets" / "player-placeholders" / f"{name}.svg").is_file())
@@ -43,16 +45,17 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
         self.assertIn('<h2>${safeInsightText(card.name)}</h2>', app)
-        self.assertIn("card.imageStatus==='exact-local'", app)
+        self.assertRegex(app, r"card\.imageStatus\s*===\s*['\"]exact-local['\"]")
         self.assertIn("Player portrait unavailable for", app)
         self.assertIn('aria-label="Player metrics"', app)
-        self.assertIn("overflow-wrap:anywhere", css)
-        self.assertIn("grid-template-columns:96px minmax(0,1fr)", css)
+        self.assertRegex(css, r"overflow-wrap\s*:\s*anywhere")
+        compact_css = re.sub(r"\s+", "", css)
+        self.assertIn("grid-template-columns:minmax(135px,30%)minmax(0,1fr)", compact_css)
         self.assertNotIn("min-width:600px", css)
 
     def test_service_worker_caches_only_real_card_assets(self):
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn('fantasy-hq-jonin-3-7-2', worker)
+        self.assertIn('fantasy-hq-jonin-4-0-11', worker)
         self.assertIn('./js/premium-player-card-v1.js?v=1.0.0', worker)
         self.assertNotIn('assets/players/', worker)
         for name in ("generic", "qb", "rb", "wr", "te", "k", "dst"):
@@ -75,8 +78,8 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
         self.assertNotIn("'RECOMMENDED'", card)
         self.assertLess(card.index("playerCardMetrics"), card.index("playerTraits"))
         self.assertLess(card.index("playerTraits"), card.index("playerCardBye"))
-        self.assertIn("grid-template-columns:184px minmax(0,1fr)", css)
-        self.assertIn("font-size:39px", css)
+        self.assertIn("compactFightCard", css)
+        self.assertRegex(css, r"\.fightPlayerContent\s+h2[\s\S]*?font-size")
         self.assertIn(".playerPortrait:after", css)
         self.assertIn(".portraitLight", css)
 

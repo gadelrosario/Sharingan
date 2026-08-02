@@ -41,7 +41,7 @@ class RecommendationBaselineTests(unittest.TestCase):
         for player_id in sorted(set(expected)|set(actual)):
             if expected.get(player_id)!=actual.get(player_id): differences.append({'id':player_id,'expected':expected.get(player_id),'actual':actual.get(player_id)})
         self.assertEqual(differences,[],f'Player-level scoring changes:\n{json.dumps(differences,indent=2)}')
-        self.assertEqual(len(actual),249)
+        self.assertEqual(len(actual),264)
 
     def test_eternal_mangekyo_and_undo_contracts(self):
         by_name={snapshot['name']:snapshot for snapshot in self.actual['scenarios']}
@@ -64,8 +64,8 @@ class RecommendationBaselineTests(unittest.TestCase):
         self.assertIn('aria-label="Decision Tier ${decisionTier}"',app)
         self.assertIn('Position Tier ${positionTier',app)
         self.assertIn('.fightControlDecision',css)
-        self.assertIn('@media(max-width:600px)',css.replace(' ',''))
-        self.assertIn("advancedAnalysisExpanded=false",app)
+        self.assertRegex(css,r'@media\s*\(max-width:\s*600px\)')
+        self.assertRegex(app,r"advancedAnalysisExpanded\s*=\s*false")
 
 
 if __name__=='__main__': unittest.main()

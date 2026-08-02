@@ -22,7 +22,9 @@ const result=window.JoninInsightTests.run();if(result.failCount)process.exit(1);
 
     def test_visible_confidence_label_is_explicitly_heuristic(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        self.assertIn("['Heuristic confidence',insight.sections.confidence]", source)
+        engine = (ROOT / "js" / "jonin-insight-engine-v1.js").read_text(encoding="utf-8")
+        self.assertIn("Heuristic • ${safeInsightText(c.label)}", source)
+        self.assertNotIn("probability", engine.lower())
         self.assertIn("Heuristic • ${safeInsightText(c.label)}", source)
 
 

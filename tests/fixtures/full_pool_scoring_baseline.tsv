@@ -111,7 +111,6 @@ id	decision_tier	mamba_score	final_pick_score	eligible
 108	C	86	96	true
 109	C	86	96	true
 110	C	85	95	true
-155	C	77	87	true
 111	D	70	80	true
 156	C	76	86	true
 112	C	80	90	true
@@ -156,7 +155,6 @@ id	decision_tier	mamba_score	final_pick_score	eligible
 159	C	67	77	true
 160	C	67	77	true
 151	C	60	70	true
-161	C	66	76	true
 162	C	66	76	true
 163	C	62	72	true
 164	C	63	73	true
@@ -248,3 +246,20 @@ id	decision_tier	mamba_score	final_pick_score	eligible
 247	C	32	32	true
 248	C	32	32	true
 249	C	31	31	true
+1000017	C	86	96	true
+1000021	C	82	92	true
+1000022	C	82	92	true
+1000023	C	82	92	true
+1000025	C	82	92	true
+1000027	C	82	92	true
+1000030	C	82	92	true
+1000068	C	99	109	true
+1000072	C	99	109	true
+1000082	C	93	103	true
+1000089	C	95	105	true
+1000090	C	95	105	true
+1000091	C	95	105	true
+1000092	C	92	102	true
+1000094	C	92	102	true
+1000095	C	92	102	true
+1000096	C	92	102	true

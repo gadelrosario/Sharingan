@@ -1,5 +1,7 @@
 # Fantasy HQ Backend V1
 
+Current browser milestone: **Jōnin 4.0**, adding durable draft-session recovery and a transparent four-score championship decision layer. See [the Jōnin 4.0 architecture](docs/JONIN_4_DECISION_INTELLIGENCE.md).
+
 This is the first real local backend foundation for Fantasy HQ.
 
 ## What is already included

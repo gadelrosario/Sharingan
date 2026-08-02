@@ -9,7 +9,7 @@
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
 <script src="js/app-version.js?v=1.0.1"></script>
-<link rel="stylesheet" href="css/app.css?v=3.8.0">
+<link rel="stylesheet" href="css/app.css?v=4.0.11">
   </head>
   <body>
     <header>
@@ -23,8 +23,8 @@
           class="headerDraftContext hidden"
           aria-label="Current draft context"
         >
-          <span>Round <b id="headerRound">1</b></span
-          ><span>Pick <b id="headerPick">1.01</b></span
+          <span>Round <b id="legacyHeaderRound">1</b></span
+          ><span>Pick <b id="legacyHeaderPick">1.01</b></span
           ><span>Slot <b id="headerSlot">1</b></span
           ><span id="headerMode">Practice</span><span id="headerLeague">10 teams • Half PPR</span>
         </div>
@@ -34,6 +34,10 @@
     <div class="shell">
       <section id="setupScreen" class="setup">
         <div class="card">
+          <section id="resumeDraftCard" class="resumeDraftCard hidden" aria-live="polite">
+            <div><b>Active draft found</b><p id="resumeDraftSummary" class="meta"></p></div>
+            <div class="resumeDraftActions"><button class="primary" onclick="resumeSavedDraft()">Resume Draft</button><button class="ghost" onclick="confirmStartNewDraft()">Start New Draft</button></div>
+          </section>
           <h2 style="margin-top: 0">Start a draft</h2>
           <div class="modeGrid">
             <div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')">
@@ -242,23 +246,18 @@
         </div>
       </section>
       <section id="appScreen" class="hidden">
-        <div class="flightControlBar">
-          <div id="modeBanner"></div>
-          <div id="practiceControls" class="hidden">
-            <button
-              id="simulateBtn"
-              class="primary greenBtn"
-              style="width: 100%"
-              onclick="simulateToMe()"
-            >
-              Simulate To My Next Pick
-            </button>
-          </div>
-        </div>
+        <section class="draftStatusHeader" data-testid="draft-status-header" aria-label="Draft status">
+          <div class="draftBrand"><span aria-hidden="true">👁</span><strong>SHARINGAN</strong><small>JŌNIN 4.0</small></div>
+          <div class="draftStatusNumbers"><span><small>ROUND</small><b id="headerRound">1</b></span><span><small>PICK</small><b id="headerPick">1</b></span><span><small>YOUR TURN</small><b id="headerNextPick">Pick 1</b></span><span><small>ON CLOCK IN</small><b id="headerUntil">0 picks</b></span></div>
+          <div class="headerCommandScore" title="Summarizes how much flexibility and leverage your current roster and the remaining draft board provide."><small>BOARD CONTROL</small><b id="headerCommandScore">MEDIUM</b><span id="headerCommandLabel">Board developing</span></div>
+          <div class="headerLeague"><span id="headerLeagueFormat">10-Team • Half PPR</span><button class="ghost" type="button" aria-label="Draft mode settings" onclick="backToSetup()">Draft Mode</button><button class="headerNotesButton" type="button" onclick="openNotebook()">📝 Notes</button><button class="iconButton headerSettingsButton" type="button" aria-label="Open settings" onclick="backToSetup()">⚙</button></div>
+        </section>
+        <div class="flightControlBar"><div id="modeBanner"></div></div>
         <div id="leagueDnaBar" class="leagueDnaBar"></div>
+        <section id="boardInstruction" class="boardInstructionStrip" data-testid="board-instruction-strip" aria-label="Board instruction"><div id="boardInstructionContent"></div><div id="practiceControls" class="hidden"><button id="simulateBtn" class="primary greenBtn" type="button" onclick="simulateToMe()">Simulate To My Next Pick →</button></div></section>
         <div id="runtimeStatus" class="roomAlert hidden" style="margin-bottom: 10px"></div>
         <div class="appgrid" id="flightControlSurface">
-          <aside class="stack desktopSide">
+          <aside class="stack desktopSide legacyDesktopSide">
             <div class="card compactStatus">
               <div class="stats">
                 <div class="stat"><b id="round">1</b>Round</div>
@@ -281,6 +280,10 @@
               <div id="desktopStrategyHealth" class="roomInsight"></div>
               <div id="strategies"></div>
             </details>
+            <details class="card secondaryDetails" open>
+              <summary>Draft Timeline</summary>
+              <div id="draftTimeline" class="draftTimeline" aria-live="polite"></div>
+            </details>
           </aside>
 
           <main class="stack">
@@ -293,17 +296,19 @@
                 </div>
               </div>
               <div class="commandSurface">
-  <div class="card recommendationCard fightControlPanel">
+  <div class="card recommendationCard fightControlPanel" data-testid="fight-card" aria-labelledby="fightCardHeading">
+    <div class="panelTitle"><b id="fightCardHeading">🔥 FIGHT CARD</b><span id="fightCardMode">Recommended Pick</span></div>
     <div id="recommendation" class="rec"></div>
+    <div class="fightCardActions"><button id="recordPickBtn" class="recordPickButton" data-testid="record-pick" type="button" onclick="recordFightCardPlayer()"><strong>RECORD PICK</strong><span id="recordPickLabel">Pick 1</span></button><button class="viewDetailsButton" data-testid="view-details" type="button" onclick="openFightCardDetails()">VIEW DETAILS</button></div>
   </div>
 
-  <div class="card desktopDraftCommand">
+  <div class="card desktopDraftCommand searchPanel" data-testid="search-panel">
     <div class="sectionHeader">
       <div>
-        <b>⚡ Draft Command Center</b>
-        <div class="meta">Record the room from one place</div>
+        <b>⌕ SEARCH</b>
+        <div class="meta">Select a player to inspect</div>
       </div>
-      <button class="ghost" onclick="undoLastPick()">Undo</button>
+      <button class="ghost compactUndo" data-testid="undo-pick" onclick="undoLastPick()">↶ Undo</button>
     </div>
 
     <div id="desktopClockStrip"></div>
@@ -312,49 +317,58 @@
       <div class="draftCommandPlayers">
         <div class="quickSectionTitle">
           <b>Search Any Player</b>
-          <span class="meta">Primary live-entry control</span>
+          <span class="meta">Selection does not record a pick</span>
         </div>
 
+        <label class="srOnly" for="dSearch">Search any player</label>
         <input
           id="dSearch"
           class="heroSearch"
-          placeholder="Search any drafted player"
+          placeholder="Search any player…"
           oninput="syncSearch('desktop')"
           onkeydown="handleSearchKey(event)"
         />
 
-        <div class="quickSectionTitle">
-          <b>Likely next</b>
-          <span class="meta">Shortcuts, not limits</span>
-        </div>
-
-        <div id="desktopQuickPicks" class="quickPickGrid desktopCompactQuick"></div>
-
         <div class="desktopPositionFilters">
-          <button class="ghost" data-pos="ALL" onclick="setPos('ALL')">ALL</button>
+          <button class="ghost" data-pos="QB" onclick="setPos('QB')">QB</button>
           <button class="ghost" data-pos="RB" onclick="setPos('RB')">RB</button>
           <button class="ghost" data-pos="WR" onclick="setPos('WR')">WR</button>
-          <button class="ghost" data-pos="QB" onclick="setPos('QB')">QB</button>
           <button class="ghost" data-pos="TE" onclick="setPos('TE')">TE</button>
           <button class="ghost" data-pos="DST" onclick="setPos('DST')">D/ST</button>
           <button class="ghost" data-pos="K" onclick="setPos('K')">K</button>
+          <button class="ghost" data-pos="ALL" onclick="setPos('ALL')">ALL</button>
         </div>
+
+        <div class="recentSearches"><small>RECENT SEARCHES</small><div id="recentSearches"><span class="meta">No recent players</span></div></div>
 
         <div id="dPlayersList" class="boardList"></div>
       </div>
     </div>
   </div>
 
+  <section class="card liveTeamTracker" data-testid="live-team-tracker" aria-labelledby="liveTeamTrackerHeading">
+    <div class="panelTitle"><b id="liveTeamTrackerHeading">LIVE TEAM TRACKER</b><span>My roster</span></div>
+    <div id="desktopLiveTeamTracker" aria-live="polite"></div>
+  </section>
 
-   <div class="card alternativesCard">
+
+   <div class="card alternativesCard recommendationCarousel" data-testid="recommendation-carousel">
   <div class="mobileAlternatives">
     <div class="sectionHeader">
-      <b>Top Alternatives</b>
-      <span class="meta">Same decision view on selection</span>
+      <b>TOP RECOMMENDATIONS</b>
+      <span class="meta">Click a player to view in Fight Card</span>
     </div>
     <div id="alternatives"></div>
   </div>
 </div>
+</div>
+
+<section class="draftBoardNotesRow">
+  <div class="card fullBoardCard embeddedDraftBoard" data-testid="draft-board">
+    <div class="sectionHeader"><div><b>DRAFT BOARD</b><div class="meta">Live snake-order view</div></div><div id="desktopBoardClock" class="boardClockBadge">On the clock</div></div>
+    <div class="boardWrap"><div id="desktopBoard" class="board"></div></div>
+  </div>
+</section>
 
 
 
@@ -469,18 +483,6 @@
             </div>
           </details>
         </section>
-        <section id="desktopBoardSection" class="desktopOnly desktopBoardSection">
-          <div class="card fullBoardCard">
-            <div class="sectionHeader">
-              <div>
-                <b>Visual Snake Board</b>
-                <div class="meta">Bird’s-eye view of the entire draft room</div>
-              </div>
-              <div id="desktopBoardClock" class="boardClockBadge">On the clock</div>
-            </div>
-            <div class="boardWrap"><div id="desktopBoard" class="board"></div></div>
-          </div>
-        </section>
         <section id="draftReport" class="hidden">
           <div class="reportHero">
             <div class="scanEye">👁 SHARINGAN LEAGUE REPORT</div>
@@ -540,6 +542,12 @@
           </div>
         </section>
       </section>
+      <div id="roundNoteReminder" class="roundNoteReminder hidden" role="status"></div>
+      <section id="notesPanel" class="card scrollNotebook notesPanel notesDrawer hidden" data-testid="notes-panel" role="dialog" aria-modal="true" aria-labelledby="scrollHeading" tabindex="-1">
+        <div class="sectionHeader"><div><b id="scrollHeading">NOTES</b><div class="meta">Private draft reminders</div></div><div><button class="iconButton" type="button" aria-label="Expand notes" onclick="toggleNotebookExpanded()">⛶</button><button class="iconButton" type="button" aria-label="Close notes" onclick="closeNotebook()">×</button></div></div>
+        <textarea id="draftNotebook" aria-label="Fantasy HQ notebook" placeholder="Round 5:&#10;Target TE or best WR value." oninput="saveDraftNotebook(this.value)"></textarea>
+        <div class="notesFooter"><span id="notebookStatus" class="meta">Saved locally</span><button class="clearNotes" type="button" onclick="clearDraftNotebook()">Clear Notes</button></div>
+      </section>
     </div>
     <nav id="tabs" class="tabs hidden">
       <button onclick="showPage('mobileDraft')">🏈<br />Draft</button
@@ -550,6 +558,8 @@
     <script src="js/player-tier-contract.js?v=1.0.0"></script>
     <script src="js/roster-view-v1.js?v=1.0.0"></script>
     <script src="js/fantasy-hq-core.js?v=3.2.0"></script>
+    <script src="js/draft-session-v1.js?v=1.0.0"></script>
+    <script src="js/jonin-decision-intelligence-v1.js?v=1.0.0"></script>
     <script src="js/command-center-v1.js?v=1.0.0"></script>
     <script src="js/jonin-insight-engine-v1.js?v=1.0.0"></script>
     <script src="js/sharingan-vision-v1.js?v=1.0.0"></script>
@@ -561,7 +571,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=3.8.2"></script>
+    <script src="js/app.js?v=4.0.11"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

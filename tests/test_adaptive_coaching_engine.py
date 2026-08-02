@@ -1,4 +1,5 @@
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -23,10 +24,11 @@ const result=window.AdaptiveCoachingEngineTests.run();if(result.failCount)proces
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         card = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
         self.assertIn("AdaptiveCoachingEngineV1.buildCoachingDecision", app)
-        self.assertIn('data-recommendation-renderer="adaptive-coaching-1.0"', card)
-        for field in ("phaseLabel", "headline", "confidence", "reason"):
-            self.assertIn(f"decision.{field}", card)
-        self.assertIn("premiumPlayerCardMarkup(playerCard)", card)
+        self.assertIn('class="compactFightCard', card)
+        self.assertIn("model.coaching?.confidence", card)
+        self.assertIn("compactStrategyTags(model)", card)
+        self.assertIn("decision.reason", app)
+        self.assertIn("decision.phaseLabel", app)
         self.assertNotIn('<strong>${safeInsightText(summary.action)}</strong>', card)
         self.assertIn('aria-live="polite"', card)
         self.assertIn("js/adaptive-coaching-engine-v1.js?v=1.0.0", html)
@@ -50,15 +52,14 @@ const result=window.AdaptiveCoachingEngineTests.run();if(result.failCount)proces
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
         card = app.split("function decisionCardMarkup", 1)[1].split("function alternativeDecisionMarkup", 1)[0]
-        self.assertIn("strategicInstruction=decision.reason||decision.instruction", card)
-        self.assertIn("supportingReason=decision.secondaryReason", card)
-        self.assertNotIn("safeInsightText(decision.instruction)</strong>", card)
-        self.assertIn("<summary>Why This Pick</summary>", card)
+        self.assertRegex(app, r"instruction\s*=\s*decision\.reason\s*\|\|\s*model\.summary\?\.primary\?\.reason")
+        self.assertIn("updateDraftDecisionChrome(model,displayed,primary)", app.replace(" ", ""))
+        self.assertNotIn("Draft ${safeInsightText", card)
         for event in ("OPPORTUNITY", "ROOM_OVERREACTION", "TIER_BREAK", "POSITIONAL_EDGE"):
             self.assertIn(event, app)
         self.assertIn(".coachPhase.coachEvent", css)
-        self.assertIn(".adaptiveCoach{gap:5px;padding:8px 11px}", css)
-        self.assertIn("font-size:34px!important", css)
+        self.assertRegex(css, r"\.coachPhase\.coachEvent")
+        self.assertRegex(css, r"\.compactFightCard[\s\S]*?fightPlayerContent")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -23,7 +24,8 @@ const result=window.SharinganVisionTests.run();if(result.failCount)process.exit(
     def test_manager_table_columns_and_immediate_refresh_contract(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertIn('data-position="${pos}"', source)
-        self.assertIn('["QB","RB","WR","TE"].map(pos=>', source)
+        compact = re.sub(r"\s+", "", source)
+        self.assertRegex(compact, r"\[['\"]QB['\"],['\"]RB['\"],['\"]WR['\"],['\"]TE['\"]\]\.map\(pos=>")
         render_after_pick = source[source.index("function renderAfterPick"):source.index("function selectPlayer")]
         self.assertIn("renderManagerTables();", render_after_pick)
 

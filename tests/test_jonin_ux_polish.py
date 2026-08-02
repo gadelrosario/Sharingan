@@ -1,4 +1,5 @@
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -24,10 +25,10 @@ const result=window.JoninUXPolishTests.run();if(result.failCount)process.exit(1)
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertNotIn('id="strategyPreset"', html)
         self.assertIn('js/jonin-ux-polish.js', html)
-        self.assertIn("playerDecisionModel(displayed,recs)", app)
+        self.assertIn("playerDecisionModel(displayed,recs)", re.sub(r"\s+", "", app))
         self.assertIn("decisionCardMarkup(model", app)
         self.assertIn("renderTeamBuild()", app)
-        self.assertIn('strategy:"auto"', app)
+        self.assertRegex(app, r"strategy\s*:\s*['\"]auto['\"]")
 
 
 if __name__ == "__main__":

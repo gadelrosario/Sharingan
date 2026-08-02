@@ -1,4 +1,5 @@
 import pathlib
+import re
 import subprocess
 import unittest
 
@@ -20,17 +21,18 @@ const result=window.DraftPsychologyTests.run();if(result.failCount)process.exit(
 
     def test_live_renderer_consumes_primary_recommendation_only(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        self.assertIn("function draftPsychologyFor(primary,recs)", app)
-        self.assertIn("const psychology=draftPsychologyFor(primary,recs)", app)
+        self.assertRegex(app, r"function\s+draftPsychologyFor\s*\(\s*primary\s*,\s*recs\s*\)")
+        self.assertRegex(app, r"const\s+psychology\s*=\s*draftPsychologyFor\s*\(\s*primary\s*,\s*recs\s*\)")
         self.assertIn("draftPsychologyMarkup(psychology)", app)
         self.assertNotIn("DraftPsychologyEngineV1.analyze({player", app)
 
     def test_canonical_tier_contract_and_read_only_score_inputs(self):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         module = (ROOT / "js" / "draft-psychology-engine-v1.js").read_text(encoding="utf-8")
-        self.assertIn("tier:PlayerTierContract.getDecisionTier(candidate)", app)
-        self.assertIn("tier:PlayerTierContract.getDecisionTier(primary)", app)
-        self.assertIn("recommendationMamba:mambaScore(primary)", app)
+        compact = re.sub(r"\s+", "", app)
+        self.assertIn("tier:PlayerTierContract.getDecisionTier(candidate)", compact)
+        self.assertIn("tier:PlayerTierContract.getDecisionTier(primary)", compact)
+        self.assertIn("recommendationMamba:mambaScore(primary)", compact)
         self.assertNotIn("finalPickScore", module)
         self.assertNotIn("recommendations(", module)
 
@@ -39,8 +41,9 @@ const result=window.DraftPsychologyTests.run();if(result.failCount)process.exit(
         css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
         self.assertIn('aria-label="Room Intelligence" aria-live="off"', app)
         self.assertIn("<details><summary>Next-turn outlook</summary>", app)
-        self.assertIn(".draftPsychology li{max-width:48%}", css)
-        self.assertIn("grid-template-columns:repeat(2,minmax(0,1fr))", css)
+        self.assertRegex(css, r"\.draftPsychology\s+li\s*\{\s*max-width:\s*48%")
+        compact = re.sub(r"\s+", "", css)
+        self.assertIn("grid-template-columns:repeat(2,minmax(0,1fr))", compact)
         self.assertNotIn("min-width:600px", css)
 
     def test_offline_asset_and_version_contract(self):
@@ -49,8 +52,8 @@ const result=window.DraftPsychologyTests.run();if(result.failCount)process.exit(
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         self.assertIn('js/draft-psychology-engine-v1.js?v=1.0.0', html)
         self.assertIn('js/draft-psychology-engine-v1.js?v=1.0.0', worker)
-        self.assertIn('fantasy-hq-jonin-3-7-2', worker)
-        self.assertIn('service-worker.js?v=jonin_3_7_2', app)
+        self.assertIn('fantasy-hq-jonin-4-0-11', worker)
+        self.assertIn('service-worker.js?v=jonin_4_0_11', app)
 
 
 if __name__ == "__main__":

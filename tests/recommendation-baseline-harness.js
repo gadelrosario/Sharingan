@@ -4,7 +4,7 @@ const fs=require('fs'),vm=require('vm');
 const ROOT=require('path').resolve(__dirname,'..');
 function read(file){return fs.readFileSync(require('path').join(ROOT,file),'utf8')}
 
-function createHarness(){
+function createHarness({unified=false}={}){
   const silent=()=>{};
   const element=()=>({classList:{add:silent,remove:silent,toggle:silent},appendChild:silent,append:silent,querySelectorAll:()=>[],querySelector:()=>null,setAttribute:silent,style:{},dataset:{},value:'',innerHTML:'',textContent:''});
   const context={console,performance,Date,Math,Map,Set,WeakMap,JSON,Object,Array,Number,String,Boolean,RegExp,Error,TypeError,Promise,Blob:global.Blob,URL:global.URL,addEventListener:silent,scrollTo:silent,
@@ -13,7 +13,10 @@ function createHarness(){
     document:{getElementById:()=>null,createElement:element,querySelectorAll:()=>[]},
     fetch:async()=>{throw new Error('Network is disabled in recommendation baselines.')}};
   context.window=context;context.globalThis=context;vm.createContext(context);
-  ['js/player-tier-contract.js','js/roster-view-v1.js','js/command-center-v1.js','js/jonin-insight-engine-v1.js','js/sharingan-vision-v1.js','js/jonin-ux-polish.js','js/flight-control-v1.js'].forEach(file=>vm.runInContext(read(file),context,{filename:file}));
+  const runtimeFiles=['js/player-tier-contract.js','js/roster-view-v1.js'];
+  if(unified)runtimeFiles.push('js/fantasy-hq-core.js','js/jonin-decision-intelligence-v1.js');
+  runtimeFiles.push('js/command-center-v1.js','js/jonin-insight-engine-v1.js','js/sharingan-vision-v1.js','js/jonin-ux-polish.js','js/flight-control-v1.js');
+  runtimeFiles.forEach(file=>vm.runInContext(read(file),context,{filename:file}));
   const app=read('js/app.js').replace(/\ninit\(\);\s*$/,'\n');
   vm.runInContext(app+`\nwindow.__RecommendationBaseline={
     load(runtimePlayers){players=JSON.parse(JSON.stringify(runtimePlayers));buildPlayerSearchIndex();slot=10;mode='practice';style='balanced';slotManagers={1:'Marc',2:'Kalani',3:'Ray',4:'Fritz',5:'Michael',6:'Josh',7:'Raoul',8:'Rob',9:'AJ',10:'Gerard'};aiProfiles={1:'Balanced',2:'Hero RB',3:'Value Drafter',4:'Balanced',5:'WR Heavy',6:'Rookie Chaser',7:'Balanced',8:'Elite TE',9:'Early QB',10:'Balanced'};applyDraftStructure();invalidateIntelligence()},
@@ -38,6 +41,8 @@ function createHarness(){
     },
     playerState(name){const player=players.find(candidate=>candidate.name===name);return {id:player.id,name:player.name,currentPick:pick,finalPickScore:finalPickScore(player),mambaScore:mambaScore(player),decisionTier:tierLabel(player),sharinganStage:sharinganStage(player).key,eligible:recommendationEligible(player)}},
     fullPool(){return players.map(player=>({id:player.id,name:player.name,decisionTier:tierLabel(player),mambaScore:mambaScore(player),finalPickScore:finalPickScore(player),eligible:recommendationEligible(player)}))},
+    configureFresh({pick:currentPick=1,slot:userSlot=10,startQB=1}={}){pick=Number(currentPick);slot=Number(userSlot);leagueContext={...leagueContext,teams:10,scoring:'half',startQB:Number(startQB),startRB:2,startWR:3,startTE:1,flex:2,strategy:'auto',risk:'balanced'};applyDraftStructure();drafted=[];history=[];decisionSnapshots=[];selectedCandidateId=null;slotManagers={1:'Marc',2:'Kalani',3:'Ray',4:'Fritz',5:'Michael',6:'Josh',7:'Raoul',8:'Rob',9:'AJ',10:'Gerard'};const oldGerard=Object.keys(slotManagers).find(key=>slotManagers[key]==='Gerard');if(oldGerard&&Number(oldGerard)!==slot)slotManagers[oldGerard]=slotManagers[slot];slotManagers[slot]='Gerard';invalidateIntelligence()},
+    boundarySnapshot(){const recs=recommendations(),decision=championshipDecision();return{topFive:recs.map(player=>{const evaluation=decision.all.find(item=>item.playerId===player.id);return{id:player.id,name:player.name,overall:player.overall,overallTier:PlayerTierContract.getOverallTier(player),posRank:player.posRank,posTier:PlayerTierContract.getPositionTier(player),mamba:mambaScore(player),positionalSourceBlend:positionalSourceBlend(player),overallSourceBlend:overallSourceBlend(player),crossPositionBase:crossPositionValueBase(player),scores:evaluation.scores}}),josh:(()=>{const player=players.find(candidate=>candidate.name==='Josh Allen'),evaluation=decision.all.find(item=>item.playerId===player.id);return{id:player.id,name:player.name,overall:player.overall,overallTier:PlayerTierContract.getOverallTier(player),posRank:player.posRank,posTier:PlayerTierContract.getPositionTier(player),mamba:mambaScore(player),positionalSourceBlend:positionalSourceBlend(player),overallSourceBlend:overallSourceBlend(player),crossPositionBase:crossPositionValueBase(player),scores:evaluation.scores}})()}},
     undoReplay(){const before=this.snapshot('before-undo');const last=history.pop();drafted=drafted.filter(id=>id!==last.id);pick=last.pick;invalidateIntelligence();const undone=this.snapshot('undone');drafted.push(last.id);history.push(last);pick=last.pick+1;invalidateIntelligence();const replayed=this.snapshot('replayed');return {before,undone,replayed}}
   };`,context,{filename:'js/app.js'});
   const runtimePlayers=JSON.parse(read('data/players.json'));
