@@ -13,12 +13,13 @@ test('highest final decision score orders first',()=>{
   ]);
   assert(result.recommended[0].playerId===1,'lower final decision score led');
 });
-test('intentional source-value override exposes complete metadata',()=>{
+test('source-value concern is diagnostic and cannot silently override canonical score',()=>{
   const result=engine.choose([
     {player:player(1,'Decision leader'),finalDecisionScore:91,crossPositionBase:55,tier:'C'},
     {player:player(2,'Value leader'),finalDecisionScore:88,crossPositionBase:95,tier:'S'},
   ]);
-  assert(result.guardrail.applied,'guardrail not applied');
+  assert(!result.guardrail.applied,'guardrail silently changed canonical ordering');
+  assert(result.recommended[0].playerId===1,'lower finalDecisionScore overrode canonical leader');
   for(const field of ['overrideReason','preOverrideRank','postOverrideRank','overrideMagnitude'])assert(result.guardrail[field]!==undefined,`missing ${field}`);
 });
 test('middle-round specialists are suppressed while skill value remains',()=>{
@@ -57,13 +58,13 @@ test('Tyler Loop is not a middle-round default kicker',()=>{
   assert(loop.mambaScore<50,'unranked kicker retained artificial default boost');
   assert(!top.some(row=>row.id===loop.id),'Tyler Loop appeared in middle-round top five');
 });
-test('WR-heavy roster surfaces RB depth without forcing every card',()=>{
+test('WR-heavy roster surfaces RB depth without excluding WR value',()=>{
   const harness=createHarness({unified:true});
   harness.configure({pick:111,userRoster:['Jayden Daniels','Omarion Hampton','Josh Jacobs','Jonathan Brooks','Jaxon Smith-Njigba','Malik Nabers','Mike Evans','Carnell Tate','Alec Pierce','Oronde Gadsden II','Matthew Golden']});
   const snapshot=harness.completionSnapshot();
   assert(snapshot.roster.RB===3&&snapshot.roster.WR===6,'fixture roster mismatch');
   assert(snapshot.cards[0].pos==='RB','RB depth did not lead');
-  assert(snapshot.cards.some(card=>card.pos==='WR'),'depth logic became a hard position cap');
+  assert(snapshot.rawTop.some(card=>card.pos==='WR'),'WR candidates were excluded from canonical scoring');
 });
 
 function run(){let passCount=0,failures=[];for(const item of tests){try{item.fn();passCount++}catch(error){failures.push({name:item.name,error:error.message})}}return {passCount,failCount:failures.length,failures}}

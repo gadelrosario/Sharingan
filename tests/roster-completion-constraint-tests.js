@@ -32,11 +32,12 @@ test('one pick remaining with K open permits only kickers',()=>{
   const constrained=C.constrainPool(pool,state(['K'],1));
   assert(constrained.length===1&&constrained[0].pos==='K','K restriction failed');
 });
-test('three picks remaining with DST and K open surfaces both plus one safe flexible choice',()=>{
+test('three picks remaining with DST and K open preserves score order with one safe flexible choice',()=>{
   const current=state(['DEF','K'],3), ordered=[pool[0],pool[1],pool[4],pool[5],pool[2]], recommendations=C.finalizeRecommendations(ordered,current,5);
   assert(current.pressure,'pressure state missing');
-  assert(C.normalizePosition(recommendations[0].pos)==='DST'&&recommendations[1].pos==='K','required representatives do not lead');
+  assert(recommendations[0].id===pool[0].id&&recommendations[1].id===pool[1].id,'soft completion silently reordered higher scores');
   assert(recommendations.some(candidate=>candidate.pos==='RB'),'safe flexible choice removed');
+  assert(recommendations.some(candidate=>C.normalizePosition(candidate.pos)==='DST')&&recommendations.some(candidate=>candidate.pos==='K'),'required options disappeared');
 });
 test('completed required slots preserve normal recommendations',()=>{
   const current=state([],2),ordered=[pool[0],pool[1],pool[2]];

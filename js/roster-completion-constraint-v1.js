@@ -59,7 +59,8 @@
     const impossible = userPicksRemaining < unfilledRequiredSlots;
     const hard = unfilledRequiredSlots > 0 && userPicksRemaining <= unfilledRequiredSlots;
     const pressure = unfilledRequiredSlots > 0 && userPicksRemaining === unfilledRequiredSlots + 1;
-    const state = { openRequiredSlots, unfilledRequiredSlots, requiredPositions, userPicksRemaining, availablePlayers, impossible, hard, pressure, mode: hard ? 'HARD' : pressure ? 'PRESSURE' : 'NORMAL' };
+    const flexibleSelectionsRemaining=userPicksRemaining-unfilledRequiredSlots;
+    const state = { openRequiredSlots, unfilledRequiredSlots, requiredPositions, userPicksRemaining, picksRemainingIncludingCurrent:userPicksRemaining, requiredSlotsRemaining:unfilledRequiredSlots, flexibleSelectionsRemaining, constraintActive:hard, constraintReason:hard?'Every remaining pick must fill a required starter slot.':null, availablePlayers, impossible, hard, pressure, mode: hard ? 'HARD' : pressure ? 'PRESSURE' : 'NORMAL' };
     state.message = impossible
       ? `Roster completion is no longer mathematically possible: ${unfilledRequiredSlots} required slots remain with ${userPicksRemaining} selections.`
       : hard
@@ -84,7 +85,7 @@
   }
   function finalizeRecommendations(ordered, state, limit = 5) {
     const unique = ordered.filter((player, index, list) => player && list.findIndex(candidate => String(candidate.id) === String(player.id)) === index);
-    if (!state || state.mode === 'NORMAL') return unique.slice(0, limit);
+    if (!state || state.mode !== 'HARD') return unique.filter(player=>candidateAllowed(player,state)).slice(0, limit);
     const eligible = unique.filter(player => candidateAllowed(player, state));
     const required = [], used = new Set();
     for (const slot of state.openRequiredSlots) {

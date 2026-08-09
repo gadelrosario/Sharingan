@@ -1,0 +1,14 @@
+'use strict';
+const {createHarness}=require('./recommendation-baseline-harness.js');
+const tests=[];const test=(name,fn)=>tests.push({name,fn});const assert=(value,message)=>{if(!value)throw new Error(message)};
+const fresh=()=>{const h=createHarness({unified:true});h.configureFresh({pick:1,slot:10});return h};
+test('ALL sorts ascending by Fantasyland overall rank',()=>{const rows=fresh().allBoard();assert(rows.filter(row=>row.overallRank!=null).every((row,index,list)=>index===0||list[index-1].overallRank<=row.overallRank),'overall rank order failed')});
+test('drafted player disappears immediately',()=>{const h=fresh(),id=h.recordBoardPick('Bijan Robinson');assert(!h.allBoard().some(row=>row.id===id),'drafted player remained')});
+test('Undo restores player to correct rank location',()=>{const h=fresh(),before=h.allBoard().map(row=>row.id),id=h.recordBoardPick('Bijan Robinson');h.undoBoardPick();const after=h.allBoard().map(row=>row.id);assert(before.indexOf(id)===after.indexOf(id),'undo restored wrong location')});
+test('missing overall rank cannot float upward',()=>{const h=fresh(),ids=h.sortOverallFixtures([{id:'missing',name:'A',fantasylandOverallRank:null},{id:'ranked',name:'Z',fantasylandOverallRank:200}]);assert(ids[0]==='ranked','missing rank acted elite')});
+test('duplicate ranks use deterministic name and ID fallback',()=>{const h=fresh(),ids=h.sortOverallFixtures([{id:3,name:'Beta',fantasylandOverallRank:10},{id:2,name:'Alpha',fantasylandOverallRank:10},{id:1,name:'Alpha',fantasylandOverallRank:10}]);assert(ids.join(',')==='1,2,3','duplicate ordering unstable')});
+for(const field of ['finalDecisionScore','mambaScore','rosterFit','injuryAdjustment'])test(`ALL ordering is independent of ${field}`,()=>{const h=fresh(),ids=h.sortOverallFixtures([{id:'rank2',name:'B',fantasylandOverallRank:2,[field]:0},{id:'rank1',name:'A',fantasylandOverallRank:1,[field]:-999}]);assert(ids.join(',')==='rank1,rank2',`${field} affected ALL`) });
+test('position filters retain position-specific ordering and membership',()=>{const rows=fresh().allBoard('QB');assert(rows.length&&rows.every(row=>row.pos==='QB'),'position filter changed')});
+test('Mock and Live modes produce identical ALL behavior',()=>{const mock=fresh(),live=fresh();mock.recordBoardPick('Bijan Robinson','practice');live.recordBoardPick('Bijan Robinson','live');assert(JSON.stringify(mock.allBoard().slice(0,50))===JSON.stringify(live.allBoard().slice(0,50)),'mode changed board ordering')});
+async function run(){let passCount=0,failures=[];for(const item of tests){try{await item.fn();passCount++}catch(error){failures.push({name:item.name,error:error.message})}}return{passCount,failCount:failures.length,failures}}
+if(require.main===module)run().then(result=>{console.log(JSON.stringify(result));if(result.failCount)process.exit(1)});module.exports={run};

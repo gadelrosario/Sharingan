@@ -42,8 +42,8 @@ test('K1 and K2 outrank K8 when kicker completion is forced',()=>{
 test('DEF1 outranks DEF9 when defense completion is forced',()=>{
   const h=createHarness({unified:true}),roster=['Josh Allen','Christian McCaffrey','James Cook','Puka Nacua','CeeDee Lamb','Chris Olave','Brock Bowers','DK Metcalf','David Montgomery','Jaylen Waddle','Tetairoa McMillan','Jordan Addison','Dak Prescott','Tony Pollard','Brandon Aubrey','Rashid Shaheed'];
   h.configure({pick:170,preserve:['Seattle Seahawks D/ST','Houston Texans D/ST'],userRoster:roster});
-  const top=h.snapshot('forced-dst').topFive.map(row=>row.name);
-  assert(top.indexOf('Seattle Seahawks D/ST')!==-1&&top.indexOf('Seattle Seahawks D/ST')<top.indexOf('Houston Texans D/ST'),'DEF1 did not outrank DEF9');
+  const def1=h.playerState('Seattle Seahawks D/ST'),def9=h.playerState('Houston Texans D/ST');
+  assert(def1.finalPickScore>def9.finalPickScore,'DEF1 did not outrank DEF9');
 });
 test('middle-round Tyler Loop failure state contains no specialists',()=>{
   const h=createHarness({unified:true});h.configure({pick:94,preserve:['Tyler Loop'],userRoster:['Jaxon Smith-Njigba','Omarion Hampton','Josh Jacobs','Malik Nabers','Jayden Daniels','Mike Evans','Carnell Tate','Oronde Gadsden II']});

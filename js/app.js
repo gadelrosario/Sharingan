@@ -173,6 +173,7 @@ let heavyRenderTimer = null;
 // Jōnin Unity Core: one cached evaluation layer powers every visible decision.
 let intelligenceEpoch = 0;
 let scoreCache = new Map(),
+  decisionTraceCache = new Map(),
   evaluationCache = new Map(),
   marketCache = new Map(),
   snapshotCache = null,
@@ -180,6 +181,7 @@ let scoreCache = new Map(),
 function invalidateIntelligence() {
   intelligenceEpoch++;
   scoreCache.clear();
+  decisionTraceCache.clear();
   evaluationCache.clear();
   marketCache.clear();
   snapshotCache = null;
@@ -768,7 +770,8 @@ function rosterFitModifier(p) {
   else if (strength === 'Strong') m -= 1;
   else if (strength === 'Elite') m -= 2;
   if ((t === 'S' || t === 'A') && ['RB', 'WR'].includes(p.pos)) m += 1;
-  return m;
+  const rosterContextScale = Math.min(1, myPlayers().length / 5);
+  return Math.round(m * rosterContextScale * 100) / 100;
 }
 function roomBoost(p) {
   if (!['RB', 'WR', 'QB', 'TE'].includes(p.pos)) return 0;
@@ -829,17 +832,31 @@ function eternalValue(p) {
   let fall = Math.max(0, pick - (p.overall || pick));
   return (t === 'S' || t === 'A') && fall >= 40 && score >= 90;
 }
+function sourcePriorComponents(p) {
+  const rank = reliableOverallRank(p), overallTier = PlayerTierContract.getOverallTier(p), positionTier = PlayerTierContract.getPositionTier(p);
+  const sourceRankValue = rank == null ? 55 : 112 - Math.min(220, rank - 1) * 0.45;
+  const overallTierValue = ({S:2,A:1,B:0,C:-0.5,D:-1,E:-1.5,F:-2}[overallTier] ?? -1);
+  const positionalTierValue = ({S:0.75,A:0.4,B:0.15,C:0,D:-0.15,E:-0.25,F:-0.35}[positionTier] ?? 0);
+  const mambaContribution = (mambaScore(p) - 85) * 0.12;
+  return Object.freeze({rank,sourceRankValue,overallTierValue,positionalTierValue,mambaContribution,total:sourceRankValue+overallTierValue+positionalTierValue+mambaContribution});
+}
+function earlyContextWeight(round=info().r) {
+  return ({1:0.2,2:0.3,3:0.45,4:0.6,5:0.75}[Number(round)] ?? 1);
+}
+function finalDecisionTrace(p) {
+  const key = `${intelligenceEpoch}:${p.id}`;
+  if (decisionTraceCache.has(key)) return decisionTraceCache.get(key);
+  const modifiers=decisionModifiers(p),sourcePrior=sourcePriorComponents(p),round=info().r,contextWeight=earlyContextWeight(round),valueOverrideAdjustment=valueOverride(p)?3:0,eternalAdjustment=eternalValue(p)?4:0;
+  const context=Object.freeze({mamba:mambaScore(p),roomBoost:roomBoost(p),rosterFit:rosterFitModifier(p),valueOverride:valueOverrideAdjustment,eternal:eternalAdjustment,specialist:modifiers.specialist.adjustment,depth:modifiers.depth.adjustment,upside:modifiers.upside.adjustment});
+  const legacyBeforeInjury=context.mamba+context.roomBoost+context.rosterFit+context.valueOverride+context.eternal+context.specialist+context.depth+context.upside;
+  const specialist=['K','DST'].includes(positionKey(p)),blendedBeforeInjury=specialist?legacyBeforeInjury:sourcePrior.total*(1-contextWeight)+legacyBeforeInjury*contextWeight,finalDecisionScore=Math.max(1,blendedBeforeInjury+modifiers.injury.adjustment);
+  const trace=Object.freeze({sourcePrior,contextWeight,context,legacyBeforeInjury,blendedBeforeInjury,injuryAdjustment:modifiers.injury.adjustment,modifiers,finalDecisionScore});decisionTraceCache.set(key,trace);return trace;
+}
+function finalDecisionScore(p) {
+  return finalDecisionTrace(p).finalDecisionScore;
+}
 function finalPickScore(p) {
-  let key = `f:${intelligenceEpoch}:${p.id}`;
-  if (scoreCache.has(key)) return scoreCache.get(key);
-  let score = baseFinalScore(p);
-  if (valueOverride(p)) score += 3;
-  if (eternalValue(p)) score += 4;
-  const modifiers = decisionModifiers(p);
-  score += modifiers.specialist.adjustment + modifiers.depth.adjustment + modifiers.upside.adjustment + modifiers.injury.adjustment;
-  score = Math.round(Math.max(1, Math.min(115, score)));
-  scoreCache.set(key, score);
-  return score;
+  return Math.round(finalDecisionScore(p));
 }
 function sharinganIconMarkup(stage = 'three') {
   const key = ['one', 'two', 'three', 'mangekyo', 'eternal'].includes(stage) ? stage : 'three';
@@ -1275,23 +1292,23 @@ function recommendations() {
   if (!pool.length)
     pool = completionConstrainedPool(available().filter(p => !['QB', 'TE'].includes(p.pos) || !userPositionFilled(p.pos)), completion);
   if(!window.JoninDecisionIntelligenceV1)return RosterCompletionConstraintV1.finalizeRecommendations([...pool].sort((a,b)=>finalPickScore(b)-finalPickScore(a)||mambaScore(b)-mambaScore(a)),completion,5);
-  const decision=championshipDecision(pool),ordered=[...decision.recommended.map(item=>item.player),...decision.all.slice().sort((a,b)=>b.scores.finalDecision-a.scores.finalDecision||b.scores.championship-a.scores.championship).map(item=>item.player)];
+  const decision=championshipDecision(pool),ordered=decision.all.slice().sort((a,b)=>b.scores.finalDecision-a.scores.finalDecision||b.scores.playerValue-a.scores.playerValue||reliableOverallRank(a.player)-reliableOverallRank(b.player)).map(item=>item.player);
   return RosterCompletionConstraintV1.finalizeRecommendations(ordered,completion,5);
 }
 function championshipDecision(pool=available().filter(recommendationEligible)){
   const poolKey=pool.map(player=>player.id).join(',');
   if(championshipDecisionCache?.epoch===intelligenceEpoch&&championshipDecisionCache.poolKey===poolKey)return championshipDecisionCache.value;
   const engine=window.JoninDecisionIntelligenceV1,index=fantasyHQPlayerIndex(),rosterIds=myPlayers().map(player=>player.id),strengthOptions={starterSlots:rosterSlots},before=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength(rosterIds,index,strengthOptions):null;
-  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),decisionOverallTier=['K','DST'].includes(position)?'F':overallTier,samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?(['K','DST'].includes(positionKey(replacement))?'F':PlayerTierContract.getOverallTier(replacement)):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null,modifiers=decisionModifiers(player);return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:decisionOverallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until,finalDecisionScore:finalPickScore(player),decisionModifiers:modifiers}});
+  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),decisionOverallTier=['K','DST'].includes(position)?'F':overallTier,samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?(['K','DST'].includes(positionKey(replacement))?'F':PlayerTierContract.getOverallTier(replacement)):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null,trace=finalDecisionTrace(player),modifiers=trace.modifiers;return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:decisionOverallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until,finalDecisionScore:trace.finalDecisionScore,decisionModifiers:modifiers}});
   const value=engine.choose(inputs);championshipDecisionCache={epoch:intelligenceEpoch,poolKey,value};return value;
 }
 function recommendationDebugBreakdown(playerOrId){
   const player=typeof playerOrId==='object'?playerOrId:players.find(candidate=>String(candidate.id)===String(playerOrId));
   if(!player)return null;
   const decision=championshipDecision(),evaluation=decision.all.find(item=>String(item.playerId)===String(player.id));
-  const components=scoreComponents(player),ordered=[...decision.recommended,...decision.all.slice().sort((a,b)=>b.scores.finalDecision-a.scores.finalDecision||b.scores.championship-a.scores.championship)].filter((item,index,list)=>list.findIndex(candidate=>candidate.playerId===item.playerId)===index);
+  const components=scoreComponents(player),ordered=decision.all.slice().sort((a,b)=>b.scores.finalDecision-a.scores.finalDecision||b.scores.playerValue-a.scores.playerValue),trace=finalDecisionTrace(player);
   const modifiers=evaluation?.modifiers??decisionModifiers(player),injury=InjuryIntelligenceV1?.normalize(player.injury||{})??null;
-  return Object.freeze({player:{id:player.id,name:player.name,position:positionKey(player)},source:{overallRank:player.fantasylandOverallRank??player.overall??null,overallTier:PlayerTierContract.getOverallTier(player),positionRank:reliableSpecialistRank(player)??player.fantasylandPositionRank??player.posRank??null,positionTier:PlayerTierContract.getPositionTier(player),provider:player.fantasylandSpecialistSource??player.fantasylandSource??null,snapshotDate:player.fantasylandSpecialistSnapshotDate??player.fantasylandSnapshotDate??null,rankingScope:player.fantasylandSpecialistRankingScope??'cross-position'},signals:{teamFit:evaluation?.scores.rosterFit??null,scarcity:components.scarcity,boardAvailabilityRisk:survivalRisk(player),opportunityCost:evaluation?.scores.opportunityCost??null,expectedFutureValue:evaluation?.scores.expectedFutureValue??null,upside:components.ceiling,risk:components.risk,rosterModifier:rosterFitModifier(player),mamba:mambaScore(player)},injury:{status:injury?.status??'UNKNOWN',freshness:modifiers.injury?.freshness??'UNKNOWN',reliability:modifiers.injury?.source??null,expectedAvailability:modifiers.injury?.expectedAvailability??null,footballAvailability:modifiers.injury?.footballAvailability??'UNKNOWN',rosterAvailability:modifiers.injury?.rosterAvailability??null,riskAdjustment:modifiers.injury?.baseRisk??0,irCapacityEffect:modifiers.injury?.irCapacityEffect??0,portfolioEffect:modifiers.injury?.injuryPortfolioEffect??0,finalAdjustment:modifiers.injury?.adjustment??0,reason:modifiers.injury?.reason??''},modifiers,finalPickScore:finalPickScore(player),championshipScore:evaluation?.scores.championship??null,finalRecommendationScore:evaluation?.scores.finalDecision??null,finalOrderingRank:ordered.findIndex(item=>item.playerId===player.id)+1,guardrail:decision.guardrail??null});
+  return Object.freeze({player:{id:player.id,name:player.name,position:positionKey(player)},source:{overallRank:player.fantasylandOverallRank??player.overall??null,overallTier:PlayerTierContract.getOverallTier(player),positionRank:reliableSpecialistRank(player)??player.fantasylandPositionRank??player.posRank??null,positionTier:PlayerTierContract.getPositionTier(player),provider:player.fantasylandSpecialistSource??player.fantasylandSource??null,snapshotDate:player.fantasylandSpecialistSnapshotDate??player.fantasylandSnapshotDate??null,rankingScope:player.fantasylandSpecialistRankingScope??'cross-position'},sourcePrior:trace.sourcePrior,signals:{teamFit:evaluation?.scores.rosterFit??null,scarcity:components.scarcity,runPressure:marketPressure(positionKey(player)),boardAvailabilityRisk:survivalRisk(player),opportunityCost:evaluation?.scores.opportunityCost??null,expectedFutureValue:evaluation?.scores.expectedFutureValue??null,upside:components.ceiling,risk:components.risk,rosterModifier:rosterFitModifier(player),mamba:mambaScore(player)},injury:{status:injury?.status??'UNKNOWN',freshness:modifiers.injury?.freshness??'UNKNOWN',reliability:modifiers.injury?.source??null,expectedAvailability:modifiers.injury?.expectedAvailability??null,footballAvailability:modifiers.injury?.footballAvailability??'UNKNOWN',rosterAvailability:modifiers.injury?.rosterAvailability??null,riskAdjustment:modifiers.injury?.baseRisk??0,availabilityRisk:modifiers.injury?.availabilityRisk??0,irCapacityEffect:modifiers.injury?.irCapacityEffect??0,portfolioEffect:modifiers.injury?.injuryPortfolioEffect??0,finalAdjustment:modifiers.injury?.adjustment??0,reason:modifiers.injury?.reason??''},context:trace.context,contextWeight:trace.contextWeight,completion:rosterCompletionState(),modifiers,finalPickScore:finalPickScore(player),championshipScore:evaluation?.scores.championship??null,finalDecisionScore:evaluation?.scores.finalDecision??trace.finalDecisionScore,finalRecommendationScore:evaluation?.scores.finalDecision??null,finalOrderingRank:ordered.findIndex(item=>item.playerId===player.id)+1,guardrail:decision.guardrail??null});
 }
 function rationale(p) {
   let b = [],
@@ -1327,12 +1344,13 @@ function mambaScore(p) {
   if (scoreCache.has(key)) return scoreCache.get(key);
   let raw = gerardScore(p),
     canonicalTier = tierLabel(p),
-    tier = canonicalTier === 'S' ? 10 : canonicalTier === 'A' ? 6 : 0,
+    tier = canonicalTier === 'S' ? 1 : canonicalTier === 'A' ? 0.5 : 0,
     overallRank = reliableOverallRank(p),
     fall = overallRank == null ? 0 : Math.max(0, pick - overallRank),
     risk = survivalRisk(p),
+    unrankedSpecialistAdjustment = ['K', 'DST'].includes(positionKey(p)) && overallRank == null ? -6 : 0,
     score = Math.round(
-      Math.max(1, Math.min(99, 55 + raw / 5 + tier + Math.min(10, fall / 2) - risk / 8))
+      Math.max(1, Math.min(99, (overallRank==null?55:99-Math.log2(overallRank)*3) + Math.max(-3,Math.min(3,(raw-220)/30)) + tier + Math.min(6,fall/8) - risk/100 + unrankedSpecialistAdjustment))
     );
   scoreCache.set(key, score);
   return score;
@@ -2969,8 +2987,9 @@ function marketPressure(pos) {
     if (pos === 'QB' && m.qbHoard >= 7) hoardRisk += 1;
   });
   let recent = recentPositionCount(pos, 8);
-  let avail = available().filter(p => (p.pos === 'DEF' ? 'DST' : p.pos) === pos).length;
-  let pressure = starterNeed * 15 + depthNeed * 6 + recent * 9 + hoardRisk * 10;
+  let positionPool = available().filter(p => (p.pos === 'DEF' ? 'DST' : p.pos) === pos), avail = positionPool.length;
+  const eliteDepth=positionPool.filter(player=>['S','A'].includes(PlayerTierContract.getPositionTier(player))).length,tierCliff=eliteDepth<=2,runContribution=recent>=3&&tierCliff?recent*6:Math.min(3,recent);
+  let pressure = starterNeed * 4 + depthNeed * 2 + runContribution + hoardRisk * 5;
   if (avail < 8) pressure += 12;
   if (avail < 4) pressure += 18;
   pressure = Math.max(0, Math.min(100, Math.round(pressure)));
@@ -2991,6 +3010,10 @@ function marketPressure(pos) {
     starterNeed,
     depthNeed,
     recent,
+    eliteDepth,
+    tierCliff,
+    runQualified: recent>=3&&tierCliff,
+    runContribution,
     teams: before.length,
     avail,
   };
@@ -3323,7 +3346,7 @@ function handleSearchKey(event) {
   if (event.key !== 'Enter') return;
   const first = available()
     .filter(player => (posFilter === 'ALL' || positionKey(player) === posFilter) && playerMatchesQuery(player, playerBrowserQuery))
-    .sort((a,b)=>bestAvailableRank(a)-bestAvailableRank(b)||String(a.name||'').localeCompare(String(b.name||'')))[0];
+    .sort(posFilter === 'ALL' ? compareOverallBoard : comparePositionBoard)[0];
   if (first) {
     event.preventDefault();
     selectCandidate(first.id);
@@ -3363,6 +3386,21 @@ function bestAvailableRank(player) {
 
   return ranks.length ? Math.min(...ranks) : 9999;
 }
+function overallSourceRank(player) {
+  const rank=Number(player?.fantasylandOverallRank);
+  return Number.isFinite(rank)&&rank>0?rank:null;
+}
+function deterministicPlayerFallback(a,b) {
+  return String(a?.name||'').localeCompare(String(b?.name||''))||String(a?.id??'').localeCompare(String(b?.id??''),undefined,{numeric:true});
+}
+function compareOverallBoard(a,b) {
+  const aRank=overallSourceRank(a),bRank=overallSourceRank(b);
+  if(aRank!==null||bRank!==null){if(aRank===null)return 1;if(bRank===null)return-1;if(aRank!==bRank)return aRank-bRank}
+  return deterministicPlayerFallback(a,b);
+}
+function comparePositionBoard(a,b) {
+  return bestAvailableRank(a)-bestAvailableRank(b)||deterministicPlayerFallback(a,b);
+}
 
 function renderPlayers() {
   const selectedPosition = posFilter || 'ALL';
@@ -3373,15 +3411,7 @@ function renderPlayers() {
       return selectedPosition === 'ALL' || positionKey(player) === selectedPosition;
     })
     .filter(player => playerMatchesQuery(player, query))
-    .sort((a, b) => {
-      const rankDifference = bestAvailableRank(a) - bestAvailableRank(b);
-
-      if (rankDifference !== 0) {
-        return rankDifference;
-      }
-
-      return String(a.name || '').localeCompare(String(b.name || ''));
-    });
+    .sort(selectedPosition === 'ALL' ? compareOverallBoard : comparePositionBoard);
 
   if (selectedPosition === 'ALL' && !query) {
     pool = pool.slice(0, 55);
@@ -3397,9 +3427,8 @@ function renderPlayers() {
       .map(player => {
         const decisionTier = PlayerTierContract.getDecisionTier(player);
 
-        const displayedRank = player.overall || bestAvailableRank(player);
-
-        const rankLabel = displayedRank === 9999 ? '—' : displayedRank;
+        const displayedRank = selectedPosition === 'ALL' ? overallSourceRank(player) : (Number(player.posRank)>0?Number(player.posRank):bestAvailableRank(player));
+        const rankLabel = displayedRank == null || displayedRank === 9999 ? '—' : `#${displayedRank}`;
 
         return `
           <div class="playerRow fast" data-player-id="${player.id}">
@@ -3602,7 +3631,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_2_4')
+      .register('./service-worker.js?v=jonin_4_2_5')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

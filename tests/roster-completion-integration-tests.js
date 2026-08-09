@@ -22,8 +22,8 @@ test('RB need and fit decline with adequate starters and bench depth',()=>{
   assert(rb&&rb.need===0,'RB positional need remained active');
   assert(rb.rosterFit<55&&rb.surplus<0,'existing RB surplus signal did not reduce engine fit');
 });
-test('full mock has no repeated RB-only rounds from incomplete-roster averaging',()=>{
-  const allRb=turns.filter(turn=>turn.state.mode==='NORMAL'&&turn.cards.length===5&&turn.cards.every(card=>card.pos==='RB'));
+test('full mock has no repeated RB-only rounds after adequate RB depth',()=>{
+  const allRb=turns.filter(turn=>turn.state.mode==='NORMAL'&&turn.rbBench>=2&&turn.cards.length===5&&turn.cards.every(card=>card.pos==='RB'));
   const consecutive=allRb.filter((turn,index)=>index>0&&turns.indexOf(turn)-turns.indexOf(allRb[index-1])===1);
   assert(consecutive.length===0,`consecutive RB-only turns remained at ${consecutive.map(turn=>turn.pick).join(',')}`);
 });

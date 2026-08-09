@@ -1,0 +1,3149 @@
+{
+  "generatedAt": "2026-08-09T16:11:17.310Z",
+  "configuration": {
+    "teams": 10,
+    "scoring": "half-PPR",
+    "quarterbackFormat": "one-QB",
+    "slots": [
+      1,
+      7,
+      10
+    ],
+    "runsPerSlot": 10,
+    "picksPerRun": 50
+  },
+  "aggregate": {
+    "runs": 30,
+    "firstQuarterbackPickRange": [
+      28,
+      29
+    ],
+    "firstTightEndPickRange": [
+      20,
+      20
+    ],
+    "firstKickerPick": null,
+    "firstDefensePick": null,
+    "maximumEightPickConcentration": {
+      "count": 7,
+      "position": "RB",
+      "startPick": 9,
+      "endPick": 16
+    },
+    "averageSourceDeviation": -0.9066666666666665,
+    "maximumFall": 9,
+    "maximumReach": -11
+  },
+  "summaries": [
+    {
+      "slot": 1,
+      "run": 1,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 2,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 3,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 4,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 5,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 6,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 7,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 8,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 9,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 1,
+      "run": 10,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.2,
+      "maximumFall": 6,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 1,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "sourceRank": 1
+        },
+        {
+          "pick": 20,
+          "name": "Brock Bowers",
+          "pos": "TE",
+          "sourceRank": 22
+        },
+        {
+          "pick": 21,
+          "name": "Drake London",
+          "pos": "WR",
+          "sourceRank": 21
+        },
+        {
+          "pick": 40,
+          "name": "Tetairoa McMillan",
+          "pos": "WR",
+          "sourceRank": 42
+        },
+        {
+          "pick": 41,
+          "name": "Garrett Wilson",
+          "pos": "WR",
+          "sourceRank": 43
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 7,
+          "WR": 3
+        },
+        "5": {
+          "WR": 4,
+          "QB": 4,
+          "RB": 2
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 1,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 2,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 3,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 4,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 5,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 6,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 7,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 8,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 9,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "run": 10,
+      "firstAtPosition": {
+        "QB": 29,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -0.5,
+      "maximumFall": 9,
+      "maximumReach": -8,
+      "firstFiveUserPicks": [
+        {
+          "pick": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "sourceRank": 7
+        },
+        {
+          "pick": 14,
+          "name": "James Cook",
+          "pos": "RB",
+          "sourceRank": 14
+        },
+        {
+          "pick": 27,
+          "name": "Chris Olave",
+          "pos": "WR",
+          "sourceRank": 27
+        },
+        {
+          "pick": 34,
+          "name": "Josh Jacobs",
+          "pos": "RB",
+          "sourceRank": 30
+        },
+        {
+          "pick": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 7,
+          "TE": 1,
+          "RB": 1,
+          "QB": 1
+        },
+        "4": {
+          "RB": 5,
+          "WR": 4,
+          "TE": 1
+        },
+        "5": {
+          "QB": 3,
+          "WR": 5,
+          "TE": 1,
+          "RB": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 1,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 2,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 3,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 4,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 5,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 6,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 7,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 8,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 9,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    },
+    {
+      "slot": 10,
+      "run": 10,
+      "firstAtPosition": {
+        "QB": 28,
+        "RB": 1,
+        "WR": 2,
+        "TE": 20,
+        "K": null,
+        "DST": null
+      },
+      "maximumEightPickConcentration": {
+        "count": 7,
+        "position": "RB",
+        "startPick": 9,
+        "endPick": 16
+      },
+      "averageSourceDeviation": -1.02,
+      "maximumFall": 7,
+      "maximumReach": -11,
+      "firstFiveUserPicks": [
+        {
+          "pick": 10,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "sourceRank": 10
+        },
+        {
+          "pick": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "sourceRank": 11
+        },
+        {
+          "pick": 30,
+          "name": "Emeka Egbuka",
+          "pos": "WR",
+          "sourceRank": 35
+        },
+        {
+          "pick": 31,
+          "name": "Tee Higgins",
+          "pos": "WR",
+          "sourceRank": 40
+        },
+        {
+          "pick": 50,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "sourceRank": 53
+        }
+      ],
+      "byRound": {
+        "1": {
+          "RB": 5,
+          "WR": 5
+        },
+        "2": {
+          "RB": 7,
+          "WR": 2,
+          "TE": 1
+        },
+        "3": {
+          "WR": 8,
+          "TE": 1,
+          "QB": 1
+        },
+        "4": {
+          "WR": 4,
+          "TE": 1,
+          "RB": 5
+        },
+        "5": {
+          "QB": 4,
+          "WR": 5,
+          "TE": 1
+        }
+      }
+    }
+  ],
+  "representativeFirst50": [
+    {
+      "pick": 1,
+      "name": "Bijan Robinson",
+      "pos": "RB",
+      "sourceRank": 1,
+      "deviation": 0,
+      "sourceTier": "S",
+      "finalDecisionScore": 113.144,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 2,
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "sourceRank": 3,
+      "deviation": -1,
+      "sourceTier": "S",
+      "finalDecisionScore": 111.832,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 3,
+      "name": "Puka Nacua",
+      "pos": "WR",
+      "sourceRank": 4,
+      "deviation": -1,
+      "sourceTier": "S",
+      "finalDecisionScore": 111.17600000000002,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 4,
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "sourceRank": 5,
+      "deviation": -1,
+      "sourceTier": "S",
+      "finalDecisionScore": 110.52000000000001,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 5,
+      "name": "Jahmyr Gibbs",
+      "pos": "RB",
+      "sourceRank": 2,
+      "deviation": 3,
+      "sourceTier": "S",
+      "finalDecisionScore": 109.584,
+      "injuryAdjustment": -3
+    },
+    {
+      "pick": 6,
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "sourceRank": 6,
+      "deviation": 0,
+      "sourceTier": "A",
+      "finalDecisionScore": 108.864,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 7,
+      "name": "Amon-Ra St. Brown",
+      "pos": "WR",
+      "sourceRank": 7,
+      "deviation": 0,
+      "sourceTier": "A",
+      "finalDecisionScore": 108.128,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 8,
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "sourceRank": 8,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 106.17600000000002,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 9,
+      "name": "De'Von Achane",
+      "pos": "RB",
+      "sourceRank": 9,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 105.81600000000002,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 10,
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "sourceRank": 10,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 105.45600000000002,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 11,
+      "name": "Ashton Jeanty",
+      "pos": "RB",
+      "sourceRank": 11,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 103.934,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 12,
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "sourceRank": 13,
+      "deviation": -1,
+      "sourceTier": "B",
+      "finalDecisionScore": 103.345,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 13,
+      "name": "Omarion Hampton",
+      "pos": "RB",
+      "sourceRank": 12,
+      "deviation": 1,
+      "sourceTier": "B",
+      "finalDecisionScore": 102.431,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 14,
+      "name": "James Cook",
+      "pos": "RB",
+      "sourceRank": 14,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 102.70100000000001,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 15,
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "sourceRank": 15,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 102.00200000000001,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 16,
+      "name": "Chase Brown",
+      "pos": "RB",
+      "sourceRank": 16,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 101.392,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 17,
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "sourceRank": 17,
+      "deviation": 0,
+      "sourceTier": "B",
+      "finalDecisionScore": 100.693,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 18,
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "sourceRank": 19,
+      "deviation": -1,
+      "sourceTier": "B",
+      "finalDecisionScore": 100.387,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 19,
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "sourceRank": 20,
+      "deviation": -1,
+      "sourceTier": "B",
+      "finalDecisionScore": 99.364,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 20,
+      "name": "Brock Bowers",
+      "pos": "TE",
+      "sourceRank": 22,
+      "deviation": -2,
+      "sourceTier": "C",
+      "finalDecisionScore": 99.12799999999999,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 21,
+      "name": "Drake London",
+      "pos": "WR",
+      "sourceRank": 21,
+      "deviation": 0,
+      "sourceTier": "C",
+      "finalDecisionScore": 97.08950000000002,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 22,
+      "name": "Malik Nabers",
+      "pos": "WR",
+      "sourceRank": 18,
+      "deviation": 4,
+      "sourceTier": "B",
+      "finalDecisionScore": 96.623,
+      "injuryAdjustment": -2
+    },
+    {
+      "pick": 23,
+      "name": "George Pickens",
+      "pos": "WR",
+      "sourceRank": 23,
+      "deviation": 0,
+      "sourceTier": "C",
+      "finalDecisionScore": 97.0445,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 24,
+      "name": "Rashee Rice",
+      "pos": "WR",
+      "sourceRank": 24,
+      "deviation": 0,
+      "sourceTier": "C",
+      "finalDecisionScore": 96.71450000000002,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 25,
+      "name": "Nico Collins",
+      "pos": "WR",
+      "sourceRank": 26,
+      "deviation": -1,
+      "sourceTier": "C",
+      "finalDecisionScore": 95.7035,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 26,
+      "name": "Trey McBride",
+      "pos": "TE",
+      "sourceRank": 25,
+      "deviation": 1,
+      "sourceTier": "C",
+      "finalDecisionScore": 95.46350000000001,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 27,
+      "name": "Chris Olave",
+      "pos": "WR",
+      "sourceRank": 27,
+      "deviation": 0,
+      "sourceTier": "C",
+      "finalDecisionScore": 95.006,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 28,
+      "name": "Josh Allen",
+      "pos": "QB",
+      "sourceRank": 32,
+      "deviation": -4,
+      "sourceTier": "D",
+      "finalDecisionScore": 92.94,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 29,
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "sourceRank": 29,
+      "deviation": 0,
+      "sourceTier": "C",
+      "finalDecisionScore": 92.51100000000002,
+      "injuryAdjustment": -2
+    },
+    {
+      "pick": 30,
+      "name": "Emeka Egbuka",
+      "pos": "WR",
+      "sourceRank": 35,
+      "deviation": -5,
+      "sourceTier": "D",
+      "finalDecisionScore": 92.1525,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 31,
+      "name": "Tee Higgins",
+      "pos": "WR",
+      "sourceRank": 40,
+      "deviation": -9,
+      "sourceTier": "E",
+      "finalDecisionScore": 90.664,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 32,
+      "name": "Colston Loveland",
+      "pos": "TE",
+      "sourceRank": 38,
+      "deviation": -6,
+      "sourceTier": "D",
+      "finalDecisionScore": 91.252,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 33,
+      "name": "Breece Hall",
+      "pos": "RB",
+      "sourceRank": 28,
+      "deviation": 5,
+      "sourceTier": "C",
+      "finalDecisionScore": 90.38,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 34,
+      "name": "Zay Flowers",
+      "pos": "WR",
+      "sourceRank": 34,
+      "deviation": 0,
+      "sourceTier": "D",
+      "finalDecisionScore": 89.872,
+      "injuryAdjustment": -2
+    },
+    {
+      "pick": 35,
+      "name": "Tetairoa McMillan",
+      "pos": "WR",
+      "sourceRank": 42,
+      "deviation": -7,
+      "sourceTier": "E",
+      "finalDecisionScore": 89.584,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 36,
+      "name": "Javonte Williams",
+      "pos": "RB",
+      "sourceRank": 33,
+      "deviation": 3,
+      "sourceTier": "D",
+      "finalDecisionScore": 89.22,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 37,
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "sourceRank": 30,
+      "deviation": 7,
+      "sourceTier": "D",
+      "finalDecisionScore": 88.82000000000001,
+      "injuryAdjustment": -1
+    },
+    {
+      "pick": 38,
+      "name": "Jeremiyah Love",
+      "pos": "RB",
+      "sourceRank": 31,
+      "deviation": 7,
+      "sourceTier": "D",
+      "finalDecisionScore": 89.088,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 39,
+      "name": "Garrett Wilson",
+      "pos": "WR",
+      "sourceRank": 43,
+      "deviation": -4,
+      "sourceTier": "E",
+      "finalDecisionScore": 88.756,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 40,
+      "name": "Cam Skattebo",
+      "pos": "RB",
+      "sourceRank": 36,
+      "deviation": 4,
+      "sourceTier": "D",
+      "finalDecisionScore": 89.28,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 41,
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "sourceRank": 47,
+      "deviation": -6,
+      "sourceTier": "E",
+      "finalDecisionScore": 88.49000000000001,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 42,
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "sourceRank": 45,
+      "deviation": -3,
+      "sourceTier": "E",
+      "finalDecisionScore": 87.1975,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 43,
+      "name": "Jaylen Waddle",
+      "pos": "WR",
+      "sourceRank": 39,
+      "deviation": 4,
+      "sourceTier": "E",
+      "finalDecisionScore": 87.6525,
+      "injuryAdjustment": -1
+    },
+    {
+      "pick": 44,
+      "name": "Tyler Warren",
+      "pos": "TE",
+      "sourceRank": 52,
+      "deviation": -8,
+      "sourceTier": "E",
+      "finalDecisionScore": 86.33500000000001,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 45,
+      "name": "Jayden Daniels",
+      "pos": "QB",
+      "sourceRank": 54,
+      "deviation": -9,
+      "sourceTier": "E",
+      "finalDecisionScore": 86.1725,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 46,
+      "name": "Luther Burden III",
+      "pos": "WR",
+      "sourceRank": 44,
+      "deviation": 2,
+      "sourceTier": "E",
+      "finalDecisionScore": 86.09,
+      "injuryAdjustment": -2
+    },
+    {
+      "pick": 47,
+      "name": "Drake Maye",
+      "pos": "QB",
+      "sourceRank": 55,
+      "deviation": -8,
+      "sourceTier": "E",
+      "finalDecisionScore": 86.06,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 48,
+      "name": "D.J. Moore",
+      "pos": "WR",
+      "sourceRank": 48,
+      "deviation": 0,
+      "sourceTier": "E",
+      "finalDecisionScore": 86.055,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 49,
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "sourceRank": 60,
+      "deviation": -11,
+      "sourceTier": "F",
+      "finalDecisionScore": 86.1225,
+      "injuryAdjustment": 0
+    },
+    {
+      "pick": 50,
+      "name": "Davante Adams",
+      "pos": "WR",
+      "sourceRank": 53,
+      "deviation": -3,
+      "sourceTier": "E",
+      "finalDecisionScore": 85.4925,
+      "injuryAdjustment": 0
+    }
+  ],
+  "injuryCoverage": {
+    "snapshotFetchedAt": "2026-08-09T08:36:48.276Z",
+    "records": 292,
+    "canonicalPlayers": 331,
+    "unmatchedAll": [
+      {
+        "id": 115,
+        "name": "Kenneth Gainwell",
+        "rank": 125
+      },
+      {
+        "id": 159,
+        "name": "Hollywood Brown",
+        "rank": null
+      },
+      {
+        "id": 186,
+        "name": "Houston Texans D/ST",
+        "rank": null
+      },
+      {
+        "id": 187,
+        "name": "Denver Broncos D/ST",
+        "rank": null
+      },
+      {
+        "id": 188,
+        "name": "Seattle Seahawks D/ST",
+        "rank": null
+      },
+      {
+        "id": 189,
+        "name": "Los Angeles Rams D/ST",
+        "rank": null
+      },
+      {
+        "id": 190,
+        "name": "Philadelphia Eagles D/ST",
+        "rank": null
+      },
+      {
+        "id": 191,
+        "name": "New England Patriots D/ST",
+        "rank": null
+      },
+      {
+        "id": 192,
+        "name": "Minnesota Vikings D/ST",
+        "rank": null
+      },
+      {
+        "id": 193,
+        "name": "Pittsburgh Steelers D/ST",
+        "rank": null
+      },
+      {
+        "id": 194,
+        "name": "Jacksonville Jaguars D/ST",
+        "rank": null
+      },
+      {
+        "id": 195,
+        "name": "Los Angeles Chargers D/ST",
+        "rank": null
+      },
+      {
+        "id": 196,
+        "name": "Cleveland Browns D/ST",
+        "rank": null
+      },
+      {
+        "id": 197,
+        "name": "Baltimore Ravens D/ST",
+        "rank": null
+      },
+      {
+        "id": 198,
+        "name": "Buffalo Bills D/ST",
+        "rank": null
+      },
+      {
+        "id": 199,
+        "name": "Kansas City Chiefs D/ST",
+        "rank": null
+      },
+      {
+        "id": 200,
+        "name": "Detroit Lions D/ST",
+        "rank": null
+      },
+      {
+        "id": 201,
+        "name": "San Francisco 49ers D/ST",
+        "rank": null
+      },
+      {
+        "id": 202,
+        "name": "Green Bay Packers D/ST",
+        "rank": null
+      },
+      {
+        "id": 203,
+        "name": "Tampa Bay Buccaneers D/ST",
+        "rank": null
+      },
+      {
+        "id": 204,
+        "name": "Dallas Cowboys D/ST",
+        "rank": null
+      },
+      {
+        "id": 205,
+        "name": "New York Jets D/ST",
+        "rank": null
+      },
+      {
+        "id": 206,
+        "name": "Indianapolis Colts D/ST",
+        "rank": null
+      },
+      {
+        "id": 207,
+        "name": "Atlanta Falcons D/ST",
+        "rank": null
+      },
+      {
+        "id": 208,
+        "name": "Arizona Cardinals D/ST",
+        "rank": null
+      },
+      {
+        "id": 209,
+        "name": "Washington Commanders D/ST",
+        "rank": null
+      },
+      {
+        "id": 210,
+        "name": "Chicago Bears D/ST",
+        "rank": null
+      },
+      {
+        "id": 211,
+        "name": "Miami Dolphins D/ST",
+        "rank": null
+      },
+      {
+        "id": 212,
+        "name": "Cincinnati Bengals D/ST",
+        "rank": null
+      },
+      {
+        "id": 213,
+        "name": "New Orleans Saints D/ST",
+        "rank": null
+      },
+      {
+        "id": 214,
+        "name": "Tennessee Titans D/ST",
+        "rank": null
+      },
+      {
+        "id": 215,
+        "name": "Carolina Panthers D/ST",
+        "rank": null
+      },
+      {
+        "id": 216,
+        "name": "New York Giants D/ST",
+        "rank": null
+      },
+      {
+        "id": 217,
+        "name": "Las Vegas Raiders D/ST",
+        "rank": null
+      },
+      {
+        "id": 248,
+        "name": "Baltimore Kicker",
+        "rank": null
+      },
+      {
+        "id": 249,
+        "name": "Cleveland Kicker",
+        "rank": null
+      },
+      {
+        "id": 1000068,
+        "name": "Jonathan Brooks",
+        "rank": null
+      },
+      {
+        "id": 1000091,
+        "name": "Chigoziem Okonkwo",
+        "rank": 118
+      },
+      {
+        "id": 1000177,
+        "name": "Jayden Noel",
+        "rank": 199
+      }
+    ],
+    "top50": {
+      "total": 50,
+      "matched": 50,
+      "unmatched": []
+    },
+    "top100": {
+      "total": 100,
+      "matched": 100,
+      "unmatched": []
+    },
+    "top150": {
+      "total": 149,
+      "matched": 147,
+      "unmatched": [
+        {
+          "id": 1000091,
+          "name": "Chigoziem Okonkwo",
+          "rank": 118
+        },
+        {
+          "id": 115,
+          "name": "Kenneth Gainwell",
+          "rank": 125
+        }
+      ]
+    }
+  }
+}

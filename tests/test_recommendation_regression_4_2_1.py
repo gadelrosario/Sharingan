@@ -27,11 +27,11 @@ class RecommendationRegression421Tests(unittest.TestCase):
         self.assertIn('updateDraftDecisionChrome(model,displayed,primary)',render)
         self.assertIn("DOM.recordPickBtn.dataset.playerId=displayed?.id??''",app)
 
-    def test_version_and_cache_are_4_2_4(self):
+    def test_version_and_cache_are_4_2_5(self):
         html=(ROOT/'index.html').read_text(encoding='utf-8')
         worker=(ROOT/'service-worker.js').read_text(encoding='utf-8')
         self.assertIn('<small data-app-version></small>',html)
-        self.assertIn('js/app.js?v=4.2.4',html)
-        self.assertIn("fantasy-hq-jonin-4-2-4",worker)
+        self.assertIn('js/app.js?v=4.2.5',html)
+        self.assertIn("fantasy-hq-jonin-4-2-5",worker)
 
 if __name__=='__main__': unittest.main()
