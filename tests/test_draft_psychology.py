@@ -52,8 +52,8 @@ const result=window.DraftPsychologyTests.run();if(result.failCount)process.exit(
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         self.assertIn('js/draft-psychology-engine-v1.js?v=1.0.0', html)
         self.assertIn('js/draft-psychology-engine-v1.js?v=1.0.0', worker)
-        self.assertIn('fantasy-hq-jonin-4-0-13', worker)
-        self.assertIn('service-worker.js?v=jonin_4_0_13', app)
+        self.assertIn('fantasy-hq-jonin-4-2-0', worker)
+        self.assertIn('service-worker.js?v=jonin_4_2_0', app)
 
 
 if __name__ == "__main__":

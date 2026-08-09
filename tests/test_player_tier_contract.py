@@ -17,9 +17,9 @@ class PlayerTierContractTests(unittest.TestCase):
         result=run_node("""const tiers=require('./js/player-tier-contract.js'),players=require('./data/players.json');const valid=new Set(['S','A','B','C','D','E','F']);const old=p=>{const t=String(p.posTier||p.overallTier||'C').toUpperCase();return valid.has(t)?t:'C'};const differences=players.filter(p=>old(p)!==tiers.getDecisionTier(p)).map(p=>({id:p.id,name:p.name,old:old(p),next:tiers.getDecisionTier(p),posTier:p.posTier,overallTier:p.overallTier}));const unintended=differences.filter(p=>valid.has(String(p.posTier||'').toUpperCase()));console.log(JSON.stringify({total:players.length,identical:players.length-differences.length,differences,unintended}));""")
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)
         report=json.loads(result.stdout)
-        self.assertEqual(report['total'],264)
+        self.assertEqual(report['total'],331)
         self.assertEqual(report['unintended'],[])
-        self.assertEqual(report['identical']+len(report['differences']),264)
+        self.assertEqual(report['identical']+len(report['differences']),331)
 
     def test_eternal_and_mangekyo_boundaries_remain_compatible(self):
         players=json.loads((ROOT/'data/players.json').read_text(encoding='utf-8'))

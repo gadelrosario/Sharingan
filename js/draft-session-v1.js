@@ -24,9 +24,9 @@
     complete(state){const snapshot=this.save({...state,status:'complete'});return snapshot;}
     clear(){this.storage?.removeItem(STORAGE_KEY);}
   }
-  function timeline(history=[],playerIndex=new Map()){
-    const rounds=[];
-    [...history].sort((a,b)=>a.pick-b.pick).forEach(entry=>{const round=Math.ceil(entry.pick/10),player=playerIndex.get(String(entry.id))||playerIndex.get(Number(entry.id)),row={...entry,round,label:`${round}.${String(((entry.pick-1)%10)+1).padStart(2,'0')}`,playerName:player?.name||'Unknown player'};let group=rounds.find(item=>item.round===round);if(!group){group={round,picks:[]};rounds.push(group)}group.picks.push(row)});
+  function timeline(history=[],playerIndex=new Map(),leagueSize=10){
+    const rounds=[],teams=Math.max(2,Number(leagueSize)||10);
+    [...history].sort((a,b)=>a.pick-b.pick).forEach(entry=>{const round=Math.ceil(entry.pick/teams),player=playerIndex.get(String(entry.id))||playerIndex.get(Number(entry.id)),row={...entry,round,label:`${round}.${String(((entry.pick-1)%teams)+1).padStart(2,'0')}`,playerName:player?.name||'Unknown player'};let group=rounds.find(item=>item.round===round);if(!group){group={round,picks:[]};rounds.push(group)}group.picks.push(row)});
     return rounds;
   }
   function loadNote(storage=root.localStorage){return storage?.getItem(NOTE_KEY)||'';}

@@ -9,13 +9,16 @@ test('full deterministic mock fills every configured required starter',()=>{
   assert(open.length===0,`open slots: ${open.map(row=>row.slot).join(',')}`);
   assert(result.roster.K===1&&result.roster.DST===1,'specialists missing at completion');
 });
-test('final three user turns preserve K, DST, then flexible completion',()=>{
-  const last=turns.slice(-3),leaders=last.map(turn=>turn.cards[0]?.pos);
-  assert(leaders[0]==='K'&&leaders[1]==='DST','required specialists did not lead final constrained turns');
-  assert(last[2].state.unfilledRequiredSlots===0&&last[2].state.mode==='NORMAL','normal behavior did not resume');
+test('required specialists lead when mathematically constrained, then flexibility resumes',()=>{
+  const constrained=turns.filter(turn=>['PRESSURE','HARD'].includes(turn.state.mode));
+  assert(constrained.every(turn=>turn.state.requiredPositions.includes(turn.cards[0]?.pos)),'required specialist did not lead a constrained turn');
+  const last=turns.at(-1);
+  assert(last.state.unfilledRequiredSlots===0&&last.state.mode==='NORMAL','normal behavior did not resume');
 });
 test('RB need and fit decline with adequate starters and bench depth',()=>{
-  const deep=turns.find(turn=>turn.rbBench>=2&&turn.rawTop.some(candidate=>candidate.pos==='RB'&&candidate.need===0)),rb=deep?.rawTop.find(candidate=>candidate.pos==='RB');
+  harness.configure({pick:81,userRoster:['Jahmyr Gibbs','Bijan Robinson','James Cook','Jonathan Taylor','Saquon Barkley','Omarion Hampton','Josh Allen','Trey McBride']});
+  const deep=harness.completionSnapshot(),rb=deep.rawTop.find(candidate=>candidate.pos==='RB');
+  assert(deep.rbBench>=2,'fixture did not create adequate RB bench depth');
   assert(rb&&rb.need===0,'RB positional need remained active');
   assert(rb.rosterFit<55&&rb.surplus<0,'existing RB surplus signal did not reduce engine fit');
 });

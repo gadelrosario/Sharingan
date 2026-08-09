@@ -1,0 +1,38 @@
+[
+  {
+    "canonicalKey": "stefon-diggs-wr",
+    "canonicalName": "Stefon Diggs",
+    "position": "WR",
+    "verifiedTeam": "FA",
+    "teamVerifiedAt": "2026-08-08",
+    "teamVerificationSource": "https://www.nfl.com/players/stefon-diggs/",
+    "aliases": []
+  },
+  {
+    "canonicalKey": "deebo-samuel-wr",
+    "canonicalName": "Deebo Samuel",
+    "position": "WR",
+    "verifiedTeam": "FA",
+    "teamVerifiedAt": "2026-08-08",
+    "teamVerificationSource": "https://www.nfl.com/players/deebo-samuel/",
+    "aliases": ["Deebo Samuel Sr."]
+  },
+  {
+    "canonicalKey": "tyler-loop-k",
+    "canonicalName": "Tyler Loop",
+    "position": "K",
+    "verifiedTeam": "BAL",
+    "teamVerifiedAt": "2026-08-08",
+    "teamVerificationSource": "https://www.nfl.com/players/tyler-loop/",
+    "aliases": []
+  },
+  {
+    "canonicalKey": "isiah-pacheco-rb",
+    "canonicalName": "Isiah Pacheco",
+    "position": "RB",
+    "verifiedTeam": "DET",
+    "teamVerifiedAt": "2026-08-08",
+    "teamVerificationSource": "https://www.nfl.com/players/isiah-pacheco/",
+    "aliases": ["Isaiah Pacheco"]
+  }
+]

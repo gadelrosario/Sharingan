@@ -8,8 +8,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.1"></script>
-<link rel="stylesheet" href="css/app.css?v=4.0.13">
+<script src="js/app-version.js?v=1.0.2"></script>
+<link rel="stylesheet" href="css/app.css?v=4.2.0">
   </head>
   <body>
     <header>
@@ -69,9 +69,13 @@
                 <option value="conservative">Conservative</option>
               </select></label
             ><label
-              >Teams<select id="teamCount">
-                <option value="10">10 teams</option></select
-              ><span class="meta">Reforged 2.1 currently supports 10-team Yahoo rooms.</span></label
+              >Teams<select id="teamCount" onchange="handleLeagueSizeChange()">
+                <option value="8">8 teams</option>
+                <option value="10" selected>10 teams</option>
+                <option value="12">12 teams</option>
+                <option value="14">14 teams</option>
+                <option value="16">16 teams</option></select
+              ><span class="meta">Snake order and recommendation timing adapt to league size.</span></label
             >
           </div>
           <div class="controls">
@@ -556,6 +560,8 @@
       ><button onclick="showPage('mobileTeam')">👥<br />Team</button>
     </nav>
     <script src="js/player-tier-contract.js?v=1.0.0"></script>
+    <script src="js/draft-math-v1.js?v=1.0.0"></script>
+    <script src="js/injury-intelligence-v1.js?v=1.0.0"></script>
     <script src="js/roster-view-v1.js?v=1.0.0"></script>
     <script src="js/roster-completion-constraint-v1.js?v=1.0.0"></script>
     <script src="js/fantasy-hq-core.js?v=3.2.0"></script>
@@ -573,7 +579,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.0.13"></script>
+    <script src="js/app.js?v=4.2.0"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

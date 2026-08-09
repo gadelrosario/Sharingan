@@ -41,7 +41,7 @@ class RecommendationBaselineTests(unittest.TestCase):
         for player_id in sorted(set(expected)|set(actual)):
             if expected.get(player_id)!=actual.get(player_id): differences.append({'id':player_id,'expected':expected.get(player_id),'actual':actual.get(player_id)})
         self.assertEqual(differences,[],f'Player-level scoring changes:\n{json.dumps(differences,indent=2)}')
-        self.assertEqual(len(actual),264)
+        self.assertEqual(len(actual),268)
 
     def test_eternal_mangekyo_and_undo_contracts(self):
         by_name={snapshot['name']:snapshot for snapshot in self.actual['scenarios']}

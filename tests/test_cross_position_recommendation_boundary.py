@@ -51,7 +51,7 @@ console.log(JSON.stringify({snapshots,repeat}));
         self.assertIn('positionTier', boundary)
         self.assertIn('tierLabel(candidate)===positionTier', boundary)
         josh = self.results['snapshots'][1]['josh']
-        self.assertEqual((josh['overallTier'], josh['posTier']), ('E', 'S'))
+        self.assertEqual((josh['overallTier'], josh['posTier']), ('D', 'S'))
 
     def test_fresh_picks_are_deterministic_and_corrected_inputs_remove_qb_leakage(self):
         snapshots = self.results['snapshots']

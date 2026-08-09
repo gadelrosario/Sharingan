@@ -9,7 +9,7 @@ Checks:
 4. No duplicate normalized name+pos identities
 5. Zero blank teams for draftable skill positions (QB, RB, WR, TE)
 6. All new records have a canonical_key bridge field
-7. No overall rank invented for originally unranked players
+7. Imported ranks retain explicit source provenance
 
 Usage:
   python3 scripts/validate_live_pool.py [--generated data/players_generated.json]
@@ -157,11 +157,11 @@ def run_validation(generated_path: Path, db_path: Path) -> dict:
     if len(luther) != 1 or luther[0].get('id') != 46:
         failures.append(f'LUTHER_IDENTITY: expected one record with ID 46, got {[(p.get("id"), p.get("name")) for p in luther]}')
 
-    # A canonical-only player with no overall ranking must remain explicitly null.
-    for name, pos in [('Mark Andrews', 'TE'), ('Jordan Love', 'QB')]:
+    # Formerly unranked bridge players may receive a rank only from the reviewed snapshot.
+    for name, pos, expected_rank in [('Mark Andrews', 'TE', 127), ('Jordan Love', 'QB', 155)]:
         player = gen_lookup_norm.get((normalize_name(name), pos))
-        if player and ('overall' not in player or player['overall'] is not None):
-            failures.append(f'MISSING_RANK_NOT_NULL: {name} overall={player.get("overall")}')
+        if player and (player.get('overall') != expected_rank or player.get('fantasylandSource') != 'Fantasyland' or player.get('fantasylandHostPlatform') != 'Flock Fantasy'):
+            failures.append(f'RANK_PROVENANCE_INVALID: {name} overall={player.get("overall")} source={player.get("fantasylandSource")}')
 
     summary = {
         'total_players': total,
@@ -207,7 +207,8 @@ def main():
         print('RESULT: PASS')
     else:
         print('RESULT: FAIL')
+    return 0 if summary['passed'] else 1
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

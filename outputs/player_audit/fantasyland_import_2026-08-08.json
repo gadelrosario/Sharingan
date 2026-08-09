@@ -1,0 +1,541 @@
+{
+  "source": "Fantasyland",
+  "hostPlatform": "Flock Fantasy",
+  "snapshotDate": "2026-08-08",
+  "sourceRows": 242,
+  "activeSourceRows": 241,
+  "quarantinedRows": [
+    {
+      "playerName": "Bijan Robinson",
+      "sourceTeam": "ATL",
+      "position": "RB",
+      "overallRank": 207,
+      "overallTier": "O",
+      "positionRank": 63,
+      "positionTier": "I",
+      "source": "Fantasyland",
+      "hostPlatform": "Flock Fantasy",
+      "snapshotDate": "2026-08-08",
+      "reason": "reviewed source transcription/duplicate record; canonical player preserved"
+    }
+  ],
+  "canonicalPoolSize": 331,
+  "matchedRows": 237,
+  "unmatchedRows": [
+    {
+      "playerName": "Jaylin Higgins",
+      "sourceTeam": "HOU",
+      "position": "WR",
+      "overallRank": 110,
+      "overallTier": "J",
+      "positionRank": 48,
+      "positionTier": "H",
+      "source": "Fantasyland",
+      "hostPlatform": "Flock Fantasy",
+      "snapshotDate": "2026-08-08",
+      "reason": "no unique canonical identity"
+    },
+    {
+      "playerName": "S. Bell",
+      "sourceTeam": "BUF",
+      "position": "WR",
+      "overallRank": 192,
+      "overallTier": "O",
+      "positionRank": 73,
+      "positionTier": "J",
+      "source": "Fantasyland",
+      "hostPlatform": "Flock Fantasy",
+      "snapshotDate": "2026-08-08",
+      "reason": "no unique canonical identity"
+    },
+    {
+      "playerName": "M. Fields",
+      "sourceTeam": "NYG",
+      "position": "WR",
+      "overallRank": 194,
+      "overallTier": "O",
+      "positionRank": 74,
+      "positionTier": "J",
+      "source": "Fantasyland",
+      "hostPlatform": "Flock Fantasy",
+      "snapshotDate": "2026-08-08",
+      "reason": "no unique canonical identity"
+    },
+    {
+      "playerName": "Cedrick Wilson/Douglas",
+      "sourceTeam": "MIA",
+      "position": "WR",
+      "overallRank": 222,
+      "overallTier": "O",
+      "positionRank": 91,
+      "positionTier": "K",
+      "source": "Fantasyland",
+      "hostPlatform": "Flock Fantasy",
+      "snapshotDate": "2026-08-08",
+      "reason": "no unique canonical identity"
+    }
+  ],
+  "duplicateCanonicalIdentities": [],
+  "duplicateSourceIdentities": [
+    [
+      "bijan robinson",
+      "RB"
+    ]
+  ],
+  "teamMismatches": [],
+  "verifiedTeamDisagreements": [
+    {
+      "stableId": 1000135,
+      "canonicalName": "Stefon Diggs",
+      "canonicalTeam": "FA",
+      "sourceTeam": "WAS",
+      "verificationStatus": "independently verified",
+      "verificationSource": "https://www.nfl.com/players/stefon-diggs/"
+    },
+    {
+      "stableId": 1000136,
+      "canonicalName": "Deebo Samuel",
+      "canonicalTeam": "FA",
+      "sourceTeam": "SF",
+      "verificationStatus": "independently verified",
+      "verificationSource": "https://www.nfl.com/news/best-nfl-team-fits-for-notable-remaining-free-agents-deebo-samuel-to-chargers-trevon-diggs-to-jets"
+    },
+    {
+      "stableId": 115,
+      "canonicalName": "Kenneth Gainwell",
+      "canonicalTeam": "PIT",
+      "sourceTeam": "TB",
+      "verificationStatus": "independently verified",
+      "verificationSource": "https://www.nfl.com/players/kenneth-gainwell/"
+    }
+  ],
+  "positionMismatches": [],
+  "repairedMappings": [
+    {
+      "sourceName": "Chig Okonkwo",
+      "canonicalName": "Chigoziem Okonkwo",
+      "stableId": 1000091,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Kenny Gainwell",
+      "canonicalName": "Kenneth Gainwell",
+      "stableId": 115,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "D. Stribling",
+      "canonicalName": "De'Zhaun Stribling",
+      "stableId": 1000139,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "J. Coleman",
+      "canonicalName": "Jonah Coleman",
+      "stableId": 1000140,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "O. Cooper Jr.",
+      "canonicalName": "Omar Cooper Jr.",
+      "stableId": 1000141,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "D. Boston",
+      "canonicalName": "Denzel Boston",
+      "stableId": 1000142,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Rashid Shaheed",
+      "canonicalName": "Rashid Shaheed",
+      "stableId": 1000143,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Zach Charbonnet",
+      "canonicalName": "Zach Charbonnet",
+      "stableId": 1000144,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Alvin Kamara",
+      "canonicalName": "Alvin Kamara",
+      "stableId": 1000145,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "J. Nailor",
+      "canonicalName": "Jalen Nailor",
+      "stableId": 1000146,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Tyler Allgeier",
+      "canonicalName": "Tyler Allgeier",
+      "stableId": 1000147,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Tyrone Tracy",
+      "canonicalName": "Tyrone Tracy",
+      "stableId": 1000148,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Chris Bell",
+      "canonicalName": "Chris Bell",
+      "stableId": 1000149,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "G. Bernard",
+      "canonicalName": "Germie Bernard",
+      "stableId": 1000150,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "K. Sadiq",
+      "canonicalName": "Kenyon Sadiq",
+      "stableId": 1000092,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Greg Dulcich",
+      "canonicalName": "Greg Dulcich",
+      "stableId": 1000151,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Pat Freiermuth",
+      "canonicalName": "Pat Freiermuth",
+      "stableId": 1000152,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Nicholas Singleton",
+      "canonicalName": "Nicholas Singleton",
+      "stableId": 1000153,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Tank Bigsby",
+      "canonicalName": "Tank Bigsby",
+      "stableId": 1000154,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Gunnar Helm",
+      "canonicalName": "Gunnar Helm",
+      "stableId": 1000155,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Jack Bech",
+      "canonicalName": "Jack Bech",
+      "stableId": 1000156,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "K. Allen",
+      "canonicalName": "Kaytron Allen",
+      "stableId": 1000157,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "E. Sarratt",
+      "canonicalName": "Elijah Sarratt",
+      "stableId": 1000158,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "A. Williams",
+      "canonicalName": "Antonio Williams",
+      "stableId": 1000159,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Z. Branch",
+      "canonicalName": "Zachariah Branch",
+      "stableId": 1000160,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "E. Stowers",
+      "canonicalName": "Eli Stowers",
+      "stableId": 1000161,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "T. Harris",
+      "canonicalName": "Tre Harris",
+      "stableId": 163,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "K. Mitchell",
+      "canonicalName": "Keaton Mitchell",
+      "stableId": 1000163,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "K. Vidal",
+      "canonicalName": "Kimani Vidal",
+      "stableId": 169,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "D. Mooney",
+      "canonicalName": "Darnell Mooney",
+      "stableId": 154,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "B. Smith",
+      "canonicalName": "Brashard Smith",
+      "stableId": 1000166,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "M. Washington",
+      "canonicalName": "Malik Washington",
+      "stableId": 1000167,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "David Njoku",
+      "canonicalName": "David Njoku",
+      "stableId": 1000168,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Justice Hill",
+      "canonicalName": "Justice Hill",
+      "stableId": 1000169,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Jordan James",
+      "canonicalName": "Jordan James",
+      "stableId": 1000170,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Dawson Knox",
+      "canonicalName": "Dawson Knox",
+      "stableId": 1000171,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "D. Giddens",
+      "canonicalName": "DJ Giddens",
+      "stableId": 1000172,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "M. Taylor",
+      "canonicalName": "Mason Taylor",
+      "stableId": 141,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Samaje Perine",
+      "canonicalName": "Samaje Perine",
+      "stableId": 1000174,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "P. Bryant",
+      "canonicalName": "Pat Bryant",
+      "stableId": 164,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "E. Wilson",
+      "canonicalName": "Emanuel Wilson",
+      "stableId": 1000176,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Jayden Noel",
+      "canonicalName": "Jayden Noel",
+      "stableId": 1000177,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Cole Kmet",
+      "canonicalName": "Cole Kmet",
+      "stableId": 1000178,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Tank Dell",
+      "canonicalName": "Tank Dell",
+      "stableId": 1000179,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Evan Engram",
+      "canonicalName": "Evan Engram",
+      "stableId": 1000180,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Kayshon Boutte",
+      "canonicalName": "Kayshon Boutte",
+      "stableId": 1000181,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Tyquan Thornton",
+      "canonicalName": "Tyquan Thornton",
+      "stableId": 1000182,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Ryan Flournoy",
+      "canonicalName": "Ryan Flournoy",
+      "stableId": 1000183,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "C. Brazzell II",
+      "canonicalName": "Chris Brazzell II",
+      "stableId": 1000184,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Elic Ayomanor",
+      "canonicalName": "Elic Ayomanor",
+      "stableId": 1000185,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Ja'Tavion Sanders",
+      "canonicalName": "Ja'Tavion Sanders",
+      "stableId": 1000186,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Ollie Gordon II",
+      "canonicalName": "Ollie Gordon II",
+      "stableId": 1000187,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Jerry Jeudy",
+      "canonicalName": "Jerry Jeudy",
+      "stableId": 1000188,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Kendrick Bourne",
+      "canonicalName": "Kendrick Bourne",
+      "stableId": 1000189,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Isaac TeSlaa",
+      "canonicalName": "Isaac TeSlaa",
+      "stableId": 1000190,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Troy Franklin",
+      "canonicalName": "Troy Franklin",
+      "stableId": 1000191,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Darnell Washington",
+      "canonicalName": "Darnell Washington",
+      "stableId": 1000192,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "M. Klare",
+      "canonicalName": "Max Klare",
+      "stableId": 1000193,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Devaughn Vele",
+      "canonicalName": "Devaughn Vele",
+      "stableId": 1000194,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Treylon Burks",
+      "canonicalName": "Treylon Burks",
+      "stableId": 1000195,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Adonai Mitchell",
+      "canonicalName": "Adonai Mitchell",
+      "stableId": 1000196,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Xavier Legette",
+      "canonicalName": "Xavier Legette",
+      "stableId": 1000197,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Tez Johnson",
+      "canonicalName": "Tez Johnson",
+      "stableId": 1000198,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Chimere Dike",
+      "canonicalName": "Chimere Dike",
+      "stableId": 1000199,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Michael Mayer",
+      "canonicalName": "Michael Mayer",
+      "stableId": 1000200,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Jalen Tolbert",
+      "canonicalName": "Jalen Tolbert",
+      "stableId": 1000201,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Darius Slayton",
+      "canonicalName": "Darius Slayton",
+      "stableId": 1000202,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "LeQuint Allen",
+      "canonicalName": "LeQuint Allen",
+      "stableId": 1000203,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "Theo Johnson",
+      "canonicalName": "Theo Johnson",
+      "stableId": 1000204,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "K. Black",
+      "canonicalName": "Kaelon Black",
+      "stableId": 1000205,
+      "method": "reviewed_alias"
+    },
+    {
+      "sourceName": "A. Randall",
+      "canonicalName": "Adam Randall",
+      "stableId": 1000206,
+      "method": "reviewed_alias"
+    }
+  ]
+}

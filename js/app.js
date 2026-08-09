@@ -16,6 +16,7 @@ let players = [],
   dismissedNoteReminderRound = null,
   recentSearchIds = [],
   leagueContext = {
+    teams: 10,
     scoring: 'half',
     startQB: 1,
     startRB: 2,
@@ -345,6 +346,16 @@ async function init() {
     const response = await fetch('data/players.json?v=jonin_3_2', { cache: 'no-store' });
     if (!response.ok) throw new Error('Player database returned ' + response.status);
     players = await response.json();
+    try {
+      const injuryResponse = await fetch('data/injuries_2026.json?v=2026-08-08', { cache: 'no-store' });
+      if (injuryResponse.ok && window.InjuryIntelligenceV1) {
+        const injurySnapshot = await injuryResponse.json();
+        const injuries = new Map((injurySnapshot.records || []).map(record => [String(record.playerId), InjuryIntelligenceV1.normalize(record)]));
+        players.forEach(player => { if (injuries.has(String(player.id))) player.injury = injuries.get(String(player.id)); });
+      }
+    } catch (injuryError) {
+      console.warn('Optional injury snapshot could not load:', injuryError);
+    }
     buildPlayerSearchIndex();
     if (DOM.poolStatus)
       DOM.poolStatus.innerHTML = `<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;
@@ -364,17 +375,25 @@ async function init() {
     }
   }
   if (DOM.draftSlot) {
-    for (let i = 1; i <= 10; i++) {
-      let o = document.createElement('option');
-      o.value = i;
-      o.textContent = 'Pick ' + i;
-      DOM.draftSlot.appendChild(o);
-    }
-    DOM.draftSlot.value = 10;
+    refreshDraftSlotOptions(10,10);
   }
   renderManagerSetup();
   updateSetupRoundPreview();
   initializeDraftReliability();
+}
+
+function refreshDraftSlotOptions(teamCount=10,preferred=slot){
+  if(!DOM.draftSlot)return;
+  const teams=[8,10,12,14,16].includes(Number(teamCount))?Number(teamCount):10,
+    selected=Math.max(1,Math.min(teams,Number(preferred)||teams));
+  DOM.draftSlot.innerHTML='';
+  for(let i=1;i<=teams;i++){
+    const option=document.createElement('option');option.value=i;option.textContent='Pick '+i;DOM.draftSlot.appendChild(option);
+  }
+  DOM.draftSlot.value=selected;
+}
+function handleLeagueSizeChange(){
+  const teams=+(el('teamCount')?.value||10);refreshDraftSlotOptions(teams,DOM.draftSlot?.value);renderManagerSetup();updateSetupRoundPreview();
 }
 
 function renderManagerSetup() {
@@ -392,7 +411,8 @@ function renderManagerSetup() {
     'AJ',
   ];
   DOM.managerSetup.innerHTML = '';
-  for (let i = 1; i <= 10; i++) {
+  const teamCount=+(el('teamCount')?.value||leagueContext.teams||10);
+  for (let i = 1; i <= teamCount; i++) {
     let w = document.createElement('div');
     w.className = 'managerSlot';
     let b = document.createElement('b');
@@ -405,14 +425,14 @@ function renderManagerSetup() {
       o.textContent = m.name + ' — ' + m.archetype;
       s.appendChild(o);
     });
-    s.value = pref[i - 1];
+    s.value = pref[(i - 1)%pref.length];
     w.append(b, s);
     DOM.managerSetup.appendChild(w);
   }
 }
 function captureManagers() {
   slotManagers = {};
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= (leagueContext.teams||10); i++) {
     let e = document.getElementById('mgr' + i);
     slotManagers[i] = e ? e.value : 'Team ' + i;
   }
@@ -450,11 +470,11 @@ function confirmStartNewDraft(){
   const saved=draftSessionStore?.load();if(saved?.status==='active'&&!confirm('Start a new draft? The active saved draft will be replaced.'))return;
   draftSessionStore?.clear();replacingSavedDraft=true;DOM.resumeDraftCard?.classList.add('hidden');startDraft();replacingSavedDraft=false;
 }
-function applySavedSettings(settings={}){const values={draftSlot:settings.slot,scoring:settings.scoring,startQB:settings.startQB,startRB:settings.startRB,startWR:settings.startWR,startTE:settings.startTE,flexSpots:settings.flex,startK:settings.startK,startDST:settings.startDST,benchSpots:settings.bench,passTD:settings.passTD,riskProfile:settings.risk};Object.entries(values).forEach(([id,value])=>{const node=el(id);if(node&&value!==undefined)node.value=value})}
+function applySavedSettings(settings={}){if(settings.teams!==undefined){const teamNode=el('teamCount');if(teamNode)teamNode.value=settings.teams;refreshDraftSlotOptions(settings.teams,settings.slot)}const values={draftSlot:settings.slot,scoring:settings.scoring,startQB:settings.startQB,startRB:settings.startRB,startWR:settings.startWR,startTE:settings.startTE,flexSpots:settings.flex,startK:settings.startK,startDST:settings.startDST,benchSpots:settings.bench,passTD:settings.passTD,riskProfile:settings.risk};Object.entries(values).forEach(([id,value])=>{const node=el(id);if(node&&value!==undefined)node.value=value})}
 function resumeSavedDraft(){
   try{const saved=draftSessionStore?.load();if(!saved||saved.status!=='active')throw new Error('No active saved draft is available.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;decisionSnapshots=[...(saved.decisionSnapshots||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderLeagueDnaBar();renderAll();renderDraftTimeline();installDraftNavigationGuard();requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
 }
-function renderDraftTimeline(){if(!DOM.draftTimeline||!window.DraftSessionV1)return;const groups=DraftSessionV1.timeline(history,fantasyHQPlayerIndex());DOM.draftTimeline.innerHTML=groups.length?groups.map(group=>`<section class="timelineRound"><strong>Round ${group.round}</strong>${group.picks.map(entry=>`<div class="timelinePick"><span>${safeInsightText(entry.label)}</span><span>${safeInsightText(entry.playerName)}</span></div>`).join('')}</section>`).join(''):'<div class="timelineEmpty">Picks will appear here chronologically.</div>'}
+function renderDraftTimeline(){if(!DOM.draftTimeline||!window.DraftSessionV1)return;const groups=DraftSessionV1.timeline(history,fantasyHQPlayerIndex(),leagueContext.teams||10);DOM.draftTimeline.innerHTML=groups.length?groups.map(group=>`<section class="timelineRound"><strong>Round ${group.round}</strong>${group.picks.map(entry=>`<div class="timelinePick"><span>${safeInsightText(entry.label)}</span><span>${safeInsightText(entry.playerName)}</span></div>`).join('')}</section>`).join(''):'<div class="timelineEmpty">Picks will appear here chronologically.</div>'}
 function saveDraftNotebook(value){if(!window.DraftSessionV1)return;DraftSessionV1.saveNote(value);if(DOM.notebookStatus){DOM.notebookStatus.textContent='Saved just now';DOM.notebookStatus.dataset.savedAt=new Date().toISOString()}renderRoundNoteReminder()}
 function clearDraftNotebook(){if(!DOM.draftNotebook||!confirm('Clear all draft notes?'))return;DOM.draftNotebook.value='';saveDraftNotebook('')}
 function toggleNotebookExpanded(){document.getElementById('notesPanel')?.classList.toggle('notesExpanded')}
@@ -502,7 +522,7 @@ function startDraft() {
       startDST: +(document.getElementById('startDST')?.value || 1),
       bench: +(document.getElementById('benchSpots')?.value || 6),
       passTD: +(document.getElementById('passTD')?.value || 6),
-      teams: 10,
+      teams: +(document.getElementById('teamCount')?.value || 10),
       completionPoint: 0.1,
       firstDownPoint: 0.1,
       bigPlayBonuses: true,
@@ -559,21 +579,21 @@ function backToSetup() {
 }
 function buildProfiles() {
   aiProfiles = {};
-  for (let t = 1; t <= 10; t++) {
+  for (let t = 1; t <= (leagueContext.teams||10); t++) {
     if (t !== slot) aiProfiles[t] = getManager(t).archetype;
   }
 }
 function teamForPick(p) {
-  let r = Math.ceil(p / 10),
-    x = ((p - 1) % 10) + 1;
-  return r % 2 ? x : 11 - x;
+  const teams=leagueContext.teams||10;
+  if(window.DraftMathV1)return DraftMathV1.teamForPick(p,teams);
+  const round=Math.ceil(p/teams),within=((p-1)%teams)+1;
+  return round%2?within:teams+1-within;
 }
 function info() {
-  let r = Math.ceil(pick / 10),
-    ip = ((pick - 1) % 10) + 1,
-    next = pick;
-  while (next <= TOTAL_PICKS && teamForPick(next) !== slot) next++;
-  return { r, ip, until: Math.max(0, Math.min(TOTAL_PICKS, next) - pick) };
+  const teams=leagueContext.teams||10;
+  if(window.DraftMathV1){const state=DraftMathV1.pickInfo({pick,size:teams,userSlot:slot,totalRounds:TOTAL_ROUNDS});return {r:state.round,ip:state.pickInRound,until:state.picksUntilNext};}
+  let next=pick;while(next<=TOTAL_PICKS&&teamForPick(next)!==slot)next+=1;
+  return {r:Math.ceil(pick/teams),ip:((pick-1)%teams)+1,until:Math.max(0,Math.min(TOTAL_PICKS,next)-pick)};
 }
 function available() {
   return players.filter(p => !drafted.includes(p.id));
@@ -1190,6 +1210,13 @@ function championshipDecision(pool=available().filter(recommendationEligible)){
   const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?PlayerTierContract.getOverallTier(replacement):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null;return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:overallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until}});
   const value=engine.choose(inputs);championshipDecisionCache={epoch:intelligenceEpoch,poolKey,value};return value;
 }
+function recommendationDebugBreakdown(playerOrId){
+  const player=typeof playerOrId==='object'?playerOrId:players.find(candidate=>String(candidate.id)===String(playerOrId));
+  if(!player)return null;
+  const decision=championshipDecision(),evaluation=decision.all.find(item=>String(item.playerId)===String(player.id));
+  const components=scoreComponents(player);
+  return Object.freeze({player:{id:player.id,name:player.name,position:positionKey(player)},source:{overallRank:player.fantasylandOverallRank??player.overall??null,overallTier:PlayerTierContract.getOverallTier(player),positionRank:player.fantasylandPositionRank??player.posRank??null,positionTier:PlayerTierContract.getPositionTier(player),provider:player.fantasylandSource??null,snapshotDate:player.fantasylandSnapshotDate??null},signals:{teamFit:evaluation?.scores.rosterFit??null,scarcity:components.scarcity,survivalRisk:survivalRisk(player),opportunityCost:evaluation?.scores.opportunityCost??null,expectedFutureValue:evaluation?.scores.expectedFutureValue??null,upside:components.ceiling,risk:components.risk,rosterModifier:rosterFitModifier(player),mamba:mambaScore(player)},finalRecommendationScore:evaluation?.scores.championship??null,guardrail:decision.guardrail??null});
+}
 function rationale(p) {
   let b = [],
     e = expected();
@@ -1207,7 +1234,7 @@ function survivalRisk(p) {
   let risk = 0,
     n = pick + 1,
     seen = 0;
-  while (seen < 10 && n <= TOTAL_PICKS) {
+  while (seen < (leagueContext.teams||10) && n <= TOTAL_PICKS) {
     let t = teamForPick(n);
     if (t === slot) break;
     let m = getManager(t);
@@ -1416,7 +1443,7 @@ function aiScore(p, team) {
   if (profile === 'Hero RB' && p.pos === 'RB' && c.RB < 1) s += 30;
   if (profile === 'Zero RB' && p.pos === 'WR' && c.WR < 4) s += 25;
   if (profile === 'WR Heavy' && p.pos === 'WR') s += 20;
-  if (profile === 'Early QB' && p.pos === 'QB' && c.QB < 1 && Math.ceil(pick / 10) <= 5) s += 28;
+  if (profile === 'Early QB' && p.pos === 'QB' && c.QB < 1 && info().r <= 5) s += 28;
   if (profile === 'Elite TE' && p.pos === 'TE' && c.TE < 1) s += 25;
   if (profile === 'Rookie Chaser' && p.rookie) s += 25;
   if (profile === 'Chaos') s += Math.random() * 45;
@@ -1426,7 +1453,7 @@ function aiScore(p, team) {
   if (m.archetype.includes('Reactionary') && p.rookie) s += 12;
   if (m.archetype.includes('Conviction')) s += Math.random() * 18;
   if (c[p.pos] >= 3 && ['QB', 'TE'].includes(p.pos)) s -= Math.max(10, 45 - m.qbHoard * 3);
-  let rd = Math.ceil(pick / 10);
+  let rd = info().r;
   if (p.pos === 'DST') {
     s -= rd < 15 ? 90 : 0;
     if (c.DST >= 1) s -= 100;
@@ -1499,7 +1526,7 @@ function rosterNeeds() {
 }
 function waitScore(pos) {
   let c = positionalCountsAll(),
-    roundNow = Math.ceil(pick / 10),
+    roundNow = info().r,
     avail = available()
       .filter(p => positionKey(p) === pos)
       .sort((a, b) => finalPickScore(b) - finalPickScore(a));
@@ -1556,7 +1583,7 @@ function liveTeamTrackerMarkup(){
 function renderWaitMeter() {
   let snap = getIntelligenceSnapshot(),
     positions = ['QB', 'TE', 'DST', 'K'],
-    roundNow = Math.ceil(pick / 10),
+    roundNow = info().r,
     c = positionalCountsAll();
   let boxes = positions
     .map(pos => {
@@ -1769,10 +1796,10 @@ function randomizeManagerOrder() {
     [names[i], names[j]] = [names[j], names[i]];
   }
   let idx = 0;
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= +(el('teamCount')?.value||leagueContext.teams||10); i++) {
     let node = document.getElementById('mgr' + i);
     if (!node) continue;
-    node.value = i === +(DOM.draftSlot?.value || 10) ? 'Gerard' : names[idx++];
+    node.value = i === +(DOM.draftSlot?.value || 10) ? 'Gerard' : names[(idx++)%names.length];
   }
 }
 function teamExposure() {
@@ -1818,7 +1845,7 @@ function stackBonusFor(p) {
   return { points: 0, label: 'No stack bonus' };
 }
 function handcuffBonusFor(p) {
-  let r = Math.ceil(pick / 10);
+  let r = info().r;
   if (r < 11 || p.pos !== 'RB') return { points: 0, label: 'No handcuff bonus' };
   let owned = myPlayers().map(x => x.name),
     protects = (p.handcuffFor || []).find(n => owned.includes(n));
@@ -2393,9 +2420,13 @@ function confidenceIndicator(score){
   const numeric=Math.max(0,Math.min(100,Number(score)||0)),filled=Math.max(1,Math.min(5,Math.round(numeric/20))),label=numeric>=80?'High':numeric>=65?'Solid':numeric>=48?'Close call':'Toss-up';
   return `<div class="fightConfidence" aria-label="${safeInsightText(label)} confidence, ${safeInsightText(numeric)} out of 100"><span>CONFIDENCE</span><b aria-hidden="true">${'★'.repeat(filled)}${'☆'.repeat(5-filled)}</b><strong>${safeInsightText(label)}</strong></div>`;
 }
+function injuryBadgeMarkup(player){
+  const label=window.InjuryIntelligenceV1?InjuryIntelligenceV1.badge(player?.injury||{}):'';
+  return label?`<span class="injuryBadge" title="Injury status; open player details for sources">${safeInsightText(label)}</span>`:'';
+}
 function decisionCardMarkup(model, { recommended = false } = {}) {
   const p=model.player,card=model.playerCard||{},score=mambaScore(p),tier=PlayerTierContract.getDecisionTier(p),confidence=model.coaching?.confidence??model.summary?.confidence?.score??50,tags=compactStrategyTags(model),label=recommended?'RECOMMENDED PICK':'PLAYER VIEW',portrait=card.imageUrl||`assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`;
-  return `<article class="compactFightCard ${recommended?'recommendedDecision':'playerViewDecision'}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'Team unavailable')}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="fightTags">${tags.map(tag=>`<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended?'':`<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
+  return `<article class="compactFightCard ${recommended?'recommendedDecision':'playerViewDecision'}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'Team unavailable')} ${injuryBadgeMarkup(p)}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="fightTags">${tags.map(tag=>`<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended?'':`<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
 }
 function recommendationCategoryLabels(models) {
   const labels=new Map(),id=model=>model.player.id;
@@ -2458,7 +2489,7 @@ function updateDraftDecisionChrome(model,displayed,primary){
 function recordFightCardPlayer(){
   const id=Number(DOM.recordPickBtn?.dataset.playerId),player=players.find(candidate=>candidate.id===id&&!drafted.includes(candidate.id));
   if(!player){alert('Select an available player in Fight Card before recording the pick.');return false}
-  if(!recommendationSelectionAllowed(player)){alert(rosterCompletionState().message);return false}
+  if(!recommendationSelectionAllowed(player))alert(`Roster-completion warning: ${rosterCompletionState().message} The recorded draft remains the source of truth.`);
   return recordCurrentPick(player.id);
 }
 function openFightCardDetails(){
@@ -2472,17 +2503,18 @@ function viewRecommendationPlayer(id){
 function draftRecommendationPlayer(id){
   const player=players.find(candidate=>candidate.id===Number(id)&&!drafted.includes(candidate.id));
   if(!player){alert('That player is no longer available.');return false}
-  if(!recommendationSelectionAllowed(player)){alert(rosterCompletionState().message);return false}
+  if(!recommendationSelectionAllowed(player))alert(`Roster-completion warning: ${rosterCompletionState().message} The recorded draft remains the source of truth.`);
   selectCandidate(player.id);
   return recordFightCardPlayer();
 }
 function renderBoard() {
   let byPick = new Map(history.map(x => [x.pick, x])),
     cols = [];
-  for (let t = 1; t <= 10; t++) {
+  const teamCount=leagueContext.teams||10;
+  for (let t = 1; t <= teamCount; t++) {
     let cells = [];
     for (let r = 1; r <= TOTAL_ROUNDS; r++) {
-      let pnum = (r - 1) * 10 + (r % 2 ? t : 11 - t),
+      let pnum = (r - 1) * teamCount + (r % 2 ? t : teamCount+1-t),
         h = byPick.get(pnum),
         pl = h ? players.find(x => x.id === h.id) : null;
       cells.push(
@@ -2548,7 +2580,7 @@ function renderRoster() {
   if (DOM.roster) DOM.roster.innerHTML = markup;
   if (DOM.mRoster) DOM.mRoster.innerHTML = markup;
   let ss = [];
-  for (let t = 1; t <= 10; t++)
+  for (let t = 1; t <= (leagueContext.teams||10); t++)
     ss.push(
       `<div class="strategy"><span>${t === slot ? '⭐ YOU' : slotManagers[t] || 'Team ' + t}</span><span class="pill">${t === slot ? 'Gerard Blueprint' : aiProfiles[t] || 'Manual'}</span></div>`
     );
@@ -2654,7 +2686,7 @@ function buildYahooRecord() {
     league: {
       id: 164770,
       name: 'SQUAAA! ROYAL RUMBLE 2025–2026',
-      teams: 10,
+      teams: leagueContext.teams||10,
       draftSlot: slot,
       scoring: leagueContext.scoring,
       receptions: 0.5,
@@ -2674,8 +2706,8 @@ function buildYahooRecord() {
       const p = players.find(x => x.id === h.id) || {};
       return {
         overallPick: h.pick,
-        round: Math.ceil(h.pick / 10),
-        pickInRound: ((h.pick - 1) % 10) + 1,
+        round: Math.ceil(h.pick / (leagueContext.teams||10)),
+        pickInRound: ((h.pick - 1) % (leagueContext.teams||10)) + 1,
         teamSlot: h.team,
         isGerard: h.team === slot,
         playerId: h.id,
@@ -2947,7 +2979,7 @@ function managerTendency(team) {
 }
 function managerTableMarkup(clickable = true) {
   let rows = [];
-  for (let t = 1; t <= 10; t++) {
+  for (let t = 1; t <= (leagueContext.teams||10); t++) {
     let cells = ['QB', 'RB', 'WR', 'TE']
       .map(pos => {
         let s = managerPositionStatus(t, pos);
@@ -3114,7 +3146,7 @@ function recentPicksMarkup() {
     .map(h => {
       let p = players.find(x => x.id === h.id),
         nm = h.team === slot ? 'YOU' : slotManagers[h.team] || 'Team ' + h.team;
-      return `<div class="recentPick"><span class="meta">${h.pick}</span><div><b>${p?.name || 'Unknown'}</b><div class="meta">${positionKey(p || { pos: '' })} • ${nm}</div></div><span class="meta">${Math.ceil(h.pick / 10)}.${String(((h.pick - 1) % 10) + 1).padStart(2, '0')}</span></div>`;
+      const teams=leagueContext.teams||10;return `<div class="recentPick"><span class="meta">${h.pick}</span><div><b>${p?.name || 'Unknown'}</b><div class="meta">${positionKey(p || { pos: '' })} • ${nm}</div></div><span class="meta">${Math.ceil(h.pick / teams)}.${String(((h.pick - 1) % teams) + 1).padStart(2, '0')}</span></div>`;
     })
     .join('');
 }
@@ -3289,6 +3321,7 @@ function renderPlayers() {
                 ${positionKey(player)}
                 • ${player.team}
                 • Decision Tier ${decisionTier}
+                ${injuryBadgeMarkup(player)}
               </div>
             </button>
 
@@ -3427,7 +3460,7 @@ function prepareYahooConnection() {
 }
 function syncDraftIntoLeagueState() {
   if (!window.FantasyHQCore || !players.length) return;
-  const teams = Array.from({ length: 10 }, (_, i) => ({
+  const teams = Array.from({ length: leagueContext.teams || 10 }, (_, i) => ({
     id: String(i + 1),
     name: slotManagers[i + 1] || `Team ${i + 1}`,
     isUser: i + 1 === slot,
@@ -3474,7 +3507,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_0_13')
+      .register('./service-worker.js?v=jonin_4_2_0')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );
