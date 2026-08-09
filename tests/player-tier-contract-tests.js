@@ -13,8 +13,8 @@
     check('both missing compatibility fallback',contract.getDecisionTier({pos:'WR'}),'C');
     check('both missing reason',contract.getTierDiagnostic({pos:'WR'}).reason,'no valid S-F decision tier is available; compatibility fallback C used');
     check('depth preserved',values({pos:'WR',posTier:'Depth'}),['Depth',null,'C']);
-    check('kicker numeric preserved',values({pos:'K',posTier:1}),['1',null,'C']);
-    check('defense numeric preserved',values({pos:'D/ST',posTier:2}),['2',null,'C']);
+    check('kicker numeric preserved',values({pos:'K',posTier:1}),['1',null,'F']);
+    check('defense numeric preserved',values({pos:'D/ST',posTier:2}),['2',null,'F']);
     check('invalid overall rejected',contract.getOverallTier({overallTier:'INVALID'}),null);
     check('source tier excluded',values({pos:'WR',bdgeTier:'Elite WR1'}),[null,null,'C']);
     check('JSN explicit tiers',values({pos:'WR',posTier:'S',overallTier:'A'}),['S','A','S']);

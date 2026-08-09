@@ -13,13 +13,14 @@ function createHarness({unified=false}={}){
     document:{getElementById:()=>null,createElement:element,querySelectorAll:()=>[],querySelector:()=>null},
     fetch:async()=>{throw new Error('Network is disabled in recommendation baselines.')}};
   context.window=context;context.globalThis=context;vm.createContext(context);
-  const runtimeFiles=['js/player-tier-contract.js','js/draft-math-v1.js','js/injury-intelligence-v1.js','js/roster-view-v1.js','js/roster-completion-constraint-v1.js','js/draft-grading-engine-v1.js'];
+  context.__specialistSnapshot=JSON.parse(read('data/specialist_rankings_2026-08-09.json'));
+  const runtimeFiles=['js/player-tier-contract.js','js/specialist-rankings-v1.js','js/draft-math-v1.js','js/injury-intelligence-v1.js','js/roster-view-v1.js','js/roster-completion-constraint-v1.js','js/draft-grading-engine-v1.js'];
   if(unified)runtimeFiles.push('js/fantasy-hq-core.js','js/jonin-decision-intelligence-v1.js');
   runtimeFiles.push('js/command-center-v1.js','js/jonin-insight-engine-v1.js','js/sharingan-vision-v1.js','js/jonin-ux-polish.js','js/flight-control-v1.js');
   runtimeFiles.forEach(file=>vm.runInContext(read(file),context,{filename:file}));
   const app=read('js/app.js').replace(/\ninit\(\);\s*$/,'\n');
   vm.runInContext(app+`\nwindow.__RecommendationBaseline={
-    load(runtimePlayers){players=JSON.parse(JSON.stringify(runtimePlayers));buildPlayerSearchIndex();slot=10;mode='practice';style='balanced';slotManagers={1:'Marc',2:'Kalani',3:'Ray',4:'Fritz',5:'Michael',6:'Josh',7:'Raoul',8:'Rob',9:'AJ',10:'Gerard'};aiProfiles={1:'Balanced',2:'Hero RB',3:'Value Drafter',4:'Balanced',5:'WR Heavy',6:'Rookie Chaser',7:'Balanced',8:'Elite TE',9:'Early QB',10:'Balanced'};applyDraftStructure();invalidateIntelligence()},
+    load(runtimePlayers){players=JSON.parse(JSON.stringify(runtimePlayers));SpecialistRankingsV1.apply(players,window.__specialistSnapshot);buildPlayerSearchIndex();slot=10;mode='practice';style='balanced';slotManagers={1:'Marc',2:'Kalani',3:'Ray',4:'Fritz',5:'Michael',6:'Josh',7:'Raoul',8:'Rob',9:'AJ',10:'Gerard'};aiProfiles={1:'Balanced',2:'Hero RB',3:'Value Drafter',4:'Balanced',5:'WR Heavy',6:'Rookie Chaser',7:'Balanced',8:'Elite TE',9:'Early QB',10:'Balanced'};applyDraftStructure();invalidateIntelligence()},
     configure(config){
       pick=Number(config.pick||1);drafted=[];history=[];decisionSnapshots=[];selectedCandidateId=null;
       const preserve=new Set((config.preserve||[]).map(String)),roster=[...(config.userRoster||[])],reserved=new Set([...preserve,...roster].map(String)),used=new Set();

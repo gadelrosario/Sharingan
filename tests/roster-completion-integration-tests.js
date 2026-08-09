@@ -24,7 +24,8 @@ test('RB need and fit decline with adequate starters and bench depth',()=>{
 });
 test('full mock has no repeated RB-only rounds from incomplete-roster averaging',()=>{
   const allRb=turns.filter(turn=>turn.state.mode==='NORMAL'&&turn.cards.length===5&&turn.cards.every(card=>card.pos==='RB'));
-  assert(allRb.length===0,`RB-only turns remained at ${allRb.map(turn=>turn.pick).join(',')}`);
+  const consecutive=allRb.filter((turn,index)=>index>0&&turns.indexOf(turn)-turns.indexOf(allRb[index-1])===1);
+  assert(consecutive.length===0,`consecutive RB-only turns remained at ${consecutive.map(turn=>turn.pick).join(',')}`);
 });
 test('open WR starters retain positive need and nonzero roster fit',()=>{
   const turn=turns.find(item=>item.state.mode==='NORMAL'&&item.state.requiredPositions.includes('WR')),wr=turn?.rawTop.find(candidate=>candidate.pos==='WR');

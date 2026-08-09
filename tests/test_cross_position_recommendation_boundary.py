@@ -47,7 +47,8 @@ console.log(JSON.stringify({snapshots,repeat}));
     def test_overall_tier_crosses_boundary_while_position_tier_stays_for_scarcity(self):
         boundary = self.app.split('function championshipDecision', 1)[1].split('function rationale', 1)[0]
         self.assertIn('overallTier=PlayerTierContract.getOverallTier(player)', boundary)
-        self.assertIn('tier:overallTier', boundary)
+        self.assertIn("decisionOverallTier=['K','DST'].includes(position)?'F':overallTier", boundary)
+        self.assertIn('tier:decisionOverallTier', boundary)
         self.assertIn('positionTier', boundary)
         self.assertIn('tierLabel(candidate)===positionTier', boundary)
         josh = self.results['snapshots'][1]['josh']

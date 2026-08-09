@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.2"></script>
+<script src="js/app-version.js?v=1.0.6"></script>
 <link rel="stylesheet" href="css/app.css?v=4.2.0">
   </head>
   <body>
@@ -197,6 +197,7 @@
                 Import Snapshot
               </button>
               <button class="scanBtn" onclick="prepareYahooConnection()">Prepare Yahoo</button>
+              <button id="refreshInjuriesBtn" class="ghost" onclick="refreshInjuryDataNow()">Refresh Injuries Now</button>
             </div>
             <input
               id="leagueSnapshotInput"
@@ -251,7 +252,7 @@
       </section>
       <section id="appScreen" class="hidden">
         <section class="draftStatusHeader" data-testid="draft-status-header" aria-label="Draft status">
-          <div class="draftBrand"><span aria-hidden="true">👁</span><strong>SHARINGAN</strong><small>JŌNIN 4.0</small></div>
+          <div class="draftBrand"><span aria-hidden="true">👁</span><strong>SHARINGAN</strong><small data-app-version></small></div>
           <div class="draftStatusNumbers"><span><small>ROUND</small><b id="headerRound">1</b></span><span><small>PICK</small><b id="headerPick">1</b></span><span><small>YOUR TURN</small><b id="headerNextPick">Pick 1</b></span><span><small>ON CLOCK IN</small><b id="headerUntil">0 picks</b></span></div>
           <div class="headerCommandScore" title="Summarizes how much flexibility and leverage your current roster and the remaining draft board provide."><small>BOARD CONTROL</small><b id="headerCommandScore">MEDIUM</b><span id="headerCommandLabel">Board developing</span></div>
           <div class="headerLeague"><span id="headerLeagueFormat">10-Team • Half PPR</span><button class="ghost" type="button" aria-label="Draft mode settings" onclick="backToSetup()">Draft Mode</button><button class="headerNotesButton" type="button" onclick="openNotebook()">📝 Notes</button><button class="iconButton headerSettingsButton" type="button" aria-label="Open settings" onclick="backToSetup()">⚙</button></div>
@@ -303,7 +304,7 @@
   <div class="card recommendationCard fightControlPanel" data-testid="fight-card" aria-labelledby="fightCardHeading">
     <div class="panelTitle"><b id="fightCardHeading">🔥 FIGHT CARD</b><span id="fightCardMode">Recommended Pick</span></div>
     <div id="recommendation" class="rec"></div>
-    <div class="fightCardActions"><button id="recordPickBtn" class="recordPickButton" data-testid="record-pick" type="button" onclick="recordFightCardPlayer()"><strong>RECORD PICK</strong><span id="recordPickLabel">Pick 1</span></button><button class="viewDetailsButton" data-testid="view-details" type="button" onclick="openFightCardDetails()">VIEW DETAILS</button></div>
+    <div class="fightCardActions"><button id="recordPickBtn" class="recordPickButton" data-testid="record-pick" type="button" onclick="recordFightCardPlayer()"><strong>RECORD PICK</strong><span id="recordPickLabel">Pick 1</span></button><button class="viewDetailsButton sharinganBtn" data-testid="view-details" type="button" onclick="openFightCardDetails()"><span aria-hidden="true">👁</span> SHARINGAN SCAN</button></div>
   </div>
 
   <div class="card desktopDraftCommand searchPanel" data-testid="search-panel">
@@ -560,13 +561,16 @@
       ><button onclick="showPage('mobileTeam')">👥<br />Team</button>
     </nav>
     <script src="js/player-tier-contract.js?v=1.0.0"></script>
+    <script src="js/specialist-rankings-v1.js?v=1.0.0"></script>
     <script src="js/draft-math-v1.js?v=1.0.0"></script>
-    <script src="js/injury-intelligence-v1.js?v=1.0.0"></script>
+    <script src="js/injury-intelligence-v1.js?v=1.1.0"></script>
+    <script src="js/espn-injury-adapter-v1.js?v=1.0.0"></script>
+    <script src="js/sleeper-injury-adapter-v1.js?v=1.0.0"></script>
     <script src="js/roster-view-v1.js?v=1.0.0"></script>
     <script src="js/roster-completion-constraint-v1.js?v=1.0.0"></script>
     <script src="js/fantasy-hq-core.js?v=3.2.0"></script>
     <script src="js/draft-session-v1.js?v=1.0.0"></script>
-    <script src="js/jonin-decision-intelligence-v1.js?v=1.0.0"></script>
+    <script src="js/jonin-decision-intelligence-v1.js?v=1.0.2"></script>
     <script src="js/draft-grading-engine-v1.js?v=1.0.0"></script>
     <script src="js/command-center-v1.js?v=1.0.0"></script>
     <script src="js/jonin-insight-engine-v1.js?v=1.0.0"></script>
@@ -579,7 +583,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.2.0"></script>
+    <script src="js/app.js?v=4.2.4"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

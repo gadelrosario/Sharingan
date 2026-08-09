@@ -31,6 +31,7 @@ let players = [],
     strategy: 'auto',
   };
 let playerBrowserQuery = '';
+let injuryFeedManager = null;
 const managers = [
   {
     name: 'Gerard',
@@ -347,15 +348,15 @@ async function init() {
     if (!response.ok) throw new Error('Player database returned ' + response.status);
     players = await response.json();
     try {
-      const injuryResponse = await fetch('data/injuries_2026.json?v=2026-08-08', { cache: 'no-store' });
-      if (injuryResponse.ok && window.InjuryIntelligenceV1) {
-        const injurySnapshot = await injuryResponse.json();
-        const injuries = new Map((injurySnapshot.records || []).map(record => [String(record.playerId), InjuryIntelligenceV1.normalize(record)]));
-        players.forEach(player => { if (injuries.has(String(player.id))) player.injury = injuries.get(String(player.id)); });
+      const specialistResponse = await fetch('data/specialist_rankings_2026-08-09.json?v=2026-08-09', { cache: 'no-store' });
+      if (specialistResponse.ok && window.SpecialistRankingsV1) {
+        const specialistSnapshot = await specialistResponse.json();
+        window.__specialistRankingReport = SpecialistRankingsV1.apply(players, specialistSnapshot);
       }
-    } catch (injuryError) {
-      console.warn('Optional injury snapshot could not load:', injuryError);
+    } catch (specialistError) {
+      console.warn('Optional specialist ranking snapshot could not load:', specialistError);
     }
+    await initializeInjuryFeed();
     buildPlayerSearchIndex();
     if (DOM.poolStatus)
       DOM.poolStatus.innerHTML = `<b>Draft pool ready</b><div class="meta" style="margin-top:4px">${players.length} players loaded, including kickers and defenses.</div>`;
@@ -380,6 +381,52 @@ async function init() {
   renderManagerSetup();
   updateSetupRoundPreview();
   initializeDraftReliability();
+}
+
+function applyInjurySnapshot(snapshot, source='bundled') {
+  if (!snapshot || !window.InjuryIntelligenceV1) return null;
+  window.__injurySnapshot = snapshot;
+  window.__injurySnapshotReport = {...InjuryIntelligenceV1.applySnapshot(players, snapshot),source,fetchedAt:snapshot.fetchedAt||null,cacheState:snapshot.cacheState||null};
+  invalidateIntelligence();
+  return window.__injurySnapshotReport;
+}
+async function initializeInjuryFeed() {
+  let bundled = null;
+  try {
+    const response = await fetch('data/injuries_2026.json?v=2026-08-08', { cache: 'no-store' });
+    if (response.ok) bundled = await response.json();
+  } catch (error) {
+    console.warn('Bundled injury snapshot could not load:', error);
+  }
+  injuryFeedManager = window.SleeperInjuryAdapterV1?.createManager() || null;
+  const cached = injuryFeedManager?.loadCached();
+  applyInjurySnapshot(cached || bundled || {records:[]}, cached ? 'cache' : 'bundled');
+  if (injuryFeedManager) {
+    injuryFeedManager.refreshDaily(players).then(result => {
+      if (result.snapshot) {
+        applyInjurySnapshot(result.snapshot, result.source);
+        if (!DOM.setupScreen?.classList.contains('hidden')) return;
+        renderAll();
+      }
+      if (result.error) console.warn('Daily Sleeper injury refresh preserved existing data:', result.error);
+    });
+  }
+}
+async function refreshInjuryDataNow() {
+  const button = el('refreshInjuriesBtn');
+  if (button) { button.disabled = true; button.textContent = 'Refreshing…'; }
+  try {
+    if (!injuryFeedManager) throw new Error('Sleeper injury adapter is unavailable.');
+    const result = await injuryFeedManager.refreshNow(players);
+    if (!result.snapshot) throw result.error || new Error('No valid injury snapshot is available.');
+    applyInjurySnapshot(result.snapshot, result.source);
+    if (DOM.appScreen && !DOM.appScreen.classList.contains('hidden')) renderAll();
+    const count = result.snapshot.records?.filter(record => !['ACTIVE','UNKNOWN'].includes(record.status)).length || 0;
+    alert(result.refreshed ? `Injury data refreshed from Sleeper. ${count} non-active player records found.` : `Refresh failed; preserved the last valid ${result.source}.`);
+    return result;
+  } finally {
+    if (button) { button.disabled = false; button.textContent = 'Refresh Injuries Now'; }
+  }
 }
 
 function refreshDraftSlotOptions(teamCount=10,preferred=slot){
@@ -622,7 +669,10 @@ function counts() {
 }
 function userPositionFilled(pos) {
   let c = counts();
-  return (pos === 'QB' && c.QB >= 1) || (pos === 'TE' && c.TE >= 1);
+  return (pos === 'QB' && c.QB >= 1) ||
+    (pos === 'TE' && c.TE >= 1) ||
+    (pos === 'K' && c.K >= (leagueContext.startK || 1)) ||
+    (pos === 'DST' && c.DST >= (leagueContext.startDST || 1));
 }
 
 const searchNormalizations = [
@@ -736,6 +786,28 @@ function roomBoost(p) {
 function baseFinalScore(p) {
   return Math.max(1, Math.min(110, mambaScore(p) + roomBoost(p) + rosterFitModifier(p)));
 }
+function reliableOverallRank(p) {
+  const rank = Number(p?.overall ?? p?.fantasylandOverallRank ?? p?.fantasyProsOverallRank);
+  return Number.isFinite(rank) && rank > 0 ? rank : null;
+}
+function reliableSpecialistRank(p) {
+  const sourceRank = window.SpecialistRankingsV1?.positionRank(p), fallback = Number(p?.posRank);
+  return sourceRank ?? (Number.isFinite(fallback) && fallback > 0 ? fallback : null);
+}
+function decisionModifiers(p) {
+  if (!window.JoninDecisionIntelligenceV1) return { specialist: { adjustment: 0 }, depth: { adjustment: 0 }, upside: { adjustment: 0 }, injury: window.InjuryIntelligenceV1 ? InjuryIntelligenceV1.decisionAdjustment({record:p?.injury||{},now:new Date().toISOString()}) : {adjustment:0,status:'UNKNOWN',freshness:'UNKNOWN'} };
+  const completion = rosterCompletionState(), c = positionalCountsAll(), position = positionKey(p), rank = reliableOverallRank(p), round = info().r;
+  const missingSpecialists = Number(c.K < (leagueContext.startK || 1)) + Number(c.DST < (leagueContext.startDST || 1));
+  const meaningfulSkillValue = available().some(candidate => ['QB','RB','WR','TE'].includes(positionKey(candidate)) && ((reliableOverallRank(candidate) ?? 999) <= Math.max(180,pick+50) || ['S','A','B'].includes(PlayerTierContract.getOverallTier(candidate))));
+  const specialistRank = reliableSpecialistRank(p), samePosition = available().filter(candidate => positionKey(candidate) === position), higherRankedRemaining = specialistRank == null ? 0 : samePosition.filter(candidate => { const candidateRank = reliableSpecialistRank(candidate); return candidateRank != null && candidateRank < specialistRank; }).length;
+  const recentSpecialists = history.slice(-Math.max(6,leagueContext.teams||10)).map(entry=>players.find(candidate=>candidate.id===entry.id)).filter(candidate=>candidate&&positionKey(candidate)===position).length;
+  const specialist = JoninDecisionIntelligenceV1.specialistEconomics({position,round,totalRounds:TOTAL_ROUNDS,userPicksRemaining:completion.userPicksRemaining,missingSpecialists,completionForced:completion.mode!=='NORMAL'&&completion.requiredPositions.includes(position),meaningfulSkillValue,positionRank:specialistRank,hasReliableRank:specialistRank!=null,higherRankedRemaining,recentSpecialists,positionAvailable:samePosition.length,picksUntil:info().until,unfilledSkillStarters:completion.unfilledRequiredSlots-missingSpecialists});
+  const depth = JoninDecisionIntelligenceV1.marginalRosterUtility({position,counts:c,startRB:leagueContext.startRB,startWR:leagueContext.startWR,flex:leagueContext.flex,playerValueGap:valueGap(p)});
+  const upside = JoninDecisionIntelligenceV1.stageAwareUpside({round,rookie:p.rookie===true,tier:PlayerTierContract.getOverallTier(p),roleSecurity:p.roleSecurity});
+  const starterTarget={QB:leagueContext.startQB||1,RB:leagueContext.startRB||2,WR:leagueContext.startWR||3,TE:leagueContext.startTE||1}[position]||0,foundational=round<=5&&starterTarget>0&&Number(c[position]||0)<starterTarget,portfolio=myPlayers().filter(player=>{const status=InjuryIntelligenceV1?.normalize(player.injury||{}).status;return status&&status!=='ACTIVE'&&status!=='UNKNOWN'}).length,rosterState=rosterViewState(),usedIr=myPlayers().filter(player=>InjuryIntelligenceV1?.IR_ELIGIBLE?.has(InjuryIntelligenceV1.normalize(player.injury||{}).status)).length;
+  const injury = window.InjuryIntelligenceV1 ? InjuryIntelligenceV1.decisionAdjustment({record:p.injury||{},now:new Date().toISOString(),round,foundational,valueFall:rank==null?0:Math.max(0,pick-rank),injuredPortfolio:portfolio,irSlots:leagueContext.irSlots??0,usedIrSlots:usedIr,benchSlots:leagueContext.bench||0,benchUsed:(rosterState.bench||[]).length}) : {adjustment:0,status:'UNKNOWN',freshness:'UNKNOWN',reason:'Injury intelligence is unavailable.'};
+  return { specialist, depth, upside, injury };
+}
 function valueGap(p) {
   let pool = available()
     .filter(x => x.id !== p.id && recommendationEligible(x))
@@ -763,6 +835,8 @@ function finalPickScore(p) {
   let score = baseFinalScore(p);
   if (valueOverride(p)) score += 3;
   if (eternalValue(p)) score += 4;
+  const modifiers = decisionModifiers(p);
+  score += modifiers.specialist.adjustment + modifiers.depth.adjustment + modifiers.upside.adjustment + modifiers.injury.adjustment;
   score = Math.round(Math.max(1, Math.min(115, score)));
   scoreCache.set(key, score);
   return score;
@@ -1155,9 +1229,10 @@ function renderTeamBuild() {
 function gerardScore(p) {
   let c = counts(),
     round = info().r,
+    overallRank = reliableOverallRank(p) ?? Math.max(250, players.length),
     s =
       150 -
-      p.overall * 0.82 +
+      overallRank * 0.82 +
       sourceBlend(p) +
       (p.bdgeBoost || 0) +
       (p.flockBoost || 0) +
@@ -1200,22 +1275,23 @@ function recommendations() {
   if (!pool.length)
     pool = completionConstrainedPool(available().filter(p => !['QB', 'TE'].includes(p.pos) || !userPositionFilled(p.pos)), completion);
   if(!window.JoninDecisionIntelligenceV1)return RosterCompletionConstraintV1.finalizeRecommendations([...pool].sort((a,b)=>finalPickScore(b)-finalPickScore(a)||mambaScore(b)-mambaScore(a)),completion,5);
-  const decision=championshipDecision(pool),ordered=[...decision.recommended.map(item=>item.player),...decision.all.slice().sort((a,b)=>b.scores.championship-a.scores.championship).map(item=>item.player)];
+  const decision=championshipDecision(pool),ordered=[...decision.recommended.map(item=>item.player),...decision.all.slice().sort((a,b)=>b.scores.finalDecision-a.scores.finalDecision||b.scores.championship-a.scores.championship).map(item=>item.player)];
   return RosterCompletionConstraintV1.finalizeRecommendations(ordered,completion,5);
 }
 function championshipDecision(pool=available().filter(recommendationEligible)){
   const poolKey=pool.map(player=>player.id).join(',');
   if(championshipDecisionCache?.epoch===intelligenceEpoch&&championshipDecisionCache.poolKey===poolKey)return championshipDecisionCache.value;
   const engine=window.JoninDecisionIntelligenceV1,index=fantasyHQPlayerIndex(),rosterIds=myPlayers().map(player=>player.id),strengthOptions={starterSlots:rosterSlots},before=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength(rosterIds,index,strengthOptions):null;
-  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?PlayerTierContract.getOverallTier(replacement):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null;return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:overallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until}});
+  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),decisionOverallTier=['K','DST'].includes(position)?'F':overallTier,samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?(['K','DST'].includes(positionKey(replacement))?'F':PlayerTierContract.getOverallTier(replacement)):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null,modifiers=decisionModifiers(player);return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:decisionOverallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until,finalDecisionScore:finalPickScore(player),decisionModifiers:modifiers}});
   const value=engine.choose(inputs);championshipDecisionCache={epoch:intelligenceEpoch,poolKey,value};return value;
 }
 function recommendationDebugBreakdown(playerOrId){
   const player=typeof playerOrId==='object'?playerOrId:players.find(candidate=>String(candidate.id)===String(playerOrId));
   if(!player)return null;
   const decision=championshipDecision(),evaluation=decision.all.find(item=>String(item.playerId)===String(player.id));
-  const components=scoreComponents(player);
-  return Object.freeze({player:{id:player.id,name:player.name,position:positionKey(player)},source:{overallRank:player.fantasylandOverallRank??player.overall??null,overallTier:PlayerTierContract.getOverallTier(player),positionRank:player.fantasylandPositionRank??player.posRank??null,positionTier:PlayerTierContract.getPositionTier(player),provider:player.fantasylandSource??null,snapshotDate:player.fantasylandSnapshotDate??null},signals:{teamFit:evaluation?.scores.rosterFit??null,scarcity:components.scarcity,survivalRisk:survivalRisk(player),opportunityCost:evaluation?.scores.opportunityCost??null,expectedFutureValue:evaluation?.scores.expectedFutureValue??null,upside:components.ceiling,risk:components.risk,rosterModifier:rosterFitModifier(player),mamba:mambaScore(player)},finalRecommendationScore:evaluation?.scores.championship??null,guardrail:decision.guardrail??null});
+  const components=scoreComponents(player),ordered=[...decision.recommended,...decision.all.slice().sort((a,b)=>b.scores.finalDecision-a.scores.finalDecision||b.scores.championship-a.scores.championship)].filter((item,index,list)=>list.findIndex(candidate=>candidate.playerId===item.playerId)===index);
+  const modifiers=evaluation?.modifiers??decisionModifiers(player),injury=InjuryIntelligenceV1?.normalize(player.injury||{})??null;
+  return Object.freeze({player:{id:player.id,name:player.name,position:positionKey(player)},source:{overallRank:player.fantasylandOverallRank??player.overall??null,overallTier:PlayerTierContract.getOverallTier(player),positionRank:reliableSpecialistRank(player)??player.fantasylandPositionRank??player.posRank??null,positionTier:PlayerTierContract.getPositionTier(player),provider:player.fantasylandSpecialistSource??player.fantasylandSource??null,snapshotDate:player.fantasylandSpecialistSnapshotDate??player.fantasylandSnapshotDate??null,rankingScope:player.fantasylandSpecialistRankingScope??'cross-position'},signals:{teamFit:evaluation?.scores.rosterFit??null,scarcity:components.scarcity,boardAvailabilityRisk:survivalRisk(player),opportunityCost:evaluation?.scores.opportunityCost??null,expectedFutureValue:evaluation?.scores.expectedFutureValue??null,upside:components.ceiling,risk:components.risk,rosterModifier:rosterFitModifier(player),mamba:mambaScore(player)},injury:{status:injury?.status??'UNKNOWN',freshness:modifiers.injury?.freshness??'UNKNOWN',reliability:modifiers.injury?.source??null,expectedAvailability:modifiers.injury?.expectedAvailability??null,footballAvailability:modifiers.injury?.footballAvailability??'UNKNOWN',rosterAvailability:modifiers.injury?.rosterAvailability??null,riskAdjustment:modifiers.injury?.baseRisk??0,irCapacityEffect:modifiers.injury?.irCapacityEffect??0,portfolioEffect:modifiers.injury?.injuryPortfolioEffect??0,finalAdjustment:modifiers.injury?.adjustment??0,reason:modifiers.injury?.reason??''},modifiers,finalPickScore:finalPickScore(player),championshipScore:evaluation?.scores.championship??null,finalRecommendationScore:evaluation?.scores.finalDecision??null,finalOrderingRank:ordered.findIndex(item=>item.playerId===player.id)+1,guardrail:decision.guardrail??null});
 }
 function rationale(p) {
   let b = [],
@@ -1252,7 +1328,8 @@ function mambaScore(p) {
   let raw = gerardScore(p),
     canonicalTier = tierLabel(p),
     tier = canonicalTier === 'S' ? 10 : canonicalTier === 'A' ? 6 : 0,
-    fall = Math.max(0, pick - p.overall),
+    overallRank = reliableOverallRank(p),
+    fall = overallRank == null ? 0 : Math.max(0, pick - overallRank),
     risk = survivalRisk(p),
     score = Math.round(
       Math.max(1, Math.min(99, 55 + raw / 5 + tier + Math.min(10, fall / 2) - risk / 8))
@@ -1643,7 +1720,7 @@ function sourceRankLabel(p, source) {
     if (p.fantasyland === 'N/A' || p.fantasyland === 'Depth pool') return '—';
     const positionTier = PlayerTierContract.getPositionTier(p);
     return p.pos === 'K' || p.pos === 'DST'
-      ? '—'
+      ? `${p.pos === 'DST' ? 'DEF' : 'K'}${reliableSpecialistRank(p) || '—'} • Position-only snapshot`
       : `${p.pos}${p.posRank || '—'} / Position Tier ${positionTier || '—'}`;
   }
   if (source === 'BDGE') {
@@ -2425,8 +2502,8 @@ function injuryBadgeMarkup(player){
   return label?`<span class="injuryBadge" title="Injury status; open player details for sources">${safeInsightText(label)}</span>`:'';
 }
 function decisionCardMarkup(model, { recommended = false } = {}) {
-  const p=model.player,card=model.playerCard||{},score=mambaScore(p),tier=PlayerTierContract.getDecisionTier(p),confidence=model.coaching?.confidence??model.summary?.confidence?.score??50,tags=compactStrategyTags(model),label=recommended?'RECOMMENDED PICK':'PLAYER VIEW',portrait=card.imageUrl||`assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`;
-  return `<article class="compactFightCard ${recommended?'recommendedDecision':'playerViewDecision'}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'Team unavailable')} ${injuryBadgeMarkup(p)}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="fightTags">${tags.map(tag=>`<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended?'':`<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
+  const p=model.player,card=model.playerCard||{},score=mambaScore(p),tier=PlayerTierContract.getDecisionTier(p),confidence=model.coaching?.confidence??model.summary?.confidence?.score??50,tags=compactStrategyTags(model),label=recommended?'RECOMMENDED PICK':'PLAYER VIEW',portrait=card.imageUrl||`assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`,stage=sharinganStage(p);
+  return `<article class="compactFightCard ${recommended?'recommendedDecision':'playerViewDecision'} stage-${safeInsightText(stage.key)}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'Team unavailable')} ${injuryBadgeMarkup(p)}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="sharinganStage stage-${safeInsightText(stage.key)}">${sharinganIconMarkup(stage.key)}<span>${safeInsightText(stage.label)} • ${safeInsightText(stage.meaning)}</span></div><div class="fightTags">${tags.map(tag=>`<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended?'':`<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
 }
 function recommendationCategoryLabels(models) {
   const labels=new Map(),id=model=>model.player.id;
@@ -3234,6 +3311,24 @@ function syncSearch(source) {
 
   renderPlayers();
 }
+function handleSearchKey(event) {
+  if (!event) return;
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    clearDraftSearch({ refocus: true });
+    playerBrowserQuery = '';
+    renderPlayers();
+    return;
+  }
+  if (event.key !== 'Enter') return;
+  const first = available()
+    .filter(player => (posFilter === 'ALL' || positionKey(player) === posFilter) && playerMatchesQuery(player, playerBrowserQuery))
+    .sort((a,b)=>bestAvailableRank(a)-bestAvailableRank(b)||String(a.name||'').localeCompare(String(b.name||'')))[0];
+  if (first) {
+    event.preventDefault();
+    selectCandidate(first.id);
+  }
+}
 function setPos(pos) {
   posFilter = pos;
 
@@ -3507,7 +3602,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_2_0')
+      .register('./service-worker.js?v=jonin_4_2_4')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

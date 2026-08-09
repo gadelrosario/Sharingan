@@ -1,0 +1,18 @@
+'use strict';
+const injury=require('../js/injury-intelligence-v1.js');
+const tests=[];const test=(name,fn)=>tests.push({name,fn});const assert=(value,message)=>{if(!value)throw new Error(message)};
+const now='2026-08-09T12:00:00Z',source={provider:'NFL',url:'https://www.nfl.com/',reportedAt:'2026-08-09T08:00:00Z',reliability:'official'};
+const record=(status,extra={})=>({playerId:'42',status,lastUpdated:'2026-08-09T08:00:00Z',sources:[source],...extra});
+
+test('verified active and unavailable player have different decisions',()=>{const active=injury.decisionAdjustment({record:record('ACTIVE'),now,round:3,foundational:true}),out=injury.decisionAdjustment({record:record('OUT'),now,round:3,foundational:true});assert(active.adjustment===0&&out.adjustment<active.adjustment,'OUT treated like active')});
+test('large value fall can outweigh but not erase injury truth',()=>{const full=injury.decisionAdjustment({record:record('OUT'),now,round:5,valueFall:0}),discount=injury.decisionAdjustment({record:record('OUT'),now,round:8,valueFall:40});assert(discount.adjustment>full.adjustment&&discount.status==='OUT'&&discount.adjustment<=0,'price sensitivity failed')});
+test('foundational selection carries more burden than late stash',()=>{const early=injury.decisionAdjustment({record:record('QUESTIONABLE'),now,round:2,foundational:true}),late=injury.decisionAdjustment({record:record('QUESTIONABLE'),now,round:12,foundational:false});assert(early.adjustment<late.adjustment,'draft stage did not affect injury burden')});
+test('injury portfolio cost rises progressively',()=>{const first=injury.decisionAdjustment({record:record('LIMITED'),now,injuredPortfolio:0}),fourth=injury.decisionAdjustment({record:record('LIMITED'),now,injuredPortfolio:3});assert(fourth.injuryPortfolioEffect<first.injuryPortfolioEffect&&fourth.adjustment<first.adjustment,'portfolio risk was flat')});
+test('configured IR capacity changes stash economics',()=>{const open=injury.decisionAdjustment({record:record('IR'),now,round:12,irSlots:1,usedIrSlots:0,benchSlots:6,benchUsed:6}),closed=injury.decisionAdjustment({record:record('IR'),now,round:12,irSlots:1,usedIrSlots:1,benchSlots:6,benchUsed:6});assert(open.irCapacityEffect>closed.irCapacityEffect&&open.stashReason&&closed.stashReason===null,'IR capacity not respected')});
+test('OUT without supported return evidence has no invented timeline',()=>{const value=injury.normalize(record('OUT',{expectedAvailability:'Week 4'}));assert(value.expectedAvailability===''&&!value.expectedAvailabilityExplicit,'unsupported return timeline survived')});
+test('missing injury record remains UNKNOWN',()=>{const value=injury.normalize({playerId:'7'}),football=injury.footballAvailability(value,now);assert(value.status==='UNKNOWN'&&football.available===null&&football.status==='UNKNOWN','missing data became healthy')});
+test('stale status remains explicitly stale',()=>{const old=record('QUESTIONABLE',{lastUpdated:'2026-08-01T08:00:00Z'}),fresh=injury.freshness(old,now),decision=injury.decisionAdjustment({record:old,now});assert(fresh.status==='STALE'&&decision.freshness==='STALE'&&decision.staleBurden<0,'stale record masqueraded as current')});
+
+function run(){let passCount=0,failures=[];for(const item of tests){try{item.fn();passCount++}catch(error){failures.push({name:item.name,error:error.message})}}return{passCount,failCount:failures.length,failures}}
+if(require.main===module){const result=run();console.log(JSON.stringify(result));if(result.failCount)process.exit(1)}
+module.exports={run};
