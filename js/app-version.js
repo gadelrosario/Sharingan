@@ -1,6 +1,6 @@
 (function(root){
   'use strict';
-  const APP_VERSION=Object.freeze({phase:'Jōnin',milestone:'4.2.5',label:'Jōnin 4.2.5'});
+  const APP_VERSION=Object.freeze({phase:'Jōnin',milestone:'4.3.2',label:'Jōnin 4.3.2'});
   function applyVersionMetadata(documentRef){
     if(!documentRef)return;
     documentRef.title=`Gerard Fantasy HQ — ${APP_VERSION.label}`;

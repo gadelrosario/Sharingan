@@ -1,0 +1,47 @@
+{
+  "sourceReport": "jonin_4_3_2_pick_7_regression.json",
+  "reprocessed": true,
+  "fullMockRerun": false,
+  "slot": 7,
+  "openingUnchanged": [
+    "De'Von Achane",
+    "Saquon Barkley",
+    "Chris Olave",
+    "Colston Loveland",
+    "Davante Adams",
+    "Joe Burrow",
+    "Rome Odunze"
+  ],
+  "marketFloorFallbacks": [
+    {
+      "pick": 107,
+      "playerId": 116,
+      "player": "Jordan Mason",
+      "sourceRank": 124,
+      "acquisitionPenalty": 10.95,
+      "label": "POOR_MARKET_POCKET_FALLBACK",
+      "confidence": 40,
+      "reason": "Every available skill-position option fails acquisition integrity; Jordan Mason is the least-cost non-blocked fallback by acquisition penalty, source rank, and documented upside."
+    }
+  ],
+  "unexplainedMaterialReaches": [],
+  "requiredCompletionReaches": [
+    {
+      "pick": 147,
+      "player": "Jacksonville Jaguars D/ST"
+    },
+    {
+      "pick": 167,
+      "player": "Cam Little"
+    }
+  ],
+  "completion": {
+    "completedRosters": 10,
+    "teamRosters": 10,
+    "missingQB": 0,
+    "missingTE": 0,
+    "missingK": 0,
+    "missingDST": 0,
+    "rosterStateLeakage": 0
+  }
+}

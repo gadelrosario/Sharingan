@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fantasy HQ Normalized Ranking Snapshot",
+  "type": "object",
+  "required": ["schemaVersion", "source", "snapshotDate", "immutable", "records"],
+  "properties": {
+    "schemaVersion": {"const": "1.0"}, "source": {"type": "string", "minLength": 1}, "snapshotDate": {"type": "string", "format": "date"}, "immutable": {"const": true},
+    "records": {"type": "array", "items": {"type": "object", "required": ["playerId", "source", "snapshotDate", "position", "provenance", "importStatus"], "properties": {"playerId": {"type": "string", "minLength": 1}, "overallRank": {"type": ["integer", "null"], "minimum": 1}, "overallTier": {"type": ["string", "null"]}, "positionRank": {"type": ["integer", "null"], "minimum": 1}, "positionTier": {"type": ["string", "null"]}, "sourceTeam": {"type": ["string", "null"]}, "importStatus": {"enum": ["MATCHED", "UNMATCHED", "AMBIGUOUS", "QUARANTINED"]}}}}
+  }
+}

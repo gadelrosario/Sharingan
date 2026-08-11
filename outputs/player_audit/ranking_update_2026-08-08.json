@@ -1,0 +1,153 @@
+{
+  "snapshot": "data/rankings/fantasyland_2026-08-08.normalized.json",
+  "rows": 331,
+  "matched": 331,
+  "unmatched": 0,
+  "ambiguous": 0,
+  "validationErrors": [],
+  "differential": {
+    "changedPlayers": [],
+    "rankChanges": 0,
+    "tierChanges": 0,
+    "positionRankChanges": 0,
+    "positionTierChanges": 0,
+    "top25Changes": 0,
+    "top50Changes": 0,
+    "top100Changes": 0
+  },
+  "recommendationDifferential": {
+    "baseline": "BOOTSTRAP_NO_PREVIOUS_SNAPSHOT",
+    "changes": []
+  },
+  "canaries": {
+    "passed": true,
+    "details": {
+      "passCount": 11,
+      "failCount": 0,
+      "checks": [
+        {
+          "name": "OPENING_ROUND",
+          "passed": true,
+          "detail": {
+            "topFive": [
+              "Bijan Robinson",
+              "Jahmyr Gibbs",
+              "Christian McCaffrey",
+              "Ja'Marr Chase",
+              "Puka Nacua"
+            ]
+          }
+        },
+        {
+          "name": "FOUNDATION",
+          "passed": true,
+          "detail": {
+            "topFive": [
+              "Bijan Robinson",
+              "Jahmyr Gibbs",
+              "Christian McCaffrey",
+              "Ja'Marr Chase",
+              "De'Von Achane"
+            ]
+          }
+        },
+        {
+          "name": "VALUE",
+          "passed": true,
+          "detail": {
+            "unexplainedReaches": 0
+          }
+        },
+        {
+          "name": "POSITIONAL_BALANCE",
+          "passed": true,
+          "detail": {
+            "positionCounts": {
+              "RB": 17,
+              "WR": 26,
+              "TE": 2,
+              "QB": 5
+            }
+          }
+        },
+        {
+          "name": "QB_TE_TIMING",
+          "passed": true,
+          "detail": {
+            "QB": 5,
+            "TE": 2
+          }
+        },
+        {
+          "name": "SPECIALIST",
+          "passed": true,
+          "detail": {
+            "earlySpecialists": 0
+          }
+        },
+        {
+          "name": "INJURY",
+          "passed": true,
+          "detail": {
+            "rows": 208
+          }
+        },
+        {
+          "name": "COMPLETION",
+          "passed": true,
+          "detail": {
+            "roster": {
+              "QB": 1,
+              "RB": 4,
+              "WR": 9,
+              "TE": 1,
+              "K": 1,
+              "DST": 1
+            }
+          }
+        },
+        {
+          "name": "ALL_BOARD",
+          "passed": true,
+          "detail": {
+            "rankedRows": 237
+          }
+        },
+        {
+          "name": "GOLDEN_4_2_5",
+          "passed": true,
+          "detail": {
+            "topFive": [
+              "Bijan Robinson",
+              "Jahmyr Gibbs",
+              "Christian McCaffrey",
+              "De'Von Achane",
+              "Jonathan Taylor"
+            ]
+          }
+        },
+        {
+          "name": "MISSING_DATA",
+          "passed": true,
+          "detail": {
+            "corridor": {
+              "rank": null,
+              "reach": null,
+              "allowance": 8,
+              "inside": false,
+              "hardRejected": true,
+              "justification": "UNEXPLAINED_REACH"
+            }
+          }
+        }
+      ],
+      "recommendationDiff": {
+        "baseline": "BOOTSTRAP_NO_PREVIOUS_SNAPSHOT",
+        "changes": []
+      }
+    },
+    "output": "{\"passCount\":11,\"failCount\":0,\"checks\":[{\"name\":\"OPENING_ROUND\",\"passed\":true,\"detail\":{\"topFive\":[\"Bijan Robinson\",\"Jahmyr Gibbs\",\"Christian McCaffrey\",\"Ja'Marr Chase\",\"Puka Nacua\"]}},{\"name\":\"FOUNDATION\",\"passed\":true,\"detail\":{\"topFive\":[\"Bijan Robinson\",\"Jahmyr Gibbs\",\"Christian McCaffrey\",\"Ja'Marr Chase\",\"De'Von Achane\"]}},{\"name\":\"VALUE\",\"passed\":true,\"detail\":{\"unexplainedReaches\":0}},{\"name\":\"POSITIONAL_BALANCE\",\"passed\":true,\"detail\":{\"positionCounts\":{\"RB\":17,\"WR\":26,\"TE\":2,\"QB\":5}}},{\"name\":\"QB_TE_TIMING\",\"passed\":true,\"detail\":{\"QB\":5,\"TE\":2}},{\"name\":\"SPECIALIST\",\"passed\":true,\"detail\":{\"earlySpecialists\":0}},{\"name\":\"INJURY\",\"passed\":true,\"detail\":{\"rows\":208}},{\"name\":\"COMPLETION\",\"passed\":true,\"detail\":{\"roster\":{\"QB\":1,\"RB\":4,\"WR\":9,\"TE\":1,\"K\":1,\"DST\":1}}},{\"name\":\"ALL_BOARD\",\"passed\":true,\"detail\":{\"rankedRows\":237}},{\"name\":\"GOLDEN_4_2_5\",\"passed\":true,\"detail\":{\"topFive\":[\"Bijan Robinson\",\"Jahmyr Gibbs\",\"Christian McCaffrey\",\"De'Von Achane\",\"Jonathan Taylor\"]}},{\"name\":\"MISSING_DATA\",\"passed\":true,\"detail\":{\"corridor\":{\"rank\":null,\"reach\":null,\"allowance\":8,\"inside\":false,\"hardRejected\":true,\"justification\":\"UNEXPLAINED_REACH\"}}}],\"recommendationDiff\":{\"baseline\":\"BOOTSTRAP_NO_PREVIOUS_SNAPSHOT\",\"changes\":[]}}",
+    "error": ""
+  },
+  "promotionStatus": "PROMOTED"
+}

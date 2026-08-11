@@ -9,11 +9,13 @@ test('full deterministic mock fills every configured required starter',()=>{
   assert(open.length===0,`open slots: ${open.map(row=>row.slot).join(',')}`);
   assert(result.roster.K===1&&result.roster.DST===1,'specialists missing at completion');
 });
-test('required specialists lead when mathematically constrained, then flexibility resumes',()=>{
-  const constrained=turns.filter(turn=>['PRESSURE','HARD'].includes(turn.state.mode));
-  assert(constrained.every(turn=>turn.state.requiredPositions.includes(turn.cards[0]?.pos)),'required specialist did not lead a constrained turn');
+test('pressure preserves one flex choice before required specialists lead',()=>{
+  const constrained=turns.filter(turn=>turn.state.mode==='HARD');
+  assert(constrained.every(turn=>turn.state.requiredPositions.includes(turn.cards[0]?.pos)),'required specialist did not lead a hard-constrained turn');
+  const pressure=turns.filter(turn=>turn.state.mode==='PRESSURE');
+  assert(pressure.every(turn=>turn.state.userPicksRemaining===turn.state.unfilledRequiredSlots+1),'pressure mode lost its one safe flexible selection');
   const last=turns.at(-1);
-  assert(last.state.unfilledRequiredSlots===0&&last.state.mode==='NORMAL','normal behavior did not resume');
+  assert(last.state.mode==='HARD'&&last.state.requiredPositions.includes(last.cards[0]?.pos),'final required selection escaped the hard boundary');
 });
 test('RB need and fit decline with adequate starters and bench depth',()=>{
   harness.configure({pick:81,userRoster:['Jahmyr Gibbs','Bijan Robinson','James Cook','Jonathan Taylor','Saquon Barkley','Omarion Hampton','Josh Allen','Trey McBride']});

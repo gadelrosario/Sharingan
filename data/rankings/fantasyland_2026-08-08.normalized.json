@@ -1,0 +1,5305 @@
+{
+  "schemaVersion": "1.0",
+  "source": "Fantasyland",
+  "snapshotDate": "2026-08-08",
+  "createdAt": "2026-08-09T20:19:14.277807+00:00",
+  "immutable": true,
+  "records": [
+    {
+      "playerId": "1",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 2,
+      "overallTier": "S",
+      "position": "RB",
+      "positionRank": 2,
+      "positionTier": "S",
+      "sourceTeam": "DET",
+      "provenance": {
+        "canonicalKey": "jahmyr-gibbs-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "2",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 1,
+      "overallTier": "S",
+      "position": "RB",
+      "positionRank": 1,
+      "positionTier": "S",
+      "sourceTeam": "ATL",
+      "provenance": {
+        "canonicalKey": "bijan-robinson-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "3",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 3,
+      "overallTier": "S",
+      "position": "WR",
+      "positionRank": 1,
+      "positionTier": "S",
+      "sourceTeam": "CIN",
+      "provenance": {
+        "canonicalKey": "ja-marr-chase-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "4",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 4,
+      "overallTier": "S",
+      "position": "WR",
+      "positionRank": 2,
+      "positionTier": "S",
+      "sourceTeam": "LAR",
+      "provenance": {
+        "canonicalKey": "puka-nacua-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "5",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 5,
+      "overallTier": "S",
+      "position": "WR",
+      "positionRank": 3,
+      "positionTier": "S",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": "jaxon-smith-njigba-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "6",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 6,
+      "overallTier": "A",
+      "position": "RB",
+      "positionRank": 3,
+      "positionTier": "S",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "christian-mccaffrey-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "7",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 7,
+      "overallTier": "A",
+      "position": "WR",
+      "positionRank": 4,
+      "positionTier": "A",
+      "sourceTeam": "DET",
+      "provenance": {
+        "canonicalKey": "amon-ra-st-brown-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "8",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 13,
+      "overallTier": "B",
+      "position": "WR",
+      "positionRank": 6,
+      "positionTier": "B",
+      "sourceTeam": "DAL",
+      "provenance": {
+        "canonicalKey": "ceedee-lamb-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "9",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 10,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 5,
+      "positionTier": "A",
+      "sourceTeam": "IND",
+      "provenance": {
+        "canonicalKey": "jonathan-taylor-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "10",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 8,
+      "overallTier": "B",
+      "position": "WR",
+      "positionRank": 5,
+      "positionTier": "B",
+      "sourceTeam": "MIN",
+      "provenance": {
+        "canonicalKey": "justin-jefferson-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "11",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 11,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 6,
+      "positionTier": "A",
+      "sourceTeam": "LV",
+      "provenance": {
+        "canonicalKey": "ashton-jeanty-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "12",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 14,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 8,
+      "positionTier": "A",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": "james-cook-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "13",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 12,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 7,
+      "positionTier": "A",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "omarion-hampton-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "14",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 16,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 10,
+      "positionTier": "B",
+      "sourceTeam": "CIN",
+      "provenance": {
+        "canonicalKey": "chase-brown-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "15",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 9,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 4,
+      "positionTier": "A",
+      "sourceTeam": "MIA",
+      "provenance": {
+        "canonicalKey": "de-von-achane-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "16",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 15,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 9,
+      "positionTier": "A",
+      "sourceTeam": "PHI",
+      "provenance": {
+        "canonicalKey": "saquon-barkley-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "17",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 17,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 11,
+      "positionTier": "B",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": "kenneth-walker-iii-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "18",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 21,
+      "overallTier": "C",
+      "position": "WR",
+      "positionRank": 9,
+      "positionTier": "B",
+      "sourceTeam": "ATL",
+      "provenance": {
+        "canonicalKey": "drake-london-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "19",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 22,
+      "overallTier": "C",
+      "position": "TE",
+      "positionRank": 1,
+      "positionTier": "S",
+      "sourceTeam": "LV",
+      "provenance": {
+        "canonicalKey": "brock-bowers-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "20",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 20,
+      "overallTier": "B",
+      "position": "RB",
+      "positionRank": 12,
+      "positionTier": "B",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": "derrick-henry-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "21",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 19,
+      "overallTier": "B",
+      "position": "WR",
+      "positionRank": 8,
+      "positionTier": "B",
+      "sourceTeam": "NE",
+      "provenance": {
+        "canonicalKey": "a-j-brown-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "22",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 26,
+      "overallTier": "C",
+      "position": "WR",
+      "positionRank": 12,
+      "positionTier": "C",
+      "sourceTeam": "HOU",
+      "provenance": {
+        "canonicalKey": "nico-collins-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "23",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 31,
+      "overallTier": "D",
+      "position": "RB",
+      "positionRank": 15,
+      "positionTier": "C",
+      "sourceTeam": "ARI",
+      "provenance": {
+        "canonicalKey": "jeremiyah-love-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "24",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 24,
+      "overallTier": "C",
+      "position": "WR",
+      "positionRank": 11,
+      "positionTier": "C",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": "rashee-rice-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "25",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 23,
+      "overallTier": "C",
+      "position": "WR",
+      "positionRank": 10,
+      "positionTier": "B",
+      "sourceTeam": "DAL",
+      "provenance": {
+        "canonicalKey": "george-pickens-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "26",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 25,
+      "overallTier": "C",
+      "position": "TE",
+      "positionRank": 2,
+      "positionTier": "S",
+      "sourceTeam": "ARI",
+      "provenance": {
+        "canonicalKey": "trey-mcbride-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "27",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 28,
+      "overallTier": "C",
+      "position": "RB",
+      "positionRank": 13,
+      "positionTier": "C",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": "breece-hall-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "28",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 29,
+      "overallTier": "C",
+      "position": "WR",
+      "positionRank": 14,
+      "positionTier": "C",
+      "sourceTeam": "PHI",
+      "provenance": {
+        "canonicalKey": "devonta-smith-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "29",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 27,
+      "overallTier": "C",
+      "position": "WR",
+      "positionRank": 13,
+      "positionTier": "C",
+      "sourceTeam": "NO",
+      "provenance": {
+        "canonicalKey": "chris-olave-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "30",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 37,
+      "overallTier": "D",
+      "position": "RB",
+      "positionRank": 18,
+      "positionTier": "D",
+      "sourceTeam": "LAR",
+      "provenance": {
+        "canonicalKey": "kyren-williams-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "31",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 40,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 18,
+      "positionTier": "D",
+      "sourceTeam": "CIN",
+      "provenance": {
+        "canonicalKey": "tee-higgins-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "32",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 32,
+      "overallTier": "D",
+      "position": "QB",
+      "positionRank": 1,
+      "positionTier": "S",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": "josh-allen-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "33",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 33,
+      "overallTier": "D",
+      "position": "RB",
+      "positionRank": 16,
+      "positionTier": "D",
+      "sourceTeam": "DAL",
+      "provenance": {
+        "canonicalKey": "javonte-williams-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "34",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 34,
+      "overallTier": "D",
+      "position": "WR",
+      "positionRank": 15,
+      "positionTier": "D",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": "zay-flowers-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "35",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 30,
+      "overallTier": "D",
+      "position": "RB",
+      "positionRank": 14,
+      "positionTier": "C",
+      "sourceTeam": "GB",
+      "provenance": {
+        "canonicalKey": "josh-jacobs-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "36",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 18,
+      "overallTier": "B",
+      "position": "WR",
+      "positionRank": 7,
+      "positionTier": "B",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "malik-nabers-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "37",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 38,
+      "overallTier": "D",
+      "position": "TE",
+      "positionRank": 3,
+      "positionTier": "A",
+      "sourceTeam": "CHI",
+      "provenance": {
+        "canonicalKey": "colston-loveland-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "38",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 35,
+      "overallTier": "D",
+      "position": "WR",
+      "positionRank": 16,
+      "positionTier": "D",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": "emeka-egbuka-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "39",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 39,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 17,
+      "positionTier": "D",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "jaylen-waddle-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "40",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 45,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 22,
+      "positionTier": "D",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "ladd-mcconkey-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "41",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 51,
+      "overallTier": "E",
+      "position": "RB",
+      "positionRank": 22,
+      "positionTier": "E",
+      "sourceTeam": "NO",
+      "provenance": {
+        "canonicalKey": "travis-etienne-jr-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "42",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 42,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 19,
+      "positionTier": "D",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": "tetairoa-mcmillan-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "43",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 43,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 20,
+      "positionTier": "D",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": "garrett-wilson-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "44",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 36,
+      "overallTier": "D",
+      "position": "RB",
+      "positionRank": 17,
+      "positionTier": "D",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "cam-skattebo-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "45",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 61,
+      "overallTier": "F",
+      "position": "WR",
+      "positionRank": 27,
+      "positionTier": "E",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "terry-mclaurin-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "46",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 44,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 21,
+      "positionTier": "D",
+      "sourceTeam": "CHI",
+      "provenance": {
+        "canonicalKey": "luther-burden-iii-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "47",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 53,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 25,
+      "positionTier": "E",
+      "sourceTeam": "LAR",
+      "provenance": {
+        "canonicalKey": "davante-adams-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "48",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 58,
+      "overallTier": "E",
+      "position": "RB",
+      "positionRank": 25,
+      "positionTier": "E",
+      "sourceTeam": "CHI",
+      "provenance": {
+        "canonicalKey": "d-andre-swift-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "49",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 41,
+      "overallTier": "E",
+      "position": "RB",
+      "positionRank": 19,
+      "positionTier": "D",
+      "sourceTeam": "NE",
+      "provenance": {
+        "canonicalKey": "treveyon-henderson-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "50",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 47,
+      "overallTier": "E",
+      "position": "QB",
+      "positionRank": 2,
+      "positionTier": "A",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": "lamar-jackson-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "51",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 49,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 24,
+      "positionTier": "E",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "mike-evans-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "52",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 68,
+      "overallTier": "G",
+      "position": "RB",
+      "positionRank": 26,
+      "positionTier": "E",
+      "sourceTeam": "HOU",
+      "provenance": {
+        "canonicalKey": "david-montgomery-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "53",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 59,
+      "overallTier": "F",
+      "position": "WR",
+      "positionRank": 26,
+      "positionTier": "E",
+      "sourceTeam": "DET",
+      "provenance": {
+        "canonicalKey": "jameson-williams-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "54",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 46,
+      "overallTier": "E",
+      "position": "RB",
+      "positionRank": 20,
+      "positionTier": "D",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": "bucky-irving-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "55",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 50,
+      "overallTier": "E",
+      "position": "RB",
+      "positionRank": 21,
+      "positionTier": "E",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": "bhayshul-tuten-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "56",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 63,
+      "overallTier": "F",
+      "position": "WR",
+      "positionRank": 29,
+      "positionTier": "E",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": "carnell-tate-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "57",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 56,
+      "overallTier": "E",
+      "position": "RB",
+      "positionRank": 23,
+      "positionTier": "E",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": "jadarian-price-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "58",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 57,
+      "overallTier": "E",
+      "position": "RB",
+      "positionRank": 24,
+      "positionTier": "E",
+      "sourceTeam": "CLE",
+      "provenance": {
+        "canonicalKey": "quinshon-judkins-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "59",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 62,
+      "overallTier": "F",
+      "position": "WR",
+      "positionRank": 28,
+      "positionTier": "E",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": "brian-thomas-jr-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "60",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 64,
+      "overallTier": "F",
+      "position": "WR",
+      "positionRank": 30,
+      "positionTier": "E",
+      "sourceTeam": "CHI",
+      "provenance": {
+        "canonicalKey": "rome-odunze-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "61",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 48,
+      "overallTier": "E",
+      "position": "WR",
+      "positionRank": 23,
+      "positionTier": "E",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": "d-j-moore-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "62",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 65,
+      "overallTier": "F",
+      "position": "WR",
+      "positionRank": 31,
+      "positionTier": "E",
+      "sourceTeam": "GB",
+      "provenance": {
+        "canonicalKey": "christian-watson-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "63",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 52,
+      "overallTier": "E",
+      "position": "TE",
+      "positionRank": 4,
+      "positionTier": "B",
+      "sourceTeam": "IND",
+      "provenance": {
+        "canonicalKey": "tyler-warren-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "64",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 54,
+      "overallTier": "E",
+      "position": "QB",
+      "positionRank": 3,
+      "positionTier": "A",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "jayden-daniels-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "65",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 60,
+      "overallTier": "F",
+      "position": "QB",
+      "positionRank": 5,
+      "positionTier": "A",
+      "sourceTeam": "CIN",
+      "provenance": {
+        "canonicalKey": "joe-burrow-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "66",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 55,
+      "overallTier": "E",
+      "position": "QB",
+      "positionRank": 4,
+      "positionTier": "A",
+      "sourceTeam": "NE",
+      "provenance": {
+        "canonicalKey": "drake-maye-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "67",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 66,
+      "overallTier": "F",
+      "position": "WR",
+      "positionRank": 32,
+      "positionTier": "F",
+      "sourceTeam": "ARI",
+      "provenance": {
+        "canonicalKey": "marvin-harrison-jr-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "68",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 70,
+      "overallTier": "G",
+      "position": "WR",
+      "positionRank": 33,
+      "positionTier": "F",
+      "sourceTeam": "NO",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "69",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 69,
+      "overallTier": "G",
+      "position": "RB",
+      "positionRank": 27,
+      "positionTier": "E",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": "jaylen-warren-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "70",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 67,
+      "overallTier": "F",
+      "position": "QB",
+      "positionRank": 6,
+      "positionTier": "B",
+      "sourceTeam": "PHI",
+      "provenance": {
+        "canonicalKey": "jalen-hurts-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "71",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 72,
+      "overallTier": "G",
+      "position": "QB",
+      "positionRank": 7,
+      "positionTier": "B",
+      "sourceTeam": "CHI",
+      "provenance": {
+        "canonicalKey": "caleb-williams-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "72",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 82,
+      "overallTier": "H",
+      "position": "WR",
+      "positionRank": 39,
+      "positionTier": "F",
+      "sourceTeam": "PHI",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "73",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 95,
+      "overallTier": "I",
+      "position": "RB",
+      "positionRank": 34,
+      "positionTier": "F",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": "chuba-hubbard-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "74",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 80,
+      "overallTier": "H",
+      "position": "RB",
+      "positionRank": 30,
+      "positionTier": "F",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": "tony-pollard-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "75",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 78,
+      "overallTier": "H",
+      "position": "WR",
+      "positionRank": 36,
+      "positionTier": "F",
+      "sourceTeam": "IND",
+      "provenance": {
+        "canonicalKey": "alec-pierce-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "76",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 75,
+      "overallTier": "G",
+      "position": "TE",
+      "positionRank": 6,
+      "positionTier": "C",
+      "sourceTeam": "GB",
+      "provenance": {
+        "canonicalKey": "tucker-kraft-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "77",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 91,
+      "overallTier": "I",
+      "position": "WR",
+      "positionRank": 43,
+      "positionTier": "G",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "quentin-johnston-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "78",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 101,
+      "overallTier": "J",
+      "position": "QB",
+      "positionRank": 13,
+      "positionTier": "C",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "justin-herbert-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "79",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 94,
+      "overallTier": "I",
+      "position": "RB",
+      "positionRank": 33,
+      "positionTier": "F",
+      "sourceTeam": "NE",
+      "provenance": {
+        "canonicalKey": "rhamondre-stevenson-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "80",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 84,
+      "overallTier": "H",
+      "position": "WR",
+      "positionRank": 41,
+      "positionTier": "G",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": "dk-metcalf-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "81",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 87,
+      "overallTier": "H",
+      "position": "QB",
+      "positionRank": 8,
+      "positionTier": "C",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": "trevor-lawrence-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "82",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 99,
+      "overallTier": "J",
+      "position": "QB",
+      "positionRank": 11,
+      "positionTier": "C",
+      "sourceTeam": "DAL",
+      "provenance": {
+        "canonicalKey": "dak-prescott-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "157",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 203,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 79,
+      "positionTier": "J",
+      "sourceTeam": "MIN",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "83",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 81,
+      "overallTier": "H",
+      "position": "WR",
+      "positionRank": 38,
+      "positionTier": "F",
+      "sourceTeam": "MIN",
+      "provenance": {
+        "canonicalKey": "jordan-addison-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "84",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 109,
+      "overallTier": "J",
+      "position": "WR",
+      "positionRank": 47,
+      "positionTier": "H",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "courtland-sutton-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "158",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 144,
+      "overallTier": "L",
+      "position": "WR",
+      "positionRank": 61,
+      "positionTier": "I",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "85",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 83,
+      "overallTier": "H",
+      "position": "WR",
+      "positionRank": 40,
+      "positionTier": "G",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "86",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 90,
+      "overallTier": "I",
+      "position": "WR",
+      "positionRank": 42,
+      "positionTier": "G",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "87",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 88,
+      "overallTier": "H",
+      "position": "QB",
+      "positionRank": 9,
+      "positionTier": "C",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "brock-purdy-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "88",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 76,
+      "overallTier": "G",
+      "position": "RB",
+      "positionRank": 28,
+      "positionTier": "F",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "rachaad-white-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "89",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 79,
+      "overallTier": "H",
+      "position": "WR",
+      "positionRank": 37,
+      "positionTier": "F",
+      "sourceTeam": "ARI",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "90",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 86,
+      "overallTier": "H",
+      "position": "TE",
+      "positionRank": 8,
+      "positionTier": "C",
+      "sourceTeam": "DET",
+      "provenance": {
+        "canonicalKey": "sam-laporta-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "91",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 85,
+      "overallTier": "H",
+      "position": "TE",
+      "positionRank": 7,
+      "positionTier": "C",
+      "sourceTeam": "ATL",
+      "provenance": {
+        "canonicalKey": "kyle-pitts-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "92",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 107,
+      "overallTier": "J",
+      "position": "WR",
+      "positionRank": 45,
+      "positionTier": "G",
+      "sourceTeam": "IND",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "93",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 93,
+      "overallTier": "I",
+      "position": "RB",
+      "positionRank": 32,
+      "positionTier": "F",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "j-k-dobbins-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "94",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 89,
+      "overallTier": "H",
+      "position": "QB",
+      "positionRank": 10,
+      "positionTier": "C",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "jaxson-dart-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "95",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 96,
+      "overallTier": "I",
+      "position": "RB",
+      "positionRank": 35,
+      "positionTier": "G",
+      "sourceTeam": "CHI",
+      "provenance": {
+        "canonicalKey": "kyle-monangai-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "96",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 71,
+      "overallTier": "G",
+      "position": "WR",
+      "positionRank": 34,
+      "positionTier": "F",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": "parker-washington-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "97",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 92,
+      "overallTier": "I",
+      "position": "RB",
+      "positionRank": 31,
+      "positionTier": "F",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": "rico-dowdle-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "98",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 103,
+      "overallTier": "J",
+      "position": "QB",
+      "positionRank": 15,
+      "positionTier": "C",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "bo-nix-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "99",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 74,
+      "overallTier": "G",
+      "position": "TE",
+      "positionRank": 5,
+      "positionTier": "C",
+      "sourceTeam": "CLE",
+      "provenance": {
+        "canonicalKey": "harold-fannin-jr-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "100",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "I",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "H",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "101",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 104,
+      "overallTier": "J",
+      "position": "RB",
+      "positionRank": 36,
+      "positionTier": "G",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "rj-harvey-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "102",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 97,
+      "overallTier": "I",
+      "position": "WR",
+      "positionRank": 44,
+      "positionTier": "G",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "103",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 114,
+      "overallTier": "K",
+      "position": "QB",
+      "positionRank": 17,
+      "positionTier": "D",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": "patrick-mahomes-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "104",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 120,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 52,
+      "positionTier": "H",
+      "sourceTeam": "GB",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "105",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 122,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 54,
+      "positionTier": "H",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "106",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 108,
+      "overallTier": "J",
+      "position": "WR",
+      "positionRank": 46,
+      "positionTier": "H",
+      "sourceTeam": "CLE",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "107",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 102,
+      "overallTier": "J",
+      "position": "QB",
+      "positionRank": 14,
+      "positionTier": "C",
+      "sourceTeam": "LAR",
+      "provenance": {
+        "canonicalKey": "matthew-stafford-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "108",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 77,
+      "overallTier": "G",
+      "position": "RB",
+      "positionRank": 29,
+      "positionTier": "F",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "109",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 106,
+      "overallTier": "J",
+      "position": "RB",
+      "positionRank": 38,
+      "positionTier": "G",
+      "sourceTeam": "LAR",
+      "provenance": {
+        "canonicalKey": "blake-corum-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "110",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 126,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": 41,
+      "positionTier": "G",
+      "sourceTeam": "MIN",
+      "provenance": {
+        "canonicalKey": "aaron-jones-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "111",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 112,
+      "overallTier": "J",
+      "position": "QB",
+      "positionRank": 16,
+      "positionTier": "D",
+      "sourceTeam": "MIN",
+      "provenance": {
+        "canonicalKey": "kyler-murray-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "156",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 195,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 75,
+      "positionTier": "J",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "112",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 98,
+      "overallTier": "I",
+      "position": "TE",
+      "positionRank": 9,
+      "positionTier": "D",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "george-kittle-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "113",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 119,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 51,
+      "positionTier": "H",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "152",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "153",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "114",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 100,
+      "overallTier": "J",
+      "position": "QB",
+      "positionRank": 12,
+      "positionTier": "C",
+      "sourceTeam": "DET",
+      "provenance": {
+        "canonicalKey": "jared-goff-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "154",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 184,
+      "overallTier": "N",
+      "position": "WR",
+      "positionRank": 71,
+      "positionTier": "J",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "darnell-mooney-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "115",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 125,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": 40,
+      "positionTier": "G",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": "kenneth-gainwell-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "116",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 124,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": 39,
+      "positionTier": "G",
+      "sourceTeam": "MIN",
+      "provenance": {
+        "canonicalKey": "jordan-mason-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "117",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 137,
+      "overallTier": "L",
+      "position": "TE",
+      "positionRank": 15,
+      "positionTier": "E",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": "travis-kelce-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "118",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 132,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 57,
+      "positionTier": "I",
+      "sourceTeam": "GB",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "127",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 230,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 66,
+      "positionTier": "I",
+      "sourceTeam": "DAL",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "119",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 123,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 55,
+      "positionTier": "H",
+      "sourceTeam": "NE",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "120",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 113,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 50,
+      "positionTier": "H",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "121",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 105,
+      "overallTier": "J",
+      "position": "RB",
+      "positionRank": 37,
+      "positionTier": "G",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "jacory-croskey-merritt-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "122",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 115,
+      "overallTier": "K",
+      "position": "QB",
+      "positionRank": 18,
+      "positionTier": "D",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": "baker-mayfield-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "123",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "J",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "H",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "146",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "QB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "124",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 116,
+      "overallTier": "K",
+      "position": "QB",
+      "positionRank": 19,
+      "positionTier": "D",
+      "sourceTeam": "NO",
+      "provenance": {
+        "canonicalKey": "tyler-shough-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "125",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 121,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 53,
+      "positionTier": "H",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "126",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 128,
+      "overallTier": "K",
+      "position": "TE",
+      "positionRank": 13,
+      "positionTier": "E",
+      "sourceTeam": "DAL",
+      "provenance": {
+        "canonicalKey": "jake-ferguson-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "128",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 233,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 67,
+      "positionTier": "I",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "129",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "130",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 177,
+      "overallTier": "N",
+      "position": "RB",
+      "positionRank": 54,
+      "positionTier": "I",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "136",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 117,
+      "overallTier": "K",
+      "position": "TE",
+      "positionRank": 10,
+      "positionTier": "E",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": "dalton-kincaid-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "137",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 140,
+      "overallTier": "L",
+      "position": "TE",
+      "positionRank": 18,
+      "positionTier": "F",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": "brenton-strange-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "138",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "TE",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "144",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 170,
+      "overallTier": "N",
+      "position": "QB",
+      "positionRank": 23,
+      "positionTier": "E",
+      "sourceTeam": "HOU",
+      "provenance": {
+        "canonicalKey": "c-j-stroud-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "145",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "QB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "147",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 173,
+      "overallTier": "N",
+      "position": "QB",
+      "positionRank": 25,
+      "positionTier": "E",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": "aaron-rodgers-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "131",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "132",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 240,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 69,
+      "positionTier": "I",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "133",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "134",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 153,
+      "overallTier": "L",
+      "position": "RB",
+      "positionRank": 50,
+      "positionTier": "H",
+      "sourceTeam": "CLE",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "135",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 146,
+      "overallTier": "L",
+      "position": "RB",
+      "positionRank": 45,
+      "positionTier": "H",
+      "sourceTeam": "HOU",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "148",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 215,
+      "overallTier": "O",
+      "position": "QB",
+      "positionRank": 28,
+      "positionTier": "F",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": "geno-smith-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "139",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 133,
+      "overallTier": "L",
+      "position": "TE",
+      "positionRank": 14,
+      "positionTier": "E",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "isaiah-likely-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "149",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 183,
+      "overallTier": "N",
+      "position": "QB",
+      "positionRank": 27,
+      "positionTier": "E",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": "bryce-young-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "150",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "QB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "140",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 138,
+      "overallTier": "L",
+      "position": "TE",
+      "positionRank": 16,
+      "positionTier": "F",
+      "sourceTeam": "PHI",
+      "provenance": {
+        "canonicalKey": "dallas-goedert-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "159",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "160",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 232,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 98,
+      "positionTier": "K",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "151",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "QB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "162",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "163",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 179,
+      "overallTier": "N",
+      "position": "WR",
+      "positionRank": 70,
+      "positionTier": "J",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "tre-harris-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "164",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 197,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 76,
+      "positionTier": "J",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "pat-bryant-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "165",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "166",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "141",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 193,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 33,
+      "positionTier": "H",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": "mason-taylor-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "142",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 200,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 34,
+      "positionTier": "H",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "143",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 162,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 26,
+      "positionTier": "G",
+      "sourceTeam": "LAR",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "167",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "168",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "169",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 182,
+      "overallTier": "N",
+      "position": "RB",
+      "positionRank": 56,
+      "positionTier": "I",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "kimani-vidal-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "170",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "171",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 221,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 65,
+      "positionTier": "I",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "172",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "173",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "174",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 201,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 78,
+      "positionTier": "J",
+      "sourceTeam": "LV",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "175",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "176",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 219,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 89,
+      "positionTier": "K",
+      "sourceTeam": "CIN",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "177",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 135,
+      "overallTier": "L",
+      "position": "WR",
+      "positionRank": 58,
+      "positionTier": "I",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "178",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "179",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "180",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "TE",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "181",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 157,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 21,
+      "positionTier": "G",
+      "sourceTeam": "NE",
+      "provenance": {
+        "canonicalKey": "hunter-henry-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "182",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 214,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 38,
+      "positionTier": "H",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "183",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "TE",
+      "positionRank": null,
+      "positionTier": "Depth",
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "184",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 168,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 29,
+      "positionTier": "G",
+      "sourceTeam": "CIN",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "185",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 239,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 43,
+      "positionTier": "H",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "186",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "187",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "188",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "189",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "190",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "191",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "192",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "193",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "194",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "195",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "196",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "197",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "198",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "199",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "200",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "201",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "202",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "203",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "204",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "205",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "206",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "207",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "208",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "209",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "210",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "211",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "212",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "213",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "214",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "215",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "216",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "217",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "DST",
+      "position": "DST",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "218",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "219",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "220",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "221",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 1,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "222",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "223",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "224",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "225",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "226",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "227",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "228",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "229",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 2,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "230",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "231",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "232",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "233",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "234",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "235",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "236",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "237",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "238",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "239",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "240",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "241",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "242",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "243",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "244",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "245",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "246",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "247",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "248",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "249",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": "K",
+      "position": "K",
+      "positionRank": null,
+      "positionTier": 3,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": null,
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000017",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 155,
+      "overallTier": "M",
+      "position": "QB",
+      "positionRank": 21,
+      "positionTier": "D",
+      "sourceTeam": "GB",
+      "provenance": {
+        "canonicalKey": "jordan-love-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000021",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 149,
+      "overallTier": "L",
+      "position": "QB",
+      "positionRank": 20,
+      "positionTier": "D",
+      "sourceTeam": "MIA",
+      "provenance": {
+        "canonicalKey": "malik-willis-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000022",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 163,
+      "overallTier": "M",
+      "position": "QB",
+      "positionRank": 22,
+      "positionTier": "E",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": "sam-darnold-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000023",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 181,
+      "overallTier": "N",
+      "position": "QB",
+      "positionRank": 26,
+      "positionTier": "E",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": "cam-ward-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000025",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 172,
+      "overallTier": "N",
+      "position": "QB",
+      "positionRank": 24,
+      "positionTier": "E",
+      "sourceTeam": "IND",
+      "provenance": {
+        "canonicalKey": "daniel-jones-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000027",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": null,
+      "position": "QB",
+      "positionRank": null,
+      "positionTier": null,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": "fernando-mendoza-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000030",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": null,
+      "position": "QB",
+      "positionRank": null,
+      "positionTier": null,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": "jacoby-brissett-qb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000068",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": null,
+      "position": "RB",
+      "positionRank": null,
+      "positionTier": null,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": "jonathan-brooks-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000072",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 129,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": 42,
+      "positionTier": "G",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": "chris-rodriguez-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000082",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 141,
+      "overallTier": "L",
+      "position": "TE",
+      "positionRank": 19,
+      "positionTier": "F",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "oronde-gadsden-ii-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000089",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 127,
+      "overallTier": "K",
+      "position": "TE",
+      "positionRank": 12,
+      "positionTier": "E",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": "mark-andrews-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000090",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 139,
+      "overallTier": "L",
+      "position": "TE",
+      "positionRank": 17,
+      "positionTier": "F",
+      "sourceTeam": "NO",
+      "provenance": {
+        "canonicalKey": "juwan-johnson-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000091",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 118,
+      "overallTier": "K",
+      "position": "TE",
+      "positionRank": 11,
+      "positionTier": "E",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "chigoziem-okonkwo-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000092",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 158,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 22,
+      "positionTier": "G",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": "kenyon-sadiq-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000094",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 165,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 27,
+      "positionTier": "G",
+      "sourceTeam": "HOU",
+      "provenance": {
+        "canonicalKey": "dalton-schultz-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000095",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 142,
+      "overallTier": "L",
+      "position": "TE",
+      "positionRank": 20,
+      "positionTier": "G",
+      "sourceTeam": "MIN",
+      "provenance": {
+        "canonicalKey": "t-j-hockenson-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000096",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 160,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 24,
+      "positionTier": "G",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": "aj-barner-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000135",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 73,
+      "overallTier": "G",
+      "position": "WR",
+      "positionRank": 35,
+      "positionTier": "F",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "stefon-diggs-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000136",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 111,
+      "overallTier": "J",
+      "position": "WR",
+      "positionRank": 49,
+      "positionTier": "H",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "deebo-samuel-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000137",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": null,
+      "overallTier": null,
+      "position": "K",
+      "positionRank": null,
+      "positionTier": null,
+      "sourceTeam": null,
+      "provenance": {
+        "canonicalKey": "tyler-loop-k",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000138",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 130,
+      "overallTier": "K",
+      "position": "RB",
+      "positionRank": 43,
+      "positionTier": "H",
+      "sourceTeam": "DET",
+      "provenance": {
+        "canonicalKey": "isiah-pacheco-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000139",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 131,
+      "overallTier": "K",
+      "position": "WR",
+      "positionRank": 56,
+      "positionTier": "I",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "de-zhaun-stribling-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000140",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 134,
+      "overallTier": "L",
+      "position": "RB",
+      "positionRank": 44,
+      "positionTier": "H",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "jonah-coleman-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000141",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 136,
+      "overallTier": "L",
+      "position": "WR",
+      "positionRank": 59,
+      "positionTier": "I",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": "omar-cooper-jr-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000142",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 143,
+      "overallTier": "L",
+      "position": "WR",
+      "positionRank": 60,
+      "positionTier": "I",
+      "sourceTeam": "CLE",
+      "provenance": {
+        "canonicalKey": "denzel-boston-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000143",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 145,
+      "overallTier": "L",
+      "position": "WR",
+      "positionRank": 62,
+      "positionTier": "I",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": "rashid-shaheed-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000144",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 147,
+      "overallTier": "L",
+      "position": "RB",
+      "positionRank": 46,
+      "positionTier": "H",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": "zach-charbonnet-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000145",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 148,
+      "overallTier": "L",
+      "position": "RB",
+      "positionRank": 47,
+      "positionTier": "H",
+      "sourceTeam": "NO",
+      "provenance": {
+        "canonicalKey": "alvin-kamara-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000146",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 150,
+      "overallTier": "L",
+      "position": "WR",
+      "positionRank": 63,
+      "positionTier": "I",
+      "sourceTeam": "LV",
+      "provenance": {
+        "canonicalKey": "jalen-nailor-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000147",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 151,
+      "overallTier": "L",
+      "position": "RB",
+      "positionRank": 48,
+      "positionTier": "H",
+      "sourceTeam": "ARI",
+      "provenance": {
+        "canonicalKey": "tyler-allgeier-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000148",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 152,
+      "overallTier": "L",
+      "position": "RB",
+      "positionRank": 49,
+      "positionTier": "H",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "tyrone-tracy-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000149",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 154,
+      "overallTier": "M",
+      "position": "WR",
+      "positionRank": 64,
+      "positionTier": "I",
+      "sourceTeam": "MIA",
+      "provenance": {
+        "canonicalKey": "chris-bell-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000150",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 156,
+      "overallTier": "M",
+      "position": "WR",
+      "positionRank": 65,
+      "positionTier": "I",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": "germie-bernard-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000151",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 159,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 23,
+      "positionTier": "G",
+      "sourceTeam": "MIA",
+      "provenance": {
+        "canonicalKey": "greg-dulcich-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000152",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 161,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 25,
+      "positionTier": "G",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": "pat-freiermuth-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000153",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 164,
+      "overallTier": "M",
+      "position": "RB",
+      "positionRank": 51,
+      "positionTier": "H",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": "nicholas-singleton-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000154",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 166,
+      "overallTier": "M",
+      "position": "RB",
+      "positionRank": 52,
+      "positionTier": "I",
+      "sourceTeam": "PHI",
+      "provenance": {
+        "canonicalKey": "tank-bigsby-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000155",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 167,
+      "overallTier": "M",
+      "position": "TE",
+      "positionRank": 28,
+      "positionTier": "G",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": "gunnar-helm-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000156",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 169,
+      "overallTier": "N",
+      "position": "WR",
+      "positionRank": 66,
+      "positionTier": "J",
+      "sourceTeam": "LV",
+      "provenance": {
+        "canonicalKey": "jack-bech-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000157",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 171,
+      "overallTier": "N",
+      "position": "RB",
+      "positionRank": 53,
+      "positionTier": "I",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "kaytron-allen-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000158",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 174,
+      "overallTier": "N",
+      "position": "WR",
+      "positionRank": 67,
+      "positionTier": "J",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": "elijah-sarratt-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000159",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 175,
+      "overallTier": "N",
+      "position": "WR",
+      "positionRank": 68,
+      "positionTier": "J",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "antonio-williams-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000160",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 176,
+      "overallTier": "N",
+      "position": "WR",
+      "positionRank": 69,
+      "positionTier": "J",
+      "sourceTeam": "ATL",
+      "provenance": {
+        "canonicalKey": "zachariah-branch-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000161",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 178,
+      "overallTier": "N",
+      "position": "TE",
+      "positionRank": 30,
+      "positionTier": "G",
+      "sourceTeam": "PHI",
+      "provenance": {
+        "canonicalKey": "eli-stowers-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000163",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 180,
+      "overallTier": "N",
+      "position": "RB",
+      "positionRank": 55,
+      "positionTier": "I",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "keaton-mitchell-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000166",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 185,
+      "overallTier": "N",
+      "position": "RB",
+      "positionRank": 57,
+      "positionTier": "I",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": "brashard-smith-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000167",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 186,
+      "overallTier": "N",
+      "position": "WR",
+      "positionRank": 72,
+      "positionTier": "J",
+      "sourceTeam": "MIA",
+      "provenance": {
+        "canonicalKey": "malik-washington-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000168",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 187,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 31,
+      "positionTier": "G",
+      "sourceTeam": "LAC",
+      "provenance": {
+        "canonicalKey": "david-njoku-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000169",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 188,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 58,
+      "positionTier": "I",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": "justice-hill-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000170",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 189,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 59,
+      "positionTier": "I",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "jordan-james-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000171",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 190,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 32,
+      "positionTier": "H",
+      "sourceTeam": "BUF",
+      "provenance": {
+        "canonicalKey": "dawson-knox-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000172",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 191,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 60,
+      "positionTier": "I",
+      "sourceTeam": "IND",
+      "provenance": {
+        "canonicalKey": "dj-giddens-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000174",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 196,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 61,
+      "positionTier": "I",
+      "sourceTeam": "CIN",
+      "provenance": {
+        "canonicalKey": "samaje-perine-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000176",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 198,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 62,
+      "positionTier": "I",
+      "sourceTeam": "SEA",
+      "provenance": {
+        "canonicalKey": "emanuel-wilson-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000177",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 199,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 77,
+      "positionTier": "J",
+      "sourceTeam": "HOU",
+      "provenance": {
+        "canonicalKey": "jayden-noel-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000178",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 202,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 35,
+      "positionTier": "H",
+      "sourceTeam": "CHI",
+      "provenance": {
+        "canonicalKey": "cole-kmet-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000179",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 204,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 80,
+      "positionTier": "J",
+      "sourceTeam": "HOU",
+      "provenance": {
+        "canonicalKey": "tank-dell-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000180",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 205,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 36,
+      "positionTier": "H",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "evan-engram-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000181",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 206,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 81,
+      "positionTier": "J",
+      "sourceTeam": "NE",
+      "provenance": {
+        "canonicalKey": "kayshon-boutte-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000182",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 208,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 82,
+      "positionTier": "K",
+      "sourceTeam": "KC",
+      "provenance": {
+        "canonicalKey": "tyquan-thornton-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000183",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 209,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 83,
+      "positionTier": "K",
+      "sourceTeam": "DAL",
+      "provenance": {
+        "canonicalKey": "ryan-flournoy-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000184",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 210,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 84,
+      "positionTier": "K",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": "chris-brazzell-ii-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000185",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 211,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 85,
+      "positionTier": "K",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": "elic-ayomanor-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000186",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 212,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 37,
+      "positionTier": "H",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": "ja-tavion-sanders-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000187",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 213,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 64,
+      "positionTier": "I",
+      "sourceTeam": "MIA",
+      "provenance": {
+        "canonicalKey": "ollie-gordon-ii-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000188",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 216,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 86,
+      "positionTier": "K",
+      "sourceTeam": "CLE",
+      "provenance": {
+        "canonicalKey": "jerry-jeudy-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000189",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 217,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 87,
+      "positionTier": "K",
+      "sourceTeam": "ARI",
+      "provenance": {
+        "canonicalKey": "kendrick-bourne-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000190",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 218,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 88,
+      "positionTier": "K",
+      "sourceTeam": "DET",
+      "provenance": {
+        "canonicalKey": "isaac-teslaa-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000191",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 220,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 90,
+      "positionTier": "K",
+      "sourceTeam": "DEN",
+      "provenance": {
+        "canonicalKey": "troy-franklin-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000192",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 223,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 39,
+      "positionTier": "H",
+      "sourceTeam": "PIT",
+      "provenance": {
+        "canonicalKey": "darnell-washington-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000193",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 224,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 40,
+      "positionTier": "H",
+      "sourceTeam": "LAR",
+      "provenance": {
+        "canonicalKey": "max-klare-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000194",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 225,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 92,
+      "positionTier": "K",
+      "sourceTeam": "NO",
+      "provenance": {
+        "canonicalKey": "devaughn-vele-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000195",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 226,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 93,
+      "positionTier": "K",
+      "sourceTeam": "WAS",
+      "provenance": {
+        "canonicalKey": "treylon-burks-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000196",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 227,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 94,
+      "positionTier": "K",
+      "sourceTeam": "NYJ",
+      "provenance": {
+        "canonicalKey": "adonai-mitchell-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000197",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 228,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 95,
+      "positionTier": "K",
+      "sourceTeam": "CAR",
+      "provenance": {
+        "canonicalKey": "xavier-legette-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000198",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 229,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 96,
+      "positionTier": "K",
+      "sourceTeam": "TB",
+      "provenance": {
+        "canonicalKey": "tez-johnson-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000199",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 231,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 97,
+      "positionTier": "K",
+      "sourceTeam": "TEN",
+      "provenance": {
+        "canonicalKey": "chimere-dike-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000200",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 234,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 41,
+      "positionTier": "H",
+      "sourceTeam": "LV",
+      "provenance": {
+        "canonicalKey": "michael-mayer-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000201",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 235,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 99,
+      "positionTier": "K",
+      "sourceTeam": "MIA",
+      "provenance": {
+        "canonicalKey": "jalen-tolbert-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000202",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 236,
+      "overallTier": "O",
+      "position": "WR",
+      "positionRank": 100,
+      "positionTier": "K",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "darius-slayton-wr",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000203",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 237,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 68,
+      "positionTier": "I",
+      "sourceTeam": "JAX",
+      "provenance": {
+        "canonicalKey": "lequint-allen-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000204",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 238,
+      "overallTier": "O",
+      "position": "TE",
+      "positionRank": 42,
+      "positionTier": "H",
+      "sourceTeam": "NYG",
+      "provenance": {
+        "canonicalKey": "theo-johnson-te",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000205",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 241,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 70,
+      "positionTier": "I",
+      "sourceTeam": "SF",
+      "provenance": {
+        "canonicalKey": "kaelon-black-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    },
+    {
+      "playerId": "1000206",
+      "source": "Fantasyland",
+      "snapshotDate": "2026-08-08",
+      "overallRank": 242,
+      "overallTier": "O",
+      "position": "RB",
+      "positionRank": 71,
+      "positionTier": "I",
+      "sourceTeam": "BAL",
+      "provenance": {
+        "canonicalKey": "adam-randall-rb",
+        "importedFrom": "data/players.json"
+      },
+      "importStatus": "MATCHED"
+    }
+  ]
+}

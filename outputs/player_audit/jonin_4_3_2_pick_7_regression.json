@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-08-11T02:36:20.770Z",
+  "slot": 7,
+  "firstSeven": [
+    {
+      "pick": 7,
+      "name": "De'Von Achane",
+      "pos": "RB",
+      "sourceRank": 9
+    },
+    {
+      "pick": 14,
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "sourceRank": 15
+    },
+    {
+      "pick": 27,
+      "name": "Chris Olave",
+      "pos": "WR",
+      "sourceRank": 27
+    },
+    {
+      "pick": 34,
+      "name": "Colston Loveland",
+      "pos": "TE",
+      "sourceRank": 38
+    },
+    {
+      "pick": 47,
+      "name": "Davante Adams",
+      "pos": "WR",
+      "sourceRank": 53
+    },
+    {
+      "pick": 54,
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "sourceRank": 60
+    },
+    {
+      "pick": 67,
+      "name": "Rome Odunze",
+      "pos": "WR",
+      "sourceRank": 64
+    }
+  ],
+  "roster": {
+    "QB": 1,
+    "RB": 6,
+    "WR": 7,
+    "TE": 1,
+    "K": 1,
+    "DST": 1
+  },
+  "timing": {
+    "QB": 54,
+    "TE": 34,
+    "K": 167,
+    "DST": 147
+  },
+  "materialReaches": [
+    {
+      "pick": 107,
+      "name": "Jordan Mason",
+      "pos": "RB",
+      "sourceRank": 124,
+      "premium": 17,
+      "band": "MATERIAL_REACH",
+      "signals": [],
+      "requiredCompletion": false
+    },
+    {
+      "pick": 147,
+      "name": "Jacksonville Jaguars D/ST",
+      "pos": "DST",
+      "sourceRank": 194,
+      "premium": 47,
+      "band": "EXTREME_REACH",
+      "signals": [],
+      "requiredCompletion": true
+    },
+    {
+      "pick": 167,
+      "name": "Cam Little",
+      "pos": "K",
+      "sourceRank": 237,
+      "premium": 70,
+      "band": "EXTREME_REACH",
+      "signals": [],
+      "requiredCompletion": true
+    }
+  ],
+  "unexplainedReaches": [
+    {
+      "pick": 107,
+      "name": "Jordan Mason",
+      "pos": "RB",
+      "sourceRank": 124,
+      "premium": 17,
+      "reasons": [
+        "WITHIN_VALUE_CORRIDOR",
+        "MATERIAL_REACH",
+        "DIMINISHING_DEPTH_UTILITY",
+        "DOCUMENTED_BENCH_UPSIDE",
+        "UNJUSTIFIED_MATERIAL_REACH"
+      ]
+    }
+  ],
+  "grade": {
+    "overall": "B-",
+    "score": 70.5,
+    "draftValue": {
+      "score": 52.8,
+      "grade": "D",
+      "explanation": "The roster paid an average premium of 11.4 picks versus stored overall rank."
+    },
+    "positionalTiming": {
+      "score": 57.8,
+      "grade": "D+",
+      "explanation": "9 selections came at least six picks ahead of stored market rank."
+    }
+  },
+  "allTeams": {
+    "completed": 10,
+    "total": 10,
+    "missingQB": 0,
+    "missingTE": 0,
+    "missingK": 0,
+    "missingDST": 0,
+    "rosterStateLeakage": 0
+  }
+}
