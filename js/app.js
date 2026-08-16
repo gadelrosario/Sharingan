@@ -402,7 +402,15 @@ function applyInjurySnapshot(snapshot, source='bundled') {
   playerPhotoRegistry=window.PlayerPhotoV1?.createRegistry(snapshot)||playerPhotoRegistry;
   window.__injurySnapshotReport = {...InjuryIntelligenceV1.applySnapshot(players, snapshot),source,fetchedAt:snapshot.fetchedAt||null,cacheState:snapshot.cacheState||null};
   invalidateIntelligence();
+  renderDataHealthStatus();
   return window.__injurySnapshotReport;
+}
+function renderDataHealthStatus(){
+  const node=el('dataHealthReadout');if(!node||!window.DataHealthV1)return;
+  const health=DataHealthV1.summary({players,injurySnapshot:window.__injurySnapshot||{},rankingSnapshot:window.__activeRankingSnapshot});
+  const updated=health.injuries.fetchedAt?new Date(health.injuries.fetchedAt).toLocaleString():'Unavailable';
+  node.dataset.status=health.injuries.status;
+  node.textContent=`Rankings: ${health.rankings.source}${health.rankings.snapshotDate?` — ${health.rankings.snapshotDate}`:''} • Injuries: Sleeper — ${health.injuries.status} (${updated}) • Player Pool: ${health.playerPool} • Identity Issues: ${health.identityIssues} critical`;
 }
 async function initializeInjuryFeed() {
   let bundled = null;
@@ -413,8 +421,8 @@ async function initializeInjuryFeed() {
     console.warn('Bundled injury snapshot could not load:', error);
   }
   injuryFeedManager = window.SleeperInjuryAdapterV1?.createManager() || null;
-  const cached = injuryFeedManager?.loadCached();
-  applyInjurySnapshot(cached || bundled || {records:[]}, cached ? 'cache' : 'bundled');
+  const cached = injuryFeedManager?.loadCached(),baseline=cached||injuryFeedManager?.prime(bundled)||bundled;
+  applyInjurySnapshot(baseline || {records:[]}, cached ? 'cache' : bundled ? 'bundled' : 'unavailable');
   if (injuryFeedManager) {
     injuryFeedManager.refreshDaily(players).then(result => {
       if (result.snapshot) {
@@ -438,6 +446,11 @@ async function refreshInjuryDataNow() {
     const count = result.snapshot.records?.filter(record => !['ACTIVE','UNKNOWN'].includes(record.status)).length || 0;
     alert(result.refreshed ? `Injury data refreshed from Sleeper. ${count} non-active player records found.` : `Refresh failed; preserved the last valid ${result.source}.`);
     return result;
+  } catch (error) {
+    console.warn('Sleeper injury refresh failed without a valid cached snapshot:',error);
+    renderDataHealthStatus();
+    alert('Injury refresh is unavailable. Existing draft data was preserved.');
+    return {snapshot:window.__injurySnapshot||null,source:'unavailable',refreshed:false,error};
   } finally {
     if (button) { button.disabled = false; button.textContent = 'Refresh Injuries Now'; }
   }
@@ -3704,7 +3717,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_4')
+      .register('./service-worker.js?v=jonin_4_3_5')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

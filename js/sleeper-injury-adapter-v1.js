@@ -30,9 +30,9 @@
     if(/INJURED RESERVE|\bIR\b/.test(injury)||/INJURED RESERVE|\bIR\b/.test(roster))return{status:'IR',raw};
     if(/SUSPEND/.test(injury)||/SUSPEND/.test(roster))return{status:'SUSPENDED',raw};
     if(/OUT/.test(injury))return{status:'OUT',raw};
-    if(/DOUBTFUL/.test(injury))return{status:'DOUBTFUL',raw};
-    if(/QUESTIONABLE|GAME.TIME/.test(injury))return{status:'QUESTIONABLE',raw};
-    if(/LIMIT/.test(injury)||/LIMIT/.test(practice))return{status:'LIMITED',raw};
+    if(injury==='D'||/DOUBTFUL/.test(injury))return{status:'DOUBTFUL',raw};
+    if(injury==='Q'||/QUESTIONABLE|GAME.TIME/.test(injury))return{status:'QUESTIONABLE',raw};
+    if(/LIMIT|RETURN|RESTRICT/.test(injury)||/LIMIT|RETURN|RESTRICT/.test(practice))return{status:'LIMITED',raw};
     if(['INACTIVE','UNAVAILABLE'].includes(roster))return{status:'UNAVAILABLE',raw};
     if(roster==='ACTIVE'&&!injury)return{status:'ACTIVE',raw:roster};
     return{status:'UNKNOWN',raw};
@@ -60,12 +60,13 @@
     if(!records.length)throw new Error('Sleeper response produced zero safe canonical matches; previous data was preserved.');
     return{schemaVersion:1,season:2026,provider:'Sleeper',endpoint:ENDPOINT,fetchedAt:iso(fetchedAt),refreshCadence:'daily',sourceRows:Object.keys(payload).length,eligibleSourceRows,records,matched:records.length,unmatchedCount:unmatched.length,ambiguousCount:ambiguous.length,unmatched,ambiguous};
   }
-  function parseCached(storage){try{const value=storage?.getItem(CACHE_KEY);return value?JSON.parse(value):null}catch{return null}}
+  function parseCached(storage){try{const value=storage?.getItem(CACHE_KEY),snapshot=value?JSON.parse(value):null;return snapshot&&Array.isArray(snapshot.records)&&snapshot.records.length?snapshot:null}catch{return null}}
   function isFresh(snapshot,now=new Date().toISOString()){const fetched=Date.parse(snapshot?.fetchedAt),current=Date.parse(now);return snapshot?.cacheState!=='STALE'&&Number.isFinite(fetched)&&Number.isFinite(current)&&current>=fetched&&current-fetched<=REFRESH_MS}
   function staleCopy(snapshot,error,now){return snapshot?{...snapshot,cacheState:'STALE',refreshError:clean(error?.message||error),refreshFailedAt:iso(now),records:(snapshot.records||[]).map(record=>({...record,feedStale:true}))}:null}
   function createManager({fetchFn=root.fetch?.bind(root),storage=root.localStorage,now=()=>new Date().toISOString()}={}){
     async function refresh(canonicalPlayers,{force=true,supplementalReports=[]}={}){const previous=parseCached(storage);if(!force&&isFresh(previous,now()))return{snapshot:previous,source:'cache',refreshed:false};try{if(typeof fetchFn!=='function')throw new Error('No network fetch implementation is available.');const response=await fetchFn(ENDPOINT,{cache:'no-store'});if(!response?.ok)throw new Error(`Sleeper request failed with HTTP ${response?.status??'unknown'}.`);const snapshot=normalizeSnapshot(await response.json(),canonicalPlayers,{fetchedAt:now(),previousSnapshot:previous,supplementalReports});storage?.setItem(CACHE_KEY,JSON.stringify(snapshot));return{snapshot,source:'network',refreshed:true}}catch(error){const stale=staleCopy(previous,error,now());if(stale)storage?.setItem(CACHE_KEY,JSON.stringify(stale));return{snapshot:stale,source:previous?'stale-cache':'none',refreshed:false,error}}}
-    return Object.freeze({loadCached:()=>parseCached(storage),refreshNow:(players,options={})=>refresh(players,{...options,force:true}),refreshDaily:(players,options={})=>refresh(players,{...options,force:false})});
+    function prime(snapshot){const cached=parseCached(storage);if(cached)return cached;if(!snapshot||!Array.isArray(snapshot.records)||!snapshot.records.length)return null;storage?.setItem(CACHE_KEY,JSON.stringify(snapshot));return snapshot}
+    return Object.freeze({loadCached:()=>parseCached(storage),prime,refreshNow:(players,options={})=>refresh(players,{...options,force:true}),refreshDaily:(players,options={})=>refresh(players,{...options,force:false})});
   }
   const api=Object.freeze({ENDPOINT,CACHE_KEY,REFRESH_MS,normalizeName,normalizePosition,buildCanonicalIndex,reconcile,normalizeSleeperStatus,sourceReport,mergeReports,normalizeSnapshot,isFresh,createManager});root.SleeperInjuryAdapterV1=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

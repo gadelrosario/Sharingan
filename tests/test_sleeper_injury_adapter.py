@@ -11,7 +11,7 @@ class SleeperInjuryAdapterTests(unittest.TestCase):
         result=subprocess.run([str(NODE),'tests/sleeper-injury-adapter-tests.js'],cwd=ROOT,text=True,capture_output=True,check=False)
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)
         payload=json.loads(result.stdout)
-        self.assertEqual((payload['passCount'],payload['failCount']),(12,0))
+        self.assertEqual((payload['passCount'],payload['failCount']),(17,0))
 
     def test_runtime_loads_adapter_before_application(self):
         html=(ROOT/'index.html').read_text(encoding='utf-8')

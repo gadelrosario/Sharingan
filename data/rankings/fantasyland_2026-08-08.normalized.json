@@ -1,6 +1,8 @@
 {
   "schemaVersion": "1.0",
   "source": "Fantasyland",
+  "hostPlatform": "Flock Fantasy",
+  "rankingScope": "overall-and-position",
   "snapshotDate": "2026-08-08",
   "createdAt": "2026-08-09T20:19:14.277807+00:00",
   "immutable": true,
