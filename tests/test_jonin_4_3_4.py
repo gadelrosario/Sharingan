@@ -14,7 +14,7 @@ class Jonin434Tests(unittest.TestCase):
         return result.stdout
 
     def test_draft_session_resilience(self):
-        self.assertIn('Draft session resilience: 11 passed, 0 failed', self.run_node('tests/draft-session-resilience-tests.js'))
+        self.assertIn('Draft session resilience: 12 passed, 0 failed', self.run_node('tests/draft-session-resilience-tests.js'))
 
     def test_player_photo_contract(self):
         self.assertIn('Player photos: 5 passed, 0 failed', self.run_node('tests/player-photo-tests.js'))
@@ -49,8 +49,8 @@ class Jonin434Tests(unittest.TestCase):
         version = (ROOT / 'js/app-version.js').read_text()
         worker = (ROOT / 'service-worker.js').read_text()
         session = (ROOT / 'js/draft-session-v1.js').read_text()
-        self.assertIn("milestone:'4.3.5'", version)
-        self.assertIn("fantasy-hq-jonin-4-3-5", worker)
+        self.assertIn("milestone:'4.3.6'", version)
+        self.assertIn("fantasy-hq-jonin-4-3-6", worker)
         self.assertIn("fantasyHQ.activeDraft.v1", session)
         self.assertIn('DRAFT_STATE_VERSION=1', session)
 

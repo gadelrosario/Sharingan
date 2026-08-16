@@ -29,6 +29,8 @@
       if(snapshot.currentPickOwner!=null&&positiveInteger(pick)&&(!positiveInteger(totalPicks)||pick<=totalPicks)&&Number(snapshot.currentPickOwner)!==teamForPick(pick,teams))throw new Error('Saved draft current owner is inconsistent.');
     }
     if(Number.isFinite(pick)&&pick!==picks.length+1)throw new Error('Saved draft current pick is inconsistent.');
+    if(positiveInteger(totalPicks)&&snapshot.status==='complete'&&(picks.length!==totalPicks||pick!==totalPicks+1))throw new Error('Saved completed draft is incomplete.');
+    if(positiveInteger(totalPicks)&&snapshot.status==='active'&&pick>totalPicks)throw new Error('Saved active draft is already complete.');
     if(positiveInteger(teams)&&Number.isFinite(snapshot.currentRound)&&Number(snapshot.currentRound)!==Math.ceil(Math.max(1,pick)/teams))throw new Error('Saved draft current round is inconsistent.');
     return clone({...snapshot,draftStateVersion:stateVersion});
   }

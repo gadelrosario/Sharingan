@@ -1,8 +1,8 @@
-const CACHE = 'fantasy-hq-jonin-4-3-5';
+const CACHE = 'fantasy-hq-jonin-4-3-6';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.3.5',
+  './css/app.css?v=4.3.6',
   './js/app-version.js?v=1.0.12',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
@@ -27,7 +27,7 @@ const ASSETS = [
   './js/player-photo-v1.js?v=1.0.0',
   './js/premium-player-card-v1.js?v=1.1.0',
   './js/draft-psychology-engine-v1.js?v=1.0.0',
-  './js/app.js?v=4.3.5',
+  './js/app.js?v=4.3.6',
   './assets/player-placeholders/generic.svg',
   './assets/player-placeholders/qb.svg',
   './assets/player-placeholders/rb.svg',

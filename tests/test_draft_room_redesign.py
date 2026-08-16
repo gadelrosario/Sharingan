@@ -75,7 +75,8 @@ if(five.length!==1||five[0].text!=='Target TE.'||eleven.length!==1||nine.length!
         self.assertIn('selectedCandidateId', render)
         self.assertIn("DOM.recordPickBtn.dataset.playerId=displayed?.id??''", self.app)
         record = self.app.split('function recordFightCardPlayer', 1)[1].split('function renderBoard', 1)[0]
-        self.assertIn("players.find(candidate=>candidate.id===id&&!drafted.includes(candidate.id))", record.replace(' ', ''))
+        self.assertIn("playerByCanonicalId(id)", record)
+        self.assertIn("isDraftedPlayer(player.id)", record)
 
     def test_desktop_workspace_has_three_equal_height_panels(self):
         self.assertIn('data-testid="live-team-tracker"', self.html)
@@ -92,7 +93,7 @@ if(five.length!==1||five[0].text!=='Target TE.'||eleven.length!==1||nine.length!
         self.assertIn('onclick="draftRecommendationPlayer(${p.id})"', markup)
         shared = self.app.split('function draftRecommendationPlayer', 1)[1].split('function renderBoard', 1)[0]
         self.assertIn('recordFightCardPlayer()', shared)
-        self.assertIn('!drafted.includes(candidate.id)', shared)
+        self.assertIn('isDraftedPlayer(player.id)', shared)
 
     def test_live_tracker_uses_roster_assignment_and_refresh_path(self):
         tracker = self.app.split('function liveTeamTrackerMarkup', 1)[1].split('function renderWaitMeter', 1)[0]

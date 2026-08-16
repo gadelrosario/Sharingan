@@ -670,8 +670,19 @@ function info() {
   let next=pick;while(next<=TOTAL_PICKS&&teamForPick(next)!==slot)next+=1;
   return {r:Math.ceil(pick/teams),ip:((pick-1)%teams)+1,until:Math.max(0,Math.min(TOTAL_PICKS,next)-pick)};
 }
+function canonicalPlayerId(value) {
+  return String(value ?? '');
+}
+function isDraftedPlayer(id) {
+  const canonicalId = canonicalPlayerId(id);
+  return drafted.some(draftedId => canonicalPlayerId(draftedId) === canonicalId);
+}
+function playerByCanonicalId(id) {
+  const canonicalId = canonicalPlayerId(id);
+  return players.find(player => canonicalPlayerId(player.id) === canonicalId) || null;
+}
 function available() {
-  return players.filter(p => !drafted.includes(p.id));
+  return players.filter(p => !isDraftedPlayer(p.id));
 }
 function myPlayers() {
   return managerRoster(slot);
@@ -1550,9 +1561,11 @@ function renderAfterPick(record, { full = false } = {}) {
 }
 function selectPlayer(id, team, options = {}) {
   try {
-    if (drafted.includes(id) || pick > TOTAL_PICKS) return false;
-    const player = players.find(p => p.id === id);
-    if (!player) return false;
+    const owner = currentPickOwner(), player = playerByCanonicalId(id);
+    if (isDraftedPlayer(id) || pick > TOTAL_PICKS || !player) return false;
+    if (Number(team) !== owner) return false;
+    id = player.id;
+    team = owner;
     if (mode === 'yahoo' && team === slot) {
       decisionSnapshots.push({
         beforePick: pick,
@@ -1911,7 +1924,7 @@ function openScan(id) {
    .map(x => `<li>${x}</li>`)
    .join('')}</ul></div>
  ${alt ? `<div class="scanAlternative"><div><b>Best alternative: ${alt.name}</b><div class="meta">${alt.pos} • ${alt.team} • Decision Tier ${PlayerTierContract.getDecisionTier(alt)} • ${finalPickScore(alt)}/100</div></div><button class="scanBtn" onclick="openScan(${alt.id})">Compare</button></div>` : ''}
- <button class="primary scanPrimaryAction" onclick="selectPlayer(${p.id},${slot});closeScan()">Draft ${p.name}</button>
+ <button class="primary scanPrimaryAction" onclick="recordCurrentPick(${p.id});closeScan()">Draft ${p.name}</button>
  <details class="scanDetails"><summary>Show Full Sharingan Analysis</summary>
    <div class="scanGrid">
      <div class="scanMetric"><span>Final Pick Score</span><b>${finalPickScore(p)}/100</b></div><div class="scanMetric"><span>Weekly Ceiling</span><b>${s.ceiling}/100</b></div><div class="scanMetric"><span>Floor</span><b>${s.floor}/100</b></div>
@@ -1934,7 +1947,7 @@ function closeScan(e) {
 }
 
 function selectCandidate(id) {
-  if (drafted.includes(id)) return;
+  if (isDraftedPlayer(id)) return;
   selectedCandidateId = id;
   recentSearchIds = [id, ...recentSearchIds.filter(candidateId => candidateId !== id)].slice(0, 5);
   renderRecommendation();
@@ -2327,7 +2340,7 @@ function premiumPlayerCardMarkup(card) {
       ['exact-local','provider'].includes(card.imageStatus)
         ? `Portrait of ${safeInsightText(card.name)}`
         : `Player portrait unavailable for ${safeInsightText(card.name)}`;
-  return `<article class="premiumPlayerCard stage-${safeInsightText(card.sharinganStage)} ${card.comparisonMode ? 'isComparing' : ''}" aria-label="${card.comparisonMode ? 'Comparing' : 'Recommended player'} ${safeInsightText(card.name)}"><div class="playerPortrait"><img src="${safeInsightText(card.imageUrl)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl)}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl)}" data-fallback-stage="${safeInsightText(card.fallbackStage)}" data-player-name="${safeInsightText(card.name)}" alt="${alt}" onerror="handlePlayerPortraitError(this)"><span class="portraitLight" aria-hidden="true"></span><span class="portraitMonogram" aria-hidden="true">${safeInsightText(card.position)}</span></div><div class="playerCardBody">${card.comparisonMode ? `<div class="playerCardState">COMPARING</div>` : ''}<h2>${safeInsightText(card.name)}</h2><div class="playerIdentity"><span class="positionBadge">${safeInsightText(card.position)}</span><strong>${safeInsightText(card.nflTeam || 'Team unavailable')}</strong>${card.rookie ? `<span class="rookieBadge">ROOKIE</span>` : ''}</div><div class="playerCardMetrics" aria-label="Player metrics">${metrics}</div>${traits ? `<div class="playerTraits" aria-label="Player traits">${traits}</div>` : ''}${card.byeWeek != null ? `<div class="playerCardBye">Bye week <strong>${safeInsightText(card.byeWeek)}</strong></div>` : ''}<div class="playerCardAction"><button class="primary decisionDraftBtn" onclick="selectPlayer(${safeInsightText(card.playerId)},${slot})">Draft ${safeInsightText(card.name)}</button></div></div></article>`;
+  return `<article class="premiumPlayerCard stage-${safeInsightText(card.sharinganStage)} ${card.comparisonMode ? 'isComparing' : ''}" aria-label="${card.comparisonMode ? 'Comparing' : 'Recommended player'} ${safeInsightText(card.name)}"><div class="playerPortrait"><img src="${safeInsightText(card.imageUrl)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl)}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl)}" data-fallback-stage="${safeInsightText(card.fallbackStage)}" data-player-name="${safeInsightText(card.name)}" alt="${alt}" onerror="handlePlayerPortraitError(this)"><span class="portraitLight" aria-hidden="true"></span><span class="portraitMonogram" aria-hidden="true">${safeInsightText(card.position)}</span></div><div class="playerCardBody">${card.comparisonMode ? `<div class="playerCardState">COMPARING</div>` : ''}<h2>${safeInsightText(card.name)}</h2><div class="playerIdentity"><span class="positionBadge">${safeInsightText(card.position)}</span><strong>${safeInsightText(card.nflTeam || 'Team unavailable')}</strong>${card.rookie ? `<span class="rookieBadge">ROOKIE</span>` : ''}</div><div class="playerCardMetrics" aria-label="Player metrics">${metrics}</div>${traits ? `<div class="playerTraits" aria-label="Player traits">${traits}</div>` : ''}${card.byeWeek != null ? `<div class="playerCardBye">Bye week <strong>${safeInsightText(card.byeWeek)}</strong></div>` : ''}<div class="playerCardAction"><button class="primary decisionDraftBtn" onclick="recordCurrentPick(${safeInsightText(card.playerId)})">Draft ${safeInsightText(card.name)}</button></div></div></article>`;
 }
 function comparableQuarterbackDepth() {
   const quarterbacks = available()
@@ -2645,7 +2658,7 @@ function renderRecommendation() {
   const primary = recs[0],
     selected = selectedCandidateId
       ? players.find(
-          candidate => candidate.id === selectedCandidateId && !drafted.includes(candidate.id)
+          candidate => candidate.id === selectedCandidateId && !isDraftedPlayer(candidate.id)
         )
       : null,
     displayed = selected || primary;
@@ -2671,11 +2684,12 @@ function updateDraftDecisionChrome(model,displayed,primary){
   if(completion.mode!=='NORMAL') instruction=completion.message;
   safeText('headerCommandScore',Number.isFinite(cc)?boardControlState(cc):'MEDIUM');safeText('headerCommandLabel',Number.isFinite(cc)?'Tier Advantage • Pick Flexibility • Roster Balance':'Board developing');
   if(DOM.boardInstruction)DOM.boardInstruction.innerHTML=`<b>BOARD INSTRUCTION</b><span>${safeInsightText(instruction)}</span><span>🎯 Foundation: ${safeInsightText(decision.phaseLabel||'Best roster path')}</span><span>🛡️ Strategy: ${safeInsightText(tags[1]?.label||tags[0]?.label||'Protect value')}</span><span>💎 Focus: ${safeInsightText(tags[0]?.label||'Best available')}</span>`;
-  if(DOM.recordPickBtn){DOM.recordPickBtn.disabled=!displayed||drafted.includes(displayed.id);DOM.recordPickBtn.dataset.playerId=displayed?.id??'';DOM.recordPickBtn.setAttribute('aria-label',`Record ${displayed?.name||'selected player'} at pick ${pick}`)}
+  if(DOM.recordPickBtn){DOM.recordPickBtn.disabled=!displayed||isDraftedPlayer(displayed.id);DOM.recordPickBtn.dataset.playerId=displayed?.id??'';DOM.recordPickBtn.setAttribute('aria-label',`Record ${displayed?.name||'selected player'} at pick ${pick}`)}
   if(DOM.recordPickLabel)DOM.recordPickLabel.textContent=`Pick ${pick} • ${displayed?.name||'No player selected'}`;
 }
 function recordFightCardPlayer(){
-  const id=Number(DOM.recordPickBtn?.dataset.playerId),player=players.find(candidate=>candidate.id===id&&!drafted.includes(candidate.id));
+  const id=DOM.recordPickBtn?.dataset.playerId,player=playerByCanonicalId(id);
+  if(player&&isDraftedPlayer(player.id)){alert('That player is no longer available.');return false}
   if(!player){alert('Select an available player in Fight Card before recording the pick.');return false}
   if(!recommendationSelectionAllowed(player))alert(`Roster-completion warning: ${rosterCompletionState().message} The recorded draft remains the source of truth.`);
   return recordCurrentPick(player.id);
@@ -2689,7 +2703,8 @@ function viewRecommendationPlayer(id){
   openScan(Number(id));
 }
 function draftRecommendationPlayer(id){
-  const player=players.find(candidate=>candidate.id===Number(id)&&!drafted.includes(candidate.id));
+  const player=playerByCanonicalId(id);
+  if(player&&isDraftedPlayer(player.id)){alert('That player is no longer available.');return false}
   if(!player){alert('That player is no longer available.');return false}
   if(!recommendationSelectionAllowed(player))alert(`Roster-completion warning: ${rosterCompletionState().message} The recorded draft remains the source of truth.`);
   selectCandidate(player.id);
@@ -3389,7 +3404,7 @@ function recordCurrentPick(id) {
 function undoLastPick() {
   if (!history.length) return;
   const last = history.pop();
-  drafted = drafted.filter(id => id !== last.id);
+  drafted = drafted.filter(id => canonicalPlayerId(id) !== canonicalPlayerId(last.id));
   pick = Math.max(1, last.pick);
   selectedCandidateId = null;
   invalidateIntelligence();
@@ -3717,7 +3732,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_5')
+      .register('./service-worker.js?v=jonin_4_3_6')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );
