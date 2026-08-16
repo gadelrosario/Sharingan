@@ -32,6 +32,7 @@ let players = [],
   };
 let playerBrowserQuery = '';
 let injuryFeedManager = null;
+let playerPhotoRegistry = window.PlayerPhotoV1?.emptyRegistry || null;
 const managers = [
   {
     name: 'Gerard',
@@ -398,6 +399,7 @@ async function init() {
 function applyInjurySnapshot(snapshot, source='bundled') {
   if (!snapshot || !window.InjuryIntelligenceV1) return null;
   window.__injurySnapshot = snapshot;
+  playerPhotoRegistry=window.PlayerPhotoV1?.createRegistry(snapshot)||playerPhotoRegistry;
   window.__injurySnapshotReport = {...InjuryIntelligenceV1.applySnapshot(players, snapshot),source,fetchedAt:snapshot.fetchedAt||null,cacheState:snapshot.cacheState||null};
   invalidateIntelligence();
   return window.__injurySnapshotReport;
@@ -443,7 +445,7 @@ async function refreshInjuryDataNow() {
 
 function refreshDraftSlotOptions(teamCount=10,preferred=slot){
   if(!DOM.draftSlot)return;
-  const teams=DraftMathV1.SUPPORTED_SIZES.includes(Number(teamCount))?Number(teamCount):10,
+  const supported=window.DraftMathV1?.SUPPORTED_SIZES||[9,10,11],teams=supported.includes(Number(teamCount))?Number(teamCount):10,
     selected=Math.max(1,Math.min(teams,Number(preferred)||teams));
   DOM.draftSlot.innerHTML='';
   for(let i=1;i<=teams;i++){
@@ -514,7 +516,7 @@ function chooseMode(m) {
 }
 function currentDraftSessionState(status='active'){
   const recommendationIds=players.length&&pick<=TOTAL_PICKS?recommendations().map(player=>player.id):[];
-  return {status,mode,style,slot,pick,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
+  return {status,mode,style,slot,pick,currentRound:info().r,currentPickOwner:pick<=TOTAL_PICKS?teamForPick(pick):null,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
 }
 function persistDraftSession(status='active'){
   if(!draftSessionStore||!history.length&&DOM.appScreen?.classList.contains('hidden'))return null;
@@ -531,7 +533,7 @@ function confirmStartNewDraft(){
 }
 function applySavedSettings(settings={}){if(settings.teams!==undefined){const teamNode=el('teamCount');if(teamNode)teamNode.value=settings.teams;refreshDraftSlotOptions(settings.teams,settings.slot)}const values={draftSlot:settings.slot,scoring:settings.scoring,startQB:settings.startQB,startRB:settings.startRB,startWR:settings.startWR,startTE:settings.startTE,flexSpots:settings.flex,startK:settings.startK,startDST:settings.startDST,benchSpots:settings.bench,passTD:settings.passTD,riskProfile:settings.risk};Object.entries(values).forEach(([id,value])=>{const node=el(id);if(node&&value!==undefined)node.value=value})}
 function resumeSavedDraft(){
-  try{const saved=draftSessionStore?.load();if(!saved||saved.status!=='active')throw new Error('No active saved draft is available.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;decisionSnapshots=[...(saved.decisionSnapshots||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderLeagueDnaBar();renderAll();renderDraftTimeline();installDraftNavigationGuard();requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
+  try{const saved=draftSessionStore?.load();if(!saved||saved.status!=='active')throw new Error('No active saved draft is available.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;if(saved.currentPickOwner!=null&&Number(saved.currentPickOwner)!==teamForPick(pick))throw new Error('Saved draft owner does not match the restored snake order.');decisionSnapshots=[...(saved.decisionSnapshots||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderLeagueDnaBar();renderAll();renderDraftTimeline();installDraftNavigationGuard();requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
 }
 function renderDraftTimeline(){if(!DOM.draftTimeline||!window.DraftSessionV1)return;const groups=DraftSessionV1.timeline(history,fantasyHQPlayerIndex(),leagueContext.teams||10);DOM.draftTimeline.innerHTML=groups.length?groups.map(group=>`<section class="timelineRound"><strong>Round ${group.round}</strong>${group.picks.map(entry=>`<div class="timelinePick"><span>${safeInsightText(entry.label)}</span><span>${safeInsightText(entry.playerName)}</span></div>`).join('')}</section>`).join(''):'<div class="timelineEmpty">Picks will appear here chronologically.</div>'}
 function saveDraftNotebook(value){if(!window.DraftSessionV1)return;DraftSessionV1.saveNote(value);if(DOM.notebookStatus){DOM.notebookStatus.textContent='Saved just now';DOM.notebookStatus.dataset.savedAt=new Date().toISOString()}renderRoundNoteReminder()}
@@ -635,6 +637,7 @@ function backToSetup() {
   DOM.changeBtn?.classList.add('hidden');
   DOM.tabs?.classList.add('hidden');
   document.getElementById('headerDraftContext')?.classList.add('hidden');
+  showSavedDraftPrompt();
 }
 function buildProfiles() {
   aiProfiles = {};
@@ -1739,7 +1742,7 @@ function renderLiveRoster() {
 }
 function liveTeamTrackerMarkup(){
   const state=rosterViewState();
-  const rowMarkup=(row,bench=false)=>{const p=row.player,label=bench?'BN':row.slot.startsWith('DEF')?'DST':row.slot;if(!p)return `<tr class="emptyTrackerRow"><td>${safeInsightText(label)}</td><td>Open</td><td>—</td><td>—</td><td>—</td></tr>`;const tier=PlayerTierContract.getDecisionTier(p);return `<tr data-player-id="${safeInsightText(p.id)}"><td>${safeInsightText(label)}</td><td>${safeInsightText(p.name)}</td><td>${safeInsightText(p.team||'—')}</td><td>${safeInsightText(tier)}</td><td>${safeInsightText(p.bye??'—')}</td></tr>`};
+  const rowMarkup=(row,bench=false)=>{const p=row.player,label=bench?'BN':row.slot.startsWith('DEF')?'DST':row.slot;if(!p)return `<tr class="emptyTrackerRow"><td>${safeInsightText(label)}</td><td>Open</td><td>—</td><td>—</td><td>—</td></tr>`;const tier=PlayerTierContract.getDecisionTier(p);return `<tr data-player-id="${safeInsightText(p.id)}"><td>${safeInsightText(label)}</td><td><span class="trackerPlayerIdentity">${playerPhotoMarkup(p,'trackerPlayerPhoto',true)}<span>${safeInsightText(p.name)}</span></span></td><td>${safeInsightText(p.team||'—')}</td><td>${safeInsightText(tier)}</td><td>${safeInsightText(p.bye??'—')}</td></tr>`};
   const starters=state.starters.map(row=>rowMarkup(row)).join(''),bench=[...(state.bench||[]),...(state.overflow||[])].map(row=>rowMarkup(row,true)).join('');
   return `<table class="liveTeamTable"><thead><tr><th>SLOT</th><th>PLAYER</th><th>NFL</th><th>TIER</th><th>BYE</th></tr></thead><tbody><tr class="trackerSection"><th colspan="5">STARTERS</th></tr>${starters}<tr class="trackerSection"><th colspan="5">BENCH</th></tr>${bench||'<tr class="emptyTrackerRow"><td>BN</td><td>Empty</td><td>—</td><td>—</td><td>—</td></tr>'}</tbody></table>`;
 }
@@ -2269,6 +2272,11 @@ function coachingEventPresentation(eventType) {
   };
   return events[eventType] || null;
 }
+function playerPhotoFor(player){return playerPhotoRegistry?.resolve(player)||window.PlayerPhotoV1?.fallback(player)||{available:false,url:null}}
+function playerPhotoMarkup(player,className='',decorative=false){
+  const photo=playerPhotoFor(player),positionFallback=`assets/player-placeholders/${positionKey(player).toLowerCase()}.svg`,src=photo.available?photo.url:positionFallback,stage=photo.available?0:1,alt=decorative?'':photo.available?`Portrait of ${player.name}`:`Player portrait unavailable for ${player.name}`;
+  return `<img class="${safeInsightText(className)}" src="${safeInsightText(src)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(positionFallback)}" data-generic-fallback="assets/player-placeholders/generic.svg" data-fallback-stage="${stage}" data-player-name="${safeInsightText(player.name)}" alt="${safeInsightText(alt)}" onerror="handlePlayerPortraitError(this)">`;
+}
 function handlePlayerPortraitError(image) {
   if (!image) return;
   const stage = Number(image.dataset.fallbackStage || 0);
@@ -2303,10 +2311,10 @@ function premiumPlayerCardMarkup(card) {
       .filter(Boolean)
       .join(''),
     alt =
-      card.imageStatus === 'exact-local'
+      ['exact-local','provider'].includes(card.imageStatus)
         ? `Portrait of ${safeInsightText(card.name)}`
         : `Player portrait unavailable for ${safeInsightText(card.name)}`;
-  return `<article class="premiumPlayerCard stage-${safeInsightText(card.sharinganStage)} ${card.comparisonMode ? 'isComparing' : ''}" aria-label="${card.comparisonMode ? 'Comparing' : 'Recommended player'} ${safeInsightText(card.name)}"><div class="playerPortrait"><img src="${safeInsightText(card.imageUrl)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl)}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl)}" data-fallback-stage="${safeInsightText(card.fallbackStage)}" data-player-name="${safeInsightText(card.name)}" alt="${alt}" onerror="handlePlayerPortraitError(this)"><span class="portraitLight" aria-hidden="true"></span><span class="portraitMonogram" aria-hidden="true">${safeInsightText(card.position)}</span></div><div class="playerCardBody">${card.comparisonMode ? `<div class="playerCardState">COMPARING</div>` : ''}<h2>${safeInsightText(card.name)}</h2><div class="playerIdentity"><span class="positionBadge">${safeInsightText(card.position)}</span><strong>${safeInsightText(card.nflTeam || 'Team unavailable')}</strong>${card.rookie ? `<span class="rookieBadge">ROOKIE</span>` : ''}</div><div class="playerCardMetrics" aria-label="Player metrics">${metrics}</div>${traits ? `<div class="playerTraits" aria-label="Player traits">${traits}</div>` : ''}${card.byeWeek != null ? `<div class="playerCardBye">Bye week <strong>${safeInsightText(card.byeWeek)}</strong></div>` : ''}<div class="playerCardAction"><button class="primary decisionDraftBtn" onclick="selectPlayer(${safeInsightText(card.playerId)},${slot})">Draft ${safeInsightText(card.name)}</button></div></div></article>`;
+  return `<article class="premiumPlayerCard stage-${safeInsightText(card.sharinganStage)} ${card.comparisonMode ? 'isComparing' : ''}" aria-label="${card.comparisonMode ? 'Comparing' : 'Recommended player'} ${safeInsightText(card.name)}"><div class="playerPortrait"><img src="${safeInsightText(card.imageUrl)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl)}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl)}" data-fallback-stage="${safeInsightText(card.fallbackStage)}" data-player-name="${safeInsightText(card.name)}" alt="${alt}" onerror="handlePlayerPortraitError(this)"><span class="portraitLight" aria-hidden="true"></span><span class="portraitMonogram" aria-hidden="true">${safeInsightText(card.position)}</span></div><div class="playerCardBody">${card.comparisonMode ? `<div class="playerCardState">COMPARING</div>` : ''}<h2>${safeInsightText(card.name)}</h2><div class="playerIdentity"><span class="positionBadge">${safeInsightText(card.position)}</span><strong>${safeInsightText(card.nflTeam || 'Team unavailable')}</strong>${card.rookie ? `<span class="rookieBadge">ROOKIE</span>` : ''}</div><div class="playerCardMetrics" aria-label="Player metrics">${metrics}</div>${traits ? `<div class="playerTraits" aria-label="Player traits">${traits}</div>` : ''}${card.byeWeek != null ? `<div class="playerCardBye">Bye week <strong>${safeInsightText(card.byeWeek)}</strong></div>` : ''}<div class="playerCardAction"><button class="primary decisionDraftBtn" onclick="selectPlayer(${safeInsightText(card.playerId)},${slot})">Draft ${safeInsightText(card.name)}</button></div></div></article>`;
 }
 function comparableQuarterbackDepth() {
   const quarterbacks = available()
@@ -2508,6 +2516,7 @@ function playerDecisionModel(player, recs) {
         coachingHeadline: coaching?.headline,
         tierCliff: vision?.tierCliff,
         comparisonMode: player.id !== primary.id,
+        photo: playerPhotoFor(player),
       })
     : null;
   const psychology = draftPsychologyFor(primary, recs);
@@ -2592,7 +2601,7 @@ function injuryBadgeMarkup(player){
 }
 function decisionCardMarkup(model, { recommended = false } = {}) {
   const p=model.player,card=model.playerCard||{},score=mambaScore(p),tier=PlayerTierContract.getDecisionTier(p),confidence=model.coaching?.confidence??model.summary?.confidence?.score??50,tags=compactStrategyTags(model),label=recommended?'RECOMMENDED PICK':'PLAYER VIEW',portrait=card.imageUrl||`assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`,stage=sharinganStage(p);
-  return `<article class="compactFightCard ${recommended?'recommendedDecision':'playerViewDecision'} stage-${safeInsightText(stage.key)}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'Team unavailable')} ${injuryBadgeMarkup(p)}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="sharinganStage stage-${safeInsightText(stage.key)}">${sharinganIconMarkup(stage.key)}<span>${safeInsightText(stage.label)} • ${safeInsightText(stage.meaning)}</span></div><div class="fightTags">${tags.map(tag=>`<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended?'':`<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
+  return `<article class="compactFightCard ${recommended?'recommendedDecision':'playerViewDecision'} stage-${safeInsightText(stage.key)}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'Team unavailable')} ${injuryBadgeMarkup(p)}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="sharinganStage stage-${safeInsightText(stage.key)}">${sharinganIconMarkup(stage.key)}<span>${safeInsightText(stage.label)} • ${safeInsightText(stage.meaning)}</span></div><div class="fightTags">${tags.map(tag=>`<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended?'':`<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
 }
 function recommendationCategoryLabels(models) {
   const labels=new Map(),id=model=>model.player.id;
@@ -2604,7 +2613,7 @@ function recommendationCategoryLabels(models) {
 }
 function alternativeDecisionMarkup(model, rank, categoryLabel) {
   const p=model.player,card=model.playerCard||{},tier=PlayerTierContract.getDecisionTier(p),score=mambaScore(p),confidence=model.coaching?.confidence??model.summary?.confidence?.score??50,tags=compactStrategyTags(model).slice(0,4),active=selectedCandidateId===p.id||(!selectedCandidateId&&rank===1),portrait=card.imageUrl||`assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`;
-  return `<article class="recommendationPlayerCard ${active?'active':''}" data-testid="recommendation-card-${safeInsightText(p.id)}" data-player-id="${safeInsightText(p.id)}"><span class="recommendationCategory">${safeInsightText(categoryLabel)}</span><span class="recommendationRank">${rank}</span><div class="recommendationPortrait"><img src="${safeInsightText(portrait)}" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="" onerror="handlePlayerPortraitError(this)"></div><div class="recommendationCardIdentity"><b>${safeInsightText(p.name)}</b><small>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'—')}</small><span>Tier ${safeInsightText(tier)} • ♛ ${safeInsightText(score)}</span></div><div class="recommendationIcons">${tags.map(tag=>`<i title="${safeInsightText(tag.label)}" aria-label="${safeInsightText(tag.label)}">${tag.icon}</i>`).join('')}</div><div class="recommendationStars" aria-label="${safeInsightText(confidence)} confidence">${'★'.repeat(Math.max(1,Math.min(5,Math.round(confidence/20))))}${'☆'.repeat(5-Math.max(1,Math.min(5,Math.round(confidence/20))))}</div><div class="recommendationActions"><button type="button" class="viewRecommendation" aria-pressed="${active}" onclick="viewRecommendationPlayer(${p.id})">View</button><button type="button" class="draftRecommendation" onclick="draftRecommendationPlayer(${p.id})">Draft</button></div></article>`;
+  return `<article class="recommendationPlayerCard ${active?'active':''}" data-testid="recommendation-card-${safeInsightText(p.id)}" data-player-id="${safeInsightText(p.id)}"><span class="recommendationCategory">${safeInsightText(categoryLabel)}</span><span class="recommendationRank">${rank}</span><div class="recommendationPortrait"><img src="${safeInsightText(portrait)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="" onerror="handlePlayerPortraitError(this)"></div><div class="recommendationCardIdentity"><b>${safeInsightText(p.name)}</b><small>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'—')}</small><span>Tier ${safeInsightText(tier)} • ♛ ${safeInsightText(score)}</span></div><div class="recommendationIcons">${tags.map(tag=>`<i title="${safeInsightText(tag.label)}" aria-label="${safeInsightText(tag.label)}">${tag.icon}</i>`).join('')}</div><div class="recommendationStars" aria-label="${safeInsightText(confidence)} confidence">${'★'.repeat(Math.max(1,Math.min(5,Math.round(confidence/20))))}${'☆'.repeat(5-Math.max(1,Math.min(5,Math.round(confidence/20))))}</div><div class="recommendationActions"><button type="button" class="viewRecommendation" aria-pressed="${active}" onclick="viewRecommendationPlayer(${p.id})">View</button><button type="button" class="draftRecommendation" onclick="draftRecommendationPlayer(${p.id})">Draft</button></div></article>`;
 }
 function renderRecommendation() {
   const renderStarted = performance.now();
@@ -3496,18 +3505,21 @@ function renderPlayers() {
             <div class="meta">${rankLabel}</div>
 
             <button type="button" class="searchResultPlayer" onclick="selectCandidate(${player.id})">
+              ${playerPhotoMarkup(player,'searchResultPhoto',true)}
+              <span class="searchResultIdentity">
               <b
                 class="scanLink"
               >
-                ${player.name}
+                ${safeInsightText(player.name)}
               </b>
 
               <div class="meta">
                 ${positionKey(player)}
-                • ${player.team}
+                • ${safeInsightText(player.team||'—')}
                 • Decision Tier ${decisionTier}
                 ${injuryBadgeMarkup(player)}
               </div>
+              </span>
             </button>
 
             <button
@@ -3692,7 +3704,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_3')
+      .register('./service-worker.js?v=jonin_4_3_4')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

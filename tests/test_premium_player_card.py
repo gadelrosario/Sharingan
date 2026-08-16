@@ -27,7 +27,7 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
         self.assertIn("tier:PlayerTierContract.getDecisionTier(player)", re.sub(r"\s+", "", app))
         self.assertIn("playerCard,", app)
         self.assertIn("card=model.playerCard", re.sub(r"\s+", "", app))
-        self.assertIn("js/premium-player-card-v1.js?v=1.0.0", html)
+        self.assertIn("js/premium-player-card-v1.js?v=1.1.0", html)
         self.assertRegex(app, r"player\.id\s*!==\s*primary\.id")
         self.assertIn("COMPARING", app)
 
@@ -45,7 +45,7 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         css = (ROOT / "css" / "app.css").read_text(encoding="utf-8")
         self.assertIn('<h2>${safeInsightText(card.name)}</h2>', app)
-        self.assertRegex(app, r"card\.imageStatus\s*===\s*['\"]exact-local['\"]")
+        self.assertIn("['exact-local','provider'].includes(card.imageStatus)", app)
         self.assertIn("Player portrait unavailable for", app)
         self.assertIn('aria-label="Player metrics"', app)
         self.assertRegex(css, r"overflow-wrap\s*:\s*anywhere")
@@ -55,8 +55,8 @@ const result=window.PremiumPlayerCardTests.run();if(result.failCount)process.exi
 
     def test_service_worker_caches_only_real_card_assets(self):
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertIn('fantasy-hq-jonin-4-3-3', worker)
-        self.assertIn('./js/premium-player-card-v1.js?v=1.0.0', worker)
+        self.assertIn('fantasy-hq-jonin-4-3-4', worker)
+        self.assertIn('./js/premium-player-card-v1.js?v=1.1.0', worker)
         self.assertNotIn('assets/players/', worker)
         for name in ("generic", "qb", "rb", "wr", "te", "k", "dst"):
             self.assertIn(f'./assets/player-placeholders/{name}.svg', worker)

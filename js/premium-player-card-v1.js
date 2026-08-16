@@ -26,13 +26,14 @@
     const player=context.player||null;
     if(!player)return {empty:true,message:'No player recommendation is currently available.'};
     const position=positionOf(player.pos??player.position),tier=text(context.tier),mamba=safeNumber(context.mambaScore),bye=safeNumber(player.bye??player.byeWeek);
-    const traits=traitsFor({player,tier,sharinganStage:context.sharinganStage,tierCliff:context.tierCliff}),portraitAvailable=context.portraitAvailable===true;
+    const traits=traitsFor({player,tier,sharinganStage:context.sharinganStage,tierCliff:context.tierCliff}),photo=context.photo&&String(context.photo.canonicalPlayerId)===String(player.id)&&context.photo.available===true?context.photo:null,portraitAvailable=Boolean(photo)||context.portraitAvailable===true;
     return {
       empty:false,playerId:player.id??null,name:text(player.name)||'Unknown player',position,
       nflTeam:text(player.team??player.nflTeam),byeWeek:bye,tier:tier||null,mambaScore:mamba,
       rookie:player.rookie===true,imageKey:imageKey(player),exactImageUrl:exactImageUrl(player),
-      imageUrl:portraitAvailable?exactImageUrl(player):positionFallbackUrl(position),positionFallbackUrl:positionFallbackUrl(position),
-      genericFallbackUrl:genericFallbackUrl(),imageStatus:portraitAvailable?'exact-local':'position-fallback',fallbackStage:portraitAvailable?0:1,
+      imageUrl:photo?.url||(portraitAvailable?exactImageUrl(player):positionFallbackUrl(position)),positionFallbackUrl:positionFallbackUrl(position),
+      genericFallbackUrl:genericFallbackUrl(),imageStatus:photo?'provider':portraitAvailable?'exact-local':'position-fallback',fallbackStage:portraitAvailable?0:1,
+      photoProvider:photo?.provider||null,photoProviderPlayerId:photo?.providerPlayerId||null,
       traits,availabilityLabel:text(context.availabilityLabel)||null,recommendationRank:Number(context.recommendationRank)||1,
       sharinganStage:text(context.sharinganStage)||'normal',coachingPhase:text(context.coachingPhase)||null,
       coachingHeadline:text(context.coachingHeadline)||null,comparisonMode:Boolean(context.comparisonMode)

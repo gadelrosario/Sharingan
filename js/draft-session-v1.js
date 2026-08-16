@@ -1,23 +1,44 @@
 (function(root){
   'use strict';
-  const STORAGE_KEY='fantasyHQ.activeDraft.v1',NOTE_KEY='fantasyHQ.scroll.v1',SCHEMA_VERSION=1;
+  const STORAGE_KEY='fantasyHQ.activeDraft.v1',NOTE_KEY='fantasyHQ.scroll.v1',SCHEMA_VERSION=1,DRAFT_STATE_VERSION=1;
   const clone=value=>JSON.parse(JSON.stringify(value));
   const validObject=value=>value&&typeof value==='object'&&!Array.isArray(value);
+  const positiveInteger=value=>Number.isInteger(Number(value))&&Number(value)>0;
+  const teamForPick=(pick,teams)=>{const round=Math.ceil(pick/teams),within=((pick-1)%teams)+1;return round%2?within:teams+1-within};
   function validate(snapshot){
     if(!validObject(snapshot)||snapshot.schemaVersion!==SCHEMA_VERSION)throw new Error('Unsupported saved draft.');
+    const stateVersion=snapshot.draftStateVersion??DRAFT_STATE_VERSION;
+    if(stateVersion!==DRAFT_STATE_VERSION)throw new Error('Incompatible saved draft state.');
     if(!Array.isArray(snapshot.history)||!Array.isArray(snapshot.drafted))throw new Error('Saved draft is incomplete.');
     const ids=snapshot.history.map(entry=>String(entry.id)),picks=snapshot.history.map(entry=>Number(entry.pick));
     if(new Set(ids).size!==ids.length)throw new Error('Saved draft contains duplicate players.');
     if(new Set(picks).size!==picks.length||picks.some(value=>!Number.isInteger(value)||value<1))throw new Error('Saved draft contains invalid picks.');
-    return clone(snapshot);
+    if(picks.some((value,index)=>value!==index+1))throw new Error('Saved draft contains skipped or shifted picks.');
+    if(snapshot.drafted.map(String).join('|')!==ids.join('|'))throw new Error('Saved draft player order is inconsistent.');
+    if(!['active','complete'].includes(snapshot.status||'active'))throw new Error('Saved draft has an invalid status.');
+    if(snapshot.mode!=null&&!['practice','live','yahoo'].includes(snapshot.mode))throw new Error('Saved draft has an invalid mode.');
+    const settings=validObject(snapshot.settings)?snapshot.settings:{},configuration=validObject(snapshot.leagueConfiguration)?snapshot.leagueConfiguration:{},teams=Number(configuration.teams??settings.teams),slot=Number(snapshot.slot),pick=Number(snapshot.pick),rounds=Number(configuration.totalRounds),totalPicks=Number(configuration.totalPicks);
+    if(Number.isFinite(teams)){
+      if(!positiveInteger(teams)||teams<2||teams>32)throw new Error('Saved draft has an invalid league size.');
+      if(!positiveInteger(slot)||slot>teams)throw new Error('Saved draft has an invalid user slot.');
+      snapshot.history.forEach(entry=>{if(Number(entry.team)!==teamForPick(Number(entry.pick),teams))throw new Error('Saved draft contains an invalid team-slot mapping.')});
+      if(Number.isFinite(Number(configuration.teams))&&Number.isFinite(Number(settings.teams))&&Number(configuration.teams)!==Number(settings.teams))throw new Error('Saved draft league sizes disagree.');
+      if(positiveInteger(rounds)&&positiveInteger(totalPicks)&&rounds*teams!==totalPicks)throw new Error('Saved draft round configuration is inconsistent.');
+      if(Array.isArray(settings.rosterSlots)&&positiveInteger(rounds)&&settings.rosterSlots.length!==rounds)throw new Error('Saved draft roster configuration is inconsistent.');
+      if(positiveInteger(totalPicks)&&picks.some(value=>value>totalPicks))throw new Error('Saved draft exceeds its configured length.');
+      if(snapshot.currentPickOwner!=null&&positiveInteger(pick)&&(!positiveInteger(totalPicks)||pick<=totalPicks)&&Number(snapshot.currentPickOwner)!==teamForPick(pick,teams))throw new Error('Saved draft current owner is inconsistent.');
+    }
+    if(Number.isFinite(pick)&&pick!==picks.length+1)throw new Error('Saved draft current pick is inconsistent.');
+    if(positiveInteger(teams)&&Number.isFinite(snapshot.currentRound)&&Number(snapshot.currentRound)!==Math.ceil(Math.max(1,pick)/teams))throw new Error('Saved draft current round is inconsistent.');
+    return clone({...snapshot,draftStateVersion:stateVersion});
   }
   function createSnapshot(state,existing=null){
     const now=new Date().toISOString(),history=clone(state.history||[]);
-    return validate({schemaVersion:SCHEMA_VERSION,sessionId:existing?.sessionId||`draft_${Date.now().toString(36)}`,createdAt:existing?.createdAt||now,updatedAt:now,status:state.status||'active',mode:state.mode,style:state.style,slot:state.slot,pick:state.pick,drafted:[...(state.drafted||[])],history,decisionSnapshots:clone(state.decisionSnapshots||[]),settings:clone(state.settings||{}),leagueConfiguration:clone(state.leagueConfiguration||{}),managers:clone(state.managers||{}),recommendations:clone(state.recommendations||[]),importedRankings:clone(state.importedRankings||[])});
+    return validate({schemaVersion:SCHEMA_VERSION,draftStateVersion:DRAFT_STATE_VERSION,sessionId:existing?.sessionId||`draft_${Date.now().toString(36)}`,createdAt:existing?.createdAt||now,updatedAt:now,status:state.status||'active',mode:state.mode,style:state.style,slot:state.slot,pick:state.pick,currentRound:state.currentRound,currentPickOwner:state.currentPickOwner,drafted:[...(state.drafted||[])],history,decisionSnapshots:clone(state.decisionSnapshots||[]),settings:clone(state.settings||{}),leagueConfiguration:clone(state.leagueConfiguration||{}),managers:clone(state.managers||{}),recommendations:clone(state.recommendations||[]),importedRankings:clone(state.importedRankings||[])});
   }
   class DraftSessionStore{
     constructor(storage=root.localStorage){this.storage=storage;}
-    load(){const raw=this.storage?.getItem(STORAGE_KEY);if(!raw)return null;try{return validate(JSON.parse(raw));}catch(error){console.warn?.('Ignoring invalid Fantasy HQ draft session:',error.message);return null;}}
+    load(){const raw=this.storage?.getItem(STORAGE_KEY);if(!raw)return null;try{return validate(JSON.parse(raw));}catch(error){console.warn?.('Clearing invalid Fantasy HQ draft session:',error.message);this.clear();return null;}}
     hasActive(){return this.load()?.status==='active';}
     save(state){const current=this.load(),snapshot=createSnapshot(state,current?.status==='active'?current:null);this.storage?.setItem(STORAGE_KEY,JSON.stringify(snapshot));return snapshot;}
     start(state,{replace=false}={}){if(this.hasActive()&&!replace)throw new Error('An active draft already exists. Resume it or explicitly start a new draft.');this.clear();return this.save(state);}
@@ -44,6 +65,6 @@
     return reminders;
   }
   function remindersForRound(value,round){return noteReminders(value).filter(item=>Number(round)>=item.start&&Number(round)<=item.end);}
-  const api=Object.freeze({STORAGE_KEY,NOTE_KEY,SCHEMA_VERSION,DraftSessionStore,createSnapshot,validate,timeline,loadNote,saveNote,noteReminders,remindersForRound});
+  const api=Object.freeze({STORAGE_KEY,NOTE_KEY,SCHEMA_VERSION,DRAFT_STATE_VERSION,DraftSessionStore,createSnapshot,validate,timeline,teamForPick,loadNote,saveNote,noteReminders,remindersForRound});
   root.DraftSessionV1=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
