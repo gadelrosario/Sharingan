@@ -58,7 +58,7 @@ const DraftCommandCenterV1 = (() => {
    * Calculate TeamFit Score (30%)
    * Based on roster needs and position strength
    */
-  function calculateTeamFitScore(player, rosterNeeds, counts) {
+  function calculateTeamFitScore(player, rosterNeeds, counts, settings = {}) {
     if (!player) return 0;
     
     const pos = player.pos;
@@ -74,10 +74,13 @@ const DraftCommandCenterV1 = (() => {
     
     // Starter slot bonus for skill positions
     let starterBonus = 0;
-    if (pos === 'QB' && counts.QB === 0) starterBonus = 15;
-    else if (pos === 'RB' && counts.RB < 2) starterBonus = 15;
-    else if (pos === 'WR' && counts.WR < 3) starterBonus = 15;
-    else if (pos === 'TE' && counts.TE === 0) starterBonus = 15;
+    const targets = {
+      QB: Number(settings.startQB ?? 1),
+      RB: Number(settings.startRB ?? 2),
+      WR: Number(settings.startWR ?? 3),
+      TE: Number(settings.startTE ?? 1)
+    };
+    if (Object.hasOwn(targets, pos) && (counts[pos] || 0) < targets[pos]) starterBonus = 15;
     
     return Math.round(needScore + starterBonus);
   }
@@ -160,14 +163,22 @@ const DraftCommandCenterV1 = (() => {
   /**
    * Calculate position needs (0=filled, 1=critical need)
    */
-  function calculatePositionNeeds(counts, totalRounds, currentRound) {
+  function calculatePositionNeeds(counts, totalRounds, currentRound, settings = {}) {
+    const targets = {
+      QB: Number(settings.startQB ?? 1),
+      RB: Number(settings.startRB ?? 2),
+      WR: Number(settings.startWR ?? 3),
+      TE: Number(settings.startTE ?? 1),
+      K: Number(settings.startK ?? 1),
+      DST: Number(settings.startDST ?? 1)
+    };
     const needs = {
-      QB: counts.QB >= 1 ? 0 : (currentRound <= 5 ? 0.8 : 0.6),
-      RB: counts.RB >= 2 ? 0 : (currentRound <= 4 ? 0.9 : 0.7),
-      WR: counts.WR >= 3 ? 0 : (currentRound <= 5 ? 0.8 : 0.6),
-      TE: counts.TE >= 1 ? 0 : (currentRound <= 6 ? 0.7 : 0.5),
-      K: counts.K >= 1 ? 0 : 0.1,
-      DST: counts.DST >= 1 ? 0 : 0.1
+      QB: counts.QB >= targets.QB ? 0 : (currentRound <= 5 ? 0.8 : 0.6),
+      RB: counts.RB >= targets.RB ? 0 : (currentRound <= 4 ? 0.9 : 0.7),
+      WR: counts.WR >= targets.WR ? 0 : (currentRound <= 5 ? 0.8 : 0.6),
+      TE: counts.TE >= targets.TE ? 0 : (currentRound <= 6 ? 0.7 : 0.5),
+      K: counts.K >= targets.K ? 0 : 0.1,
+      DST: counts.DST >= targets.DST ? 0 : 0.1
     };
     return needs;
   }
@@ -184,11 +195,12 @@ const DraftCommandCenterV1 = (() => {
       counts = {},
       round = 1,
       teamsUntilNextPick = 3,
-      rosterNeeds = {}
+      rosterNeeds = {},
+      settings = {}
     } = context;
     
     const valueScore = calculateValueScore(player, availablePlayers);
-    const fitScore = calculateTeamFitScore(player, rosterNeeds, counts);
+    const fitScore = calculateTeamFitScore(player, rosterNeeds, counts, settings);
     const scarcityScore = calculateScarcityScore(player, availablePlayers, round);
     const urgencyScore = calculateUrgencyScore(player, availablePlayers, round, teamsUntilNextPick);
     
@@ -263,9 +275,9 @@ const DraftCommandCenterV1 = (() => {
    * Get top recommendations with detailed scoring
    */
   function getTopRecommendations(players, context, topN = 5) {
-    const { availablePlayers = [], counts = {}, round = 1, teamsUntilNextPick = 3 } = context;
+    const { availablePlayers = [], counts = {}, round = 1, teamsUntilNextPick = 3, settings = {} } = context;
     
-    const rosterNeeds = calculatePositionNeeds(counts, 17, round);
+    const rosterNeeds = calculatePositionNeeds(counts, 17, round, settings);
     
     const scored = availablePlayers
       .map(p => ({
@@ -275,7 +287,8 @@ const DraftCommandCenterV1 = (() => {
           counts,
           round,
           teamsUntilNextPick,
-          rosterNeeds
+          rosterNeeds,
+          settings
         })
       }))
       .sort((a, b) => b.commandCenterScore.total - a.commandCenterScore.total)

@@ -17,8 +17,9 @@ const SharinganVisionV1 = (() => {
   const positionOf = player => player?.pos === 'DEF' ? 'DST' : player?.pos;
   const nameOf = player => String(player?.name ?? '').trim() || 'Recommended player';
   const emptyCounts = () => ({QB:0,RB:0,WR:0,TE:0,K:0,DST:0});
-  const starterTargets = {QB:1,RB:2,WR:3,TE:1};
+  const defaultStarterTargets = {QB:1,RB:2,WR:3,TE:1};
   const depthTargets = {QB:1,RB:4,WR:5,TE:1};
+  const starterTargets = settings => Object.fromEntries(Object.entries(defaultStarterTargets).map(([position,fallback]) => [position,finiteNumber(settings?.[{QB:'startQB',RB:'startRB',WR:'startWR',TE:'startTE'}[position]]) ?? fallback]));
 
   function rosterPositionCounts({history = [], players = [], team}) {
     const counts = emptyCounts();
@@ -30,9 +31,9 @@ const SharinganVisionV1 = (() => {
     return counts;
   }
 
-  function rosterConstruction(counts = {}) {
+  function rosterConstruction(counts = {}, settings = {}) {
     const value = position => finiteNumber(counts?.[position]) ?? 0;
-    const unfilled = Object.keys(starterTargets).filter(position => value(position) < starterTargets[position]);
+    const targets = starterTargets(settings), unfilled = Object.keys(targets).filter(position => value(position) < targets[position]);
     let liveRead = 'Balanced';
     if (value('QB') >= 2) liveRead = 'QB hoarding';
     else if (value('WR') >= 5 && value('WR') > value('RB')) liveRead = 'WR heavy';
@@ -43,14 +44,14 @@ const SharinganVisionV1 = (() => {
     return {counts:{...emptyCounts(),...counts},unfilledStarterPositions:unfilled,liveRead};
   }
 
-  function assessUserNeed({position, counts}) {
+  function assessUserNeed({position, counts, settings = {}}) {
     if (!SKILL_POSITIONS.has(position) || !counts || typeof counts !== 'object') return {position,status:'Unavailable',starterNeed:false,count:null,unfilledStarterPositions:[],reason:'Personal roster-need guidance is unavailable.'};
-    const state = rosterConstruction(counts);
+    const targets = starterTargets(settings), state = rosterConstruction(counts, settings);
     const count = finiteNumber(counts?.[position]) ?? 0;
-    const starterNeed = count < starterTargets[position];
+    const starterNeed = count < targets[position];
     const status = starterNeed ? 'Starter need' : count < depthTargets[position] ? 'Depth option' : 'Filled';
     const attention = state.unfilledStarterPositions.length ? ` Attention should shift toward unfilled ${state.unfilledStarterPositions.join(', ')} starter positions.` : '';
-    const reason = starterNeed ? `${position} remains a personal starter need (${count}/${starterTargets[position]} filled).` : `${position} is not a personal starter need (${count} rostered).${attention}`;
+    const reason = starterNeed ? `${position} remains a personal starter need (${count}/${targets[position]} filled).` : `${position} is not a personal starter need (${count} rostered).${attention}`;
     return {...state,position,status,starterNeed,count,reason};
   }
 
@@ -81,9 +82,9 @@ const SharinganVisionV1 = (() => {
     return {position,count,windowSize:sample.length,state,active:count >= 4,reason};
   }
 
-  function assessTeamNeeds({position, teamsBeforeNext = []}) {
+  function assessTeamNeeds({position, teamsBeforeNext = [], settings = {}}) {
     if (!SKILL_POSITIONS.has(position) || !Array.isArray(teamsBeforeNext)) return {teams:0,starterNeeds:0,depthNeeds:0,reason:'Team-need guidance is unavailable.'};
-    const starterTarget = starterTargets[position];
+    const starterTarget = starterTargets(settings)[position];
     const depthTarget = depthTargets[position];
     let starterNeeds = 0, depthNeeds = 0;
     teamsBeforeNext.forEach(team => {
@@ -160,8 +161,8 @@ const SharinganVisionV1 = (() => {
     const position = positionOf(player);
     const tierCliff = detectTierCliff({player,availablePlayers:input.availablePlayers});
     const run = detectPositionalRun({position,recentPicks:input.recentPicks});
-    const teamNeeds = assessTeamNeeds({position,teamsBeforeNext:input.teamsBeforeNext});
-    const userNeed = assessUserNeed({position,counts:input.userCounts});
+    const teamNeeds = assessTeamNeeds({position,teamsBeforeNext:input.teamsBeforeNext,settings:input.settings});
+    const userNeed = assessUserNeed({position,counts:input.userCounts,settings:input.settings});
     const availability = availabilityForecast({player,availablePlayers:input.availablePlayers,picksUntil:input.picksUntil,tierCliff,run,teamNeeds});
     return {
       player,tierCliff,run,teamNeeds,userNeed,availability,

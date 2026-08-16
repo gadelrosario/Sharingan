@@ -34,6 +34,6 @@ class RosterCompletionConstraintTests(unittest.TestCase):
         script=f"""const fs=require('fs'),vm=require('vm');vm.runInThisContext(fs.readFileSync({str(ROOT/'js/command-center-v1.js')!r},'utf8'));const a=DraftCommandCenterV1.calculatePositionNeeds({{QB:1,RB:2,WR:3,TE:1,K:0,DST:0}},17,8);const b=DraftCommandCenterV1.calculatePositionNeeds({{QB:1,RB:5,WR:3,TE:1,K:0,DST:0}},17,12);if(a.RB!==0||b.RB!==0)process.exit(1);"""
         result=subprocess.run([str(NODE),'-e',script],cwd=ROOT,text=True,capture_output=True,check=False)
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)
-        self.assertIn("RB: counts.RB >= 2 ? 0",source)
+        self.assertIn("RB: counts.RB >= targets.RB ? 0",source)
 
 if __name__=='__main__': unittest.main()

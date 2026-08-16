@@ -60,10 +60,10 @@ if(!active)process.exit(1);
         self.assertIn('js/adaptive-coaching-engine-v1.js?v=1.0.0', html)
         self.assertIn('js/premium-player-card-v1.js?v=1.0.0', html)
         self.assertIn('js/draft-psychology-engine-v1.js?v=1.0.0', html)
-        self.assertIn('js/app.js?v=4.3.2', html)
-        self.assertIn('service-worker.js?v=jonin_4_3_2', app)
-        self.assertIn('fantasy-hq-jonin-4-3-2', worker)
-        for asset in ('css/app.css?v=4.2.0', 'js/app-version.js?v=1.0.10', 'js/flight-control-v1.js?v=1.3.0', 'js/adaptive-coaching-engine-v1.js?v=1.0.0', 'js/premium-player-card-v1.js?v=1.0.0', 'js/draft-psychology-engine-v1.js?v=1.0.0', 'js/app.js?v=4.3.2'):
+        self.assertIn('js/app.js?v=4.3.3', html)
+        self.assertIn('service-worker.js?v=jonin_4_3_3', app)
+        self.assertIn('fantasy-hq-jonin-4-3-3', worker)
+        for asset in ('css/app.css?v=4.2.0', 'js/app-version.js?v=1.0.11', 'js/flight-control-v1.js?v=1.3.0', 'js/adaptive-coaching-engine-v1.js?v=1.0.0', 'js/premium-player-card-v1.js?v=1.0.0', 'js/draft-psychology-engine-v1.js?v=1.0.0', 'js/app.js?v=4.3.3'):
             self.assertIn(asset, worker)
 
     def test_planning_removes_redundant_pressure_and_room_intel_rows(self):

@@ -97,7 +97,8 @@ if(five.length!==1||five[0].text!=='Target TE.'||eleven.length!==1||nine.length!
     def test_live_tracker_uses_roster_assignment_and_refresh_path(self):
         tracker = self.app.split('function liveTeamTrackerMarkup', 1)[1].split('function renderWaitMeter', 1)[0]
         self.assertIn('state=rosterViewState()', tracker)
-        self.assertIn('state.starters.filter', tracker)
+        self.assertIn('state.starters.map', tracker)
+        self.assertNotIn('state.starters.filter', tracker)
         self.assertIn('state.bench||[]', tracker)
         self.assertIn('state.overflow||[]', tracker)
         self.assertIn('PlayerTierContract.getDecisionTier(p)', tracker)

@@ -443,7 +443,7 @@ async function refreshInjuryDataNow() {
 
 function refreshDraftSlotOptions(teamCount=10,preferred=slot){
   if(!DOM.draftSlot)return;
-  const teams=[8,10,12,14,16].includes(Number(teamCount))?Number(teamCount):10,
+  const teams=DraftMathV1.SUPPORTED_SIZES.includes(Number(teamCount))?Number(teamCount):10,
     selected=Math.max(1,Math.min(teams,Number(preferred)||teams));
   DOM.draftSlot.innerHTML='';
   for(let i=1;i<=teams;i++){
@@ -693,12 +693,14 @@ function counts() {
   });
   return c;
 }
+function configuredStarterTarget(pos) {
+  const key = { QB: 'startQB', RB: 'startRB', WR: 'startWR', TE: 'startTE', K: 'startK', DST: 'startDST' }[pos],
+    fallback = { QB: 1, RB: 2, WR: 3, TE: 1, K: 1, DST: 1 }[pos] ?? 0;
+  return key ? Number(leagueContext[key] ?? fallback) : 0;
+}
 function userPositionFilled(pos) {
   let c = counts();
-  return (pos === 'QB' && c.QB >= 1) ||
-    (pos === 'TE' && c.TE >= 1) ||
-    (pos === 'K' && c.K >= (leagueContext.startK || 1)) ||
-    (pos === 'DST' && c.DST >= (leagueContext.startDST || 1));
+  return ['QB', 'TE', 'K', 'DST'].includes(pos) && c[pos] >= configuredStarterTarget(pos);
 }
 
 const searchNormalizations = [
@@ -775,7 +777,7 @@ function positionTierCounts(pos, team = slot) {
 function positionStrength(pos) {
   let tc = positionTierCounts(pos),
     score = tc.S * 5 + tc.A * 4 + tc.B * 2.5 + tc.C;
-  let starters = pos === 'RB' ? 2 : pos === 'WR' ? 3 : 1;
+  let starters = configuredStarterTarget(pos);
   let count = managerPositionCounts(slot)[pos] || 0;
   if (score >= starters * 4) return 'Elite';
   if (score >= starters * 3) return 'Strong';
@@ -1319,10 +1321,10 @@ function gerardScore(p) {
       (recommendationPersonalization ? p.flockBoost || 0 : 0) +
       formatModifier(p) +
       fit(p);
-  if (p.pos === 'RB' && c.RB < 2) s += 13;
-  if (p.pos === 'WR' && c.WR < 3) s += 13;
-  if (p.pos === 'QB' && c.QB >= 1) s -= 120;
-  if (p.pos === 'TE' && c.TE >= 1) s -= 120;
+  if (p.pos === 'RB' && c.RB < configuredStarterTarget('RB')) s += 13;
+  if (p.pos === 'WR' && c.WR < configuredStarterTarget('WR')) s += 13;
+  if (p.pos === 'QB' && c.QB >= configuredStarterTarget('QB')) s -= 120;
+  if (p.pos === 'TE' && c.TE >= configuredStarterTarget('TE')) s -= 120;
   if (p.pos === 'QB' && round < 3) s -= 20;
   if (p.pos === 'TE' && round < 2) s -= 10;
   if (p.pos === 'DST') {
@@ -1677,12 +1679,12 @@ function positionalCountsAll() {
 function rosterNeeds() {
   let c = positionalCountsAll(),
     needs = [];
-  if (c.QB < 1) needs.push('QB');
-  if (c.RB < 2) needs.push('RB');
-  if (c.WR < 3) needs.push('WR');
-  if (c.TE < 1) needs.push('TE');
-  if (c.K < 1) needs.push('K');
-  if (c.DST < 1) needs.push('D/ST');
+  if (c.QB < configuredStarterTarget('QB')) needs.push('QB');
+  if (c.RB < configuredStarterTarget('RB')) needs.push('RB');
+  if (c.WR < configuredStarterTarget('WR')) needs.push('WR');
+  if (c.TE < configuredStarterTarget('TE')) needs.push('TE');
+  if (c.K < configuredStarterTarget('K')) needs.push('K');
+  if (c.DST < configuredStarterTarget('DST')) needs.push('D/ST');
   return needs;
 }
 function waitScore(pos) {
@@ -1736,9 +1738,9 @@ function renderLiveRoster() {
   renderTeamBuild();
 }
 function liveTeamTrackerMarkup(){
-  const state=rosterViewState(),visible=state.starters.filter(row=>['QB','RB1','RB2','WR1','WR2','TE','FLEX1','DEF','K'].includes(row.slot));
-  const rowMarkup=(row,bench=false)=>{const p=row.player,label=bench?'BN':row.slot.startsWith('RB')?'RB':row.slot.startsWith('WR')?'WR':row.slot.startsWith('FLEX')?'FLEX':row.slot==='DEF'?'DST':row.slot;if(!p)return `<tr class="emptyTrackerRow"><td>${safeInsightText(label)}</td><td>Open</td><td>—</td><td>—</td><td>—</td></tr>`;const tier=PlayerTierContract.getDecisionTier(p);return `<tr data-player-id="${safeInsightText(p.id)}"><td>${safeInsightText(label)}</td><td>${safeInsightText(p.name)}</td><td>${safeInsightText(p.team||'—')}</td><td>${safeInsightText(tier)}</td><td>${safeInsightText(p.bye??'—')}</td></tr>`};
-  const starters=visible.map(row=>rowMarkup(row)).join(''),bench=[...(state.bench||[]),...(state.overflow||[])].map(row=>rowMarkup(row,true)).join('');
+  const state=rosterViewState();
+  const rowMarkup=(row,bench=false)=>{const p=row.player,label=bench?'BN':row.slot.startsWith('DEF')?'DST':row.slot;if(!p)return `<tr class="emptyTrackerRow"><td>${safeInsightText(label)}</td><td>Open</td><td>—</td><td>—</td><td>—</td></tr>`;const tier=PlayerTierContract.getDecisionTier(p);return `<tr data-player-id="${safeInsightText(p.id)}"><td>${safeInsightText(label)}</td><td>${safeInsightText(p.name)}</td><td>${safeInsightText(p.team||'—')}</td><td>${safeInsightText(tier)}</td><td>${safeInsightText(p.bye??'—')}</td></tr>`};
+  const starters=state.starters.map(row=>rowMarkup(row)).join(''),bench=[...(state.bench||[]),...(state.overflow||[])].map(row=>rowMarkup(row,true)).join('');
   return `<table class="liveTeamTable"><thead><tr><th>SLOT</th><th>PLAYER</th><th>NFL</th><th>TIER</th><th>BYE</th></tr></thead><tbody><tr class="trackerSection"><th colspan="5">STARTERS</th></tr>${starters}<tr class="trackerSection"><th colspan="5">BENCH</th></tr>${bench||'<tr class="emptyTrackerRow"><td>BN</td><td>Empty</td><td>—</td><td>—</td><td>—</td></tr>'}</tbody></table>`;
 }
 function renderWaitMeter() {
@@ -1748,7 +1750,7 @@ function renderWaitMeter() {
     c = positionalCountsAll();
   let boxes = positions
     .map(pos => {
-      if ((pos === 'QB' && c.QB >= 1) || (pos === 'TE' && c.TE >= 1)) {
+      if (['QB', 'TE'].includes(pos) && c[pos] >= configuredStarterTarget(pos)) {
         return `<div class="waitBox filledPosition"><div class="pos">${pos}</div><div class="meter"><span style="width:100%"></span></div><div><b>FILLED</b></div><div class="decision">FOCUS ELSEWHERE</div></div>`;
       }
       let locked = (pos === 'DST' && roundNow < 15) || (pos === 'K' && roundNow < 16);
@@ -2067,8 +2069,9 @@ function getCommandCenterContext() {
     round: r.r,
     teamsUntilNextPick,
     rosterNeeds: DraftCommandCenterV1
-      ? DraftCommandCenterV1.calculatePositionNeeds(c, TOTAL_ROUNDS, r.r)
+      ? DraftCommandCenterV1.calculatePositionNeeds(c, TOTAL_ROUNDS, r.r, leagueContext)
       : {},
+    settings: leagueContext,
   };
 }
 
@@ -2152,6 +2155,7 @@ function sharinganPlayerForecast(player, recs) {
       counts: managerPositionCounts(team),
     })),
     picksUntil: info().until,
+    settings: leagueContext,
   });
 }
 function sharinganVisionForecast(recs) {
@@ -2992,11 +2996,7 @@ function managerPositionCounts(team) {
   return c;
 }
 function positionStarterNeed(pos, c) {
-  if (pos === 'QB') return c.QB < 1;
-  if (pos === 'RB') return c.RB < 2;
-  if (pos === 'WR') return c.WR < 3;
-  if (pos === 'TE') return c.TE < 1;
-  return false;
+  return ['QB', 'RB', 'WR', 'TE'].includes(pos) && (c[pos] || 0) < configuredStarterTarget(pos);
 }
 function managerPositionStatus(team, pos) {
   let c = managerPositionCounts(team),
@@ -3127,12 +3127,12 @@ function managerTendency(team) {
   let c = managerPositionCounts(team),
     m = getManager(team);
   if (window.SharinganVisionV1?.rosterConstruction)
-    return SharinganVisionV1.rosterConstruction(c).liveRead;
+    return SharinganVisionV1.rosterConstruction(c, leagueContext).liveRead;
   if (c.QB >= 2) return 'QB hoarding';
   if (c.RB >= 5) return 'RB heavy';
   if (c.WR >= 6) return 'WR heavy';
   if (c.TE >= 3) return 'TE hoarding';
-  let filled = (c.QB >= 1) + (c.RB >= 2) + (c.WR >= 3) + (c.TE >= 1);
+  let filled = ['QB', 'RB', 'WR', 'TE'].filter(pos => c[pos] >= configuredStarterTarget(pos)).length;
   if (filled >= 4) return 'Balanced';
   if (c.RB > c.WR + 1) return 'RB leaning';
   if (c.WR > c.RB + 1) return 'WR leaning';
@@ -3692,7 +3692,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_2')
+      .register('./service-worker.js?v=jonin_4_3_3')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

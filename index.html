@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.10"></script>
+<script src="js/app-version.js?v=1.0.11"></script>
 <link rel="stylesheet" href="css/app.css?v=4.2.0">
   </head>
   <body>
@@ -71,7 +71,9 @@
             ><label
               >Teams<select id="teamCount" onchange="handleLeagueSizeChange()">
                 <option value="8">8 teams</option>
+                <option value="9">9 teams</option>
                 <option value="10" selected>10 teams</option>
+                <option value="11">11 teams</option>
                 <option value="12">12 teams</option>
                 <option value="14">14 teams</option>
                 <option value="16">16 teams</option></select
@@ -562,20 +564,20 @@
     </nav>
     <script src="js/player-tier-contract.js?v=1.0.0"></script>
     <script src="js/specialist-rankings-v1.js?v=1.0.0"></script>
-    <script src="js/draft-math-v1.js?v=1.0.0"></script>
+    <script src="js/draft-math-v1.js?v=1.1.0"></script>
     <script src="js/injury-intelligence-v1.js?v=1.2.0"></script>
     <script src="js/espn-injury-adapter-v1.js?v=1.0.0"></script>
     <script src="js/sleeper-injury-adapter-v1.js?v=1.1.0"></script>
     <script src="js/roster-view-v1.js?v=1.0.0"></script>
     <script src="js/roster-completion-constraint-v1.js?v=1.1.0"></script>
-    <script src="js/draft-strategy-engine-v1.js?v=1.2.0"></script>
+    <script src="js/draft-strategy-engine-v1.js?v=1.3.0"></script>
     <script src="js/fantasy-hq-core.js?v=3.2.0"></script>
     <script src="js/draft-session-v1.js?v=1.0.0"></script>
     <script src="js/jonin-decision-intelligence-v1.js?v=1.0.3"></script>
     <script src="js/draft-grading-engine-v1.js?v=1.0.0"></script>
-    <script src="js/command-center-v1.js?v=1.0.0"></script>
+    <script src="js/command-center-v1.js?v=1.1.0"></script>
     <script src="js/jonin-insight-engine-v1.js?v=1.0.0"></script>
-    <script src="js/sharingan-vision-v1.js?v=1.0.0"></script>
+    <script src="js/sharingan-vision-v1.js?v=1.1.0"></script>
     <script src="js/jonin-ux-polish.js?v=1.0.0"></script>
 
     <script src="js/flight-control-v1.js?v=1.3.0"></script>
@@ -584,7 +586,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.3.2"></script>
+    <script src="js/app.js?v=4.3.3"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

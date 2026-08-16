@@ -48,8 +48,8 @@
     return Object.freeze({score:total,weakSlots:weak,slots,classification:weak>=3?'MAJOR_WEAKNESS':weak===2?'WEAK':weak===1?'AVERAGE':total>=sumRequirements(requirements)*4?'ELITE':'STRONG'});
   }
   function sumRequirements(requirements){return Object.values(requirements).reduce((sum,value)=>sum+value,0)}
-  function recoveryCost({position,candidates=[],picksUntil=0,roster=[],round=1}){
-    const positionCandidates=candidates.filter(player=>pos(player?.position??player?.pos)===pos(position)&&sourceRank(player)!=null).sort((a,b)=>sourceRank(a)-sourceRank(b)),current=positionCandidates[0],replacement=positionCandidates[Math.min(positionCandidates.length-1,Math.max(1,Math.floor(Number(picksUntil||0)*0.55)))],currentQuality=current?slotQuality(current):0,replacementQuality=replacement?slotQuality(replacement):0,rankLoss=current&&replacement?sourceRank(replacement)-sourceRank(current):0,unresolved=starterEquity({roster,config:{startQB:1,startRB:2,startWR:3,startTE:1}}).slots[pos(position)]?.some(value=>value<=1)??false;
+  function recoveryCost({position,candidates=[],picksUntil=0,roster=[],round=1,config={}}){
+    const positionCandidates=candidates.filter(player=>pos(player?.position??player?.pos)===pos(position)&&sourceRank(player)!=null).sort((a,b)=>sourceRank(a)-sourceRank(b)),current=positionCandidates[0],replacement=positionCandidates[Math.min(positionCandidates.length-1,Math.max(1,Math.floor(Number(picksUntil||0)*0.55)))],currentQuality=current?slotQuality(current):0,replacementQuality=replacement?slotQuality(replacement):0,rankLoss=current&&replacement?sourceRank(replacement)-sourceRank(current):0,unresolved=starterEquity({roster,config}).slots[pos(position)]?.some(value=>value<=1)??false;
     const cost=unresolved?clamp((currentQuality-replacementQuality)*2+rankLoss/12,0,8):0;
     return Object.freeze({position:pos(position),cost,currentPlayerId:current?.id??null,replacementPlayerId:replacement?.id??null,rankLoss,qualityLoss:currentQuality-replacementQuality,unresolved,round});
   }
@@ -73,7 +73,7 @@
     return Object.freeze({position,countBefore,ordinal,rawPenalty,starterRelief,exceptionRelief,netPenalty,adjustment:-netPenalty,utility,improvesStarter,portfolio});
   }
   function evaluateCandidate(input){
-    const player=input.player||{},position=pos(player.position??player.pos),round=Number(input.round)||1,roster=input.roster||[],candidates=input.candidates||[],role=roleQuality(player),debt=foundationDebt({roster,round}),before=starterEquity({roster,config:input.config}),after=starterEquity({roster,candidate:player,config:input.config}),starterImpact=after.score-before.score,recovery=recoveryCost({position:'RB',candidates,picksUntil:input.picksUntil,roster,round});
+    const player=input.player||{},position=pos(player.position??player.pos),round=Number(input.round)||1,roster=input.roster||[],candidates=input.candidates||[],role=roleQuality(player),debt=foundationDebt({roster,round}),before=starterEquity({roster,config:input.config}),after=starterEquity({roster,candidate:player,config:input.config}),starterImpact=after.score-before.score,recovery=recoveryCost({position:'RB',candidates,picksUntil:input.picksUntil,roster,round,config:input.config});
     const premiumRB=position==='RB'&&role==='FOUNDATION',ordinaryDepth=['DEPTH','CONTINGENCY','UNKNOWN'].includes(role),premiumAvailable=candidates.some(candidate=>pos(candidate.pos??candidate.position)==='RB'&&roleQuality(candidate)==='FOUNDATION'&&valueCorridor({...input,player:candidate}).inside);
     const personalizedFoundation=input.personalizedFoundation!==false,foundationAdjustment=!personalizedFoundation?0:premiumRB&&debt.debt?Math.min(6,debt.debt*3):position!=='RB'&&debt.debt&&premiumAvailable&&round<=3?-Math.min(4,recovery.cost):0;
     const starterAdjustment=clamp(starterImpact*1.25,-3,5),pathAdjustment=clamp((premiumRB?recovery.cost:0)+(starterImpact>0?1:0),0,5);

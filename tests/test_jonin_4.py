@@ -16,12 +16,12 @@ class JoninFourTests(unittest.TestCase):
         html=(ROOT/'index.html').read_text()
         app=(ROOT/'js/app.js').read_text()
         worker=(ROOT/'service-worker.js').read_text()
-        for asset in ('js/draft-session-v1.js?v=1.0.0','js/jonin-decision-intelligence-v1.js?v=1.0.3','js/draft-grading-engine-v1.js?v=1.0.0','js/roster-completion-constraint-v1.js?v=1.1.0','js/app.js?v=4.3.2'):
+        for asset in ('js/draft-session-v1.js?v=1.0.0','js/jonin-decision-intelligence-v1.js?v=1.0.3','js/draft-grading-engine-v1.js?v=1.0.0','js/roster-completion-constraint-v1.js?v=1.1.0','js/app.js?v=4.3.3'):
             self.assertIn(asset,html)
             self.assertIn('./'+asset,worker)
         for required in ('persistDraftSession','resumeSavedDraft','confirmStartNewDraft','beforeunload','renderDraftTimeline','saveDraftNotebook','championshipDecision'):
             self.assertIn(required,app)
-        self.assertIn('fantasy-hq-jonin-4-3-2',worker)
+        self.assertIn('fantasy-hq-jonin-4-3-3',worker)
 
     def test_player_pool_identity_search_and_required_players(self):
         players=json.loads((ROOT/'data/players.json').read_text())
