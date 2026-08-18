@@ -38,7 +38,8 @@
     const premiumRB=roster.filter(player=>pos(player?.position??player?.pos)==='RB'&&roleQuality(player)==='FOUNDATION').length;
     const starterRB=roster.filter(player=>pos(player?.position??player?.pos)==='RB'&&['FOUNDATION','STARTER'].includes(roleQuality(player))).length;
     const requiredRB=Math.max(0,Number(config.startRB??2)),target=Math.min(requiredRB,Number(round)<=1?1:2),debt=Math.max(0,target-premiumRB),severity=debt===0?'NONE':debt===1?'MEANINGFUL':'HIGH';
-    return Object.freeze({premiumRB,starterRB,target,debt,severity});
+    const equity=starterEquity({roster,config}),vulnerableSlots=Object.freeze(Object.fromEntries(Object.entries(equity.slots).map(([position,values])=>[position,values.filter(value=>value<=1).length])));
+    return Object.freeze({premiumRB,starterRB,target,debt,severity,requiredStarters:Object.freeze({QB:Number(config.startQB??1),RB:requiredRB,WR:Number(config.startWR??3),TE:Number(config.startTE??1),FLEX:Number(config.flex??2)}),vulnerableSlots,startingVulnerability:equity.weakSlots});
   }
   function slotQuality(player){const role=roleQuality(player);return({FOUNDATION:5,STARTER:3,DEPTH:1,CONTINGENCY:0,UNKNOWN:0,REQUIRED_SPECIALIST:1}[role]??0)}
   function starterEquity({roster=[],candidate=null,config={}}){
@@ -68,9 +69,9 @@
   }
   function positionalMarginalUtility({player,roster=[],candidates=[],config={},pick=1,round=1,starterImpact=0}){
     const position=pos(player?.position??player?.pos),countBefore=roster.filter(item=>pos(item?.position??item?.pos)===position).length,ordinal=countBefore+1,portfolio=benchPortfolioSignal({player,pick,round,roster,candidates});
-    const penaltyTables={WR:{4:0.5,5:1.5,6:8,7:13,8:18},RB:{3:0,4:2.5,5:6,6:9,7:13,8:18},QB:{2:5,3:10},TE:{2:2,3:6,4:9}},table=penaltyTables[position]||{},keys=Object.keys(table).map(Number).sort((a,b)=>a-b),threshold=keys.filter(key=>ordinal>=key).pop(),rawPenalty=threshold==null?0:table[threshold];
+    const penaltyTables={WR:{4:0.5,5:1.5,6:8,7:13,8:18},RB:{3:0,4:2.5,5:6,6:9,7:13,8:18},QB:{2:5,3:10},TE:{2:2,3:6,4:9}},legacyCapacity={WR:5,RB:4,QB:1,TE:3},directStarters={WR:Number(config.startWR??3),RB:Number(config.startRB??2),QB:Number(config.startQB??1),TE:Number(config.startTE??1)},flexEligible=['RB','WR','TE'].includes(position),flexCapacity=flexEligible?Math.max(0,Number(config.flex??2)):0,starterCapacity=Math.max(0,directStarters[position]??0)+flexCapacity,capacityShift=(starterCapacity-(legacyCapacity[position]??starterCapacity)),effectiveOrdinal=ordinal-capacityShift,table=penaltyTables[position]||{},keys=Object.keys(table).map(Number).sort((a,b)=>a-b),threshold=keys.filter(key=>effectiveOrdinal>=key).pop(),rawPenalty=threshold==null?0:table[threshold];
     const improvesStarter=Number(starterImpact)>0,starterRelief=improvesStarter?rawPenalty*.8:0,exceptionRelief=Math.min(Math.max(0,rawPenalty-starterRelief),portfolio.offset),netPenalty=Math.max(0,rawPenalty-starterRelief-exceptionRelief),utility=improvesStarter?'STARTER_IMPROVEMENT':netPenalty>=7?'SATURATED':netPenalty>=3?'LOW':netPenalty>0?'DECLINING':'HIGH';
-    return Object.freeze({position,countBefore,ordinal,rawPenalty,starterRelief,exceptionRelief,netPenalty,adjustment:-netPenalty,utility,improvesStarter,portfolio});
+    return Object.freeze({position,countBefore,ordinal,directStarters:directStarters[position]??0,flexCapacity,starterCapacity,capacityShift,effectiveOrdinal,rawPenalty,starterRelief,exceptionRelief,netPenalty,adjustment:-netPenalty,utility,improvesStarter,portfolio});
   }
   function evaluateCandidate(input){
     const player=input.player||{},position=pos(player.position??player.pos),round=Number(input.round)||1,roster=input.roster||[],candidates=input.candidates||[],role=roleQuality(player),debt=foundationDebt({roster,round,config:input.config}),before=starterEquity({roster,config:input.config}),after=starterEquity({roster,candidate:player,config:input.config}),starterImpact=after.score-before.score,recovery=recoveryCost({position:'RB',candidates,picksUntil:input.picksUntil,roster,round,config:input.config});

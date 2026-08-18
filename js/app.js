@@ -1315,7 +1315,6 @@ function crossPositionValueBase(p) {
 }
 function formatModifier(p) {
   let m = 0;
-  if (leagueContext.scoring === 'full' && p.pos === 'WR') m += 4;
   if (
     leagueContext.scoring === 'full' &&
     p.pos === 'RB' &&
@@ -1323,10 +1322,8 @@ function formatModifier(p) {
     /receiv|target/i.test(p.opportunityTrend)
   )
     m += 3;
-  if (leagueContext.scoring === 'standard' && p.pos === 'RB') m += 5;
   if (leagueContext.startWR === 3 && p.pos === 'WR') m += 5;
   if (leagueContext.flex === 2 && ['RB', 'WR'].includes(p.pos)) m += 3;
-  if (leagueContext.passTD === 6 && p.pos === 'QB') m += 2;
   if (leagueContext.risk === 'aggressive' && (p.leagueBreaker || p.rookie)) m += 5;
   if (leagueContext.risk === 'safe' && p.availabilityRisk === 'high') m -= 10;
   m += leagueSpecificModifier(p);
@@ -2695,11 +2692,9 @@ function decisionCardMarkup(model, { recommended = false } = {}) {
   return `<article class="compactFightCard ${recommended?'recommendedDecision':'playerViewDecision'} stage-${safeInsightText(stage.key)}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'Team unavailable')} ${injuryBadgeMarkup(p)}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="sharinganStage stage-${safeInsightText(stage.key)}">${sharinganIconMarkup(stage.key)}<span>${safeInsightText(stage.label)} • ${safeInsightText(stage.meaning)}</span></div><div class="fightTags">${tags.map(tag=>`<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended?'':`<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
 }
 function recommendationCategoryLabels(models) {
-  const labels=new Map(),id=model=>model.player.id;
-  if(models[0])labels.set(id(models[0]),'Recommended Pick');
-  const metrics=[['Best Value',model=>scoreComponents(model.player).value],['Best Team Fit',model=>scoreComponents(model.player).fit],['Highest Ceiling',model=>scoreComponents(model.player).ceiling],['Safest Pick',model=>scoreComponents(model.player).floor]];
-  metrics.forEach(([label,read])=>{const winner=[...models].sort((a,b)=>read(b)-read(a))[0];if(winner&&!labels.has(id(winner)))labels.set(id(winner),label)});
-  models.forEach(model=>{if(!labels.has(id(model)))labels.set(id(model),compactStrategyTags(model)[0]?.label||'Strong Alternative')});
+  if(!window.RecommendationArchetypesV1){const fallback=new Map();models.forEach((model,index)=>fallback.set(model.player.id,index===0?'Best Pick':'Alternative'));return fallback}
+  const rows=models.map((model,index)=>{const player=model.player,trace=finalDecisionTrace(player),strategy=trace.strategy,acquisition=strategy?.priceOfAcquisition,components=scoreComponents(player),rank=reliableOverallRank(player);return{id:player.id,order:index,valueFall:rank==null?null:Math.max(0,pick-rank),valueOverride:valueOverride(player),valueScore:components.value,upsideScore:components.ceiling,leagueBreaker:player.leagueBreaker===true,rookie:player.rookie===true,upsideAdjustment:trace.modifiers?.upside?.adjustment??0,upsideSignals:strategy?.benchPortfolio?.signals??[],starterImpact:strategy?.starterEquity?.impact??0,rosterFit:model.championshipEvaluation?.scores?.rosterFit??trace.context?.rosterFit??0,meaningfulTierCliff:acquisition?.meaningfulTierCliff===true,survivalRisk:acquisition?.survivalRisk??0,survival:acquisition?.survival??null}}),assignments=RecommendationArchetypesV1.assign(rows),labels=new Map();
+  models.forEach(model=>labels.set(model.player.id,assignments.labels.get(String(model.player.id))||'Alternative'));
   return labels;
 }
 function alternativeDecisionMarkup(model, rank, categoryLabel) {
@@ -3799,7 +3794,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_7')
+      .register('./service-worker.js?v=jonin_4_3_8')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );
