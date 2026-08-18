@@ -1762,7 +1762,7 @@
       "positionTier": "F",
       "sourceTeam": "CAR",
       "provenance": {
-        "canonicalKey": null,
+        "canonicalKey": "jonathan-brooks-rb",
         "importedFrom": "data/players.json"
       },
       "importStatus": "MATCHED"
@@ -4067,22 +4067,6 @@
       "sourceTeam": null,
       "provenance": {
         "canonicalKey": "jacoby-brissett-qb",
-        "importedFrom": "data/players.json"
-      },
-      "importStatus": "MATCHED"
-    },
-    {
-      "playerId": "1000068",
-      "source": "Fantasyland",
-      "snapshotDate": "2026-08-08",
-      "overallRank": null,
-      "overallTier": null,
-      "position": "RB",
-      "positionRank": null,
-      "positionTier": null,
-      "sourceTeam": null,
-      "provenance": {
-        "canonicalKey": "jonathan-brooks-rb",
         "importedFrom": "data/players.json"
       },
       "importStatus": "MATCHED"

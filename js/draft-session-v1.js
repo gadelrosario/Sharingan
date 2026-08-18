@@ -39,13 +39,13 @@
     return validate({schemaVersion:SCHEMA_VERSION,draftStateVersion:DRAFT_STATE_VERSION,sessionId:existing?.sessionId||`draft_${Date.now().toString(36)}`,createdAt:existing?.createdAt||now,updatedAt:now,status:state.status||'active',mode:state.mode,style:state.style,slot:state.slot,pick:state.pick,currentRound:state.currentRound,currentPickOwner:state.currentPickOwner,drafted:[...(state.drafted||[])],history,decisionSnapshots:clone(state.decisionSnapshots||[]),settings:clone(state.settings||{}),leagueConfiguration:clone(state.leagueConfiguration||{}),managers:clone(state.managers||{}),recommendations:clone(state.recommendations||[]),importedRankings:clone(state.importedRankings||[])});
   }
   class DraftSessionStore{
-    constructor(storage=root.localStorage){this.storage=storage;}
-    load(){const raw=this.storage?.getItem(STORAGE_KEY);if(!raw)return null;try{return validate(JSON.parse(raw));}catch(error){console.warn?.('Clearing invalid Fantasy HQ draft session:',error.message);this.clear();return null;}}
+    constructor(storage=root.localStorage,key=STORAGE_KEY){this.storage=storage;this.key=String(key||STORAGE_KEY);}
+    load(){const raw=this.storage?.getItem(this.key);if(!raw)return null;try{return validate(JSON.parse(raw));}catch(error){console.warn?.('Clearing invalid Fantasy HQ draft session:',error.message);this.clear();return null;}}
     hasActive(){return this.load()?.status==='active';}
-    save(state){const current=this.load(),snapshot=createSnapshot(state,current?.status==='active'?current:null);this.storage?.setItem(STORAGE_KEY,JSON.stringify(snapshot));return snapshot;}
+    save(state){const current=this.load(),snapshot=createSnapshot(state,current?.status==='active'?current:null);this.storage?.setItem(this.key,JSON.stringify(snapshot));return snapshot;}
     start(state,{replace=false}={}){if(this.hasActive()&&!replace)throw new Error('An active draft already exists. Resume it or explicitly start a new draft.');this.clear();return this.save(state);}
     complete(state){const snapshot=this.save({...state,status:'complete'});return snapshot;}
-    clear(){this.storage?.removeItem(STORAGE_KEY);}
+    clear(){this.storage?.removeItem(this.key);}
   }
   function timeline(history=[],playerIndex=new Map(),leagueSize=10){
     const rounds=[],teams=Math.max(2,Number(leagueSize)||10);

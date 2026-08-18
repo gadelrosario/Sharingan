@@ -30,7 +30,7 @@ REQUIRED_PLAYERS = [
     ('T.J. Hockenson', 'TE'),
     ('D.J. Moore', 'WR'),
     ('Cam Ward', 'QB'),
-    ('Jonathan Brooks', 'RB'),
+    ('Jonathon Brooks', 'RB'),
 ]
 
 DRAFTABLE_POSITIONS = {'QB', 'RB', 'WR', 'TE'}

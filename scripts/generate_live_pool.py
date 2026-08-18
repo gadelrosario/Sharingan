@@ -26,6 +26,7 @@ DB_PATH = BASE / "database" / "fantasyhq.db"
 LIVE_PATH = BASE / "data" / "players.json"
 OUTPUT_PATH = BASE / "outputs" / "player_audit" / "players_review.json"
 TEAM_PATCH_PATH = BASE / "data" / "team_patch_2026.csv"
+IDENTITY_REVIEW_PATH = BASE / "data" / "fantasyland_identity_review_2026-08-08.json"
 SUPPORTED_POSITIONS = {"QB", "RB", "WR", "TE", "K", "DST"}
 CANONICAL_ID_OFFSET = 1_000_000
 
@@ -39,6 +40,20 @@ def normalize_name(name: str) -> str:
 
 def identity(name: str, position: str) -> tuple[str, str]:
     return normalize_name(name), (position or "").upper()
+
+
+def load_identity_aliases(path: Path) -> dict[tuple[str, str], tuple[str, str]]:
+    """Load reviewed spelling/identity aliases without guessing fuzzy matches."""
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as source:
+        rows = json.load(source)
+    return {
+        identity(row.get("sourceName", ""), row.get("position", "")):
+        identity(row.get("canonicalName", ""), row.get("position", ""))
+        for row in rows
+        if row.get("sourceName") and row.get("canonicalName") and row.get("position")
+    }
 
 
 def load_canonical_players(db_path: Path) -> list[dict[str, Any]]:
@@ -175,6 +190,11 @@ def reconcile_duplicate_identities(records: list[dict[str, Any]]) -> tuple[list[
                 continue
             removed_ids.append(duplicate["id"])
             merged_fields.extend(merge_missing_fields(keeper, duplicate))
+        if removed_ids:
+            keeper["legacyIds"] = sorted({
+                *[str(value) for value in keeper.get("legacyIds", [])],
+                *[str(value) for value in removed_ids],
+            })
         output.append(keeper)
         resolutions.append({
             "identity": f"{key[0]}|{key[1]}",
@@ -187,8 +207,14 @@ def reconcile_duplicate_identities(records: list[dict[str, Any]]) -> tuple[list[
     return output, resolutions
 
 
-def classify_canonical(canonical: list[dict[str, Any]], live: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    live_keys = {identity(p.get("name", ""), p.get("pos", "")) for p in live}
+def classify_canonical(canonical: list[dict[str, Any]], live: list[dict[str, Any]],
+                       aliases: dict[tuple[str, str], tuple[str, str]] | None = None) -> list[dict[str, Any]]:
+    aliases = aliases or {}
+    live_keys = {
+        aliases.get(identity(p.get("name", ""), p.get("pos", "")),
+                    identity(p.get("name", ""), p.get("pos", "")))
+        for p in live
+    }
     classifications = []
     for player in canonical:
         key = identity(player["full_name"], player["position"])
@@ -256,10 +282,12 @@ def canonical_only_record(player: dict[str, Any]) -> dict[str, Any]:
 
 
 def generate(db_path: Path = DB_PATH, live_path: Path = LIVE_PATH,
-             out_path: Path = OUTPUT_PATH, patch_path: Path = TEAM_PATCH_PATH) -> dict[str, Any]:
+             out_path: Path = OUTPUT_PATH, patch_path: Path = TEAM_PATCH_PATH,
+             identity_review_path: Path = IDENTITY_REVIEW_PATH) -> dict[str, Any]:
     canonical = load_canonical_players(db_path)
     live = load_live_players(live_path)
-    classifications = classify_canonical(canonical, live)
+    identity_aliases = load_identity_aliases(identity_review_path)
+    classifications = classify_canonical(canonical, live, identity_aliases)
 
     duplicate_ids = [value for value, count in Counter(p.get("id") for p in live).items() if count > 1]
     if duplicate_ids:
@@ -270,10 +298,16 @@ def generate(db_path: Path = DB_PATH, live_path: Path = LIVE_PATH,
     matched = set()
     for live_player in live:
         record = dict(live_player)
-        key = identity(record.get("name", ""), record.get("pos", ""))
+        source_key = identity(record.get("name", ""), record.get("pos", ""))
+        key = identity_aliases.get(source_key, source_key)
         canonical_player = canonical_by_identity.get(key)
         if canonical_player:
             matched.add(key)
+            if source_key != key and record.get("name"):
+                record["identityAliases"] = sorted({
+                    *[str(value) for value in record.get("identityAliases", [])],
+                    str(record["name"]),
+                })
             # Keep the live ID and analysis, but add a durable DB bridge and the
             # canonical display identity (e.g. Travis Etienne Jr.).
             record["canonicalId"] = int(canonical_player["canonical_id"])

@@ -26,11 +26,13 @@ let players = [],
     startK: 1,
     startDST: 1,
     bench: 6,
+    irSlots: 0,
     passTD: 6,
     risk: 'balanced',
     strategy: 'auto',
   };
 let playerBrowserQuery = '';
+let playerIdentityIndex = new Map();
 let injuryFeedManager = null;
 let playerPhotoRegistry = window.PlayerPhotoV1?.emptyRegistry || null;
 const managers = [
@@ -303,8 +305,13 @@ const DOM = Object.freeze({
   recordPickBtn: el('recordPickBtn'),
   recordPickLabel: el('recordPickLabel'),
   roundNoteReminder: el('roundNoteReminder'),
+  leagueProfileSelect: el('leagueProfileSelect'),
+  activeLeagueLabel: el('activeLeagueLabel'),
+  leagueProfileDetails: el('leagueProfileDetails'),
 });
-const draftSessionStore=window.DraftSessionV1?new DraftSessionV1.DraftSessionStore():null;
+const leagueProfileStore=window.LeagueProfilesV1?new LeagueProfilesV1.LeagueProfileStore():null;
+let activeLeagueProfile=leagueProfileStore?.initialize()&&leagueProfileStore.active(),
+  draftSessionStore=window.DraftSessionV1?new DraftSessionV1.DraftSessionStore(localStorage,leagueProfileStore?.draftKey(activeLeagueProfile?.id)):null;
 let replacingSavedDraft=false;
 function safeText(id, value) {
   const node = el(id);
@@ -313,6 +320,51 @@ function safeText(id, value) {
 function safeHTML(id, value) {
   const node = el(id);
   if (node) node.innerHTML = value;
+}
+function activeProfileSettings(){return activeLeagueProfile?.settings||leagueContext}
+function bindProfileDraftStore(){draftSessionStore=window.DraftSessionV1?new DraftSessionV1.DraftSessionStore(localStorage,leagueProfileStore?.draftKey(activeLeagueProfile?.id)):null}
+function renderLeagueProfileControls(){
+  if(!leagueProfileStore||!activeLeagueProfile)return;
+  const profiles=leagueProfileStore.list();
+  if(DOM.leagueProfileSelect){DOM.leagueProfileSelect.innerHTML='';profiles.forEach(profile=>{const option=document.createElement('option');option.value=profile.id;option.textContent=profile.displayName;DOM.leagueProfileSelect.appendChild(option)});DOM.leagueProfileSelect.value=activeLeagueProfile.id}
+  safeText('activeLeagueLabel',`League: ${activeLeagueProfile.displayName}`);
+  safeText('leagueProfileDetails',`${activeLeagueProfile.leagueName} • ${activeLeagueProfile.platform} • ${activeLeagueProfile.actualTeams} active teams${activeLeagueProfile.maxTeams!==activeLeagueProfile.actualTeams?` (${activeLeagueProfile.maxTeams} max)`:''} • ${activeLeagueProfile.draftType}`);
+  safeText('profileSetupTitle',`${activeLeagueProfile.displayName} Draft Rounds`);safeText('profileSetupLeagueName',activeLeagueProfile.leagueName);
+  const facts=el('profileSetupFacts');if(facts){facts.innerHTML='';const settings=activeLeagueProfile.settings,labels=[`${activeLeagueProfile.actualTeams} Teams`,settings.scoring==='full'?'Full PPR':settings.scoring==='standard'?'Standard':'Half-PPR',`${settings.startRB} RB`,`${settings.startWR} WR`,`${settings.flex} FLEX`,`${settings.bench} Bench`,`${settings.irSlots||0} IR`,`${settings.passTD}-Point Pass TD`];labels.forEach(label=>{const span=document.createElement('span');span.textContent=label;facts.appendChild(span)})}
+}
+function applyActiveLeagueProfile(){
+  if(!activeLeagueProfile)return;
+  applySavedSettings({...activeLeagueProfile.settings,slot:activeLeagueProfile.draftSlot});
+  chooseMode(activeLeagueProfile.preferredMode||'practice');
+  style=activeLeagueProfile.settings.roomStyle||style;
+  if(el('roomStyle'))el('roomStyle').value=style;
+  leagueContext={...leagueContext,...activeLeagueProfile.settings};
+  slot=activeLeagueProfile.draftSlot;
+  applyDraftStructure();renderLeagueProfileControls();renderManagerSetup();updateSetupRoundPreview();
+}
+function captureProfileSettings(){
+  const prior=activeProfileSettings(),scoring=el('scoring')?.value||prior.scoring||'half';
+  return {...prior,teams:+(el('teamCount')?.value||prior.teams||10),scoring,receptions:scoring==='full'?1:scoring==='half'?0.5:0,startQB:+(el('startQB')?.value||0),startRB:+(el('startRB')?.value||0),startWR:+(el('startWR')?.value||0),startTE:+(el('startTE')?.value||0),flex:+(el('flexSpots')?.value||0),startK:+(el('startK')?.value||0),startDST:+(el('startDST')?.value||0),bench:+(el('benchSpots')?.value||0),irSlots:+(el('irSpots')?.value||0),passTD:+(el('passTD')?.value||6),risk:el('riskProfile')?.value||'balanced',roomStyle:el('roomStyle')?.value||'chaotic'};
+}
+function saveActiveLeagueProfileSettings({quiet=false}={}){
+  if(!leagueProfileStore||!activeLeagueProfile)return activeLeagueProfile;
+  const settings=captureProfileSettings(),draftSlot=Math.max(1,Math.min(settings.teams,+(el('draftSlot')?.value||settings.teams)));
+  activeLeagueProfile=leagueProfileStore.update(activeLeagueProfile.id,{actualTeams:settings.teams,settings,draftSlot,preferredMode:mode});
+  renderLeagueProfileControls();if(!quiet)alert(`${activeLeagueProfile.displayName} settings saved.`);return activeLeagueProfile;
+}
+function selectLeagueProfile(profileId){
+  if(!leagueProfileStore||profileId===activeLeagueProfile?.id)return;
+  if(history.length&&draftSessionStore)persistDraftSession(pick>TOTAL_PICKS?'complete':'active');
+  activeLeagueProfile=leagueProfileStore.select(profileId);bindProfileDraftStore();
+  history=[];drafted=[];decisionSnapshots=[];pick=1;selectedCandidateId=null;currentYahooRecord=null;invalidateIntelligence();
+  applyActiveLeagueProfile();backToSetup();showSavedDraftPrompt();
+}
+function createLeagueProfile(){
+  if(!leagueProfileStore)return;const name=prompt('Profile name');if(!String(name||'').trim())return;
+  activeLeagueProfile=leagueProfileStore.create({displayName:String(name).trim(),leagueName:String(name).trim(),preferredMode:mode,settings:captureProfileSettings(),actualTeams:+(el('teamCount')?.value||10),draftSlot:+(el('draftSlot')?.value||10)});bindProfileDraftStore();applyActiveLeagueProfile();showSavedDraftPrompt();
+}
+function renameLeagueProfile(){
+  if(!leagueProfileStore||!activeLeagueProfile)return;const name=prompt('Rename league profile',activeLeagueProfile.displayName);if(!String(name||'').trim())return;activeLeagueProfile=leagueProfileStore.rename(activeLeagueProfile.id,String(name).trim());renderLeagueProfileControls();
 }
 function reportRuntimeError(context, err) {
   console.error(`[${APP_VERSION.label}] ${context}:`, err);
@@ -392,7 +444,7 @@ async function init() {
     refreshDraftSlotOptions(10,10);
   }
   renderManagerSetup();
-  updateSetupRoundPreview();
+  applyActiveLeagueProfile();
   initializeDraftReliability();
 }
 
@@ -529,7 +581,7 @@ function chooseMode(m) {
 }
 function currentDraftSessionState(status='active'){
   const recommendationIds=players.length&&pick<=TOTAL_PICKS?recommendations().map(player=>player.id):[];
-  return {status,mode,style,slot,pick,currentRound:info().r,currentPickOwner:pick<=TOTAL_PICKS?teamForPick(pick):null,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
+  return {status,leagueProfileId:activeLeagueProfile?.id||null,mode,style,slot,pick,currentRound:info().r,currentPickOwner:pick<=TOTAL_PICKS?teamForPick(pick):null,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
 }
 function persistDraftSession(status='active'){
   if(!draftSessionStore||!history.length&&DOM.appScreen?.classList.contains('hidden'))return null;
@@ -538,13 +590,13 @@ function persistDraftSession(status='active'){
 }
 function showSavedDraftPrompt(){
   const saved=draftSessionStore?.load();if(!saved||saved.status!=='active'){DOM.resumeDraftCard?.classList.add('hidden');return}
-  DOM.resumeDraftCard?.classList.remove('hidden');if(DOM.resumeDraftSummary)DOM.resumeDraftSummary.textContent=`${saved.mode||'Draft'} • Slot ${saved.slot} • ${saved.history.length} picks recorded • saved ${new Date(saved.updatedAt).toLocaleString()}`;
+  DOM.resumeDraftCard?.classList.remove('hidden');if(DOM.resumeDraftSummary)DOM.resumeDraftSummary.textContent=`${activeLeagueProfile?.displayName||'League'} • ${saved.mode||'Draft'} • Slot ${saved.slot} • ${saved.history.length} picks recorded • saved ${new Date(saved.updatedAt).toLocaleString()}`;
 }
 function confirmStartNewDraft(){
   const saved=draftSessionStore?.load();if(saved?.status==='active'&&!confirm('Start a new draft? The active saved draft will be replaced.'))return;
   draftSessionStore?.clear();replacingSavedDraft=true;DOM.resumeDraftCard?.classList.add('hidden');startDraft();replacingSavedDraft=false;
 }
-function applySavedSettings(settings={}){if(settings.teams!==undefined){const teamNode=el('teamCount');if(teamNode)teamNode.value=settings.teams;refreshDraftSlotOptions(settings.teams,settings.slot)}const values={draftSlot:settings.slot,scoring:settings.scoring,startQB:settings.startQB,startRB:settings.startRB,startWR:settings.startWR,startTE:settings.startTE,flexSpots:settings.flex,startK:settings.startK,startDST:settings.startDST,benchSpots:settings.bench,passTD:settings.passTD,riskProfile:settings.risk};Object.entries(values).forEach(([id,value])=>{const node=el(id);if(node&&value!==undefined)node.value=value})}
+function applySavedSettings(settings={}){if(settings.teams!==undefined){const teamNode=el('teamCount');if(teamNode)teamNode.value=settings.teams;refreshDraftSlotOptions(settings.teams,settings.slot)}const values={draftSlot:settings.slot,scoring:settings.scoring,startQB:settings.startQB,startRB:settings.startRB,startWR:settings.startWR,startTE:settings.startTE,flexSpots:settings.flex,startK:settings.startK,startDST:settings.startDST,benchSpots:settings.bench,irSpots:settings.irSlots,passTD:settings.passTD,riskProfile:settings.risk};Object.entries(values).forEach(([id,value])=>{const node=el(id);if(node&&value!==undefined)node.value=value})}
 function resumeSavedDraft(){
   try{const saved=draftSessionStore?.load();if(!saved||saved.status!=='active')throw new Error('No active saved draft is available.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;if(saved.currentPickOwner!=null&&Number(saved.currentPickOwner)!==teamForPick(pick))throw new Error('Saved draft owner does not match the restored snake order.');decisionSnapshots=[...(saved.decisionSnapshots||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderLeagueDnaBar();renderAll();renderDraftTimeline();installDraftNavigationGuard();requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
 }
@@ -577,6 +629,7 @@ function startDraft() {
       );
       return;
     }
+    saveActiveLeagueProfileSettings({quiet:true});
     mobileTeamExpanded = false;
     const rs = el('runtimeStatus');
     if (rs) {
@@ -586,6 +639,7 @@ function startDraft() {
     slot = +(document.getElementById('draftSlot')?.value || 10);
     style = document.getElementById('roomStyle')?.value || 'chaotic';
     leagueContext = {
+      ...activeProfileSettings(),
       scoring: document.getElementById('scoring')?.value || 'half',
       startQB: +(document.getElementById('startQB')?.value || 1),
       startRB: +(document.getElementById('startRB')?.value || 2),
@@ -595,6 +649,7 @@ function startDraft() {
       startK: +(document.getElementById('startK')?.value || 1),
       startDST: +(document.getElementById('startDST')?.value || 1),
       bench: +(document.getElementById('benchSpots')?.value || 6),
+      irSlots: +(document.getElementById('irSpots')?.value || 0),
       passTD: +(document.getElementById('passTD')?.value || 6),
       teams: +(document.getElementById('teamCount')?.value || 10),
       completionPoint: 0.1,
@@ -671,7 +726,9 @@ function info() {
   return {r:Math.ceil(pick/teams),ip:((pick-1)%teams)+1,until:Math.max(0,Math.min(TOTAL_PICKS,next)-pick)};
 }
 function canonicalPlayerId(value) {
-  return String(value ?? '');
+  const requested = String(value ?? '');
+  const player = playerIdentityIndex.get(requested);
+  return String(player?.id ?? requested);
 }
 function isDraftedPlayer(id) {
   const canonicalId = canonicalPlayerId(id);
@@ -679,7 +736,7 @@ function isDraftedPlayer(id) {
 }
 function playerByCanonicalId(id) {
   const canonicalId = canonicalPlayerId(id);
-  return players.find(player => canonicalPlayerId(player.id) === canonicalId) || null;
+  return playerIdentityIndex.get(canonicalId) || null;
 }
 function available() {
   return players.filter(p => !isDraftedPlayer(p.id));
@@ -753,15 +810,22 @@ function normalizeSearchText(text) {
     .trim();
 }
 function buildPlayerSearchIndex() {
+  playerIdentityIndex = new Map();
   players.forEach(p => {
     p.__searchKey =
       normalizeSearchText(p.name || '') +
       ' ' +
       normalizeSearchText(p.team || '') +
       ' ' +
-      normalizeSearchText(String(p.id));
+      normalizeSearchText(String(p.id)) +
+      ' ' +
+      (p.identityAliases || []).map(normalizeSearchText).join(' ') +
+      ' ' +
+      (p.legacyIds || []).map(value => normalizeSearchText(String(value))).join(' ');
     p.__stableId =
       p.id != null ? String(p.id) : normalizeSearchText(p.name) + '|' + normalizeSearchText(p.team);
+    playerIdentityIndex.set(String(p.id), p);
+    (p.legacyIds || []).forEach(legacyId => playerIdentityIndex.set(String(legacyId), p));
   });
 }
 function playerMatchesQuery(player, query) {
@@ -771,7 +835,8 @@ function playerMatchesQuery(player, query) {
     return true;
   }
 
-  const searchKey = [player.name, player.team, player.pos, positionKey(player), player.id]
+  const searchKey = [player.name, ...(player.identityAliases || []), player.team, player.pos,
+    positionKey(player), player.id, ...(player.legacyIds || [])]
     .map(value => normalizeSearchText(value))
     .filter(Boolean)
     .join(' ');
@@ -953,7 +1018,7 @@ function renderLeagueDnaBar() {
       : leagueContext.scoring === 'standard'
         ? 'Standard'
         : 'Half-PPR';
-  node.innerHTML = `<div><b>Royal Rumble League DNA</b><span>${leagueContext.teams || 10} teams • ${scoringLabel} • ${leagueContext.startWR} WR • ${leagueContext.flex} FLEX • ${leagueContext.passTD}-point pass TD • ${TOTAL_ROUNDS} rounds</span></div><div class="leagueDnaSignals"><span>Elite QB ↑</span><span>WR depth ↑</span><span>Explosive upside ↑</span><span>D/ST above average</span></div>`;
+  node.innerHTML = `<div><b>${safeInsightText(activeLeagueProfile?.displayName||'League')} DNA</b><span>${leagueContext.teams || 10} teams • ${scoringLabel} • ${leagueContext.startRB} RB • ${leagueContext.startWR} WR • ${leagueContext.flex} FLEX • ${leagueContext.passTD}-point pass TD • ${TOTAL_ROUNDS} rounds</span></div><div class="leagueDnaSignals"><span>${safeInsightText(activeLeagueProfile?.platform||'Local')}</span><span>${safeInsightText(activeLeagueProfile?.draftType||'Draft')}</span><span>${leagueContext.irSlots||0} IR</span></div>`;
 }
 function leagueSpecificModifier(p) {
   let m = 0,
@@ -2483,7 +2548,7 @@ function playerDecisionModel(player, recs) {
         },
         comparison,
       };
-  const marketFloor=recommendationMarketFloor(championshipDecision(),rosterCompletionState()),playerMarketFloor=String(marketFloor.playerId)===String(player.id)?marketFloor:null,integrityConfidence=playerMarketFloor?.confidence??finalDecisionTrace(player).strategy?.integrity?.confidence,summary=integrityConfidence==null?rawSummary:{...rawSummary,reason:playerMarketFloor?.reason??rawSummary.reason,marketFloor:playerMarketFloor,confidence:{...rawSummary.confidence,score:Math.min(Number(rawSummary.confidence?.score??100),integrityConfidence),label:playerMarketFloor?.confidenceLabel??(integrityConfidence>=82?'High confidence':integrityConfidence>=62?'Solid confidence':integrityConfidence>=42?'Close call':'Low confidence')}};
+  const marketFloor=window.JoninDecisionIntelligenceV1?recommendationMarketFloor(championshipDecision(),rosterCompletionState()):{active:false,playerId:null},playerMarketFloor=marketFloor.active&&String(marketFloor.playerId)===String(player.id)?marketFloor:null,integrityConfidence=playerMarketFloor?.confidence??finalDecisionTrace(player).strategy?.integrity?.confidence,summary=integrityConfidence==null?rawSummary:{...rawSummary,reason:playerMarketFloor?.reason??rawSummary.reason,marketFloor:playerMarketFloor,confidence:{...rawSummary.confidence,score:Math.min(Number(rawSummary.confidence?.score??100),integrityConfidence),label:playerMarketFloor?.confidenceLabel??(integrityConfidence>=82?'High confidence':integrityConfidence>=62?'Solid confidence':integrityConfidence>=42?'Close call':'Low confidence')}};
   const stage = sharinganStage(player),
     recent = history
       .slice(-8)
@@ -2873,7 +2938,7 @@ function finishDraft() {
 }
 function yahooArchive() {
   try {
-    return JSON.parse(localStorage.getItem('fantasyHQYahooMocks') || '[]');
+    return JSON.parse(localStorage.getItem(leagueProfileStore?.archiveKey(activeLeagueProfile?.id)||'fantasyHQYahooMocks') || '[]');
   } catch (e) {
     return [];
   }
@@ -2886,9 +2951,11 @@ function buildYahooRecord() {
     id: `yahoo-${now.toISOString()}-${Math.random().toString(36).slice(2, 8)}`,
     createdAt: now.toISOString(),
     source: 'Yahoo public mock draft against real people',
+    leagueProfileId: activeLeagueProfile?.id||null,
     league: {
-      id: 164770,
-      name: 'SQUAAA! ROYAL RUMBLE 2025–2026',
+      id: activeLeagueProfile?.id||164770,
+      name: activeLeagueProfile?.leagueName||'SQUAAA! ROYAL RUMBLE 2025–2026',
+      platform: activeLeagueProfile?.platform||'Yahoo',
       teams: leagueContext.teams||10,
       draftSlot: slot,
       scoring: leagueContext.scoring,
@@ -2936,7 +3003,7 @@ function saveYahooRecord(record) {
   let a = yahooArchive();
   a.unshift(record);
   a = a.slice(0, 75);
-  localStorage.setItem('fantasyHQYahooMocks', JSON.stringify(a));
+  localStorage.setItem(leagueProfileStore?.archiveKey(activeLeagueProfile?.id)||'fantasyHQYahooMocks', JSON.stringify(a));
 }
 function downloadBlob(filename, text, type) {
   const blob = new Blob([text], { type });
@@ -3732,7 +3799,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_6')
+      .register('./service-worker.js?v=jonin_4_3_7')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

@@ -49,8 +49,8 @@ class Jonin434Tests(unittest.TestCase):
         version = (ROOT / 'js/app-version.js').read_text()
         worker = (ROOT / 'service-worker.js').read_text()
         session = (ROOT / 'js/draft-session-v1.js').read_text()
-        self.assertIn("milestone:'4.3.6'", version)
-        self.assertIn("fantasy-hq-jonin-4-3-6", worker)
+        self.assertIn("milestone:'4.3.7'", version)
+        self.assertIn("fantasy-hq-jonin-4-3-7", worker)
         self.assertIn("fantasyHQ.activeDraft.v1", session)
         self.assertIn('DRAFT_STATE_VERSION=1', session)
 

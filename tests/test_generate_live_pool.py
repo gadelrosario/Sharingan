@@ -107,6 +107,38 @@ class GenerateLivePoolTests(unittest.TestCase):
         resolution = next(r for r in summary["duplicate_resolutions"] if r["name"] == "Luther Burden III")
         self.assertEqual([155], resolution["removed_ids"])
 
+    def test_reviewed_legacy_spelling_collapses_into_canonical_identity(self):
+        connection = sqlite3.connect(self.db)
+        connection.execute(
+            "INSERT INTO players VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (68, "jonathan-brooks-rb", "Jonathon Brooks", "RB", "CAR", 5, "active"),
+        )
+        connection.commit()
+        connection.close()
+        live = json.loads(self.live.read_text(encoding="utf-8"))
+        live.extend([
+            {"id": 108, "overall": 77, "name": "Jonathon Brooks", "pos": "RB", "team": "CAR",
+             "fantasylandOverallRank": 77, "sourceCoverage": {"fantasyland": True}},
+            {"id": 1000068, "overall": None, "name": "Jonathan Brooks", "pos": "RB", "team": "CAR",
+             "canonicalId": 68, "canonicalKey": "jonathan-brooks-rb", "flockRank": 38},
+        ])
+        self.live.write_text(json.dumps(live), encoding="utf-8")
+        review = Path(self.tempdir.name) / "identity_review.json"
+        review.write_text(json.dumps([{
+            "sourceName": "Jonathan Brooks", "canonicalName": "Jonathon Brooks", "position": "RB",
+        }]), encoding="utf-8")
+
+        summary = generate(self.db, self.live, self.out, self.patch, review)
+        matches = [p for p in json.loads(self.out.read_text()) if p["name"] == "Jonathon Brooks"]
+        self.assertEqual(1, len(matches))
+        self.assertEqual((108, 68, "jonathan-brooks-rb", 77, 38),
+                         (matches[0]["id"], matches[0]["canonicalId"], matches[0]["canonicalKey"],
+                          matches[0]["overall"], matches[0]["flockRank"]))
+        self.assertEqual(["Jonathan Brooks"], matches[0]["identityAliases"])
+        self.assertEqual(["1000068"], matches[0]["legacyIds"])
+        resolution = next(r for r in summary["duplicate_resolutions"] if r["name"] == "Jonathon Brooks")
+        self.assertEqual([1000068], resolution["removed_ids"])
+
 
 if __name__ == "__main__":
     unittest.main()

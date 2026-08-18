@@ -6839,12 +6839,15 @@
       "bdge": true,
       "fantasyPros": true,
       "gerard": false,
-      "flock": false
+      "flock": false,
+      "sleeper": false,
+      "yahoo": false,
+      "consensus": false
     },
     "offenseQuality": "weak",
     "handcuffFor": [],
-    "flockRank": null,
-    "flockTier": null,
+    "flockRank": 38.0,
+    "flockTier": "H",
     "flockBoost": 0,
     "coreTarget": false,
     "leagueBreaker": false,
@@ -6862,7 +6865,17 @@
     "fantasylandSource": "Fantasyland",
     "fantasylandHostPlatform": "Flock Fantasy",
     "fantasylandSnapshotDate": "2026-08-08",
-    "fantasylandProvenance": "Transcribed from screenshots supplied by the user. sourceTeam preserves the team label displayed by the source and is NOT a canonical-team correction."
+    "fantasylandProvenance": "Transcribed from screenshots supplied by the user. sourceTeam preserves the team label displayed by the source and is NOT a canonical-team correction.",
+    "canonicalId": 68,
+    "canonicalKey": "jonathan-brooks-rb",
+    "hqGrade": 8.6,
+    "expertAgreement": 50.0,
+    "identityAliases": [
+      "Jonathan Brooks"
+    ],
+    "legacyIds": [
+      "1000068"
+    ]
   },
   {
     "id": 109,
@@ -14793,42 +14806,6 @@
     "yahooAdp": null,
     "consensusAdp": null,
     "hqGrade": 26.2,
-    "expertAgreement": 50.0,
-    "marketValue": null,
-    "tierScarcity": null,
-    "waitProbability": null,
-    "upside": null,
-    "risk": null,
-    "replacementValue": null,
-    "leagueWinnerScore": null,
-    "sourceCoverage": {
-      "bdge": false,
-      "flock": true,
-      "sleeper": false,
-      "yahoo": false,
-      "consensus": false
-    }
-  },
-  {
-    "id": 1000068,
-    "canonicalId": 68,
-    "canonicalKey": "jonathan-brooks-rb",
-    "overall": null,
-    "name": "Jonathan Brooks",
-    "pos": "RB",
-    "team": "CAR",
-    "bye": null,
-    "overallTier": null,
-    "posRank": null,
-    "posTier": null,
-    "bdgeRank": null,
-    "bdgeTier": null,
-    "flockRank": 38.0,
-    "flockTier": "H",
-    "sleeperAdp": null,
-    "yahooAdp": null,
-    "consensusAdp": null,
-    "hqGrade": 8.6,
     "expertAgreement": 50.0,
     "marketValue": null,
     "tierScarcity": null,

@@ -8,8 +8,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.12"></script>
-<link rel="stylesheet" href="css/app.css?v=4.3.6">
+<script src="js/app-version.js?v=1.0.13"></script>
+<link rel="stylesheet" href="css/app.css?v=4.3.7">
   </head>
   <body>
     <header>
@@ -39,6 +39,13 @@
             <div class="resumeDraftActions"><button class="primary" onclick="resumeSavedDraft()">Resume Draft</button><button class="ghost" onclick="confirmStartNewDraft()">Start New Draft</button></div>
           </section>
           <h2 style="margin-top: 0">Start a draft</h2>
+          <section class="leagueProfileToolbar" aria-labelledby="leagueProfileHeading">
+            <div><b id="leagueProfileHeading">League Profile</b><div id="leagueProfileDetails" class="meta"></div></div>
+            <label class="compactProfileSelect"><span class="srOnly">Active league</span><select id="leagueProfileSelect" onchange="selectLeagueProfile(this.value)"></select></label>
+            <button class="ghost" type="button" onclick="createLeagueProfile()">New</button>
+            <button class="ghost" type="button" onclick="renameLeagueProfile()">Rename</button>
+            <button class="scanBtn" type="button" onclick="saveActiveLeagueProfileSettings()">Save Settings</button>
+          </section>
           <div class="modeGrid">
             <div id="practiceChoice" class="modeCard selected" onclick="chooseMode('practice')">
               <h3>🟢 Practice Mock Draft</h3>
@@ -156,6 +163,13 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                 </select></label
+              ><label
+                >IR<select id="irSpots">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select><span class="meta">Not a draft round</span></label
               >
             </div>
           </div>
@@ -220,20 +234,15 @@
           <div class="card leagueDnaSetup" style="background: #111017; margin-bottom: 12px">
             <div class="sectionHeader">
               <div>
-                <b>Royal Rumble Draft Rounds</b>
-                <div class="meta">SQUAAA! ROYAL RUMBLE 2025–2026</div>
+                <b id="profileSetupTitle">Primary League Draft Rounds</b>
+                <div id="profileSetupLeagueName" class="meta">SQUAAA! ROYAL RUMBLE 2025–2026</div>
               </div>
               <span class="leagueProfileBadge">ACTIVE</span>
             </div>
-            <div class="leagueDnaFacts">
-              <span>10 Teams</span><span>Half-PPR</span><span>3 WR</span><span>2 FLEX</span
-              ><span>6-Point Pass TD</span><span>Explosive-play bonuses</span
-              ><span>Enhanced D/ST</span>
-            </div>
+            <div id="profileSetupFacts" class="leagueDnaFacts"></div>
             <div class="meta" style="margin-top: 8px">
-              The recommendation engine will prioritize elite positional advantages, deep RB/WR
-              starting requirements, high-volume quarterbacks, and explosive-play upside while
-              preserving late-round kicker and defense discipline.
+              The selected profile supplies league size, scoring, roster requirements, and draft
+              timing to the existing recommendation and grading engines.
             </div>
           </div>
           <div class="card" style="background: #111017; margin-bottom: 12px">
@@ -258,7 +267,7 @@
           <div class="draftBrand"><span aria-hidden="true">👁</span><strong>SHARINGAN</strong><small data-app-version></small></div>
           <div class="draftStatusNumbers"><span><small>ROUND</small><b id="headerRound">1</b></span><span><small>PICK</small><b id="headerPick">1</b></span><span><small>YOUR TURN</small><b id="headerNextPick">Pick 1</b></span><span><small>ON CLOCK IN</small><b id="headerUntil">0 picks</b></span></div>
           <div class="headerCommandScore" title="Summarizes how much flexibility and leverage your current roster and the remaining draft board provide."><small>BOARD CONTROL</small><b id="headerCommandScore">MEDIUM</b><span id="headerCommandLabel">Board developing</span></div>
-          <div class="headerLeague"><span id="headerLeagueFormat">10-Team • Half PPR</span><button class="ghost" type="button" aria-label="Draft mode settings" onclick="backToSetup()">Draft Mode</button><button class="headerNotesButton" type="button" onclick="openNotebook()">📝 Notes</button><button class="iconButton headerSettingsButton" type="button" aria-label="Open settings" onclick="backToSetup()">⚙</button></div>
+          <div class="headerLeague"><div class="headerLeagueContext"><span id="activeLeagueLabel" title="Active league profile">League: Primary League</span><span id="headerLeagueFormat">10-Team • Half PPR</span></div><button class="ghost" type="button" aria-label="Draft mode settings" onclick="backToSetup()">Draft Mode</button><button class="headerNotesButton" type="button" onclick="openNotebook()">📝 Notes</button><button class="iconButton headerSettingsButton" type="button" aria-label="Open settings" onclick="backToSetup()">⚙</button></div>
         </section>
         <div class="flightControlBar"><div id="modeBanner"></div></div>
         <div id="leagueDnaBar" class="leagueDnaBar"></div>
@@ -574,7 +583,8 @@
     <script src="js/roster-completion-constraint-v1.js?v=1.1.0"></script>
     <script src="js/draft-strategy-engine-v1.js?v=1.3.0"></script>
     <script src="js/fantasy-hq-core.js?v=3.2.0"></script>
-    <script src="js/draft-session-v1.js?v=1.1.0"></script>
+    <script src="js/draft-session-v1.js?v=1.2.0"></script>
+    <script src="js/league-profiles-v1.js?v=1.0.0"></script>
     <script src="js/jonin-decision-intelligence-v1.js?v=1.0.3"></script>
     <script src="js/draft-grading-engine-v1.js?v=1.0.0"></script>
     <script src="js/command-center-v1.js?v=1.1.0"></script>
@@ -589,7 +599,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.3.6"></script>
+    <script src="js/app.js?v=4.3.7"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

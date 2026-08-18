@@ -135,7 +135,7 @@ all are classified `missing_legitimate_draftable`:
 | Position | Missing canonical players |
 | --- | --- |
 | QB | Jordan Love; Malik Willis; Sam Darnold; Cam Ward; Daniel Jones; Fernando Mendoza; Jacoby Brissett |
-| RB | Jonathan Brooks; Chris Rodriguez |
+| RB | Jonathon Brooks; Chris Rodriguez |
 | TE | Oronde Gadsden II; Mark Andrews; Juwan Johnson; Chigoziem Okonkwo; Kenyon Sadiq; Dalton Schultz; T.J. Hockenson; AJ Barner |
 
 Travis Etienne Jr. is classified present by normalized identity, with a

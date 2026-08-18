@@ -34,10 +34,10 @@
     const basePenalty=band==='SMALL_REACH'?Math.max(0,(reach-5)*.35):band==='MATERIAL_REACH'?1.5+Math.max(0,reach-smallLimit)*.55:band==='EXTREME_REACH'?4+Math.max(0,reach-corridor.allowance)*.55:0,waitPenalty=survival==='LIKELY_TO_SURVIVE'&&reach>5&&!meaningfulTierCliff?Math.min(5,.75+Math.max(0,rank-nextPick)*.25):0,relief=Math.min((basePenalty+waitPenalty)*.5,(Number(input.starterImpact)>0?1.25:0)+(meaningfulTierCliff?2.5:0)+(survivalRisk>=60||survival==='UNLIKELY_TO_SURVIVE'?2:0)+Math.min(2,strongPortfolio.length)),material=['MATERIAL_REACH','EXTREME_REACH'].includes(band),extraordinary=meaningfulTierCliff&&(survivalRisk>=60||survival==='UNLIKELY_TO_SURVIVE'||Number(input.starterImpact)>0),unsupported=material&&signals.length===0,blocked=band==='EXTREME_REACH'&&!extraordinary&&!input.completionForced,penalty=Math.max(0,basePenalty+waitPenalty-relief)+(unsupported?4:0)+(blocked?6:0);
     return Object.freeze({rank,reach,band,smallLimit,extremeLimit,nextPick,survival,likelyToSurvive:survival==='LIKELY_TO_SURVIVE',meaningfulTierCliff,sameTierRemaining,expectedPositionSelections,nextTierDrop,survivalRisk,signals:Object.freeze(signals),unsupported,blocked,basePenalty,waitPenalty,relief,penalty,corridor});
   }
-  function foundationDebt({roster=[],round=1}){
+  function foundationDebt({roster=[],round=1,config={}}){
     const premiumRB=roster.filter(player=>pos(player?.position??player?.pos)==='RB'&&roleQuality(player)==='FOUNDATION').length;
     const starterRB=roster.filter(player=>pos(player?.position??player?.pos)==='RB'&&['FOUNDATION','STARTER'].includes(roleQuality(player))).length;
-    const target=Number(round)<=1?1:2,debt=Math.max(0,target-premiumRB),severity=debt===0?'NONE':debt===1?'MEANINGFUL':'HIGH';
+    const requiredRB=Math.max(0,Number(config.startRB??2)),target=Math.min(requiredRB,Number(round)<=1?1:2),debt=Math.max(0,target-premiumRB),severity=debt===0?'NONE':debt===1?'MEANINGFUL':'HIGH';
     return Object.freeze({premiumRB,starterRB,target,debt,severity});
   }
   function slotQuality(player){const role=roleQuality(player);return({FOUNDATION:5,STARTER:3,DEPTH:1,CONTINGENCY:0,UNKNOWN:0,REQUIRED_SPECIALIST:1}[role]??0)}
@@ -73,7 +73,7 @@
     return Object.freeze({position,countBefore,ordinal,rawPenalty,starterRelief,exceptionRelief,netPenalty,adjustment:-netPenalty,utility,improvesStarter,portfolio});
   }
   function evaluateCandidate(input){
-    const player=input.player||{},position=pos(player.position??player.pos),round=Number(input.round)||1,roster=input.roster||[],candidates=input.candidates||[],role=roleQuality(player),debt=foundationDebt({roster,round}),before=starterEquity({roster,config:input.config}),after=starterEquity({roster,candidate:player,config:input.config}),starterImpact=after.score-before.score,recovery=recoveryCost({position:'RB',candidates,picksUntil:input.picksUntil,roster,round,config:input.config});
+    const player=input.player||{},position=pos(player.position??player.pos),round=Number(input.round)||1,roster=input.roster||[],candidates=input.candidates||[],role=roleQuality(player),debt=foundationDebt({roster,round,config:input.config}),before=starterEquity({roster,config:input.config}),after=starterEquity({roster,candidate:player,config:input.config}),starterImpact=after.score-before.score,recovery=recoveryCost({position:'RB',candidates,picksUntil:input.picksUntil,roster,round,config:input.config});
     const premiumRB=position==='RB'&&role==='FOUNDATION',ordinaryDepth=['DEPTH','CONTINGENCY','UNKNOWN'].includes(role),premiumAvailable=candidates.some(candidate=>pos(candidate.pos??candidate.position)==='RB'&&roleQuality(candidate)==='FOUNDATION'&&valueCorridor({...input,player:candidate}).inside);
     const personalizedFoundation=input.personalizedFoundation!==false,foundationAdjustment=!personalizedFoundation?0:premiumRB&&debt.debt?Math.min(6,debt.debt*3):position!=='RB'&&debt.debt&&premiumAvailable&&round<=3?-Math.min(4,recovery.cost):0;
     const starterAdjustment=clamp(starterImpact*1.25,-3,5),pathAdjustment=clamp((premiumRB?recovery.cost:0)+(starterImpact>0?1:0),0,5);
