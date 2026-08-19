@@ -103,3 +103,7 @@ Future activation requires a separate reviewed change with explicit validation a
 The shadow record can now reference provenance-rich Sleeper player context, provider-neutral statistical projections, and source-specific ADP records. Availability is reported separately for each family. These references do not create a Championship Equity score or automatically assign an archetype.
 
 The local sandbox could not retrieve the public Sleeper player endpoint, and no licensed FantasyPros credentials or snapshot were configured. Current live coverage therefore remains age 0, experience 0, depth-chart position/order 0, projections 0, and ADP 0. See `PLAYER_CONTEXT_AND_MARKET_INTAKE.md` for the updated positional counts and remaining historical-usage gaps.
+
+## Jōnin 4.3.11 historical evidence
+
+The shadow record can now retain normalized per-player historical-usage seasons alongside context, projections, and market records. Historical availability never assigns a research archetype by itself. Current production coverage remains zero because the nflverse dataset could not be downloaded in the local runtime; the adapter and derivations were validated with synthetic fixtures only. See `HISTORICAL_USAGE_INTAKE.md`.

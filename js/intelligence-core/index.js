@@ -10,4 +10,5 @@ module.exports=Object.freeze({
   missionControl:require('./mission-control'),
   championshipEquity:require('./championship-equity'),
   playerIntake:require('./player-intake'),
+  historicalUsage:require('./historical-usage'),
 });

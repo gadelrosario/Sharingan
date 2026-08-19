@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-08-19",
+  "totalPlayers": 330,
+  "positionCounts": {"RB": 78, "WR": 107, "TE": 46, "QB": 34, "K": 33, "DST": 32},
+  "coverage": {
+    "sleeperIds": 292,
+    "nflverseIds": 0,
+    "age": 0,
+    "experience": 0,
+    "rookie": 6,
+    "nflTeam": 330,
+    "position": 330,
+    "externalIds": 292,
+    "depthChartPosition": 0,
+    "depthChartOrder": 0,
+    "handcuffRelationships": 10,
+    "opportunityTrend": 64,
+    "skillOpportunityTrend": 0,
+    "advancedUsage": 0,
+    "projections": 0,
+    "adp": 0,
+    "historicalUsage": 0,
+    "injury": 292,
+    "overallRank": 237,
+    "overallTier": 237,
+    "positionalRank": 237,
+    "expertConviction": 21
+  },
+  "byPosition": {
+    "QB": {"players": 34, "sleeperIds": 34, "nflverseIds": 0, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 34, "projections": 0, "adp": 0, "historicalUsage": 0},
+    "RB": {"players": 78, "sleeperIds": 77, "nflverseIds": 0, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 77, "projections": 0, "adp": 0, "historicalUsage": 0},
+    "WR": {"players": 107, "sleeperIds": 105, "nflverseIds": 0, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 105, "projections": 0, "adp": 0, "historicalUsage": 0},
+    "TE": {"players": 46, "sleeperIds": 45, "nflverseIds": 0, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 45, "projections": 0, "adp": 0, "historicalUsage": 0}
+  },
+  "usageCoverage": {
+    "QB": {"passing": 0, "rushing": 0, "scrambles": 0, "designedRushes": 0, "redZoneRushing": 0, "efficiency": 0},
+    "RB": {"rushing": 0, "receiving": 0, "routes": 0, "redZone": 0, "goalLine": 0, "trends": 0},
+    "WR": {"targets": 0, "routes": 0, "tprr": 0, "yprr": 0, "redZone": 0, "trends": 0},
+    "TE": {"targets": 0, "routes": 0, "tprr": 0, "yprr": 0, "redZone": 0, "trends": 0}
+  },
+  "intakeQuality": {"contextMatched": 0, "contextUnmatched": 0, "contextAmbiguous": 0, "contextQuarantined": 0, "projectionQuarantined": 0, "usageMatched": 0, "usageUnmatched": 0, "usageAmbiguous": 0, "usageQuarantined": 0}
+}
