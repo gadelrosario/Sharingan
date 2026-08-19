@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-08-19T08:33:32.695Z",
+  "nflverseLiveAccess": "UNAVAILABLE_IN_CODEX_ENVIRONMENT",
+  "source": {
+    "players": "official nflverse players release",
+    "weeklyStats": "official nflverse stats_player_week releases",
+    "seasons": [2023, 2024, 2025],
+    "routeParticipation": "DEFERRED_SOURCE_AND_LICENSE_AUDIT"
+  },
+  "activePlayers": 330,
+  "skillPlayers": 265,
+  "gsisCoverage": {
+    "mapped": 0,
+    "unmatched": 330,
+    "sourceRowsUnmatched": 0,
+    "ambiguous": 0,
+    "duplicateProviderIds": 0,
+    "duplicateCanonicalAttachments": 0,
+    "byPosition": {
+      "QB": {"active": 34, "gsisMapped": 0, "gsisUnmatched": 34, "ambiguous": 0, "playersWithHistory": 0, "seasonRecords": 0, "noHistoryExpected": 0, "historyMissing": 34},
+      "RB": {"active": 78, "gsisMapped": 0, "gsisUnmatched": 78, "ambiguous": 0, "playersWithHistory": 0, "seasonRecords": 0, "noHistoryExpected": 2, "historyMissing": 76},
+      "WR": {"active": 107, "gsisMapped": 0, "gsisUnmatched": 107, "ambiguous": 0, "playersWithHistory": 0, "seasonRecords": 0, "noHistoryExpected": 4, "historyMissing": 103},
+      "TE": {"active": 46, "gsisMapped": 0, "gsisUnmatched": 46, "ambiguous": 0, "playersWithHistory": 0, "seasonRecords": 0, "noHistoryExpected": 0, "historyMissing": 46}
+    }
+  },
+  "history": {
+    "seasonRecords": 0,
+    "players": 0,
+    "bySeason": {"2023": 0, "2024": 0, "2025": 0},
+    "noHistoryExpected": 6,
+    "historyMissing": 259
+  },
+  "usageCoverage": {
+    "RB": {"rushing": 0, "receiving": 0, "touches": 0, "redZone": 0, "goalLine": 0, "routes": 0, "trends": 0},
+    "WR": {"targets": 0, "routes": 0, "tprr": 0, "yprr": 0, "redZone": 0, "trends": 0},
+    "TE": {"targets": 0, "routes": 0, "tprr": 0, "yprr": 0, "redZone": 0, "trends": 0},
+    "QB": {"passing": 0, "rushing": 0, "efficiency": 0, "scrambles": 0, "designedRushes": 0, "redZoneRushing": 0, "trends": 0}
+  }
+}

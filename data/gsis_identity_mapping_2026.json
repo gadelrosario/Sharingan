@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "source": "nflverse",
+  "sourceSnapshotDate": null,
+  "accessStatus": "LIVE_ACCESS_UNAVAILABLE",
+  "mappings": [],
+  "unmatched": [],
+  "ambiguous": [],
+  "quarantined": [],
+  "note": "No official source snapshot was reachable in the Codex environment. Run the documented refresh command in a network-enabled environment; no name-only mass mappings were inferred."
+}

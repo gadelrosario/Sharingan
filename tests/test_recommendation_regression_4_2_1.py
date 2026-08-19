@@ -31,7 +31,7 @@ class RecommendationRegression421Tests(unittest.TestCase):
         html=(ROOT/'index.html').read_text(encoding='utf-8')
         worker=(ROOT/'service-worker.js').read_text(encoding='utf-8')
         self.assertIn('<small data-app-version></small>',html)
-        self.assertIn('js/app.js?v=4.3.11',html)
-        self.assertIn("fantasy-hq-jonin-4-3-11",worker)
+        self.assertIn('js/app.js?v=4.3.12',html)
+        self.assertIn("fantasy-hq-jonin-4-3-12",worker)
 
 if __name__=='__main__': unittest.main()
