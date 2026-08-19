@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-08-19",
+  "totalPlayers": 330,
+  "positionCounts": {"RB": 78, "WR": 107, "TE": 46, "QB": 34, "K": 33, "DST": 32},
+  "coverage": {
+    "sleeperIds": 292,
+    "age": 0,
+    "experience": 0,
+    "rookie": 6,
+    "nflTeam": 330,
+    "position": 330,
+    "externalIds": 292,
+    "depthChartPosition": 0,
+    "depthChartOrder": 0,
+    "handcuffRelationships": 10,
+    "opportunityTrend": 64,
+    "skillOpportunityTrend": 0,
+    "advancedUsage": 0,
+    "projections": 0,
+    "adp": 0,
+    "injury": 292,
+    "overallRank": 237,
+    "overallTier": 237,
+    "positionalRank": 237,
+    "expertConviction": 21
+  },
+  "byPosition": {
+    "QB": {"players": 34, "sleeperIds": 34, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 34, "projections": 0, "adp": 0},
+    "RB": {"players": 78, "sleeperIds": 77, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 77, "projections": 0, "adp": 0},
+    "WR": {"players": 107, "sleeperIds": 105, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 105, "projections": 0, "adp": 0},
+    "TE": {"players": 46, "sleeperIds": 45, "age": 0, "experience": 0, "depthChartPosition": 0, "depthChartOrder": 0, "injuries": 45, "projections": 0, "adp": 0}
+  },
+  "intakeQuality": {"contextMatched": 0, "contextUnmatched": 0, "contextAmbiguous": 0, "contextQuarantined": 0, "projectionQuarantined": 0}
+}

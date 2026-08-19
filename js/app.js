@@ -3794,7 +3794,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_9')
+      .register('./service-worker.js?v=jonin_4_3_10')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

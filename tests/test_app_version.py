@@ -16,7 +16,7 @@ console.log(JSON.stringify(APP_VERSION));
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(json.loads(result.stdout), {"phase": "Jōnin", "milestone": "4.3.9", "label": "Jōnin 4.3.9"})
+        self.assertEqual(json.loads(result.stdout), {"phase": "Jōnin", "milestone": "4.3.10", "label": "Jōnin 4.3.10"})
 
     def test_canonical_metadata_renders_all_registered_surfaces(self):
         command = """
@@ -37,9 +37,9 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         manifest = (ROOT / "manifest.webmanifest").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertEqual(version.count("label:'Jōnin 4.3.9'"), 1)
+        self.assertEqual(version.count("label:'Jōnin 4.3.10'"), 1)
         for source in (html, app, manifest, worker):
-            self.assertNotIn("Jōnin 4.3.9", source)
+            self.assertNotIn("Jōnin 4.3.10", source)
         self.assertRegex(app, r"const APP_VERSION\s*=\s*window\.FantasyHQAppVersion")
 
     def test_main_menu_and_each_mode_use_canonical_label(self):
@@ -67,8 +67,8 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertIn('./js/app-version.js?v=1.0.13', worker)
-        self.assertIn('fantasy-hq-jonin-4-3-9', worker)
-        self.assertIn('service-worker.js?v=jonin_4_3_9', app)
+        self.assertIn('fantasy-hq-jonin-4-3-10', worker)
+        self.assertIn('service-worker.js?v=jonin_4_3_10', app)
 
     def test_architecture_remains_browser_isolated(self):
         sources = "\n".join((ROOT / path).read_text(encoding="utf-8") for path in ("index.html", "js/app.js", "service-worker.js"))

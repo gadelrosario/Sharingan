@@ -97,3 +97,9 @@ Production activation is blocked until licensed, reproducible sources fill the m
 5. replacement-level availability calibrated by league size, starting slots, bench depth, position, and draft stage.
 
 Future activation requires a separate reviewed change with explicit validation against the frozen 4.3.8 Primary League and Straight Outta Downey early/middle/late checkpoints. This milestone supplies no fallback score and no player-specific hardcoded intelligence.
+
+## Jōnin 4.3.10 intake status
+
+The shadow record can now reference provenance-rich Sleeper player context, provider-neutral statistical projections, and source-specific ADP records. Availability is reported separately for each family. These references do not create a Championship Equity score or automatically assign an archetype.
+
+The local sandbox could not retrieve the public Sleeper player endpoint, and no licensed FantasyPros credentials or snapshot were configured. Current live coverage therefore remains age 0, experience 0, depth-chart position/order 0, projections 0, and ADP 0. See `PLAYER_CONTEXT_AND_MARKET_INTAKE.md` for the updated positional counts and remaining historical-usage gaps.

@@ -9,4 +9,5 @@ module.exports=Object.freeze({
   evidence:require('./evidence-engine'),
   missionControl:require('./mission-control'),
   championshipEquity:require('./championship-equity'),
+  playerIntake:require('./player-intake'),
 });

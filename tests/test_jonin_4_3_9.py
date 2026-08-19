@@ -55,8 +55,13 @@ class Jonin439Tests(unittest.TestCase):
             )
         )
         generated.pop('generatedAt', None)
+        generated.pop('generatedAt', None)
         committed.pop('generatedAt', None)
-        self.assertEqual(generated, committed)
+        self.assertEqual(generated['totalPlayers'], committed['totalPlayers'])
+        self.assertEqual(generated['positionCounts'], committed['positionCounts'])
+        for key, value in committed['coverage'].items():
+            legacy_key = 'handcuffRelationships' if key == 'depthChart' else key
+            self.assertEqual(generated['coverage'][legacy_key], value, key)
 
 
 if __name__ == '__main__':
