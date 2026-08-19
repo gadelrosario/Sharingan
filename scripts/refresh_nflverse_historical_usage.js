@@ -35,7 +35,7 @@ async function main(){
   if(!normalized.records.length)throw new Error('zero safe historical records; last-valid outputs were preserved');
   const historical=usage.aggregateSnapshot(normalized);
   writeAtomically([{target:mappingOutput,value:mapping},{target:usageOutput,value:historical}]);
-  console.log(JSON.stringify({status:'LIVE_ACCESS_SUCCESS',mappingOutput,usageOutput,mappedPlayers:mapping.mapped,historicalPlayers:historical.players.length,historicalRecords:normalized.records.length,unmatchedMappings:mapping.unmatchedCount,ambiguousMappings:mapping.ambiguousCount,quarantinedMappings:mapping.quarantinedCount},null,2));
+  console.log(JSON.stringify({status:'LIVE_ACCESS_SUCCESS',mappingOutput,usageOutput,mappedPlayers:mapping.mapped,historicalPlayers:historical.players.length,historicalRecords:normalized.records.length,unmatchedMappings:mapping.unmatchedCount,ambiguousMappings:mapping.ambiguousCount,quarantinedMappings:mapping.quarantinedCount,historicalQuarantinedRecords:normalized.quarantinedCount,historicalQuarantineReasonCounts:normalized.quarantineReasonCounts,historicalQuarantineFieldReasonCounts:normalized.quarantineFieldReasonCounts,historicalQualityReasonCounts:normalized.qualityReasonCounts},null,2));
 }
 if(require.main===module)main().catch(error=>{console.error(`NFLVERSE refresh failed; last-valid outputs were preserved: ${error.message}`);process.exit(1)});
 

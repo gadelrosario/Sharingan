@@ -1,0 +1,2639 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "Jōnin 4.3.13",
+  "mode": "SHADOW_BACKTEST",
+  "recommendationAuthority": false,
+  "historicalSnapshotDate": "2026-08-19T00:00:00.000Z",
+  "scoringBasis": {
+    "id": "HALF_PPR_4PT_PASS_TD",
+    "passingYards": 0.04,
+    "passingTouchdowns": 4,
+    "interceptions": -2,
+    "rushingYards": 0.1,
+    "rushingTouchdowns": 6,
+    "receptions": 0.5,
+    "receivingYards": 0.1,
+    "receivingTouchdowns": 6
+  },
+  "outcomeContract": {
+    "labels": [
+      "ELITE_OUTCOME",
+      "STARTER_BREAKOUT",
+      "MEANINGFUL_ASCENT",
+      "NON_BREAKOUT"
+    ],
+    "thresholds": {
+      "QB": {
+        "elitePercentile": 0.85,
+        "starterPercentile": 0.6
+      },
+      "RB": {
+        "elitePercentile": 0.9,
+        "starterPercentile": 0.65
+      },
+      "WR": {
+        "elitePercentile": 0.9,
+        "starterPercentile": 0.65
+      },
+      "TE": {
+        "elitePercentile": 0.85,
+        "starterPercentile": 0.6
+      }
+    },
+    "minimumEvidenceGames": 8,
+    "minimumOutcomeGames": 8,
+    "meaningfulAscentMinimumGain": 0.2
+  },
+  "featureWindows": {
+    "fullSeason": "All Season N records aggregated by canonical player and position.",
+    "lateSeason": "Mean of the final two active observations available in Season N.",
+    "earlyVsLateGrowth": "Final-two mean minus the preceding-two mean, using only the final four active observations in Season N."
+  },
+  "splits": [
+    {
+      "evidenceSeason": 2023,
+      "outcomeSeason": 2024
+    },
+    {
+      "evidenceSeason": 2024,
+      "outcomeSeason": 2025
+    }
+  ],
+  "maximumPairedSamples": {
+    "QB": {
+      "2023_2024": 24,
+      "2024_2025": 29
+    },
+    "RB": {
+      "2023_2024": 43,
+      "2024_2025": 50
+    },
+    "WR": {
+      "2023_2024": 60,
+      "2024_2025": 75
+    },
+    "TE": {
+      "2023_2024": 29,
+      "2024_2025": 33
+    }
+  },
+  "sampleSizes": {
+    "QB": {
+      "2023_2024": 17,
+      "2024_2025": 19
+    },
+    "RB": {
+      "2023_2024": 33,
+      "2024_2025": 36
+    },
+    "WR": {
+      "2023_2024": 46,
+      "2024_2025": 58
+    },
+    "TE": {
+      "2023_2024": 21,
+      "2024_2025": 26
+    }
+  },
+  "outcomeCounts": {
+    "QB": {
+      "2023_2024": {
+        "NON_BREAKOUT": 12,
+        "MEANINGFUL_ASCENT": 1,
+        "STARTER_BREAKOUT": 3,
+        "ELITE_OUTCOME": 1
+      },
+      "2024_2025": {
+        "NON_BREAKOUT": 11,
+        "ELITE_OUTCOME": 4,
+        "STARTER_BREAKOUT": 4
+      }
+    },
+    "RB": {
+      "2023_2024": {
+        "ELITE_OUTCOME": 4,
+        "NON_BREAKOUT": 22,
+        "STARTER_BREAKOUT": 5,
+        "MEANINGFUL_ASCENT": 2
+      },
+      "2024_2025": {
+        "NON_BREAKOUT": 29,
+        "STARTER_BREAKOUT": 5,
+        "ELITE_OUTCOME": 1,
+        "MEANINGFUL_ASCENT": 1
+      }
+    },
+    "WR": {
+      "2023_2024": {
+        "NON_BREAKOUT": 29,
+        "STARTER_BREAKOUT": 9,
+        "MEANINGFUL_ASCENT": 6,
+        "ELITE_OUTCOME": 2
+      },
+      "2024_2025": {
+        "NON_BREAKOUT": 38,
+        "STARTER_BREAKOUT": 10,
+        "MEANINGFUL_ASCENT": 6,
+        "ELITE_OUTCOME": 4
+      }
+    },
+    "TE": {
+      "2023_2024": {
+        "NON_BREAKOUT": 13,
+        "ELITE_OUTCOME": 3,
+        "STARTER_BREAKOUT": 4,
+        "MEANINGFUL_ASCENT": 1
+      },
+      "2024_2025": {
+        "NON_BREAKOUT": 15,
+        "STARTER_BREAKOUT": 6,
+        "ELITE_OUTCOME": 3,
+        "MEANINGFUL_ASCENT": 2
+      }
+    }
+  },
+  "positions": {
+    "QB": {
+      "sampleSizes": {
+        "2023_2024": 17,
+        "2024_2025": 19
+      },
+      "signals": [
+        {
+          "feature": "lateRushingAttempts",
+          "direction": 1,
+          "classification": "PROMISING_BUT_UNSTABLE",
+          "readiness": "PROMISING_NEEDS_MORE_DATA",
+          "meanAuc": 0.6216,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.55,
+              "rankCorrelation": 0.1874,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6932,
+              "rankCorrelation": 0.3587,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "interceptionRate",
+          "direction": -1,
+          "classification": "PROMISING_BUT_UNSTABLE",
+          "readiness": "PROMISING_NEEDS_MORE_DATA",
+          "meanAuc": 0.6099,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.5833,
+              "rankCorrelation": -0.0539,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6364,
+              "rankCorrelation": -0.0368,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.6667,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "rushingAttemptGrowth",
+          "direction": 1,
+          "classification": "PROMISING_BUT_UNSTABLE",
+          "readiness": "PROMISING_NEEDS_MORE_DATA",
+          "meanAuc": 0.5602,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.575,
+              "rankCorrelation": 0.0259,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.5455,
+              "rankCorrelation": 0.1468,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "passAttemptsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5239,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.525,
+              "rankCorrelation": 0.076,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.5227,
+              "rankCorrelation": -0.207,
+              "bottomBucketRate": 0.5,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "rushingAttemptsPerGame",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4849,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.3333,
+              "rankCorrelation": 0.0699,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0,
+              "bucketEffect": -0.4,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6364,
+              "rankCorrelation": 0.2684,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.6667,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "rushingTouchdownsPerGame",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4297,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.3083,
+              "rankCorrelation": -0.1578,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.5511,
+              "rankCorrelation": 0.1784,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.3333,
+              "bucketEffect": 0,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "passingYardsGrowth",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4046,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.4,
+              "rankCorrelation": -0.4265,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.4091,
+              "rankCorrelation": -0.1596,
+              "bottomBucketRate": 0.6667,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "completionRate",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3928,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.4333,
+              "rankCorrelation": 0.3431,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.3523,
+              "rankCorrelation": -0.0982,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.3333,
+              "bucketEffect": 0,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "rushingYardsPerGame",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3905,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.1333,
+              "rankCorrelation": -0.2843,
+              "bottomBucketRate": 0.6,
+              "topBucketRate": 0,
+              "bucketEffect": -0.6,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6477,
+              "rankCorrelation": 0.2035,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "latePassingYards",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3312,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.35,
+              "rankCorrelation": -0.2745,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.3125,
+              "rankCorrelation": -0.1808,
+              "bottomBucketRate": 0.6667,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "yardsPerAttempt",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3311,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.3667,
+              "rankCorrelation": -0.2721,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0,
+              "bucketEffect": -0.4,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.2955,
+              "rankCorrelation": 0.0246,
+              "bottomBucketRate": 0.5,
+              "topBucketRate": 0.1667,
+              "bucketEffect": -0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "passingYardsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.2974,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.3333,
+              "rankCorrelation": -0.2794,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.2614,
+              "rankCorrelation": -0.1877,
+              "bottomBucketRate": 0.6667,
+              "topBucketRate": 0,
+              "bucketEffect": -0.6667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "passingTouchdownRate",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.2939,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.3833,
+              "rankCorrelation": 0.0735,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0,
+              "bucketEffect": -0.4,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.2045,
+              "rankCorrelation": -0.207,
+              "bottomBucketRate": 0.6667,
+              "topBucketRate": 0,
+              "bucketEffect": -0.6667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        },
+        {
+          "feature": "passingTouchdownsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.2801,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.35,
+              "rankCorrelation": 0.0515,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.2102,
+              "rankCorrelation": -0.265,
+              "bottomBucketRate": 0.6667,
+              "topBucketRate": 0,
+              "bucketEffect": -0.6667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            }
+          ]
+        }
+      ],
+      "unavailableSignals": [
+        "scrambles",
+        "designedRuns",
+        "redZoneRushing"
+      ]
+    },
+    "RB": {
+      "sampleSizes": {
+        "2023_2024": 33,
+        "2024_2025": 36
+      },
+      "signals": [
+        {
+          "feature": "targetsPerGame",
+          "direction": 1,
+          "classification": "PROMISING_BUT_UNSTABLE",
+          "readiness": "PROMISING_NEEDS_MORE_DATA",
+          "meanAuc": 0.5898,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5393,
+              "rankCorrelation": 0.2972,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.6404,
+              "rankCorrelation": 0.5054,
+              "bottomBucketRate": 0.0833,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "receivingYardsPerGame",
+          "direction": 1,
+          "classification": "PROMISING_BUT_UNSTABLE",
+          "readiness": "PROMISING_NEEDS_MORE_DATA",
+          "meanAuc": 0.5589,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5413,
+              "rankCorrelation": 0.2824,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.2727,
+              "bucketEffect": 0,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.5764,
+              "rankCorrelation": 0.4392,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.0833,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "receptionsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.542,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.4855,
+              "rankCorrelation": 0.2179,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.1818,
+              "bucketEffect": -0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.5985,
+              "rankCorrelation": 0.4699,
+              "bottomBucketRate": 0.0833,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "yardsPerTarget",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5389,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.595,
+              "rankCorrelation": 0.0069,
+              "bottomBucketRate": 0.1818,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.1818,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.4828,
+              "rankCorrelation": -0.0705,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "rushingAttemptsPerGame",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5288,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.624,
+              "rankCorrelation": 0.6491,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.4335,
+              "rankCorrelation": 0.5081,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.1667,
+              "bucketEffect": 0,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "lateTargets",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.524,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5702,
+              "rankCorrelation": 0.0717,
+              "bottomBucketRate": 0.1818,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.1818,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.4778,
+              "rankCorrelation": 0.0865,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "touchesPerGame",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5154,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5826,
+              "rankCorrelation": 0.624,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.2727,
+              "bucketEffect": 0,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.4483,
+              "rankCorrelation": 0.5755,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.0833,
+              "bucketEffect": -0.0833,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "rushingYardsPerGame",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5083,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.657,
+              "rankCorrelation": 0.7323,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.5455,
+              "bucketEffect": 0.2727,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.3596,
+              "rankCorrelation": 0.4836,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0,
+              "bucketEffect": -0.25,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "receivingTouchdownsPerGame",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4894,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5971,
+              "rankCorrelation": 0.2652,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.3818,
+              "rankCorrelation": 0.028,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.0833,
+              "bucketEffect": -0.25,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "lateRushingAttempts",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4687,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5826,
+              "rankCorrelation": 0.597,
+              "bottomBucketRate": 0.1818,
+              "topBucketRate": 0.2727,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.3547,
+              "rankCorrelation": 0.3965,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.1667,
+              "bucketEffect": -0.1667,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "targetGrowth",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4559,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.562,
+              "rankCorrelation": 0.0049,
+              "bottomBucketRate": 0.1818,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.1818,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.3498,
+              "rankCorrelation": -0.2567,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0.0833,
+              "bucketEffect": -0.1667,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "rushingTouchdownsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4447,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5372,
+              "rankCorrelation": 0.5775,
+              "bottomBucketRate": 0.3636,
+              "topBucketRate": 0.4545,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.3522,
+              "rankCorrelation": 0.4359,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0.0833,
+              "bucketEffect": -0.1667,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "rushingAttemptGrowth",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4226,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.3946,
+              "rankCorrelation": -0.0489,
+              "bottomBucketRate": 0.3636,
+              "topBucketRate": 0.1818,
+              "bucketEffect": -0.1818,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.4507,
+              "rankCorrelation": -0.1178,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.1667,
+              "bucketEffect": 0,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "touchdownRatePerTouch",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3613,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.4959,
+              "rankCorrelation": 0.2784,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.2266,
+              "rankCorrelation": -0.0691,
+              "bottomBucketRate": 0.4167,
+              "topBucketRate": 0.0833,
+              "bucketEffect": -0.3333,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        },
+        {
+          "feature": "yardsPerCarry",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3271,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.4669,
+              "rankCorrelation": -0.0692,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.2727,
+              "bucketEffect": 0,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.1872,
+              "rankCorrelation": -0.1503,
+              "bottomBucketRate": 0.4167,
+              "topBucketRate": 0,
+              "bucketEffect": -0.4167,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            }
+          ]
+        }
+      ],
+      "unavailableSignals": [
+        "routes",
+        "tprr",
+        "yprr",
+        "redZoneRole",
+        "goalLineRole",
+        "contingentWorkload"
+      ]
+    },
+    "WR": {
+      "sampleSizes": {
+        "2023_2024": 46,
+        "2024_2025": 58
+      },
+      "signals": [
+        {
+          "feature": "targetGrowth",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4648,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.5152,
+              "rankCorrelation": 0.0363,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.0667,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4145,
+              "rankCorrelation": -0.0635,
+              "bottomBucketRate": 0.5263,
+              "topBucketRate": 0.3684,
+              "bucketEffect": -0.1579,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        },
+        {
+          "feature": "yardsPerTarget",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4562,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4138,
+              "rankCorrelation": 0.0142,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.1333,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4987,
+              "rankCorrelation": 0.2322,
+              "bottomBucketRate": 0.3158,
+              "topBucketRate": 0.3158,
+              "bucketEffect": 0,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        },
+        {
+          "feature": "targetsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4433,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4148,
+              "rankCorrelation": 0.4886,
+              "bottomBucketRate": 0.4667,
+              "topBucketRate": 0.2667,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4717,
+              "rankCorrelation": 0.5062,
+              "bottomBucketRate": 0.3158,
+              "topBucketRate": 0.3158,
+              "bucketEffect": 0,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        },
+        {
+          "feature": "receptionsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4346,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4087,
+              "rankCorrelation": 0.4758,
+              "bottomBucketRate": 0.4667,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.2667,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4605,
+              "rankCorrelation": 0.5112,
+              "bottomBucketRate": 0.3684,
+              "topBucketRate": 0.2105,
+              "bucketEffect": -0.1579,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        },
+        {
+          "feature": "receivingYardsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4324,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.3976,
+              "rankCorrelation": 0.457,
+              "bottomBucketRate": 0.5333,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.3333,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4671,
+              "rankCorrelation": 0.5988,
+              "bottomBucketRate": 0.2632,
+              "topBucketRate": 0.2632,
+              "bucketEffect": 0,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        },
+        {
+          "feature": "lateTargets",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4178,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4067,
+              "rankCorrelation": 0.1725,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.0667,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4289,
+              "rankCorrelation": 0.3527,
+              "bottomBucketRate": 0.3684,
+              "topBucketRate": 0.2632,
+              "bucketEffect": -0.1053,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        },
+        {
+          "feature": "receptionsPerTarget",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3693,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.357,
+              "rankCorrelation": -0.0366,
+              "bottomBucketRate": 0.6,
+              "topBucketRate": 0.2667,
+              "bucketEffect": -0.3333,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.3816,
+              "rankCorrelation": 0.0728,
+              "bottomBucketRate": 0.3684,
+              "topBucketRate": 0.2105,
+              "bucketEffect": -0.1579,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        },
+        {
+          "feature": "receivingTouchdownsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3024,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.3134,
+              "rankCorrelation": 0.209,
+              "bottomBucketRate": 0.6,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.4,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.2914,
+              "rankCorrelation": 0.1584,
+              "bottomBucketRate": 0.6316,
+              "topBucketRate": 0.1579,
+              "bucketEffect": -0.4737,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            }
+          ]
+        }
+      ],
+      "unavailableSignals": [
+        "routes",
+        "tprr",
+        "yprr",
+        "firstReadShare",
+        "redZoneUsage"
+      ]
+    },
+    "TE": {
+      "sampleSizes": {
+        "2023_2024": 21,
+        "2024_2025": 26
+      },
+      "signals": [
+        {
+          "feature": "lateTargets",
+          "direction": 1,
+          "classification": "PROMISING_BUT_UNSTABLE",
+          "readiness": "PROMISING_NEEDS_MORE_DATA",
+          "meanAuc": 0.5569,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5865,
+              "rankCorrelation": 0.4385,
+              "bottomBucketRate": 0.1429,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0.2857,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.5273,
+              "rankCorrelation": 0.45,
+              "bottomBucketRate": 0.125,
+              "topBucketRate": 0.125,
+              "bucketEffect": 0,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        },
+        {
+          "feature": "targetsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5473,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5673,
+              "rankCorrelation": 0.3756,
+              "bottomBucketRate": 0.2857,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0.1429,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.5273,
+              "rankCorrelation": 0.4565,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0.375,
+              "bucketEffect": 0.125,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        },
+        {
+          "feature": "receptionsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5463,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5865,
+              "rankCorrelation": 0.4683,
+              "bottomBucketRate": 0.2857,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0.1429,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.5061,
+              "rankCorrelation": 0.4165,
+              "bottomBucketRate": 0.375,
+              "topBucketRate": 0.375,
+              "bucketEffect": 0,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        },
+        {
+          "feature": "receivingYardsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.5352,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5673,
+              "rankCorrelation": 0.4883,
+              "bottomBucketRate": 0.4286,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.503,
+              "rankCorrelation": 0.5528,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0.375,
+              "bucketEffect": 0.125,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        },
+        {
+          "feature": "yardsPerTarget",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4869,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5192,
+              "rankCorrelation": 0.1857,
+              "bottomBucketRate": 0.4286,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.4545,
+              "rankCorrelation": 0.014,
+              "bottomBucketRate": 0.5,
+              "topBucketRate": 0.375,
+              "bucketEffect": -0.125,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        },
+        {
+          "feature": "receivingTouchdownsPerGame",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4831,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.4904,
+              "rankCorrelation": 0.3137,
+              "bottomBucketRate": 0.2857,
+              "topBucketRate": 0.2857,
+              "bucketEffect": 0,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.4758,
+              "rankCorrelation": 0.2521,
+              "bottomBucketRate": 0.25,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        },
+        {
+          "feature": "receptionsPerTarget",
+          "direction": 1,
+          "classification": "CONTRADICTORY",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.4516,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5577,
+              "rankCorrelation": 0.2961,
+              "bottomBucketRate": 0.2857,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0.1429,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.3455,
+              "rankCorrelation": -0.3238,
+              "bottomBucketRate": 0.5,
+              "topBucketRate": 0.25,
+              "bucketEffect": -0.25,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        },
+        {
+          "feature": "targetGrowth",
+          "direction": 1,
+          "classification": "WEAK",
+          "readiness": "NOT_USEFUL",
+          "meanAuc": 0.3657,
+          "splits": [
+            {
+              "evidenceSeason": 2023,
+              "outcomeSeason": 2024,
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.3798,
+              "rankCorrelation": -0.2127,
+              "bottomBucketRate": 0.5714,
+              "topBucketRate": 0.4286,
+              "bucketEffect": -0.1429,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            {
+              "evidenceSeason": 2024,
+              "outcomeSeason": 2025,
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.3515,
+              "rankCorrelation": -0.0364,
+              "bottomBucketRate": 0.625,
+              "topBucketRate": 0.375,
+              "bucketEffect": -0.25,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            }
+          ]
+        }
+      ],
+      "unavailableSignals": [
+        "routes",
+        "tprr",
+        "yprr",
+        "firstReadShare",
+        "redZoneUsage"
+      ]
+    }
+  },
+  "exampleAudits": {
+    "QB": {
+      "signal": "lateRushingAttempts",
+      "classification": "PROMISING_BUT_UNSTABLE",
+      "hits": [
+        {
+          "canonicalPlayerId": "107",
+          "playerName": "Matthew Stafford",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 4.5,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.9643,
+          "percentileGain": 0.9243,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1000022",
+          "playerName": "Sam Darnold",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateRushingAttempts",
+          "signalValue": 4.5,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.68,
+          "percentileGain": 0.68,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1000025",
+          "playerName": "Daniel Jones",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 7,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.6071,
+          "percentileGain": 0.5271,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "71",
+          "playerName": "Caleb Williams",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 4,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.75,
+          "percentileGain": 0.39,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "78",
+          "playerName": "Justin Herbert",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 3.5,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.6429,
+          "percentileGain": 0.1229,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        }
+      ],
+      "falsePositives": [
+        {
+          "canonicalPlayerId": "103",
+          "playerName": "Patrick Mahomes",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateRushingAttempts",
+          "signalValue": 7,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.56,
+          "percentileGain": 0.0337,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "98",
+          "playerName": "Bo Nix",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 7,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.5714,
+          "percentileGain": -0.1486,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "151",
+          "playerName": "Russell Wilson",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateRushingAttempts",
+          "signalValue": 5.5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.44,
+          "percentileGain": -0.0337,
+          "availableExplanation": "LIMITED_OUTCOME_AVAILABILITY"
+        },
+        {
+          "canonicalPlayerId": "111",
+          "playerName": "Kyler Murray",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateRushingAttempts",
+          "signalValue": 5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.6,
+          "percentileGain": -0.0316,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "122",
+          "playerName": "Baker Mayfield",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.3929,
+          "percentileGain": -0.4471,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        }
+      ],
+      "falseNegatives": [
+        {
+          "canonicalPlayerId": "65",
+          "playerName": "Joe Burrow",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateRushingAttempts",
+          "signalValue": 3,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.92,
+          "percentileGain": 0.8147,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "81",
+          "playerName": "Trevor Lawrence",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 3,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.8929,
+          "percentileGain": 0.7729,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "66",
+          "playerName": "Drake Maye",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 3,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.9286,
+          "percentileGain": 0.7286,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "122",
+          "playerName": "Baker Mayfield",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateRushingAttempts",
+          "signalValue": 3,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.84,
+          "percentileGain": 0.5768,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "82",
+          "playerName": "Dak Prescott",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateRushingAttempts",
+          "signalValue": 2,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.7143,
+          "percentileGain": 0.4743,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        }
+      ]
+    },
+    "RB": {
+      "signal": "targetsPerGame",
+      "classification": "PROMISING_BUT_UNSTABLE",
+      "hits": [
+        {
+          "canonicalPlayerId": "41",
+          "playerName": "Travis Etienne Jr.",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetsPerGame",
+          "signalValue": 3.4667,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.7931,
+          "percentileGain": 0.4976,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "33",
+          "playerName": "Javonte Williams",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetsPerGame",
+          "signalValue": 4.1176,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.8103,
+          "percentileGain": 0.4694,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "2",
+          "playerName": "Bijan Robinson",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 5.0588,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.9318,
+          "percentileGain": 0.2739,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "35",
+          "playerName": "Josh Jacobs",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 4.1538,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.8864,
+          "percentileGain": 0.2548,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1",
+          "playerName": "Jahmyr Gibbs",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 4.7333,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.9773,
+          "percentileGain": 0.1878,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        }
+      ],
+      "falsePositives": [
+        {
+          "canonicalPlayerId": "1000145",
+          "playerName": "Alvin Kamara",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 6.6154,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.8636,
+          "percentileGain": 0.0478,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1000145",
+          "playerName": "Alvin Kamara",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetsPerGame",
+          "signalValue": 6.3571,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.3966,
+          "percentileGain": -0.4671,
+          "availableExplanation": "LIMITED_OUTCOME_AVAILABILITY"
+        },
+        {
+          "canonicalPlayerId": "17",
+          "playerName": "Kenneth Walker III",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetsPerGame",
+          "signalValue": 4.8182,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.5345,
+          "percentileGain": -0.1928,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "27",
+          "playerName": "Breece Hall",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetsPerGame",
+          "signalValue": 4.75,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.6724,
+          "percentileGain": 0.0133,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "69",
+          "playerName": "Jaylen Warren",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 4.3529,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.2727,
+          "percentileGain": -0.122,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        }
+      ],
+      "falseNegatives": [
+        {
+          "canonicalPlayerId": "14",
+          "playerName": "Chase Brown",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 1.25,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.7045,
+          "percentileGain": 0.6256,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "97",
+          "playerName": "Rico Dowdle",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 1.375,
+          "outcomeLabel": "MEANINGFUL_ASCENT",
+          "outcomePercentile": 0.5682,
+          "percentileGain": 0.4366,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "73",
+          "playerName": "Chuba Hubbard",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetsPerGame",
+          "signalValue": 2.5882,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.7727,
+          "percentileGain": 0.4306,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "169",
+          "playerName": "Kimani Vidal",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetsPerGame",
+          "signalValue": 1,
+          "outcomeLabel": "MEANINGFUL_ASCENT",
+          "outcomePercentile": 0.4483,
+          "percentileGain": 0.4255,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "69",
+          "playerName": "Jaylen Warren",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetsPerGame",
+          "signalValue": 3.1333,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.6897,
+          "percentileGain": 0.4169,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        }
+      ]
+    },
+    "WR": {
+      "signal": "targetGrowth",
+      "classification": "WEAK",
+      "hits": [
+        {
+          "canonicalPlayerId": "89",
+          "playerName": "Michael Wilson",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetGrowth",
+          "signalValue": 3,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.7831,
+          "percentileGain": 0.6237,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "29",
+          "playerName": "Chris Olave",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetGrowth",
+          "signalValue": 5,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.9036,
+          "percentileGain": 0.5413,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "154",
+          "playerName": "Darnell Mooney",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": 1,
+          "outcomeLabel": "MEANINGFUL_ASCENT",
+          "outcomePercentile": 0.5652,
+          "percentileGain": 0.3898,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "18",
+          "playerName": "Drake London",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": 6,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.8261,
+          "percentileGain": 0.3875,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "77",
+          "playerName": "Quentin Johnston",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": 1.5,
+          "outcomeLabel": "MEANINGFUL_ASCENT",
+          "outcomePercentile": 0.5217,
+          "percentileGain": 0.3638,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        }
+      ],
+      "falsePositives": [
+        {
+          "canonicalPlayerId": "1000188",
+          "playerName": "Jerry Jeudy",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetGrowth",
+          "signalValue": 7,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.2892,
+          "percentileGain": -0.363,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "176",
+          "playerName": "Andrei Iosivas",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": 6.5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.1159,
+          "percentileGain": 0.0107,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "152",
+          "playerName": "Keon Coleman",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetGrowth",
+          "signalValue": 6.5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.4217,
+          "percentileGain": 0.1173,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "47",
+          "playerName": "Davante Adams",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": 5.5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.8551,
+          "percentileGain": 0.0656,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "8",
+          "playerName": "CeeDee Lamb",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetGrowth",
+          "signalValue": 4,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.8795,
+          "percentileGain": -0.0045,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        }
+      ],
+      "falseNegatives": [
+        {
+          "canonicalPlayerId": "62",
+          "playerName": "Christian Watson",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetGrowth",
+          "signalValue": -5.5,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.8313,
+          "percentileGain": 0.6429,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "157",
+          "playerName": "Jauan Jennings",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": -1.5,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.6667,
+          "percentileGain": 0.6316,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "96",
+          "playerName": "Parker Washington",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "targetGrowth",
+          "signalValue": -2.5,
+          "outcomeLabel": "MEANINGFUL_ASCENT",
+          "outcomePercentile": 0.6024,
+          "percentileGain": 0.5299,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "53",
+          "playerName": "Jameson Williams",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": 0,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.7536,
+          "percentileGain": 0.5256,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "31",
+          "playerName": "Tee Higgins",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "targetGrowth",
+          "signalValue": -1,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.971,
+          "percentileGain": 0.4798,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        }
+      ]
+    },
+    "TE": {
+      "signal": "lateTargets",
+      "classification": "PROMISING_BUT_UNSTABLE",
+      "hits": [
+        {
+          "canonicalPlayerId": "26",
+          "playerName": "Trey McBride",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 6.5,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.9333,
+          "percentileGain": 0.2933,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1000090",
+          "playerName": "Juwan Johnson",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateTargets",
+          "signalValue": 8.5,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.675,
+          "percentileGain": 0.2417,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "112",
+          "playerName": "George Kittle",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 7,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 1,
+          "percentileGain": 0.16,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1000168",
+          "playerName": "David Njoku",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 8.5,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.9,
+          "percentileGain": 0.14,
+          "availableExplanation": "LIMITED_OUTCOME_AVAILABILITY"
+        }
+      ],
+      "falsePositives": [
+        {
+          "canonicalPlayerId": "184",
+          "playerName": "Mike Gesicki",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateTargets",
+          "signalValue": 11,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.25,
+          "percentileGain": -0.25,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1000180",
+          "playerName": "Evan Engram",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 9.5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.6,
+          "percentileGain": -0.2,
+          "availableExplanation": "LIMITED_OUTCOME_AVAILABILITY"
+        },
+        {
+          "canonicalPlayerId": "1000152",
+          "playerName": "Pat Freiermuth",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateTargets",
+          "signalValue": 9.5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.425,
+          "percentileGain": -0.275,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "117",
+          "playerName": "Travis Kelce",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateTargets",
+          "signalValue": 9,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.8,
+          "percentileGain": -0.0333,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        },
+        {
+          "canonicalPlayerId": "1000090",
+          "playerName": "Juwan Johnson",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 7.5,
+          "outcomeLabel": "NON_BREAKOUT",
+          "outcomePercentile": 0.4333,
+          "percentileGain": 0.0733,
+          "availableExplanation": "UNEXPLAINED_WITH_AVAILABLE_DATA"
+        }
+      ],
+      "falseNegatives": [
+        {
+          "canonicalPlayerId": "91",
+          "playerName": "Kyle Pitts",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateTargets",
+          "signalValue": 4,
+          "outcomeLabel": "ELITE_OUTCOME",
+          "outcomePercentile": 0.875,
+          "percentileGain": 0.475,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "76",
+          "playerName": "Tucker Kraft",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 4.5,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.6667,
+          "percentileGain": 0.4667,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "184",
+          "playerName": "Mike Gesicki",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 4.5,
+          "outcomeLabel": "MEANINGFUL_ASCENT",
+          "outcomePercentile": 0.5,
+          "percentileGain": 0.46,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "126",
+          "playerName": "Jake Ferguson",
+          "evidenceSeason": 2024,
+          "outcomeSeason": 2025,
+          "signal": "lateTargets",
+          "signalValue": 4.5,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.725,
+          "percentileGain": 0.4583,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        },
+        {
+          "canonicalPlayerId": "1000152",
+          "playerName": "Pat Freiermuth",
+          "evidenceSeason": 2023,
+          "outcomeSeason": 2024,
+          "signal": "lateTargets",
+          "signalValue": 3,
+          "outcomeLabel": "STARTER_BREAKOUT",
+          "outcomePercentile": 0.7,
+          "percentileGain": 0.42,
+          "availableExplanation": "SUPPORTED_FEATURE_SET_DID_NOT_CAPTURE_ASCENT"
+        }
+      ]
+    }
+  },
+  "composite": {
+    "created": false,
+    "reason": "Two historical transitions support signal validation, not a stable multi-signal coefficient model."
+  },
+  "currentWatchlist": {
+    "created": false,
+    "reason": "No composite was justified; current-player scoring was intentionally skipped."
+  }
+}

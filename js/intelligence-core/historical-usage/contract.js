@@ -8,8 +8,10 @@ const RAW_FIELDS=Object.freeze([
   'receivingTouchdowns','receivingAirYards','targetShare','routes','snaps','scrambles',
   'designedRushes','redZoneRushingAttempts','redZoneTargets','goalLineCarries','explosiveRushes',
 ]);
+const SIGNED_YARDAGE_FIELDS=new Set(['passingYards','rushingYards','receivingYards','receivingAirYards']);
 const GUARDED_FIELDS=new Set(['scrambles','designedRushes','redZoneRushingAttempts','redZoneTargets','goalLineCarries','routes','snaps']);
-function nonNegative(value,field){if(value===undefined||value===null||clean(value)==='')return null;const number=Number(value);if(!Number.isFinite(number)||number<0)throw new TypeError(`${field} must be non-negative`);return number}
+function numeric(value,field,{allowNegative=false}={}){if(value===undefined||value===null||clean(value)==='')return null;const number=Number(value);if(!Number.isFinite(number))throw new TypeError(`${field} must be numeric`);if(!allowNegative&&number<0)throw new TypeError(`${field} must be non-negative`);return number}
+const nonNegative=(value,field)=>numeric(value,field);
 function usageRecord(input={}){
   const canonicalPlayerId=clean(input.canonicalPlayerId),providerPlayerId=clean(input.providerPlayerId),source=clean(input.source),sourceDataset=clean(input.sourceDataset),position=clean(input.position).toUpperCase(),season=nonNegative(input.season,'season'),week=input.week===undefined||input.week===null||clean(input.week)===''?null:nonNegative(input.week,'week');
   if(!canonicalPlayerId||!providerPlayerId||!source||!sourceDataset)throw new TypeError('usage identity and source provenance are required');
@@ -17,7 +19,7 @@ function usageRecord(input={}){
   if(!Number.isInteger(season)||season<2000||!Number.isInteger(week??0))throw new TypeError('season and week must be integers');
   const fieldMetadata=input.fieldMetadata||{},stats={};let supplied=0;
   RAW_FIELDS.forEach(field=>{
-    const value=nonNegative(input.stats?.[field],field);stats[field]=value;
+    const value=numeric(input.stats?.[field],field,{allowNegative:SIGNED_YARDAGE_FIELDS.has(field)});stats[field]=value;
     if(value===null)return;
     const metadata=fieldMetadata[field];
     if(GUARDED_FIELDS.has(field)&&(!metadata||!['RAW','DERIVED'].includes(clean(metadata.kind).toUpperCase())))throw new TypeError(`${field} requires explicit field provenance`);
@@ -32,4 +34,4 @@ function usageRecord(input={}){
 function derivedMetric({canonicalPlayerId,position,season,metric,value,sourceFields,formula,sample,sourceDataset,snapshotDate}){
   return Object.freeze({recordType:'DERIVED_USAGE_METRIC',canonicalPlayerId:String(canonicalPlayerId),position,season,metric,value,rawOrDerived:'DERIVED',sourceFields:Object.freeze([...sourceFields]),formula,sample:Object.freeze({...sample}),provenance:Object.freeze({source:'Fantasy HQ',sourceDataset,snapshotDate:iso(snapshotDate),basis:'NFLVERSE_DERIVED'})});
 }
-module.exports=Object.freeze({RAW_FIELDS,GUARDED_FIELDS,usageRecord,derivedMetric});
+module.exports=Object.freeze({RAW_FIELDS,SIGNED_YARDAGE_FIELDS,GUARDED_FIELDS,usageRecord,derivedMetric});
