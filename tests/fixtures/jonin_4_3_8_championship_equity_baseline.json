@@ -1,0 +1,16 @@
+{
+  "baselineVersion": "Jōnin 4.3.8",
+  "capturedFrom": "86907bb",
+  "profiles": {
+    "primary": {
+      "early": {"pick":30,"roster":{"QB":0,"RB":1,"WR":1,"TE":0,"K":0,"DST":0},"ids":[27,29,32,38,35],"scores":[102.26316666666666,100.65933333333332,97.52333333333333,97.28983333333333,96.49316666666668],"labels":["Best Pick","Tier / Timing","Alternative","Alternative","Alternative"]},
+      "middle": {"pick":70,"roster":{"QB":1,"RB":2,"WR":2,"TE":1,"K":0,"DST":0},"ids":[68,1000135,96,89,52],"scores":[88.75,88.75,88.75,84.85,81.75],"labels":["Best Pick","Alternative","Alternative","Alternative","Tier / Timing"]},
+      "late": {"pick":130,"roster":{"QB":2,"RB":4,"WR":5,"TE":1,"K":0,"DST":0},"ids":[115,110,1000072,1000138,1000140],"scores":[68,68,67,67,67],"labels":["Best Pick","Alternative","Alternative","Alternative","Alternative"]}
+    },
+    "straight-outta-downey": {
+      "early": {"pick":30,"roster":{"QB":0,"RB":1,"WR":1,"TE":0,"K":0,"DST":0},"ids":[29,27,32,38,28],"scores":[100.826,98.01650000000001,97.69,97.4565,95.33100000000002],"labels":["Best Pick","Alternative","Alternative","Alternative","Alternative"]},
+      "middle": {"pick":70,"roster":{"QB":1,"RB":2,"WR":2,"TE":1,"K":0,"DST":0},"ids":[68,1000135,96,52,69],"scores":[83.65,82.65,82.65,81.25,81.25],"labels":["Best Pick","Alternative","Alternative","Tier / Timing","Alternative"]},
+      "late": {"pick":130,"roster":{"QB":2,"RB":4,"WR":5,"TE":1,"K":0,"DST":0},"ids":[115,110,1000072,1000138,1000140],"scores":[65,65,64,64,64],"labels":["Best Pick","Alternative","Alternative","Alternative","Alternative"]}
+    }
+  }
+}

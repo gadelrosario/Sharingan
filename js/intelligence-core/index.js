@@ -8,4 +8,5 @@ module.exports=Object.freeze({
   expertSignals:require('./expert-signals'),
   evidence:require('./evidence-engine'),
   missionControl:require('./mission-control'),
+  championshipEquity:require('./championship-equity'),
 });

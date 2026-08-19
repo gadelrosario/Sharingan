@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-08-19",
+  "totalPlayers": 330,
+  "positionCounts": {
+    "RB": 78,
+    "WR": 107,
+    "TE": 46,
+    "QB": 34,
+    "K": 33,
+    "DST": 32
+  },
+  "coverage": {
+    "age": 0,
+    "experience": 0,
+    "rookie": 6,
+    "nflTeam": 330,
+    "position": 330,
+    "externalIds": 292,
+    "depthChart": 10,
+    "opportunityTrend": 64,
+    "skillOpportunityTrend": 0,
+    "advancedUsage": 0,
+    "projections": 0,
+    "injury": 292,
+    "overallRank": 237,
+    "overallTier": 237,
+    "positionalRank": 237,
+    "expertConviction": 21
+  }
+}
