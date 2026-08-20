@@ -1,0 +1,3202 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "Jōnin 4.3.15",
+  "mode": "OFFLINE_RESEARCH_SHADOW_ONLY",
+  "recommendationAuthority": false,
+  "historicalSnapshotDate": "2026-08-19T00:00:00.000Z",
+  "developmentSnapshotDate": "2026-08-19T00:00:00.000Z",
+  "methodology": {
+    "outcome": "Frozen Jōnin 4.3.13 production-percentile ascent outcome",
+    "splits": [
+      {
+        "evidenceSeason": 2023,
+        "outcomeSeason": 2024
+      },
+      {
+        "evidenceSeason": 2024,
+        "outcomeSeason": 2025
+      }
+    ],
+    "developmentFeatures": [
+      {
+        "feature": "ageAtSeason",
+        "direction": -1,
+        "effectDirection": "YOUNGER_HIGHER"
+      },
+      {
+        "feature": "yearInLeague",
+        "direction": -1,
+        "effectDirection": "EARLIER_CAREER_HIGHER"
+      }
+    ],
+    "ageBands": "Within-position, within-transition tertiles; no outcome-based threshold search.",
+    "interactionFormula": {
+      "id": "USAGE_75_DEVELOPMENT_25",
+      "expression": "0.75 * within-transition aligned usage rank percentile + 0.25 * within-transition aligned development rank percentile",
+      "usageWeight": 0.75,
+      "developmentWeight": 0.25,
+      "note": "Weights were fixed before evaluating either historical transition and were not optimized."
+    },
+    "readiness": "Requires adequate samples, same-transition improvement, cross-transition agreement, plausible direction, and improvement over the comparable usage-only signal."
+  },
+  "sampleSizes": {
+    "RB": {
+      "2023_2024": 33,
+      "2024_2025": 36
+    },
+    "WR": {
+      "2023_2024": 46,
+      "2024_2025": 58
+    },
+    "TE": {
+      "2023_2024": 21,
+      "2024_2025": 26
+    },
+    "QB": {
+      "2023_2024": 17,
+      "2024_2025": 19
+    }
+  },
+  "developmentOnly": {
+    "RB": {
+      "ageAtSeason": {
+        "effectDirection": "YOUNGER_HIGHER",
+        "classification": "WEAK",
+        "meanAuc": 0.5811,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 33,
+            "positives": 11,
+            "negatives": 22,
+            "auc": 0.6054,
+            "rankCorrelation": -0.1492,
+            "bottomBucketRate": 0.3636,
+            "topBucketRate": 0.5455,
+            "bucketEffect": 0.1818,
+            "bottomBucketSize": 11,
+            "topBucketSize": 11,
+            "breakoutRate": 0.3333,
+            "nonBreakoutRate": 0.6667
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 36,
+            "positives": 7,
+            "negatives": 29,
+            "auc": 0.5567,
+            "rankCorrelation": 0.0948,
+            "bottomBucketRate": 0.1667,
+            "topBucketRate": 0.1667,
+            "bucketEffect": 0,
+            "bottomBucketSize": 12,
+            "topBucketSize": 12,
+            "breakoutRate": 0.1944,
+            "nonBreakoutRate": 0.8056
+          }
+        ]
+      },
+      "yearInLeague": {
+        "effectDirection": "EARLIER_CAREER_HIGHER",
+        "classification": "WEAK",
+        "meanAuc": 0.5739,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 29,
+            "positives": 10,
+            "negatives": 19,
+            "auc": 0.6211,
+            "rankCorrelation": -0.1388,
+            "bottomBucketRate": 0.3333,
+            "topBucketRate": 0.5556,
+            "bucketEffect": 0.2222,
+            "bottomBucketSize": 9,
+            "topBucketSize": 9,
+            "breakoutRate": 0.3448,
+            "nonBreakoutRate": 0.6552
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 31,
+            "positives": 6,
+            "negatives": 25,
+            "auc": 0.5267,
+            "rankCorrelation": 0.0112,
+            "bottomBucketRate": 0.1,
+            "topBucketRate": 0.2,
+            "bucketEffect": 0.1,
+            "bottomBucketSize": 10,
+            "topBucketSize": 10,
+            "breakoutRate": 0.1935,
+            "nonBreakoutRate": 0.8065
+          }
+        ]
+      }
+    },
+    "WR": {
+      "ageAtSeason": {
+        "effectDirection": "YOUNGER_HIGHER",
+        "classification": "WEAK",
+        "meanAuc": 0.5992,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 46,
+            "positives": 17,
+            "negatives": 29,
+            "auc": 0.5872,
+            "rankCorrelation": -0.2239,
+            "bottomBucketRate": 0.3333,
+            "topBucketRate": 0.4,
+            "bucketEffect": 0.0667,
+            "bottomBucketSize": 15,
+            "topBucketSize": 15,
+            "breakoutRate": 0.3696,
+            "nonBreakoutRate": 0.6304
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 58,
+            "positives": 20,
+            "negatives": 38,
+            "auc": 0.6112,
+            "rankCorrelation": -0.0756,
+            "bottomBucketRate": 0.2105,
+            "topBucketRate": 0.3684,
+            "bucketEffect": 0.1579,
+            "bottomBucketSize": 19,
+            "topBucketSize": 19,
+            "breakoutRate": 0.3448,
+            "nonBreakoutRate": 0.6552
+          }
+        ]
+      },
+      "yearInLeague": {
+        "effectDirection": "EARLIER_CAREER_HIGHER",
+        "classification": "WEAK",
+        "meanAuc": 0.486,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 44,
+            "positives": 17,
+            "negatives": 27,
+            "auc": 0.4499,
+            "rankCorrelation": -0.4875,
+            "bottomBucketRate": 0.4286,
+            "topBucketRate": 0.2857,
+            "bucketEffect": -0.1429,
+            "bottomBucketSize": 14,
+            "topBucketSize": 14,
+            "breakoutRate": 0.3864,
+            "nonBreakoutRate": 0.6136
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 55,
+            "positives": 20,
+            "negatives": 35,
+            "auc": 0.5221,
+            "rankCorrelation": -0.2887,
+            "bottomBucketRate": 0.2778,
+            "topBucketRate": 0.2778,
+            "bucketEffect": 0,
+            "bottomBucketSize": 18,
+            "topBucketSize": 18,
+            "breakoutRate": 0.3636,
+            "nonBreakoutRate": 0.6364
+          }
+        ]
+      }
+    },
+    "TE": {
+      "ageAtSeason": {
+        "effectDirection": "YOUNGER_HIGHER",
+        "classification": "CONTRADICTORY",
+        "meanAuc": 0.4808,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 21,
+            "positives": 8,
+            "negatives": 13,
+            "auc": 0.3798,
+            "rankCorrelation": -0.3747,
+            "bottomBucketRate": 0.5714,
+            "topBucketRate": 0.2857,
+            "bucketEffect": -0.2857,
+            "bottomBucketSize": 7,
+            "topBucketSize": 7,
+            "breakoutRate": 0.381,
+            "nonBreakoutRate": 0.619
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 26,
+            "positives": 11,
+            "negatives": 15,
+            "auc": 0.5818,
+            "rankCorrelation": -0.1326,
+            "bottomBucketRate": 0.375,
+            "topBucketRate": 0.5,
+            "bucketEffect": 0.125,
+            "bottomBucketSize": 8,
+            "topBucketSize": 8,
+            "breakoutRate": 0.4231,
+            "nonBreakoutRate": 0.5769
+          }
+        ]
+      },
+      "yearInLeague": {
+        "effectDirection": "EARLIER_CAREER_HIGHER",
+        "classification": "CONTRADICTORY",
+        "meanAuc": 0.5226,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 20,
+            "positives": 8,
+            "negatives": 12,
+            "auc": 0.4219,
+            "rankCorrelation": -0.357,
+            "bottomBucketRate": 0.5,
+            "topBucketRate": 0.3333,
+            "bucketEffect": -0.1667,
+            "bottomBucketSize": 6,
+            "topBucketSize": 6,
+            "breakoutRate": 0.4,
+            "nonBreakoutRate": 0.6
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 25,
+            "positives": 10,
+            "negatives": 15,
+            "auc": 0.6233,
+            "rankCorrelation": -0.1045,
+            "bottomBucketRate": 0.375,
+            "topBucketRate": 0.625,
+            "bucketEffect": 0.25,
+            "bottomBucketSize": 8,
+            "topBucketSize": 8,
+            "breakoutRate": 0.4,
+            "nonBreakoutRate": 0.6
+          }
+        ]
+      }
+    },
+    "QB": {
+      "ageAtSeason": {
+        "effectDirection": "YOUNGER_HIGHER",
+        "classification": "WEAK",
+        "meanAuc": 0.403,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 17,
+            "positives": 5,
+            "negatives": 12,
+            "auc": 0.2833,
+            "rankCorrelation": -0.1822,
+            "bottomBucketRate": 0.4,
+            "topBucketRate": 0,
+            "bucketEffect": -0.4,
+            "bottomBucketSize": 5,
+            "topBucketSize": 5,
+            "breakoutRate": 0.2941,
+            "nonBreakoutRate": 0.7059
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 19,
+            "positives": 8,
+            "negatives": 11,
+            "auc": 0.5227,
+            "rankCorrelation": 0.1155,
+            "bottomBucketRate": 0.3333,
+            "topBucketRate": 0.3333,
+            "bucketEffect": 0,
+            "bottomBucketSize": 6,
+            "topBucketSize": 6,
+            "breakoutRate": 0.4211,
+            "nonBreakoutRate": 0.5789
+          }
+        ]
+      },
+      "yearInLeague": {
+        "effectDirection": "EARLIER_CAREER_HIGHER",
+        "classification": "WEAK",
+        "meanAuc": 0.4168,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "sampleSize": 17,
+            "positives": 5,
+            "negatives": 12,
+            "auc": 0.3167,
+            "rankCorrelation": -0.1149,
+            "bottomBucketRate": 0.4,
+            "topBucketRate": 0.2,
+            "bucketEffect": -0.2,
+            "bottomBucketSize": 5,
+            "topBucketSize": 5,
+            "breakoutRate": 0.2941,
+            "nonBreakoutRate": 0.7059
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "sampleSize": 19,
+            "positives": 8,
+            "negatives": 11,
+            "auc": 0.517,
+            "rankCorrelation": 0.1084,
+            "bottomBucketRate": 0.5,
+            "topBucketRate": 0.3333,
+            "bucketEffect": -0.1667,
+            "bottomBucketSize": 6,
+            "topBucketSize": 6,
+            "breakoutRate": 0.4211,
+            "nonBreakoutRate": 0.5789
+          }
+        ]
+      }
+    }
+  },
+  "conditionalBreakoutRates": {
+    "RB": {
+      "careerStage": {
+        "YEAR_1": {
+          "overall": {
+            "n": 12,
+            "breakouts": 5,
+            "nonBreakouts": 7,
+            "breakoutRate": 0.4167,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 7,
+              "breakouts": 4,
+              "nonBreakouts": 3,
+              "breakoutRate": 0.5714,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 5,
+              "breakouts": 1,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.2,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_2": {
+          "overall": {
+            "n": 10,
+            "breakouts": 3,
+            "nonBreakouts": 7,
+            "breakoutRate": 0.3,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 5,
+              "breakouts": 2,
+              "nonBreakouts": 3,
+              "breakoutRate": 0.4,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 5,
+              "breakouts": 1,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.2,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_3": {
+          "overall": {
+            "n": 12,
+            "breakouts": 1,
+            "nonBreakouts": 11,
+            "breakoutRate": 0.0833,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 5,
+              "breakouts": 1,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.2,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 7,
+              "breakouts": 0,
+              "nonBreakouts": 7,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_4_PLUS": {
+          "overall": {
+            "n": 26,
+            "breakouts": 7,
+            "nonBreakouts": 19,
+            "breakoutRate": 0.2692,
+            "sampleLabel": "ADEQUATE_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 12,
+              "breakouts": 3,
+              "nonBreakouts": 9,
+              "breakoutRate": 0.25,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 14,
+              "breakouts": 4,
+              "nonBreakouts": 10,
+              "breakoutRate": 0.2857,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "UNKNOWN": {
+          "overall": {
+            "n": 9,
+            "breakouts": 2,
+            "nonBreakouts": 7,
+            "breakoutRate": 0.2222,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 4,
+              "breakouts": 1,
+              "nonBreakouts": 3,
+              "breakoutRate": 0.25,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 5,
+              "breakouts": 1,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.2,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        }
+      },
+      "ageBands": {
+        "2023_2024": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 23,
+          "olderMin": 25,
+          "bands": {
+            "YOUNGER": {
+              "n": 12,
+              "breakouts": 6,
+              "nonBreakouts": 6,
+              "breakoutRate": 0.5,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 8,
+              "breakouts": 1,
+              "nonBreakouts": 7,
+              "breakoutRate": 0.125,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 13,
+              "breakouts": 4,
+              "nonBreakouts": 9,
+              "breakoutRate": 0.3077,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "2024_2025": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 24,
+          "olderMin": 25,
+          "bands": {
+            "YOUNGER": {
+              "n": 17,
+              "breakouts": 3,
+              "nonBreakouts": 14,
+              "breakoutRate": 0.1765,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 0,
+              "breakouts": 0,
+              "nonBreakouts": 0,
+              "breakoutRate": null,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 19,
+              "breakouts": 4,
+              "nonBreakouts": 15,
+              "breakoutRate": 0.2105,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            }
+          }
+        }
+      }
+    },
+    "WR": {
+      "careerStage": {
+        "YEAR_1": {
+          "overall": {
+            "n": 28,
+            "breakouts": 7,
+            "nonBreakouts": 21,
+            "breakoutRate": 0.25,
+            "sampleLabel": "ADEQUATE_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 15,
+              "breakouts": 4,
+              "nonBreakouts": 11,
+              "breakoutRate": 0.2667,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 13,
+              "breakouts": 3,
+              "nonBreakouts": 10,
+              "breakoutRate": 0.2308,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_2": {
+          "overall": {
+            "n": 25,
+            "breakouts": 12,
+            "nonBreakouts": 13,
+            "breakoutRate": 0.48,
+            "sampleLabel": "ADEQUATE_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 11,
+              "breakouts": 5,
+              "nonBreakouts": 6,
+              "breakoutRate": 0.4545,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 14,
+              "breakouts": 7,
+              "nonBreakouts": 7,
+              "breakoutRate": 0.5,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_3": {
+          "overall": {
+            "n": 15,
+            "breakouts": 8,
+            "nonBreakouts": 7,
+            "breakoutRate": 0.5333,
+            "sampleLabel": "ADEQUATE_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 4,
+              "breakouts": 2,
+              "nonBreakouts": 2,
+              "breakoutRate": 0.5,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 11,
+              "breakouts": 6,
+              "nonBreakouts": 5,
+              "breakoutRate": 0.5455,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_4_PLUS": {
+          "overall": {
+            "n": 31,
+            "breakouts": 10,
+            "nonBreakouts": 21,
+            "breakoutRate": 0.3226,
+            "sampleLabel": "ADEQUATE_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 14,
+              "breakouts": 6,
+              "nonBreakouts": 8,
+              "breakoutRate": 0.4286,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 17,
+              "breakouts": 4,
+              "nonBreakouts": 13,
+              "breakoutRate": 0.2353,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            }
+          }
+        },
+        "UNKNOWN": {
+          "overall": {
+            "n": 5,
+            "breakouts": 0,
+            "nonBreakouts": 5,
+            "breakoutRate": 0,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 2,
+              "breakouts": 0,
+              "nonBreakouts": 2,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 3,
+              "breakouts": 0,
+              "nonBreakouts": 3,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        }
+      },
+      "ageBands": {
+        "2023_2024": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 23,
+          "olderMin": 24,
+          "bands": {
+            "YOUNGER": {
+              "n": 26,
+              "breakouts": 11,
+              "nonBreakouts": 15,
+              "breakoutRate": 0.4231,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 0,
+              "breakouts": 0,
+              "nonBreakouts": 0,
+              "breakoutRate": null,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 20,
+              "breakouts": 6,
+              "nonBreakouts": 14,
+              "breakoutRate": 0.3,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            }
+          }
+        },
+        "2024_2025": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 23,
+          "olderMin": 25,
+          "bands": {
+            "YOUNGER": {
+              "n": 27,
+              "breakouts": 12,
+              "nonBreakouts": 15,
+              "breakoutRate": 0.4444,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 9,
+              "breakouts": 3,
+              "nonBreakouts": 6,
+              "breakoutRate": 0.3333,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 22,
+              "breakouts": 5,
+              "nonBreakouts": 17,
+              "breakoutRate": 0.2273,
+              "sampleLabel": "ADEQUATE_SAMPLE"
+            }
+          }
+        }
+      }
+    },
+    "TE": {
+      "careerStage": {
+        "YEAR_1": {
+          "overall": {
+            "n": 7,
+            "breakouts": 3,
+            "nonBreakouts": 4,
+            "breakoutRate": 0.4286,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 4,
+              "breakouts": 1,
+              "nonBreakouts": 3,
+              "breakoutRate": 0.25,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 3,
+              "breakouts": 2,
+              "nonBreakouts": 1,
+              "breakoutRate": 0.6667,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_2": {
+          "overall": {
+            "n": 10,
+            "breakouts": 5,
+            "nonBreakouts": 5,
+            "breakoutRate": 0.5,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 4,
+              "breakouts": 2,
+              "nonBreakouts": 2,
+              "breakoutRate": 0.5,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 6,
+              "breakouts": 3,
+              "nonBreakouts": 3,
+              "breakoutRate": 0.5,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_3": {
+          "overall": {
+            "n": 6,
+            "breakouts": 2,
+            "nonBreakouts": 4,
+            "breakoutRate": 0.3333,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 3,
+              "breakouts": 1,
+              "nonBreakouts": 2,
+              "breakoutRate": 0.3333,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 3,
+              "breakouts": 1,
+              "nonBreakouts": 2,
+              "breakoutRate": 0.3333,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_4_PLUS": {
+          "overall": {
+            "n": 22,
+            "breakouts": 8,
+            "nonBreakouts": 14,
+            "breakoutRate": 0.3636,
+            "sampleLabel": "ADEQUATE_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 9,
+              "breakouts": 4,
+              "nonBreakouts": 5,
+              "breakoutRate": 0.4444,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 13,
+              "breakouts": 4,
+              "nonBreakouts": 9,
+              "breakoutRate": 0.3077,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "UNKNOWN": {
+          "overall": {
+            "n": 2,
+            "breakouts": 1,
+            "nonBreakouts": 1,
+            "breakoutRate": 0.5,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 1,
+              "breakouts": 0,
+              "nonBreakouts": 1,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 1,
+              "breakouts": 1,
+              "nonBreakouts": 0,
+              "breakoutRate": 1,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        }
+      },
+      "ageBands": {
+        "2023_2024": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 23,
+          "olderMin": 26,
+          "bands": {
+            "YOUNGER": {
+              "n": 7,
+              "breakouts": 2,
+              "nonBreakouts": 5,
+              "breakoutRate": 0.2857,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 5,
+              "breakouts": 2,
+              "nonBreakouts": 3,
+              "breakoutRate": 0.4,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 9,
+              "breakouts": 4,
+              "nonBreakouts": 5,
+              "breakoutRate": 0.4444,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "2024_2025": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 23,
+          "olderMin": 27,
+          "bands": {
+            "YOUNGER": {
+              "n": 9,
+              "breakouts": 5,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.5556,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 7,
+              "breakouts": 2,
+              "nonBreakouts": 5,
+              "breakoutRate": 0.2857,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 10,
+              "breakouts": 4,
+              "nonBreakouts": 6,
+              "breakoutRate": 0.4,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        }
+      }
+    },
+    "QB": {
+      "careerStage": {
+        "YEAR_1": {
+          "overall": {
+            "n": 5,
+            "breakouts": 2,
+            "nonBreakouts": 3,
+            "breakoutRate": 0.4,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 2,
+              "breakouts": 0,
+              "nonBreakouts": 2,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 3,
+              "breakouts": 2,
+              "nonBreakouts": 1,
+              "breakoutRate": 0.6667,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_2": {
+          "overall": {
+            "n": 3,
+            "breakouts": 0,
+            "nonBreakouts": 3,
+            "breakoutRate": 0,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 1,
+              "breakouts": 0,
+              "nonBreakouts": 1,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 2,
+              "breakouts": 0,
+              "nonBreakouts": 2,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_3": {
+          "overall": {
+            "n": 2,
+            "breakouts": 0,
+            "nonBreakouts": 2,
+            "breakoutRate": 0,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 1,
+              "breakouts": 0,
+              "nonBreakouts": 1,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 1,
+              "breakouts": 0,
+              "nonBreakouts": 1,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "YEAR_4_PLUS": {
+          "overall": {
+            "n": 26,
+            "breakouts": 11,
+            "nonBreakouts": 15,
+            "breakoutRate": 0.4231,
+            "sampleLabel": "ADEQUATE_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 13,
+              "breakouts": 5,
+              "nonBreakouts": 8,
+              "breakoutRate": 0.3846,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 13,
+              "breakouts": 6,
+              "nonBreakouts": 7,
+              "breakoutRate": 0.4615,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "UNKNOWN": {
+          "overall": {
+            "n": 0,
+            "breakouts": 0,
+            "nonBreakouts": 0,
+            "breakoutRate": null,
+            "sampleLabel": "SMALL_SAMPLE"
+          },
+          "splits": {
+            "2023_2024": {
+              "n": 0,
+              "breakouts": 0,
+              "nonBreakouts": 0,
+              "breakoutRate": null,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "2024_2025": {
+              "n": 0,
+              "breakouts": 0,
+              "nonBreakouts": 0,
+              "breakoutRate": null,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        }
+      },
+      "ageBands": {
+        "2023_2024": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 25,
+          "olderMin": 27,
+          "bands": {
+            "YOUNGER": {
+              "n": 7,
+              "breakouts": 0,
+              "nonBreakouts": 7,
+              "breakoutRate": 0,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 3,
+              "breakouts": 2,
+              "nonBreakouts": 1,
+              "breakoutRate": 0.6667,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 7,
+              "breakouts": 3,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.4286,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        },
+        "2024_2025": {
+          "method": "WITHIN_POSITION_TRANSITION_TERTILES",
+          "youngerMax": 24,
+          "olderMin": 28,
+          "bands": {
+            "YOUNGER": {
+              "n": 7,
+              "breakouts": 3,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.4286,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "MIDDLE": {
+              "n": 5,
+              "breakouts": 2,
+              "nonBreakouts": 3,
+              "breakoutRate": 0.4,
+              "sampleLabel": "SMALL_SAMPLE"
+            },
+            "OLDER": {
+              "n": 7,
+              "breakouts": 3,
+              "nonBreakouts": 4,
+              "breakoutRate": 0.4286,
+              "sampleLabel": "SMALL_SAMPLE"
+            }
+          }
+        }
+      }
+    }
+  },
+  "interactions": {
+    "RB": [
+      {
+        "usageFeature": "targetsPerGame",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.5898,
+        "meanCombinedAuc": 0.5962,
+        "meanAucDelta": 0.0064,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5393,
+            "comparableUsage": {
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5393,
+              "rankCorrelation": 0.2972,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            "combined": {
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5372,
+              "rankCorrelation": 0.1991,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.0909,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            "aucDelta": -0.0021
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.6404,
+            "comparableUsage": {
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.6404,
+              "rankCorrelation": 0.5054,
+              "bottomBucketRate": 0.0833,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            },
+            "combined": {
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.6552,
+              "rankCorrelation": 0.5495,
+              "bottomBucketRate": 0.0833,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            },
+            "aucDelta": 0.0148
+          }
+        ]
+      },
+      {
+        "usageFeature": "targetsPerGame",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.5823,
+        "meanCombinedAuc": 0.5916,
+        "meanAucDelta": 0.0093,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5393,
+            "comparableUsage": {
+              "sampleSize": 29,
+              "positives": 10,
+              "negatives": 19,
+              "auc": 0.5579,
+              "rankCorrelation": 0.321,
+              "bottomBucketRate": 0.2222,
+              "topBucketRate": 0.4444,
+              "bucketEffect": 0.2222,
+              "bottomBucketSize": 9,
+              "topBucketSize": 9
+            },
+            "combined": {
+              "sampleSize": 29,
+              "positives": 10,
+              "negatives": 19,
+              "auc": 0.5632,
+              "rankCorrelation": 0.2429,
+              "bottomBucketRate": 0.2222,
+              "topBucketRate": 0.4444,
+              "bucketEffect": 0.2222,
+              "bottomBucketSize": 9,
+              "topBucketSize": 9
+            },
+            "aucDelta": 0.0053
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.6404,
+            "comparableUsage": {
+              "sampleSize": 31,
+              "positives": 6,
+              "negatives": 25,
+              "auc": 0.6067,
+              "rankCorrelation": 0.4417,
+              "bottomBucketRate": 0.1,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0.1,
+              "bottomBucketSize": 10,
+              "topBucketSize": 10
+            },
+            "combined": {
+              "sampleSize": 31,
+              "positives": 6,
+              "negatives": 25,
+              "auc": 0.62,
+              "rankCorrelation": 0.4775,
+              "bottomBucketRate": 0.1,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0.1,
+              "bottomBucketSize": 10,
+              "topBucketSize": 10
+            },
+            "aucDelta": 0.0133
+          }
+        ]
+      },
+      {
+        "usageFeature": "receivingYardsPerGame",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.5589,
+        "meanCombinedAuc": 0.5638,
+        "meanAucDelta": 0.0049,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5413,
+            "comparableUsage": {
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5413,
+              "rankCorrelation": 0.2824,
+              "bottomBucketRate": 0.2727,
+              "topBucketRate": 0.2727,
+              "bucketEffect": 0,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            "combined": {
+              "sampleSize": 33,
+              "positives": 11,
+              "negatives": 22,
+              "auc": 0.5537,
+              "rankCorrelation": 0.1869,
+              "bottomBucketRate": 0.1818,
+              "topBucketRate": 0.3636,
+              "bucketEffect": 0.1818,
+              "bottomBucketSize": 11,
+              "topBucketSize": 11
+            },
+            "aucDelta": 0.0124
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.5764,
+            "comparableUsage": {
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.5764,
+              "rankCorrelation": 0.4392,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.0833,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            },
+            "combined": {
+              "sampleSize": 36,
+              "positives": 7,
+              "negatives": 29,
+              "auc": 0.5739,
+              "rankCorrelation": 0.4733,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.0833,
+              "bottomBucketSize": 12,
+              "topBucketSize": 12
+            },
+            "aucDelta": -0.0025
+          }
+        ]
+      },
+      {
+        "usageFeature": "receivingYardsPerGame",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.5271,
+        "meanCombinedAuc": 0.5409,
+        "meanAucDelta": 0.0138,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5413,
+            "comparableUsage": {
+              "sampleSize": 29,
+              "positives": 10,
+              "negatives": 19,
+              "auc": 0.5474,
+              "rankCorrelation": 0.2729,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.3333,
+              "bucketEffect": 0,
+              "bottomBucketSize": 9,
+              "topBucketSize": 9
+            },
+            "combined": {
+              "sampleSize": 29,
+              "positives": 10,
+              "negatives": 19,
+              "auc": 0.5684,
+              "rankCorrelation": 0.204,
+              "bottomBucketRate": 0.2222,
+              "topBucketRate": 0.3333,
+              "bucketEffect": 0.1111,
+              "bottomBucketSize": 9,
+              "topBucketSize": 9
+            },
+            "aucDelta": 0.021
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.5764,
+            "comparableUsage": {
+              "sampleSize": 31,
+              "positives": 6,
+              "negatives": 25,
+              "auc": 0.5067,
+              "rankCorrelation": 0.341,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0,
+              "bottomBucketSize": 10,
+              "topBucketSize": 10
+            },
+            "combined": {
+              "sampleSize": 31,
+              "positives": 6,
+              "negatives": 25,
+              "auc": 0.5133,
+              "rankCorrelation": 0.3708,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.1,
+              "bucketEffect": -0.1,
+              "bottomBucketSize": 10,
+              "topBucketSize": 10
+            },
+            "aucDelta": 0.0066
+          }
+        ]
+      }
+    ],
+    "WR": [
+      {
+        "usageFeature": "targetsPerGame",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.4433,
+        "meanCombinedAuc": 0.4677,
+        "meanAucDelta": 0.0244,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.4148,
+            "comparableUsage": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4148,
+              "rankCorrelation": 0.4886,
+              "bottomBucketRate": 0.4667,
+              "topBucketRate": 0.2667,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "combined": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4452,
+              "rankCorrelation": 0.4717,
+              "bottomBucketRate": 0.4667,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.1333,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "aucDelta": 0.0304
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4717,
+            "comparableUsage": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4717,
+              "rankCorrelation": 0.5062,
+              "bottomBucketRate": 0.3158,
+              "topBucketRate": 0.3158,
+              "bucketEffect": 0,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "combined": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4901,
+              "rankCorrelation": 0.4811,
+              "bottomBucketRate": 0.3684,
+              "topBucketRate": 0.2632,
+              "bucketEffect": -0.1053,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "aucDelta": 0.0184
+          }
+        ]
+      },
+      {
+        "usageFeature": "targetsPerGame",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.4439,
+        "meanCombinedAuc": 0.4323,
+        "meanAucDelta": -0.0117,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.4148,
+            "comparableUsage": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.4292,
+              "rankCorrelation": 0.5315,
+              "bottomBucketRate": 0.5,
+              "topBucketRate": 0.2857,
+              "bucketEffect": -0.2143,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "combined": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.4052,
+              "rankCorrelation": 0.4186,
+              "bottomBucketRate": 0.5714,
+              "topBucketRate": 0.3571,
+              "bucketEffect": -0.2143,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "aucDelta": -0.024
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4717,
+            "comparableUsage": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.4586,
+              "rankCorrelation": 0.4934,
+              "bottomBucketRate": 0.3889,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.0556,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "combined": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.4593,
+              "rankCorrelation": 0.4451,
+              "bottomBucketRate": 0.3889,
+              "topBucketRate": 0.2778,
+              "bucketEffect": -0.1111,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "aucDelta": 0.0007
+          }
+        ]
+      },
+      {
+        "usageFeature": "lateTargets",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.4178,
+        "meanCombinedAuc": 0.4447,
+        "meanAucDelta": 0.0269,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.4067,
+            "comparableUsage": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4067,
+              "rankCorrelation": 0.1725,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.0667,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "combined": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4341,
+              "rankCorrelation": 0.1259,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.0667,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "aucDelta": 0.0274
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4289,
+            "comparableUsage": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4289,
+              "rankCorrelation": 0.3527,
+              "bottomBucketRate": 0.3684,
+              "topBucketRate": 0.2632,
+              "bucketEffect": -0.1053,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "combined": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4553,
+              "rankCorrelation": 0.3089,
+              "bottomBucketRate": 0.3684,
+              "topBucketRate": 0.2632,
+              "bucketEffect": -0.1053,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "aucDelta": 0.0264
+          }
+        ]
+      },
+      {
+        "usageFeature": "lateTargets",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.4163,
+        "meanCombinedAuc": 0.4085,
+        "meanAucDelta": -0.0077,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.4067,
+            "comparableUsage": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.4161,
+              "rankCorrelation": 0.1636,
+              "bottomBucketRate": 0.3571,
+              "topBucketRate": 0.3571,
+              "bucketEffect": 0,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "combined": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.402,
+              "rankCorrelation": 0.0267,
+              "bottomBucketRate": 0.4286,
+              "topBucketRate": 0.2857,
+              "bucketEffect": -0.1429,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "aucDelta": -0.0141
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4289,
+            "comparableUsage": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.4164,
+              "rankCorrelation": 0.3306,
+              "bottomBucketRate": 0.3889,
+              "topBucketRate": 0.2778,
+              "bucketEffect": -0.1111,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "combined": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.415,
+              "rankCorrelation": 0.2456,
+              "bottomBucketRate": 0.3889,
+              "topBucketRate": 0.2778,
+              "bucketEffect": -0.1111,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "aucDelta": -0.0014
+          }
+        ]
+      },
+      {
+        "usageFeature": "targetGrowth",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.4648,
+        "meanCombinedAuc": 0.494,
+        "meanAucDelta": 0.0292,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5152,
+            "comparableUsage": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.5152,
+              "rankCorrelation": 0.0363,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.0667,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "combined": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.5426,
+              "rankCorrelation": -0.0245,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.0667,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "aucDelta": 0.0274
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4145,
+            "comparableUsage": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4145,
+              "rankCorrelation": -0.0635,
+              "bottomBucketRate": 0.5263,
+              "topBucketRate": 0.3684,
+              "bucketEffect": -0.1579,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "combined": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4454,
+              "rankCorrelation": -0.0984,
+              "bottomBucketRate": 0.4737,
+              "topBucketRate": 0.3684,
+              "bucketEffect": -0.1053,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "aucDelta": 0.0309
+          }
+        ]
+      },
+      {
+        "usageFeature": "targetGrowth",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.466,
+        "meanCombinedAuc": 0.4608,
+        "meanAucDelta": -0.0052,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5152,
+            "comparableUsage": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.5185,
+              "rankCorrelation": -0.0293,
+              "bottomBucketRate": 0.3571,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0.0714,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "combined": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.4967,
+              "rankCorrelation": -0.1603,
+              "bottomBucketRate": 0.3571,
+              "topBucketRate": 0.3571,
+              "bucketEffect": 0,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "aucDelta": -0.0218
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4145,
+            "comparableUsage": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.4136,
+              "rankCorrelation": -0.0763,
+              "bottomBucketRate": 0.5556,
+              "topBucketRate": 0.3889,
+              "bucketEffect": -0.1667,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "combined": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.425,
+              "rankCorrelation": -0.1591,
+              "bottomBucketRate": 0.5556,
+              "topBucketRate": 0.3889,
+              "bucketEffect": -0.1667,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "aucDelta": 0.0114
+          }
+        ]
+      },
+      {
+        "usageFeature": "receivingYardsPerGame",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.4324,
+        "meanCombinedAuc": 0.4564,
+        "meanAucDelta": 0.0241,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.3976,
+            "comparableUsage": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.3976,
+              "rankCorrelation": 0.457,
+              "bottomBucketRate": 0.5333,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.3333,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "combined": {
+              "sampleSize": 46,
+              "positives": 17,
+              "negatives": 29,
+              "auc": 0.4148,
+              "rankCorrelation": 0.4391,
+              "bottomBucketRate": 0.4667,
+              "topBucketRate": 0.2667,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 15,
+              "topBucketSize": 15
+            },
+            "aucDelta": 0.0172
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4671,
+            "comparableUsage": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.4671,
+              "rankCorrelation": 0.5988,
+              "bottomBucketRate": 0.2632,
+              "topBucketRate": 0.2632,
+              "bucketEffect": 0,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "combined": {
+              "sampleSize": 58,
+              "positives": 20,
+              "negatives": 38,
+              "auc": 0.498,
+              "rankCorrelation": 0.6058,
+              "bottomBucketRate": 0.3158,
+              "topBucketRate": 0.2632,
+              "bucketEffect": -0.0526,
+              "bottomBucketSize": 19,
+              "topBucketSize": 19
+            },
+            "aucDelta": 0.0309
+          }
+        ]
+      },
+      {
+        "usageFeature": "receivingYardsPerGame",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.4311,
+        "meanCombinedAuc": 0.4236,
+        "meanAucDelta": -0.0076,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.3976,
+            "comparableUsage": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.4009,
+              "rankCorrelation": 0.4768,
+              "bottomBucketRate": 0.5,
+              "topBucketRate": 0.1429,
+              "bucketEffect": -0.3571,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "combined": {
+              "sampleSize": 44,
+              "positives": 17,
+              "negatives": 27,
+              "auc": 0.3736,
+              "rankCorrelation": 0.378,
+              "bottomBucketRate": 0.4286,
+              "topBucketRate": 0.2143,
+              "bucketEffect": -0.2143,
+              "bottomBucketSize": 14,
+              "topBucketSize": 14
+            },
+            "aucDelta": -0.0273
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.4671,
+            "comparableUsage": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.4614,
+              "rankCorrelation": 0.5933,
+              "bottomBucketRate": 0.2778,
+              "topBucketRate": 0.2778,
+              "bucketEffect": 0,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "combined": {
+              "sampleSize": 55,
+              "positives": 20,
+              "negatives": 35,
+              "auc": 0.4736,
+              "rankCorrelation": 0.5898,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.2778,
+              "bucketEffect": -0.0556,
+              "bottomBucketSize": 18,
+              "topBucketSize": 18
+            },
+            "aucDelta": 0.0122
+          }
+        ]
+      }
+    ],
+    "TE": [
+      {
+        "usageFeature": "lateTargets",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "CONTRADICTORY",
+        "meanComparableUsageAuc": 0.5569,
+        "meanCombinedAuc": 0.5582,
+        "meanAucDelta": 0.0014,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5865,
+            "comparableUsage": {
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5865,
+              "rankCorrelation": 0.4385,
+              "bottomBucketRate": 0.1429,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0.2857,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            "combined": {
+              "sampleSize": 21,
+              "positives": 8,
+              "negatives": 13,
+              "auc": 0.5529,
+              "rankCorrelation": 0.364,
+              "bottomBucketRate": 0.4286,
+              "topBucketRate": 0.4286,
+              "bucketEffect": 0,
+              "bottomBucketSize": 7,
+              "topBucketSize": 7
+            },
+            "aucDelta": -0.0336
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.5273,
+            "comparableUsage": {
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.5273,
+              "rankCorrelation": 0.45,
+              "bottomBucketRate": 0.125,
+              "topBucketRate": 0.125,
+              "bucketEffect": 0,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            },
+            "combined": {
+              "sampleSize": 26,
+              "positives": 11,
+              "negatives": 15,
+              "auc": 0.5636,
+              "rankCorrelation": 0.4671,
+              "bottomBucketRate": 0.125,
+              "topBucketRate": 0.375,
+              "bucketEffect": 0.25,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            },
+            "aucDelta": 0.0363
+          }
+        ]
+      },
+      {
+        "usageFeature": "lateTargets",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "PROMISING_NEEDS_MORE_DATA",
+        "meanComparableUsageAuc": 0.5625,
+        "meanCombinedAuc": 0.5801,
+        "meanAucDelta": 0.0176,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5865,
+            "comparableUsage": {
+              "sampleSize": 20,
+              "positives": 8,
+              "negatives": 12,
+              "auc": 0.625,
+              "rankCorrelation": 0.4794,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "combined": {
+              "sampleSize": 20,
+              "positives": 8,
+              "negatives": 12,
+              "auc": 0.6302,
+              "rankCorrelation": 0.4296,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "aucDelta": 0.0052
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.5273,
+            "comparableUsage": {
+              "sampleSize": 25,
+              "positives": 10,
+              "negatives": 15,
+              "auc": 0.5,
+              "rankCorrelation": 0.4517,
+              "bottomBucketRate": 0.125,
+              "topBucketRate": 0.125,
+              "bucketEffect": 0,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            },
+            "combined": {
+              "sampleSize": 25,
+              "positives": 10,
+              "negatives": 15,
+              "auc": 0.53,
+              "rankCorrelation": 0.4474,
+              "bottomBucketRate": 0.125,
+              "topBucketRate": 0.25,
+              "bucketEffect": 0.125,
+              "bottomBucketSize": 8,
+              "topBucketSize": 8
+            },
+            "aucDelta": 0.03
+          }
+        ]
+      }
+    ],
+    "QB": [
+      {
+        "usageFeature": "lateRushingAttempts",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.6216,
+        "meanCombinedAuc": 0.5655,
+        "meanAucDelta": -0.0561,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.55,
+            "comparableUsage": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.55,
+              "rankCorrelation": 0.1874,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "combined": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.4833,
+              "rankCorrelation": 0.1275,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "aucDelta": -0.0667
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.6932,
+            "comparableUsage": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6932,
+              "rankCorrelation": 0.3587,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "combined": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6477,
+              "rankCorrelation": 0.2754,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.3333,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "aucDelta": -0.0455
+          }
+        ]
+      },
+      {
+        "usageFeature": "lateRushingAttempts",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.6216,
+        "meanCombinedAuc": 0.5738,
+        "meanAucDelta": -0.0478,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.55,
+            "comparableUsage": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.55,
+              "rankCorrelation": 0.1874,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "combined": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.5,
+              "rankCorrelation": 0.1618,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.2,
+              "bucketEffect": 0,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "aucDelta": -0.05
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.6932,
+            "comparableUsage": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6932,
+              "rankCorrelation": 0.3587,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "combined": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6477,
+              "rankCorrelation": 0.2572,
+              "bottomBucketRate": 0.1667,
+              "topBucketRate": 0.3333,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "aucDelta": -0.0455
+          }
+        ]
+      },
+      {
+        "usageFeature": "interceptionRate",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.6099,
+        "meanCombinedAuc": 0.5989,
+        "meanAucDelta": -0.011,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5833,
+            "comparableUsage": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.5833,
+              "rankCorrelation": -0.0539,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "combined": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.55,
+              "rankCorrelation": -0.0037,
+              "bottomBucketRate": 0,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.4,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "aucDelta": -0.0333
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.6364,
+            "comparableUsage": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6364,
+              "rankCorrelation": -0.0368,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.6667,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "combined": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6477,
+              "rankCorrelation": 0.0158,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.6667,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "aucDelta": 0.0113
+          }
+        ]
+      },
+      {
+        "usageFeature": "interceptionRate",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.6099,
+        "meanCombinedAuc": 0.5987,
+        "meanAucDelta": -0.0112,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.5833,
+            "comparableUsage": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.5833,
+              "rankCorrelation": -0.0539,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "combined": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.5667,
+              "rankCorrelation": 0.0147,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "aucDelta": -0.0166
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.6364,
+            "comparableUsage": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6364,
+              "rankCorrelation": -0.0368,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.6667,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "combined": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.6307,
+              "rankCorrelation": -0.0167,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.6667,
+              "bucketEffect": 0.3333,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "aucDelta": -0.0057
+          }
+        ]
+      },
+      {
+        "usageFeature": "rushingAttemptGrowth",
+        "developmentFeature": "ageAtSeason",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.5602,
+        "meanCombinedAuc": 0.5057,
+        "meanAucDelta": -0.0546,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.575,
+            "comparableUsage": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.575,
+              "rankCorrelation": 0.0259,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "combined": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.5,
+              "rankCorrelation": -0.027,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "aucDelta": -0.075
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.5455,
+            "comparableUsage": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.5455,
+              "rankCorrelation": 0.1468,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "combined": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.5114,
+              "rankCorrelation": 0.1502,
+              "bottomBucketRate": 0.5,
+              "topBucketRate": 0.3333,
+              "bucketEffect": -0.1667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "aucDelta": -0.0341
+          }
+        ]
+      },
+      {
+        "usageFeature": "rushingAttemptGrowth",
+        "developmentFeature": "yearInLeague",
+        "formula": "USAGE_75_DEVELOPMENT_25",
+        "readiness": "WEAK",
+        "meanComparableUsageAuc": 0.5602,
+        "meanCombinedAuc": 0.5072,
+        "meanAucDelta": -0.053,
+        "splits": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "frozenUsageBaselineAuc": 0.575,
+            "comparableUsage": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.575,
+              "rankCorrelation": 0.0259,
+              "bottomBucketRate": 0.2,
+              "topBucketRate": 0.4,
+              "bucketEffect": 0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "combined": {
+              "sampleSize": 17,
+              "positives": 5,
+              "negatives": 12,
+              "auc": 0.4917,
+              "rankCorrelation": 0.0012,
+              "bottomBucketRate": 0.4,
+              "topBucketRate": 0.2,
+              "bucketEffect": -0.2,
+              "bottomBucketSize": 5,
+              "topBucketSize": 5
+            },
+            "aucDelta": -0.0833
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "frozenUsageBaselineAuc": 0.5455,
+            "comparableUsage": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.5455,
+              "rankCorrelation": 0.1468,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.5,
+              "bucketEffect": 0.1667,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "combined": {
+              "sampleSize": 19,
+              "positives": 8,
+              "negatives": 11,
+              "auc": 0.5227,
+              "rankCorrelation": 0.1476,
+              "bottomBucketRate": 0.3333,
+              "topBucketRate": 0.3333,
+              "bucketEffect": 0,
+              "bottomBucketSize": 6,
+              "topBucketSize": 6
+            },
+            "aucDelta": -0.0228
+          }
+        ]
+      }
+    ]
+  },
+  "positionConclusions": {
+    "RB": {
+      "classification": "WEAK",
+      "readySignals": [],
+      "promisingSignals": []
+    },
+    "WR": {
+      "classification": "WEAK",
+      "readySignals": [],
+      "promisingSignals": []
+    },
+    "TE": {
+      "classification": "PROMISING_BUT_UNSTABLE",
+      "readySignals": [],
+      "promisingSignals": [
+        "lateTargets × yearInLeague"
+      ]
+    },
+    "QB": {
+      "classification": "WEAK",
+      "readySignals": [],
+      "promisingSignals": []
+    }
+  },
+  "caseAudits": {
+    "falsePositives": [
+      {
+        "playerName": "Alvin Kamara",
+        "type": "FALSE_POSITIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Patrick Mahomes",
+        "type": "FALSE_POSITIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Russell Wilson",
+        "type": "FALSE_POSITIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Evan Engram",
+        "type": "FALSE_POSITIVE",
+        "conclusion": "HELPED",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": true,
+            "combinedFlag": false,
+            "status": "HELPED"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": true,
+            "combinedFlag": true,
+            "status": "NO_EFFECT"
+          }
+        ]
+      }
+    ],
+    "falseNegatives": [
+      {
+        "playerName": "Joe Burrow",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Drake Maye",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Trevor Lawrence",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateRushingAttempts",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Chase Brown",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Rico Dowdle",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "developmentFeature": "yearInLeague",
+            "status": "UNKNOWN"
+          }
+        ]
+      },
+      {
+        "playerName": "Chuba Hubbard",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Christian Watson",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Jauan Jennings",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Parker Washington",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "targetsPerGame",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Kyle Pitts",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      },
+      {
+        "playerName": "Tucker Kraft",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "IMPROVED_DETECTION",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": true,
+            "status": "IMPROVED_DETECTION"
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": true,
+            "status": "IMPROVED_DETECTION"
+          }
+        ]
+      },
+      {
+        "playerName": "Mike Gesicki",
+        "type": "FALSE_NEGATIVE",
+        "conclusion": "NO_EFFECT",
+        "occurrences": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "ageAtSeason",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          },
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "usageFeature": "lateTargets",
+            "developmentFeature": "yearInLeague",
+            "usageFlag": false,
+            "combinedFlag": false,
+            "status": "NO_EFFECT"
+          }
+        ]
+      }
+    ]
+  },
+  "marketValueAppreciation": {
+    "recommendedForFutureResearch": true,
+    "implemented": false,
+    "reason": "Production-percentile ascent cannot distinguish fantasy production improvement from appreciation relative to acquisition cost; historical ADP or equivalent market data is required."
+  },
+  "currentWatchlist": {
+    "created": false,
+    "reason": "No development-aware interaction earned READY_FOR_SHADOW_MODEL."
+  },
+  "limitations": [
+    "Only two historical transitions are available.",
+    "Age and career stage are observational context, not causal variables.",
+    "Missing entry years remain unknown.",
+    "Historical ADP and market-value appreciation are unavailable.",
+    "SOURCE LIMITATION: no routes, route participation, TPRR, YPRR, or first-read share."
+  ],
+  "routeDataStatus": "SOURCE LIMITATION",
+  "temporalSafety": {
+    "evidenceBeforeOutcome": true,
+    "futureUsageConsumed": false,
+    "futureTeamConsumed": false,
+    "futureRoleConsumed": false,
+    "futureDepthChartConsumed": false
+  },
+  "frozenBaseline": {
+    "milestone": "Jōnin 4.3.13",
+    "recommendationAuthority": false,
+    "artifactMutated": false,
+    "signals": {
+      "RB": {
+        "targetsPerGame": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.5393
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.6404
+          }
+        ],
+        "receivingYardsPerGame": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.5413
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.5764
+          }
+        ]
+      },
+      "WR": {
+        "targetsPerGame": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.4148
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.4717
+          }
+        ],
+        "lateTargets": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.4067
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.4289
+          }
+        ],
+        "targetGrowth": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.5152
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.4145
+          }
+        ],
+        "receivingYardsPerGame": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.3976
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.4671
+          }
+        ]
+      },
+      "TE": {
+        "lateTargets": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.5865
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.5273
+          }
+        ]
+      },
+      "QB": {
+        "lateRushingAttempts": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.55
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.6932
+          }
+        ],
+        "interceptionRate": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.5833
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.6364
+          }
+        ],
+        "rushingAttemptGrowth": [
+          {
+            "evidenceSeason": 2023,
+            "outcomeSeason": 2024,
+            "auc": 0.575
+          },
+          {
+            "evidenceSeason": 2024,
+            "outcomeSeason": 2025,
+            "auc": 0.5455
+          }
+        ]
+      }
+    }
+  },
+  "finalDecision": "PROMISING DEVELOPMENT SIGNALS — MORE VALIDATION NEEDED"
+}
