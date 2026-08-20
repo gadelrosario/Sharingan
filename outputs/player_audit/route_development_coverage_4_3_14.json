@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "milestone": "Jōnin 4.3.14",
+  "generatedAt": "2026-08-19T00:00:00.000Z",
+  "recommendationAuthority": false,
+  "routeParticipation": {
+    "providerEvaluated": "nflverse pbp_participation",
+    "seasonsRequested": [2023, 2024, 2025],
+    "accessStatus": "NETWORK_UNAVAILABLE",
+    "semanticStatus": "PRIMARY_RECEIVER_ROUTE_LABEL_NOT_PLAYER_ROUTE_COUNT",
+    "rawRows": 0,
+    "matchedRows": 0,
+    "unmatchedRows": 0,
+    "ambiguousRows": 0,
+    "quarantinedRows": 0,
+    "playersCovered": 0,
+    "playerSeasonsCovered": 0,
+    "weeklyCoverage": 0,
+    "byPosition": {
+      "RB": {"players": 0, "playerSeasons": 0, "tprr": 0, "yprr": 0},
+      "WR": {"players": 0, "playerSeasons": 0, "tprr": 0, "yprr": 0},
+      "TE": {"players": 0, "playerSeasons": 0, "tprr": 0, "yprr": 0}
+    }
+  },
+  "development": {
+    "providerSelected": "nflverse players",
+    "accessStatus": "LIVE_ACCESS_SUCCESS_LOCAL_FILE",
+    "sourceRowsProcessed": 25046,
+    "canonicalPlayersMatched": 257,
+    "staticMetadataPlayers": 257,
+    "historicalSeasonRecords": 575,
+    "birthDatePlayers": 257,
+    "entryYearPlayers": 222,
+    "rookieSeasonPlayers": 222,
+    "historicalAgeRecords": 575,
+    "historicalYearInLeagueRecords": 543,
+    "unmatchedSourceRows": 24789,
+    "quarantinedRows": 0,
+    "unresolvedMetadata": 35,
+    "sampleSlices": {
+      "QB": {"Year 1": 10, "Year 2": 10, "Year 3": 5, "Year 4+": 61, "unknown": 0},
+      "RB": {"Year 1": 35, "Year 2": 25, "Year 3": 23, "Year 4+": 60, "unknown": 18},
+      "WR": {"Year 1": 46, "Year 2": 49, "Year 3": 37, "Year 4+": 82, "unknown": 11},
+      "TE": {"Year 1": 19, "Year 2": 16, "Year 3": 15, "Year 4+": 50, "unknown": 3}
+    }
+  },
+  "artifactSizes": {
+    "rawRouteBytes": 0,
+    "normalizedRouteBytes": 0,
+    "normalizedDevelopmentBytes": 2919418,
+    "browserBundleImpactBytes": 0
+  },
+  "nextDecision": "READY TO REFRESH AND RE-AUDIT 4.3.14"
+}
