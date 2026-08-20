@@ -1,0 +1,4839 @@
+{
+  "schemaVersion": 1,
+  "milestone": "Jōnin 4.3.19",
+  "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+  "recommendationAuthority": false,
+  "evaluations": [
+    {
+      "fixtureId": "primary-early-alignment",
+      "description": "Elite value and upside already agree",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "EARLY",
+      "stageAuthority": "MINIMAL",
+      "incumbent": {
+        "canonicalPlayerId": "p1",
+        "playerName": "Elite Foundation",
+        "position": "RB",
+        "expertRank": 4,
+        "expertTier": "S",
+        "mambaScore": 96,
+        "sourceValue": 116,
+        "championshipEquityScore": 70,
+        "championshipEquityClass": "MODERATE",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": true,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p2",
+        "playerName": "Elite Alignment",
+        "position": "WR",
+        "expertRank": 3,
+        "expertTier": "S",
+        "mambaScore": 97,
+        "sourceValue": 118,
+        "championshipEquityScore": 86,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": -1,
+        "mambaGap": -1,
+        "valueGap": -2,
+        "championshipEquityEdge": 16
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 9,
+        "criticalStarterNeed": true,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNKNOWN",
+      "currentAdpAvailable": false,
+      "reachBudget": "SAME_TIER_ONLY",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "VALUE_UPSIDE_ALIGNMENT",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p1",
+        "playerName": "Elite Foundation"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p1",
+        "playerName": "Elite Foundation",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "USEFUL_DEPTH",
+      "challengerOptionality": "USEFUL_DEPTH",
+      "reasons": [
+        "EXPERT_VALUE_AND_UPSIDE_ALIGN"
+      ]
+    },
+    {
+      "fixtureId": "primary-early-same-tier",
+      "description": "Early authority permits only a modest same-tier tie break",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "EARLY",
+      "stageAuthority": "MINIMAL",
+      "incumbent": {
+        "canonicalPlayerId": "p3",
+        "playerName": "Foundation A",
+        "position": "WR",
+        "expertRank": 18,
+        "expertTier": "A",
+        "mambaScore": 91,
+        "sourceValue": 93,
+        "championshipEquityScore": 55,
+        "championshipEquityClass": "MODERATE",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p4",
+        "playerName": "Foundation B",
+        "position": "WR",
+        "expertRank": 19,
+        "expertTier": "A",
+        "mambaScore": 90,
+        "sourceValue": 92,
+        "championshipEquityScore": 78,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 1,
+        "mambaGap": 1,
+        "valueGap": 1,
+        "championshipEquityEdge": 23
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 7,
+        "criticalStarterNeed": true,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNKNOWN",
+      "currentAdpAvailable": false,
+      "reachBudget": "SAME_TIER_ONLY",
+      "eligible": true,
+      "reviewEligible": false,
+      "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+      "confidence": "GUARDED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p3",
+        "playerName": "Foundation A"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p4",
+        "playerName": "Foundation B",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "USEFUL_DEPTH",
+      "challengerOptionality": "USEFUL_DEPTH",
+      "reasons": [
+        "SAME_TIER_MODEST_PRODUCTION_GAP"
+      ]
+    },
+    {
+      "fixtureId": "primary-middle-same-tier",
+      "description": "Middle authority can resolve a close same-tier decision",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "MIDDLE",
+      "stageAuthority": "MODERATE",
+      "incumbent": {
+        "canonicalPlayerId": "p5",
+        "playerName": "Middle Floor",
+        "position": "WR",
+        "expertRank": 58,
+        "expertTier": "D",
+        "mambaScore": 84,
+        "sourceValue": 64,
+        "championshipEquityScore": 54,
+        "championshipEquityClass": "MODERATE",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p6",
+        "playerName": "Middle Upside",
+        "position": "WR",
+        "expertRank": 60,
+        "expertTier": "D",
+        "mambaScore": 82,
+        "sourceValue": 62,
+        "championshipEquityScore": 79,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 2,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 25
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 4,
+        "criticalStarterNeed": true,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNKNOWN",
+      "currentAdpAvailable": false,
+      "reachBudget": "SAME_TIER_ONLY",
+      "eligible": true,
+      "reviewEligible": false,
+      "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+      "confidence": "GUARDED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p5",
+        "playerName": "Middle Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p6",
+        "playerName": "Middle Upside",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "USEFUL_DEPTH",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "SAME_TIER_MODEST_PRODUCTION_GAP"
+      ]
+    },
+    {
+      "fixtureId": "primary-middle-foundation-block",
+      "description": "Incomplete starters block a one-tier reach",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "MIDDLE",
+      "stageAuthority": "MODERATE",
+      "incumbent": {
+        "canonicalPlayerId": "p7",
+        "playerName": "Starter Need",
+        "position": "RB",
+        "expertRank": 67,
+        "expertTier": "E",
+        "mambaScore": 82,
+        "sourceValue": 54,
+        "championshipEquityScore": 45,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p8",
+        "playerName": "Bench Upside",
+        "position": "WR",
+        "expertRank": 74,
+        "expertTier": "F",
+        "mambaScore": 81,
+        "sourceValue": 53,
+        "championshipEquityScore": 82,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 7,
+        "mambaGap": 1,
+        "valueGap": 1,
+        "championshipEquityEdge": 37
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 3,
+        "criticalStarterNeed": true,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p7",
+        "playerName": "Starter Need"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p7",
+        "playerName": "Starter Need",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "STARTER_FOUNDATION_INCOMPLETE"
+      ]
+    },
+    {
+      "fixtureId": "primary-late-adp-missing",
+      "description": "Missing current ADP restricts a one-tier case",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p9",
+        "playerName": "Late Value",
+        "position": "WR",
+        "expertRank": 112,
+        "expertTier": "I",
+        "mambaScore": 77,
+        "sourceValue": 18,
+        "championshipEquityScore": 42,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p10",
+        "playerName": "Late Upside",
+        "position": "WR",
+        "expertRank": 120,
+        "expertTier": "J",
+        "mambaScore": 75,
+        "sourceValue": 16,
+        "championshipEquityScore": 80,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 8,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 38
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNKNOWN",
+      "currentAdpAvailable": false,
+      "reachBudget": "SAME_TIER_ONLY",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p9",
+        "playerName": "Late Value"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p9",
+        "playerName": "Late Value",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "CURRENT_ADP_UNAVAILABLE"
+      ]
+    },
+    {
+      "fixtureId": "primary-late-wait",
+      "description": "Known survival favors waiting for the same-tier player",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p11",
+        "playerName": "Available Floor",
+        "position": "RB",
+        "expertRank": 130,
+        "expertTier": "K",
+        "mambaScore": 76,
+        "sourceValue": 14,
+        "championshipEquityScore": 45,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p12",
+        "playerName": "Patient Upside",
+        "position": "RB",
+        "expertRank": 135,
+        "expertTier": "K",
+        "mambaScore": 74,
+        "sourceValue": 12,
+        "championshipEquityScore": 78,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 5,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 33
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "LIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "SAME_TIER_ONLY",
+      "eligible": true,
+      "reviewEligible": false,
+      "simulatedAction": "WAIT_FOR_PRICE",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p11",
+        "playerName": "Available Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p11",
+        "playerName": "Available Floor",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "SURVIVAL_SUPPORTS_WAIT"
+      ]
+    },
+    {
+      "fixtureId": "primary-bench-one-tier",
+      "description": "Complete roster permits one tightly bounded tier move",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p13",
+        "playerName": "Replaceable Floor",
+        "position": "WR",
+        "expertRank": 135,
+        "expertTier": "K",
+        "mambaScore": 76,
+        "sourceValue": 13,
+        "championshipEquityScore": 44,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": true,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p14",
+        "playerName": "Bench Optionality",
+        "position": "WR",
+        "expertRank": 148,
+        "expertTier": "L",
+        "mambaScore": 73,
+        "sourceValue": 10,
+        "championshipEquityScore": 82,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 13,
+        "mambaGap": 3,
+        "valueGap": 3,
+        "championshipEquityEdge": 38
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "SMALL_GAP_ALLOWED",
+      "eligible": false,
+      "reviewEligible": true,
+      "simulatedAction": "GUARDED_REVIEW",
+      "confidence": "LOWERED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p13",
+        "playerName": "Replaceable Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p13",
+        "playerName": "Replaceable Floor",
+        "reviewCandidate": "p14"
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "LOW_OPTIONALITY",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "HIGH_OPTIONALITY_TIMING_WINDOW"
+      ]
+    },
+    {
+      "fixtureId": "primary-multi-tier",
+      "description": "Rank 180 upside cannot jump rank 70 across several tiers",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p15",
+        "playerName": "Stable Depth",
+        "position": "RB",
+        "expertRank": 70,
+        "expertTier": "G",
+        "mambaScore": 80,
+        "sourceValue": 35,
+        "championshipEquityScore": 48,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p16",
+        "playerName": "Remote Upside",
+        "position": "RB",
+        "expertRank": 180,
+        "expertTier": "N",
+        "mambaScore": 74,
+        "sourceValue": 8,
+        "championshipEquityScore": 99,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 7,
+        "rankGap": 110,
+        "mambaGap": 6,
+        "valueGap": 27,
+        "championshipEquityEdge": 51
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p15",
+        "playerName": "Stable Depth"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p15",
+        "playerName": "Stable Depth",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "MULTI_TIER_MOVE_PROHIBITED"
+      ]
+    },
+    {
+      "fixtureId": "primary-hero-rb-depth",
+      "description": "Hero-RB valuable depth is not treated as replaceable",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p17",
+        "playerName": "Valuable RB Depth",
+        "position": "RB",
+        "expertRank": 132,
+        "expertTier": "K",
+        "mambaScore": 76,
+        "sourceValue": 14,
+        "championshipEquityScore": 52,
+        "championshipEquityClass": "MODERATE",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": true,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p18",
+        "playerName": "Optional WR",
+        "position": "WR",
+        "expertRank": 144,
+        "expertTier": "L",
+        "mambaScore": 73,
+        "sourceValue": 11,
+        "championshipEquityScore": 82,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 12,
+        "mambaGap": 3,
+        "valueGap": 3,
+        "championshipEquityEdge": 30
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p17",
+        "playerName": "Valuable RB Depth"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p17",
+        "playerName": "Valuable RB Depth",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "USEFUL_DEPTH",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "HIGH_OPTIONALITY_TIMING_WINDOW",
+        "VALUABLE_RB_DEPTH_PRESERVED"
+      ]
+    },
+    {
+      "fixtureId": "downey-full-ppr-flex",
+      "description": "Downey one-RB two-FLEX configuration reaches bench stage from its own slots",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "d1",
+        "playerName": "Flexible Floor",
+        "position": "WR",
+        "expertRank": 96,
+        "expertTier": "H",
+        "mambaScore": 78,
+        "sourceValue": 25,
+        "championshipEquityScore": 48,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": true,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d2",
+        "playerName": "Flexible Upside",
+        "position": "WR",
+        "expertRank": 101,
+        "expertTier": "H",
+        "mambaScore": 76,
+        "sourceValue": 23,
+        "championshipEquityScore": 80,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 5,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 32
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "SAME_TIER_ONLY",
+      "eligible": true,
+      "reviewEligible": false,
+      "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+      "confidence": "GUARDED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d1",
+        "playerName": "Flexible Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d2",
+        "playerName": "Flexible Upside",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "LOW_OPTIONALITY",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "SAME_TIER_MODEST_PRODUCTION_GAP"
+      ]
+    },
+    {
+      "fixtureId": "downey-open-starter",
+      "description": "Downey open starter capacity preserves foundation priority",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "MIDDLE",
+      "stageAuthority": "MODERATE",
+      "incumbent": {
+        "canonicalPlayerId": "d3",
+        "playerName": "Starter Equity",
+        "position": "WR",
+        "expertRank": 48,
+        "expertTier": "E",
+        "mambaScore": 84,
+        "sourceValue": 69,
+        "championshipEquityScore": 50,
+        "championshipEquityClass": "MODERATE",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d4",
+        "playerName": "Future Ceiling",
+        "position": "WR",
+        "expertRank": 58,
+        "expertTier": "F",
+        "mambaScore": 82,
+        "sourceValue": 67,
+        "championshipEquityScore": 84,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 10,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 34
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 2,
+        "criticalStarterNeed": true,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d3",
+        "playerName": "Starter Equity"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d3",
+        "playerName": "Starter Equity",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "USEFUL_DEPTH",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "STARTER_FOUNDATION_INCOMPLETE"
+      ]
+    },
+    {
+      "fixtureId": "downey-unsupported-te",
+      "description": "Unsupported-position evidence cannot gain authority",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "d5",
+        "playerName": "TE Floor",
+        "position": "TE",
+        "expertRank": 91,
+        "expertTier": "H",
+        "mambaScore": 79,
+        "sourceValue": 27,
+        "championshipEquityScore": 40,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d6",
+        "playerName": "TE Speculation",
+        "position": "TE",
+        "expertRank": 94,
+        "expertTier": "H",
+        "mambaScore": 78,
+        "sourceValue": 26,
+        "championshipEquityScore": null,
+        "championshipEquityClass": "INSUFFICIENT_DATA",
+        "evidenceComplete": false,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 3,
+        "mambaGap": 1,
+        "valueGap": 1,
+        "championshipEquityEdge": null
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNKNOWN",
+      "currentAdpAvailable": false,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d5",
+        "playerName": "TE Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d5",
+        "playerName": "TE Floor",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "INSUFFICIENT_EVIDENCE",
+      "reasons": [
+        "INCOMPLETE_CHAMPIONSHIP_EQUITY_EVIDENCE",
+        "UNSUPPORTED_POSITION",
+        "MISSING_REQUIRED_COMPARISON_INPUT"
+      ]
+    },
+    {
+      "fixtureId": "downey-missing-tier",
+      "description": "Missing tier fails closed",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "d7",
+        "playerName": "Known Floor",
+        "position": "RB",
+        "expertRank": 120,
+        "expertTier": "J",
+        "mambaScore": 77,
+        "sourceValue": 20,
+        "championshipEquityScore": 44,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d8",
+        "playerName": "Unknown Tier",
+        "position": "RB",
+        "expertRank": 126,
+        "expertTier": null,
+        "mambaScore": 75,
+        "sourceValue": 18,
+        "championshipEquityScore": 88,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": null,
+        "rankGap": 6,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 44
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d7",
+        "playerName": "Known Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d7",
+        "playerName": "Known Floor",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "MISSING_TIER",
+        "MISSING_REQUIRED_COMPARISON_INPUT"
+      ]
+    },
+    {
+      "fixtureId": "primary-rookie-no-score",
+      "description": "Rookie without applicable historical score fails closed",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p19",
+        "playerName": "Known Depth",
+        "position": "WR",
+        "expertRank": 118,
+        "expertTier": "J",
+        "mambaScore": 78,
+        "sourceValue": 22,
+        "championshipEquityScore": 42,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p20",
+        "playerName": "Unscored Rookie",
+        "position": "WR",
+        "expertRank": 122,
+        "expertTier": "J",
+        "mambaScore": 76,
+        "sourceValue": 20,
+        "championshipEquityScore": null,
+        "championshipEquityClass": "INSUFFICIENT_DATA",
+        "evidenceComplete": false,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 4,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": null
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p19",
+        "playerName": "Known Depth"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p19",
+        "playerName": "Known Depth",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "INSUFFICIENT_EVIDENCE",
+      "reasons": [
+        "INCOMPLETE_CHAMPIONSHIP_EQUITY_EVIDENCE",
+        "MISSING_REQUIRED_COMPARISON_INPUT"
+      ]
+    },
+    {
+      "fixtureId": "downey-identity-mismatch",
+      "description": "Identity mismatch cannot produce authority",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Canonical Player",
+        "position": "WR",
+        "expertRank": 115,
+        "expertTier": "J",
+        "mambaScore": 78,
+        "sourceValue": 24,
+        "championshipEquityScore": 44,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Mismatched Source Player",
+        "position": "WR",
+        "expertRank": 118,
+        "expertTier": "J",
+        "mambaScore": 76,
+        "sourceValue": 22,
+        "championshipEquityScore": 91,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 3,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 47
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Canonical Player"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Canonical Player",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "IDENTITY_FAILURE"
+      ]
+    }
+  ],
+  "summary": {
+    "fixtures": 15,
+    "profiles": {
+      "primary-league": 10,
+      "straight-outta-downey": 5
+    },
+    "actions": {
+      "VALUE_UPSIDE_ALIGNMENT": 1,
+      "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY": 3,
+      "UNCHANGED": 9,
+      "WAIT_FOR_PRICE": 1,
+      "GUARDED_REVIEW": 1
+    },
+    "reachBudgets": {
+      "SAME_TIER_ONLY": 6,
+      "PROHIBITED_REACH": 8,
+      "SMALL_GAP_ALLOWED": 1
+    },
+    "pathologicalReachCount": 0
+  },
+  "authorityPolicy": {
+    "sameTier": "Complete RB/WR evidence may break a tie only when expert tier, rank distance, Mamba gap, and source-value gap are all within the stage budget.",
+    "oneTier": "GUARDED_REVIEW only; requires current ADP availability, HIGH complete evidence, completed starter foundation, neutral roster context, bounded rank/Mamba/value gaps, and poor survival.",
+    "multiTier": "PROHIBITED",
+    "missingTier": "FAIL_CLOSED",
+    "missingAdp": "SAME_TIER_ONLY",
+    "negativeEvidence": "NO_NEGATIVE_PENALTY"
+  },
+  "reachBudget": {
+    "sameTierOnly": "SAME_TIER_ONLY",
+    "smallGapAllowed": "GUARDED_REVIEW; never automatic authority",
+    "waitForPrice": "Known likely survival defeats take-now authority",
+    "prohibitedReach": "Multi-tier, missing tier/evidence/identity, unsupported position, or exceeded stage budget"
+  },
+  "stageRules": {
+    "EARLY": {
+      "authority": "MINIMAL",
+      "sameTierRankGap": 4,
+      "sameTierMambaGap": 1,
+      "oneTierAllowed": false,
+      "oneTierRankGap": 0,
+      "oneTierMambaGap": 0
+    },
+    "MIDDLE": {
+      "authority": "MODERATE",
+      "sameTierRankGap": 8,
+      "sameTierMambaGap": 2,
+      "oneTierAllowed": true,
+      "oneTierRankGap": 12,
+      "oneTierMambaGap": 2
+    },
+    "LATE": {
+      "authority": "STRONGER",
+      "sameTierRankGap": 12,
+      "sameTierMambaGap": 3,
+      "oneTierAllowed": true,
+      "oneTierRankGap": 18,
+      "oneTierMambaGap": 3
+    },
+    "BENCH_BUILDING": {
+      "authority": "STRONGER",
+      "sameTierRankGap": 18,
+      "sameTierMambaGap": 3,
+      "oneTierAllowed": true,
+      "oneTierRankGap": 24,
+      "oneTierMambaGap": 4
+    }
+  },
+  "rosterStateRules": {
+    "openStarters": "No one-tier review while configured starter capacity remains.",
+    "healthyFoundation": "Late/bench one-tier review may be considered subject to every other guardrail.",
+    "heroRb": "Valuable RB2/RB3/FLEX depth is preserved.",
+    "replaceableBench": "Only complete evidence may identify low optionality."
+  },
+  "adpComparison": {
+    "withCurrentAdp": "One-tier GUARDED_REVIEW can be considered only if all other constraints pass.",
+    "withoutCurrentAdp": "Authority is reduced to same-tier-only; expert rank is context and never substituted for ADP.",
+    "currentStatus": "CURRENT_2026_ADP_UNAVAILABLE"
+  },
+  "current4_3_18CaseAnalysis": {
+    "highReachCases": [
+      {
+        "sourceCase": "A_MAMBA_AND_CHAMPIONSHIP_EQUITY_ALIGN",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "10",
+            "playerName": "Justin Jefferson",
+            "expertRank": 8,
+            "mambaScore": 91,
+            "finalPickScore": 110
+          },
+          {
+            "canonicalPlayerId": "9",
+            "playerName": "Jonathan Taylor",
+            "expertRank": 10,
+            "mambaScore": 91,
+            "finalPickScore": 113
+          },
+          {
+            "canonicalPlayerId": "11",
+            "playerName": "Ashton Jeanty",
+            "expertRank": 11,
+            "mambaScore": 91,
+            "finalPickScore": 113
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "EARLY",
+          "stageAuthority": "MINIMAL",
+          "incumbent": {
+            "canonicalPlayerId": "10",
+            "playerName": "Justin Jefferson",
+            "position": "WR",
+            "expertRank": 8,
+            "expertTier": "B",
+            "mambaScore": 91,
+            "sourceValue": 110,
+            "championshipEquityScore": 59.2969,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 8,
+                "percentile": 87.3563,
+                "weight": 0.35,
+                "contribution": 30.5747,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 27,
+                "percentile": 26.4045,
+                "weight": 0.15,
+                "contribution": 3.9607,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 7,
+                "percentile": 17.0588,
+                "weight": 0.15,
+                "contribution": 2.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 72.1183,
+                "percentile": 72.1183,
+                "weight": 0.2,
+                "contribution": 14.4237,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 87.3563,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 26.4045,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 51.8597,
+                "percentile": 51.8597,
+                "weight": 0.15,
+                "contribution": 7.779,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 60.3448,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 26.4045,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "15",
+            "playerName": "De'Von Achane",
+            "position": "RB",
+            "expertRank": 9,
+            "expertTier": "B",
+            "mambaScore": 91,
+            "sourceValue": 114,
+            "championshipEquityScore": 79.7053,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5.6722689075630255,
+                "percentile": 96.875,
+                "weight": 0.5,
+                "contribution": 48.4375,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 24,
+                "percentile": 74.2647,
+                "weight": 0.25,
+                "contribution": 18.5662,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 4,
+                "percentile": 50.8065,
+                "weight": 0.25,
+                "contribution": 12.7016,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 1,
+            "mambaGap": 0,
+            "valueGap": -4,
+            "championshipEquityEdge": 20.408399999999993
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 1,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": true,
+          "reviewEligible": false,
+          "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+          "confidence": "GUARDED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "10",
+            "playerName": "Justin Jefferson"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "15",
+            "playerName": "De'Von Achane",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_MODEST_PRODUCTION_GAP"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "18",
+            "playerName": "Drake London",
+            "expertRank": 21,
+            "mambaScore": 87,
+            "finalPickScore": 94
+          },
+          {
+            "canonicalPlayerId": "25",
+            "playerName": "George Pickens",
+            "expertRank": 23,
+            "mambaScore": 86,
+            "finalPickScore": 91
+          },
+          {
+            "canonicalPlayerId": "24",
+            "playerName": "Rashee Rice",
+            "expertRank": 24,
+            "mambaScore": 86,
+            "finalPickScore": 91
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "EARLY",
+          "stageAuthority": "MINIMAL",
+          "incumbent": {
+            "canonicalPlayerId": "18",
+            "playerName": "Drake London",
+            "position": "WR",
+            "expertRank": 21,
+            "expertTier": "C",
+            "mambaScore": 87,
+            "sourceValue": 94,
+            "championshipEquityScore": 47.6146,
+            "championshipEquityClass": "LOW",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5,
+                "percentile": 54.023,
+                "weight": 0.35,
+                "contribution": 18.908,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 25,
+                "percentile": 58.9888,
+                "weight": 0.15,
+                "contribution": 8.8483,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 5,
+                "percentile": 37.0588,
+                "weight": 0.15,
+                "contribution": 5.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 55.2645,
+                "percentile": 55.2645,
+                "weight": 0.2,
+                "contribution": 11.0529,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 54.023,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 21.6437,
+                "percentile": 21.6437,
+                "weight": 0.15,
+                "contribution": 3.2466,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 9.1954,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "29",
+            "playerName": "Chris Olave",
+            "position": "WR",
+            "expertRank": 27,
+            "expertTier": "C",
+            "mambaScore": 85,
+            "sourceValue": 79,
+            "championshipEquityScore": 76.1076,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 13.5,
+                "percentile": 98.8506,
+                "weight": 0.35,
+                "contribution": 34.5977,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 26,
+                "percentile": 41.573,
+                "weight": 0.15,
+                "contribution": 6.2359,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 5,
+                "percentile": 37.0588,
+                "weight": 0.15,
+                "contribution": 5.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 84.5312,
+                "percentile": 84.5312,
+                "weight": 0.2,
+                "contribution": 16.9062,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 98.8506,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 41.573,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 85.3932,
+                "percentile": 85.3932,
+                "weight": 0.15,
+                "contribution": 12.809,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 100,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 41.573,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 6,
+            "mambaGap": 2,
+            "valueGap": 15,
+            "championshipEquityEdge": 28.493000000000002
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 1,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "UNCHANGED",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "18",
+            "playerName": "Drake London"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "18",
+            "playerName": "Drake London",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_EDGE_NOT_DECISIVE"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "31",
+            "playerName": "Tee Higgins",
+            "expertRank": 40,
+            "mambaScore": 83,
+            "finalPickScore": 64
+          },
+          {
+            "canonicalPlayerId": "42",
+            "playerName": "Tetairoa McMillan",
+            "expertRank": 42,
+            "mambaScore": 83,
+            "finalPickScore": 62
+          },
+          {
+            "canonicalPlayerId": "39",
+            "playerName": "Jaylen Waddle",
+            "expertRank": 39,
+            "mambaScore": 82,
+            "finalPickScore": 62
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "EARLY",
+          "stageAuthority": "MINIMAL",
+          "incumbent": {
+            "canonicalPlayerId": "31",
+            "playerName": "Tee Higgins",
+            "position": "WR",
+            "expertRank": 40,
+            "expertTier": "E",
+            "mambaScore": 83,
+            "sourceValue": 64,
+            "championshipEquityScore": 56.4233,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 7,
+                "percentile": 81.6092,
+                "weight": 0.35,
+                "contribution": 28.5632,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 27,
+                "percentile": 26.4045,
+                "weight": 0.15,
+                "contribution": 3.9607,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 7,
+                "percentile": 17.0588,
+                "weight": 0.15,
+                "contribution": 2.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 67.808,
+                "percentile": 67.808,
+                "weight": 0.2,
+                "contribution": 13.5616,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 81.6092,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 26.4045,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 51.8597,
+                "percentile": 51.8597,
+                "weight": 0.15,
+                "contribution": 7.779,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 60.3448,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 26.4045,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "46",
+            "playerName": "Luther Burden III",
+            "position": "WR",
+            "expertRank": 44,
+            "expertTier": "E",
+            "mambaScore": 82,
+            "sourceValue": 58,
+            "championshipEquityScore": 83.6486,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 6.5,
+                "percentile": 78.1609,
+                "weight": 0.35,
+                "contribution": 27.3563,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 22,
+                "percentile": 100,
+                "weight": 0.15,
+                "contribution": 15,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 2,
+                "percentile": 93.5294,
+                "weight": 0.15,
+                "contribution": 14.0294,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 83.6207,
+                "percentile": 83.6207,
+                "weight": 0.2,
+                "contribution": 16.7241,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 78.1609,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 100,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 70.2586,
+                "percentile": 70.2586,
+                "weight": 0.15,
+                "contribution": 10.5388,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 60.3448,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 100,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 4,
+            "mambaGap": 1,
+            "valueGap": 6,
+            "championshipEquityEdge": 27.225300000000004
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 1,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "UNCHANGED",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "31",
+            "playerName": "Tee Higgins"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "31",
+            "playerName": "Tee Higgins",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_EDGE_NOT_DECISIVE"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "31",
+            "playerName": "Tee Higgins",
+            "expertRank": 40,
+            "mambaScore": 83,
+            "finalPickScore": 64
+          },
+          {
+            "canonicalPlayerId": "42",
+            "playerName": "Tetairoa McMillan",
+            "expertRank": 42,
+            "mambaScore": 83,
+            "finalPickScore": 62
+          },
+          {
+            "canonicalPlayerId": "39",
+            "playerName": "Jaylen Waddle",
+            "expertRank": 39,
+            "mambaScore": 82,
+            "finalPickScore": 62
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "EARLY",
+          "stageAuthority": "MINIMAL",
+          "incumbent": {
+            "canonicalPlayerId": "31",
+            "playerName": "Tee Higgins",
+            "position": "WR",
+            "expertRank": 40,
+            "expertTier": "E",
+            "mambaScore": 83,
+            "sourceValue": 64,
+            "championshipEquityScore": 56.4233,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 7,
+                "percentile": 81.6092,
+                "weight": 0.35,
+                "contribution": 28.5632,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 27,
+                "percentile": 26.4045,
+                "weight": 0.15,
+                "contribution": 3.9607,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 7,
+                "percentile": 17.0588,
+                "weight": 0.15,
+                "contribution": 2.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 67.808,
+                "percentile": 67.808,
+                "weight": 0.2,
+                "contribution": 13.5616,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 81.6092,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 26.4045,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 51.8597,
+                "percentile": 51.8597,
+                "weight": 0.15,
+                "contribution": 7.779,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 60.3448,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 26.4045,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "49",
+            "playerName": "TreVeyon Henderson",
+            "position": "RB",
+            "expertRank": 41,
+            "expertTier": "E",
+            "mambaScore": 82,
+            "sourceValue": 64,
+            "championshipEquityScore": 86.0665,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5.061111111111111,
+                "percentile": 85.9375,
+                "weight": 0.5,
+                "contribution": 42.9688,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 23,
+                "percentile": 85.2941,
+                "weight": 0.25,
+                "contribution": 21.3235,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 2,
+                "percentile": 87.0968,
+                "weight": 0.25,
+                "contribution": 21.7742,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 1,
+            "mambaGap": 1,
+            "valueGap": 0,
+            "championshipEquityEdge": 29.643200000000007
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 1,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": true,
+          "reviewEligible": false,
+          "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+          "confidence": "GUARDED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "31",
+            "playerName": "Tee Higgins"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "49",
+            "playerName": "TreVeyon Henderson",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_MODEST_PRODUCTION_GAP"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "53",
+            "playerName": "Jameson Williams",
+            "expertRank": 59,
+            "mambaScore": 80,
+            "finalPickScore": 45
+          },
+          {
+            "canonicalPlayerId": "45",
+            "playerName": "Terry McLaurin",
+            "expertRank": 61,
+            "mambaScore": 80,
+            "finalPickScore": 45
+          },
+          {
+            "canonicalPlayerId": "60",
+            "playerName": "Rome Odunze",
+            "expertRank": 64,
+            "mambaScore": 80,
+            "finalPickScore": 41
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "MIDDLE",
+          "stageAuthority": "MODERATE",
+          "incumbent": {
+            "canonicalPlayerId": "53",
+            "playerName": "Jameson Williams",
+            "position": "WR",
+            "expertRank": 59,
+            "expertTier": "F",
+            "mambaScore": 80,
+            "sourceValue": 45,
+            "championshipEquityScore": 51.027,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5.5,
+                "percentile": 61.4943,
+                "weight": 0.35,
+                "contribution": 21.523,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 25,
+                "percentile": 58.9888,
+                "weight": 0.15,
+                "contribution": 8.8483,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 5,
+                "percentile": 37.0588,
+                "weight": 0.15,
+                "contribution": 5.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 60.8679,
+                "percentile": 60.8679,
+                "weight": 0.2,
+                "contribution": 12.1736,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 61.4943,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 19.4886,
+                "percentile": 19.4886,
+                "weight": 0.15,
+                "contribution": 2.9233,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 6.3218,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "59",
+            "playerName": "Brian Thomas Jr.",
+            "position": "WR",
+            "expertRank": 62,
+            "expertTier": "F",
+            "mambaScore": 80,
+            "sourceValue": 43,
+            "championshipEquityScore": 76.6859,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 6,
+                "percentile": 70.1149,
+                "weight": 0.35,
+                "contribution": 24.5402,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 23,
+                "percentile": 92.1348,
+                "weight": 0.15,
+                "contribution": 13.8202,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 3,
+                "percentile": 76.4706,
+                "weight": 0.15,
+                "contribution": 11.4706,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 75.6199,
+                "percentile": 75.6199,
+                "weight": 0.2,
+                "contribution": 15.124,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 70.1149,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 78.2061,
+                "percentile": 78.2061,
+                "weight": 0.15,
+                "contribution": 11.7309,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 73.5632,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 3,
+            "mambaGap": 0,
+            "valueGap": 2,
+            "championshipEquityEdge": 25.658900000000003
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 1,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": true,
+          "reviewEligible": false,
+          "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+          "confidence": "GUARDED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "53",
+            "playerName": "Jameson Williams"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "59",
+            "playerName": "Brian Thomas Jr.",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_MODEST_PRODUCTION_GAP"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "53",
+            "playerName": "Jameson Williams",
+            "expertRank": 59,
+            "mambaScore": 80,
+            "finalPickScore": 45
+          },
+          {
+            "canonicalPlayerId": "45",
+            "playerName": "Terry McLaurin",
+            "expertRank": 61,
+            "mambaScore": 80,
+            "finalPickScore": 45
+          },
+          {
+            "canonicalPlayerId": "59",
+            "playerName": "Brian Thomas Jr.",
+            "expertRank": 62,
+            "mambaScore": 80,
+            "finalPickScore": 43
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "MIDDLE",
+          "stageAuthority": "MODERATE",
+          "incumbent": {
+            "canonicalPlayerId": "53",
+            "playerName": "Jameson Williams",
+            "position": "WR",
+            "expertRank": 59,
+            "expertTier": "F",
+            "mambaScore": 80,
+            "sourceValue": 45,
+            "championshipEquityScore": 51.027,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5.5,
+                "percentile": 61.4943,
+                "weight": 0.35,
+                "contribution": 21.523,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 25,
+                "percentile": 58.9888,
+                "weight": 0.15,
+                "contribution": 8.8483,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 5,
+                "percentile": 37.0588,
+                "weight": 0.15,
+                "contribution": 5.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 60.8679,
+                "percentile": 60.8679,
+                "weight": 0.2,
+                "contribution": 12.1736,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 61.4943,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 19.4886,
+                "percentile": 19.4886,
+                "weight": 0.15,
+                "contribution": 2.9233,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 6.3218,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "60",
+            "playerName": "Rome Odunze",
+            "position": "WR",
+            "expertRank": 64,
+            "expertTier": "F",
+            "mambaScore": 80,
+            "sourceValue": 41,
+            "championshipEquityScore": 77.1557,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 7.5,
+                "percentile": 84.4828,
+                "weight": 0.35,
+                "contribution": 29.569,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 24,
+                "percentile": 75.8427,
+                "weight": 0.15,
+                "contribution": 11.3764,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 3,
+                "percentile": 76.4706,
+                "weight": 0.15,
+                "contribution": 11.4706,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 82.3228,
+                "percentile": 82.3228,
+                "weight": 0.2,
+                "contribution": 16.4646,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 84.4828,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 55.1676,
+                "percentile": 55.1676,
+                "weight": 0.15,
+                "contribution": 8.2751,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 48.2759,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 5,
+            "mambaGap": 0,
+            "valueGap": 4,
+            "championshipEquityEdge": 26.128699999999995
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 1,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "UNCHANGED",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "53",
+            "playerName": "Jameson Williams"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "53",
+            "playerName": "Jameson Williams",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_EDGE_NOT_DECISIVE"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson",
+            "expertRank": 94,
+            "mambaScore": 78,
+            "finalPickScore": 2
+          },
+          {
+            "canonicalPlayerId": "73",
+            "playerName": "Chuba Hubbard",
+            "expertRank": 95,
+            "mambaScore": 78,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "86",
+            "playerName": "Chris Godwin",
+            "expertRank": 90,
+            "mambaScore": 77,
+            "finalPickScore": 12
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "BENCH_BUILDING",
+          "stageAuthority": "STRONGER",
+          "incumbent": {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson",
+            "position": "RB",
+            "expertRank": 94,
+            "expertTier": "I",
+            "mambaScore": 78,
+            "sourceValue": 2,
+            "championshipEquityScore": 44.6869,
+            "championshipEquityClass": "LOW",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 4.638461538461539,
+                "percentile": 68.75,
+                "weight": 0.5,
+                "contribution": 34.375,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 28,
+                "percentile": 15.4412,
+                "weight": 0.25,
+                "contribution": 3.8603,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 6,
+                "percentile": 25.8065,
+                "weight": 0.25,
+                "contribution": 6.4516,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "77",
+            "playerName": "Quentin Johnston",
+            "position": "WR",
+            "expertRank": 91,
+            "expertTier": "I",
+            "mambaScore": 76,
+            "sourceValue": 11,
+            "championshipEquityScore": 76.0789,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 6.5,
+                "percentile": 78.1609,
+                "weight": 0.35,
+                "contribution": 27.3563,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 24,
+                "percentile": 75.8427,
+                "weight": 0.15,
+                "contribution": 11.3764,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 4,
+                "percentile": 55.8824,
+                "weight": 0.15,
+                "contribution": 8.3824,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 77.5814,
+                "percentile": 77.5814,
+                "weight": 0.2,
+                "contribution": 15.5163,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 78.1609,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 89.6503,
+                "percentile": 89.6503,
+                "weight": 0.15,
+                "contribution": 13.4475,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 94.2529,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": -3,
+            "mambaGap": 2,
+            "valueGap": -9,
+            "championshipEquityEdge": 31.392000000000003
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 0,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "VALUE_UPSIDE_ALIGNMENT",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "EXPERT_VALUE_AND_UPSIDE_ALIGN"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "52",
+            "playerName": "David Montgomery",
+            "expertRank": 68,
+            "mambaScore": 80,
+            "finalPickScore": 39
+          },
+          {
+            "canonicalPlayerId": "88",
+            "playerName": "Rachaad White",
+            "expertRank": 76,
+            "mambaScore": 79,
+            "finalPickScore": 31
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "MIDDLE",
+          "stageAuthority": "MODERATE",
+          "incumbent": {
+            "canonicalPlayerId": "52",
+            "playerName": "David Montgomery",
+            "position": "RB",
+            "expertRank": 68,
+            "expertTier": "G",
+            "mambaScore": 80,
+            "sourceValue": 39,
+            "championshipEquityScore": 35.1192,
+            "championshipEquityClass": "LOW",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 4.531645569620253,
+                "percentile": 59.375,
+                "weight": 0.5,
+                "contribution": 29.6875,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 29,
+                "percentile": 8.8235,
+                "weight": 0.25,
+                "contribution": 2.2059,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 8,
+                "percentile": 12.9032,
+                "weight": 0.25,
+                "contribution": 3.2258,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "96",
+            "playerName": "Parker Washington",
+            "position": "WR",
+            "expertRank": 71,
+            "expertTier": "G",
+            "mambaScore": 79,
+            "sourceValue": 35,
+            "championshipEquityScore": 83.0041,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 9.5,
+                "percentile": 92.5287,
+                "weight": 0.35,
+                "contribution": 32.385,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 24,
+                "percentile": 75.8427,
+                "weight": 0.15,
+                "contribution": 11.3764,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 4,
+                "percentile": 55.8824,
+                "weight": 0.15,
+                "contribution": 8.3824,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 88.3572,
+                "percentile": 88.3572,
+                "weight": 0.2,
+                "contribution": 17.6714,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 92.5287,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 87.9262,
+                "percentile": 87.9262,
+                "weight": 0.15,
+                "contribution": 13.1889,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 91.954,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 3,
+            "mambaGap": 1,
+            "valueGap": 4,
+            "championshipEquityEdge": 47.884899999999995
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 1,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "UNCHANGED",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "52",
+            "playerName": "David Montgomery"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "52",
+            "playerName": "David Montgomery",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_EDGE_NOT_DECISIVE"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson",
+            "expertRank": 94,
+            "mambaScore": 78,
+            "finalPickScore": 2
+          },
+          {
+            "canonicalPlayerId": "73",
+            "playerName": "Chuba Hubbard",
+            "expertRank": 95,
+            "mambaScore": 78,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "86",
+            "playerName": "Chris Godwin",
+            "expertRank": 90,
+            "mambaScore": 77,
+            "finalPickScore": 12
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "BENCH_BUILDING",
+          "stageAuthority": "STRONGER",
+          "incumbent": {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson",
+            "position": "RB",
+            "expertRank": 94,
+            "expertTier": "I",
+            "mambaScore": 78,
+            "sourceValue": 2,
+            "championshipEquityScore": 44.6869,
+            "championshipEquityClass": "LOW",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 4.638461538461539,
+                "percentile": 68.75,
+                "weight": 0.5,
+                "contribution": 34.375,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 28,
+                "percentile": 15.4412,
+                "weight": 0.25,
+                "contribution": 3.8603,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 6,
+                "percentile": 25.8065,
+                "weight": 0.25,
+                "contribution": 6.4516,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "100",
+            "playerName": "Ricky Pearsall",
+            "position": "WR",
+            "expertRank": 102,
+            "expertTier": "I",
+            "mambaScore": 76,
+            "sourceValue": 1,
+            "championshipEquityScore": 78.6486,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 7.5,
+                "percentile": 84.4828,
+                "weight": 0.35,
+                "contribution": 29.569,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 25,
+                "percentile": 58.9888,
+                "weight": 0.15,
+                "contribution": 8.8483,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 3,
+                "percentile": 76.4706,
+                "weight": 0.15,
+                "contribution": 11.4706,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 78.1093,
+                "percentile": 78.1093,
+                "weight": 0.2,
+                "contribution": 15.6219,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 84.4828,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 87.592,
+                "percentile": 87.592,
+                "weight": 0.15,
+                "contribution": 13.1388,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 97.1264,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 8,
+            "mambaGap": 2,
+            "valueGap": 1,
+            "championshipEquityEdge": 33.9617
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 0,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": true,
+          "reviewEligible": false,
+          "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+          "confidence": "GUARDED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "100",
+            "playerName": "Ricky Pearsall",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_MODEST_PRODUCTION_GAP"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson",
+            "expertRank": 94,
+            "mambaScore": 78,
+            "finalPickScore": 2
+          },
+          {
+            "canonicalPlayerId": "73",
+            "playerName": "Chuba Hubbard",
+            "expertRank": 95,
+            "mambaScore": 78,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "86",
+            "playerName": "Chris Godwin",
+            "expertRank": 90,
+            "mambaScore": 77,
+            "finalPickScore": 12
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "BENCH_BUILDING",
+          "stageAuthority": "STRONGER",
+          "incumbent": {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson",
+            "position": "RB",
+            "expertRank": 94,
+            "expertTier": "I",
+            "mambaScore": 78,
+            "sourceValue": 2,
+            "championshipEquityScore": 44.6869,
+            "championshipEquityClass": "LOW",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 4.638461538461539,
+                "percentile": 68.75,
+                "weight": 0.5,
+                "contribution": 34.375,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 28,
+                "percentile": 15.4412,
+                "weight": 0.25,
+                "contribution": 3.8603,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 6,
+                "percentile": 25.8065,
+                "weight": 0.25,
+                "contribution": 6.4516,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "102",
+            "playerName": "Wandale Robinson",
+            "position": "WR",
+            "expertRank": 97,
+            "expertTier": "I",
+            "mambaScore": 76,
+            "sourceValue": 5,
+            "championshipEquityScore": 75.8329,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 10,
+                "percentile": 95.977,
+                "weight": 0.35,
+                "contribution": 33.5919,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 25,
+                "percentile": 58.9888,
+                "weight": 0.15,
+                "contribution": 8.8483,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 5,
+                "percentile": 37.0588,
+                "weight": 0.15,
+                "contribution": 5.5588,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 86.73,
+                "percentile": 86.73,
+                "weight": 0.2,
+                "contribution": 17.346,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 95.977,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 69.9196,
+                "percentile": 69.9196,
+                "weight": 0.15,
+                "contribution": 10.4879,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 73.5632,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 58.9888,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 3,
+            "mambaGap": 2,
+            "valueGap": -3,
+            "championshipEquityEdge": 31.145999999999994
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 0,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": true,
+          "reviewEligible": false,
+          "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+          "confidence": "GUARDED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "79",
+            "playerName": "Rhamondre Stevenson"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "102",
+            "playerName": "Wandale Robinson",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_MODEST_PRODUCTION_GAP"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "1000169",
+            "playerName": "Justice Hill",
+            "expertRank": 188,
+            "mambaScore": 73,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "1000172",
+            "playerName": "DJ Giddens",
+            "expertRank": 191,
+            "mambaScore": 73,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "156",
+            "playerName": "Cooper Kupp",
+            "expertRank": 195,
+            "mambaScore": 73,
+            "finalPickScore": 1
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "BENCH_BUILDING",
+          "stageAuthority": "STRONGER",
+          "incumbent": {
+            "canonicalPlayerId": "1000169",
+            "playerName": "Justice Hill",
+            "position": "RB",
+            "expertRank": 188,
+            "expertTier": "O",
+            "mambaScore": 73,
+            "sourceValue": 1,
+            "championshipEquityScore": 52.3986,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5.166666666666667,
+                "percentile": 90.625,
+                "weight": 0.5,
+                "contribution": 45.3125,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 28,
+                "percentile": 15.4412,
+                "weight": 0.25,
+                "contribution": 3.8603,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 8,
+                "percentile": 12.9032,
+                "weight": 0.25,
+                "contribution": 3.2258,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "164",
+            "playerName": "Pat Bryant",
+            "position": "WR",
+            "expertRank": 197,
+            "expertTier": "O",
+            "mambaScore": 73,
+            "sourceValue": 1,
+            "championshipEquityScore": 83.2677,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 6.5,
+                "percentile": 78.1609,
+                "weight": 0.35,
+                "contribution": 27.3563,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 23,
+                "percentile": 92.1348,
+                "weight": 0.15,
+                "contribution": 13.8202,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 2,
+                "percentile": 93.5294,
+                "weight": 0.15,
+                "contribution": 14.0294,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 81.6544,
+                "percentile": 81.6544,
+                "weight": 0.2,
+                "contribution": 16.3309,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 78.1609,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 78.2061,
+                "percentile": 78.2061,
+                "weight": 0.15,
+                "contribution": 11.7309,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 73.5632,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 9,
+            "mambaGap": 0,
+            "valueGap": 0,
+            "championshipEquityEdge": 30.869100000000003
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 0,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": true,
+          "reviewEligible": false,
+          "simulatedAction": "TIE_BREAK_TO_CHAMPIONSHIP_EQUITY",
+          "confidence": "GUARDED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "1000169",
+            "playerName": "Justice Hill"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "164",
+            "playerName": "Pat Bryant",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_MODEST_PRODUCTION_GAP"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "152",
+            "playerName": "Keon Coleman",
+            "expertRank": 118,
+            "mambaScore": 75,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "104",
+            "playerName": "Jayden Reed",
+            "expertRank": 120,
+            "mambaScore": 75,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "105",
+            "playerName": "Xavier Worthy",
+            "expertRank": 122,
+            "mambaScore": 75,
+            "finalPickScore": 1
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "BENCH_BUILDING",
+          "stageAuthority": "STRONGER",
+          "incumbent": {
+            "canonicalPlayerId": "152",
+            "playerName": "Keon Coleman",
+            "position": "WR",
+            "expertRank": 118,
+            "expertTier": "K",
+            "mambaScore": 75,
+            "sourceValue": 1,
+            "championshipEquityScore": 50.3425,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 3.5,
+                "percentile": 28.1609,
+                "weight": 0.35,
+                "contribution": 9.8563,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 23,
+                "percentile": 92.1348,
+                "weight": 0.15,
+                "contribution": 13.8202,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 3,
+                "percentile": 76.4706,
+                "weight": 0.15,
+                "contribution": 11.4706,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 44.1544,
+                "percentile": 44.1544,
+                "weight": 0.2,
+                "contribution": 8.8309,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 28.1609,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 42.4303,
+                "percentile": 42.4303,
+                "weight": 0.15,
+                "contribution": 6.3645,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 25.8621,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "168",
+            "playerName": "Roschon Johnson",
+            "position": "RB",
+            "expertRank": 168,
+            "expertTier": "K",
+            "mambaScore": 74,
+            "sourceValue": 1,
+            "championshipEquityScore": 77.2237,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 8.5,
+                "percentile": 100,
+                "weight": 0.5,
+                "contribution": 50,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 25,
+                "percentile": 58.0882,
+                "weight": 0.25,
+                "contribution": 14.5221,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 4,
+                "percentile": 50.8065,
+                "weight": 0.25,
+                "contribution": 12.7016,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 50,
+            "mambaGap": 1,
+            "valueGap": 0,
+            "championshipEquityEdge": 26.881199999999993
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 0,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "UNCHANGED",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "152",
+            "playerName": "Keon Coleman"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "152",
+            "playerName": "Keon Coleman",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_EDGE_NOT_DECISIVE"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "BENCH_BUILDING",
+          "stageAuthority": "STRONGER",
+          "incumbent": {
+            "canonicalPlayerId": "166",
+            "playerName": "Marvin Mims Jr.",
+            "position": "WR",
+            "expertRank": 163,
+            "expertTier": "K",
+            "mambaScore": 74,
+            "sourceValue": 1,
+            "championshipEquityScore": 44.7427,
+            "championshipEquityClass": "LOW",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 3.5,
+                "percentile": 28.1609,
+                "weight": 0.35,
+                "contribution": 9.8563,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 24,
+                "percentile": 75.8427,
+                "weight": 0.15,
+                "contribution": 11.3764,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 4,
+                "percentile": 55.8824,
+                "weight": 0.15,
+                "contribution": 8.3824,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 40.0814,
+                "percentile": 40.0814,
+                "weight": 0.2,
+                "contribution": 8.0163,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 28.1609,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 47.4089,
+                "percentile": 47.4089,
+                "weight": 0.15,
+                "contribution": 7.1113,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 37.931,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 75.8427,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "1000154",
+            "playerName": "Tank Bigsby",
+            "position": "RB",
+            "expertRank": 166,
+            "expertTier": "M",
+            "mambaScore": 73,
+            "sourceValue": 1,
+            "championshipEquityScore": 78.9241,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5.650793650793651,
+                "percentile": 95.3125,
+                "weight": 0.5,
+                "contribution": 47.6563,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 24,
+                "percentile": 74.2647,
+                "weight": 0.25,
+                "contribution": 18.5662,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 4,
+                "percentile": 50.8065,
+                "weight": 0.25,
+                "contribution": 12.7016,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 2,
+            "rankGap": 3,
+            "mambaGap": 1,
+            "valueGap": 0,
+            "championshipEquityEdge": 34.1814
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 0,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "PROHIBITED_REACH",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "UNCHANGED",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "166",
+            "playerName": "Marvin Mims Jr."
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "166",
+            "playerName": "Marvin Mims Jr.",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "MULTI_TIER_MOVE_PROHIBITED"
+          ]
+        }
+      },
+      {
+        "sourceCase": "D_REACH_PROTECTION_REVIEW",
+        "sameTierAlternatives": [
+          {
+            "canonicalPlayerId": "1000169",
+            "playerName": "Justice Hill",
+            "expertRank": 188,
+            "mambaScore": 73,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "1000172",
+            "playerName": "DJ Giddens",
+            "expertRank": 191,
+            "mambaScore": 73,
+            "finalPickScore": 1
+          },
+          {
+            "canonicalPlayerId": "156",
+            "playerName": "Cooper Kupp",
+            "expertRank": 195,
+            "mambaScore": 73,
+            "finalPickScore": 1
+          }
+        ],
+        "simulated": {
+          "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+          "recommendationAuthority": false,
+          "productionMutation": false,
+          "profileId": "primary-league",
+          "draftStage": "BENCH_BUILDING",
+          "stageAuthority": "STRONGER",
+          "incumbent": {
+            "canonicalPlayerId": "1000169",
+            "playerName": "Justice Hill",
+            "position": "RB",
+            "expertRank": 188,
+            "expertTier": "O",
+            "mambaScore": 73,
+            "sourceValue": 1,
+            "championshipEquityScore": 52.3986,
+            "championshipEquityClass": "MODERATE",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "yardsPerCarry",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 5.166666666666667,
+                "percentile": 90.625,
+                "weight": 0.5,
+                "contribution": 45.3125,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 28,
+                "percentile": 15.4412,
+                "weight": 0.25,
+                "contribution": 3.8603,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 8,
+                "percentile": 12.9032,
+                "weight": 0.25,
+                "contribution": 3.2258,
+                "inputs": null
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "challenger": {
+            "canonicalPlayerId": "1000185",
+            "playerName": "Elic Ayomanor",
+            "position": "WR",
+            "expertRank": 211,
+            "expertTier": "O",
+            "mambaScore": 73,
+            "sourceValue": 1,
+            "championshipEquityScore": 91.2849,
+            "championshipEquityClass": "HIGH",
+            "evidenceComplete": true,
+            "componentEvidence": [
+              {
+                "component": "lateTargets",
+                "source": "VALIDATED_USAGE",
+                "rawValue": 8.5,
+                "percentile": 88.5057,
+                "weight": 0.35,
+                "contribution": 30.977,
+                "inputs": null
+              },
+              {
+                "component": "ageAtSeason",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 23,
+                "percentile": 92.1348,
+                "weight": 0.15,
+                "contribution": 13.8202,
+                "inputs": null
+              },
+              {
+                "component": "yearInLeague",
+                "source": "VALIDATED_DEVELOPMENT",
+                "rawValue": 2,
+                "percentile": 93.5294,
+                "weight": 0.15,
+                "contribution": 14.0294,
+                "inputs": null
+              },
+              {
+                "component": "lateTargets×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 89.413,
+                "percentile": 89.413,
+                "weight": 0.2,
+                "contribution": 17.8826,
+                "inputs": {
+                  "usageFeature": "lateTargets",
+                  "usagePercentile": 88.5057,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              },
+              {
+                "component": "targetGrowth×ageAtSeason",
+                "source": "VALIDATED_INTERACTION",
+                "rawValue": 97.1716,
+                "percentile": 97.1716,
+                "weight": 0.15,
+                "contribution": 14.5757,
+                "inputs": {
+                  "usageFeature": "targetGrowth",
+                  "usagePercentile": 98.8506,
+                  "developmentFeature": "ageAtSeason",
+                  "developmentPercentile": 92.1348,
+                  "formula": "0.75 usage percentile + 0.25 favorable-age percentile"
+                }
+              }
+            ],
+            "valuableDepth": false,
+            "replaceableDepth": false,
+            "starterImpact": null
+          },
+          "comparison": {
+            "tierGap": 0,
+            "rankGap": 23,
+            "mambaGap": 0,
+            "valueGap": 0,
+            "championshipEquityEdge": 38.88629999999999
+          },
+          "rosterContext": {
+            "remainingStarterCapacity": 0,
+            "criticalStarterNeed": false,
+            "rosterPreference": "NEUTRAL"
+          },
+          "survival": "UNKNOWN",
+          "currentAdpAvailable": false,
+          "reachBudget": "SAME_TIER_ONLY",
+          "eligible": false,
+          "reviewEligible": false,
+          "simulatedAction": "UNCHANGED",
+          "confidence": "UNCHANGED",
+          "actualJoninResult": {
+            "canonicalPlayerId": "1000169",
+            "playerName": "Justice Hill"
+          },
+          "simulatedChampionshipEquityAwareResult": {
+            "canonicalPlayerId": "1000169",
+            "playerName": "Justice Hill",
+            "reviewCandidate": null
+          },
+          "negativeChampionshipEquityPenalty": 0,
+          "incumbentOptionality": "USEFUL_DEPTH",
+          "challengerOptionality": "HIGH_OPTIONALITY",
+          "reasons": [
+            "SAME_TIER_EDGE_NOT_DECISIVE"
+          ]
+        }
+      }
+    ],
+    "lowOptionalityProtection": [
+      {
+        "canonicalPlayerId": "1000145",
+        "playerName": "Alvin Kamara",
+        "expertRank": 148,
+        "expertTier": "L",
+        "mambaScore": 74,
+        "finalPickScore": 1,
+        "championshipEquityScore": 7.0284,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "6",
+        "playerName": "Christian McCaffrey",
+        "expertRank": 6,
+        "expertTier": "A",
+        "mambaScore": 94,
+        "finalPickScore": 119,
+        "championshipEquityScore": 13.2324,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "156",
+        "playerName": "Cooper Kupp",
+        "expertRank": 195,
+        "expertTier": "O",
+        "mambaScore": 73,
+        "finalPickScore": 1,
+        "championshipEquityScore": 13.3804,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "61",
+        "playerName": "D.J. Moore",
+        "expertRank": 48,
+        "expertTier": "E",
+        "mambaScore": 81,
+        "finalPickScore": 56,
+        "championshipEquityScore": 19.8706,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "1000146",
+        "playerName": "Jalen Nailor",
+        "expertRank": 150,
+        "expertTier": "L",
+        "mambaScore": 74,
+        "finalPickScore": 1,
+        "championshipEquityScore": 20.2709,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "160",
+        "playerName": "Rashod Bateman",
+        "expertRank": 232,
+        "expertTier": "O",
+        "mambaScore": 72,
+        "finalPickScore": 1,
+        "championshipEquityScore": 21.3975,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "35",
+        "playerName": "Josh Jacobs",
+        "expertRank": 30,
+        "expertTier": "D",
+        "mambaScore": 85,
+        "finalPickScore": 77,
+        "championshipEquityScore": 21.9299,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "51",
+        "playerName": "Mike Evans",
+        "expertRank": 49,
+        "expertTier": "E",
+        "mambaScore": 81,
+        "finalPickScore": 52,
+        "championshipEquityScore": 22.1654,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "16",
+        "playerName": "Saquon Barkley",
+        "expertRank": 15,
+        "expertTier": "B",
+        "mambaScore": 89,
+        "finalPickScore": 106,
+        "championshipEquityScore": 22.1908,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "110",
+        "playerName": "Aaron Jones",
+        "expertRank": 126,
+        "expertTier": "K",
+        "mambaScore": 75,
+        "finalPickScore": 1,
+        "championshipEquityScore": 22.6534,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "171",
+        "playerName": "Ty Johnson",
+        "expertRank": 221,
+        "expertTier": "O",
+        "mambaScore": 72,
+        "finalPickScore": 1,
+        "championshipEquityScore": 22.7111,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      },
+      {
+        "canonicalPlayerId": "73",
+        "playerName": "Chuba Hubbard",
+        "expertRank": 95,
+        "expertTier": "I",
+        "mambaScore": 78,
+        "finalPickScore": 1,
+        "championshipEquityScore": 23.5932,
+        "negativeChampionshipEquityPenalty": 0,
+        "protection": "NO_NEGATIVE_PENALTY; production value remains authoritative"
+      }
+    ],
+    "currentAdpStatus": "CURRENT_2026_ADP_UNAVAILABLE",
+    "survivalStatus": "NOT_AVAILABLE_IN_4_3_18_ARTIFACT"
+  },
+  "positiveAlignment": [
+    {
+      "canonicalPlayerId": "2",
+      "playerName": "Bijan Robinson",
+      "expertRank": 1,
+      "expertTier": "S",
+      "mambaScore": 99,
+      "finalPickScore": 123,
+      "championshipEquityScore": 75.7991,
+      "classification": "HIGH",
+      "result": "VALUE + UPSIDE ALIGNMENT",
+      "scoreAdjustment": 0
+    },
+    {
+      "canonicalPlayerId": "5",
+      "playerName": "Jaxon Smith-Njigba",
+      "expertRank": 5,
+      "expertTier": "S",
+      "mambaScore": 95,
+      "finalPickScore": 116,
+      "championshipEquityScore": 78.6507,
+      "classification": "HIGH",
+      "result": "VALUE + UPSIDE ALIGNMENT",
+      "scoreAdjustment": 0
+    },
+    {
+      "canonicalPlayerId": "15",
+      "playerName": "De'Von Achane",
+      "expertRank": 9,
+      "expertTier": "B",
+      "mambaScore": 91,
+      "finalPickScore": 114,
+      "championshipEquityScore": 79.7053,
+      "classification": "HIGH",
+      "result": "VALUE + UPSIDE ALIGNMENT",
+      "scoreAdjustment": 0
+    }
+  ],
+  "counterfactualImpact": {
+    "fixtures": 15,
+    "unchangedDecisions": 10,
+    "sameTierFlips": 3,
+    "oneTierGuardedReviews": 1,
+    "prohibitedWouldBeReaches": 8,
+    "waitForPriceDecisions": 1,
+    "lateRoundOptionalityImprovements": 2,
+    "changedBestPick": 3,
+    "changedBestValue": 0,
+    "changedHighestUpside": 0,
+    "multiTierMoves": 0,
+    "productionChangesApplied": 0
+  },
+  "adversarialFailures": [
+    {
+      "fixtureId": "primary-middle-foundation-block",
+      "description": "Incomplete starters block a one-tier reach",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "MIDDLE",
+      "stageAuthority": "MODERATE",
+      "incumbent": {
+        "canonicalPlayerId": "p7",
+        "playerName": "Starter Need",
+        "position": "RB",
+        "expertRank": 67,
+        "expertTier": "E",
+        "mambaScore": 82,
+        "sourceValue": 54,
+        "championshipEquityScore": 45,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p8",
+        "playerName": "Bench Upside",
+        "position": "WR",
+        "expertRank": 74,
+        "expertTier": "F",
+        "mambaScore": 81,
+        "sourceValue": 53,
+        "championshipEquityScore": 82,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 7,
+        "mambaGap": 1,
+        "valueGap": 1,
+        "championshipEquityEdge": 37
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 3,
+        "criticalStarterNeed": true,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p7",
+        "playerName": "Starter Need"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p7",
+        "playerName": "Starter Need",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "STARTER_FOUNDATION_INCOMPLETE"
+      ]
+    },
+    {
+      "fixtureId": "primary-late-adp-missing",
+      "description": "Missing current ADP restricts a one-tier case",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p9",
+        "playerName": "Late Value",
+        "position": "WR",
+        "expertRank": 112,
+        "expertTier": "I",
+        "mambaScore": 77,
+        "sourceValue": 18,
+        "championshipEquityScore": 42,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p10",
+        "playerName": "Late Upside",
+        "position": "WR",
+        "expertRank": 120,
+        "expertTier": "J",
+        "mambaScore": 75,
+        "sourceValue": 16,
+        "championshipEquityScore": 80,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 8,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 38
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNKNOWN",
+      "currentAdpAvailable": false,
+      "reachBudget": "SAME_TIER_ONLY",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p9",
+        "playerName": "Late Value"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p9",
+        "playerName": "Late Value",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "CURRENT_ADP_UNAVAILABLE"
+      ]
+    },
+    {
+      "fixtureId": "primary-multi-tier",
+      "description": "Rank 180 upside cannot jump rank 70 across several tiers",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p15",
+        "playerName": "Stable Depth",
+        "position": "RB",
+        "expertRank": 70,
+        "expertTier": "G",
+        "mambaScore": 80,
+        "sourceValue": 35,
+        "championshipEquityScore": 48,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p16",
+        "playerName": "Remote Upside",
+        "position": "RB",
+        "expertRank": 180,
+        "expertTier": "N",
+        "mambaScore": 74,
+        "sourceValue": 8,
+        "championshipEquityScore": 99,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 7,
+        "rankGap": 110,
+        "mambaGap": 6,
+        "valueGap": 27,
+        "championshipEquityEdge": 51
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p15",
+        "playerName": "Stable Depth"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p15",
+        "playerName": "Stable Depth",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "MULTI_TIER_MOVE_PROHIBITED"
+      ]
+    },
+    {
+      "fixtureId": "primary-hero-rb-depth",
+      "description": "Hero-RB valuable depth is not treated as replaceable",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p17",
+        "playerName": "Valuable RB Depth",
+        "position": "RB",
+        "expertRank": 132,
+        "expertTier": "K",
+        "mambaScore": 76,
+        "sourceValue": 14,
+        "championshipEquityScore": 52,
+        "championshipEquityClass": "MODERATE",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": true,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p18",
+        "playerName": "Optional WR",
+        "position": "WR",
+        "expertRank": 144,
+        "expertTier": "L",
+        "mambaScore": 73,
+        "sourceValue": 11,
+        "championshipEquityScore": 82,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 12,
+        "mambaGap": 3,
+        "valueGap": 3,
+        "championshipEquityEdge": 30
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p17",
+        "playerName": "Valuable RB Depth"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p17",
+        "playerName": "Valuable RB Depth",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "USEFUL_DEPTH",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "HIGH_OPTIONALITY_TIMING_WINDOW",
+        "VALUABLE_RB_DEPTH_PRESERVED"
+      ]
+    },
+    {
+      "fixtureId": "downey-open-starter",
+      "description": "Downey open starter capacity preserves foundation priority",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "MIDDLE",
+      "stageAuthority": "MODERATE",
+      "incumbent": {
+        "canonicalPlayerId": "d3",
+        "playerName": "Starter Equity",
+        "position": "WR",
+        "expertRank": 48,
+        "expertTier": "E",
+        "mambaScore": 84,
+        "sourceValue": 69,
+        "championshipEquityScore": 50,
+        "championshipEquityClass": "MODERATE",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d4",
+        "playerName": "Future Ceiling",
+        "position": "WR",
+        "expertRank": 58,
+        "expertTier": "F",
+        "mambaScore": 82,
+        "sourceValue": 67,
+        "championshipEquityScore": 84,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 1,
+        "rankGap": 10,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 34
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 2,
+        "criticalStarterNeed": true,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d3",
+        "playerName": "Starter Equity"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d3",
+        "playerName": "Starter Equity",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "USEFUL_DEPTH",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "STARTER_FOUNDATION_INCOMPLETE"
+      ]
+    },
+    {
+      "fixtureId": "downey-unsupported-te",
+      "description": "Unsupported-position evidence cannot gain authority",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "d5",
+        "playerName": "TE Floor",
+        "position": "TE",
+        "expertRank": 91,
+        "expertTier": "H",
+        "mambaScore": 79,
+        "sourceValue": 27,
+        "championshipEquityScore": 40,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d6",
+        "playerName": "TE Speculation",
+        "position": "TE",
+        "expertRank": 94,
+        "expertTier": "H",
+        "mambaScore": 78,
+        "sourceValue": 26,
+        "championshipEquityScore": null,
+        "championshipEquityClass": "INSUFFICIENT_DATA",
+        "evidenceComplete": false,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 3,
+        "mambaGap": 1,
+        "valueGap": 1,
+        "championshipEquityEdge": null
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNKNOWN",
+      "currentAdpAvailable": false,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d5",
+        "playerName": "TE Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d5",
+        "playerName": "TE Floor",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "INSUFFICIENT_EVIDENCE",
+      "reasons": [
+        "INCOMPLETE_CHAMPIONSHIP_EQUITY_EVIDENCE",
+        "UNSUPPORTED_POSITION",
+        "MISSING_REQUIRED_COMPARISON_INPUT"
+      ]
+    },
+    {
+      "fixtureId": "downey-missing-tier",
+      "description": "Missing tier fails closed",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "d7",
+        "playerName": "Known Floor",
+        "position": "RB",
+        "expertRank": 120,
+        "expertTier": "J",
+        "mambaScore": 77,
+        "sourceValue": 20,
+        "championshipEquityScore": 44,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d8",
+        "playerName": "Unknown Tier",
+        "position": "RB",
+        "expertRank": 126,
+        "expertTier": null,
+        "mambaScore": 75,
+        "sourceValue": 18,
+        "championshipEquityScore": 88,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": null,
+        "rankGap": 6,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 44
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d7",
+        "playerName": "Known Floor"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d7",
+        "playerName": "Known Floor",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "MISSING_TIER",
+        "MISSING_REQUIRED_COMPARISON_INPUT"
+      ]
+    },
+    {
+      "fixtureId": "primary-rookie-no-score",
+      "description": "Rookie without applicable historical score fails closed",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "primary-league",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "p19",
+        "playerName": "Known Depth",
+        "position": "WR",
+        "expertRank": 118,
+        "expertTier": "J",
+        "mambaScore": 78,
+        "sourceValue": 22,
+        "championshipEquityScore": 42,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "p20",
+        "playerName": "Unscored Rookie",
+        "position": "WR",
+        "expertRank": 122,
+        "expertTier": "J",
+        "mambaScore": 76,
+        "sourceValue": 20,
+        "championshipEquityScore": null,
+        "championshipEquityClass": "INSUFFICIENT_DATA",
+        "evidenceComplete": false,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 4,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": null
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "p19",
+        "playerName": "Known Depth"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "p19",
+        "playerName": "Known Depth",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "INSUFFICIENT_EVIDENCE",
+      "reasons": [
+        "INCOMPLETE_CHAMPIONSHIP_EQUITY_EVIDENCE",
+        "MISSING_REQUIRED_COMPARISON_INPUT"
+      ]
+    },
+    {
+      "fixtureId": "downey-identity-mismatch",
+      "description": "Identity mismatch cannot produce authority",
+      "mode": "SIMULATED_AUTHORITY_SHADOW_ONLY",
+      "recommendationAuthority": false,
+      "productionMutation": false,
+      "profileId": "straight-outta-downey",
+      "draftStage": "BENCH_BUILDING",
+      "stageAuthority": "STRONGER",
+      "incumbent": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Canonical Player",
+        "position": "WR",
+        "expertRank": 115,
+        "expertTier": "J",
+        "mambaScore": 78,
+        "sourceValue": 24,
+        "championshipEquityScore": 44,
+        "championshipEquityClass": "LOW",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "challenger": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Mismatched Source Player",
+        "position": "WR",
+        "expertRank": 118,
+        "expertTier": "J",
+        "mambaScore": 76,
+        "sourceValue": 22,
+        "championshipEquityScore": 91,
+        "championshipEquityClass": "HIGH",
+        "evidenceComplete": true,
+        "componentEvidence": [],
+        "valuableDepth": false,
+        "replaceableDepth": false,
+        "starterImpact": null
+      },
+      "comparison": {
+        "tierGap": 0,
+        "rankGap": 3,
+        "mambaGap": 2,
+        "valueGap": 2,
+        "championshipEquityEdge": 47
+      },
+      "rosterContext": {
+        "remainingStarterCapacity": 0,
+        "criticalStarterNeed": false,
+        "rosterPreference": "NEUTRAL"
+      },
+      "survival": "UNLIKELY_TO_SURVIVE",
+      "currentAdpAvailable": true,
+      "reachBudget": "PROHIBITED_REACH",
+      "eligible": false,
+      "reviewEligible": false,
+      "simulatedAction": "UNCHANGED",
+      "confidence": "UNCHANGED",
+      "actualJoninResult": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Canonical Player"
+      },
+      "simulatedChampionshipEquityAwareResult": {
+        "canonicalPlayerId": "d9",
+        "playerName": "Canonical Player",
+        "reviewCandidate": null
+      },
+      "negativeChampionshipEquityPenalty": 0,
+      "incumbentOptionality": "UNRESOLVED_ROLE_VALUE",
+      "challengerOptionality": "HIGH_OPTIONALITY",
+      "reasons": [
+        "IDENTITY_FAILURE"
+      ]
+    }
+  ],
+  "proposed4_3_20Authority": {
+    "scope": "Highest Upside evidence plus late/bench same-tier Best Pick tie-breaking only",
+    "early": "No Best Pick authority; alignment may increase explanation confidence only.",
+    "middle": "No one-tier authority; same-tier evidence only after ordinary value and roster checks.",
+    "late": "Complete RB/WR evidence may break a bounded same-tier tie; one-tier remains GUARDED_REVIEW, not automatic selection.",
+    "bench": "Same late rule; preserve valuable RB depth and require replaceable-floor context.",
+    "survival": "WAIT_FOR_PRICE whenever existing timing output says likely to survive.",
+    "missingData": "Fail closed; current ADP missing forces same-tier-only.",
+    "negativePenalty": "PROHIBITED",
+    "unsupportedPositions": "FAIL_CLOSED",
+    "multiTierMoves": "PROHIBITED",
+    "rollback": "One feature flag disables all authority and returns exact Jōnin ordering."
+  },
+  "productionIsolation": {
+    "recommendationAuthority": false,
+    "bestPickChanged": false,
+    "recommendationOrderingChanged": false,
+    "decisionScoresChanged": false,
+    "bestValueChanged": false,
+    "highestUpsideChanged": false,
+    "recommendationArchetypesChanged": false,
+    "gradingChanged": false,
+    "cpuDraftingChanged": false,
+    "persistenceChanged": false,
+    "leagueProfileBehaviorChanged": false,
+    "browserImport": false,
+    "browserBundleIncreaseBytes": 0
+  },
+  "finalDecision": "READY FOR LIMITED PRODUCTION ACTIVATION"
+}
