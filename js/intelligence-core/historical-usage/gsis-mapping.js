@@ -62,4 +62,35 @@ function classifyHistory(players=[],mappingSnapshot={},historicalSnapshot={}){
   (historicalSnapshot.players||[]).forEach(record=>{const id=String(record.canonicalPlayerId);if(!seasonsByPlayer.has(id))seasonsByPlayer.set(id,new Set());seasonsByPlayer.get(id).add(Number(record.season))});
   return players.filter(player=>['QB','RB','WR','TE'].includes(position(player.pos||player.position))).map(player=>{const id=canonicalId(player),seasons=[...(seasonsByPlayer.get(id)||[])].sort(),rookie=player.rookie===true;return Object.freeze({canonicalPlayerId:id,displayName:clean(player.name),position:position(player.pos||player.position),mappedGsis:mapped.has(id),seasons:Object.freeze(seasons),historyStatus:seasons.length?'HISTORY_AVAILABLE':rookie?'NO_HISTORY_EXPECTED':'HISTORY_MISSING'})});
 }
-module.exports=Object.freeze({SOURCE,EXTERNAL_BRIDGES,team,position,name,aliases,buildCanonicalIndex,reconcilePlayerRows,applyMappings,classifyHistory});
+function buildResearchUniverse(playerRows=[],canonicalPlayers=[],mappingSnapshot={},statsRows=[]){
+  const currentByGsis=new Map((mappingSnapshot.mappings||[]).map(item=>[clean(item.gsisId),item])),currentById=new Map(canonicalPlayers.map(player=>[canonicalId(player),player]));
+  const statIdentity=new Map(),conflicts=[],quarantined=[];
+  for(const row of statsRows){
+    const id=clean(row.player_id||row.gsis_id),pos=position(row.position),displayName=clean(row.player_display_name||row.player_name);
+    if(!id||!['QB','RB','WR','TE'].includes(pos))continue;
+    const prior=statIdentity.get(id);
+    if(prior&&prior.position!==pos){conflicts.push(Object.freeze({gsisId:id,positions:Object.freeze([prior.position,pos].sort()),reason:'HISTORICAL_POSITION_CONFLICT'}));continue}
+    if(!prior)statIdentity.set(id,{displayName,position:pos,seasons:new Set()});
+    statIdentity.get(id).seasons.add(Number(row.season));
+  }
+  const playerByGsis=new Map();
+  for(const row of playerRows){const id=gsisId(row);if(!id)continue;if(playerByGsis.has(id)){quarantined.push(Object.freeze({gsisId:id,reason:'DUPLICATE_PLAYER_SOURCE_ID'}));playerByGsis.delete(id);continue}playerByGsis.set(id,row)}
+  const conflictIds=new Set(conflicts.map(item=>item.gsisId)),players=[],mappings=[];
+  for(const [id,observed] of [...statIdentity].sort(([left],[right])=>left.localeCompare(right))){
+    if(conflictIds.has(id))continue;
+    const canonicalMapping=currentByGsis.get(id),canonical=canonicalMapping?currentById.get(String(canonicalMapping.canonicalPlayerId)):null,source=playerByGsis.get(id)||{};
+    const canonicalPlayerId=canonical?canonicalId(canonical):`fhq_hist_gsis_${id.replace(/[^A-Za-z0-9]/g,'_')}`;
+    const displayName=clean(canonical?.name)||sourceName(source)||observed.displayName||`Historical ${id}`;
+    const pos=position(canonical?.pos||canonical?.position)||sourcePosition(source)||observed.position;
+    const researchPlayer=Object.freeze({
+      ...(canonical||{}),id:canonicalPlayerId,name:displayName,pos,position:pos,team:clean(canonical?.team)||sourceTeam(source)||null,
+      identityScope:canonical?'PRODUCTION_CANONICAL':'RESEARCH_HISTORICAL',
+      externalIds:Object.freeze({...((canonical?.externalIds)||{}),gsis:id}),
+      sourceMetadata:Object.freeze({birthDate:clean(source.birth_date)||null,nflEntryYear:Number.isInteger(Number(source.draft_year))&&Number(source.draft_year)>0?Number(source.draft_year):null,rookieSeason:Number.isInteger(Number(source.rookie_season))&&Number(source.rookie_season)>0?Number(source.rookie_season):null,sourceDisplayName:sourceName(source)||observed.displayName||null}),
+    });
+    players.push(researchPlayer);
+    mappings.push(Object.freeze({canonicalPlayerId,canonicalKey:canonicalKey(researchPlayer),displayName,position:pos,team:team(researchPlayer.team),gsisId:id,identityScope:researchPlayer.identityScope,source:SOURCE,sourceSnapshotDate:mappingSnapshot.sourceSnapshotDate||null,matchMethod:canonical?canonicalMapping.matchMethod:'stable-gsis-research-identity',matchConfidence:canonical?canonicalMapping.matchConfidence:'HIGH',seasons:Object.freeze([...observed.seasons].sort())}));
+  }
+  return Object.freeze({schemaVersion:1,source:SOURCE,recommendationAuthority:false,players:Object.freeze(players),mappings:Object.freeze(mappings),currentCanonicalPlayers:players.filter(player=>player.identityScope==='PRODUCTION_CANONICAL').length,historicalOnlyPlayers:players.filter(player=>player.identityScope==='RESEARCH_HISTORICAL').length,ambiguous:Object.freeze(conflicts),quarantined:Object.freeze(quarantined),duplicateCanonicalIds:players.length-new Set(players.map(player=>String(player.id))).size});
+}
+module.exports=Object.freeze({SOURCE,EXTERNAL_BRIDGES,team,position,name,aliases,buildCanonicalIndex,reconcilePlayerRows,applyMappings,classifyHistory,buildResearchUniverse});

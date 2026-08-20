@@ -54,10 +54,11 @@ function reconcileIdentities(rawSnapshot,players=[]){
     for(const name of identity.names)for(const player of current.get(`${normalizeName(name)}|${position}`)||[])candidateMap.set(String(player.id),player);
     if(candidateMap.size>1){ambiguous.push({sourcePlayerId:identity.sourcePlayerId,names:[...identity.names].sort(),position,candidates:[...candidateMap.keys()].sort(),reason:'AMBIGUOUS_CURRENT_CANONICAL_MATCH'});continue}
     const player=[...candidateMap.values()][0]||null;
+    const identityScope=player?.identityScope==='RESEARCH_HISTORICAL'?'RESEARCH_HISTORICAL':player?'PRODUCTION_CANONICAL':'RESEARCH_HISTORICAL';
     mappings.push(Object.freeze({
       canonicalPlayerId:player?String(player.id):`fhq_hist_ffc_${identity.sourcePlayerId}`,
-      currentCanonicalPlayerId:player?String(player.id):null,
-      identityScope:player?'PRODUCTION_CANONICAL':'RESEARCH_HISTORICAL',
+      currentCanonicalPlayerId:identityScope==='PRODUCTION_CANONICAL'?String(player.id):null,
+      identityScope,
       displayName:clean(player?.name)||[...identity.names].sort()[0],position,
       providerIds:Object.freeze({fantasyFootballCalculator:identity.sourcePlayerId}),
       sourceNames:Object.freeze([...identity.names].sort()),seasons:Object.freeze([...identity.seasons].sort()),
