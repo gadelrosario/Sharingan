@@ -140,7 +140,8 @@ class BdgeSnapshotTests(unittest.TestCase):
 
     def test_snapshot_is_firewalled_from_active_fantasyland_data(self):
         active = json.loads((ROOT / 'data' / 'rankings' / 'ACTIVE_SNAPSHOT.json').read_text(encoding='utf-8'))
-        self.assertEqual(active['activeSnapshot'], 'fantasyland_2026-08-08.normalized.json')
+        self.assertEqual(active['sources']['Fantasyland']['activeSnapshot'], 'fantasyland_draftday_2026-08-23.normalized.json')
+        self.assertEqual(active['sources']['Flock']['activeSnapshot'], 'flock_draftday_2026-08-23.normalized.json')
         for path in ('index.html', 'js/app.js', 'service-worker.js'):
             source = (ROOT / path).read_text(encoding='utf-8')
             self.assertNotIn('bdge_top_50_2026-08-12', source)

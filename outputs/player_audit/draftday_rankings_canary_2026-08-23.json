@@ -1,0 +1,5457 @@
+{
+  "snapshotId": "2026-draftday-2026-08-23",
+  "generatedAt": "2026-08-23T08:45:22.568Z",
+  "boundedCanaries": [
+    {
+      "name": "half-opening-slot-1",
+      "pick": 1,
+      "slot": 1,
+      "oldTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "displayScore": 123,
+          "finalDecisionScore": 123.47733333333333,
+          "sourceRank": 1,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 1,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 1,
+              "reach": 0,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "pos": "RB",
+          "displayScore": 120,
+          "finalDecisionScore": 120.11733333333333,
+          "sourceRank": 2,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 2,
+            "reach": 1,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 2,
+              "reach": 1,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 119,
+          "finalDecisionScore": 119.39733333333334,
+          "sourceRank": 6,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": 5,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 33,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": 5,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "pos": "WR",
+          "displayScore": 116,
+          "finalDecisionScore": 116.49866666666667,
+          "sourceRank": 3,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 3,
+            "reach": 2,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 3,
+              "reach": 2,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "pos": "WR",
+          "displayScore": 116,
+          "finalDecisionScore": 115.84266666666669,
+          "sourceRank": 4,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 4,
+            "reach": 3,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 4,
+              "reach": 3,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        }
+      ],
+      "newTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "displayScore": 123,
+          "finalDecisionScore": 123.11733333333333,
+          "sourceRank": 2,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 2,
+            "reach": 1,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 2,
+              "reach": 1,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "pos": "RB",
+          "displayScore": 120,
+          "finalDecisionScore": 120.47733333333333,
+          "sourceRank": 1,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 1,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 1,
+              "reach": 0,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 119,
+          "finalDecisionScore": 119.11733333333333,
+          "sourceRank": 6,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": 5,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 0,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 33,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": 5,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "pos": "WR",
+          "displayScore": 116,
+          "finalDecisionScore": 116.49866666666667,
+          "sourceRank": 3,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 3,
+            "reach": 2,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 3,
+              "reach": 2,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "pos": "WR",
+          "displayScore": 116,
+          "finalDecisionScore": 115.84266666666669,
+          "sourceRank": 4,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 4,
+            "reach": 3,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 20,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 23,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 4,
+              "reach": 3,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        }
+      ],
+      "recommendationChanged": false,
+      "classification": "unchanged",
+      "newWinnerSource": {
+        "oldRank": 1,
+        "newRank": 2,
+        "oldTier": "S",
+        "newTier": "SS"
+      }
+    },
+    {
+      "name": "half-opening-slot-5",
+      "pick": 1,
+      "slot": 5,
+      "oldTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "displayScore": 122,
+          "finalDecisionScore": 122.36066666666667,
+          "sourceRank": 1,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 1,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 1,
+              "reach": 0,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "pos": "RB",
+          "displayScore": 119,
+          "finalDecisionScore": 119.00066666666667,
+          "sourceRank": 2,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 2,
+            "reach": 1,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 2,
+              "reach": 1,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 118,
+          "finalDecisionScore": 118.28066666666668,
+          "sourceRank": 6,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": 5,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "LIKELY_TO_SURVIVE",
+            "likelyToSurvive": true,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": 5,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 117.21533333333333,
+          "sourceRank": 3,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 3,
+            "reach": 2,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 3,
+              "reach": 2,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 116.55933333333334,
+          "sourceRank": 4,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 4,
+            "reach": 3,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 4,
+              "reach": 3,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        }
+      ],
+      "newTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "displayScore": 122,
+          "finalDecisionScore": 122.00066666666667,
+          "sourceRank": 2,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 2,
+            "reach": 1,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 2,
+              "reach": 1,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "pos": "RB",
+          "displayScore": 119,
+          "finalDecisionScore": 119.36066666666667,
+          "sourceRank": 1,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 1,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 1,
+              "reach": 0,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 118,
+          "finalDecisionScore": 118.00066666666667,
+          "sourceRank": 6,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": 5,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "LIKELY_TO_SURVIVE",
+            "likelyToSurvive": true,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 0,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": 5,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 117.21533333333333,
+          "sourceRank": 3,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 3,
+            "reach": 2,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 3,
+              "reach": 2,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 116.55933333333334,
+          "sourceRank": 4,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 4,
+            "reach": 3,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 5,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 5,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 4,
+              "reach": 3,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        }
+      ],
+      "recommendationChanged": false,
+      "classification": "unchanged",
+      "newWinnerSource": {
+        "oldRank": 1,
+        "newRank": 2,
+        "oldTier": "S",
+        "newTier": "SS"
+      }
+    },
+    {
+      "name": "half-opening-slot-10",
+      "pick": 1,
+      "slot": 10,
+      "oldTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "displayScore": 123,
+          "finalDecisionScore": 122.894,
+          "sourceRank": 1,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 1,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 1,
+              "reach": 0,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "pos": "RB",
+          "displayScore": 120,
+          "finalDecisionScore": 119.534,
+          "sourceRank": 2,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 2,
+            "reach": 1,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 2,
+              "reach": 1,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 119,
+          "finalDecisionScore": 118.81400000000001,
+          "sourceRank": 6,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": 5,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 29,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": 5,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 117.082,
+          "sourceRank": 3,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 3,
+            "reach": 2,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 3,
+              "reach": 2,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "pos": "WR",
+          "displayScore": 116,
+          "finalDecisionScore": 116.42600000000002,
+          "sourceRank": 4,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 4,
+            "reach": 3,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 4,
+              "reach": 3,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        }
+      ],
+      "newTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "displayScore": 122,
+          "finalDecisionScore": 122.45066666666668,
+          "sourceRank": 2,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 2,
+            "reach": 1,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 2,
+              "reach": 1,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "pos": "RB",
+          "displayScore": 120,
+          "finalDecisionScore": 119.81066666666668,
+          "sourceRank": 1,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 1,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 1,
+              "reach": 0,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 118,
+          "finalDecisionScore": 118.45066666666668,
+          "sourceRank": 6,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 3,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 3,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": 5,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 0,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 29,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": 5,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 117.16533333333332,
+          "sourceRank": 3,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 3,
+            "reach": 2,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 3,
+              "reach": 2,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 116.50933333333334,
+          "sourceRank": 4,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 0,
+            "ordinal": 1,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 1,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 1,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 4,
+            "reach": 3,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 23,
+            "nextPick": 10,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 2,
+            "nextTierDrop": 1,
+            "survivalRisk": 19,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 4,
+              "reach": 3,
+              "allowance": 8,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        }
+      ],
+      "recommendationChanged": false,
+      "classification": "unchanged",
+      "newWinnerSource": {
+        "oldRank": 1,
+        "newRank": 2,
+        "oldTier": "S",
+        "newTier": "SS"
+      }
+    },
+    {
+      "name": "half-middle-pick-47",
+      "pick": 47,
+      "slot": 7,
+      "oldTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "pos": "RB",
+          "displayScore": 121,
+          "finalDecisionScore": 121.3575,
+          "sourceRank": 1,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 3,
+              "valueFall": 46,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 3,
+              "signals": [
+                "HIGH_VALUE_FALL"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 3,
+            "valueFall": 46,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 1,
+            "reach": -46,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 1,
+              "reach": -46,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 120,
+          "finalDecisionScore": 119.765,
+          "sourceRank": 6,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 3,
+              "valueFall": 41,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 3,
+              "signals": [
+                "HIGH_VALUE_FALL"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 3,
+            "valueFall": 41,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 3,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": -41,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 1,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 34,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": -41,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 91,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "PRESERVES_RB_FOUNDATION",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 117.3825,
+          "sourceRank": 3,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 3,
+              "valueFall": 44,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 1,
+              "signals": [
+                "HIGH_VALUE_FALL"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 3,
+            "valueFall": 44,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 3,
+            "reach": -44,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 3,
+              "reach": -44,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 117.27000000000001,
+          "sourceRank": 4,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 3,
+              "valueFall": 43,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 1,
+              "signals": [
+                "HIGH_VALUE_FALL"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 3,
+            "valueFall": 43,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 4,
+            "reach": -43,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 4,
+              "reach": -43,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 5,
+          "name": "Jaxon Smith-Njigba",
+          "pos": "WR",
+          "displayScore": 117,
+          "finalDecisionScore": 117.1575,
+          "sourceRank": 5,
+          "starterImpact": 5,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 3,
+              "valueFall": 42,
+              "availablePoolValueEdge": -4,
+              "bestAlternateRank": 1,
+              "signals": [
+                "HIGH_VALUE_FALL"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 3,
+            "valueFall": 42,
+            "availablePoolValueEdge": -4,
+            "bestAlternateRank": 1,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 5,
+            "reach": -42,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 2,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 5,
+              "reach": -42,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        }
+      ],
+      "newTopFive": [
+        {
+          "id": 61,
+          "name": "D.J. Moore",
+          "pos": "WR",
+          "displayScore": 92,
+          "finalDecisionScore": 92.33500000000001,
+          "sourceRank": 48,
+          "starterImpact": 3,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -1,
+              "bestAlternateRank": 47,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -1,
+            "bestAlternateRank": 47,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 48,
+            "reach": 1,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 8,
+            "expectedPositionSelections": 1,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 48,
+              "reach": 1,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 41,
+          "name": "Travis Etienne Jr.",
+          "pos": "RB",
+          "displayScore": 91,
+          "finalDecisionScore": 90.92250000000001,
+          "sourceRank": 47,
+          "starterImpact": 3,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 48,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 48,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 47,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 58,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 47,
+              "reach": 0,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 47,
+          "name": "Davante Adams",
+          "pos": "WR",
+          "displayScore": 91,
+          "finalDecisionScore": 90.81750000000001,
+          "sourceRank": 53,
+          "starterImpact": 3,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -6,
+              "bestAlternateRank": 47,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -6,
+            "bestAlternateRank": 47,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 53,
+            "reach": 6,
+            "band": "SMALL_REACH",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 8,
+            "expectedPositionSelections": 1,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0.35,
+            "waitPenalty": 0,
+            "relief": 0.175,
+            "penalty": 0.175,
+            "corridor": {
+              "rank": 53,
+              "reach": 6,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "SMALL_REACH",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        },
+        {
+          "id": 55,
+          "name": "Bhayshul Tuten",
+          "pos": "RB",
+          "displayScore": 91,
+          "finalDecisionScore": 90.58500000000001,
+          "sourceRank": 50,
+          "starterImpact": 3,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 2,
+              "valueFall": 0,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 48,
+              "signals": [
+                "LEAGUE_BREAKER_UPSIDE"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 2,
+            "valueFall": 0,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 48,
+            "signals": [
+              "LEAGUE_BREAKER_UPSIDE"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 50,
+            "reach": 3,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 58,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LEAGUE_BREAKER_UPSIDE"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 50,
+              "reach": 3,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LEAGUE_BREAKER_UPSIDE",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 49,
+          "name": "TreVeyon Henderson",
+          "pos": "RB",
+          "displayScore": 89,
+          "finalDecisionScore": 88.91250000000001,
+          "sourceRank": 51,
+          "starterImpact": 3,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 1,
+            "ordinal": 2,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 2,
+            "rawPenalty": 0,
+            "starterRelief": 0,
+            "exceptionRelief": 0,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 0,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 48,
+              "signals": [],
+              "documented": false
+            }
+          },
+          "benchPortfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 48,
+            "signals": [],
+            "documented": false
+          },
+          "priceOfAcquisition": {
+            "rank": 51,
+            "reach": 4,
+            "band": "NORMAL",
+            "smallLimit": 6,
+            "extremeLimit": 27,
+            "nextPick": 54,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 58,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 51,
+              "reach": 4,
+              "allowance": 12,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "IMPROVES_STARTER_EQUITY"
+            ]
+          }
+        }
+      ],
+      "recommendationChanged": true,
+      "classification": "expected_due_to_fail_soft_snapshot_coverage",
+      "newWinnerSource": {
+        "oldRank": 48,
+        "newRank": 48,
+        "oldTier": "E",
+        "newTier": "EE"
+      }
+    },
+    {
+      "name": "half-late-pick-107",
+      "pick": 107,
+      "slot": 7,
+      "oldTopFive": [
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "pos": "RB",
+          "displayScore": 113,
+          "finalDecisionScore": 112.5,
+          "sourceRank": 6,
+          "starterImpact": 2,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 2,
+            "exceptionRelief": 0.5,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 4,
+              "valueFall": 101,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 7,
+              "signals": [
+                "HIGH_VALUE_FALL",
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 4,
+            "valueFall": 101,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 7,
+            "signals": [
+              "HIGH_VALUE_FALL",
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 6,
+            "reach": -101,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 0,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 34,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 6,
+              "reach": -101,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 7,
+          "name": "Amon-Ra St. Brown",
+          "pos": "WR",
+          "displayScore": 110,
+          "finalDecisionScore": 109.5,
+          "sourceRank": 7,
+          "starterImpact": 2,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 5,
+            "ordinal": 6,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 6,
+            "rawPenalty": 8,
+            "starterRelief": 6.4,
+            "exceptionRelief": 1.5999999999999996,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 3,
+              "valueFall": 100,
+              "availablePoolValueEdge": -1,
+              "bestAlternateRank": 6,
+              "signals": [
+                "HIGH_VALUE_FALL"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 3,
+            "valueFall": 100,
+            "availablePoolValueEdge": -1,
+            "bestAlternateRank": 6,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 7,
+            "reach": -100,
+            "band": "NORMAL",
+            "smallLimit": 15,
+            "extremeLimit": 45,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": true,
+            "sameTierRemaining": 0,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "MEANINGFUL_TIER_PRESERVATION",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 7,
+              "reach": -100,
+              "allowance": 30,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "FINAL_MEANINGFUL_TIER"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "FINAL_MEANINGFUL_TIER",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "MEANINGFUL_TIER_PRESERVATION",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 15,
+          "name": "De'Von Achane",
+          "pos": "RB",
+          "displayScore": 110,
+          "finalDecisionScore": 109.5,
+          "sourceRank": 9,
+          "starterImpact": 2,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 2,
+            "exceptionRelief": 0.5,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 4,
+              "valueFall": 98,
+              "availablePoolValueEdge": -2,
+              "bestAlternateRank": 7,
+              "signals": [
+                "HIGH_VALUE_FALL",
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 4,
+            "valueFall": 98,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 7,
+            "signals": [
+              "HIGH_VALUE_FALL",
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 9,
+            "reach": -98,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 4,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 9,
+              "reach": -98,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 9,
+          "name": "Jonathan Taylor",
+          "pos": "RB",
+          "displayScore": 110,
+          "finalDecisionScore": 109.5,
+          "sourceRank": 10,
+          "starterImpact": 2,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 2,
+            "exceptionRelief": 0.5,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 4,
+              "valueFall": 97,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 7,
+              "signals": [
+                "HIGH_VALUE_FALL",
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 4,
+            "valueFall": 97,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 7,
+            "signals": [
+              "HIGH_VALUE_FALL",
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 10,
+            "reach": -97,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 4,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 10,
+              "reach": -97,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 11,
+          "name": "Ashton Jeanty",
+          "pos": "RB",
+          "displayScore": 110,
+          "finalDecisionScore": 109.5,
+          "sourceRank": 11,
+          "starterImpact": 2,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 2,
+            "exceptionRelief": 0.5,
+            "netPenalty": 0,
+            "adjustment": 0,
+            "utility": "STARTER_IMPROVEMENT",
+            "improvesStarter": true,
+            "portfolio": {
+              "offset": 5,
+              "valueFall": 96,
+              "availablePoolValueEdge": -4,
+              "bestAlternateRank": 7,
+              "signals": [
+                "HIGH_VALUE_FALL",
+                "LEAGUE_BREAKER_UPSIDE",
+                "DOCUMENTED_CORE_TARGET",
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 5,
+            "valueFall": 96,
+            "availablePoolValueEdge": -4,
+            "bestAlternateRank": 7,
+            "signals": [
+              "HIGH_VALUE_FALL",
+              "LEAGUE_BREAKER_UPSIDE",
+              "DOCUMENTED_CORE_TARGET",
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 11,
+            "reach": -96,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 4,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 1,
+            "survivalRisk": 14,
+            "signals": [
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "LEAGUE_BREAKER_UPSIDE",
+              "DOCUMENTED_CORE_TARGET"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 11,
+              "reach": -96,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 0,
+            "confidence": 85,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "STARTER_EQUITY_IMPROVEMENT",
+              "LOW_SURVIVAL",
+              "LEAGUE_BREAKER_UPSIDE",
+              "DOCUMENTED_CORE_TARGET",
+              "IMPROVES_STARTER_EQUITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        }
+      ],
+      "newTopFive": [
+        {
+          "id": 101,
+          "name": "RJ Harvey",
+          "pos": "RB",
+          "displayScore": 78,
+          "finalDecisionScore": 77.5,
+          "sourceRank": 105,
+          "starterImpact": 0,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 0,
+            "exceptionRelief": 1,
+            "netPenalty": 1.5,
+            "adjustment": -1.5,
+            "utility": "DECLINING",
+            "improvesStarter": false,
+            "portfolio": {
+              "offset": 1,
+              "valueFall": 2,
+              "availablePoolValueEdge": 3,
+              "bestAlternateRank": 108,
+              "signals": [
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 1,
+            "valueFall": 2,
+            "availablePoolValueEdge": 3,
+            "bestAlternateRank": 108,
+            "signals": [
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 105,
+            "reach": -2,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 41,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 49,
+            "signals": [
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 105,
+              "reach": -2,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 1.5,
+            "confidence": 74,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "LOW_SURVIVAL",
+              "DIMINISHING_DEPTH_UTILITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 109,
+          "name": "Blake Corum",
+          "pos": "RB",
+          "displayScore": 78,
+          "finalDecisionScore": 77.5,
+          "sourceRank": 106,
+          "starterImpact": 0,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 0,
+            "exceptionRelief": 1,
+            "netPenalty": 1.5,
+            "adjustment": -1.5,
+            "utility": "DECLINING",
+            "improvesStarter": false,
+            "portfolio": {
+              "offset": 1,
+              "valueFall": 1,
+              "availablePoolValueEdge": 2,
+              "bestAlternateRank": 108,
+              "signals": [
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 1,
+            "valueFall": 1,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 108,
+            "signals": [
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 106,
+            "reach": -1,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 41,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 14,
+            "signals": [
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 106,
+              "reach": -1,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 1.5,
+            "confidence": 74,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "LOW_SURVIVAL",
+              "DIMINISHING_DEPTH_UTILITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 116,
+          "name": "Jordan Mason",
+          "pos": "RB",
+          "displayScore": 78,
+          "finalDecisionScore": 77.5,
+          "sourceRank": 107,
+          "starterImpact": 0,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 0,
+            "exceptionRelief": 1,
+            "netPenalty": 1.5,
+            "adjustment": -1.5,
+            "utility": "DECLINING",
+            "improvesStarter": false,
+            "portfolio": {
+              "offset": 1,
+              "valueFall": 0,
+              "availablePoolValueEdge": 1,
+              "bestAlternateRank": 108,
+              "signals": [
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 1,
+            "valueFall": 0,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 108,
+            "signals": [
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 107,
+            "reach": 0,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNLIKELY_TO_SURVIVE",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 41,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 14,
+            "signals": [
+              "LOW_SURVIVAL"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 107,
+              "reach": 0,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 1.5,
+            "confidence": 74,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "LOW_SURVIVAL",
+              "DIMINISHING_DEPTH_UTILITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 115,
+          "name": "Kenneth Gainwell",
+          "pos": "RB",
+          "displayScore": 77,
+          "finalDecisionScore": 76.5,
+          "sourceRank": 111,
+          "starterImpact": 0,
+          "marginalUtility": {
+            "position": "RB",
+            "countBefore": 3,
+            "ordinal": 4,
+            "directStarters": 2,
+            "flexCapacity": 2,
+            "starterCapacity": 4,
+            "capacityShift": 0,
+            "effectiveOrdinal": 4,
+            "rawPenalty": 2.5,
+            "starterRelief": 0,
+            "exceptionRelief": 1,
+            "netPenalty": 1.5,
+            "adjustment": -1.5,
+            "utility": "DECLINING",
+            "improvesStarter": false,
+            "portfolio": {
+              "offset": 1,
+              "valueFall": 0,
+              "availablePoolValueEdge": -3,
+              "bestAlternateRank": 108,
+              "signals": [
+                "PORTFOLIO_DIVERSIFICATION"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 1,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 108,
+            "signals": [
+              "PORTFOLIO_DIVERSIFICATION"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 111,
+            "reach": 4,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 41,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 14,
+            "signals": [],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 111,
+              "reach": 4,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 1.5,
+            "confidence": 74,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "DIMINISHING_DEPTH_UTILITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        },
+        {
+          "id": 106,
+          "name": "K.C. Concepcion",
+          "pos": "WR",
+          "displayScore": 71,
+          "finalDecisionScore": 71,
+          "sourceRank": 109,
+          "starterImpact": 0,
+          "marginalUtility": {
+            "position": "WR",
+            "countBefore": 5,
+            "ordinal": 6,
+            "directStarters": 3,
+            "flexCapacity": 2,
+            "starterCapacity": 5,
+            "capacityShift": 0,
+            "effectiveOrdinal": 6,
+            "rawPenalty": 8,
+            "starterRelief": 0,
+            "exceptionRelief": 1,
+            "netPenalty": 7,
+            "adjustment": -7,
+            "utility": "SATURATED",
+            "improvesStarter": false,
+            "portfolio": {
+              "offset": 1,
+              "valueFall": 0,
+              "availablePoolValueEdge": -4,
+              "bestAlternateRank": 105,
+              "signals": [
+                "ROLE_GROWTH_PATH"
+              ],
+              "documented": true
+            }
+          },
+          "benchPortfolio": {
+            "offset": 1,
+            "valueFall": 0,
+            "availablePoolValueEdge": -4,
+            "bestAlternateRank": 105,
+            "signals": [
+              "ROLE_GROWTH_PATH"
+            ],
+            "documented": true
+          },
+          "priceOfAcquisition": {
+            "rank": 109,
+            "reach": 2,
+            "band": "NORMAL",
+            "smallLimit": 13,
+            "extremeLimit": 41,
+            "nextPick": 114,
+            "survival": "UNCERTAIN",
+            "likelyToSurvive": false,
+            "meaningfulTierCliff": false,
+            "sameTierRemaining": 61,
+            "expectedPositionSelections": 0,
+            "nextTierDrop": 0,
+            "survivalRisk": 14,
+            "signals": [
+              "ROLE_GROWTH_PATH"
+            ],
+            "unsupported": false,
+            "blocked": false,
+            "basePenalty": 0,
+            "waitPenalty": 0,
+            "relief": 0,
+            "penalty": 0,
+            "corridor": {
+              "rank": 109,
+              "reach": 2,
+              "allowance": 26,
+              "inside": true,
+              "hardRejected": false,
+              "justification": "WITHIN_VALUE_CORRIDOR"
+            }
+          },
+          "integrity": {
+            "defensible": true,
+            "chaseDetected": false,
+            "unsupportedSaturation": false,
+            "unsupportedAcquisition": false,
+            "blockedAcquisition": false,
+            "leastSaturatedAvailable": false,
+            "depthBeforeStarters": false,
+            "surplusDepthPenalty": 7,
+            "confidence": 74,
+            "reasons": [
+              "WITHIN_VALUE_CORRIDOR",
+              "ROLE_GROWTH_PATH",
+              "DIMINISHING_DEPTH_UTILITY",
+              "DOCUMENTED_BENCH_UPSIDE"
+            ]
+          }
+        }
+      ],
+      "recommendationChanged": true,
+      "classification": "expected_due_to_fail_soft_snapshot_coverage",
+      "newWinnerSource": {
+        "oldRank": 104,
+        "newRank": 105,
+        "oldTier": "J",
+        "newTier": "JJ"
+      }
+    }
+  ],
+  "fullPprCanary": {
+    "name": "full-ppr-flex-pick-30",
+    "pick": 30,
+    "oldTopFive": [
+      {
+        "id": 3,
+        "name": "Ja'Marr Chase",
+        "pos": "WR",
+        "category": "Best Pick",
+        "sourceRank": 3,
+        "overallTier": "S",
+        "finalDecisionScore": 118.14150000000001,
+        "starterImpact": 5,
+        "marginalUtility": {
+          "position": "WR",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 2,
+          "flexCapacity": 2,
+          "starterCapacity": 4,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 2.7,
+            "valueFall": 27,
+            "availablePoolValueEdge": -2,
+            "bestAlternateRank": 1,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 3,
+          "reach": -27,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "UNLIKELY_TO_SURVIVE",
+          "likelyToSurvive": false,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 2,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "LOW_SURVIVAL"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 3,
+            "reach": -27,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "name": "Bijan Robinson",
+        "pos": "RB",
+        "category": "Best Value",
+        "sourceRank": 1,
+        "overallTier": "S",
+        "finalDecisionScore": 117.5565,
+        "starterImpact": 5,
+        "marginalUtility": {
+          "position": "RB",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 1,
+          "flexCapacity": 2,
+          "starterCapacity": 3,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 2.9,
+            "valueFall": 29,
+            "availablePoolValueEdge": 2,
+            "bestAlternateRank": 3,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 1,
+          "reach": -29,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "UNLIKELY_TO_SURVIVE",
+          "likelyToSurvive": false,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 1,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "LOW_SURVIVAL"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 1,
+            "reach": -29,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "name": "Puka Nacua",
+        "pos": "WR",
+        "category": "Alternative",
+        "sourceRank": 4,
+        "overallTier": "S",
+        "finalDecisionScore": 116.09400000000002,
+        "starterImpact": 5,
+        "marginalUtility": {
+          "position": "WR",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 2,
+          "flexCapacity": 2,
+          "starterCapacity": 4,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 2.6,
+            "valueFall": 26,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 1,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 4,
+          "reach": -26,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "UNLIKELY_TO_SURVIVE",
+          "likelyToSurvive": false,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 2,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "LOW_SURVIVAL"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 4,
+            "reach": -26,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "name": "Jaxon Smith-Njigba",
+        "pos": "WR",
+        "category": "Alternative",
+        "sourceRank": 5,
+        "overallTier": "S",
+        "finalDecisionScore": 115.3305,
+        "starterImpact": 5,
+        "marginalUtility": {
+          "position": "WR",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 2,
+          "flexCapacity": 2,
+          "starterCapacity": 4,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 2.5,
+            "valueFall": 25,
+            "availablePoolValueEdge": -4,
+            "bestAlternateRank": 1,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 5,
+          "reach": -25,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "UNLIKELY_TO_SURVIVE",
+          "likelyToSurvive": false,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 2,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "LOW_SURVIVAL"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 5,
+            "reach": -25,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      },
+      {
+        "id": 7,
+        "name": "Amon-Ra St. Brown",
+        "pos": "WR",
+        "category": "Alternative",
+        "sourceRank": 7,
+        "overallTier": "A",
+        "finalDecisionScore": 113.061,
+        "starterImpact": 5,
+        "marginalUtility": {
+          "position": "WR",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 2,
+          "flexCapacity": 2,
+          "starterCapacity": 4,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 2.3,
+            "valueFall": 23,
+            "availablePoolValueEdge": -6,
+            "bestAlternateRank": 1,
+            "signals": [
+              "HIGH_VALUE_FALL"
+            ],
+            "documented": true
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 7,
+          "reach": -23,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "UNLIKELY_TO_SURVIVE",
+          "likelyToSurvive": false,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 0,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "LOW_SURVIVAL"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 7,
+            "reach": -23,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      }
+    ],
+    "newTopFive": [
+      {
+        "id": 32,
+        "name": "Josh Allen",
+        "pos": "QB",
+        "category": "Best Pick",
+        "sourceRank": 33,
+        "overallTier": "D",
+        "finalDecisionScore": 97.4425,
+        "starterImpact": 3,
+        "marginalUtility": {
+          "position": "QB",
+          "countBefore": 0,
+          "ordinal": 1,
+          "directStarters": 1,
+          "flexCapacity": 0,
+          "starterCapacity": 1,
+          "capacityShift": 0,
+          "effectiveOrdinal": 1,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -4,
+            "bestAlternateRank": 29,
+            "signals": [],
+            "documented": false
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 33,
+          "reach": 3,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "LIKELY_TO_SURVIVE",
+          "likelyToSurvive": true,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 0,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 33,
+            "reach": 3,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      },
+      {
+        "id": 37,
+        "name": "Colston Loveland",
+        "pos": "TE",
+        "category": "Highest Upside",
+        "sourceRank": 37,
+        "overallTier": "D",
+        "finalDecisionScore": 95.394,
+        "starterImpact": 3,
+        "marginalUtility": {
+          "position": "TE",
+          "countBefore": 0,
+          "ordinal": 1,
+          "directStarters": 1,
+          "flexCapacity": 2,
+          "starterCapacity": 3,
+          "capacityShift": 0,
+          "effectiveOrdinal": 1,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 3.5,
+            "valueFall": 0,
+            "availablePoolValueEdge": -8,
+            "bestAlternateRank": 29,
+            "signals": [
+              "LEAGUE_BREAKER_UPSIDE",
+              "DOCUMENTED_CORE_TARGET"
+            ],
+            "documented": true
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 37,
+          "reach": 7,
+          "band": "SMALL_REACH",
+          "smallLimit": 8,
+          "extremeLimit": 31,
+          "nextPick": 31,
+          "survival": "LIKELY_TO_SURVIVE",
+          "likelyToSurvive": true,
+          "meaningfulTierCliff": true,
+          "sameTierRemaining": 1,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "MEANINGFUL_TIER_PRESERVATION",
+            "LEAGUE_BREAKER_UPSIDE",
+            "DOCUMENTED_CORE_TARGET"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0.7,
+          "waitPenalty": 0,
+          "relief": 0.35,
+          "penalty": 0.35,
+          "corridor": {
+            "rank": 37,
+            "reach": 7,
+            "allowance": 16,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "FINAL_MEANINGFUL_TIER"
+          }
+        }
+      },
+      {
+        "id": 28,
+        "name": "DeVonta Smith",
+        "pos": "WR",
+        "category": "Best Fit",
+        "sourceRank": 29,
+        "overallTier": "C",
+        "finalDecisionScore": 95.33100000000002,
+        "starterImpact": 5,
+        "marginalUtility": {
+          "position": "WR",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 2,
+          "flexCapacity": 2,
+          "starterCapacity": 4,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 0,
+            "valueFall": 1,
+            "availablePoolValueEdge": 1,
+            "bestAlternateRank": 30,
+            "signals": [],
+            "documented": false
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 29,
+          "reach": -1,
+          "band": "NORMAL",
+          "smallLimit": 8,
+          "extremeLimit": 31,
+          "nextPick": 31,
+          "survival": "UNLIKELY_TO_SURVIVE",
+          "likelyToSurvive": false,
+          "meaningfulTierCliff": true,
+          "sameTierRemaining": 0,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "MEANINGFUL_TIER_PRESERVATION",
+            "LOW_SURVIVAL"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 29,
+            "reach": -1,
+            "allowance": 16,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "FINAL_MEANINGFUL_TIER"
+          }
+        }
+      },
+      {
+        "id": 33,
+        "name": "Javonte Williams",
+        "pos": "RB",
+        "category": "Alternative",
+        "sourceRank": 34,
+        "overallTier": "D",
+        "finalDecisionScore": 94.35300000000001,
+        "starterImpact": 3,
+        "marginalUtility": {
+          "position": "RB",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 1,
+          "flexCapacity": 2,
+          "starterCapacity": 3,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 1.5,
+            "valueFall": 0,
+            "availablePoolValueEdge": -5,
+            "bestAlternateRank": 29,
+            "signals": [
+              "DOCUMENTED_CORE_TARGET"
+            ],
+            "documented": true
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 34,
+          "reach": 4,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "LIKELY_TO_SURVIVE",
+          "likelyToSurvive": true,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 2,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT",
+            "DOCUMENTED_CORE_TARGET"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 34,
+            "reach": 4,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      },
+      {
+        "id": 23,
+        "name": "Jeremiyah Love",
+        "pos": "RB",
+        "category": "Alternative",
+        "sourceRank": 32,
+        "overallTier": "D",
+        "finalDecisionScore": 94.01400000000001,
+        "starterImpact": 3,
+        "marginalUtility": {
+          "position": "RB",
+          "countBefore": 1,
+          "ordinal": 2,
+          "directStarters": 1,
+          "flexCapacity": 2,
+          "starterCapacity": 3,
+          "capacityShift": -1,
+          "effectiveOrdinal": 3,
+          "rawPenalty": 0,
+          "starterRelief": 0,
+          "exceptionRelief": 0,
+          "netPenalty": 0,
+          "adjustment": 0,
+          "utility": "STARTER_IMPROVEMENT",
+          "improvesStarter": true,
+          "portfolio": {
+            "offset": 0,
+            "valueFall": 0,
+            "availablePoolValueEdge": -3,
+            "bestAlternateRank": 29,
+            "signals": [],
+            "documented": false
+          }
+        },
+        "priceOfAcquisition": {
+          "rank": 32,
+          "reach": 2,
+          "band": "NORMAL",
+          "smallLimit": 6,
+          "extremeLimit": 27,
+          "nextPick": 31,
+          "survival": "LIKELY_TO_SURVIVE",
+          "likelyToSurvive": true,
+          "meaningfulTierCliff": false,
+          "sameTierRemaining": 2,
+          "expectedPositionSelections": 0,
+          "nextTierDrop": 1,
+          "survivalRisk": 0,
+          "signals": [
+            "STARTER_EQUITY_IMPROVEMENT"
+          ],
+          "unsupported": false,
+          "blocked": false,
+          "basePenalty": 0,
+          "waitPenalty": 0,
+          "relief": 0,
+          "penalty": 0,
+          "corridor": {
+            "rank": 32,
+            "reach": 2,
+            "allowance": 12,
+            "inside": true,
+            "hardRejected": false,
+            "justification": "WITHIN_VALUE_CORRIDOR"
+          }
+        }
+      }
+    ],
+    "recommendationChanged": true,
+    "classification": "expected_due_to_fail_soft_snapshot_coverage"
+  },
+  "summary": {
+    "scenarios": 6,
+    "recommendationChanges": 3,
+    "questionableChanges": 0,
+    "earlySpecialistLeakage": 0,
+    "JenningsOrGadsdenEarlyCards": [],
+    "duplicateVisibleCards": 0
+  }
+}

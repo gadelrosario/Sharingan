@@ -1,9 +1,9 @@
-const CACHE = 'fantasy-hq-jonin-4-3-12';
+const CACHE = 'fantasy-hq-jonin-4-3-20-rankings-2026-08-23';
 const ASSETS = [
   './',
   './index.html',
   './css/app.css?v=4.3.12',
-  './js/app-version.js?v=1.0.13',
+  './js/app-version.js?v=1.0.14',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
   './js/draft-math-v1.js?v=1.1.0',
@@ -14,7 +14,8 @@ const ASSETS = [
   './js/roster-view-v1.js?v=1.0.0',
   './js/roster-completion-constraint-v1.js?v=1.1.0',
   './js/draft-strategy-engine-v1.js?v=1.3.0',
-  './js/recommendation-archetypes-v1.js?v=1.0.0',
+  './js/championship-equity-production-v1.js?v=1.0.0',
+  './js/recommendation-archetypes-v1.js?v=1.1.0',
   './js/fantasy-hq-core.js?v=3.2.0',
   './js/draft-session-v1.js?v=1.2.0',
   './js/league-profiles-v1.js?v=1.0.0',
@@ -29,7 +30,7 @@ const ASSETS = [
   './js/player-photo-v1.js?v=1.0.0',
   './js/premium-player-card-v1.js?v=1.1.0',
   './js/draft-psychology-engine-v1.js?v=1.0.0',
-  './js/app.js?v=4.3.12',
+  './js/app.js?v=4.3.20',
   './assets/player-placeholders/generic.svg',
   './assets/player-placeholders/qb.svg',
   './assets/player-placeholders/rb.svg',
@@ -40,8 +41,12 @@ const ASSETS = [
   './data/players.json',
   './data/rankings/ACTIVE_SNAPSHOT.json',
   './data/rankings/fantasyland_2026-08-08.normalized.json',
+  './data/rankings/fantasyland_draftday_2026-08-23.normalized.json',
+  './data/rankings/flock_draftday_2026-08-23.normalized.json',
+  './data/rankings/draftday_rankings_manifest_2026-08-23.json',
   './data/specialist_rankings_2026-08-09.json',
   './data/injuries_2026.json',
+  './data/championship_equity_2026.json',
   './manifest.webmanifest',
   './icons/icon.svg',
 ];

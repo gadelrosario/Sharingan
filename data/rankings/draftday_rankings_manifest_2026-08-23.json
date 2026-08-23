@@ -1,0 +1,127 @@
+{
+  "package": "Fantasy HQ draft-day rankings refresh",
+  "capture_date": "2026-08-23",
+  "files": [
+    {
+      "filename": "fantasyland_draftday_2026-08-23.normalized.json",
+      "creator_source": "Fantasyland",
+      "host_platform": "Flock Fantasy",
+      "rows": 354
+    },
+    {
+      "filename": "flock_draftday_2026-08-23.normalized.json",
+      "creator_source": "Flock",
+      "host_platform": "Flock Fantasy",
+      "rows": 354
+    }
+  ],
+  "import_requirements": {
+    "data_only": true,
+    "preserve_source_specific_snapshots": true,
+    "preserve_fields": [
+      "overall_rank",
+      "overall_tier",
+      "positional_rank",
+      "positional_tier",
+      "creator_source",
+      "host_platform",
+      "capture_date"
+    ],
+    "do_not_infer_source_snapshot_date": true,
+    "do_not_blend_into_consensus": true
+  },
+  "validation": {
+    "Fantasyland": {
+      "row_count": 354,
+      "overall_rank_min": 1,
+      "overall_rank_max": 354,
+      "overall_rank_unique": true,
+      "overall_rank_contiguous_1_to_354": true,
+      "position_summary": {
+        "QB": {
+          "rows": 49,
+          "numbered_positional_ranks": 39,
+          "max_numbered_positional_rank": 39,
+          "positional_tier_assigned": 39
+        },
+        "RB": {
+          "rows": 104,
+          "numbered_positional_ranks": 75,
+          "max_numbered_positional_rank": 75,
+          "positional_tier_assigned": 75
+        },
+        "WR": {
+          "rows": 144,
+          "numbered_positional_ranks": 106,
+          "max_numbered_positional_rank": 106,
+          "positional_tier_assigned": 106
+        },
+        "TE": {
+          "rows": 57,
+          "numbered_positional_ranks": 48,
+          "max_numbered_positional_rank": 48,
+          "positional_tier_assigned": 48
+        },
+        "K": {
+          "rows": 0,
+          "numbered_positional_ranks": 0,
+          "max_numbered_positional_rank": null,
+          "positional_tier_assigned": 0
+        },
+        "DST": {
+          "rows": 0,
+          "numbered_positional_ranks": 0,
+          "max_numbered_positional_rank": null,
+          "positional_tier_assigned": 0
+        }
+      },
+      "duplicate_exact_player_position_rows": 2
+    },
+    "Flock": {
+      "row_count": 354,
+      "overall_rank_min": 1,
+      "overall_rank_max": 354,
+      "overall_rank_unique": true,
+      "overall_rank_contiguous_1_to_354": true,
+      "position_summary": {
+        "QB": {
+          "rows": 49,
+          "numbered_positional_ranks": 49,
+          "max_numbered_positional_rank": 49,
+          "positional_tier_assigned": 49
+        },
+        "RB": {
+          "rows": 103,
+          "numbered_positional_ranks": 103,
+          "max_numbered_positional_rank": 103,
+          "positional_tier_assigned": 103
+        },
+        "WR": {
+          "rows": 144,
+          "numbered_positional_ranks": 144,
+          "max_numbered_positional_rank": 144,
+          "positional_tier_assigned": 144
+        },
+        "TE": {
+          "rows": 57,
+          "numbered_positional_ranks": 57,
+          "max_numbered_positional_rank": 57,
+          "positional_tier_assigned": 57
+        },
+        "K": {
+          "rows": 0,
+          "numbered_positional_ranks": 0,
+          "max_numbered_positional_rank": null,
+          "positional_tier_assigned": 0
+        },
+        "DST": {
+          "rows": 0,
+          "numbered_positional_ranks": 0,
+          "max_numbered_positional_rank": null,
+          "positional_tier_assigned": 0
+        }
+      },
+      "duplicate_exact_player_position_rows": 2
+    }
+  }
+}
