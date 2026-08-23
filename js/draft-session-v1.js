@@ -32,11 +32,12 @@
     if(positiveInteger(totalPicks)&&snapshot.status==='complete'&&(picks.length!==totalPicks||pick!==totalPicks+1))throw new Error('Saved completed draft is incomplete.');
     if(positiveInteger(totalPicks)&&snapshot.status==='active'&&pick>totalPicks)throw new Error('Saved active draft is already complete.');
     if(positiveInteger(teams)&&Number.isFinite(snapshot.currentRound)&&Number(snapshot.currentRound)!==Math.ceil(Math.max(1,pick)/teams))throw new Error('Saved draft current round is inconsistent.');
+    if(snapshot.leagueProfileId!=null&&!/^[a-z0-9][a-z0-9-]{1,63}$/i.test(String(snapshot.leagueProfileId)))throw new Error('Saved draft has an invalid league profile identity.');
     return clone({...snapshot,draftStateVersion:stateVersion});
   }
   function createSnapshot(state,existing=null){
     const now=new Date().toISOString(),history=clone(state.history||[]);
-    return validate({schemaVersion:SCHEMA_VERSION,draftStateVersion:DRAFT_STATE_VERSION,sessionId:existing?.sessionId||`draft_${Date.now().toString(36)}`,createdAt:existing?.createdAt||now,updatedAt:now,status:state.status||'active',mode:state.mode,style:state.style,slot:state.slot,pick:state.pick,currentRound:state.currentRound,currentPickOwner:state.currentPickOwner,drafted:[...(state.drafted||[])],history,decisionSnapshots:clone(state.decisionSnapshots||[]),settings:clone(state.settings||{}),leagueConfiguration:clone(state.leagueConfiguration||{}),managers:clone(state.managers||{}),recommendations:clone(state.recommendations||[]),importedRankings:clone(state.importedRankings||[])});
+    return validate({schemaVersion:SCHEMA_VERSION,draftStateVersion:DRAFT_STATE_VERSION,sessionId:existing?.sessionId||`draft_${Date.now().toString(36)}`,createdAt:existing?.createdAt||now,updatedAt:now,status:state.status||'active',mode:state.mode,style:state.style,leagueProfileId:state.leagueProfileId??null,appVersion:state.appVersion??null,rankingSnapshot:clone(state.rankingSnapshot||null),injurySnapshot:clone(state.injurySnapshot||null),archiveRecordId:state.archiveRecordId??null,slot:state.slot,pick:state.pick,currentRound:state.currentRound,currentPickOwner:state.currentPickOwner,drafted:[...(state.drafted||[])],history,decisionSnapshots:clone(state.decisionSnapshots||[]),settings:clone(state.settings||{}),leagueConfiguration:clone(state.leagueConfiguration||{}),managers:clone(state.managers||{}),recommendations:clone(state.recommendations||[]),importedRankings:clone(state.importedRankings||[])});
   }
   class DraftSessionStore{
     constructor(storage=root.localStorage,key=STORAGE_KEY){this.storage=storage;this.key=String(key||STORAGE_KEY);}

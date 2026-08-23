@@ -180,6 +180,7 @@ let scoreCache = new Map(),
   decisionTraceCache = new Map(),
   evaluationCache = new Map(),
   marketCache = new Map(),
+  candidateContextCache = null,
   snapshotCache = null,
   championshipDecisionCache = null;
 function invalidateIntelligence() {
@@ -188,6 +189,7 @@ function invalidateIntelligence() {
   decisionTraceCache.clear();
   evaluationCache.clear();
   marketCache.clear();
+  candidateContextCache = null;
   snapshotCache = null;
   championshipDecisionCache = null;
 }
@@ -404,11 +406,11 @@ async function applyActiveRankingSnapshot() {
   const load=async name=>{if(!/^[a-z0-9_.-]+\.json$/i.test(String(name||'')))throw new Error('Active ranking snapshot path is invalid.');const response=await fetch(`data/rankings/${name}`,{cache:'no-store'});if(!response.ok)throw new Error('Active ranking snapshot returned '+response.status);return response.json()};
   if(config.schemaVersion==='2.0'){
     const fantasylandName=config.sources?.Fantasyland?.activeSnapshot,flockName=config.sources?.Flock?.activeSnapshot;
-    const [fantasyland,flock]=await Promise.all([load(fantasylandName),load(flockName)]);
-    const matchedRows=snapshot=>{const records=Array.isArray(snapshot.records)?snapshot.records:[],matched=records.filter(row=>row.importStatus==='MATCHED'&&row.playerId!=null),ids=new Set(matched.map(row=>String(row.playerId)));if(snapshot.schemaVersion!=='2.0'||snapshot.immutable!==true||ids.size!==matched.length)throw new Error(`${snapshot.source||'Ranking'} snapshot failed its normalized contract.`);return{records,matched,byId:new Map(matched.map(row=>[String(row.playerId),row]))}};
-    const fantasylandRows=matchedRows(fantasyland),flockRows=matchedRows(flock);
+    const fantasyland=await load(fantasylandName),fantasylandRows=DataHealthV1.validateRankingSnapshot(fantasyland,'Fantasyland');
+    let flock=null,flockRows={records:[],matched:[],byId:new Map()},flockError=null;
+    try{flock=await load(flockName);flockRows=DataHealthV1.validateRankingSnapshot(flock,'Flock')}catch(error){flockError=error;console.warn('Optional Flock ranking context could not load; Fantasyland remains active:',error)}
     players.forEach(player=>{const primary=fantasylandRows.byId.get(String(player.id));if(primary){player.fantasylandOverallRank=primary.overallRank;player.fantasylandOverallTier=primary.decisionOverallTier;player.fantasylandPositionRank=primary.positionRank;player.fantasylandPositionTier=primary.decisionPositionTier;player.fantasylandSourceOverallTier=primary.overallTier;player.fantasylandSourcePositionTier=primary.positionTier;player.fantasylandSourceTeam=primary.sourceTeam;player.fantasylandSource='Fantasyland';player.fantasylandHostPlatform='Flock Fantasy';player.fantasylandCaptureDate=primary.captureDate;player.fantasylandSourceSnapshotDate=primary.sourceSnapshotDate;player.overall=primary.overallRank;player.overallTier=primary.decisionOverallTier;player.posRank=primary.positionRank;player.posTier=primary.decisionPositionTier}const secondary=flockRows.byId.get(String(player.id));if(secondary){player.flockOverallRank=secondary.overallRank;player.flockOverallTier=secondary.overallTier;player.flockPositionRank=secondary.positionRank;player.flockPositionTier=secondary.positionTier;player.flockSourceTeam=secondary.sourceTeam;player.flockCaptureDate=secondary.captureDate;player.flockSourceSnapshotDate=secondary.sourceSnapshotDate;player.flockRank=secondary.positionRank;player.flockTier=secondary.decisionPositionTier}});
-    window.__activeRankingSnapshot={schemaVersion:'2.0',snapshotId:config.snapshotId,captureDate:config.captureDate,primaryDecisionSource:config.primaryDecisionSource,sources:{Fantasyland:{name:fantasylandName,records:fantasylandRows.records.length,matched:fantasylandRows.matched.length},Flock:{name:flockName,records:flockRows.records.length,matched:flockRows.matched.length}}};
+    window.__activeRankingSnapshot={schemaVersion:'2.0',snapshotId:config.snapshotId,captureDate:config.captureDate,sourceSnapshotDate:config.sourceSnapshotDate??null,primaryDecisionSource:'Fantasyland',sources:{Fantasyland:{name:fantasylandName,records:fantasylandRows.records.length,matched:fantasylandRows.matched.length,available:true},Flock:{name:flockName,records:flockRows.records.length,matched:flockRows.matched.length,available:!flockError,error:flockError?.message||null}}};
     return;
   }
   const name=String(config.activeSnapshot||''),snapshot=await load(name),records=Array.isArray(snapshot.records)?snapshot.records:[],byId=new Map(records.map(row=>[String(row.playerId),row]));
@@ -478,7 +480,7 @@ function renderDataHealthStatus(){
   const health=DataHealthV1.summary({players,injurySnapshot:window.__injurySnapshot||{},rankingSnapshot:window.__activeRankingSnapshot});
   const updated=health.injuries.fetchedAt?new Date(health.injuries.fetchedAt).toLocaleString():'Unavailable';
   node.dataset.status=health.injuries.status;
-  node.textContent=`Rankings: ${health.rankings.source}${health.rankings.snapshotDate?` — ${health.rankings.snapshotDate}`:''} • Injuries: Sleeper — ${health.injuries.status} (${updated}) • Player Pool: ${health.playerPool} • Identity Issues: ${health.identityIssues} critical`;
+  node.textContent=`Rankings: ${health.rankings.source}${health.rankings.snapshotDate?` — ${health.rankings.snapshotDate}`:''}${health.rankings.secondary?` • ${health.rankings.secondary}`:''} • Injuries: Sleeper — ${health.injuries.status} (${updated}) • Player Pool: ${health.playerPool} • Identity Issues: ${health.identityIssues} critical`;
 }
 async function initializeInjuryFeed() {
   let bundled = null;
@@ -597,7 +599,7 @@ function chooseMode(m) {
 }
 function currentDraftSessionState(status='active'){
   const recommendationIds=players.length&&pick<=TOTAL_PICKS?recommendations().map(player=>player.id):[];
-  return {status,leagueProfileId:activeLeagueProfile?.id||null,mode,style,slot,pick,currentRound:info().r,currentPickOwner:pick<=TOTAL_PICKS?teamForPick(pick):null,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
+  return {status,leagueProfileId:activeLeagueProfile?.id||null,appVersion:APP_VERSION.label,rankingSnapshot:window.__activeRankingSnapshot?JSON.parse(JSON.stringify(window.__activeRankingSnapshot)):null,injurySnapshot:{provider:window.__injurySnapshot?.provider||null,fetchedAt:window.__injurySnapshot?.fetchedAt||null,cacheState:window.__injurySnapshot?.cacheState||null},archiveRecordId:currentYahooRecord?.id||null,mode,style,slot,pick,currentRound:info().r,currentPickOwner:pick<=TOTAL_PICKS?teamForPick(pick):null,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
 }
 function persistDraftSession(status='active'){
   if(!draftSessionStore||!history.length&&DOM.appScreen?.classList.contains('hidden'))return null;
@@ -605,8 +607,9 @@ function persistDraftSession(status='active'){
   renderDraftTimeline();return snapshot;
 }
 function showSavedDraftPrompt(){
-  const saved=draftSessionStore?.load();if(!saved||saved.status!=='active'){DOM.resumeDraftCard?.classList.add('hidden');return}
-  DOM.resumeDraftCard?.classList.remove('hidden');if(DOM.resumeDraftSummary)DOM.resumeDraftSummary.textContent=`${activeLeagueProfile?.displayName||'League'} • ${saved.mode||'Draft'} • Slot ${saved.slot} • ${saved.history.length} picks recorded • saved ${new Date(saved.updatedAt).toLocaleString()}`;
+  const saved=draftSessionStore?.load();if(!saved){DOM.resumeDraftCard?.classList.add('hidden');return}
+  DOM.resumeDraftCard?.classList.remove('hidden');if(DOM.resumeDraftSummary)DOM.resumeDraftSummary.textContent=`${activeLeagueProfile?.displayName||'League'} • ${saved.status==='complete'?'Completed ':''}${saved.mode||'Draft'} • Slot ${saved.slot} • ${saved.history.length} picks recorded • saved ${new Date(saved.updatedAt).toLocaleString()}`;
+  const resumeButton=el('resumeDraftBtn');if(resumeButton)resumeButton.textContent=saved.status==='complete'?'Open Draft Report':'Resume Draft';
 }
 function confirmStartNewDraft(){
   const saved=draftSessionStore?.load();if(saved?.status==='active'&&!confirm('Start a new draft? The active saved draft will be replaced.'))return;
@@ -614,7 +617,7 @@ function confirmStartNewDraft(){
 }
 function applySavedSettings(settings={}){if(settings.teams!==undefined){const teamNode=el('teamCount');if(teamNode)teamNode.value=settings.teams;refreshDraftSlotOptions(settings.teams,settings.slot)}const values={draftSlot:settings.slot,scoring:settings.scoring,startQB:settings.startQB,startRB:settings.startRB,startWR:settings.startWR,startTE:settings.startTE,flexSpots:settings.flex,startK:settings.startK,startDST:settings.startDST,benchSpots:settings.bench,irSpots:settings.irSlots,passTD:settings.passTD,riskProfile:settings.risk};Object.entries(values).forEach(([id,value])=>{const node=el(id);if(node&&value!==undefined)node.value=value})}
 function resumeSavedDraft(){
-  try{const saved=draftSessionStore?.load();if(!saved||saved.status!=='active')throw new Error('No active saved draft is available.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;if(saved.currentPickOwner!=null&&Number(saved.currentPickOwner)!==teamForPick(pick))throw new Error('Saved draft owner does not match the restored snake order.');decisionSnapshots=[...(saved.decisionSnapshots||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderLeagueDnaBar();renderAll();renderDraftTimeline();installDraftNavigationGuard();requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
+  try{const saved=draftSessionStore?.load();if(!saved)throw new Error('No saved draft is available.');if(saved.leagueProfileId&&activeLeagueProfile?.id&&saved.leagueProfileId!==activeLeagueProfile.id)throw new Error('Saved draft belongs to a different league profile.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;if(saved.currentPickOwner!=null&&Number(saved.currentPickOwner)!==teamForPick(pick))throw new Error('Saved draft owner does not match the restored snake order.');decisionSnapshots=[...(saved.decisionSnapshots||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');renderLeagueDnaBar();renderDraftTimeline();if(saved.status==='complete'){document.querySelector('.appgrid')?.classList.add('hidden');DOM.draftReport?.classList.remove('hidden');DOM.tabs?.classList.add('hidden');currentYahooRecord=mode==='yahoo'?(yahooArchive().find(record=>record.id===saved.archiveRecordId)||buildYahooRecord()):null;renderDraftReport();DOM.yahooExportCard?.classList.toggle('hidden',mode!=='yahoo');if(mode==='yahoo')updateArchiveCount()}else{DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderAll();installDraftNavigationGuard()}requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
 }
 function renderDraftTimeline(){if(!DOM.draftTimeline||!window.DraftSessionV1)return;const groups=DraftSessionV1.timeline(history,fantasyHQPlayerIndex(),leagueContext.teams||10);DOM.draftTimeline.innerHTML=groups.length?groups.map(group=>`<section class="timelineRound"><strong>Round ${group.round}</strong>${group.picks.map(entry=>`<div class="timelinePick"><span>${safeInsightText(entry.label)}</span><span>${safeInsightText(entry.playerName)}</span></div>`).join('')}</section>`).join(''):'<div class="timelineEmpty">Picks will appear here chronologically.</div>'}
 function saveDraftNotebook(value){if(!window.DraftSessionV1)return;DraftSessionV1.saveNote(value);if(DOM.notebookStatus){DOM.notebookStatus.textContent='Saved just now';DOM.notebookStatus.dataset.savedAt=new Date().toISOString()}renderRoundNoteReminder()}
@@ -946,11 +949,8 @@ function decisionModifiers(p) {
   return { specialist, depth, upside, injury };
 }
 function valueGap(p) {
-  let pool = available()
-    .filter(x => x.id !== p.id && recommendationEligible(x))
-    .map(x => mambaScore(x))
-    .sort((a, b) => b - a);
-  return mambaScore(p) - (pool[0] || 0);
+  const context=recommendationCandidateContext(),best=context.mambaLeaders.find(row=>String(row.player.id)!==String(p.id));
+  return mambaScore(p) - (best?.score || 0);
 }
 function valueOverride(p) {
   let fall = Math.max(0, pick - (p.overall || pick)),
@@ -980,12 +980,19 @@ function earlyContextWeight(round=info().r) {
 function strategicPlayer(p) {
   return {id:p.id,name:p.name,pos:positionKey(p),sourceRank:reliableOverallRank(p),overallTier:PlayerTierContract.getOverallTier(p),positionRank:p.fantasylandPositionRank??p.posRank??null,positionTier:PlayerTierContract.getPositionTier(p),rookie:recommendationPersonalization&&p.rookie===true,leagueBreaker:recommendationPersonalization&&p.leagueBreaker===true,coreTarget:recommendationPersonalization&&p.coreTarget===true,roleSecurity:p.roleSecurity??null,workhorse:p.workhorse===true};
 }
+function recommendationCandidateContext(){
+  if(candidateContextCache?.epoch===intelligenceEpoch)return candidateContextCache;
+  const availablePlayers=available(),eligiblePlayers=availablePlayers.filter(recommendationEligible),positionPools=new Map();
+  availablePlayers.forEach(player=>{const position=positionKey(player);if(!positionPools.has(position))positionPools.set(position,[]);positionPools.get(position).push(player)});
+  candidateContextCache={epoch:intelligenceEpoch,availablePlayers,eligiblePlayers,strategicCandidates:eligiblePlayers.map(strategicPlayer),strategicRoster:myPlayers().map(strategicPlayer),positionPools,mambaLeaders:eligiblePlayers.map(player=>({player,score:mambaScore(player)})).sort((a,b)=>b.score-a.score||String(a.player.id).localeCompare(String(b.player.id),undefined,{numeric:true}))};
+  return candidateContextCache;
+}
 function picksUntilNextOwnedSelection(team=slot) {
   for(let next=pick+1;next<=TOTAL_PICKS;next++)if(teamForPick(next)===Number(team))return next-pick;
   return 0;
 }
 function acquisitionContext(p) {
-  const position=positionKey(p),currentTier=tierLabel(p),currentTierIndex=DraftStrategyEngineV1?.tierIndex?.(currentTier),positionPool=available().filter(candidate=>positionKey(candidate)===position),sameTierRemaining=positionPool.filter(candidate=>candidate.id!==p.id&&tierLabel(candidate)===currentTier).length,lowerTier=positionPool.filter(candidate=>{const index=DraftStrategyEngineV1?.tierIndex?.(tierLabel(candidate));return candidate.id!==p.id&&currentTierIndex!=null&&index!=null&&index>currentTierIndex}).sort((a,b)=>(reliableOverallRank(a)??999)-(reliableOverallRank(b)??999))[0],lowerTierIndex=lowerTier?DraftStrategyEngineV1.tierIndex(tierLabel(lowerTier)):null;
+  const position=positionKey(p),currentTier=tierLabel(p),currentTierIndex=DraftStrategyEngineV1?.tierIndex?.(currentTier),positionPool=recommendationCandidateContext().positionPools.get(position)||[],sameTierRemaining=positionPool.filter(candidate=>candidate.id!==p.id&&tierLabel(candidate)===currentTier).length,lowerTier=positionPool.filter(candidate=>{const index=DraftStrategyEngineV1?.tierIndex?.(tierLabel(candidate));return candidate.id!==p.id&&currentTierIndex!=null&&index!=null&&index>currentTierIndex}).sort((a,b)=>(reliableOverallRank(a)??999)-(reliableOverallRank(b)??999))[0],lowerTierIndex=lowerTier?DraftStrategyEngineV1.tierIndex(tierLabel(lowerTier)):null;
   return {picksUntil:picksUntilNextOwnedSelection(),sameTierRemaining,expectedPositionSelections:expectedDraftedBeforeNext(position),nextTierDrop:lowerTierIndex==null||currentTierIndex==null?0:Math.max(0,lowerTierIndex-currentTierIndex),survivalRisk:survivalRisk(p)};
 }
 function finalDecisionTrace(p) {
@@ -995,7 +1002,7 @@ function finalDecisionTrace(p) {
   const context=Object.freeze({mamba:mambaScore(p),roomBoost:roomBoost(p),rosterFit:rosterFitModifier(p),valueOverride:valueOverrideAdjustment,eternal:eternalAdjustment,specialist:modifiers.specialist.adjustment,depth:modifiers.depth.adjustment,upside:modifiers.upside.adjustment});
   const legacyBeforeInjury=context.mamba+context.roomBoost+context.rosterFit+context.valueOverride+context.eternal+context.specialist+context.depth+context.upside;
   const specialist=['K','DST'].includes(positionKey(p)),blendedBeforeInjury=specialist?legacyBeforeInjury:sourcePrior.total*(1-contextWeight)+legacyBeforeInjury*contextWeight;
-  const priceContext=acquisitionContext(p),strategy=window.DraftStrategyEngineV1?DraftStrategyEngineV1.evaluateCandidate({player:strategicPlayer(p),baseScore:blendedBeforeInjury,pick,round,leagueSize:leagueContext.teams||10,picksUntil:info().until,roster:myPlayers().map(strategicPlayer),candidates:available().filter(recommendationEligible).map(strategicPlayer),config:leagueContext,completionForced:rosterCompletionState().mode==='HARD',personalizedFoundation:recommendationPersonalization,tierCliff:marketPressure(positionKey(p)).tierCliff,...priceContext}):null;
+  const priceContext=acquisitionContext(p),candidateContext=recommendationCandidateContext(),strategy=window.DraftStrategyEngineV1?DraftStrategyEngineV1.evaluateCandidate({player:strategicPlayer(p),baseScore:blendedBeforeInjury,pick,round,leagueSize:leagueContext.teams||10,picksUntil:info().until,roster:candidateContext.strategicRoster,candidates:candidateContext.strategicCandidates,config:leagueContext,completionForced:rosterCompletionState().mode==='HARD',personalizedFoundation:recommendationPersonalization,tierCliff:marketPressure(positionKey(p)).tierCliff,...priceContext}):null;
   const strategicBeforeInjury=strategy?.score??blendedBeforeInjury,finalDecisionScore=Math.max(1,strategicBeforeInjury+modifiers.injury.adjustment);
   const trace=Object.freeze({sourcePrior,contextWeight,context,legacyBeforeInjury,blendedBeforeInjury,strategy,strategicBeforeInjury,injuryAdjustment:modifiers.injury.adjustment,modifiers,finalDecisionScore});decisionTraceCache.set(key,trace);return trace;
 }
@@ -1483,8 +1490,9 @@ function setChampionshipEquityProductionEnabled(value){
 function championshipDecision(pool=available().filter(recommendationEligible)){
   const poolKey=pool.map(player=>player.id).join(',');
   if(championshipDecisionCache?.epoch===intelligenceEpoch&&championshipDecisionCache.poolKey===poolKey)return championshipDecisionCache.value;
-  const engine=window.JoninDecisionIntelligenceV1,index=fantasyHQPlayerIndex(),rosterIds=myPlayers().map(player=>player.id),strengthOptions={starterSlots:rosterSlots},before=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength(rosterIds,index,strengthOptions):null;
-  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),decisionOverallTier=['K','DST'].includes(position)?'F':overallTier,samePosition=pool.filter(candidate=>positionKey(candidate)===position).sort((a,b)=>mambaScore(b)-mambaScore(a)),sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=samePosition.filter(candidate=>candidate.id!==player.id)[expectedIndex]||nextCandidate,replacementOverallTier=replacement?(['K','DST'].includes(positionKey(replacement))?'F':PlayerTierContract.getOverallTier(replacement)):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null,trace=finalDecisionTrace(player),modifiers=trace.modifiers;return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:decisionOverallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until,finalDecisionScore:trace.finalDecisionScore,decisionModifiers:modifiers}});
+  const engine=window.JoninDecisionIntelligenceV1,index=fantasyHQPlayerIndex(),rosterIds=myPlayers().map(player=>player.id),strengthOptions={starterSlots:rosterSlots},before=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength(rosterIds,index,strengthOptions):null,byPosition=new Map();
+  pool.forEach(player=>{const position=positionKey(player);if(!byPosition.has(position))byPosition.set(position,[]);byPosition.get(position).push(player)});byPosition.forEach(rows=>rows.sort((a,b)=>mambaScore(b)-mambaScore(a)));
+  const inputs=pool.map(player=>{const position=positionKey(player),positionTier=tierLabel(player),overallTier=PlayerTierContract.getOverallTier(player),decisionOverallTier=['K','DST'].includes(position)?'F':overallTier,samePosition=byPosition.get(position)||[],sameTierRemaining=samePosition.filter(candidate=>candidate.id!==player.id&&tierLabel(candidate)===positionTier).length,nextCandidate=samePosition.find(candidate=>candidate.id!==player.id),withoutPlayer=samePosition.filter(candidate=>candidate.id!==player.id),expectedIndex=Math.min(Math.max(0,expectedDraftedBeforeNext(position)),Math.max(0,samePosition.length-1)),replacement=withoutPlayer[expectedIndex]||nextCandidate,replacementOverallTier=replacement?(['K','DST'].includes(positionKey(replacement))?'F':PlayerTierContract.getOverallTier(replacement)):null,environment=engine.environment(replacement||{}),expectedReplacementValue=replacement?engine.playerValue({player:replacement,mamba:mambaScore(replacement),crossPositionBase:crossPositionValueBase(replacement),tier:replacementOverallTier,positionTier:tierLabel(replacement),overall:replacement.overall,environment}):0,after=window.FantasyHQCore?FantasyHQCore.calculateTeamStrength([...rosterIds,player.id],index,strengthOptions):null,trace=finalDecisionTrace(player),modifiers=trace.modifiers;return{player,round:info().r,mamba:mambaScore(player),crossPositionBase:crossPositionValueBase(player),tier:decisionOverallTier,positionTier,overall:player.overall,rosterFitModifier:rosterFitModifier(player),rosterBeforeScore:before,rosterAfterScore:after,marketPressure:marketPressure(position).pressure,survivalRisk:survivalRisk(player),sameTierRemaining,nextTierDrop:nextCandidate?Math.max(0,tierWeight(positionTier)-tierWeight(tierLabel(nextCandidate)))*12:30,expectedReplacementValue,positionDepth:samePosition.length,picksUntil:info().until,finalDecisionScore:trace.finalDecisionScore,decisionModifiers:modifiers}});
   const value=engine.choose(inputs);championshipDecisionCache={epoch:intelligenceEpoch,poolKey,value};return value;
 }
 function recommendationDebugBreakdown(playerOrId){
@@ -2978,6 +2986,8 @@ function buildYahooRecord() {
     createdAt: now.toISOString(),
     source: 'Yahoo public mock draft against real people',
     leagueProfileId: activeLeagueProfile?.id||null,
+    rankingSnapshot: window.__activeRankingSnapshot?JSON.parse(JSON.stringify(window.__activeRankingSnapshot)):null,
+    injurySnapshot: {provider:window.__injurySnapshot?.provider||null,fetchedAt:window.__injurySnapshot?.fetchedAt||null,cacheState:window.__injurySnapshot?.cacheState||null},
     league: {
       id: activeLeagueProfile?.id||164770,
       name: activeLeagueProfile?.leagueName||'SQUAAA! ROYAL RUMBLE 2025–2026',
@@ -2985,15 +2995,15 @@ function buildYahooRecord() {
       teams: leagueContext.teams||10,
       draftSlot: slot,
       scoring: leagueContext.scoring,
-      receptions: 0.5,
+      receptions: leagueContext.receptions,
       passingTD: leagueContext.passTD,
-      completionPoint: 0.1,
+      completionPoint: leagueContext.completionPoint,
       startingWR: leagueContext.startWR,
       flex: leagueContext.flex,
-      firstDownPoint: 0.1,
-      bigPlayBonuses: true,
-      enhancedDST: true,
-      customKicker: true,
+      firstDownPoint: leagueContext.firstDownPoint,
+      bigPlayBonuses: leagueContext.bigPlayBonuses,
+      enhancedDST: leagueContext.enhancedDST,
+      customKicker: leagueContext.customKicker,
       riskProfile: leagueContext.risk,
       strategy: leagueContext.strategy,
     },
@@ -3030,6 +3040,11 @@ function saveYahooRecord(record) {
   a.unshift(record);
   a = a.slice(0, 75);
   localStorage.setItem(leagueProfileStore?.archiveKey(activeLeagueProfile?.id)||'fantasyHQYahooMocks', JSON.stringify(a));
+}
+function removeYahooRecord(recordId){
+  if(!recordId)return;
+  const key=leagueProfileStore?.archiveKey(activeLeagueProfile?.id)||'fantasyHQYahooMocks',remaining=yahooArchive().filter(record=>record.id!==recordId);
+  localStorage.setItem(key,JSON.stringify(remaining));
 }
 function downloadBlob(filename, text, type) {
   const blob = new Blob([text], { type });
@@ -3495,13 +3510,18 @@ function recordCurrentPick(id) {
   return recorded;
 }
 function undoLastPick() {
-  if (!history.length) return;
+  if (!history.length) return false;
+  const wasComplete=pick>TOTAL_PICKS||!DOM.draftReport?.classList.contains('hidden');
+  if(wasComplete&&currentYahooRecord?.id)removeYahooRecord(currentYahooRecord.id);
   const last = history.pop();
   drafted = drafted.filter(id => canonicalPlayerId(id) !== canonicalPlayerId(last.id));
   pick = Math.max(1, last.pick);
+  currentYahooRecord=null;
   selectedCandidateId = null;
   invalidateIntelligence();
+  if(wasComplete){DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');DOM.yahooExportCard?.classList.add('hidden')}
   renderAll();
+  return true;
 }
 function syncSearch(source) {
   const mobileSearch = el('search');
@@ -3818,14 +3838,14 @@ selectPlayer = function (id, team) {
 const originalUndoLastPick = undoLastPick;
 undoLastPick = function () {
   const result = originalUndoLastPick.apply(this, arguments);
-  syncDraftIntoLeagueState();persistDraftSession();
+  if(result){syncDraftIntoLeagueState();persistDraftSession()}
   return result;
 };
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_12')
+      .register('./service-worker.js?v=jonin_4_3_22')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );
