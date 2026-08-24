@@ -6,6 +6,8 @@ let players = [],
   drafted = [],
   history = [],
   decisionSnapshots = [],
+  excludedRecommendationIds = new Set(),
+  exclusionEvents = [],
   currentYahooRecord = null,
   posFilter = 'ALL',
   aiProfiles = {},
@@ -313,8 +315,10 @@ const DOM = Object.freeze({
 });
 const leagueProfileStore=window.LeagueProfilesV1?new LeagueProfilesV1.LeagueProfileStore():null;
 let activeLeagueProfile=leagueProfileStore?.initialize()&&leagueProfileStore.active(),
-  draftSessionStore=window.DraftSessionV1?new DraftSessionV1.DraftSessionStore(localStorage,leagueProfileStore?.draftKey(activeLeagueProfile?.id)):null;
+  draftSessionStore=window.DraftSessionV1?new DraftSessionV1.DraftSessionStore(localStorage,leagueProfileStore?.draftKey(activeLeagueProfile?.id)):null,
+  completedDraftArchiveStore=window.DraftSessionV1?new DraftSessionV1.CompletedDraftArchiveStore(localStorage,leagueProfileStore?.completedArchiveKey(activeLeagueProfile?.id)):null;
 let replacingSavedDraft=false;
+let completedDraftRecoveryEntries=[];
 function safeText(id, value) {
   const node = el(id);
   if (node) node.textContent = value;
@@ -324,7 +328,7 @@ function safeHTML(id, value) {
   if (node) node.innerHTML = value;
 }
 function activeProfileSettings(){return activeLeagueProfile?.settings||leagueContext}
-function bindProfileDraftStore(){draftSessionStore=window.DraftSessionV1?new DraftSessionV1.DraftSessionStore(localStorage,leagueProfileStore?.draftKey(activeLeagueProfile?.id)):null}
+function bindProfileDraftStore(){draftSessionStore=window.DraftSessionV1?new DraftSessionV1.DraftSessionStore(localStorage,leagueProfileStore?.draftKey(activeLeagueProfile?.id)):null;completedDraftArchiveStore=window.DraftSessionV1?new DraftSessionV1.CompletedDraftArchiveStore(localStorage,leagueProfileStore?.completedArchiveKey(activeLeagueProfile?.id)):null}
 function renderLeagueProfileControls(){
   if(!leagueProfileStore||!activeLeagueProfile)return;
   const profiles=leagueProfileStore.list();
@@ -358,7 +362,7 @@ function selectLeagueProfile(profileId){
   if(!leagueProfileStore||profileId===activeLeagueProfile?.id)return;
   if(history.length&&draftSessionStore)persistDraftSession(pick>TOTAL_PICKS?'complete':'active');
   activeLeagueProfile=leagueProfileStore.select(profileId);bindProfileDraftStore();
-  history=[];drafted=[];decisionSnapshots=[];pick=1;selectedCandidateId=null;currentYahooRecord=null;invalidateIntelligence();
+  history=[];drafted=[];decisionSnapshots=[];excludedRecommendationIds=new Set();exclusionEvents=[];pick=1;selectedCandidateId=null;currentYahooRecord=null;invalidateIntelligence();
   applyActiveLeagueProfile();backToSetup();showSavedDraftPrompt();
 }
 function createLeagueProfile(){
@@ -599,25 +603,66 @@ function chooseMode(m) {
 }
 function currentDraftSessionState(status='active'){
   const recommendationIds=players.length&&pick<=TOTAL_PICKS?recommendations().map(player=>player.id):[];
-  return {status,leagueProfileId:activeLeagueProfile?.id||null,appVersion:APP_VERSION.label,rankingSnapshot:window.__activeRankingSnapshot?JSON.parse(JSON.stringify(window.__activeRankingSnapshot)):null,injurySnapshot:{provider:window.__injurySnapshot?.provider||null,fetchedAt:window.__injurySnapshot?.fetchedAt||null,cacheState:window.__injurySnapshot?.cacheState||null},archiveRecordId:currentYahooRecord?.id||null,mode,style,slot,pick,currentRound:info().r,currentPickOwner:pick<=TOTAL_PICKS?teamForPick(pick):null,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
+  return {status,leagueProfileId:activeLeagueProfile?.id||null,appVersion:APP_VERSION.label,rankingSnapshot:window.__activeRankingSnapshot?JSON.parse(JSON.stringify(window.__activeRankingSnapshot)):null,injurySnapshot:{provider:window.__injurySnapshot?.provider||null,fetchedAt:window.__injurySnapshot?.fetchedAt||null,cacheState:window.__injurySnapshot?.cacheState||null},archiveRecordId:currentYahooRecord?.id||null,excludedRecommendationIds:[...excludedRecommendationIds],exclusionEvents:exclusionEvents.map(event=>({...event})),mode,style,slot,pick,currentRound:info().r,currentPickOwner:pick<=TOTAL_PICKS?teamForPick(pick):null,drafted:[...drafted],history:history.map(entry=>({...entry})),decisionSnapshots:decisionSnapshots.map(entry=>({...entry})),settings:{...leagueContext,rosterSlots:[...rosterSlots]},leagueConfiguration:{...leagueContext,totalRounds:TOTAL_ROUNDS,totalPicks:TOTAL_PICKS},managers:{...slotManagers},recommendations:recommendationIds,importedRankings:players.map(player=>({id:player.id,overall:player.overall??null,posRank:player.posRank??null,overallTier:player.overallTier??null,posTier:player.posTier??null}))};
 }
 function persistDraftSession(status='active'){
   if(!draftSessionStore||!history.length&&DOM.appScreen?.classList.contains('hidden'))return null;
   const snapshot=status==='complete'?draftSessionStore.complete(currentDraftSessionState('complete')):draftSessionStore.save(currentDraftSessionState('active'));
+  if(status==='complete')archiveCompletedSnapshot(snapshot,{captureExport:true});
   renderDraftTimeline();return snapshot;
 }
+function archiveCompletedSnapshot(snapshot,{captureExport=false,store=completedDraftArchiveStore}={}){
+  if(snapshot?.status!=='complete')return null;if(!store)throw new Error('Completed Draft History is unavailable.');const exportRecord=captureExport?buildDraftJSONExport(snapshot.updatedAt||new Date().toISOString()):null;return store.archive(snapshot,{exportRecord,archivedAt:new Date().toISOString()});
+}
+function migrateRecoverableCompletedSessions(){
+  if(!leagueProfileStore||!window.DraftSessionV1)return 0;const profiles=leagueProfileStore.list(),byId=new Map(profiles.map(profile=>[profile.id,profile])),migrated=[];
+  const preserve=(raw,profileHint)=>{if(!raw)return;try{const snapshot=DraftSessionV1.validate(JSON.parse(raw));if(snapshot.status!=='complete')return;const profile=byId.get(snapshot.leagueProfileId)||profileHint||activeLeagueProfile,store=new DraftSessionV1.CompletedDraftArchiveStore(localStorage,leagueProfileStore.completedArchiveKey(profile.id));store.archive(snapshot,{archivedAt:new Date().toISOString()});migrated.push(snapshot.sessionId)}catch(error){console.warn('Completed draft preservation skipped an invalid record:',error.message)}};
+  profiles.forEach(profile=>preserve(localStorage.getItem(leagueProfileStore.draftKey(profile.id)),profile));preserve(localStorage.getItem(DraftSessionV1.STORAGE_KEY),byId.get(LeagueProfilesV1.PRIMARY_ID));return new Set(migrated).size;
+}
 function showSavedDraftPrompt(){
-  const saved=draftSessionStore?.load();if(!saved){DOM.resumeDraftCard?.classList.add('hidden');return}
+  refreshCompletedDraftCount();const saved=draftSessionStore?.load();if(!saved){DOM.resumeDraftCard?.classList.add('hidden');return}
   DOM.resumeDraftCard?.classList.remove('hidden');if(DOM.resumeDraftSummary)DOM.resumeDraftSummary.textContent=`${activeLeagueProfile?.displayName||'League'} • ${saved.status==='complete'?'Completed ':''}${saved.mode||'Draft'} • Slot ${saved.slot} • ${saved.history.length} picks recorded • saved ${new Date(saved.updatedAt).toLocaleString()}`;
   const resumeButton=el('resumeDraftBtn');if(resumeButton)resumeButton.textContent=saved.status==='complete'?'Open Draft Report':'Resume Draft';
 }
+function discoverRecoverableCompletedDrafts(){
+  if(!window.DraftWorkflowV1||!window.DraftSessionV1||!leagueProfileStore)return [];
+  return DraftWorkflowV1.discoverCompletedDrafts({storage:localStorage,profiles:leagueProfileStore.list(),draftKey:LeagueProfilesV1.draftKey,archiveKey:LeagueProfilesV1.archiveKey,completedArchiveKey:LeagueProfilesV1.completedArchiveKey,legacyDraftKey:DraftSessionV1.STORAGE_KEY,validateSession:DraftSessionV1.validate});
+}
+function completedDraftLabel(entry){return entry.kind==='yahoo-archive'?'Yahoo archive':entry.mode==='live'?'Live Draft':entry.mode==='yahoo'?'Yahoo Live Mock':'Practice Mock'}
+function refreshCompletedDraftCount(){
+  completedDraftRecoveryEntries=discoverRecoverableCompletedDrafts();const count=el('completedDraftCount');if(count)count.textContent=completedDraftRecoveryEntries.length?`(${completedDraftRecoveryEntries.length})`:'';return completedDraftRecoveryEntries;
+}
+function recoveryEntry(entryId){return refreshCompletedDraftCount().find(entry=>entry.id===entryId)||null}
+function renderCompletedDraftHistory(){
+  const content=el('completedDraftHistoryContent'),entries=refreshCompletedDraftCount();if(!content)return;
+  content.innerHTML='';
+  const notice=document.createElement('div');notice.className='readOnlyNotice';notice.textContent='Read-only recovery: opening or exporting a completed draft does not replace or modify the current Resume session.';content.appendChild(notice);
+  if(!entries.length){const empty=document.createElement('div');empty.className='timelineEmpty';empty.textContent='No recoverable completed session or Yahoo archive exists in the application’s supported storage locations.';content.appendChild(empty);return}
+  const list=document.createElement('div');list.className='completedDraftList';
+  entries.forEach(entry=>{const article=document.createElement('article');article.className='completedDraftRecord';const info=document.createElement('div'),title=document.createElement('h3'),meta=document.createElement('div');title.textContent=`${entry.profileName} — ${completedDraftLabel(entry)}`;meta.className='meta';meta.textContent=`Completed ${entry.completedAt?new Date(entry.completedAt).toLocaleString():'time unavailable'} • Slot ${entry.draftSlot??'unknown'} • ${entry.pickCount} picks`;info.append(title,meta);const actions=document.createElement('div');actions.className='completedDraftActions';const open=document.createElement('button');open.type='button';open.className='ghost';open.textContent='Open Completed Draft';open.addEventListener('click',()=>openRecoveredCompletedDraft(entry.id));const exportButton=document.createElement('button');exportButton.type='button';exportButton.className='primary';exportButton.textContent='Export JSON';exportButton.addEventListener('click',()=>exportRecoveredCompletedDraft(entry.id));actions.append(open,exportButton);article.append(info,actions);list.appendChild(article)});content.appendChild(list);
+}
+function openCompletedDraftHistory(){const panel=el('completedDraftHistoryPanel');if(!panel)return;renderCompletedDraftHistory();panel.classList.remove('hidden')}
+function closeCompletedDraftHistory(event){if(event&&event.target!==event.currentTarget)return;el('completedDraftHistoryPanel')?.classList.add('hidden')}
+function openRecoveredCompletedDraft(entryId){
+  const entry=recoveryEntry(entryId),content=el('completedDraftHistoryContent');if(!entry||!content)return;
+  let exported;try{exported=DraftWorkflowV1.buildRecoveryExport(entry,{playerIndex:fantasyHQPlayerIndex(),appVersion:APP_VERSION.label,exportedAt:new Date().toISOString()})}catch(error){content.textContent=`This completed draft could not be opened: ${error.message}`;return}
+  content.innerHTML='';const back=document.createElement('button');back.type='button';back.className='ghost';back.textContent='← Back to Draft History';back.addEventListener('click',renderCompletedDraftHistory);content.appendChild(back);
+  const detail=document.createElement('article');detail.className='completedDraftDetail';const heading=document.createElement('h2');heading.textContent=`${entry.profileName} — ${completedDraftLabel(entry)}`;const notice=document.createElement('div');notice.className='readOnlyNotice';notice.textContent='Viewing stored completion data only. Your active Resume draft remains selected and unchanged.';detail.append(heading,notice);
+  const facts=document.createElement('div');facts.className='completedDraftFacts';[['Completed',entry.completedAt?new Date(entry.completedAt).toLocaleString():'Unavailable'],['Draft slot',entry.draftSlot??'Unavailable'],['Picks',exported.draft.picksRecorded],['Status',exported.draft.status]].forEach(([label,value])=>{const fact=document.createElement('span'),small=document.createElement('small'),strong=document.createElement('b');small.textContent=label;strong.textContent=String(value);fact.append(small,strong);facts.appendChild(fact)});detail.appendChild(facts);
+  const actions=document.createElement('div');actions.className='completedDraftActions';const download=document.createElement('button');download.type='button';download.className='primary';download.textContent='Export Completed Draft JSON';download.addEventListener('click',()=>exportRecoveredCompletedDraft(entry.id));const close=document.createElement('button');close.type='button';close.className='ghost';close.textContent='Return to Current Draft';close.addEventListener('click',()=>closeCompletedDraftHistory());actions.append(download,close);detail.appendChild(actions);
+  const picks=document.createElement('div');picks.className='completedDraftPickList';exported.draftHistory.forEach(pickRow=>{const row=document.createElement('div');row.className='completedDraftPick';const pickNumber=document.createElement('span'),name=document.createElement('span'),team=document.createElement('span');pickNumber.textContent=`#${pickRow.overallPick}`;name.textContent=pickRow.playerName||'Unknown player';team.textContent=`Slot ${pickRow.teamSlot??'?'}`;row.append(pickNumber,name,team);picks.appendChild(row)});detail.appendChild(picks);content.appendChild(detail);
+}
+function exportRecoveredCompletedDraft(entryId){
+  const entry=recoveryEntry(entryId);if(!entry){alert('That completed draft is no longer available.');return false}
+  try{const exportedAt=new Date().toISOString(),record=DraftWorkflowV1.buildRecoveryExport(entry,{playerIndex:fantasyHQPlayerIndex(),appVersion:APP_VERSION.label,exportedAt}),name=DraftWorkflowV1.filename({leagueName:entry.profileName,draftMode:record.draft.draftMode,status:'complete',date:exportedAt});downloadBlob(name,JSON.stringify(record,null,2),'application/json');return true}catch(error){alert(`Completed draft export failed: ${error.message}`);return false}
+}
 function confirmStartNewDraft(){
   const saved=draftSessionStore?.load();if(saved?.status==='active'&&!confirm('Start a new draft? The active saved draft will be replaced.'))return;
-  draftSessionStore?.clear();replacingSavedDraft=true;DOM.resumeDraftCard?.classList.add('hidden');startDraft();replacingSavedDraft=false;
+  try{if(saved?.status==='complete')archiveCompletedSnapshot(saved);else draftSessionStore?.clear()}catch(error){alert(`The completed draft could not be preserved, so a new draft was not started: ${error.message}`);return}replacingSavedDraft=true;DOM.resumeDraftCard?.classList.add('hidden');startDraft();replacingSavedDraft=false;
 }
 function applySavedSettings(settings={}){if(settings.teams!==undefined){const teamNode=el('teamCount');if(teamNode)teamNode.value=settings.teams;refreshDraftSlotOptions(settings.teams,settings.slot)}const values={draftSlot:settings.slot,scoring:settings.scoring,startQB:settings.startQB,startRB:settings.startRB,startWR:settings.startWR,startTE:settings.startTE,flexSpots:settings.flex,startK:settings.startK,startDST:settings.startDST,benchSpots:settings.bench,irSpots:settings.irSlots,passTD:settings.passTD,riskProfile:settings.risk};Object.entries(values).forEach(([id,value])=>{const node=el(id);if(node&&value!==undefined)node.value=value})}
 function resumeSavedDraft(){
-  try{const saved=draftSessionStore?.load();if(!saved)throw new Error('No saved draft is available.');if(saved.leagueProfileId&&activeLeagueProfile?.id&&saved.leagueProfileId!==activeLeagueProfile.id)throw new Error('Saved draft belongs to a different league profile.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;if(saved.currentPickOwner!=null&&Number(saved.currentPickOwner)!==teamForPick(pick))throw new Error('Saved draft owner does not match the restored snake order.');decisionSnapshots=[...(saved.decisionSnapshots||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');renderLeagueDnaBar();renderDraftTimeline();if(saved.status==='complete'){document.querySelector('.appgrid')?.classList.add('hidden');DOM.draftReport?.classList.remove('hidden');DOM.tabs?.classList.add('hidden');currentYahooRecord=mode==='yahoo'?(yahooArchive().find(record=>record.id===saved.archiveRecordId)||buildYahooRecord()):null;renderDraftReport();DOM.yahooExportCard?.classList.toggle('hidden',mode!=='yahoo');if(mode==='yahoo')updateArchiveCount()}else{DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderAll();installDraftNavigationGuard()}requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
+  try{const saved=draftSessionStore?.load();if(!saved)throw new Error('No saved draft is available.');if(saved.leagueProfileId&&activeLeagueProfile?.id&&saved.leagueProfileId!==activeLeagueProfile.id)throw new Error('Saved draft belongs to a different league profile.');mode=saved.mode||'practice';style=saved.style||'chaotic';slot=Number(saved.slot)||10;leagueContext={...leagueContext,...saved.settings};applyDraftStructure();slotManagers={...saved.managers};buildProfiles();history=saved.history.map(entry=>({...entry}));drafted=[...saved.drafted];pick=Number(saved.pick)||history.length+1;if(saved.currentPickOwner!=null&&Number(saved.currentPickOwner)!==teamForPick(pick))throw new Error('Saved draft owner does not match the restored snake order.');decisionSnapshots=[...(saved.decisionSnapshots||[])];excludedRecommendationIds=new Set(DraftWorkflowV1.normalizeExclusions(saved.excludedRecommendationIds,canonicalPlayerId));exclusionEvents=[...(saved.exclusionEvents||[])];selectedCandidateId=null;invalidateIntelligence();applySavedSettings({...saved.settings,slot});chooseMode(mode);DOM.setupScreen?.classList.add('hidden');DOM.appScreen?.classList.remove('hidden');DOM.changeBtn?.classList.remove('hidden');renderLeagueDnaBar();renderDraftTimeline();if(saved.status==='complete'){document.querySelector('.appgrid')?.classList.add('hidden');DOM.draftReport?.classList.remove('hidden');DOM.tabs?.classList.add('hidden');currentYahooRecord=mode==='yahoo'?(yahooArchive().find(record=>record.id===saved.archiveRecordId)||buildYahooRecord()):null;renderDraftReport();DOM.yahooExportCard?.classList.toggle('hidden',mode!=='yahoo');if(mode==='yahoo')updateArchiveCount()}else{DOM.draftReport?.classList.add('hidden');document.querySelector('.appgrid')?.classList.remove('hidden');DOM.tabs?.classList.remove('hidden');renderAll();installDraftNavigationGuard()}requestAnimationFrame(()=>window.scrollTo?.(0,0));}catch(error){alert(`Saved draft could not be resumed: ${error.message}`)}
 }
 function renderDraftTimeline(){if(!DOM.draftTimeline||!window.DraftSessionV1)return;const groups=DraftSessionV1.timeline(history,fantasyHQPlayerIndex(),leagueContext.teams||10);DOM.draftTimeline.innerHTML=groups.length?groups.map(group=>`<section class="timelineRound"><strong>Round ${group.round}</strong>${group.picks.map(entry=>`<div class="timelinePick"><span>${safeInsightText(entry.label)}</span><span>${safeInsightText(entry.playerName)}</span></div>`).join('')}</section>`).join(''):'<div class="timelineEmpty">Picks will appear here chronologically.</div>'}
 function saveDraftNotebook(value){if(!window.DraftSessionV1)return;DraftSessionV1.saveNote(value);if(DOM.notebookStatus){DOM.notebookStatus.textContent='Saved just now';DOM.notebookStatus.dataset.savedAt=new Date().toISOString()}renderRoundNoteReminder()}
@@ -633,7 +678,7 @@ function renderRoundNoteReminder(){
   DOM.roundNoteReminder.innerHTML=`<span><b>Round ${round} reminder</b>${safeInsightText(reminder.text||'Review your draft note for this round.')}</span><button type="button" aria-label="Dismiss round reminder" onclick="dismissRoundNoteReminder()">×</button>`;
   DOM.roundNoteReminder.classList.remove('hidden');
 }
-function initializeDraftReliability(){showSavedDraftPrompt();if(DOM.draftNotebook&&window.DraftSessionV1)DOM.draftNotebook.value=DraftSessionV1.loadNote();renderDraftTimeline()}
+function initializeDraftReliability(){migrateRecoverableCompletedSessions();showSavedDraftPrompt();if(DOM.draftNotebook&&window.DraftSessionV1)DOM.draftNotebook.value=DraftSessionV1.loadNote();renderDraftTimeline()}
 function activeDraftExists(){return Boolean(draftSessionStore?.hasActive()&&history.length&&pick<=TOTAL_PICKS)}
 function installDraftNavigationGuard(){if(window.history?.state?.fantasyHQDraft)return;window.history?.pushState({fantasyHQDraft:true},'',window.location.href)}
 window.addEventListener('beforeunload',event=>{if(!activeDraftExists())return;event.preventDefault();event.returnValue=''})
@@ -685,6 +730,8 @@ function startDraft() {
     drafted = [];
     history = [];
     decisionSnapshots = [];
+    excludedRecommendationIds = new Set();
+    exclusionEvents = [];
     currentYahooRecord = null;
     selectedCandidateId = null;
     invalidateIntelligence();
@@ -756,6 +803,22 @@ function isDraftedPlayer(id) {
 function playerByCanonicalId(id) {
   const canonicalId = canonicalPlayerId(id);
   return playerIdentityIndex.get(canonicalId) || null;
+}
+function isRecommendationExcluded(id){return excludedRecommendationIds.has(canonicalPlayerId(id))}
+function exclusionAuditEvent(action,id){return{action,playerId:canonicalPlayerId(id),timestamp:new Date().toISOString(),overallPick:pick,round:info().r,leagueProfileId:activeLeagueProfile?.id||null}}
+function excludeRecommendationPlayer(id,event){
+  event?.stopPropagation?.();const player=playerByCanonicalId(id);if(!player||DOM.appScreen?.classList.contains('hidden'))return false;
+  const canonicalId=canonicalPlayerId(player.id);if(excludedRecommendationIds.has(canonicalId))return true;
+  excludedRecommendationIds.add(canonicalId);exclusionEvents.push(exclusionAuditEvent('excluded',canonicalId));if(String(selectedCandidateId)===canonicalId)selectedCandidateId=null;invalidateIntelligence();renderAll();persistDraftSession(pick>TOTAL_PICKS?'complete':'active');return true;
+}
+function restoreRecommendationPlayer(id){
+  const canonicalId=canonicalPlayerId(id);if(!excludedRecommendationIds.delete(canonicalId))return false;
+  exclusionEvents.push(exclusionAuditEvent('restored',canonicalId));invalidateIntelligence();renderAll();persistDraftSession(pick>TOTAL_PICKS?'complete':'active');return true;
+}
+function toggleExcludedPlayers(){const panel=el('excludedPlayersPanel'),button=el('excludedPlayersButton');if(!panel)return;const opening=panel.classList.contains('hidden');panel.classList.toggle('hidden',!opening);button?.setAttribute('aria-expanded',String(opening));renderExcludedPlayers()}
+function renderExcludedPlayers(){
+  const button=el('excludedPlayersButton'),panel=el('excludedPlayersPanel'),ids=[...excludedRecommendationIds];if(button)button.textContent=`Excluded (${ids.length})`;if(!panel)return;
+  panel.innerHTML=ids.length?ids.map(id=>{const player=playerByCanonicalId(id),draftedState=isDraftedPlayer(id);return `<div><span><b>${safeInsightText(player?.name||`Player ${id}`)}</b><small>${safeInsightText(player?`${positionKey(player)} • ${player.team||'—'}`:'Canonical player')}</small></span><button type="button" class="ghost" onclick="restoreRecommendationPlayer('${safeInsightText(id)}')">Restore${draftedState?' (drafted)':''}</button></div>`}).join(''):'<span class="meta">No players are excluded from recommendations.</span>';
 }
 function available() {
   return players.filter(p => !isDraftedPlayer(p.id));
@@ -1072,6 +1135,7 @@ function sharinganStage(p) {
   return { key: 'one', label: 'ONE TOMOE', meaning: 'Good Pick' };
 }
 function recommendationEligible(p) {
+  if (isRecommendationExcluded(p.id)) return false;
   if (userPositionFilled(p.pos)) return false;
   return true;
 }
@@ -1468,7 +1532,7 @@ function recommendations() {
   const completion = rosterCompletionState();
   let pool = completionConstrainedPool(available().filter(recommendationEligible), completion);
   if (!pool.length)
-    pool = completionConstrainedPool(available().filter(p => !['QB', 'TE'].includes(p.pos) || !userPositionFilled(p.pos)), completion);
+    pool = completionConstrainedPool(available().filter(p => !isRecommendationExcluded(p.id)&&(!['QB', 'TE'].includes(p.pos) || !userPositionFilled(p.pos))), completion);
   if(!window.JoninDecisionIntelligenceV1)return RosterCompletionConstraintV1.finalizeRecommendations([...pool].sort((a,b)=>finalPickScore(b)-finalPickScore(a)||mambaScore(b)-mambaScore(a)),completion,5);
   const strategicTie=(item)=>finalDecisionTrace(item.player).strategy,decision=championshipDecision(pool),marketFloor=recommendationMarketFloor(decision,completion),ordered=decision.all.slice().sort((a,b)=>recommendationIntegrityPriority(a,completion,marketFloor.playerId)-recommendationIntegrityPriority(b,completion,marketFloor.playerId)||b.scores.finalDecision-a.scores.finalDecision||(strategicTie(b)?.starterEquity?.impact??0)-(strategicTie(a)?.starterEquity?.impact??0)||(strategicTie(b)?.marginalUtility?.adjustment??0)-(strategicTie(a)?.marginalUtility?.adjustment??0)||(strategicTie(b)?.benchPortfolio?.valueFall??0)-(strategicTie(a)?.benchPortfolio?.valueFall??0)||(strategicTie(b)?.benchPortfolio?.offset??0)-(strategicTie(a)?.benchPortfolio?.offset??0)||b.scores.playerValue-a.scores.playerValue||reliableOverallRank(a.player)-reliableOverallRank(b.player)||String(a.player.id).localeCompare(String(b.player.id))).map(item=>item.player),championshipEquityOrder=applyChampionshipEquityBestPickTieBreak(ordered,decision,completion);
   return RosterCompletionConstraintV1.finalizeRecommendations(championshipEquityOrder,completion,5);
@@ -1666,7 +1730,7 @@ function selectPlayer(id, team, options = {}) {
     if (Number(team) !== owner) return false;
     id = player.id;
     team = owner;
-    if (mode === 'yahoo' && team === slot) {
+    if (team === slot) {
       decisionSnapshots.push({
         beforePick: pick,
         selectedPlayerId: id,
@@ -2740,6 +2804,9 @@ function alternativeDecisionMarkup(model, rank, categoryLabel) {
   const p=model.player,card=model.playerCard||{},tier=PlayerTierContract.getDecisionTier(p),score=mambaScore(p),confidence=model.coaching?.confidence??model.summary?.confidence?.score??50,tags=compactStrategyTags(model).slice(0,4),active=selectedCandidateId===p.id||(!selectedCandidateId&&rank===1),portrait=card.imageUrl||`assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`;
   return `<article class="recommendationPlayerCard ${active?'active':''}" data-testid="recommendation-card-${safeInsightText(p.id)}" data-player-id="${safeInsightText(p.id)}"><span class="recommendationCategory">${safeInsightText(categoryLabel)}</span><span class="recommendationRank">${rank}</span><div class="recommendationPortrait"><img src="${safeInsightText(portrait)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl||'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl||'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage??1)}" data-player-name="${safeInsightText(p.name)}" alt="" onerror="handlePlayerPortraitError(this)"></div><div class="recommendationCardIdentity"><b>${safeInsightText(p.name)}</b><small>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team||'—')}</small><span>Tier ${safeInsightText(tier)} • ♛ ${safeInsightText(score)}</span></div><div class="recommendationIcons">${tags.map(tag=>`<i title="${safeInsightText(tag.label)}" aria-label="${safeInsightText(tag.label)}">${tag.icon}</i>`).join('')}</div><div class="recommendationStars" aria-label="${safeInsightText(confidence)} confidence">${'★'.repeat(Math.max(1,Math.min(5,Math.round(confidence/20))))}${'☆'.repeat(5-Math.max(1,Math.min(5,Math.round(confidence/20))))}</div><div class="recommendationActions"><button type="button" class="viewRecommendation" aria-pressed="${active}" onclick="viewRecommendationPlayer(${p.id})">View</button><button type="button" class="draftRecommendation" onclick="draftRecommendationPlayer(${p.id})">Draft</button></div></article>`;
 }
+function appendExclusionControl(container,player){
+  if(!container||!player)return;const button=document.createElement('button');button.type='button';button.className='excludeRecommendationButton';button.textContent='×';button.title='Exclude from recommendations';button.setAttribute('aria-label',`Exclude ${player.name} from recommendations`);button.addEventListener('click',event=>excludeRecommendationPlayer(player.id,event));container.appendChild(button);
+}
 function renderRecommendation() {
   const renderStarted = performance.now();
   let recs = snapshotRecommendations();
@@ -2768,13 +2835,16 @@ function renderRecommendation() {
   DOM.recommendation.innerHTML = decisionCardMarkup(model, {
     recommended: displayed.id === primary.id,
   });
+  appendExclusionControl(DOM.recommendation.querySelector('.compactFightCard'),displayed);
   const recommendationModels=recs.slice(0,5).map(candidate=>playerDecisionModel(candidate,recs)),categoryLabels=recommendationCategoryLabels(recommendationModels);
   DOM.alternatives.innerHTML = recommendationModels
     .map((candidateModel, index) => alternativeDecisionMarkup(candidateModel,index+1,categoryLabels.get(candidateModel.player.id)))
     .join('');
+  DOM.alternatives.querySelectorAll('.recommendationPlayerCard').forEach(card=>appendExclusionControl(card,playerByCanonicalId(card.dataset.playerId)));
   if(DOM.fightCardMode)DOM.fightCardMode.textContent=displayed.id===primary.id?'Recommended Pick':'Player View';
   updateDraftDecisionChrome(model,displayed,primary);
   DOM.recommendation.dataset.renderMs = (performance.now() - renderStarted).toFixed(3);
+  renderExcludedPlayers();
 }
 function boardControlState(score){return score>=72?'HIGH':score>=55?'MEDIUM':'LOW'}
 function updateDraftDecisionChrome(model,displayed,primary){
@@ -3059,6 +3129,14 @@ function downloadBlob(filename, text, type) {
 }
 function safeDateName() {
   return new Date().toISOString().replace(/[:.]/g, '-');
+}
+function buildDraftJSONExport(exportedAt=new Date().toISOString()){
+  const session=draftSessionStore?.load(),teams=leagueContext.teams||10,playerRows=history.map(entry=>{const player=playerByCanonicalId(entry.id);return{overallPick:entry.pick,round:Math.ceil(entry.pick/teams),pickInRound:((entry.pick-1)%teams)+1,teamSlot:entry.team,isUser:entry.team===slot,canonicalPlayerId:canonicalPlayerId(entry.id),playerName:player?.name||'Unknown player',position:player?positionKey(player):'',nflTeam:player?.team||''}}),excludedIds=[...excludedRecommendationIds];
+  return DraftWorkflowV1.buildExport({exportedAt,appVersion:APP_VERSION.label,sessionId:session?.sessionId,draftMode:mode==='live'?'live':'mock',sourceMode:mode,startedAt:session?.createdAt,completedAt:session?.status==='complete'?session.updatedAt:null,sessionUpdatedAt:session?.updatedAt,currentPick:pick,currentRound:info().r,expectedTotalPicks:TOTAL_PICKS,league:{profileId:activeLeagueProfile?.id||null,profileName:activeLeagueProfile?.displayName||null,leagueName:activeLeagueProfile?.leagueName||null,teamCount:teams,userDraftSlot:slot,scoringFormat:leagueContext.scoring,passingTouchdownPoints:leagueContext.passTD,rosterConfiguration:{slots:[...rosterSlots],startQB:leagueContext.startQB,startRB:leagueContext.startRB,startWR:leagueContext.startWR,startTE:leagueContext.startTE,flex:leagueContext.flex,startK:leagueContext.startK,startDST:leagueContext.startDST,bench:leagueContext.bench,irSlots:leagueContext.irSlots},settings:{...leagueContext}},rankings:window.__activeRankingSnapshot?JSON.parse(JSON.stringify(window.__activeRankingSnapshot)):session?.rankingSnapshot||null,injuries:{provider:window.__injurySnapshot?.provider||session?.injurySnapshot?.provider||null,fetchedAt:window.__injurySnapshot?.fetchedAt||session?.injurySnapshot?.fetchedAt||null,cacheState:window.__injurySnapshot?.cacheState||session?.injurySnapshot?.cacheState||null},history:playerRows,userRoster:myPlayers().map(player=>({canonicalPlayerId:canonicalPlayerId(player.id),playerName:player.name,position:positionKey(player),nflTeam:player.team||''})),excludedPlayerIds:excludedIds,excludedPlayers:excludedIds.map(id=>{const player=playerByCanonicalId(id);return{canonicalPlayerId:id,playerName:player?.name||null}}),exclusionEvents,recommendationHistory:decisionSnapshots});
+}
+function exportDraftJSON(){
+  if(!history.length&&DOM.appScreen?.classList.contains('hidden')){alert('Start or resume a draft before exporting.');return false}
+  const exportedAt=new Date().toISOString(),record=buildDraftJSONExport(exportedAt),filename=DraftWorkflowV1.filename({leagueName:activeLeagueProfile?.displayName||activeLeagueProfile?.leagueName,draftMode:record.draft.draftMode,status:record.draft.status,date:exportedAt});downloadBlob(filename,JSON.stringify(record,null,2),'application/json');return true;
 }
 function exportCurrentYahooJSON() {
   if (!currentYahooRecord) {
@@ -3663,6 +3741,8 @@ function renderPlayers() {
               </span>
             </button>
 
+            ${isRecommendationExcluded(player.id)?`<button type="button" class="excludedSearchBadge" onclick="restoreRecommendationPlayer('${safeInsightText(player.id)}')">Excluded · Restore</button>`:''}
+
             <button
               class="autoPickBtn"
               onclick="recordCurrentPick(${player.id})"
@@ -3825,6 +3905,7 @@ if (window.FantasyHQCore) {
 }
 const originalStartDraft = startDraft;
 startDraft = function () {
+  const saved=draftSessionStore?.load();if(saved?.status==='complete'){try{archiveCompletedSnapshot(saved)}catch(error){alert(`The completed draft could not be preserved, so the active slot was not reused: ${error.message}`);return false}}
   const result = originalStartDraft.apply(this, arguments);
   if(result===true){draftSessionStore?.start(currentDraftSessionState('active'));syncDraftIntoLeagueState();persistDraftSession()}
   return result;
@@ -3845,7 +3926,7 @@ undoLastPick = function () {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_3_22')
+      .register('./service-worker.js?v=jonin_4_3_23')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "draftStateVersion": 1,
+  "sessionId": "fixture-4-3-22-completed-live",
+  "createdAt": "2026-08-23T16:00:00.000Z",
+  "updatedAt": "2026-08-23T17:00:00.000Z",
+  "status": "complete",
+  "mode": "live",
+  "style": "chaotic",
+  "leagueProfileId": "primary-league",
+  "appVersion": "Jōnin 4.3.22",
+  "rankingSnapshot": {
+    "schemaVersion": "2.0",
+    "snapshotId": "2026-draftday-2026-08-23",
+    "captureDate": "2026-08-23",
+    "primaryDecisionSource": "Fantasyland",
+    "sources": {
+      "Fantasyland": { "available": true },
+      "Flock": { "available": true }
+    }
+  },
+  "injurySnapshot": {
+    "provider": "Sleeper",
+    "fetchedAt": "2026-08-23T15:30:00.000Z",
+    "cacheState": "CURRENT"
+  },
+  "archiveRecordId": null,
+  "slot": 10,
+  "pick": 21,
+  "currentRound": 3,
+  "currentPickOwner": null,
+  "drafted": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  "history": [
+    { "pick": 1, "id": 1, "team": 1 },
+    { "pick": 2, "id": 2, "team": 2 },
+    { "pick": 3, "id": 3, "team": 3 },
+    { "pick": 4, "id": 4, "team": 4 },
+    { "pick": 5, "id": 5, "team": 5 },
+    { "pick": 6, "id": 6, "team": 6 },
+    { "pick": 7, "id": 7, "team": 7 },
+    { "pick": 8, "id": 8, "team": 8 },
+    { "pick": 9, "id": 9, "team": 9 },
+    { "pick": 10, "id": 10, "team": 10 },
+    { "pick": 11, "id": 11, "team": 10 },
+    { "pick": 12, "id": 12, "team": 9 },
+    { "pick": 13, "id": 13, "team": 8 },
+    { "pick": 14, "id": 14, "team": 7 },
+    { "pick": 15, "id": 15, "team": 6 },
+    { "pick": 16, "id": 16, "team": 5 },
+    { "pick": 17, "id": 17, "team": 4 },
+    { "pick": 18, "id": 18, "team": 3 },
+    { "pick": 19, "id": 19, "team": 2 },
+    { "pick": 20, "id": 20, "team": 1 }
+  ],
+  "decisionSnapshots": [],
+  "settings": {
+    "teams": 10,
+    "scoring": "half",
+    "passTD": 6,
+    "startQB": 0,
+    "startRB": 1,
+    "startWR": 1,
+    "startTE": 0,
+    "flex": 0,
+    "startK": 0,
+    "startDST": 0,
+    "bench": 0,
+    "rosterSlots": ["RB1", "WR1"]
+  },
+  "leagueConfiguration": {
+    "teams": 10,
+    "scoring": "half",
+    "passTD": 6,
+    "totalRounds": 2,
+    "totalPicks": 20
+  },
+  "managers": {
+    "1": "Team 1",
+    "2": "Team 2",
+    "3": "Team 3",
+    "4": "Team 4",
+    "5": "Team 5",
+    "6": "Team 6",
+    "7": "Team 7",
+    "8": "Team 8",
+    "9": "Team 9",
+    "10": "Gerard"
+  },
+  "recommendations": [],
+  "importedRankings": []
+}

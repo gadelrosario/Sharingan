@@ -25,6 +25,7 @@
   }
   const draftKey=id=>`fantasyHQ.leagueProfile.${id}.draft.v1`;
   const archiveKey=id=>`fantasyHQ.leagueProfile.${id}.yahooMocks.v1`;
+  const completedArchiveKey=id=>`fantasyHQ.leagueProfile.${id}.completedDrafts.v1`;
   class LeagueProfileStore{
     constructor(storage=root.localStorage,{draftSession=root.DraftSessionV1,now=()=>new Date().toISOString()}={}){this.storage=storage;this.draftSession=draftSession;this.now=now;this.state=null;}
     _read(){const raw=this.storage?.getItem(REGISTRY_KEY);if(!raw)return null;try{const value=JSON.parse(raw);if(!object(value)||value.schemaVersion!==SCHEMA_VERSION||!Array.isArray(value.profiles)||!value.profiles.length)throw new Error('Invalid profile registry.');const defaults=profileDefaults(this.now()),profiles=value.profiles.map(item=>normalizeProfile(item,defaults.find(base=>base.id===item.id)||defaults[0]));if(new Set(profiles.map(item=>item.id)).size!==profiles.length)throw new Error('Duplicate profile IDs.');const activeProfileId=profiles.some(item=>item.id===value.activeProfileId)?value.activeProfileId:profiles[0].id;return {...value,schemaVersion:SCHEMA_VERSION,profiles,activeProfileId};}catch(error){console.warn?.('League profiles were invalid; restoring safe defaults:',error.message);return null;}}
@@ -42,7 +43,8 @@
     update(id,patch={}){this._ensure();const index=this.state.profiles.findIndex(item=>item.id===String(id));if(index<0)throw new Error('League profile was not found.');const current=this.state.profiles[index],next=normalizeProfile({...current,...clone(patch),id:current.id,settings:patch.settings?normalizeSettings(patch.settings,current.settings):current.settings,updatedAt:this.now()},current);this.state.profiles[index]=next;this._write();return clone(next);}
     draftKey(id=this.active().id){return draftKey(id);}
     archiveKey(id=this.active().id){return archiveKey(id);}
+    completedArchiveKey(id=this.active().id){return completedArchiveKey(id);}
   }
-  const api=Object.freeze({REGISTRY_KEY,PRIMARY_ID,DOWNEY_ID,SCHEMA_VERSION,primarySettings,downeySettings,profileDefaults,normalizeSettings,normalizeProfile,draftKey,archiveKey,LeagueProfileStore});
+  const api=Object.freeze({REGISTRY_KEY,PRIMARY_ID,DOWNEY_ID,SCHEMA_VERSION,primarySettings,downeySettings,profileDefaults,normalizeSettings,normalizeProfile,draftKey,archiveKey,completedArchiveKey,LeagueProfileStore});
   root.LeagueProfilesV1=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

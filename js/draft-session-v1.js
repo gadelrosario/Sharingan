@@ -1,7 +1,8 @@
 (function(root){
   'use strict';
-  const STORAGE_KEY='fantasyHQ.activeDraft.v1',NOTE_KEY='fantasyHQ.scroll.v1',SCHEMA_VERSION=1,DRAFT_STATE_VERSION=1;
+  const STORAGE_KEY='fantasyHQ.activeDraft.v1',NOTE_KEY='fantasyHQ.scroll.v1',SCHEMA_VERSION=1,DRAFT_STATE_VERSION=1,COMPLETED_ARCHIVE_SCHEMA_VERSION=1;
   const clone=value=>JSON.parse(JSON.stringify(value));
+  const newSessionId=()=>`draft_${Date.now().toString(36)}_${String(root.crypto?.randomUUID?.()||Math.random().toString(36).slice(2)).replace(/[^a-z0-9]/gi,'').slice(0,12)}`;
   const validObject=value=>value&&typeof value==='object'&&!Array.isArray(value);
   const positiveInteger=value=>Number.isInteger(Number(value))&&Number(value)>0;
   const teamForPick=(pick,teams)=>{const round=Math.ceil(pick/teams),within=((pick-1)%teams)+1;return round%2?within:teams+1-within};
@@ -33,11 +34,12 @@
     if(positiveInteger(totalPicks)&&snapshot.status==='active'&&pick>totalPicks)throw new Error('Saved active draft is already complete.');
     if(positiveInteger(teams)&&Number.isFinite(snapshot.currentRound)&&Number(snapshot.currentRound)!==Math.ceil(Math.max(1,pick)/teams))throw new Error('Saved draft current round is inconsistent.');
     if(snapshot.leagueProfileId!=null&&!/^[a-z0-9][a-z0-9-]{1,63}$/i.test(String(snapshot.leagueProfileId)))throw new Error('Saved draft has an invalid league profile identity.');
-    return clone({...snapshot,draftStateVersion:stateVersion});
+    const excludedRecommendationIds=Array.isArray(snapshot.excludedRecommendationIds)?[...new Set(snapshot.excludedRecommendationIds.map(String).filter(Boolean))]:[],exclusionEvents=Array.isArray(snapshot.exclusionEvents)?snapshot.exclusionEvents:[];
+    return clone({...snapshot,excludedRecommendationIds,exclusionEvents,draftStateVersion:stateVersion});
   }
   function createSnapshot(state,existing=null){
     const now=new Date().toISOString(),history=clone(state.history||[]);
-    return validate({schemaVersion:SCHEMA_VERSION,draftStateVersion:DRAFT_STATE_VERSION,sessionId:existing?.sessionId||`draft_${Date.now().toString(36)}`,createdAt:existing?.createdAt||now,updatedAt:now,status:state.status||'active',mode:state.mode,style:state.style,leagueProfileId:state.leagueProfileId??null,appVersion:state.appVersion??null,rankingSnapshot:clone(state.rankingSnapshot||null),injurySnapshot:clone(state.injurySnapshot||null),archiveRecordId:state.archiveRecordId??null,slot:state.slot,pick:state.pick,currentRound:state.currentRound,currentPickOwner:state.currentPickOwner,drafted:[...(state.drafted||[])],history,decisionSnapshots:clone(state.decisionSnapshots||[]),settings:clone(state.settings||{}),leagueConfiguration:clone(state.leagueConfiguration||{}),managers:clone(state.managers||{}),recommendations:clone(state.recommendations||[]),importedRankings:clone(state.importedRankings||[])});
+    return validate({schemaVersion:SCHEMA_VERSION,draftStateVersion:DRAFT_STATE_VERSION,sessionId:existing?.sessionId||newSessionId(),createdAt:existing?.createdAt||now,updatedAt:now,status:state.status||'active',mode:state.mode,style:state.style,leagueProfileId:state.leagueProfileId??null,appVersion:state.appVersion??null,rankingSnapshot:clone(state.rankingSnapshot||null),injurySnapshot:clone(state.injurySnapshot||null),archiveRecordId:state.archiveRecordId??null,excludedRecommendationIds:[...(state.excludedRecommendationIds||[])],exclusionEvents:clone(state.exclusionEvents||[]),slot:state.slot,pick:state.pick,currentRound:state.currentRound,currentPickOwner:state.currentPickOwner,drafted:[...(state.drafted||[])],history,decisionSnapshots:clone(state.decisionSnapshots||[]),settings:clone(state.settings||{}),leagueConfiguration:clone(state.leagueConfiguration||{}),managers:clone(state.managers||{}),recommendations:clone(state.recommendations||[]),importedRankings:clone(state.importedRankings||[])});
   }
   class DraftSessionStore{
     constructor(storage=root.localStorage,key=STORAGE_KEY){this.storage=storage;this.key=String(key||STORAGE_KEY);}
@@ -47,6 +49,13 @@
     start(state,{replace=false}={}){if(this.hasActive()&&!replace)throw new Error('An active draft already exists. Resume it or explicitly start a new draft.');this.clear();return this.save(state);}
     complete(state){const snapshot=this.save({...state,status:'complete'});return snapshot;}
     clear(){this.storage?.removeItem(this.key);}
+  }
+  class CompletedDraftArchiveStore{
+    constructor(storage=root.localStorage,key='fantasyHQ.completedDrafts.v1'){this.storage=storage;this.key=String(key||'fantasyHQ.completedDrafts.v1')}
+    _envelope(){const raw=this.storage?.getItem(this.key);if(!raw)return{schemaVersion:COMPLETED_ARCHIVE_SCHEMA_VERSION,records:[]};const envelope=JSON.parse(raw);if(!validObject(envelope)||envelope.schemaVersion!==COMPLETED_ARCHIVE_SCHEMA_VERSION||!Array.isArray(envelope.records))throw new Error('Completed draft archive is invalid.');return clone(envelope)}
+    list(){let envelope;try{envelope=this._envelope()}catch(error){return[]}return envelope.records.flatMap(record=>{try{if(!validObject(record)||!record.archiveId||!record.snapshot)return[];const snapshot=validate(clone(record.snapshot));if(snapshot.status!=='complete')return[];return[{...clone(record),snapshot}]}catch(error){return[]}})}
+    get(archiveId){return this.list().find(record=>record.archiveId===String(archiveId))||null}
+    archive(snapshot,{exportRecord=null,archivedAt=new Date().toISOString()}={}){const complete=validate(clone(snapshot));if(complete.status!=='complete')throw new Error('Only completed drafts can be archived.');let envelope;try{envelope=this._envelope()}catch(error){throw new Error('Existing completed-draft history is unreadable and was left untouched.')}const existing=this.list().find(record=>record.sessionId===complete.sessionId);if(existing)return clone(existing);const record={archiveId:`completed_${complete.sessionId}`,sessionId:complete.sessionId,completedAt:complete.updatedAt||complete.createdAt||null,archivedAt:String(archivedAt),snapshot:complete,exportRecord:exportRecord?clone(exportRecord):null};envelope.records.push(record);this.storage?.setItem(this.key,JSON.stringify(envelope));const persisted=this.get(record.archiveId);if(!persisted)throw new Error('Completed draft archive could not be verified.');return persisted}
   }
   function timeline(history=[],playerIndex=new Map(),leagueSize=10){
     const rounds=[],teams=Math.max(2,Number(leagueSize)||10);
@@ -68,6 +77,6 @@
     return reminders;
   }
   function remindersForRound(value,round){return noteReminders(value).filter(item=>Number(round)>=item.start&&Number(round)<=item.end);}
-  const api=Object.freeze({STORAGE_KEY,NOTE_KEY,SCHEMA_VERSION,DRAFT_STATE_VERSION,DraftSessionStore,createSnapshot,validate,timeline,teamForPick,loadNote,saveNote,noteReminders,remindersForRound});
+  const api=Object.freeze({STORAGE_KEY,NOTE_KEY,SCHEMA_VERSION,DRAFT_STATE_VERSION,COMPLETED_ARCHIVE_SCHEMA_VERSION,DraftSessionStore,CompletedDraftArchiveStore,createSnapshot,validate,timeline,teamForPick,loadNote,saveNote,noteReminders,remindersForRound});
   root.DraftSessionV1=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
