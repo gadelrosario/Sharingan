@@ -1,0 +1,23 @@
+{
+  "fetchedAt": "2026-08-23T18:00:00Z",
+  "leagueKey": "461.l.10001",
+  "league": {"leagues": [{"leagueKey": "461.l.10001", "name": "Sanitized Test League", "season": 2026, "gameCode": "nfl", "teamCount": 10}]},
+  "settings": {"settingsNormalized": {"teamCount": 10, "scoringType": "half-ppr", "passingTouchdownPoints": 6, "waiverType": "faab", "playoffStartWeek": 15}},
+  "teams": {"teams": [
+    {"teamKey": "461.l.10001.t.1", "name": "Test Manager", "isUser": true, "draftSlot": 7, "roster": [
+      {"yahooPlayerId": "40001", "name": "Alpha Runner", "position": "RB", "sourceTeam": "BUF"},
+      {"yahooPlayerId": "40002", "name": "Beta Receiver", "position": "WR", "sourceTeam": "DAL"}
+    ]},
+    {"teamKey": "461.l.10001.t.2", "name": "Opponent", "isUser": false, "draftSlot": 2, "roster": [
+      {"yahooPlayerId": "40003", "name": "Gamma Tight End", "position": "TE", "sourceTeam": "KC"}
+    ]}
+  ]},
+  "players": {"players": [
+    {"yahooPlayerId": "40004", "name": "Delta Quarterback", "position": "QB", "sourceTeam": "PHI", "ownership": "FA"},
+    {"yahooPlayerId": "49999", "name": "Unresolved Player", "position": "WR", "sourceTeam": "SEA", "ownership": "W"}
+  ]},
+  "transactions": {"transactions": [{"transactionKey": "461.l.10001.tr.1", "type": "add", "timestamp": 1787510000}]},
+  "standings": {"standings": [{"teamKey": "461.l.10001.t.1", "rank": 1, "wins": 1, "losses": 0}]},
+  "matchups": {"week": 1, "matchups": [{"teamKeys": ["461.l.10001.t.1", "461.l.10001.t.2"]}]},
+  "errors": {}
+}

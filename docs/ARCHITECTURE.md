@@ -1,5 +1,9 @@
 # Fantasy HQ Architecture
 
+## Jōnin 4.4.1 Season Command Center boundary
+
+Yahoo synchronization is an optional read-only boundary: browser UI → local OAuth bridge → Yahoo OAuth/Fantasy Sports. Draft Mode remains launchable without the bridge. The profile-scoped Season Command Center consumes the normalized snapshot without owning Yahoo normalization or importing draft recommendation authority. It keeps current Yahoo rosters separate from immutable completed draft archives. See [YAHOO_SYNC_FOUNDATION.md](YAHOO_SYNC_FOUNDATION.md) and [SEASON_COMMAND_CENTER.md](SEASON_COMMAND_CENTER.md).
+
 ## System boundaries
 
 Fantasy HQ now has two deliberately separate layers:
@@ -26,4 +30,3 @@ The core currently targets Node-compatible JavaScript for tests and future serve
 ## Future integration path
 
 An API adapter will fetch provider-native records, normalize them into canonical entities, attach evidence, and write intelligence through repository implementations. Mission Control will schedule and monitor that process. Read models may later expose approved intelligence to the draft runtime, but scoring integration remains a separate product decision.
-

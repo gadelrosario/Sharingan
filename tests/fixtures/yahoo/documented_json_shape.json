@@ -1,0 +1,25 @@
+{
+  "fantasy_content": {
+    "users": [{
+      "user": [
+        {"guid": "SANITIZED"},
+        {"games": [{"game": [
+          {"game_key": "461"},
+          {"leagues": [{"league": [
+            [
+              {"league_key": "461.l.10001"},
+              {"league_id": "10001"},
+              {"name": "Sanitized Test League"},
+              {"season": "2026"},
+              {"game_code": "nfl"},
+              {"num_teams": 10},
+              {"draft_status": "postdraft"},
+              {"status": "in-season"}
+            ],
+            {"count": 0}
+          ]}]}
+        ]}]}
+      ]
+    }]
+  }
+}

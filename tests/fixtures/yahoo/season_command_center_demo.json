@@ -1,0 +1,47 @@
+{
+  "schema": "fantasy-hq-yahoo-season-1",
+  "profileId": "primary-league",
+  "provider": "Yahoo",
+  "readOnly": true,
+  "fetchedAt": "2026-08-23T18:42:00Z",
+  "league": {"leagueKey":"461.l.demo","name":"Sanitized Primary League","season":2026,"teamCount":10,"currentWeek":1,"leagueStatus":"in-season"},
+  "settings": {"teamCount":10,"scoringType":"half-ppr","passingTouchdownPoints":6,"waiverType":"FAAB"},
+  "teams": [
+    {"teamKey":"461.l.demo.t.1","name":"Demo HQ","isUser":true,"draftSlot":7,"roster":[
+      {"yahooPlayerId":"demo-qb","name":"Alpha Quarterback","position":"QB","rosterSlot":"QB","sourceTeam":"BUF","byeWeek":7,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-qb"}},
+      {"yahooPlayerId":"demo-rb1","name":"Bravo Runner","position":"RB","rosterSlot":"RB","sourceTeam":"ATL","byeWeek":5,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-rb1"}},
+      {"yahooPlayerId":"demo-rb2","name":"Charlie Runner","position":"RB","rosterSlot":"RB","sourceTeam":"DET","byeWeek":8,"injuryStatus":"Q","identity":{"status":"MATCHED","canonicalPlayerId":"demo-rb2"}},
+      {"yahooPlayerId":"demo-wr1","name":"Delta Receiver","position":"WR","rosterSlot":"WR","sourceTeam":"SEA","byeWeek":6,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-wr1"}},
+      {"yahooPlayerId":"demo-wr2","name":"Echo Receiver","position":"WR","rosterSlot":"WR","sourceTeam":"PHI","byeWeek":9,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-wr2"}},
+      {"yahooPlayerId":"demo-te","name":"Foxtrot Tight End","position":"TE","rosterSlot":"TE","sourceTeam":"KC","byeWeek":10,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-te"}},
+      {"yahooPlayerId":"demo-flex","name":"Golf Receiver","position":"WR","rosterSlot":"W/R/T","sourceTeam":"MIN","byeWeek":6,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-flex"}},
+      {"yahooPlayerId":"demo-k","name":"Hotel Kicker","position":"K","rosterSlot":"K","sourceTeam":"HOU","byeWeek":7,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-k"}},
+      {"yahooPlayerId":"demo-dst","name":"Indigo Defense","position":"DST","rosterSlot":"DEF","sourceTeam":"SF","byeWeek":14,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-dst"}},
+      {"yahooPlayerId":"demo-bn1","name":"Juliet Runner","position":"RB","rosterSlot":"BN","sourceTeam":"BUF","byeWeek":7,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-bn1"}},
+      {"yahooPlayerId":"demo-bn2","name":"Kilo Receiver","position":"WR","rosterSlot":"BN","sourceTeam":"NO","byeWeek":12,"injuryStatus":"","identity":{"status":"MATCHED","canonicalPlayerId":"demo-bn2"}},
+      {"yahooPlayerId":"demo-ir","name":"Lima Receiver","position":"WR","rosterSlot":"IR","sourceTeam":"KC","byeWeek":10,"injuryStatus":"IR","identity":{"status":"MATCHED","canonicalPlayerId":"demo-ir"}}
+    ]},
+    {"teamKey":"461.l.demo.t.2","name":"Opponent Squad","isUser":false,"managerName":"Sanitized Manager","roster":[{"yahooPlayerId":"opp-rb","name":"Mike Runner","position":"RB","rosterSlot":"RB","sourceTeam":"MIA"}]}
+  ],
+  "userTeamKey":"461.l.demo.t.1",
+  "availablePlayers":[
+    {"yahooPlayerId":"free-rb","name":"November Runner","position":"RB","sourceTeam":"NYG","ownership":"FA","injuryStatus":""},
+    {"yahooPlayerId":"waiver-wr","name":"Oscar Receiver","position":"WR","sourceTeam":"JAX","ownership":"W","injuryStatus":""},
+    {"yahooPlayerId":"free-te","name":"Papa Tight End","position":"TE","sourceTeam":"LAC","ownership":"FA","injuryStatus":"Q"},
+    {"yahooPlayerId":"free-qb","name":"Quebec Quarterback","position":"QB","sourceTeam":"LV","ownership":"FA","injuryStatus":""}
+  ],
+  "transactions":[
+    {"transactionKey":"demo.tr.1","type":"add","status":"successful","timestamp":1787514000,"players":[{"name":"November Runner","position":"RB","sourceTeam":"NYG"}]},
+    {"transactionKey":"demo.tr.2","type":"drop","status":"successful","timestamp":1787509200,"players":[{"name":"Romeo Receiver","position":"WR","sourceTeam":"ARI"}]}
+  ],
+  "standings":[
+    {"teamKey":"461.l.demo.t.1","rank":3,"wins":0,"losses":0,"ties":0,"pointsFor":0},
+    {"teamKey":"461.l.demo.t.2","rank":5,"wins":0,"losses":0,"ties":0,"pointsFor":0}
+  ],
+  "matchups":{"week":1,"matchups":[{"matchupId":"1-1","status":"pregame","teamKeys":["461.l.demo.t.1","461.l.demo.t.2"],"projectedPoints":null,"actualPoints":null}]},
+  "draftLinkage":{"status":"LINKED","sessionId":"demo-completed-draft","evidence":["profile-id","completed-live-origin","team-count","draft-slot"]},
+  "draftOrigin":{"sessionId":"demo-completed-draft","immutable":true,"completed":true,"byPlayer":{"demo-qb":"4.07","demo-rb1":"1.07","demo-rb2":"2.04","demo-wr1":"3.07"}},
+  "datasets":{"league":{"status":"CURRENT"},"settings":{"status":"CURRENT"},"teams":{"status":"CURRENT"},"players":{"status":"CURRENT"},"transactions":{"status":"CURRENT"},"standings":{"status":"CURRENT"},"matchups":{"status":"CURRENT"}},
+  "subsystemErrors":{},
+  "seasonMode":{"status":"ACTIVE_DATA","nflWeek":1,"fantasyWeek":1,"phase":"in-season","draftArchiveAttached":true}
+}

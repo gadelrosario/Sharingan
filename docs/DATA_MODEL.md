@@ -1,5 +1,11 @@
 # Canonical Data Model
 
+## Yahoo season snapshot (4.4.0 foundation, 4.4.1 presentation)
+
+`fantasy-hq-yahoo-season-1` stores provider/fetch provenance, stable league/team keys, normalized settings with MATCH/DIFFERENT/UNKNOWN reconciliation, all-team current rosters, player identity decisions, ownership/free-agent state, optional transactions/standings/matchups, draft-linkage evidence, and membership-only roster delta. It is profile-scoped and is never recommendation authority.
+
+Source player/team identifiers remain beside canonical Fantasy HQ identity. `AMBIGUOUS` and `UNRESOLVED` records remain visible for review and are never silently guessed.
+
 Every entity uses a Fantasy HQ identifier matching `fhq_*`. Provider identifiers are attributes in `externalIds`; they are never primary keys.
 
 ## Entities
@@ -18,4 +24,3 @@ Every entity uses a Fantasy HQ identifier matching `fhq_*`. Provider identifiers
 External IDs are provider-neutral key/value entries. Convenience inputs such as `yahooId`, `sleeperId`, `fantasyProsId`, and `nflId` normalize into that map. New providers therefore require no schema redesign.
 
 Factories validate required fields and return immutable records. Persistence is intentionally abstract at this milestone; a later repository can serialize the same contracts to SQLite or another store.
-

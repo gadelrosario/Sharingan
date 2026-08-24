@@ -1,39 +1,21 @@
 # Current Milestone
 
-## Jōnin 3.7
+## Jōnin 4.4.1 — Season Command Center
 
-Fantasy HQ is currently at **Jōnin 3.7**. The product remains a real-time fantasy-football decision assistant whose stable browser experience is optimized for making draft decisions quickly and transparently.
+Fantasy HQ now provides a profile-isolated, responsive Season Mode presentation over the
+Jōnin 4.4.0 read-only Yahoo normalization and persistence foundation. Draft Mode remains
+the existing authoritative draft runtime.
 
-## Stable production systems
+The governing boundary is:
 
-- Mamba recommendation engine
-- Fight Control
-- Adaptive Coaching
-- Sharingan Vision
-- Premium Player Card
-- Draft Psychology
-- Room Intelligence
-- Manual, mock, and simulated draft workflows
-- Current roster, planning, and grading surfaces
+- **Draft Archive = what happened** — completed picks and draft origin are immutable history.
+- **Yahoo = what is true now** — current roster, ownership, transactions, standings, and matchup state.
+- **Fantasy HQ = what we should do next** — future approved season decision engines; 4.4.1 does not invent that authority.
 
-These systems remain the authoritative production behavior. Jōnin 3.7.1 changes version presentation only; it does not change their logic or outputs.
+Season Mode labels TeamFit, FAAB, championship odds, projections, and weekly recommendations
+as unavailable or not yet scored unless Yahoo actually supplies the field. Explicit
+`?seasonDemo=1` development mode consumes a sanitized fixture, displays a prominent DEMO DATA
+label, and never writes the fixture into genuine Yahoo profile state.
 
-## Isolated architecture systems
-
-- Intelligence Core
-- Canonical data model
-- Mission Control
-- Evidence Engine
-- Expert Strategy Registry
-- Unified Decision Engine
-- Best Path evaluator
-- Shadow-mode decision execution
-
-The Intelligence Core and Unified Decision Engine are not loaded by the browser application. They do not alter recommendations, scoring, confidence, draft behavior, or UI. Intelligence records remain read-only architecture, and Decision Engine results remain shadow-only and discarded by default.
-
-## Next milestone
-
-The next planned milestone is **Jōnin 3.8 — League Intelligence Integration**.
-
-Its high-level scope is provider-neutral ingestion of league settings, draft order, roster structure, manager identity, and draft-board snapshots. Jōnin 3.7.1 does not implement any of those integrations, connect a provider, or change the browser runtime.
-
+Planned intelligence milestones are 4.4.2 waiver/add-drop, 4.4.3 start/sit and weekly Flight
+Control, and 4.4.4 trades and TeamFit. Each remains separate from this UI foundation.

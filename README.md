@@ -1,6 +1,6 @@
 # Fantasy HQ Backend V1
 
-Current browser milestone: **Jōnin 4.0**, adding durable draft-session recovery and a transparent four-score championship decision layer. See [the Jōnin 4.0 architecture](docs/JONIN_4_DECISION_INTELLIGENCE.md).
+Current browser milestone: **Jōnin 4.4.1**, adding a profile-isolated Season Command Center over the read-only Yahoo foundation while preserving Draft Mode and immutable completed-draft archives. See [Season Command Center](docs/SEASON_COMMAND_CENTER.md), [Yahoo Sync Foundation setup and security](docs/YAHOO_SYNC_FOUNDATION.md), and [the Jōnin 4.0 decision architecture](docs/JONIN_4_DECISION_INTELLIGENCE.md).
 
 This is the first real local backend foundation for Fantasy HQ.
 

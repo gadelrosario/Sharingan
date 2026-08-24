@@ -1,0 +1,36 @@
+{
+  "fantasyHQDraftExportSchemaVersion": "fantasy-hq-draft-export-1",
+  "app": {"version": "Jōnin 4.4.1", "exportedAt": "2026-08-23T20:00:00.000Z"},
+  "draft": {"sessionId": "actual-primary-2026-fixture", "draftMode": "live", "sourceMode": "live", "status": "complete", "startedAt": "2026-08-23T16:00:00.000Z", "completedAt": "2026-08-23T17:00:00.000Z", "currentOverallPick": 21, "currentRound": 3, "picksRecorded": 20, "expectedTotalPicks": 20},
+  "league": {"profileId": "exported-primary-2026", "profileName": "2026 Primary League", "leagueName": "SQUAAA! ROYAL RUMBLE 2025–2026", "teamCount": 10, "userDraftSlot": 10, "scoringFormat": "half", "passingTouchdownPoints": 6, "rosterConfiguration": {"slots": ["RB1", "WR1"]}, "settings": {"teams": 10, "scoring": "half", "passTD": 6}},
+  "rankings": {"snapshotId": "2026-draftday-2026-08-23", "primaryDecisionSource": "Fantasyland"},
+  "injuries": {"provider": "Sleeper", "fetchedAt": "2026-08-23T15:30:00.000Z", "cacheState": "CURRENT"},
+  "draftHistory": [
+    {"overallPick":1,"round":1,"pickInRound":1,"teamSlot":1,"isUser":false,"canonicalPlayerId":"1","playerName":"Jahmyr Gibbs","position":"RB","nflTeam":"DET"},
+    {"overallPick":2,"round":1,"pickInRound":2,"teamSlot":2,"isUser":false,"canonicalPlayerId":"2","playerName":"Bijan Robinson","position":"RB","nflTeam":"ATL"},
+    {"overallPick":3,"round":1,"pickInRound":3,"teamSlot":3,"isUser":false,"canonicalPlayerId":"3","playerName":"Ja'Marr Chase","position":"WR","nflTeam":"CIN"},
+    {"overallPick":4,"round":1,"pickInRound":4,"teamSlot":4,"isUser":false,"canonicalPlayerId":"4","playerName":"Puka Nacua","position":"WR","nflTeam":"LAR"},
+    {"overallPick":5,"round":1,"pickInRound":5,"teamSlot":5,"isUser":false,"canonicalPlayerId":"5","playerName":"Jaxon Smith-Njigba","position":"WR","nflTeam":"SEA"},
+    {"overallPick":6,"round":1,"pickInRound":6,"teamSlot":6,"isUser":false,"canonicalPlayerId":"6","playerName":"Christian McCaffrey","position":"RB","nflTeam":"SF"},
+    {"overallPick":7,"round":1,"pickInRound":7,"teamSlot":7,"isUser":false,"canonicalPlayerId":"7","playerName":"Amon-Ra St. Brown","position":"WR","nflTeam":"DET"},
+    {"overallPick":8,"round":1,"pickInRound":8,"teamSlot":8,"isUser":false,"canonicalPlayerId":"8","playerName":"CeeDee Lamb","position":"WR","nflTeam":"DAL"},
+    {"overallPick":9,"round":1,"pickInRound":9,"teamSlot":9,"isUser":false,"canonicalPlayerId":"9","playerName":"Jonathan Taylor","position":"RB","nflTeam":"IND"},
+    {"overallPick":10,"round":1,"pickInRound":10,"teamSlot":10,"isUser":true,"canonicalPlayerId":"10","playerName":"Justin Jefferson","position":"WR","nflTeam":"MIN"},
+    {"overallPick":11,"round":2,"pickInRound":1,"teamSlot":10,"isUser":true,"canonicalPlayerId":"11","playerName":"Ashton Jeanty","position":"RB","nflTeam":"LV"},
+    {"overallPick":12,"round":2,"pickInRound":2,"teamSlot":9,"isUser":false,"canonicalPlayerId":"12","playerName":"James Cook","position":"RB","nflTeam":"BUF"},
+    {"overallPick":13,"round":2,"pickInRound":3,"teamSlot":8,"isUser":false,"canonicalPlayerId":"13","playerName":"Omarion Hampton","position":"RB","nflTeam":"LAC"},
+    {"overallPick":14,"round":2,"pickInRound":4,"teamSlot":7,"isUser":false,"canonicalPlayerId":"14","playerName":"Chase Brown","position":"RB","nflTeam":"CIN"},
+    {"overallPick":15,"round":2,"pickInRound":5,"teamSlot":6,"isUser":false,"canonicalPlayerId":"15","playerName":"De'Von Achane","position":"RB","nflTeam":"MIA"},
+    {"overallPick":16,"round":2,"pickInRound":6,"teamSlot":5,"isUser":false,"canonicalPlayerId":"16","playerName":"Saquon Barkley","position":"RB","nflTeam":"PHI"},
+    {"overallPick":17,"round":2,"pickInRound":7,"teamSlot":4,"isUser":false,"canonicalPlayerId":"17","playerName":"Kenneth Walker III","position":"RB","nflTeam":"KC"},
+    {"overallPick":18,"round":2,"pickInRound":8,"teamSlot":3,"isUser":false,"canonicalPlayerId":"18","playerName":"Drake London","position":"WR","nflTeam":"ATL"},
+    {"overallPick":19,"round":2,"pickInRound":9,"teamSlot":2,"isUser":false,"canonicalPlayerId":"19","playerName":"Brock Bowers","position":"TE","nflTeam":"LV"},
+    {"overallPick":20,"round":2,"pickInRound":10,"teamSlot":1,"isUser":false,"canonicalPlayerId":"20","playerName":"Derrick Henry","position":"RB","nflTeam":"BAL"}
+  ],
+  "userRoster": [
+    {"canonicalPlayerId":"10","playerName":"Justin Jefferson","position":"WR","nflTeam":"MIN"},
+    {"canonicalPlayerId":"11","playerName":"Ashton Jeanty","position":"RB","nflTeam":"LV"}
+  ],
+  "exclusions": {"canonicalPlayerIds": ["42"], "players": [{"canonicalPlayerId":"42","playerName":"Excluded Fixture"}], "events": [{"action":"excluded","canonicalPlayerId":"42","at":"2026-08-23T16:30:00.000Z"}]},
+  "recommendationHistory": [{"pick":10,"recommendedPlayerId":"10"}]
+}

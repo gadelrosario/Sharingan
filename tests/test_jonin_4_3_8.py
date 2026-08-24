@@ -34,8 +34,8 @@ class Jonin438Tests(unittest.TestCase):
     def test_archetype_module_loads_before_app_and_is_cached(self):
         html = (ROOT / 'index.html').read_text(encoding='utf-8')
         worker = (ROOT / 'service-worker.js').read_text(encoding='utf-8')
-        asset = 'js/recommendation-archetypes-v1.js?v=1.0.0'
-        self.assertLess(html.index(asset), html.index('js/app.js?v=4.3.12'))
+        asset = 'js/recommendation-archetypes-v1.js?v=1.1.0'
+        self.assertLess(html.index(asset), html.index('js/app.js?v=4.4.1'))
         self.assertIn(f"'./{asset}'", worker)
 
     def test_data_and_scoring_firewalls_remain_explicit(self):

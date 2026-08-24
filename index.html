@@ -8,8 +8,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.16"></script>
-<link rel="stylesheet" href="css/app.css?v=4.3.23">
+<script src="js/app-version.js?v=1.0.18"></script>
+<link rel="stylesheet" href="css/app.css?v=4.4.1d1">
   </head>
   <body>
     <header>
@@ -18,6 +18,11 @@
           <h1>Gerard Fantasy HQ</h1>
           <span class="version" data-app-version></span>
         </div>
+        <div id="primaryProductModeSwitch" class="primaryProductModeSwitch" role="group" aria-label="Fantasy HQ product mode">
+          <button id="primaryDraftModeButton" type="button" class="active" aria-current="page" onclick="returnToDraftMode()">DRAFT</button>
+          <button id="primarySeasonModeButton" type="button" onclick="openSeasonMode()">SEASON</button>
+        </div>
+        <label class="primaryHeaderProfile"><span>League</span><select id="primaryHeaderProfileSelect" aria-label="Active league profile" onchange="selectHeaderLeagueProfile(this.value)"></select></label>
         <div
           id="headerDraftContext"
           class="headerDraftContext hidden"
@@ -198,7 +203,7 @@
           <div class="card syncFoundationCard" style="background: #111017; margin-bottom: 12px">
             <div class="sectionHeader">
               <div>
-                <b>League Sync Foundation</b>
+                <b>League Sync / Season Mode Foundation</b>
                 <div class="meta">
                   Canonical league state for Yahoo, Sleeper, and snapshot imports.
                 </div>
@@ -216,9 +221,19 @@
               >
                 Import Snapshot
               </button>
-              <button class="scanBtn" onclick="prepareYahooConnection()">Prepare Yahoo</button>
+              <button id="yahooConnectBtn" class="scanBtn" onclick="prepareYahooConnection()">Connect Yahoo</button>
+              <button id="yahooDiscoverBtn" class="ghost" onclick="discoverYahooLeagues()">Find 2026 Leagues</button>
+              <button id="yahooSyncBtn" class="ghost" onclick="syncYahooLeagueNow()">Sync Now</button>
+              <button id="seasonModeBtn" class="primary" type="button" onclick="openSeasonMode()">Open Season Mode</button>
+              <button id="yahooDisconnectBtn" class="ghost" onclick="disconnectYahoo()">Disconnect Yahoo</button>
               <button id="refreshInjuriesBtn" class="ghost" onclick="refreshInjuryDataNow()">Refresh Injuries Now</button>
             </div>
+            <div id="yahooLeagueMapping" class="yahooLeagueMapping hidden" aria-live="polite">
+              <label for="yahooLeagueSelect">Yahoo league for this Fantasy HQ profile</label>
+              <select id="yahooLeagueSelect"><option value="">Choose a discovered league</option></select>
+              <button class="ghost" type="button" onclick="confirmYahooLeagueMapping()">Confirm Mapping</button>
+            </div>
+            <div id="yahooSeasonOverview" class="yahooSeasonOverview hidden" aria-live="polite"></div>
             <div id="dataHealthReadout" class="dataHealthReadout" role="status" aria-live="polite">Draft data status is loading.</div>
             <input
               id="leagueSnapshotInput"
@@ -228,8 +243,8 @@
               onchange="importLeagueSnapshot(event)"
             />
             <div class="meta" style="margin-top: 8px">
-              Yahoo authorization is intentionally not stored in this browser build. The data model
-              and import path are now ready for a secure backend connection.
+              Yahoo access is read-only. OAuth secrets and tokens stay in the local secure bridge;
+              Fantasy HQ stores only confirmed league mappings and normalized snapshots per profile.
             </div>
           </div>
           <div id="poolStatus" class="card" style="background: #111017; margin-bottom: 12px">
@@ -265,6 +280,27 @@
             Loading player pool…
           </button>
         </div>
+      </section>
+      <section id="seasonScreen" class="seasonScreen hidden" aria-label="Fantasy HQ Season Command Center">
+        <header class="seasonHeader">
+          <div class="seasonBrand"><span class="seasonBrandMark" aria-hidden="true">◉</span><div><strong>FANTASY HQ</strong><small>SHARINGAN • <span data-app-version></span></small></div></div>
+          <div class="seasonModeSwitch" role="group" aria-label="Fantasy HQ mode"><button type="button" onclick="exitSeasonMode()">DRAFT MODE</button><button type="button" class="active" aria-current="page">SEASON MODE</button></div>
+          <label class="seasonProfilePicker"><span class="srOnly">Active league profile</span><select id="seasonProfileSelect" onchange="selectSeasonProfile(this.value)"></select></label>
+          <div class="seasonWeek"><button type="button" aria-label="Previous week" onclick="changeSeasonWeek(-1)">‹</button><strong id="seasonWeekLabel">Week 1</strong><button type="button" aria-label="Next week" onclick="changeSeasonWeek(1)">›</button></div>
+          <div id="seasonSyncPill" class="seasonSyncPill" role="status">Yahoo • Not synced</div>
+          <div class="seasonHeaderActions"><button type="button" onclick="openNotebook()">📝 Notes</button><button type="button" aria-label="Season settings" onclick="showSeasonPage('settings')">⚙</button></div>
+        </header>
+        <button id="seasonNavToggle" class="seasonNavToggle" type="button" aria-expanded="false" onclick="toggleSeasonNavigation()">☰ Season navigation</button>
+        <div class="seasonLayout">
+          <aside id="seasonSidebar" class="seasonSidebar" aria-label="Season navigation">
+            <nav id="seasonNavigation"></nav>
+            <section id="seasonLeagueSnapshot" class="seasonSidebarCard"></section>
+            <section class="seasonSidebarCard"><b>QUICK ACTIONS</b><button type="button" onclick="showSeasonComingSoon('Compare Players')">Compare Players</button><button type="button" onclick="showSeasonPage('trades')">Trade Analyzer</button><button type="button" onclick="showSeasonComingSoon('Start/Sit Assistant')">Start/Sit Assistant</button><button type="button" onclick="showSeasonPage('waivers')">View Waivers</button></section>
+            <section class="seasonSidebarCard seasonModesLegend"><b>FLIGHT CONTROL MODES</b><span><i class="discovery"></i>Discovery <small>Weeks 1–3</small></span><span><i class="optimization"></i>Optimization <small>Weeks 4–12</small></span><span><i class="playoff"></i>Playoff Push <small>Weeks 13–16</small></span><span><i class="win"></i>Win-or-Go-Home <small>Playoffs</small></span></section>
+          </aside>
+          <main id="seasonContent" class="seasonContent" tabindex="-1"></main>
+        </div>
+        <footer class="seasonAttribution">Fantasy data provided by <a href="https://football.fantasysports.yahoo.com/" target="_blank" rel="noopener noreferrer">Yahoo Fantasy</a>. Fantasy HQ is not endorsed by Yahoo.</footer>
       </section>
       <section id="appScreen" class="hidden">
         <section class="draftStatusHeader" data-testid="draft-status-header" aria-label="Draft status">
@@ -576,7 +612,8 @@
       </section>
       <section id="completedDraftHistoryPanel" class="modalBackdrop hidden" role="dialog" aria-modal="true" aria-labelledby="completedDraftHistoryHeading" onclick="closeCompletedDraftHistory(event)">
         <div class="completedDraftHistoryCard" onclick="event.stopPropagation()">
-          <div class="sectionHeader"><div><b id="completedDraftHistoryHeading">COMPLETED DRAFTS / DRAFT HISTORY</b><div class="meta">Read-only recovery across saved league profiles and Yahoo archives</div></div><button class="iconButton" type="button" aria-label="Close Draft History" onclick="closeCompletedDraftHistory()">×</button></div>
+          <div class="sectionHeader"><div><b id="completedDraftHistoryHeading">COMPLETED DRAFTS / DRAFT HISTORY</b><div class="meta">Read-only recovery across saved league profiles and Yahoo archives</div></div><div class="completedDraftHeaderActions"><button id="importDraftJsonButton" class="ghost" type="button" onclick="chooseDraftJSONFile()">Import Draft JSON</button><button class="iconButton" type="button" aria-label="Close Draft History" onclick="closeCompletedDraftHistory()">×</button></div></div>
+          <input id="draftJsonImportInput" class="hidden" type="file" accept="application/json,.json" onchange="handleDraftJSONFile(this.files?.[0])" />
           <div id="completedDraftHistoryContent"></div>
         </div>
       </section>
@@ -601,8 +638,11 @@
     <script src="js/recommendation-archetypes-v1.js?v=1.1.0"></script>
     <script src="js/fantasy-hq-core.js?v=3.2.0"></script>
     <script src="js/draft-session-v1.js?v=1.3.0"></script>
-    <script src="js/draft-workflow-v1.js?v=1.2.0"></script>
+    <script src="js/draft-workflow-v1.js?v=1.3.0"></script>
     <script src="js/league-profiles-v1.js?v=1.1.0"></script>
+    <script src="js/yahoo-season-v1.js?v=1.0.0"></script>
+    <script src="js/yahoo-sync-v1.js?v=1.0.0"></script>
+    <script src="js/season-command-center-v1.js?v=1.1.2"></script>
     <script src="js/jonin-decision-intelligence-v1.js?v=1.0.3"></script>
     <script src="js/draft-grading-engine-v1.js?v=1.0.0"></script>
     <script src="js/command-center-v1.js?v=1.1.0"></script>
@@ -617,7 +657,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.3.23"></script>
+    <script src="js/app.js?v=4.4.1d1"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">
