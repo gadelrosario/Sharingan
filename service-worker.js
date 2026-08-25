@@ -1,8 +1,8 @@
-const CACHE = 'fantasy-hq-jonin-4-4-1d1-season-home-roster-2026-08-24';
+const CACHE = 'fantasy-hq-jonin-4-4-2-waiver-intelligence-2026-08-24';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.4.1d1',
+  './css/app.css?v=4.4.2',
   './js/app-version.js?v=1.0.18',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
@@ -23,6 +23,7 @@ const ASSETS = [
   './js/yahoo-season-v1.js?v=1.0.0',
   './js/yahoo-sync-v1.js?v=1.0.0',
   './js/season-command-center-v1.js?v=1.1.2',
+  './js/waiver-intelligence-v1.js?v=1.0.0',
   './js/jonin-decision-intelligence-v1.js?v=1.0.3',
   './js/draft-grading-engine-v1.js?v=1.0.0',
   './js/command-center-v1.js?v=1.1.0',
@@ -34,7 +35,7 @@ const ASSETS = [
   './js/player-photo-v1.js?v=1.0.0',
   './js/premium-player-card-v1.js?v=1.1.0',
   './js/draft-psychology-engine-v1.js?v=1.0.0',
-  './js/app.js?v=4.4.1d1',
+  './js/app.js?v=4.4.2',
   './assets/player-placeholders/generic.svg',
   './assets/player-placeholders/qb.svg',
   './assets/player-placeholders/rb.svg',

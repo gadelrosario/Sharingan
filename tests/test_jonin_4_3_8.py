@@ -35,7 +35,7 @@ class Jonin438Tests(unittest.TestCase):
         html = (ROOT / 'index.html').read_text(encoding='utf-8')
         worker = (ROOT / 'service-worker.js').read_text(encoding='utf-8')
         asset = 'js/recommendation-archetypes-v1.js?v=1.1.0'
-        self.assertLess(html.index(asset), html.index('js/app.js?v=4.4.1'))
+        self.assertLess(html.index(asset), html.index('js/app.js?v=4.4.2'))
         self.assertIn(f"'./{asset}'", worker)
 
     def test_data_and_scoring_firewalls_remain_explicit(self):

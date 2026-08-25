@@ -1,0 +1,62 @@
+{
+  "schema": "fantasy-hq-waiver-fixtures-1",
+  "candidates": [
+    {
+      "key": "breakout_rb",
+      "name": "Breakout Runner",
+      "position": "RB",
+      "expected": "ACT",
+      "evidence": {"sourceValue": 75, "role": 92, "opportunity": 95, "upside": 85, "risk": 30, "acquisitionCost": 15, "championshipEquity": 80, "confidence": 95, "roleSource": "fixture-role", "opportunitySource": "fixture-opportunity", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    },
+    {
+      "key": "route_spike_wr",
+      "name": "Route Spike Receiver",
+      "position": "WR",
+      "expected": "WAIT",
+      "evidence": {"sourceValue": 65, "role": 75, "opportunity": 50, "upside": 70, "risk": 45, "acquisitionCost": 25, "confidence": 80, "roleSource": "fixture-routes", "opportunitySource": "fixture-targets", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    },
+    {
+      "key": "touchdown_fluke",
+      "name": "Touchdown Fluke",
+      "position": "WR",
+      "expected": "HOLD",
+      "evidence": {"sourceValue": 45, "role": 30, "opportunity": 25, "upside": 50, "risk": 80, "acquisitionCost": 20, "confidence": 90, "roleSource": "fixture-routes", "opportunitySource": "fixture-targets", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    },
+    {
+      "key": "high_value_no_drop",
+      "name": "High Value Receiver",
+      "position": "WR",
+      "expected": "HOLD",
+      "noAcceptableDrop": true,
+      "evidence": {"sourceValue": 92, "role": 88, "opportunity": 90, "upside": 90, "risk": 20, "acquisitionCost": 10, "confidence": 95, "roleSource": "fixture-role", "opportunitySource": "fixture-opportunity", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    },
+    {
+      "key": "low_value_need",
+      "name": "Need Only Tight End",
+      "position": "TE",
+      "expected": "HOLD",
+      "evidence": {"sourceValue": 25, "role": 35, "opportunity": 35, "upside": 35, "risk": 60, "acquisitionCost": 10, "confidence": 90, "roleSource": "fixture-role", "opportunitySource": "fixture-opportunity", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    },
+    {
+      "key": "committee_rb",
+      "name": "Committee Runner",
+      "position": "RB",
+      "expected": "WAIT",
+      "evidence": {"sourceValue": 70, "role": 65, "opportunity": 65, "upside": 70, "risk": 55, "acquisitionCost": 12, "confidence": 80, "roleSource": "fixture-role", "opportunitySource": "fixture-opportunity", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    },
+    {
+      "key": "rising_handcuff",
+      "name": "Rising Handcuff",
+      "position": "RB",
+      "expected": "WAIT",
+      "evidence": {"sourceValue": 62, "role": 64, "opportunity": 70, "upside": 80, "risk": 50, "acquisitionCost": 14, "confidence": 78, "starterPath": "INJURY_CONTINGENT", "injuryInsurance": "POSITIVE", "roleSource": "fixture-role", "opportunitySource": "fixture-opportunity", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    },
+    {
+      "key": "rookie_stash",
+      "name": "Rookie Stash",
+      "position": "WR",
+      "expected": "WAIT",
+      "evidence": {"sourceValue": 55, "role": 40, "opportunity": 50, "upside": 88, "risk": 55, "acquisitionCost": 10, "confidence": 78, "benchUtility": "UPSIDE_STASH", "roleSource": "fixture-role", "opportunitySource": "fixture-opportunity", "rankingSource": "fixture-rank", "availabilitySource": "Yahoo"}
+    }
+  ]
+}
