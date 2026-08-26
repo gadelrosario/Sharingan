@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "fantasy-hq-season-evidence-1",
+  "asOf": "2026-09-01T12:00:00.000Z",
+  "aliases": { "Rising Receiver Jr.": "p-rising" },
+  "canonicalPlayers": [
+    {"playerId":"p-stable","name":"Stable Starter","position":"WR","team":"BUF"},
+    {"playerId":"p-rising","name":"Rising Receiver","position":"WR","team":"SEA","externalIds":{"fixture":"fx-rising"}},
+    {"playerId":"p-fluke","name":"Touchdown Fluke","position":"RB","team":"NYG"},
+    {"playerId":"p-decline","name":"Declining Receiver","position":"WR","team":"LAR"},
+    {"playerId":"p-targets","name":"Target Riser","position":"WR","team":"DAL"},
+    {"playerId":"p-snaps","name":"Snap Riser","position":"WR","team":"CAR"},
+    {"playerId":"p-starter","name":"Injured Starter","position":"RB","team":"MIA"},
+    {"playerId":"p-backup","name":"Validated Backup","position":"RB","team":"MIA"},
+    {"playerId":"p-unknown","name":"Unknown Backup","position":"RB","team":"MIA"},
+    {"playerId":"p-practice-up","name":"Practice Improver","position":"WR","team":"KC"},
+    {"playerId":"p-practice-down","name":"Practice Decliner","position":"WR","team":"PHI"},
+    {"playerId":"p-stale","name":"Stale Tight End","position":"TE","team":"DEN"},
+    {"playerId":"p-conflict","name":"Conflicted Player","position":"WR","team":"MIN"},
+    {"playerId":"p-projection","name":"Projection Only","position":"QB","team":"GB"},
+    {"playerId":"p-role","name":"Role Only","position":"WR","team":"CHI"},
+    {"playerId":"p-matchup","name":"Matchup Player","position":"TE","team":"ARI"},
+    {"playerId":"p-no-matchup","name":"No Matchup Player","position":"RB","team":"LV"},
+    {"playerId":"p-source","name":"Source Value Player","position":"WR","team":"CIN"},
+    {"playerId":"p-amb-a","name":"Same Name","position":"WR","team":"ATL"},
+    {"playerId":"p-amb-b","name":"Same Name","position":"WR","team":"BAL"},
+    {"playerId":"demo-free-rb","name":"November Runner","position":"RB","team":"MIA"}
+  ],
+  "scenarios": [
+    "stable-high-volume-starter","three-week-role-increase","one-week-touchdown-fluke","declining-role",
+    "targets-up-snaps-flat","snaps-up-opportunity-flat","starter-out-validated-backup","starter-out-unknown-backup",
+    "practice-improving","practice-worsening","stale-evidence","source-conflict","approved-alias","ambiguous-identity",
+    "projection-with-weak-role","role-without-projection","matchup-available","matchup-missing","source-value-provenance",
+    "profile-independent-evidence","analysis-without-waiver-authority","role-signal-without-start-sit-authority"
+  ],
+  "records": [
+    {"sourceRecordId":"stable-w1","canonicalPlayerId":"p-stable","season":2026,"week":1,"observedAt":"2026-08-18T12:00:00Z","fetchedAt":"2026-08-18T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.80,"routeParticipation":0.85,"routes":34},"opportunity":{"targets":9,"opportunities":9},"production":{"receptions":7,"receivingYards":84,"touchdowns":0}},
+    {"sourceRecordId":"stable-w2","canonicalPlayerId":"p-stable","season":2026,"week":2,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.80,"routeParticipation":0.85,"routes":34},"opportunity":{"targets":9,"opportunities":9},"injury":{"status":"HEALTHY","practice":"FULL"},"sourceValue":{"rosOverallRank":20,"positionRank":8,"tier":"A","creator":"Fantasyland","hostPlatform":"Flock Fantasy"}},
+    {"sourceRecordId":"stable-w3","canonicalPlayerId":"p-stable","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.80,"routeParticipation":0.85,"routes":34},"opportunity":{"targets":9,"opportunities":9},"matchup":{"opponent":"NYJ","homeAway":"HOME","positionEnvironment":55},"projection":{"projectedPoints":15.2,"scoringFormat":"HALF_PPR","source":"Projection Lab","timestamp":"2026-09-01T09:00:00Z"}},
+
+    {"sourceRecordId":"rise-w1","sourcePlayerId":"fx-rising","name":"Rising Receiver","position":"WR","season":2026,"week":1,"observedAt":"2026-08-18T12:00:00Z","fetchedAt":"2026-08-18T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.31,"routeParticipation":0.42,"routes":15},"opportunity":{"targets":2,"opportunities":2}},
+    {"sourceRecordId":"rise-w2","canonicalPlayerId":"p-rising","season":2026,"week":2,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.58,"routeParticipation":0.66,"routes":24},"opportunity":{"targets":5,"opportunities":5}},
+    {"sourceRecordId":"rise-w3","canonicalPlayerId":"p-rising","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.72,"routeParticipation":0.81,"routes":31},"opportunity":{"targets":8,"opportunities":8}},
+    {"sourceRecordId":"rise-alias","name":"Rising Receiver Jr.","position":"WR","season":2026,"week":3,"observedAt":"2026-09-01T09:30:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Manual Fixture","provider":"manual","type":"DEPTH_CHART"},"role":{"starterStatus":"STARTER","depthChartRole":"WR2"}},
+
+    {"sourceRecordId":"fluke-w1","canonicalPlayerId":"p-fluke","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.18,"routeParticipation":0.12,"routes":4},"opportunity":{"touches":3,"opportunities":3},"production":{"rushingYards":18,"touchdowns":2}},
+
+    {"sourceRecordId":"decline-w1","canonicalPlayerId":"p-decline","season":2026,"week":1,"observedAt":"2026-08-18T12:00:00Z","fetchedAt":"2026-08-18T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.82,"routeParticipation":0.88,"routes":35},"opportunity":{"targets":9,"opportunities":9}},
+    {"sourceRecordId":"decline-w2","canonicalPlayerId":"p-decline","season":2026,"week":2,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.61,"routeParticipation":0.65,"routes":25},"opportunity":{"targets":6,"opportunities":6}},
+    {"sourceRecordId":"decline-w3","canonicalPlayerId":"p-decline","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.39,"routeParticipation":0.43,"routes":16},"opportunity":{"targets":3,"opportunities":3}},
+
+    {"sourceRecordId":"targets-w1","canonicalPlayerId":"p-targets","season":2026,"week":1,"observedAt":"2026-08-18T12:00:00Z","fetchedAt":"2026-08-18T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.70},"opportunity":{"targets":2}},
+    {"sourceRecordId":"targets-w2","canonicalPlayerId":"p-targets","season":2026,"week":2,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.70},"opportunity":{"targets":5}},
+    {"sourceRecordId":"targets-w3","canonicalPlayerId":"p-targets","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.70},"opportunity":{"targets":8}},
+
+    {"sourceRecordId":"snaps-w1","canonicalPlayerId":"p-snaps","season":2026,"week":1,"observedAt":"2026-08-18T12:00:00Z","fetchedAt":"2026-08-18T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.30},"opportunity":{"targets":4}},
+    {"sourceRecordId":"snaps-w2","canonicalPlayerId":"p-snaps","season":2026,"week":2,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.50},"opportunity":{"targets":4}},
+    {"sourceRecordId":"snaps-w3","canonicalPlayerId":"p-snaps","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.70},"opportunity":{"targets":4}},
+
+    {"sourceRecordId":"starter-out","canonicalPlayerId":"p-starter","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Practice Wire","provider":"fixture","type":"INJURY"},"injury":{"status":"OUT","practice":"DNP"}},
+    {"sourceRecordId":"backup-rel","canonicalPlayerId":"p-backup","season":2026,"week":3,"observedAt":"2026-09-01T09:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Depth Chart","provider":"fixture","type":"DEPTH_CHART"},"relationship":{"type":"BACKUP","relatedCanonicalPlayerId":"p-starter","validated":true,"confidence":95}},
+    {"sourceRecordId":"backup-w1","canonicalPlayerId":"p-backup","season":2026,"week":1,"observedAt":"2026-08-18T12:00:00Z","fetchedAt":"2026-08-18T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.18},"opportunity":{"carries":2}},
+    {"sourceRecordId":"backup-w2","canonicalPlayerId":"p-backup","season":2026,"week":2,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.35},"opportunity":{"carries":5}},
+    {"sourceRecordId":"backup-w3","canonicalPlayerId":"p-backup","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.62},"opportunity":{"carries":11}},
+    {"sourceRecordId":"unknown-backup","canonicalPlayerId":"p-unknown","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.44},"opportunity":{"carries":7}},
+
+    {"sourceRecordId":"practice-up-1","canonicalPlayerId":"p-practice-up","season":2026,"week":3,"observedAt":"2026-08-30T12:00:00Z","fetchedAt":"2026-08-30T13:00:00Z","source":{"name":"Practice Wire","provider":"fixture","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"DNP"}},
+    {"sourceRecordId":"practice-up-2","canonicalPlayerId":"p-practice-up","season":2026,"week":3,"observedAt":"2026-08-31T12:00:00Z","fetchedAt":"2026-08-31T13:00:00Z","source":{"name":"Practice Wire","provider":"fixture","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"LIMITED"}},
+    {"sourceRecordId":"practice-up-3","canonicalPlayerId":"p-practice-up","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Practice Wire","provider":"fixture","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"FULL"}},
+    {"sourceRecordId":"practice-down-1","canonicalPlayerId":"p-practice-down","season":2026,"week":3,"observedAt":"2026-08-30T12:00:00Z","fetchedAt":"2026-08-30T13:00:00Z","source":{"name":"Practice Wire","provider":"fixture","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"FULL"}},
+    {"sourceRecordId":"practice-down-2","canonicalPlayerId":"p-practice-down","season":2026,"week":3,"observedAt":"2026-08-31T12:00:00Z","fetchedAt":"2026-08-31T13:00:00Z","source":{"name":"Practice Wire","provider":"fixture","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"LIMITED"}},
+    {"sourceRecordId":"practice-down-3","canonicalPlayerId":"p-practice-down","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Practice Wire","provider":"fixture","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"DNP"}},
+
+    {"sourceRecordId":"stale-role","canonicalPlayerId":"p-stale","season":2026,"week":1,"observedAt":"2026-07-01T10:00:00Z","fetchedAt":"2026-07-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.70}},
+    {"sourceRecordId":"conflict-a","canonicalPlayerId":"p-conflict","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Practice Source A","provider":"fixture-a","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"FULL"}},
+    {"sourceRecordId":"conflict-b","canonicalPlayerId":"p-conflict","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:05:00Z","source":{"name":"Practice Source B","provider":"fixture-b","type":"INJURY"},"injury":{"status":"QUESTIONABLE","practice":"LIMITED"}},
+    {"sourceRecordId":"ambiguous","name":"Same Name","position":"WR","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Manual Fixture","provider":"manual","type":"ROLE"},"role":{"snapShare":0.5}},
+
+    {"sourceRecordId":"projection-only","canonicalPlayerId":"p-projection","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Projection Lab","provider":"fixture","type":"PROJECTION"},"projection":{"projectedPoints":21.4,"scoringFormat":"HALF_PPR","source":"Projection Lab","timestamp":"2026-09-01T09:00:00Z"}},
+    {"sourceRecordId":"role-only","canonicalPlayerId":"p-role","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.91,"routeParticipation":0.95,"routes":39}},
+    {"sourceRecordId":"matchup","canonicalPlayerId":"p-matchup","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Game Context","provider":"fixture","type":"MATCHUP"},"teamEnvironment":{"offenseQuality":78,"pace":62,"impliedTeamTotal":25.5,"gameTotal":49.5,"spread":-3.5},"matchup":{"opponent":"SF","homeAway":"AWAY","positionEnvironment":64,"defensiveEnvironment":52,"expectedGameScript":"TRAILING"}},
+    {"sourceRecordId":"no-matchup","canonicalPlayerId":"p-no-matchup","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.65}},
+    {"sourceRecordId":"source-value","canonicalPlayerId":"p-source","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Fantasyland","provider":"manual","hostPlatform":"Flock Fantasy","type":"ROS_RANKINGS"},"sourceValue":{"rosOverallRank":44,"positionRank":21,"tier":"B","restOfSeasonValue":72,"creator":"Fantasyland","hostPlatform":"Flock Fantasy"}},
+    {"sourceRecordId":"demo-role","canonicalPlayerId":"demo-free-rb","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Sanitized Demo","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.67,"starterStatus":"ROTATION"},"opportunity":{"carries":13,"targets":3,"opportunities":16},"injury":{"status":"HEALTHY","practice":"FULL"},"sourceValue":{"rosOverallRank":74,"positionRank":31,"tier":"C"}}
+  ]
+}

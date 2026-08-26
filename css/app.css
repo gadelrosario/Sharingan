@@ -12,6 +12,15 @@
   --red: #ff6678;
 }
 
+/* Jōnin 4.4.5 — read-only Season Evidence diagnostics */
+.seasonEvidencePanel,.seasonEvidenceDetail{border:1px solid rgba(153,92,255,.32);border-radius:14px;background:rgba(10,14,28,.84);padding:16px;margin-top:14px;min-width:0}
+.seasonEvidenceGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.seasonEvidenceFact{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;padding:9px 11px;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:rgba(255,255,255,.025)}
+.seasonEvidenceFact span{color:#9aa3b8;font-size:.72rem}.seasonEvidenceFact strong{color:#f2f4ff;font-size:.76rem;text-align:right;overflow-wrap:anywhere}
+.seasonEvidenceAuthority{margin:10px 0 0;color:#c4a5ff;font-size:.75rem}.seasonEvidenceDetail details{margin-top:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:10px}.seasonEvidenceDetail summary{cursor:pointer;color:#b98cff;font-size:.78rem;font-weight:700}.seasonEvidenceRaw{max-height:210px;overflow:auto;margin-top:8px}.seasonEvidenceRaw p{margin:6px 0;color:#aab2c8;font-size:.72rem;overflow-wrap:anywhere}
+@media(max-width:900px){.seasonEvidenceGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.seasonEvidencePanel,.seasonEvidenceDetail{padding:12px}.seasonEvidenceGrid{grid-template-columns:1fr}.seasonEvidenceFact{padding:8px 9px}}
+
 /* Jōnin 4.3.7: compact profile selection; draft surfaces remain unchanged. */
 .leagueProfileToolbar{display:grid;grid-template-columns:minmax(220px,1fr) minmax(180px,260px) auto auto auto;gap:8px;align-items:center;padding:10px 12px;margin:0 0 12px;border:1px solid rgba(168,85,247,.3);border-radius:12px;background:rgba(17,16,23,.86)}
 .compactProfileSelect select{width:100%;min-height:38px}

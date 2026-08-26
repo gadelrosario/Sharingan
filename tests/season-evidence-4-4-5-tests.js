@@ -1,0 +1,38 @@
+'use strict';
+const assert=require('assert');
+const fs=require('fs');
+const path=require('path');
+const evidence=require('../js/season-evidence-v1.js');
+
+const fixture=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures','season_evidence_4_4_5.json'),'utf8'));
+const store=new evidence.SeasonEvidenceStore({asOf:fixture.asOf});
+const imported=store.importPayload(fixture,{players:fixture.canonicalPlayers,aliases:fixture.aliases});
+let passed=0;
+function test(name,fn){fn();passed+=1;console.log(`PASS ${name}`)}
+
+test('fixture covers all 22 required scenarios',()=>assert.strictEqual(fixture.scenarios.length,22));
+test('valid observations import and ambiguous identity fails closed',()=>{assert.strictEqual(imported.rejected,1);assert.strictEqual(imported.quarantine[0].reason,'IDENTITY_AMBIGUOUS');assert(imported.accepted>30)});
+test('stable starter separates level from direction',()=>{assert.strictEqual(store.roleSignal('p-stable').status,'ROLE_STABLE');assert.strictEqual(store.opportunitySignal('p-stable').status,'OPPORTUNITY_STABLE');assert.strictEqual(store.metricTrend('p-stable','role.snapShare').current,.8)});
+test('three-week role and opportunity growth is strong signal',()=>{assert.strictEqual(store.roleSignal('p-rising').status,'ROLE_INCREASING');assert.strictEqual(store.opportunitySignal('p-rising').status,'OPPORTUNITY_INCREASING');assert.strictEqual(store.signalQuality('p-rising').classification,'STRONG_SIGNAL')});
+test('touchdown fluke is one-game noise',()=>{assert.strictEqual(store.signalQuality('p-fluke').classification,'ONE_GAME_NOISE');assert.strictEqual(store.signalQuality('p-fluke').touchdownDependence,'HIGH')});
+test('declining role and opportunity are explicit',()=>{assert.strictEqual(store.roleSignal('p-decline').status,'ROLE_DECLINING');assert.strictEqual(store.opportunitySignal('p-decline').status,'OPPORTUNITY_DECLINING')});
+test('targets can rise while snaps remain stable',()=>{assert.strictEqual(store.metricTrend('p-targets','role.snapShare').status,'STABLE');assert.strictEqual(store.metricTrend('p-targets','opportunity.targets').status,'INCREASING')});
+test('snaps can rise while opportunity remains stable',()=>{assert.strictEqual(store.metricTrend('p-snaps','role.snapShare').status,'INCREASING');assert.strictEqual(store.metricTrend('p-snaps','opportunity.targets').status,'STABLE')});
+test('validated backup plus starter OUT yields expansion evidence',()=>assert.strictEqual(store.opportunityExpansion('p-backup').status,'OPPORTUNITY_EXPANSION_EVIDENCE'));
+test('unknown backup relationship never infers expansion',()=>assert.strictEqual(store.opportunityExpansion('p-unknown').status,'UNKNOWN'));
+test('practice progression preserves order and direction',()=>{assert.strictEqual(store.practiceTrend('p-practice-up').status,'PRACTICE_IMPROVING');assert.strictEqual(store.practiceTrend('p-practice-down').status,'PRACTICE_WORSENING')});
+test('family-specific freshness marks old role evidence stale',()=>assert.strictEqual(store.latest('p-stale','role').freshness,'STALE'));
+test('source disagreement remains conflicted with both records',()=>{const conflict=store.conflicts('p-conflict','injury');assert.strictEqual(conflict.status,'CONFLICTED');assert.strictEqual(conflict.evidenceIds.length,2);assert.strictEqual(store.latest('p-conflict','injury').value,null)});
+test('approved alias resolves to stable canonical identity',()=>{const rows=store.observations('p-rising');assert(rows.some(row=>row.identity.method==='approved-alias'))});
+test('projection and role evidence remain independent families',()=>{assert.strictEqual(store.latest('p-projection','projection').status,'AVAILABLE');assert.strictEqual(store.latest('p-projection','role').status,'MISSING');assert.strictEqual(store.latest('p-role','role').status,'AVAILABLE');assert.strictEqual(store.latest('p-role','projection').status,'MISSING')});
+test('matchup contract preserves real values and missing stays missing',()=>{assert.strictEqual(store.latest('p-matchup','matchup').value.opponent,'SF');assert.strictEqual(store.latest('p-no-matchup','matchup').status,'MISSING')});
+test('source creator and host provenance remain distinct',()=>{const value=store.latest('p-source','sourceValue');assert.strictEqual(value.value.creator,'Fantasyland');assert.strictEqual(value.value.hostPlatform,'Flock Fantasy');assert.strictEqual(value.provenance.source,'Fantasyland');assert.strictEqual(value.provenance.hostPlatform,'Flock Fantasy')});
+test('same NFL store serves profiles without duplication or mutation',()=>{const before=JSON.stringify(store.observations('p-stable'));const a=evidence.teamFitEvidenceContext(store,'p-stable',{profileId:'profile-a'});const b=evidence.teamFitEvidenceContext(store,'p-stable',{profileId:'profile-b'});assert.strictEqual(a.profileId,'profile-a');assert.strictEqual(b.profileId,'profile-b');assert.strictEqual(JSON.stringify(store.observations('p-stable')),before)});
+test('consumer adapters are shadow-only even with current Yahoo state',()=>{for(const adapter of [evidence.waiverEvidenceContext,evidence.startSitEvidenceContext,evidence.teamFitEvidenceContext]){const context=adapter(store,'p-stable',{leagueState:{authoritative:true,current:true}});assert.strictEqual(context.recommendationAuthority,false);assert.strictEqual(context.leagueState.status,'CURRENT_YAHOO')}});
+test('analysis evidence cannot claim live waiver availability',()=>{const context=evidence.waiverEvidenceContext(store,'p-stable',{leagueState:null});assert.strictEqual(context.recommendationAuthority,false);assert.strictEqual(context.leagueState.status,'YAHOO_UNAVAILABLE');assert.notStrictEqual(context.authority,'LIVE')});
+test('role signal does not fabricate Start Sit authority',()=>{const context=evidence.startSitEvidenceContext(store,'p-role',{leagueState:{authoritative:true,current:true}});assert.strictEqual(context.roleSignal.status,'ROLE_UNCERTAIN');assert.strictEqual(context.coverage.level,'INSUFFICIENT');assert.strictEqual(context.authority,'BLOCKED')});
+test('manual JSON import is bounded, idempotent, and conflict-safe',()=>{const isolated=new evidence.SeasonEvidenceStore({asOf:fixture.asOf});const json=JSON.stringify({schemaVersion:fixture.schemaVersion,records:[fixture.records[0]]});assert.strictEqual(isolated.importJSON(json,{players:fixture.canonicalPlayers}).accepted,1);assert.strictEqual(isolated.importJSON(json,{players:fixture.canonicalPlayers}).idempotent,1);assert.throws(()=>isolated.importJSON('{bad json',{players:fixture.canonicalPlayers}),/invalid/);assert.throws(()=>isolated.importJSON({schemaVersion:'wrong',records:[]},{players:fixture.canonicalPlayers}),/unsupported/)});
+test('provider-neutral adapter contract keeps live fetching unimplemented',()=>{const base=new evidence.EvidenceProviderAdapter({provider:'Future Provider'});assert.strictEqual(base.validate(fixture),true);assert.throws(()=>base.fetch(),/not implemented/);const normalized=new evidence.FixtureEvidenceAdapter().normalize(fixture,{players:fixture.canonicalPlayers,aliases:fixture.aliases,asOf:fixture.asOf});assert.strictEqual(normalized.result.accepted,38);assert.strictEqual(normalized.provider,'Fixture')});
+test('diagnostic status separates NFL evidence from Yahoo state',()=>{const offline=store.status({yahooState:null}),online=store.status({yahooState:{authoritative:true,current:true}});assert.strictEqual(offline.nflEvidenceReady,true);assert.strictEqual(offline.yahooLeagueStateReady,false);assert.strictEqual(offline.decisionAuthority,'SHADOW');assert.strictEqual(online.yahooLeagueStateReady,true);assert.strictEqual(online.recommendationAuthority,false)});
+
+console.log(`Season Evidence deterministic contracts: ${passed}/${passed} passed`);
