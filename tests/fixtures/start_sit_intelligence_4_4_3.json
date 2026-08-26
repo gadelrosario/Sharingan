@@ -1,0 +1,33 @@
+{
+  "schema": "fantasy-hq-start-sit-fixture-1",
+  "timingState": "MID_WEEK",
+  "scenarios": [
+    {"key":"clear_start","expected":"START"},
+    {"key":"clear_sit","expected":"SIT"},
+    {"key":"close_toss_up","expected":"TOSS_UP"},
+    {"key":"injury_wait","expected":"WAIT"},
+    {"key":"role_lean_start","expected":"LEAN_START"},
+    {"key":"projection_disagreement","expectedPreferred":"stable-role"},
+    {"key":"discovery_caution","expected":"WAIT"},
+    {"key":"optimization_action","expected":"LEAN_START"},
+    {"key":"flex_eligibility","expected":true},
+    {"key":"no_legal_alternative","expected":0},
+    {"key":"insufficient_data","expected":"INSUFFICIENT_VALIDATED_SEASON_DATA"},
+    {"key":"multi_profile","expected":"ISOLATED"},
+    {"key":"sharingan_start","expected":true},
+    {"key":"sharingan_watch","expected":true},
+    {"key":"chidori_normal","expected":false},
+    {"key":"chidori_restrictive","expected":true}
+  ],
+  "players": {
+    "elite": {"canonicalPlayerId":"elite","name":"Elite Starter","position":"WR","sourceTeam":"DET","identity":{"status":"MATCHED","canonicalPlayerId":"elite"},"startSitEvidence":{"role":94,"opportunity":94,"recentUsage":90,"roleStability":94,"matchup":88,"floor":92,"upside":94,"volatility":20,"scoringFit":90,"offense":88,"projection":89,"injuryUncertainty":0,"workloadUncertainty":5,"confidence":96,"freshness":"CURRENT","roleSource":"fixture","opportunitySource":"fixture","usageSource":"fixture","matchupSource":"fixture","projectionSource":"fixture","fetchedAt":"2026-08-25T00:00:00Z"}},
+    "weak": {"canonicalPlayerId":"weak","name":"Weak Starter","position":"WR","sourceTeam":"NYG","identity":{"status":"MATCHED","canonicalPlayerId":"weak"},"startSitEvidence":{"role":48,"opportunity":45,"recentUsage":44,"roleStability":48,"matchup":50,"floor":46,"upside":52,"volatility":58,"scoringFit":52,"offense":45,"projection":55,"injuryUncertainty":5,"workloadUncertainty":18,"confidence":88,"freshness":"CURRENT","roleSource":"fixture","opportunitySource":"fixture","usageSource":"fixture","matchupSource":"fixture","projectionSource":"fixture","fetchedAt":"2026-08-25T00:00:00Z"}},
+    "stable-role": {"canonicalPlayerId":"stable-role","name":"Stable Role","position":"RB","sourceTeam":"BUF","projection":12.1,"identity":{"status":"MATCHED","canonicalPlayerId":"stable-role"},"startSitEvidence":{"role":84,"opportunity":88,"recentUsage":84,"roleStability":91,"matchup":68,"floor":86,"upside":75,"volatility":24,"scoringFit":82,"offense":78,"projection":68,"injuryUncertainty":0,"workloadUncertainty":8,"confidence":92,"freshness":"CURRENT","roleSource":"fixture","opportunitySource":"fixture","usageSource":"fixture","matchupSource":"fixture","projectionSource":"fixture","fetchedAt":"2026-08-25T00:00:00Z"}},
+    "fragile-projection": {"canonicalPlayerId":"fragile-projection","name":"Fragile Projection","position":"RB","sourceTeam":"MIA","projection":14.8,"injuryStatus":"Q","identity":{"status":"MATCHED","canonicalPlayerId":"fragile-projection"},"startSitEvidence":{"role":64,"opportunity":61,"recentUsage":58,"roleStability":45,"matchup":82,"floor":55,"upside":88,"volatility":68,"scoringFit":75,"offense":84,"projection":92,"injuryUncertainty":72,"workloadUncertainty":70,"confidence":82,"freshness":"CURRENT","roleSource":"fixture","opportunitySource":"fixture","usageSource":"fixture","matchupSource":"fixture","projectionSource":"fixture","injurySource":"fixture","fetchedAt":"2026-08-25T00:00:00Z"}},
+    "close-a": {"canonicalPlayerId":"close-a","name":"Close Alpha","position":"WR","sourceTeam":"SEA","identity":{"status":"MATCHED","canonicalPlayerId":"close-a"},"startSitEvidence":{"role":76,"opportunity":76,"recentUsage":74,"roleStability":78,"matchup":72,"floor":75,"upside":78,"volatility":35,"scoringFit":76,"offense":74,"projection":77,"injuryUncertainty":0,"workloadUncertainty":10,"confidence":88,"freshness":"CURRENT"}},
+    "close-b": {"canonicalPlayerId":"close-b","name":"Close Bravo","position":"WR","sourceTeam":"MIN","identity":{"status":"MATCHED","canonicalPlayerId":"close-b"},"startSitEvidence":{"role":75,"opportunity":75,"recentUsage":75,"roleStability":76,"matchup":73,"floor":74,"upside":79,"volatility":34,"scoringFit":76,"offense":75,"projection":78,"injuryUncertainty":0,"workloadUncertainty":10,"confidence":88,"freshness":"CURRENT"}},
+    "moderate-a": {"canonicalPlayerId":"moderate-a","name":"Moderate Alpha","position":"WR","sourceTeam":"PHI","identity":{"status":"MATCHED","canonicalPlayerId":"moderate-a"},"startSitEvidence":{"role":79,"opportunity":80,"recentUsage":78,"roleStability":80,"matchup":75,"floor":78,"upside":81,"volatility":30,"scoringFit":78,"offense":78,"projection":79,"injuryUncertainty":0,"workloadUncertainty":8,"confidence":90,"freshness":"CURRENT"}},
+    "moderate-b": {"canonicalPlayerId":"moderate-b","name":"Moderate Bravo","position":"WR","sourceTeam":"DAL","identity":{"status":"MATCHED","canonicalPlayerId":"moderate-b"},"startSitEvidence":{"role":72,"opportunity":72,"recentUsage":71,"roleStability":74,"matchup":70,"floor":70,"upside":73,"volatility":38,"scoringFit":72,"offense":72,"projection":73,"injuryUncertainty":0,"workloadUncertainty":12,"confidence":88,"freshness":"CURRENT"}},
+    "qb": {"canonicalPlayerId":"qb","name":"Fixture QB","position":"QB","sourceTeam":"BUF","identity":{"status":"MATCHED","canonicalPlayerId":"qb"},"startSitEvidence":{"role":80,"opportunity":80,"recentUsage":80,"roleStability":85,"matchup":75,"floor":80,"upside":85,"volatility":25,"scoringFit":85,"offense":85,"projection":84,"injuryUncertainty":0,"workloadUncertainty":0,"confidence":92,"freshness":"CURRENT"}}
+  }
+}

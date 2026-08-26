@@ -8,8 +8,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.18"></script>
-<link rel="stylesheet" href="css/app.css?v=4.4.2">
+<script src="js/app-version.js?v=1.0.19"></script>
+<link rel="stylesheet" href="css/app.css?v=4.4.3">
   </head>
   <body>
     <header>
@@ -295,7 +295,7 @@
           <aside id="seasonSidebar" class="seasonSidebar" aria-label="Season navigation">
             <nav id="seasonNavigation"></nav>
             <section id="seasonLeagueSnapshot" class="seasonSidebarCard"></section>
-            <section class="seasonSidebarCard"><b>QUICK ACTIONS</b><button type="button" onclick="showSeasonComingSoon('Compare Players')">Compare Players</button><button type="button" onclick="showSeasonPage('trades')">Trade Analyzer</button><button type="button" onclick="showSeasonComingSoon('Start/Sit Assistant')">Start/Sit Assistant</button><button type="button" onclick="showSeasonPage('waivers')">View Waivers</button></section>
+            <section class="seasonSidebarCard"><b>QUICK ACTIONS</b><button type="button" onclick="showSeasonComingSoon('Compare Players')">Compare Players</button><button type="button" onclick="showSeasonPage('trades')">Trade Analyzer</button><button type="button" onclick="showSeasonPage('startsit')">Start/Sit Assistant</button><button type="button" onclick="showSeasonPage('waivers')">View Waivers</button></section>
             <section class="seasonSidebarCard seasonModesLegend"><b>FLIGHT CONTROL MODES</b><span><i class="discovery"></i>Discovery <small>Weeks 1–3</small></span><span><i class="optimization"></i>Optimization <small>Weeks 4–12</small></span><span><i class="playoff"></i>Playoff Push <small>Weeks 13–16</small></span><span><i class="win"></i>Win-or-Go-Home <small>Playoffs</small></span></section>
           </aside>
           <main id="seasonContent" class="seasonContent" tabindex="-1"></main>
@@ -644,6 +644,7 @@
     <script src="js/yahoo-sync-v1.js?v=1.0.0"></script>
     <script src="js/season-command-center-v1.js?v=1.1.2"></script>
     <script src="js/waiver-intelligence-v1.js?v=1.0.0"></script>
+    <script src="js/start-sit-intelligence-v1.js?v=1.0.0"></script>
     <script src="js/jonin-decision-intelligence-v1.js?v=1.0.3"></script>
     <script src="js/draft-grading-engine-v1.js?v=1.0.0"></script>
     <script src="js/command-center-v1.js?v=1.1.0"></script>
@@ -658,7 +659,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.4.2"></script>
+    <script src="js/app.js?v=4.4.3"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

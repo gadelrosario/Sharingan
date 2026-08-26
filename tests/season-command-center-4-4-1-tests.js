@@ -24,7 +24,7 @@ check(Season.phaseForWeek(1).key==='discovery'&&Season.phaseForWeek(8).key==='op
 const cards=Season.recommendationCards(model);check(cards.length===1&&cards[0].title==='Not yet evaluated','no forced season recommendation');
 check(JSON.stringify(cards).includes('intentionally disabled')&&!JSON.stringify(cards).match(/TeamFit\s*\d|FAAB\s*\$|Championship Odds\s*\d/),'no fake TeamFit FAAB or odds');
 check(Season.flightControl(model).reason.includes('not yet evaluated'),'Flight Control is explicitly non-authoritative');
-check(Season.PAGES.length===9&&Season.PAGES.includes('settings'),'all navigation shells registered');
+check(Season.PAGES.length===10&&Season.PAGES.includes('startsit')&&Season.PAGES.includes('settings'),'all navigation shells registered');
 check(model.profileId==='primary-league'&&model.objective.rosterCount===12,'profile-scoped model');
 const archive={id:'session:primary-league:fixture',kind:'archived-session',archiveId:'completed_fixture',profileId:'primary-league',completedAt:completed.updatedAt,snapshot:completed},archiveBytes=JSON.stringify(archive),bootstrap=Season.buildDraftBootstrap({entry:archive,profile,canonicalPlayers:players}),draftSnapshot=bootstrap.state.snapshot;
 check(draftSnapshot.teams.length===10&&draftSnapshot.teams.every(team=>team.roster.length===2),'all 10 draft teams reconstruct');

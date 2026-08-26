@@ -1,6 +1,6 @@
 (function(root,factory){'use strict';const api=factory();if(typeof module!=='undefined'&&module.exports)module.exports=api;root.SeasonCommandCenterV1=api;})(typeof window!=='undefined'?window:globalThis,function(){
   'use strict';
-  const PAGES=Object.freeze(['home','team','waivers','matchup','radar','trades','history','players','settings']);
+  const PAGES=Object.freeze(['home','team','waivers','startsit','matchup','radar','trades','history','players','settings']);
   const MODE_PREFIX='fantasyHQ.leagueProfile.';
   const clean=value=>String(value??'').trim();
   const clone=value=>JSON.parse(JSON.stringify(value));
