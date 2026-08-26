@@ -33,7 +33,7 @@ class WaiverIntelligenceTests(unittest.TestCase):
         worker = (ROOT / 'service-worker.js').read_text()
         for contract in ('seasonWaiverEvaluation', 'seasonWaiverRow', 'renderSeasonWaivers', 'SHARINGAN WAIVER PICK', 'CHIDORI ALERT', 'FAAB: Not yet scored'):
             self.assertIn(contract, app)
-        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.0.0'), html.index('js/app.js?v=4.4.3'))
+        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.0.0'), html.index('js/app.js?v=4.4.4.1'))
         self.assertIn("'./js/waiver-intelligence-v1.js?v=1.0.0'", worker)
         self.assertIn('.seasonWaiverDecisionRow', css)
         self.assertIn('@media(max-width:720px)', css)
@@ -42,7 +42,7 @@ class WaiverIntelligenceTests(unittest.TestCase):
         app = (ROOT / 'js/app.js').read_text()
         css = (ROOT / 'css/app.css').read_text()
         engine = (ROOT / 'js/waiver-intelligence-v1.js').read_text()
-        for contract in ('seasonWaiverRecommendationCards', 'seasonWaiverDecisionCard', 'seasonWaiverRosterImpact', 'seasonWaiverTimingCopy', 'PRIMARY DECISIONS', 'WATCHLIST / MONITOR', 'OTHER CANDIDATES', 'SHARINGAN VISION — WAIVER ANALYSIS'):
+        for contract in ('seasonWaiverRecommendationCards', 'seasonWaiverDecisionCard', 'seasonWaiverRosterImpact', 'seasonWaiverTimingCopy', 'PRIMARY DECISIONS', 'WATCHLIST / MONITOR', 'OTHER CANDIDATES', "kind:'waiver'", 'DECISION ANALYSIS'):
             self.assertIn(contract, app)
         self.assertIn('used.has(pair.canonicalPlayerId)', app)
         self.assertIn('disclosedIds', app)

@@ -1,9 +1,9 @@
-const CACHE = 'fantasy-hq-jonin-4-4-3-start-sit-intelligence-2026-08-25';
+const CACHE = 'fantasy-hq-jonin-4-4-4-final-ux-convergence-2026-08-26';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.4.3',
-  './js/app-version.js?v=1.0.19',
+  './css/app.css?v=4.4.4.1',
+  './js/app-version.js?v=1.0.20',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
   './js/draft-math-v1.js?v=1.1.0',
@@ -25,6 +25,7 @@ const ASSETS = [
   './js/season-command-center-v1.js?v=1.1.2',
   './js/waiver-intelligence-v1.js?v=1.0.0',
   './js/start-sit-intelligence-v1.js?v=1.0.0',
+  './js/teamfit-v1.js?v=1.0.0',
   './js/jonin-decision-intelligence-v1.js?v=1.0.3',
   './js/draft-grading-engine-v1.js?v=1.0.0',
   './js/command-center-v1.js?v=1.1.0',
@@ -36,7 +37,7 @@ const ASSETS = [
   './js/player-photo-v1.js?v=1.0.0',
   './js/premium-player-card-v1.js?v=1.1.0',
   './js/draft-psychology-engine-v1.js?v=1.0.0',
-  './js/app.js?v=4.4.3',
+  './js/app.js?v=4.4.4.1',
   './assets/player-placeholders/generic.svg',
   './assets/player-placeholders/qb.svg',
   './assets/player-placeholders/rb.svg',

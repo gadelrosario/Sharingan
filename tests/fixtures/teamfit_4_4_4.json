@@ -1,0 +1,33 @@
+{
+  "schema": "fantasy-hq-teamfit-fixture-1",
+  "scenarios": [
+    "clear_positional_need",
+    "strong_redundancy",
+    "immediate_starter_path",
+    "depth_only",
+    "fragile_despite_count",
+    "flex_heavy_profile",
+    "full_vs_half_ppr",
+    "validated_insurance",
+    "unknown_insurance",
+    "high_replaceability",
+    "low_replaceability",
+    "before_after_improvement",
+    "before_after_degradation",
+    "insufficient_roster_state",
+    "multi_profile_divergence",
+    "profile_a_b_a_restore"
+  ],
+  "players": {
+    "elite_wr": {"canonicalPlayerId":"elite-wr","name":"Elite Wideout","position":"WR","rosterSlot":"WR","identity":{"status":"MATCHED","canonicalPlayerId":"elite-wr"},"teamFitEvidence":{"role":92,"opportunity":92,"upside":94,"confidence":95,"roleSource":"fixture","opportunitySource":"fixture","rosterSource":"Yahoo","fetchedAt":"2026-08-25T00:00:00Z"}},
+    "solid_wr": {"canonicalPlayerId":"solid-wr","name":"Solid Wideout","position":"WR","rosterSlot":"WR","identity":{"status":"MATCHED","canonicalPlayerId":"solid-wr"},"teamFitEvidence":{"role":72,"opportunity":74,"upside":76,"confidence":90,"roleSource":"fixture","opportunitySource":"fixture","rosterSource":"Yahoo"}},
+    "weak_wr": {"canonicalPlayerId":"weak-wr","name":"Weak Wideout","position":"WR","rosterSlot":"BN","identity":{"status":"MATCHED","canonicalPlayerId":"weak-wr"},"teamFitEvidence":{"role":45,"opportunity":44,"upside":48,"confidence":85,"roleSource":"fixture","opportunitySource":"fixture","rosterSource":"Yahoo"}},
+    "format_wr": {"canonicalPlayerId":"format-wr","name":"Reception Specialist","position":"WR","rosterSlot":"BN","identity":{"status":"MATCHED","canonicalPlayerId":"format-wr"},"teamFitEvidence":{"role":70,"opportunity":70,"upside":70,"scoringFitByFormat":{"full-ppr":100,"half-ppr":0},"confidence":90,"roleSource":"fixture","opportunitySource":"fixture","rosterSource":"Yahoo"}},
+    "elite_qb": {"canonicalPlayerId":"elite-qb","name":"Elite Quarterback","position":"QB","rosterSlot":"QB","identity":{"status":"MATCHED","canonicalPlayerId":"elite-qb"},"teamFitEvidence":{"role":94,"opportunity":94,"upside":94,"confidence":96,"rosterSource":"Yahoo"}},
+    "backup_qb": {"canonicalPlayerId":"backup-qb","name":"Backup Quarterback","position":"QB","rosterSlot":"BN","identity":{"status":"MATCHED","canonicalPlayerId":"backup-qb"},"teamFitEvidence":{"role":50,"opportunity":48,"upside":55,"confidence":86,"rosterSource":"Yahoo"}},
+    "fragile_rb": {"canonicalPlayerId":"fragile-rb","name":"Fragile Runner","position":"RB","rosterSlot":"RB","injuryStatus":"Q","identity":{"status":"MATCHED","canonicalPlayerId":"fragile-rb"},"teamFitEvidence":{"role":72,"opportunity":74,"upside":78,"injuryUncertainty":72,"confidence":86,"injurySource":"fixture","rosterSource":"Yahoo"}},
+    "fragile_rb_2": {"canonicalPlayerId":"fragile-rb-2","name":"Committee Runner","position":"RB","rosterSlot":"RB","identity":{"status":"MATCHED","canonicalPlayerId":"fragile-rb-2"},"teamFitEvidence":{"role":62,"opportunity":60,"upside":70,"roleStability":"UNSTABLE","confidence":82,"rosterSource":"Yahoo"}},
+    "handcuff": {"canonicalPlayerId":"handcuff","name":"Validated Handcuff","position":"RB","rosterSlot":"BN","identity":{"status":"MATCHED","canonicalPlayerId":"handcuff"},"teamFitEvidence":{"role":60,"opportunity":58,"upside":76,"confidence":90,"insuranceFor":"fragile-rb","insuranceRole":"DIRECT_BACKUP","insuranceConfidence":92,"relationshipSource":"fixture","rosterSource":"Yahoo"}},
+    "unknown_backup": {"canonicalPlayerId":"unknown-backup","name":"Unknown Backup","position":"RB","rosterSlot":"BN","identity":{"status":"MATCHED","canonicalPlayerId":"unknown-backup"},"teamFitEvidence":{"role":60,"opportunity":58,"upside":72,"confidence":84,"rosterSource":"Yahoo"}}
+  }
+}

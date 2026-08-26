@@ -26,7 +26,9 @@ class StartSitIntelligence443Tests(unittest.TestCase):
         self.assertIn('renderSeasonStartSit', app)
         self.assertIn('INSUFFICIENT_VALIDATED_SEASON_DATA', app)
         self.assertIn('View Analysis', app)
-        self.assertIn('START/SIT ANALYSIS', app)
+        self.assertIn("kind:'start-sit'", app)
+        self.assertIn('WHY FANTASY HQ PREFERS', app)
+        self.assertIn('SHOW ADVANCED EVIDENCE', app)
 
     def test_default_cards_do_not_dump_internal_components(self):
         app = (ROOT / 'js/app.js').read_text(encoding='utf-8')

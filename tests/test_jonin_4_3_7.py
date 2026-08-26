@@ -16,9 +16,9 @@ class Jonin437Tests(unittest.TestCase):
     def test_profile_module_is_loaded_before_app_and_cached(self):
         html=(ROOT/'index.html').read_text(encoding='utf-8')
         worker=(ROOT/'service-worker.js').read_text(encoding='utf-8')
-        self.assertLess(html.index('js/league-profiles-v1.js?v=1.1.0'),html.index('js/app.js?v=4.4.3'))
+        self.assertLess(html.index('js/league-profiles-v1.js?v=1.1.0'),html.index('js/app.js?v=4.4.4.1'))
         self.assertIn("'./js/league-profiles-v1.js?v=1.1.0'",worker)
-        self.assertIn("fantasy-hq-jonin-4-4-2-waiver-intelligence",worker)
+        self.assertIn("fantasy-hq-jonin-4-4-4-final-ux-convergence",worker)
 
     def test_profile_specific_context_reaches_existing_engine_inputs(self):
         app=(ROOT/'js'/'app.js').read_text(encoding='utf-8')
