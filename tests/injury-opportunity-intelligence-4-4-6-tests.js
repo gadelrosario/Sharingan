@@ -1,0 +1,41 @@
+'use strict';
+const assert=require('assert'),fs=require('fs'),path=require('path');
+const evidence=require('../js/season-evidence-v1.js');
+const intelligence=require('../js/injury-opportunity-intelligence-v1.js');
+const base=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures','season_evidence_4_4_5.json'),'utf8'));
+const fixture=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures','injury_opportunity_4_4_6.json'),'utf8'));
+const players=[...base.canonicalPlayers,...fixture.canonicalPlayers];
+const store=new evidence.SeasonEvidenceStore({asOf:base.asOf});
+store.importPayload(base,{players,aliases:base.aliases});
+store.importPayload(fixture,{players});
+const engine=new intelligence.InjuryOpportunityIntelligence(store),id=fixture.archetypes;
+let passCount=0;
+function test(name,fn){fn();passCount+=1;console.log(`PASS ${name}`)}
+
+test('three-week role growth produces a strong persistent breakout',()=>{const r=engine.evaluate(id.trueBreakout);assert.strictEqual(r.roleSignal,'ROLE_SURGING');assert.strictEqual(r.opportunitySignal,'OPPORTUNITY_SURGING');assert.strictEqual(r.breakoutSignal,'BREAKOUT_SIGNAL_STRONG');assert.strictEqual(r.signalPersistence,'PERSISTENT')});
+test('one isolated snap spike is developing rather than strong',()=>{const r=engine.evaluate(id.oneWeekSpike);assert.notStrictEqual(r.roleSignal,'ROLE_SURGING');assert.notStrictEqual(r.breakoutSignal,'BREAKOUT_SIGNAL_STRONG');assert.strictEqual(r.timingState,'WATCH')});
+test('touchdown production without usage growth remains noise',()=>{const r=engine.evaluate(id.touchdownFluke);assert.strictEqual(r.signalStrength,'ONE_GAME_NOISE');assert.strictEqual(r.primarySignal,'ONE_GAME_NOISE');assert(r.riskFlags.includes('TOUCHDOWN_DEPENDENCE'))});
+test('opportunity growth without touchdowns still supports breakout',()=>{const r=engine.evaluate(id.trueBreakout);assert.strictEqual(store.latest(id.trueBreakout,'production').status,'MISSING');assert.strictEqual(r.breakoutSignal,'BREAKOUT_SIGNAL_STRONG')});
+test('DNP to LIMITED to FULL is improving',()=>assert.strictEqual(engine.evaluate(id.improvingInjury).injurySignal,'IMPROVING'));
+test('FULL to LIMITED to DNP is worsening',()=>assert.strictEqual(engine.evaluate(id.worseningInjury).injurySignal,'WORSENING'));
+test('strong injury opportunity requires validated relationship',()=>{const r=engine.evaluate(id.injuryOpportunity);assert.strictEqual(r.injuryOpportunity,'INJURY_OPPORTUNITY_STRONG');assert.strictEqual(r.primarySignal,'INJURY_OPPORTUNITY_STRONG')});
+test('same-team position never creates a handcuff relationship',()=>assert.strictEqual(engine.evaluate(id.fakeHandcuff).injuryOpportunity,'NO_VALIDATED_INJURY_OPPORTUNITY'));
+test('multi-week role collapse is detected',()=>{const r=engine.evaluate(id.roleCollapse);assert.strictEqual(r.roleSignal,'ROLE_COLLAPSING');assert.strictEqual(r.opportunitySignal,'OPPORTUNITY_COLLAPSING');assert.strictEqual(r.roleLossSignal,'ROLE_LOSS_SEVERE')});
+test('conflicting sources block timing and reduce confidence',()=>{const r=engine.evaluate(id.conflictedSources);assert.strictEqual(r.injurySignal,'CONFLICTED');assert.strictEqual(r.timingState,'WAIT');assert(r.conflictingEvidenceIds.length===2);assert(r.confidence<=20)});
+test('stale evidence lowers confidence and forces WAIT',()=>{const stale=engine.evaluate('p-stale'),fresh=engine.evaluate('p-role');assert.strictEqual(stale.freshness,'STALE');assert.strictEqual(stale.timingState,'WAIT');assert(stale.confidence<fresh.confidence)});
+test('missing values remain unknown rather than zero',()=>{const r=engine.evaluate({playerId:id.missingEvidence,name:'Unknown Evidence Player',position:'TE'});assert.strictEqual(r.status,'INSUFFICIENT_EVIDENCE');assert.strictEqual(r.freshness,'UNKNOWN');assert.strictEqual(r.injurySignal,'UNKNOWN');assert(!JSON.stringify(r).includes('"projectedPoints":0'))});
+test('Discovery Mode ignores touchdown noise',()=>assert.strictEqual(engine.evaluate(id.touchdownFluke,{phase:'DISCOVERY'}).timingState,'IGNORE'));
+test('Discovery Mode still recognizes persistent underlying breakout',()=>assert.strictEqual(engine.evaluate(id.trueBreakout,{phase:'DISCOVERY'}).timingState,'ACT'));
+test('projection cannot override observed role collapse',()=>{store.importPayload({schemaVersion:base.schemaVersion,records:[{sourceRecordId:'decline-projection',canonicalPlayerId:'p-decline',season:2026,week:3,observedAt:'2026-09-01T11:00:00Z',fetchedAt:'2026-09-01T11:30:00Z',source:{name:'Projection Lab',provider:'fixture',type:'PROJECTION'},projection:{projectedPoints:30,scoringFormat:'HALF_PPR',source:'Projection Lab',timestamp:'2026-09-01T10:30:00Z'}}]},{players});engine.clearCache();const r=engine.evaluate(id.roleCollapse);assert.strictEqual(r.roleLossSignal,'ROLE_LOSS_SEVERE');assert.strictEqual(r.timingState,'ACT')});
+test('Profile A to B to A keeps raw NFL signal deterministic',()=>{const a1=engine.evaluate(id.trueBreakout,{profileId:'A'}),b=engine.evaluate(id.trueBreakout,{profileId:'B'}),a2=engine.evaluate(id.trueBreakout,{profileId:'A'});for(const r of [a1,b,a2])assert.strictEqual(r.primarySignal,'BREAKOUT_SIGNAL_STRONG');assert.deepStrictEqual(a1.reasoning,a2.reasoning);assert.strictEqual(b.context.profileId,'B')});
+test('evaluation never mutates SeasonEvidenceStore',()=>{const before=JSON.stringify(store.observations(id.injuryOpportunity));engine.evaluate(id.injuryOpportunity);engine.evaluateAll(Object.values(id));assert.strictEqual(JSON.stringify(store.observations(id.injuryOpportunity)),before)});
+test('results remain contextual without Yahoo',()=>{const r=engine.evaluate(id.trueBreakout);assert.strictEqual(r.recommendationAuthority,false);assert.strictEqual(r.transactionAuthority,false);assert(!r.summary.startsWith('Add '))});
+test('confidence is independent from signal strength',()=>{const noise=engine.evaluate(id.touchdownFluke);assert.strictEqual(noise.signalStrength,'ONE_GAME_NOISE');assert(noise.confidence>=50)});
+test('supporting evidence remains inspectable and traceable',()=>{const r=engine.evaluate(id.trueBreakout);assert(r.supportingEvidenceIds.length>=3);assert.deepStrictEqual(r.provenance.evidenceIds,r.supportingEvidenceIds);assert.strictEqual(r.provenance.sourceQuality,'UNKNOWN')});
+test('usage-based movement is not mislabeled official',()=>{const r=engine.evaluate(id.trueBreakout);assert.strictEqual(r.depthChartBasis,'USAGE_BASED_ROLE_CHANGE');assert.strictEqual(r.reasoning.depthChart.officialDepthChange,false)});
+test('validated relationship is distinguished from name/team inference',()=>{const r=engine.evaluate(id.injuryOpportunity);assert(r.reasoning.injuryOpportunity.evidenceIds.some(value=>value.includes('backup-rel')))});
+test('Sharingan cannot be independently activated',()=>assert.strictEqual(engine.evaluate(id.trueBreakout).sharinganActivation,false));
+test('Chidori cannot be independently activated',()=>assert.strictEqual(engine.evaluate(id.injuryOpportunity).chidoriActivation,false));
+test('evaluateAll is bounded and prioritizes immediate-attention signals',()=>{const rows=engine.evaluateAll(Object.values(id),{limit:4});assert.strictEqual(rows.length,4);assert.strictEqual(rows[0].timingState,'ACT');assert(rows.every(row=>row.recommendationAuthority===false))});
+
+console.log(JSON.stringify({passCount,failCount:0,archetypes:Object.fromEntries(Object.entries(id).map(([name,playerId])=>{const r=engine.evaluate(playerId);return[name,{playerId,primary:r.primarySignal,timing:r.timingState,confidence:r.confidence}]}))}));

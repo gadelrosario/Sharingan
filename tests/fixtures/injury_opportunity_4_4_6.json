@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "fantasy-hq-season-evidence-1",
+  "asOf": "2026-09-01T12:00:00.000Z",
+  "canonicalPlayers": [
+    {"playerId":"p-spike","name":"One Week Spike","position":"WR","team":"TB"},
+    {"playerId":"p-missing","name":"Unknown Evidence Player","position":"TE","team":"NE"}
+  ],
+  "archetypes": {
+    "trueBreakout":"p-rising",
+    "touchdownFluke":"p-fluke",
+    "injuryOpportunity":"p-backup",
+    "fakeHandcuff":"p-unknown",
+    "roleCollapse":"p-decline",
+    "improvingInjury":"p-practice-up",
+    "worseningInjury":"p-practice-down",
+    "conflictedSources":"p-conflict",
+    "oneWeekSpike":"p-spike",
+    "missingEvidence":"p-missing"
+  },
+  "records": [
+    {"sourceRecordId":"spike-w1","canonicalPlayerId":"p-spike","season":2026,"week":1,"observedAt":"2026-08-18T12:00:00Z","fetchedAt":"2026-08-18T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.31,"routeParticipation":0.35,"routes":12},"opportunity":{"targets":2}},
+    {"sourceRecordId":"spike-w2","canonicalPlayerId":"p-spike","season":2026,"week":2,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.33,"routeParticipation":0.36,"routes":13},"opportunity":{"targets":2}},
+    {"sourceRecordId":"spike-w3","canonicalPlayerId":"p-spike","season":2026,"week":3,"observedAt":"2026-09-01T10:00:00Z","fetchedAt":"2026-09-01T11:00:00Z","source":{"name":"Usage Lab","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.67,"routeParticipation":0.70,"routes":28},"opportunity":{"targets":7},"production":{"receptions":5,"receivingYards":61,"touchdowns":0},"projection":{"projectedPoints":12.1,"scoringFormat":"HALF_PPR","source":"Projection Lab","timestamp":"2026-09-01T09:00:00Z"}}
+  ]
+}

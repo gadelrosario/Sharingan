@@ -16,7 +16,7 @@ console.log(JSON.stringify(APP_VERSION));
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(json.loads(result.stdout), {"phase": "Jōnin", "milestone": "4.4.5", "label": "Jōnin 4.4.5"})
+        self.assertEqual(json.loads(result.stdout), {"phase": "Jōnin", "milestone": "4.4.6", "label": "Jōnin 4.4.6"})
 
     def test_canonical_metadata_renders_all_registered_surfaces(self):
         command = """
@@ -37,9 +37,9 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         manifest = (ROOT / "manifest.webmanifest").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertEqual(version.count("label:'Jōnin 4.4.5'"), 1)
+        self.assertEqual(version.count("label:'Jōnin 4.4.6'"), 1)
         for source in (html, app, manifest, worker):
-            self.assertNotIn("Jōnin 4.4.5", source)
+            self.assertNotIn("Jōnin 4.4.6", source)
         self.assertRegex(app, r"const APP_VERSION\s*=\s*window\.FantasyHQAppVersion")
 
     def test_main_menu_and_each_mode_use_canonical_label(self):
@@ -66,14 +66,15 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
     def test_offline_cache_contains_canonical_metadata(self):
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        self.assertIn('./js/app-version.js?v=1.0.21', worker)
-        self.assertIn('fantasy-hq-jonin-4-4-5', worker)
-        self.assertIn('service-worker.js?v=jonin_4_4_5_season_evidence_foundation', app)
-        self.assertIn('css/app.css?v=4.4.5.1', worker)
+        self.assertIn('./js/app-version.js?v=1.0.22', worker)
+        self.assertIn('fantasy-hq-jonin-4-4-6', worker)
+        self.assertIn('service-worker.js?v=jonin_4_4_6_injury_opportunity_intelligence', app)
+        self.assertIn('css/app.css?v=4.4.6.1', worker)
         self.assertIn('js/start-sit-intelligence-v1.js?v=1.0.0', worker)
         self.assertIn('js/teamfit-v1.js?v=1.0.0', worker)
         self.assertIn('js/season-evidence-v1.js?v=1.0.0', worker)
-        self.assertIn('js/app.js?v=4.4.5.1', worker)
+        self.assertIn('js/injury-opportunity-intelligence-v1.js?v=1.0.0', worker)
+        self.assertIn('js/app.js?v=4.4.6.1', worker)
 
     def test_architecture_remains_browser_isolated(self):
         sources = "\n".join((ROOT / path).read_text(encoding="utf-8") for path in ("index.html", "js/app.js", "service-worker.js"))
