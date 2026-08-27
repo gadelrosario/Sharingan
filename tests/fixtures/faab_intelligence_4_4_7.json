@@ -1,0 +1,29 @@
+{
+  "schema": "fantasy-hq-faab-fixture-1",
+  "scenarios": [
+    {"key":"live_moderate","action":"ACT","expectAuthority":"LIVE"},
+    {"key":"wait_shadow","action":"WAIT","expectAuthority":"SHADOW"},
+    {"key":"hold_blocked","action":"HOLD","expectAuthority":"BLOCKED"},
+    {"key":"missing_budget","action":"ACT","budget":"missing","expectAuthority":"SHADOW"},
+    {"key":"stale_budget","action":"ACT","budget":"stale","expectAuthority":"SHADOW"},
+    {"key":"stale_availability","action":"ACT","availabilityCurrent":false,"expectAuthority":"SHADOW"},
+    {"key":"stale_roster","action":"ACT","rosterCurrent":false,"expectAuthority":"SHADOW"},
+    {"key":"unavailable","action":"ACT","available":false,"expectAuthority":"BLOCKED"},
+    {"key":"no_drop","action":"ACT","drop":"protected","expectAuthority":"BLOCKED"},
+    {"key":"all_in","action":"ACT","phase":"WIN_OR_GO_HOME","chidori":true,"expectPosture":"ALL_IN"},
+    {"key":"chidori_alone","action":"ACT","chidori":true,"expectNotPosture":"ALL_IN"},
+    {"key":"sharingan_bounded","action":"ACT","sharingan":true,"expectNotPosture":"ALL_IN"},
+    {"key":"short_term","action":"ACT","opportunity":"SHORT_TERM"},
+    {"key":"rest_of_season","action":"ACT","opportunity":"REST_OF_SEASON"},
+    {"key":"discovery","action":"ACT","phase":"DISCOVERY"},
+    {"key":"optimization","action":"ACT","phase":"OPTIMIZATION"},
+    {"key":"playoff_push","action":"ACT","phase":"PLAYOFF_PUSH"},
+    {"key":"win_or_go_home","action":"ACT","phase":"WIN_OR_GO_HOME"},
+    {"key":"value_strategy","action":"ACT","strategy":"VALUE"},
+    {"key":"aggressive_strategy","action":"ACT","strategy":"AGGRESSIVE"},
+    {"key":"zero_bid","action":"ACT","zeroBidAllowed":true},
+    {"key":"five_increment","action":"ACT","bidIncrement":5},
+    {"key":"low_remaining","action":"ACT","remainingBudget":7},
+    {"key":"profile_b","action":"ACT","profileId":"profile-b"}
+  ]
+}

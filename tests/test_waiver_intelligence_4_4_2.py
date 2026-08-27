@@ -33,7 +33,7 @@ class WaiverIntelligenceTests(unittest.TestCase):
         worker = (ROOT / 'service-worker.js').read_text()
         for contract in ('seasonWaiverEvaluation', 'seasonWaiverRow', 'renderSeasonWaivers', 'SHARINGAN WAIVER PICK', 'CHIDORI ALERT', 'FAAB: Not yet scored'):
             self.assertIn(contract, app)
-        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.0.0'), html.index('js/app.js?v=4.4.6.1'))
+        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.0.0'), html.index('js/app.js?v=4.4.7.1'))
         self.assertIn("'./js/waiver-intelligence-v1.js?v=1.0.0'", worker)
         self.assertIn('.seasonWaiverDecisionRow', css)
         self.assertIn('@media(max-width:720px)', css)
