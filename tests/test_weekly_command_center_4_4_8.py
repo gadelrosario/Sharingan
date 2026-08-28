@@ -70,8 +70,8 @@ class WeeklyCommandCenter448Tests(unittest.TestCase):
         self.assertIn(".seasonWeeklyQueue-watch{display:grid;grid-column:1/-1", css)
         self.assertIn(".seasonWeeklyIgnoreDisclosure summary:focus-visible", css)
         self.assertIn(".seasonHomeWaiver.seasonTrackedByFlight .seasonHomeDecisionReason", css)
-        self.assertIn("css/app.css?v=4.4.8.4", html)
-        self.assertIn("js/app.js?v=4.4.8.4", html)
+        self.assertIn("css/app.css?v=4.4.9.0", html)
+        self.assertIn("js/app.js?v=4.4.9.1", html)
 
 
 if __name__ == "__main__":

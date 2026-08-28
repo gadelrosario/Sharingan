@@ -37,7 +37,7 @@ class DraftJsonImportTests(unittest.TestCase):
     def test_cache_busting_includes_import_modules(self):
         html = (ROOT / 'index.html').read_text()
         worker = (ROOT / 'service-worker.js').read_text()
-        for asset in ('js/draft-workflow-v1.js?v=1.3.0', 'js/season-command-center-v1.js?v=1.1.2', 'js/app.js?v=4.4.4.1'):
+        for asset in ('js/draft-workflow-v1.js?v=1.3.0', 'js/season-command-center-v1.js?v=1.1.2', 'js/app.js?v=4.4.9.1'):
             self.assertIn(asset, html)
             self.assertIn(f"'./{asset}'", worker)
 

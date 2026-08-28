@@ -6,6 +6,12 @@
 
 Source player/team identifiers remain beside canonical Fantasy HQ identity. `AMBIGUOUS` and `UNRESOLVED` records remain visible for review and are never silently guessed.
 
+## Season Player Registry
+
+`fantasy-hq-season-player-registry-1` separates NFL identity from product eligibility. A strong provider/GSIS identity can create one profile-independent Season-only player after canonical resolution fails, without adding that player to Draft search, rankings, tiers, recommendations, simulations, grading, or Championship Equity. Registry entries retain provider crosswalks, first/last observation, team and position history, confidence, method, and an explicit `AUTO_VERIFIED`, `REVIEW_REQUIRED`, or `QUARANTINED` state.
+
+The stable Fantasy HQ Season ID is anchored to GSIS where available, never to mutable team context. Team changes append observations. Position conflicts retain one identity and are flagged; they never rewrite a canonical Draft position. Provider existence also supplies no Yahoo ownership or availability authority.
+
 Every entity uses a Fantasy HQ identifier matching `fhq_*`. Provider identifiers are attributes in `externalIds`; they are never primary keys.
 
 ## Entities

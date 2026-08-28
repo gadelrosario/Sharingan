@@ -1,0 +1,426 @@
+{
+  "recordsReceived": 3228,
+  "recordsAccepted": 1175,
+  "recordsRejected": 2053,
+  "playersResolved": 494,
+  "unresolvedPlayers": 0,
+  "ambiguousIdentities": 0,
+  "duplicateRecords": 0,
+  "missingRequiredFields": 3,
+  "staleRecords": 0,
+  "conflicts": 0,
+  "normalizationWarnings": 0,
+  "existingCanonicalMatches": 224,
+  "existingSeasonRegistryMatches": 0,
+  "newSeasonIdentitiesCreated": 270,
+  "autoVerifiedIdentities": 270,
+  "reviewRequiredIdentities": 0,
+  "quarantinedIdentities": 0,
+  "unsupportedPositions": 952,
+  "registryCollisions": 0,
+  "evidenceAcceptedAfterRegistration": 579,
+  "newSeasonIdentitiesByPosition": {
+    "QB": 29,
+    "WR": 101,
+    "TE": 71,
+    "RB": 54,
+    "FB": 6,
+    "K": 9
+  },
+  "reasons": {
+    "unsupportedPosition": 2050,
+    "missingRequiredField": 3
+  },
+  "familyCoverage": {
+    "opportunity": 1175,
+    "production": 1175,
+    "matchup": 1175
+  },
+  "rejected": [
+    {
+      "sourcePlayerId": "00-0026190",
+      "gameId": "2025_16_ATL_ARI",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0026190",
+        "gsisId": "00-0026190",
+        "name": "Calais Campbell",
+        "position": "DE",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0027865",
+      "gameId": "2025_16_PHI_WAS",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0027865",
+        "gsisId": "00-0027865",
+        "name": "Brandon Graham",
+        "position": "DE",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0027940",
+      "gameId": "2025_16_PHI_WAS",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0027940",
+        "gsisId": "00-0027940",
+        "name": "Von Miller",
+        "position": "OLB",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0027962",
+      "gameId": "2025_16_NYJ_NO",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0027962",
+        "gsisId": "00-0027962",
+        "name": "Cameron Jordan",
+        "position": "LB",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0027969",
+      "gameId": "2025_16_PIT_DET",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0027969",
+        "gsisId": "00-0027969",
+        "name": "Cameron Heyward",
+        "position": "DE",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0028292",
+      "gameId": "2025_16_PHI_WAS",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0028292",
+        "gsisId": "00-0028292",
+        "name": "Nick Bellore",
+        "position": "LB",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0028394",
+      "gameId": "2025_16_LA_SEA",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0028394",
+        "gsisId": "00-0028394",
+        "name": "Jake McQuaide",
+        "position": "LS",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0028872",
+      "gameId": "2025_16_KC_TEN",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0028872",
+        "gsisId": "00-0028872",
+        "name": "Johnny Hekker",
+        "position": "P",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0029255",
+      "gameId": "2025_16_PHI_WAS",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0029255",
+        "gsisId": "00-0029255",
+        "name": "Bobby Wagner",
+        "position": "MLB",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0029562",
+      "gameId": "2025_16_TB_CAR",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0029562",
+        "gsisId": "00-0029562",
+        "name": "Lavonte David",
+        "position": "OLB",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0029606",
+      "gameId": "2025_16_MIN_NYG",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0029606",
+        "gsisId": "00-0029606",
+        "name": "Harrison Smith",
+        "position": "FS",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0029607",
+      "gameId": "2025_16_NYJ_NO",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0029607",
+        "gsisId": "00-0029607",
+        "name": "Demario Davis",
+        "position": "OLB",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0029692",
+      "gameId": "2025_16_LAC_DAL",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0029692",
+        "gsisId": "00-0029692",
+        "name": "Bryan Anger",
+        "position": "P",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0030070",
+      "gameId": "2025_16_NE_BAL",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0030070",
+        "gsisId": "00-0030070",
+        "name": "John Jenkins",
+        "position": "DT",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0030092",
+      "gameId": "2025_16_TB_CAR",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0030092",
+        "gsisId": "00-0030092",
+        "name": "Sam Martin",
+        "position": "P",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0030114",
+      "gameId": "2025_16_BUF_CLE",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0030114",
+        "gsisId": "00-0030114",
+        "name": "Jordan Poyer",
+        "position": "FS",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0030140",
+      "gameId": "2025_16_PHI_WAS",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0030140",
+        "gsisId": "00-0030140",
+        "name": "Tress Way",
+        "position": "P",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0030294",
+      "gameId": "2025_16_LAC_DAL",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0030294",
+        "gsisId": "00-0030294",
+        "name": "Tony Jefferson",
+        "position": "S",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0030615",
+      "gameId": "2025_16_KC_TEN",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0030615",
+        "gsisId": "00-0030615",
+        "name": "James Winchester",
+        "position": "LS",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0030757",
+      "gameId": "2025_16_KC_TEN",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0030757",
+        "gsisId": "00-0030757",
+        "name": "Mike Pennel",
+        "position": "DT",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0031040",
+      "gameId": "2025_16_LAC_DAL",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0031040",
+        "gsisId": "00-0031040",
+        "name": "Khalil Mack",
+        "position": "OLB",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0031054",
+      "gameId": "2025_16_BUF_CLE",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0031054",
+        "gsisId": "00-0031054",
+        "name": "DaQuan Jones",
+        "position": "DT",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0031177",
+      "gameId": "2025_16_NE_BAL",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0031177",
+        "gsisId": "00-0031177",
+        "name": "Brent Urban",
+        "position": "DE",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0031254",
+      "gameId": "2025_16_LV_HOU",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0031254",
+        "gsisId": "00-0031254",
+        "name": "Denico Autry",
+        "position": "DT",
+        "candidates": []
+      }
+    },
+    {
+      "sourcePlayerId": "00-0031270",
+      "gameId": "2025_16_BUF_CLE",
+      "reason": "UNSUPPORTED_POSITION:UNSUPPORTED_POSITION",
+      "identity": {
+        "status": "QUARANTINED",
+        "reason": "UNSUPPORTED_POSITION",
+        "provider": "nflverse",
+        "providerPlayerId": "00-0031270",
+        "gsisId": "00-0031270",
+        "name": "Shelby Harris",
+        "position": "DE",
+        "candidates": []
+      }
+    }
+  ],
+  "provider": "nflverse",
+  "season": 2025,
+  "weeks": [
+    16,
+    17,
+    18
+  ],
+  "generatedAt": "2026-08-27T20:00:00.000Z",
+  "providerUpdatedAt": "2026-08-26T07:35:56.000Z",
+  "recommendationAuthority": false
+}
