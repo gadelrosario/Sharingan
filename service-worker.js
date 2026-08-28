@@ -1,9 +1,9 @@
-const CACHE = 'fantasy-hq-jonin-4-4-7-faab-intelligence-2026-08-26';
+const CACHE = 'fantasy-hq-jonin-4-4-8-season-home-convergence-v3-2026-08-27';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.4.7.1',
-  './js/app-version.js?v=1.0.23',
+  './css/app.css?v=4.4.8.4',
+  './js/app-version.js?v=1.0.24',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
   './js/draft-math-v1.js?v=1.1.0',
@@ -29,6 +29,7 @@ const ASSETS = [
   './js/season-evidence-v1.js?v=1.0.0',
   './js/injury-opportunity-intelligence-v1.js?v=1.0.0',
   './js/faab-intelligence-v1.js?v=1.0.0',
+  './js/weekly-command-center-v1.js?v=1.0.0',
   './js/jonin-decision-intelligence-v1.js?v=1.0.3',
   './js/draft-grading-engine-v1.js?v=1.0.0',
   './js/command-center-v1.js?v=1.1.0',
@@ -40,7 +41,7 @@ const ASSETS = [
   './js/player-photo-v1.js?v=1.0.0',
   './js/premium-player-card-v1.js?v=1.1.0',
   './js/draft-psychology-engine-v1.js?v=1.0.0',
-  './js/app.js?v=4.4.7.1',
+  './js/app.js?v=4.4.8.4',
   './tests/fixtures/season_evidence_4_4_5.json',
   './tests/fixtures/injury_opportunity_4_4_6.json',
   './assets/player-placeholders/generic.svg',

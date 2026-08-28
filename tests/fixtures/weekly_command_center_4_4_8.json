@@ -1,0 +1,21 @@
+{
+  "schema": "fantasy-hq-weekly-command-center-fixture-1",
+  "scenarios": [
+    {"key":"clear_waiver_act","expect":"ACT_SOON"},
+    {"key":"injury_start_sit_wait","expect":"WAIT"},
+    {"key":"breakout_watch","expect":"WATCH"},
+    {"key":"role_collapse","expect":"WATCH"},
+    {"key":"no_action","expect":"HOLD"},
+    {"key":"waiver_act_faab_blocked","expect":"WAIT"},
+    {"key":"sharingan","expect":"ACT_SOON"},
+    {"key":"chidori_authority_blocked","expect":"WAIT"},
+    {"key":"conflicting_signals","expect":"WAIT"},
+    {"key":"dedupe_player","expect":"WATCH"},
+    {"key":"strong_teamfit","expectPriority":"HIGH"},
+    {"key":"redundant_teamfit","expectPriority":"LOW"},
+    {"key":"thursday_lock","window":"BEFORE_THURSDAY_GAME"},
+    {"key":"sunday_inactives","window":"BEFORE_SUNDAY_INACTIVES"},
+    {"key":"profile_a","profileId":"profile-a"},
+    {"key":"profile_b_restore","profileId":"profile-b"}
+  ]
+}
