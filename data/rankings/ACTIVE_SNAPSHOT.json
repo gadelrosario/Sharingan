@@ -1,23 +1,23 @@
 {
   "schemaVersion": "2.0",
-  "snapshotId": "2026-draftday-2026-08-23",
-  "captureDate": "2026-08-23",
+  "snapshotId": "2026-draftday-2026-09-02",
+  "captureDate": "2026-09-02",
   "sourceSnapshotDate": null,
   "primaryDecisionSource": "Fantasyland",
   "sources": {
     "Fantasyland": {
       "creatorSource": "Fantasyland",
       "hostPlatform": "Flock Fantasy",
-      "activeSnapshot": "fantasyland_draftday_2026-08-23.normalized.json",
-      "previousSnapshot": "fantasyland_2026-08-08.normalized.json"
+      "activeSnapshot": "fantasyland_draftday_2026-09-02.normalized.json",
+      "previousSnapshot": "fantasyland_draftday_2026-08-23.normalized.json"
     },
     "Flock": {
       "creatorSource": "Flock",
       "hostPlatform": "Flock Fantasy",
-      "activeSnapshot": "flock_draftday_2026-08-23.normalized.json",
-      "previousSnapshot": null
+      "activeSnapshot": "flock_draftday_2026-09-02.normalized.json",
+      "previousSnapshot": "flock_draftday_2026-08-23.normalized.json"
     }
   },
-  "promotedAt": "2026-08-23T00:00:00Z",
+  "promotedAt": "2026-09-02T00:00:00Z",
   "promotionGate": "TARGETED_DATA_AND_RECOMMENDATION_VALIDATION"
 }

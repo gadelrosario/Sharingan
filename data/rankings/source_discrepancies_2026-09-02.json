@@ -1,0 +1,22 @@
+{
+  "captureDate": "2026-09-02",
+  "knownWithinSourceDiscrepancies": [
+    {
+      "source": "Flock",
+      "player": "Kyle Pitts",
+      "overallBoard": {
+        "overall_rank": 94,
+        "positional_rank": 8
+      },
+      "separatelySuppliedTEList": {
+        "overall_rank_as_displayed": 96,
+        "positional_rank": 8
+      },
+      "instruction": "Preserve both source observations in audit metadata. Do not silently overwrite or hand-reconcile. Use the repository's source-snapshot/data-contract rules to decide which field is authoritative for the activated overall board."
+    }
+  ],
+  "notes": [
+    "This file exists so Codex does not miss a real discrepancy between two user-supplied Flock views.",
+    "Fantasyland and Flock remain separate creators/sources even though both are hosted on Flock Fantasy."
+  ]
+}

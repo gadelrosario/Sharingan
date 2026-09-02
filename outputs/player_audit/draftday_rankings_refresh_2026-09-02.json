@@ -1,0 +1,1663 @@
+{
+  "snapshotId": "2026-draftday-2026-09-02",
+  "captureDate": "2026-09-02",
+  "packageVerification": {
+    "README.md": {
+      "bytes": 1574,
+      "sha256": "dfd97505d776134b1fde5d65b176e60d71b67735f5b49e1333a689de1b87c1cc",
+      "verified": true
+    },
+    "CODEX_PROMPT_FantasyHQ_September_2026_Rankings_Refresh.md": {
+      "bytes": 7002,
+      "sha256": "4693067a498a51d100e86c0088678dd8de34e565066b340b9237dc686c639227",
+      "verified": true
+    },
+    "flock_rankings_2026-09-02.normalized_input.json": {
+      "bytes": 129994,
+      "sha256": "b0da3c539ca08fb6832397f2f6fac5bdaba6029953fddcfede6b5229a96b796b",
+      "verified": true
+    },
+    "fantasyland_rankings_2026-09-02.normalized_input.json": {
+      "bytes": 133507,
+      "sha256": "459ccb896d179a82a2cd5eb329d5627df98be7139ce17ae21a212498ec7e0981",
+      "verified": true
+    },
+    "positional_tier_metadata_2026-09-02.json": {
+      "bytes": 5475,
+      "sha256": "e8361c296114a5a675c640662d61098d44dde520264269e8a6e1e8e14990b60f",
+      "verified": true
+    },
+    "source_discrepancies_2026-09-02.json": {
+      "bytes": 828,
+      "sha256": "6b7e98d7f177cbeb4396ef8a2a24d77b838b19d739721992895786280555269c",
+      "verified": true
+    },
+    "flock_overall_2026-09-02.raw.md": {
+      "bytes": 31744,
+      "sha256": "6b0f4cc803245d32e26b6221c7ae28b24a1bae77c31a3d0e2ba0346d6ebfa4a1",
+      "verified": true
+    },
+    "fantasyland_overall_2026-09-02.raw.md": {
+      "bytes": 31113,
+      "sha256": "8bc61855bdfbac581842c61c955ac99c176f303db2a13e5b06752239e240575d",
+      "verified": true
+    }
+  },
+  "validationErrors": [],
+  "sources": {
+    "Fantasyland": {
+      "sourceRows": 354,
+      "matchedRows": 256,
+      "unmatchedRows": 96,
+      "ambiguousRows": 2,
+      "quarantinedRows": 0,
+      "unresolvedRows": 98,
+      "unresolvedTop180": 7,
+      "duplicateMatchedPlayerIds": 0,
+      "missingPositionTiers": 82,
+      "validation": {
+        "overallRankMin": 1,
+        "overallRankMax": 354,
+        "overallRankUnique": true,
+        "overallRankContiguous": true
+      },
+      "unresolved": [
+        {
+          "overallRank": 111,
+          "sourcePlayerName": "Mike Washington Jr.",
+          "position": "RB",
+          "sourceTeam": "LV",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 134,
+          "sourcePlayerName": "Keenan Allen",
+          "position": "WR",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 142,
+          "sourcePlayerName": "Cyrus Allen",
+          "position": "WR",
+          "sourceTeam": "KC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 143,
+          "sourcePlayerName": "Ja'Kobi Lane",
+          "position": "WR",
+          "sourceTeam": "BAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 144,
+          "sourcePlayerName": "Caleb Douglas",
+          "position": "WR",
+          "sourceTeam": "MIA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 151,
+          "sourcePlayerName": "Emmett Johnson",
+          "position": "RB",
+          "sourceTeam": "KC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 179,
+          "sourcePlayerName": "Malik Davis",
+          "position": "RB",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 181,
+          "sourcePlayerName": "Kaleb Johnson",
+          "position": "RB",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 193,
+          "sourcePlayerName": "Malachi Fields",
+          "position": "WR",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 210,
+          "sourcePlayerName": "Skyler Bell",
+          "position": "WR",
+          "sourceTeam": "BUF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 227,
+          "sourcePlayerName": "George Holani",
+          "position": "RB",
+          "sourceTeam": "SEA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 242,
+          "sourcePlayerName": "Noah Fant",
+          "position": "TE",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 243,
+          "sourcePlayerName": "Eli Raridon",
+          "position": "TE",
+          "sourceTeam": "NE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 248,
+          "sourcePlayerName": "Jordan Whittington",
+          "position": "WR",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 249,
+          "sourcePlayerName": "Tutu Atwell",
+          "position": "WR",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 251,
+          "sourcePlayerName": "Kirk Cousins",
+          "position": "QB",
+          "sourceTeam": "LV",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 254,
+          "sourcePlayerName": "Deshaun Watson",
+          "position": "QB",
+          "sourceTeam": "CLE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 255,
+          "sourcePlayerName": "Shedeur Sanders",
+          "position": "QB",
+          "sourceTeam": "CLE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 256,
+          "sourcePlayerName": "Carson Beck",
+          "position": "QB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 257,
+          "sourcePlayerName": "Ty Simpson",
+          "position": "QB",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 258,
+          "sourcePlayerName": "Drew Allar",
+          "position": "QB",
+          "sourceTeam": "PIT",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 259,
+          "sourcePlayerName": "Cade Klubnik",
+          "position": "QB",
+          "sourceTeam": "NYJ",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 260,
+          "sourcePlayerName": "Luke Schoonmaker",
+          "position": "TE",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 261,
+          "sourcePlayerName": "Oscar Delp",
+          "position": "TE",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 262,
+          "sourcePlayerName": "Ted Hurst",
+          "position": "WR",
+          "sourceTeam": "TB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 263,
+          "sourcePlayerName": "Joshua Palmer",
+          "position": "WR",
+          "sourceTeam": "BUF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 266,
+          "sourcePlayerName": "Jahan Dotson",
+          "position": "WR",
+          "sourceTeam": "ATL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 269,
+          "sourcePlayerName": "James Conner",
+          "position": "RB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 270,
+          "sourcePlayerName": "Trey Benson",
+          "position": "RB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 273,
+          "sourcePlayerName": "Chris Brooks",
+          "position": "RB",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 274,
+          "sourcePlayerName": "Calvin Ridley",
+          "position": "WR",
+          "sourceTeam": "TEN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 275,
+          "sourcePlayerName": "Sean Tucker",
+          "position": "RB",
+          "sourceTeam": "TB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 276,
+          "sourcePlayerName": "Devin Singletary",
+          "position": "RB",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 277,
+          "sourcePlayerName": "Demond Claiborne",
+          "position": "RB",
+          "sourceTeam": "MIN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 279,
+          "sourcePlayerName": "Calvin Austin",
+          "position": "WR",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 281,
+          "sourcePlayerName": "Luke McCaffrey",
+          "position": "WR",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 282,
+          "sourcePlayerName": "Christian Kirk",
+          "position": "WR",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 283,
+          "sourcePlayerName": "Charlie Kolar",
+          "position": "TE",
+          "sourceTeam": "LAC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 284,
+          "sourcePlayerName": "Seth McGowan",
+          "position": "RB",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 285,
+          "sourcePlayerName": "Bryce Lance",
+          "position": "WR",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 287,
+          "sourcePlayerName": "Tory Horton",
+          "position": "WR",
+          "sourceTeam": "SEA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 289,
+          "sourcePlayerName": "Kyle Williams",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "AMBIGUOUS",
+          "importReason": "duplicate source identity lacks a stable disambiguator"
+        },
+        {
+          "overallRank": 291,
+          "sourcePlayerName": "Isaiah Davis",
+          "position": "RB",
+          "sourceTeam": "NYJ",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 293,
+          "sourcePlayerName": "Colby Parkinson",
+          "position": "TE",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 296,
+          "sourcePlayerName": "Jaylen Wright",
+          "position": "RB",
+          "sourceTeam": "MIA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 297,
+          "sourcePlayerName": "Mack Hollins",
+          "position": "WR",
+          "sourceTeam": "NE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 298,
+          "sourcePlayerName": "Devin Neal",
+          "position": "RB",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 299,
+          "sourcePlayerName": "Konata Mumpfield",
+          "position": "WR",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 300,
+          "sourcePlayerName": "Jake Tonges",
+          "position": "TE",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 301,
+          "sourcePlayerName": "Olamide Zaccheaus",
+          "position": "WR",
+          "sourceTeam": "ATL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 302,
+          "sourcePlayerName": "Tyreek Hill",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 303,
+          "sourcePlayerName": "Darren Waller",
+          "position": "TE",
+          "sourceTeam": "CAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 304,
+          "sourcePlayerName": "Anthony Richardson",
+          "position": "QB",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 306,
+          "sourcePlayerName": "Jaylin Lane",
+          "position": "WR",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 307,
+          "sourcePlayerName": "Mac Jones",
+          "position": "QB",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 308,
+          "sourcePlayerName": "Justin Fields",
+          "position": "QB",
+          "sourceTeam": "KC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 309,
+          "sourcePlayerName": "Trevor Etienne",
+          "position": "RB",
+          "sourceTeam": "CAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 310,
+          "sourcePlayerName": "Dont'e Thornton Jr.",
+          "position": "WR",
+          "sourceTeam": "LV",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 311,
+          "sourcePlayerName": "Isaiah Bond",
+          "position": "WR",
+          "sourceTeam": "CLE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 312,
+          "sourcePlayerName": "Jarquez Hunter",
+          "position": "RB",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 313,
+          "sourcePlayerName": "Zavion Thomas",
+          "position": "WR",
+          "sourceTeam": "CHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 316,
+          "sourcePlayerName": "Emari Demercado",
+          "position": "RB",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 317,
+          "sourcePlayerName": "Kyle Williams",
+          "position": "WR",
+          "sourceTeam": "NE",
+          "importStatus": "AMBIGUOUS",
+          "importReason": "duplicate source identity lacks a stable disambiguator"
+        },
+        {
+          "overallRank": 318,
+          "sourcePlayerName": "Justin Joly",
+          "position": "TE",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 319,
+          "sourcePlayerName": "Jerome Ford",
+          "position": "RB",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 320,
+          "sourcePlayerName": "Tahj Brooks",
+          "position": "RB",
+          "sourceTeam": "CIN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 322,
+          "sourcePlayerName": "Audric Estime",
+          "position": "RB",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 323,
+          "sourcePlayerName": "Will Shipley",
+          "position": "RB",
+          "sourceTeam": "PHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 324,
+          "sourcePlayerName": "Kareem Hunt",
+          "position": "RB",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 325,
+          "sourcePlayerName": "Jameis Winston",
+          "position": "QB",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 326,
+          "sourcePlayerName": "Tyler Higbee",
+          "position": "TE",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 327,
+          "sourcePlayerName": "Marcus Mariota",
+          "position": "QB",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 328,
+          "sourcePlayerName": "Eli Heidenreich",
+          "position": "RB",
+          "sourceTeam": "PIT",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 329,
+          "sourcePlayerName": "Brenen Thompson",
+          "position": "WR",
+          "sourceTeam": "LAC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 330,
+          "sourcePlayerName": "Jawhar Jordan",
+          "position": "RB",
+          "sourceTeam": "HOU",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 331,
+          "sourcePlayerName": "Savion Williams",
+          "position": "WR",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 332,
+          "sourcePlayerName": "Xavier Hutchinson",
+          "position": "WR",
+          "sourceTeam": "HOU",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 333,
+          "sourcePlayerName": "Kevin Coleman Jr.",
+          "position": "WR",
+          "sourceTeam": "MIA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 334,
+          "sourcePlayerName": "KaVontae Turpin",
+          "position": "WR",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 335,
+          "sourcePlayerName": "Kalif Raymond",
+          "position": "WR",
+          "sourceTeam": "CHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 336,
+          "sourcePlayerName": "Joe Flacco",
+          "position": "QB",
+          "sourceTeam": "CIN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 337,
+          "sourcePlayerName": "Nick Westbrook-Ikhine",
+          "position": "WR",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 338,
+          "sourcePlayerName": "Ashton Dulin",
+          "position": "WR",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 339,
+          "sourcePlayerName": "Devontez Walker",
+          "position": "WR",
+          "sourceTeam": "BAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 340,
+          "sourcePlayerName": "Dameon Pierce",
+          "position": "RB",
+          "sourceTeam": "PHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 342,
+          "sourcePlayerName": "Dyami Brown",
+          "position": "WR",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 343,
+          "sourcePlayerName": "Greg Dortch",
+          "position": "WR",
+          "sourceTeam": "BUF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 344,
+          "sourcePlayerName": "Demarcus Robinson",
+          "position": "WR",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 345,
+          "sourcePlayerName": "Theo Wease Jr.",
+          "position": "WR",
+          "sourceTeam": "LAC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 346,
+          "sourcePlayerName": "Riley Leonard",
+          "position": "QB",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 347,
+          "sourcePlayerName": "Mo Alie-Cox",
+          "position": "TE",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 348,
+          "sourcePlayerName": "Gardner Minshew",
+          "position": "QB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 349,
+          "sourcePlayerName": "DeAndre Hopkins",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 350,
+          "sourcePlayerName": "Taysom Hill",
+          "position": "TE",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 351,
+          "sourcePlayerName": "Tyrod Taylor",
+          "position": "QB",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 352,
+          "sourcePlayerName": "JuJu Smith-Schuster",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 353,
+          "sourcePlayerName": "Zonovan Knight",
+          "position": "RB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 354,
+          "sourcePlayerName": "Raheim Sanders",
+          "position": "RB",
+          "sourceTeam": "CLE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        }
+      ]
+    },
+    "Flock": {
+      "sourceRows": 353,
+      "matchedRows": 256,
+      "unmatchedRows": 95,
+      "ambiguousRows": 2,
+      "quarantinedRows": 0,
+      "unresolvedRows": 97,
+      "unresolvedTop180": 7,
+      "duplicateMatchedPlayerIds": 0,
+      "missingPositionTiers": 238,
+      "validation": {
+        "overallRankMin": 1,
+        "overallRankMax": 353,
+        "overallRankUnique": true,
+        "overallRankContiguous": true
+      },
+      "unresolved": [
+        {
+          "overallRank": 125,
+          "sourcePlayerName": "Mike Washington Jr.",
+          "position": "RB",
+          "sourceTeam": "LV",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 133,
+          "sourcePlayerName": "Keenan Allen",
+          "position": "WR",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 151,
+          "sourcePlayerName": "Ja'Kobi Lane",
+          "position": "WR",
+          "sourceTeam": "BAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 162,
+          "sourcePlayerName": "Emmett Johnson",
+          "position": "RB",
+          "sourceTeam": "KC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 164,
+          "sourcePlayerName": "Chris Brooks",
+          "position": "RB",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 165,
+          "sourcePlayerName": "Kaleb Johnson",
+          "position": "RB",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 171,
+          "sourcePlayerName": "Caleb Douglas",
+          "position": "WR",
+          "sourceTeam": "MIA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 186,
+          "sourcePlayerName": "Sean Tucker",
+          "position": "RB",
+          "sourceTeam": "TB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 189,
+          "sourcePlayerName": "Cyrus Allen",
+          "position": "WR",
+          "sourceTeam": "KC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 192,
+          "sourcePlayerName": "Calvin Ridley",
+          "position": "WR",
+          "sourceTeam": "TEN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 194,
+          "sourcePlayerName": "Devin Singletary",
+          "position": "RB",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 205,
+          "sourcePlayerName": "Malachi Fields",
+          "position": "WR",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 207,
+          "sourcePlayerName": "Malik Davis",
+          "position": "RB",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 211,
+          "sourcePlayerName": "Demond Claiborne",
+          "position": "RB",
+          "sourceTeam": "MIN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 219,
+          "sourcePlayerName": "Ted Hurst",
+          "position": "WR",
+          "sourceTeam": "TB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 223,
+          "sourcePlayerName": "Calvin Austin",
+          "position": "WR",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 226,
+          "sourcePlayerName": "Luke McCaffrey",
+          "position": "WR",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 232,
+          "sourcePlayerName": "Christian Kirk",
+          "position": "WR",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 233,
+          "sourcePlayerName": "James Conner",
+          "position": "RB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 234,
+          "sourcePlayerName": "Charlie Kolar",
+          "position": "TE",
+          "sourceTeam": "LAC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 236,
+          "sourcePlayerName": "Seth McGowan",
+          "position": "RB",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 239,
+          "sourcePlayerName": "Bryce Lance",
+          "position": "WR",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 243,
+          "sourcePlayerName": "Kyle Williams",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "AMBIGUOUS",
+          "importReason": "duplicate source identity lacks a stable disambiguator"
+        },
+        {
+          "overallRank": 244,
+          "sourcePlayerName": "Tory Horton",
+          "position": "WR",
+          "sourceTeam": "SEA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 246,
+          "sourcePlayerName": "Skyler Bell",
+          "position": "WR",
+          "sourceTeam": "BUF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 247,
+          "sourcePlayerName": "Isaiah Davis",
+          "position": "RB",
+          "sourceTeam": "NYJ",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 254,
+          "sourcePlayerName": "Eli Raridon",
+          "position": "TE",
+          "sourceTeam": "NE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 258,
+          "sourcePlayerName": "George Holani",
+          "position": "RB",
+          "sourceTeam": "SEA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 264,
+          "sourcePlayerName": "Colby Parkinson",
+          "position": "TE",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 267,
+          "sourcePlayerName": "Kirk Cousins",
+          "position": "QB",
+          "sourceTeam": "LV",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 268,
+          "sourcePlayerName": "Shedeur Sanders",
+          "position": "QB",
+          "sourceTeam": "CLE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 269,
+          "sourcePlayerName": "Deshaun Watson",
+          "position": "QB",
+          "sourceTeam": "CLE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 270,
+          "sourcePlayerName": "Jaylen Wright",
+          "position": "RB",
+          "sourceTeam": "MIA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 271,
+          "sourcePlayerName": "Mack Hollins",
+          "position": "WR",
+          "sourceTeam": "NE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 272,
+          "sourcePlayerName": "Devin Neal",
+          "position": "RB",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 273,
+          "sourcePlayerName": "Konata Mumpfield",
+          "position": "WR",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 274,
+          "sourcePlayerName": "Jake Tonges",
+          "position": "TE",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 275,
+          "sourcePlayerName": "Olamide Zaccheaus",
+          "position": "WR",
+          "sourceTeam": "ATL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 276,
+          "sourcePlayerName": "Trey Benson",
+          "position": "RB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 278,
+          "sourcePlayerName": "Tyreek Hill",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 279,
+          "sourcePlayerName": "Darren Waller",
+          "position": "TE",
+          "sourceTeam": "CAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 280,
+          "sourcePlayerName": "Carson Beck",
+          "position": "QB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 284,
+          "sourcePlayerName": "Joshua Palmer",
+          "position": "WR",
+          "sourceTeam": "BUF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 285,
+          "sourcePlayerName": "Anthony Richardson",
+          "position": "QB",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 288,
+          "sourcePlayerName": "Jaylin Lane",
+          "position": "WR",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 289,
+          "sourcePlayerName": "Mac Jones",
+          "position": "QB",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 290,
+          "sourcePlayerName": "Justin Fields",
+          "position": "QB",
+          "sourceTeam": "KC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 291,
+          "sourcePlayerName": "Trevor Etienne",
+          "position": "RB",
+          "sourceTeam": "CAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 292,
+          "sourcePlayerName": "Ty Simpson",
+          "position": "QB",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 296,
+          "sourcePlayerName": "Dont'e Thornton Jr.",
+          "position": "WR",
+          "sourceTeam": "LV",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 297,
+          "sourcePlayerName": "Oscar Delp",
+          "position": "TE",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 298,
+          "sourcePlayerName": "Isaiah Bond",
+          "position": "WR",
+          "sourceTeam": "CLE",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 299,
+          "sourcePlayerName": "Jarquez Hunter",
+          "position": "RB",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 301,
+          "sourcePlayerName": "Zavion Thomas",
+          "position": "WR",
+          "sourceTeam": "CHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 307,
+          "sourcePlayerName": "Emari Demercado",
+          "position": "RB",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 308,
+          "sourcePlayerName": "Kyle Williams",
+          "position": "WR",
+          "sourceTeam": "NE",
+          "importStatus": "AMBIGUOUS",
+          "importReason": "duplicate source identity lacks a stable disambiguator"
+        },
+        {
+          "overallRank": 309,
+          "sourcePlayerName": "Justin Joly",
+          "position": "TE",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 310,
+          "sourcePlayerName": "Jahan Dotson",
+          "position": "WR",
+          "sourceTeam": "ATL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 311,
+          "sourcePlayerName": "Jerome Ford",
+          "position": "RB",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 312,
+          "sourcePlayerName": "Tahj Brooks",
+          "position": "RB",
+          "sourceTeam": "CIN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 313,
+          "sourcePlayerName": "Drew Allar",
+          "position": "QB",
+          "sourceTeam": "PIT",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 314,
+          "sourcePlayerName": "Noah Fant",
+          "position": "TE",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 315,
+          "sourcePlayerName": "Cade Klubnik",
+          "position": "QB",
+          "sourceTeam": "NYJ",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 317,
+          "sourcePlayerName": "Tutu Atwell",
+          "position": "WR",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 318,
+          "sourcePlayerName": "Audric Estime",
+          "position": "RB",
+          "sourceTeam": "NO",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 321,
+          "sourcePlayerName": "Will Shipley",
+          "position": "RB",
+          "sourceTeam": "PHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 322,
+          "sourcePlayerName": "Kareem Hunt",
+          "position": "RB",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 323,
+          "sourcePlayerName": "Jameis Winston",
+          "position": "QB",
+          "sourceTeam": "NYG",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 324,
+          "sourcePlayerName": "Tyler Higbee",
+          "position": "TE",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 325,
+          "sourcePlayerName": "Jordan Whittington",
+          "position": "WR",
+          "sourceTeam": "LAR",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 326,
+          "sourcePlayerName": "Marcus Mariota",
+          "position": "QB",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 327,
+          "sourcePlayerName": "Luke Schoonmaker",
+          "position": "TE",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 328,
+          "sourcePlayerName": "Eli Heidenreich",
+          "position": "RB",
+          "sourceTeam": "PIT",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 329,
+          "sourcePlayerName": "Brenen Thompson",
+          "position": "WR",
+          "sourceTeam": "LAC",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 330,
+          "sourcePlayerName": "Jawhar Jordan",
+          "position": "RB",
+          "sourceTeam": "HOU",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 331,
+          "sourcePlayerName": "Savion Williams",
+          "position": "WR",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 332,
+          "sourcePlayerName": "Xavier Hutchinson",
+          "position": "WR",
+          "sourceTeam": "HOU",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 333,
+          "sourcePlayerName": "Kevin Coleman Jr.",
+          "position": "WR",
+          "sourceTeam": "MIA",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 334,
+          "sourcePlayerName": "KaVontae Turpin",
+          "position": "WR",
+          "sourceTeam": "DAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 335,
+          "sourcePlayerName": "Kalif Raymond",
+          "position": "WR",
+          "sourceTeam": "CHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 336,
+          "sourcePlayerName": "Joe Flacco",
+          "position": "QB",
+          "sourceTeam": "CIN",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 337,
+          "sourcePlayerName": "Nick Westbrook-Ikhine",
+          "position": "WR",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 338,
+          "sourcePlayerName": "Ashton Dulin",
+          "position": "WR",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 339,
+          "sourcePlayerName": "Devontez Walker",
+          "position": "WR",
+          "sourceTeam": "BAL",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 340,
+          "sourcePlayerName": "Dameon Pierce",
+          "position": "RB",
+          "sourceTeam": "PHI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 342,
+          "sourcePlayerName": "Dyami Brown",
+          "position": "WR",
+          "sourceTeam": "WAS",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 343,
+          "sourcePlayerName": "Greg Dortch",
+          "position": "WR",
+          "sourceTeam": "BUF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 344,
+          "sourcePlayerName": "Demarcus Robinson",
+          "position": "WR",
+          "sourceTeam": "SF",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 345,
+          "sourcePlayerName": "Theo Wease Jr.",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 346,
+          "sourcePlayerName": "Riley Leonard",
+          "position": "QB",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 347,
+          "sourcePlayerName": "Mo Alie-Cox",
+          "position": "TE",
+          "sourceTeam": "IND",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 348,
+          "sourcePlayerName": "Gardner Minshew",
+          "position": "QB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 349,
+          "sourcePlayerName": "DeAndre Hopkins",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 350,
+          "sourcePlayerName": "Taysom Hill",
+          "position": "TE",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 351,
+          "sourcePlayerName": "Tyrod Taylor",
+          "position": "QB",
+          "sourceTeam": "GB",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 352,
+          "sourcePlayerName": "JuJu Smith-Schuster",
+          "position": "WR",
+          "sourceTeam": "-",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        },
+        {
+          "overallRank": 353,
+          "sourcePlayerName": "Zonovan Knight",
+          "position": "RB",
+          "sourceTeam": "ARI",
+          "importStatus": "UNMATCHED",
+          "importReason": "no unique canonical identity"
+        }
+      ]
+    }
+  },
+  "knownDiscrepancies": [
+    {
+      "source": "Flock",
+      "player": "Kyle Pitts",
+      "overallBoard": {
+        "overall_rank": 94,
+        "positional_rank": 8
+      },
+      "separatelySuppliedTEList": {
+        "overall_rank_as_displayed": 96,
+        "positional_rank": 8
+      },
+      "instruction": "Preserve both source observations in audit metadata. Do not silently overwrite or hand-reconcile. Use the repository's source-snapshot/data-contract rules to decide which field is authoritative for the activated overall board."
+    }
+  ],
+  "activationStatus": "PROMOTED_AFTER_TARGETED_DATA_AND_RECOMMENDATION_VALIDATION"
+}

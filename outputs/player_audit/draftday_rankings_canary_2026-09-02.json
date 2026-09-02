@@ -1,0 +1,520 @@
+{
+  "snapshotId": "2026-draftday-2026-09-02",
+  "generatedAt": "2026-09-02T00:00:00Z",
+  "previousSnapshotId": "2026-draftday-2026-08-23",
+  "boundedCanaries": [
+    {
+      "name": "opening-slot-1",
+      "pick": 1,
+      "slot": 1,
+      "previousTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "position": "RB",
+          "sourceRank": 2,
+          "score": 123.11733333333333
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "position": "RB",
+          "sourceRank": 1,
+          "score": 120.47733333333333
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "position": "RB",
+          "sourceRank": 6,
+          "score": 119.11733333333333
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "position": "WR",
+          "sourceRank": 3,
+          "score": 116.49866666666667
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "position": "WR",
+          "sourceRank": 4,
+          "score": 115.84266666666669
+        }
+      ],
+      "candidateTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "position": "RB",
+          "sourceRank": 2,
+          "score": 123.20066666666668,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "position": "RB",
+          "sourceRank": 1,
+          "score": 120.56066666666668,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "position": "RB",
+          "sourceRank": 6,
+          "score": 119.20066666666668,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "position": "WR",
+          "sourceRank": 3,
+          "score": 116.41533333333332,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 9,
+          "name": "Jonathan Taylor",
+          "position": "RB",
+          "sourceRank": 8,
+          "score": 115.86366666666667,
+          "defensible": true,
+          "hardRejected": false
+        }
+      ],
+      "winnerChanged": false
+    },
+    {
+      "name": "opening-slot-5",
+      "pick": 1,
+      "slot": 5,
+      "previousTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "position": "RB",
+          "sourceRank": 2,
+          "score": 122.00066666666667
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "position": "RB",
+          "sourceRank": 1,
+          "score": 119.36066666666667
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "position": "RB",
+          "sourceRank": 6,
+          "score": 118.00066666666667
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "position": "WR",
+          "sourceRank": 3,
+          "score": 117.21533333333333
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "position": "WR",
+          "sourceRank": 4,
+          "score": 116.55933333333334
+        }
+      ],
+      "candidateTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "position": "RB",
+          "sourceRank": 2,
+          "score": 122.00066666666667,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "position": "RB",
+          "sourceRank": 1,
+          "score": 119.36066666666667,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "position": "RB",
+          "sourceRank": 6,
+          "score": 118.00066666666667,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "position": "WR",
+          "sourceRank": 3,
+          "score": 117.21533333333333,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "position": "WR",
+          "sourceRank": 4,
+          "score": 116.55933333333334,
+          "defensible": true,
+          "hardRejected": false
+        }
+      ],
+      "winnerChanged": false
+    },
+    {
+      "name": "opening-slot-10",
+      "pick": 1,
+      "slot": 10,
+      "previousTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "position": "RB",
+          "sourceRank": 2,
+          "score": 122.45066666666668
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "position": "RB",
+          "sourceRank": 1,
+          "score": 119.81066666666668
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "position": "RB",
+          "sourceRank": 6,
+          "score": 118.45066666666668
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "position": "WR",
+          "sourceRank": 3,
+          "score": 117.16533333333332
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "position": "WR",
+          "sourceRank": 4,
+          "score": 116.50933333333334
+        }
+      ],
+      "candidateTopFive": [
+        {
+          "id": 2,
+          "name": "Bijan Robinson",
+          "position": "RB",
+          "sourceRank": 2,
+          "score": 122.45066666666668,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 1,
+          "name": "Jahmyr Gibbs",
+          "position": "RB",
+          "sourceRank": 1,
+          "score": 119.81066666666668,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 6,
+          "name": "Christian McCaffrey",
+          "position": "RB",
+          "sourceRank": 6,
+          "score": 118.45066666666668,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 3,
+          "name": "Ja'Marr Chase",
+          "position": "WR",
+          "sourceRank": 3,
+          "score": 117.16533333333332,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 4,
+          "name": "Puka Nacua",
+          "position": "WR",
+          "sourceRank": 4,
+          "score": 116.50933333333334,
+          "defensible": true,
+          "hardRejected": false
+        }
+      ],
+      "winnerChanged": false
+    },
+    {
+      "name": "middle-pick-47",
+      "pick": 47,
+      "slot": 7,
+      "previousTopFive": [
+        {
+          "id": 61,
+          "name": "D.J. Moore",
+          "position": "WR",
+          "sourceRank": 48,
+          "score": 92.33500000000001
+        },
+        {
+          "id": 41,
+          "name": "Travis Etienne Jr.",
+          "position": "RB",
+          "sourceRank": 47,
+          "score": 90.92250000000001
+        },
+        {
+          "id": 47,
+          "name": "Davante Adams",
+          "position": "WR",
+          "sourceRank": 53,
+          "score": 90.81750000000001
+        },
+        {
+          "id": 55,
+          "name": "Bhayshul Tuten",
+          "position": "RB",
+          "sourceRank": 50,
+          "score": 90.58500000000001
+        },
+        {
+          "id": 49,
+          "name": "TreVeyon Henderson",
+          "position": "RB",
+          "sourceRank": 51,
+          "score": 88.91250000000001
+        }
+      ],
+      "candidateTopFive": [
+        {
+          "id": 61,
+          "name": "D.J. Moore",
+          "position": "WR",
+          "sourceRank": 48,
+          "score": 92.33500000000001,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 60,
+          "name": "Rome Odunze",
+          "position": "WR",
+          "sourceRank": 49,
+          "score": 92.22250000000001,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 55,
+          "name": "Bhayshul Tuten",
+          "position": "RB",
+          "sourceRank": 47,
+          "score": 90.9475,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 47,
+          "name": "Davante Adams",
+          "position": "WR",
+          "sourceRank": 53,
+          "score": 90.81750000000001,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 58,
+          "name": "Quinshon Judkins",
+          "position": "RB",
+          "sourceRank": 50,
+          "score": 89.83000000000001,
+          "defensible": true,
+          "hardRejected": false
+        }
+      ],
+      "winnerChanged": false
+    },
+    {
+      "name": "late-pick-107",
+      "pick": 107,
+      "slot": 7,
+      "previousTopFive": [
+        {
+          "id": 101,
+          "name": "RJ Harvey",
+          "position": "RB",
+          "sourceRank": 105,
+          "score": 77.5
+        },
+        {
+          "id": 109,
+          "name": "Blake Corum",
+          "position": "RB",
+          "sourceRank": 106,
+          "score": 77.5
+        },
+        {
+          "id": 116,
+          "name": "Jordan Mason",
+          "position": "RB",
+          "sourceRank": 107,
+          "score": 77.5
+        },
+        {
+          "id": 115,
+          "name": "Kenneth Gainwell",
+          "position": "RB",
+          "sourceRank": 111,
+          "score": 76.5
+        },
+        {
+          "id": 106,
+          "name": "K.C. Concepcion",
+          "position": "WR",
+          "sourceRank": 109,
+          "score": 71
+        }
+      ],
+      "candidateTopFive": [
+        {
+          "id": 95,
+          "name": "Kyle Monangai",
+          "position": "RB",
+          "sourceRank": 105,
+          "score": 77.5,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 109,
+          "name": "Blake Corum",
+          "position": "RB",
+          "sourceRank": 106,
+          "score": 77.5,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 116,
+          "name": "Jordan Mason",
+          "position": "RB",
+          "sourceRank": 107,
+          "score": 77.5,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 115,
+          "name": "Kenneth Gainwell",
+          "position": "RB",
+          "sourceRank": 117,
+          "score": 73.25,
+          "defensible": true,
+          "hardRejected": false
+        },
+        {
+          "id": 106,
+          "name": "K.C. Concepcion",
+          "position": "WR",
+          "sourceRank": 108,
+          "score": 71,
+          "defensible": true,
+          "hardRejected": false
+        }
+      ],
+      "winnerChanged": true
+    }
+  ],
+  "fullPprCanary": {
+    "topFive": [
+      {
+        "id": 32,
+        "name": "Josh Allen",
+        "position": "QB"
+      },
+      {
+        "id": 23,
+        "name": "Jeremiyah Love",
+        "position": "RB"
+      },
+      {
+        "id": 33,
+        "name": "Javonte Williams",
+        "position": "RB"
+      },
+      {
+        "id": 37,
+        "name": "Colston Loveland",
+        "position": "TE"
+      },
+      {
+        "id": 28,
+        "name": "DeVonta Smith",
+        "position": "WR"
+      }
+    ],
+    "foundationDebt": {
+      "premiumRB": 1,
+      "starterRB": 1,
+      "target": 1,
+      "debt": 0,
+      "severity": "NONE",
+      "requiredStarters": {
+        "QB": 1,
+        "RB": 1,
+        "WR": 2,
+        "TE": 1,
+        "FLEX": 2
+      },
+      "vulnerableSlots": {
+        "QB": 1,
+        "RB": 0,
+        "WR": 1,
+        "TE": 1,
+        "FLEX": 2
+      },
+      "startingVulnerability": 5
+    }
+  },
+  "summary": {
+    "scenarios": 6,
+    "winnerChanges": 1,
+    "earlySpecialistLeakage": 0,
+    "JenningsOrGadsdenEarlyCards": [],
+    "duplicateVisibleCards": 0,
+    "hardRejectedCards": 0,
+    "indefensibleCards": 0,
+    "fullPprCards": 5,
+    "fullPprUniqueCards": 5,
+    "fullPprArtificialRb2Debt": false
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "README.md": {
+    "bytes": 1574,
+    "sha256": "dfd97505d776134b1fde5d65b176e60d71b67735f5b49e1333a689de1b87c1cc"
+  },
+  "CODEX_PROMPT_FantasyHQ_September_2026_Rankings_Refresh.md": {
+    "bytes": 7002,
+    "sha256": "4693067a498a51d100e86c0088678dd8de34e565066b340b9237dc686c639227"
+  },
+  "flock_rankings_2026-09-02.normalized_input.json": {
+    "bytes": 129994,
+    "sha256": "b0da3c539ca08fb6832397f2f6fac5bdaba6029953fddcfede6b5229a96b796b"
+  },
+  "fantasyland_rankings_2026-09-02.normalized_input.json": {
+    "bytes": 133507,
+    "sha256": "459ccb896d179a82a2cd5eb329d5627df98be7139ce17ae21a212498ec7e0981"
+  },
+  "positional_tier_metadata_2026-09-02.json": {
+    "bytes": 5475,
+    "sha256": "e8361c296114a5a675c640662d61098d44dde520264269e8a6e1e8e14990b60f"
+  },
+  "source_discrepancies_2026-09-02.json": {
+    "bytes": 828,
+    "sha256": "6b7e98d7f177cbeb4396ef8a2a24d77b838b19d739721992895786280555269c"
+  },
+  "flock_overall_2026-09-02.raw.md": {
+    "bytes": 31744,
+    "sha256": "6b0f4cc803245d32e26b6221c7ae28b24a1bae77c31a3d0e2ba0346d6ebfa4a1"
+  },
+  "fantasyland_overall_2026-09-02.raw.md": {
+    "bytes": 31113,
+    "sha256": "8bc61855bdfbac581842c61c955ac99c176f303db2a13e5b06752239e240575d"
+  }
+}
