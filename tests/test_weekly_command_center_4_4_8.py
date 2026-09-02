@@ -33,8 +33,8 @@ class WeeklyCommandCenter448Tests(unittest.TestCase):
         self.assertIn("FantasyHQWeeklyCommandCenterV1.orchestrate", app)
         self.assertIn("FLIGHT CONTROL — WEEKLY PRIORITY", app)
         self.assertIn("WEEKLY ACTION QUEUE", app)
-        self.assertIn('js/weekly-command-center-v1.js?v=1.0.0', html)
-        self.assertIn('./js/weekly-command-center-v1.js?v=1.0.0', worker)
+        self.assertIn('js/weekly-command-center-v1.js?v=1.1.0', html)
+        self.assertIn('./js/weekly-command-center-v1.js?v=1.1.0', worker)
         self.assertLess(html.index("js/faab-intelligence-v1.js"), html.index("js/weekly-command-center-v1.js"))
         self.assertLess(html.index("js/weekly-command-center-v1.js"), html.index("js/app.js"))
 
@@ -70,8 +70,8 @@ class WeeklyCommandCenter448Tests(unittest.TestCase):
         self.assertIn(".seasonWeeklyQueue-watch{display:grid;grid-column:1/-1", css)
         self.assertIn(".seasonWeeklyIgnoreDisclosure summary:focus-visible", css)
         self.assertIn(".seasonHomeWaiver.seasonTrackedByFlight .seasonHomeDecisionReason", css)
-        self.assertIn("css/app.css?v=4.4.9.0", html)
-        self.assertIn("js/app.js?v=4.4.9.1", html)
+        self.assertIn("css/app.css?v=4.4.10.0", html)
+        self.assertIn("js/app.js?v=4.4.10.0", html)
 
 
 if __name__ == "__main__":

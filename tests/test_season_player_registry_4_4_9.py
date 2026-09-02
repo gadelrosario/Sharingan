@@ -48,7 +48,7 @@ class SeasonPlayerRegistry449Tests(unittest.TestCase):
 
     def test_demo_path_never_loads_registry(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        demo_segment = source.split("const [evidenceResponse,intelligenceResponse]", 1)[1].split("function seasonStateForActiveProfile", 1)[0]
+        demo_segment = source.split("const [evidenceResponse,intelligenceResponse,discoveryResponse]", 1)[1].split("function seasonStateForActiveProfile", 1)[0]
         self.assertIn("seasonPlayerRegistry=null", demo_segment)
 
     def test_registry_module_precedes_adapter_and_app(self):

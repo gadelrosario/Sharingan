@@ -1,0 +1,20 @@
+const fs=require('fs');
+const path=require('path');
+const {performance}=require('perf_hooks');
+const Evidence=require('../js/season-evidence-v1.js');
+const Discovery=require('../js/discovery-breakout-radar-v1.js');
+
+const fixture=JSON.parse(fs.readFileSync(path.join(__dirname,'../tests/fixtures/discovery_radar_4_4_10.json'),'utf8'));
+const store=new Evidence.SeasonEvidenceStore({asOf:fixture.asOf});
+const imported=store.importPayload(fixture,{players:fixture.canonicalPlayers});
+if(imported.rejected)throw new Error(`fixture rejected ${imported.rejected} records`);
+const registry={get:id=>fixture.canonicalPlayers.find(player=>player.playerId===id)||null};
+const engine=new Discovery.DiscoveryBreakoutRadarV1({store,registry});
+const loops=1000,singleLoops=10000,singleStart=performance.now();
+for(let index=0;index<singleLoops;index++)engine.evaluate('d-breakout');
+const singleElapsed=performance.now()-singleStart,start=performance.now();let output;
+for(let index=0;index<loops;index++)output=engine.buildView(engine.evaluateAll(fixture.canonicalPlayers));
+const elapsed=performance.now()-start,perEvaluation=elapsed/loops,singleMean=singleElapsed/singleLoops;
+if(output.topSignals.length>3||output.emerging.length>5||output.watchlist.length>5)throw new Error('bounded view contract failed');
+if(perEvaluation>=100)throw new Error(`Discovery evaluation exceeded 100 ms: ${perEvaluation.toFixed(3)} ms`);
+console.log(JSON.stringify({status:'PASS',players:fixture.canonicalPlayers.length,records:imported.accepted,singleLoops,singlePlayerMeanMs:Number(singleMean.toFixed(4)),loops,fullRadarTotalMs:Number(elapsed.toFixed(3)),fullRadarMeanMs:Number(perEvaluation.toFixed(3)),meanMs:Number(perEvaluation.toFixed(3)),topSignals:output.topSignals.length,emerging:output.emerging.length,watchlist:output.watchlist.length,fadingNoise:output.fadingNoise.length}));

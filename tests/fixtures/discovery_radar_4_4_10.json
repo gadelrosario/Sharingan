@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "fantasy-hq-season-evidence-1",
+  "asOf": "2026-09-08T12:00:00.000Z",
+  "canonicalPlayers": [
+    {"playerId":"d-breakout","name":"Sustained Breakout","position":"WR","team":"SEA"},
+    {"playerId":"d-emerging","name":"Emerging Receiver","position":"WR","team":"GB"},
+    {"playerId":"d-role","name":"Role Growth Runner","position":"RB","team":"DAL"},
+    {"playerId":"d-opportunity","name":"Opportunity Tight End","position":"TE","team":"NE"},
+    {"playerId":"d-noise","name":"Touchdown Spike","position":"WR","team":"TB"},
+    {"playerId":"d-fading","name":"Fading Veteran","position":"RB","team":"LV"},
+    {"playerId":"d-stable","name":"Steady Quarterback","position":"QB","team":"LAC"},
+    {"playerId":"season:d-stash","name":"New Season Stash","position":"WR","team":"CAR","identityType":"SEASON_ONLY","seasonOnly":true,"identityMethod":"season registry source id"},
+    {"playerId":"d-conflict","name":"Conflicted Player","position":"RB","team":"NYG"},
+    {"playerId":"d-insufficient","name":"Insufficient Player","position":"TE","team":"MIA"}
+  ],
+  "records": [
+    {"sourceRecordId":"breakout-1","canonicalPlayerId":"d-breakout","season":2026,"week":1,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.45,"routeParticipation":0.48,"routes":19},"opportunity":{"targets":4,"opportunities":4},"production":{"receptions":3,"receivingYards":38,"touchdowns":0,"fantasyPoints":5.3}},
+    {"sourceRecordId":"breakout-2","canonicalPlayerId":"d-breakout","season":2026,"week":2,"observedAt":"2026-09-01T12:00:00Z","fetchedAt":"2026-09-01T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.61,"routeParticipation":0.64,"routes":26},"opportunity":{"targets":7,"opportunities":7},"production":{"receptions":5,"receivingYards":67,"touchdowns":0,"fantasyPoints":9.2}},
+    {"sourceRecordId":"breakout-3","canonicalPlayerId":"d-breakout","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.78,"routeParticipation":0.81,"routes":34},"opportunity":{"targets":10,"opportunities":10},"production":{"receptions":7,"receivingYards":92,"touchdowns":1,"fantasyPoints":18.7}},
+
+    {"sourceRecordId":"emerging-1","canonicalPlayerId":"d-emerging","season":2026,"week":1,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.31,"routeParticipation":0.33,"routes":12},"opportunity":{"targets":2,"opportunities":2}},
+    {"sourceRecordId":"emerging-2","canonicalPlayerId":"d-emerging","season":2026,"week":2,"observedAt":"2026-09-01T12:00:00Z","fetchedAt":"2026-09-01T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.48,"routeParticipation":0.51,"routes":19},"opportunity":{"targets":4,"opportunities":4}},
+    {"sourceRecordId":"emerging-3","canonicalPlayerId":"d-emerging","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.65,"routeParticipation":0.69,"routes":27},"opportunity":{"targets":7,"opportunities":7}},
+
+    {"sourceRecordId":"role-1","canonicalPlayerId":"d-role","season":2026,"week":1,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.35,"routeParticipation":0.2,"routes":7},"opportunity":{"carries":8,"opportunities":9}},
+    {"sourceRecordId":"role-2","canonicalPlayerId":"d-role","season":2026,"week":2,"observedAt":"2026-09-01T12:00:00Z","fetchedAt":"2026-09-01T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.51,"routeParticipation":0.29,"routes":11},"opportunity":{"carries":8,"opportunities":9}},
+    {"sourceRecordId":"role-3","canonicalPlayerId":"d-role","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.68,"routeParticipation":0.38,"routes":15},"opportunity":{"carries":8,"opportunities":9}},
+
+    {"sourceRecordId":"opp-1","canonicalPlayerId":"d-opportunity","season":2026,"week":1,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.7,"routeParticipation":0.72,"routes":27},"opportunity":{"targets":2,"opportunities":2}},
+    {"sourceRecordId":"opp-2","canonicalPlayerId":"d-opportunity","season":2026,"week":2,"observedAt":"2026-09-01T12:00:00Z","fetchedAt":"2026-09-01T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.7,"routeParticipation":0.72,"routes":27},"opportunity":{"targets":4,"opportunities":4}},
+    {"sourceRecordId":"opp-3","canonicalPlayerId":"d-opportunity","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.7,"routeParticipation":0.72,"routes":27},"opportunity":{"targets":7,"opportunities":7}},
+
+    {"sourceRecordId":"noise-1","canonicalPlayerId":"d-noise","season":2026,"week":1,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.28,"routeParticipation":0.3,"routes":10},"opportunity":{"targets":2,"opportunities":2},"production":{"receptions":1,"receivingYards":12,"touchdowns":0,"fantasyPoints":1.7}},
+    {"sourceRecordId":"noise-2","canonicalPlayerId":"d-noise","season":2026,"week":2,"observedAt":"2026-09-01T12:00:00Z","fetchedAt":"2026-09-01T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.28,"routeParticipation":0.3,"routes":10},"opportunity":{"targets":2,"opportunities":2},"production":{"receptions":1,"receivingYards":10,"touchdowns":0,"fantasyPoints":1.5}},
+    {"sourceRecordId":"noise-3","canonicalPlayerId":"d-noise","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.28,"routeParticipation":0.3,"routes":10},"opportunity":{"targets":2,"opportunities":2},"production":{"receptions":2,"receivingYards":76,"touchdowns":2,"fantasyPoints":20.6}},
+
+    {"sourceRecordId":"fade-1","canonicalPlayerId":"d-fading","season":2026,"week":1,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.75,"routeParticipation":0.44,"routes":16},"opportunity":{"carries":17,"opportunities":20}},
+    {"sourceRecordId":"fade-2","canonicalPlayerId":"d-fading","season":2026,"week":2,"observedAt":"2026-09-01T12:00:00Z","fetchedAt":"2026-09-01T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.57,"routeParticipation":0.32,"routes":12},"opportunity":{"carries":11,"opportunities":14}},
+    {"sourceRecordId":"fade-3","canonicalPlayerId":"d-fading","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.39,"routeParticipation":0.2,"routes":8},"opportunity":{"carries":6,"opportunities":8}},
+
+    {"sourceRecordId":"stable-1","canonicalPlayerId":"d-stable","season":2026,"week":1,"observedAt":"2026-08-25T12:00:00Z","fetchedAt":"2026-08-25T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":1.0,"routes":0},"opportunity":{"opportunities":32}},
+    {"sourceRecordId":"stable-2","canonicalPlayerId":"d-stable","season":2026,"week":2,"observedAt":"2026-09-01T12:00:00Z","fetchedAt":"2026-09-01T13:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":1.0,"routes":0},"opportunity":{"opportunities":32}},
+    {"sourceRecordId":"stable-3","canonicalPlayerId":"d-stable","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Discovery Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":1.0,"routes":0},"opportunity":{"opportunities":32}},
+
+    {"sourceRecordId":"stash-1","canonicalPlayerId":"season:d-stash","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Season Registry Fixture","provider":"fixture","type":"NFL_STATS"},"role":{"snapShare":0.42,"routeParticipation":0.45,"routes":18},"opportunity":{"targets":4,"opportunities":4}},
+
+    {"sourceRecordId":"conflict-a","canonicalPlayerId":"d-conflict","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Fixture A","provider":"fixture-a","type":"NFL_STATS"},"role":{"snapShare":0.8,"routeParticipation":0.8,"routes":30}},
+    {"sourceRecordId":"conflict-b","canonicalPlayerId":"d-conflict","season":2026,"week":3,"observedAt":"2026-09-08T10:00:00Z","fetchedAt":"2026-09-08T11:00:00Z","source":{"name":"Fixture B","provider":"fixture-b","type":"NFL_STATS"},"role":{"snapShare":0.2,"routeParticipation":0.2,"routes":8}}
+  ]
+}

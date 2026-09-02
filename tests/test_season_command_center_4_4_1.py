@@ -28,7 +28,7 @@ class SeasonCommandCenterTests(unittest.TestCase):
         html = (ROOT / 'index.html').read_text()
         worker = (ROOT / 'service-worker.js').read_text()
         self.assertLess(html.index('js/season-command-center-v1.js'), html.index('js/app.js'))
-        self.assertIn("'./js/season-command-center-v1.js?v=1.1.2'", worker)
+        self.assertIn("'./js/season-command-center-v1.js?v=1.1.3'", worker)
 
     def test_draft_authority_is_not_imported_into_season_module(self):
         source = (ROOT / 'js/season-command-center-v1.js').read_text().lower()
