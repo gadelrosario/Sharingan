@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "fantasy-hq-weekly-matchup-demo-1",
+  "sanitized": true,
+  "label": "DEMO / SANITIZED",
+  "asOf": "2026-09-10T12:00:00.000Z",
+  "season": 2026,
+  "week": 3,
+  "requiredScenarios": [
+    "elite-role-difficult-matchup",
+    "weak-role-favorable-matchup",
+    "true-tie-broken-by-matchup",
+    "low-confidence-favorable-matchup",
+    "neutral-matchup",
+    "insufficient-evidence",
+    "stale-historical-evidence",
+    "improving-opponent-trend",
+    "volatile-opponent-sample",
+    "season-only-player",
+    "discovery-breakout-difficult-matchup",
+    "non-breakout-favorable-matchup",
+    "half-ppr-profile",
+    "full-ppr-profile"
+  ],
+  "demoByPlayer": {
+    "demo-rb2": {
+      "playerEvidence": {"offensiveSnapShare": 0.86, "carries": 19, "touches": 23},
+      "observations": [
+        {"evidenceId":"demo-rb2-w1","season":2026,"week":1,"gameId":"demo-1","position":"RB","opponent":"BAL","freshness":"CURRENT","positionEnvironment":31,"defensiveEnvironment":28,"scoringEnvironment":44,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-rb2-w2","season":2026,"week":2,"gameId":"demo-2","position":"RB","opponent":"BAL","freshness":"CURRENT","positionEnvironment":29,"defensiveEnvironment":30,"scoringEnvironment":42,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-rb2-w3","season":2026,"week":3,"gameId":"demo-3","position":"RB","opponent":"BAL","freshness":"CURRENT","positionEnvironment":27,"defensiveEnvironment":29,"scoringEnvironment":41,"source":"Sanitized Matchup Lab"}
+      ]
+    },
+    "demo-bn1": {
+      "playerEvidence": {"offensiveSnapShare": 0.28, "carries": 4, "touches": 5},
+      "observations": [
+        {"evidenceId":"demo-bn1-w1","season":2026,"week":1,"gameId":"demo-4","position":"RB","opponent":"JAX","freshness":"CURRENT","positionEnvironment":76,"defensiveEnvironment":72,"scoringEnvironment":68,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-bn1-w2","season":2026,"week":2,"gameId":"demo-5","position":"RB","opponent":"JAX","freshness":"CURRENT","positionEnvironment":78,"defensiveEnvironment":74,"scoringEnvironment":70,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-bn1-w3","season":2026,"week":3,"gameId":"demo-6","position":"RB","opponent":"JAX","freshness":"CURRENT","positionEnvironment":80,"defensiveEnvironment":75,"scoringEnvironment":72,"source":"Sanitized Matchup Lab"}
+      ]
+    },
+    "demo-flex": {
+      "playerEvidence": {"offensiveSnapShare": 0.72, "targets": 7},
+      "observations": [
+        {"evidenceId":"demo-flex-w1","season":2026,"week":1,"gameId":"demo-7","position":"WR","opponent":"NO","freshness":"CURRENT","positionEnvironment":68,"defensiveEnvironment":64,"scoringEnvironment":62,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-flex-w2","season":2026,"week":2,"gameId":"demo-8","position":"WR","opponent":"NO","freshness":"CURRENT","positionEnvironment":70,"defensiveEnvironment":65,"scoringEnvironment":64,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-flex-w3","season":2026,"week":3,"gameId":"demo-9","position":"WR","opponent":"NO","freshness":"CURRENT","positionEnvironment":72,"defensiveEnvironment":66,"scoringEnvironment":65,"source":"Sanitized Matchup Lab"}
+      ]
+    },
+    "demo-bn2": {
+      "playerEvidence": {"offensiveSnapShare": 0.71, "targets": 7},
+      "observations": [
+        {"evidenceId":"demo-bn2-w1","season":2026,"week":1,"gameId":"demo-10","position":"WR","opponent":"PIT","freshness":"CURRENT","positionEnvironment":35,"defensiveEnvironment":39,"scoringEnvironment":44,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-bn2-w2","season":2026,"week":2,"gameId":"demo-11","position":"WR","opponent":"PIT","freshness":"CURRENT","positionEnvironment":34,"defensiveEnvironment":38,"scoringEnvironment":43,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-bn2-w3","season":2026,"week":3,"gameId":"demo-12","position":"WR","opponent":"PIT","freshness":"CURRENT","positionEnvironment":33,"defensiveEnvironment":37,"scoringEnvironment":42,"source":"Sanitized Matchup Lab"}
+      ]
+    },
+    "demo-wr1": {
+      "playerEvidence": {"offensiveSnapShare": 0.91, "targets": 10},
+      "observations": [
+        {"evidenceId":"demo-wr1-w1","season":2026,"week":1,"gameId":"demo-13","position":"WR","opponent":"GB","freshness":"CURRENT","positionEnvironment":50,"defensiveEnvironment":51,"scoringEnvironment":49,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-wr1-w2","season":2026,"week":2,"gameId":"demo-14","position":"WR","opponent":"GB","freshness":"CURRENT","positionEnvironment":51,"defensiveEnvironment":50,"scoringEnvironment":50,"source":"Sanitized Matchup Lab"},
+        {"evidenceId":"demo-wr1-w3","season":2026,"week":3,"gameId":"demo-15","position":"WR","opponent":"GB","freshness":"CURRENT","positionEnvironment":50,"defensiveEnvironment":50,"scoringEnvironment":51,"source":"Sanitized Matchup Lab"}
+      ]
+    },
+    "demo-qb": {
+      "playerEvidence": {"offensiveSnapShare": 1, "touches": 0},
+      "observations": [{"evidenceId":"demo-qb-w3","season":2026,"week":3,"gameId":"demo-16","position":"QB","opponent":"KC","freshness":"CURRENT","positionEnvironment":70,"defensiveEnvironment":66,"scoringEnvironment":72,"source":"Sanitized Matchup Lab"}]
+    },
+    "demo-te": {
+      "playerEvidence": {"offensiveSnapShare": 0.76, "targets": 6},
+      "observations": [{"evidenceId":"demo-te-w3","season":2026,"week":3,"gameId":"demo-17","position":"TE","opponent":"BAL","freshness":"CURRENT","positionEnvironment":42,"defensiveEnvironment":46,"scoringEnvironment":48,"source":"Sanitized Matchup Lab"}]
+    },
+    "demo-k": {"playerEvidence": {}, "observations": []},
+    "demo-dst": {"playerEvidence": {}, "observations": []}
+  }
+}

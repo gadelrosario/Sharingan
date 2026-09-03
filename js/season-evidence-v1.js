@@ -27,6 +27,7 @@
     TEAMFIT:Object.freeze(['role','injury']),
     FUTURE_FAAB:Object.freeze(['role','opportunity','injury','sourceValue']),
     FUTURE_BREAKOUT:Object.freeze(['role','opportunity','production']),
+    MATCHUP:Object.freeze(['role','opportunity','matchup']),
   });
   const clean=value=>String(value??'').trim();
   const normalizeName=value=>clean(value).toLowerCase().normalize('NFKD').replace(/[’']/g,'').replace(/[^a-z0-9]+/g,' ').trim();

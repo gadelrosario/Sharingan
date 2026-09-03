@@ -23,7 +23,8 @@ class SeasonPlayerRegistry449Tests(unittest.TestCase):
     def test_browser_registry_is_season_scoped(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertIn("seasonPlayerRegistry.evidencePlayers()", source)
-        self.assertIn("players:[...players,...registryPlayers]", source)
+        self.assertIn("evidencePlayers=[...players,...registryPlayers]", source)
+        self.assertIn("importPayload(artifact,{players:evidencePlayers})", source)
         self.assertNotIn("players.push(...seasonPlayerRegistry", source)
         self.assertNotIn("players=players.concat(seasonPlayerRegistry", source)
 
@@ -48,7 +49,7 @@ class SeasonPlayerRegistry449Tests(unittest.TestCase):
 
     def test_demo_path_never_loads_registry(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        demo_segment = source.split("const [evidenceResponse,intelligenceResponse,discoveryResponse]", 1)[1].split("function seasonStateForActiveProfile", 1)[0]
+        demo_segment = source.split("const [evidenceResponse,intelligenceResponse,discoveryResponse,matchupResponse]", 1)[1].split("function seasonStateForActiveProfile", 1)[0]
         self.assertIn("seasonPlayerRegistry=null", demo_segment)
 
     def test_registry_module_precedes_adapter_and_app(self):
