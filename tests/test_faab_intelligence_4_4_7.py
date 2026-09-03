@@ -31,8 +31,8 @@ class FAABIntelligence447Tests(unittest.TestCase):
         worker = (ROOT / "service-worker.js").read_text()
         self.assertIn("function seasonFaabEvaluation(model,pair)", app)
         self.assertIn("FAAB prices the existing Waiver decision only", app)
-        self.assertIn('js/faab-intelligence-v1.js?v=1.0.0', html)
-        self.assertIn('./js/faab-intelligence-v1.js?v=1.0.0', worker)
+        self.assertIn('js/faab-intelligence-v1.js?v=1.1.0', html)
+        self.assertIn('./js/faab-intelligence-v1.js?v=1.1.0', worker)
         self.assertLess(html.index("js/waiver-intelligence-v1.js"), html.index("js/faab-intelligence-v1.js"))
 
     def test_bounded_smoke(self):

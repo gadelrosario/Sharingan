@@ -1,0 +1,24 @@
+{
+  "schema": "fantasy-hq-waiver-transaction-quality-fixture-1",
+  "profile": {
+    "id": "sanitized-profile-a",
+    "settings": {"rosterSlots": ["QB", "RB", "RB", "WR", "WR", "TE", "FLEX", "BN", "BN", "BN"]}
+  },
+  "roster": [
+    {"canonicalPlayerId":"starter-qb","name":"Starter Quarterback","position":"QB","rosterSlot":"QB"},
+    {"canonicalPlayerId":"starter-rb-a","name":"Starter Runner A","position":"RB","rosterSlot":"RB"},
+    {"canonicalPlayerId":"starter-rb-b","name":"Starter Runner B","position":"RB","rosterSlot":"RB"},
+    {"canonicalPlayerId":"starter-wr-a","name":"Starter Receiver A","position":"WR","rosterSlot":"WR"},
+    {"canonicalPlayerId":"starter-wr-b","name":"Starter Receiver B","position":"WR","rosterSlot":"WR"},
+    {"canonicalPlayerId":"starter-te","name":"Strong Tight End","position":"TE","rosterSlot":"TE"},
+    {"canonicalPlayerId":"flex-rb","name":"Flex Runner","position":"RB","rosterSlot":"FLEX"},
+    {"canonicalPlayerId":"bench-te","name":"Useful Reserve Tight End","position":"TE","rosterSlot":"BN","waiverEvidence":{"sourceValue":58,"role":55,"opportunity":54,"upside":57,"risk":40,"replaceability":72,"insuranceValue":25,"confidence":88}},
+    {"canonicalPlayerId":"bench-rb","name":"Insurance Runner","position":"RB","rosterSlot":"BN","waiverEvidence":{"sourceValue":48,"role":46,"opportunity":49,"upside":74,"risk":45,"replaceability":46,"insuranceValue":84,"confidence":88}},
+    {"canonicalPlayerId":"bench-low","name":"Replaceable Reserve","position":"WR","rosterSlot":"BN","waiverEvidence":{"sourceValue":22,"role":20,"opportunity":24,"upside":28,"risk":58,"replaceability":90,"insuranceValue":5,"confidence":90}}
+  ],
+  "available": {
+    "emerging": {"canonicalPlayerId":"available-emerging","name":"Emerging Receiver","position":"WR","availability":"FREE AGENT","waiverEvidence":{"sourceValue":76,"role":82,"opportunity":86,"upside":84,"risk":32,"acquisitionCost":24,"starterPath":"CLEAR","confidence":92}},
+    "spike": {"canonicalPlayerId":"available-spike","name":"Touchdown Spike Receiver","position":"WR","availability":"FREE AGENT","waiverEvidence":{"sourceValue":60,"role":30,"opportunity":28,"upside":66,"risk":74,"acquisitionCost":28,"starterPath":"BLOCKED","confidence":78}},
+    "cheap": {"canonicalPlayerId":"available-cheap","name":"Efficient Flex Option","position":"WR","availability":"FREE AGENT","waiverEvidence":{"sourceValue":68,"role":67,"opportunity":70,"upside":72,"risk":39,"acquisitionCost":8,"starterPath":"FLEX","confidence":88}}
+  }
+}

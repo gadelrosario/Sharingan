@@ -16,7 +16,7 @@ console.log(JSON.stringify(APP_VERSION));
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(json.loads(result.stdout), {"phase": "Jōnin", "milestone": "4.4.11", "label": "Jōnin 4.4.11"})
+        self.assertEqual(json.loads(result.stdout), {"phase": "Jōnin", "milestone": "4.4.11.1", "label": "Jōnin 4.4.11.1"})
 
     def test_canonical_metadata_renders_all_registered_surfaces(self):
         command = """
@@ -37,9 +37,9 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         manifest = (ROOT / "manifest.webmanifest").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
-        self.assertEqual(version.count("label:'Jōnin 4.4.11'"), 1)
+        self.assertEqual(version.count("label:'Jōnin 4.4.11.1'"), 1)
         for source in (html, app, manifest, worker):
-            self.assertNotIn("Jōnin 4.4.11", source)
+            self.assertNotIn("Jōnin 4.4.11.1", source)
         self.assertRegex(app, r"const APP_VERSION\s*=\s*window\.FantasyHQAppVersion")
 
     def test_main_menu_and_each_mode_use_canonical_label(self):
@@ -66,10 +66,10 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
     def test_offline_cache_contains_canonical_metadata(self):
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        self.assertIn('./js/app-version.js?v=1.0.28', worker)
-        self.assertIn('fantasy-hq-jonin-4-4-11-weekly-matchup', worker)
-        self.assertIn('service-worker.js?v=jonin_4_4_11_weekly_matchup', app)
-        self.assertIn('css/app.css?v=4.4.11.0', worker)
+        self.assertIn('./js/app-version.js?v=1.0.29', worker)
+        self.assertIn('fantasy-hq-jonin-4-4-11-1-waiver-faab-quality', worker)
+        self.assertIn('service-worker.js?v=jonin_4_4_11_1_waiver_faab_quality', app)
+        self.assertIn('css/app.css?v=4.4.11.1', worker)
         self.assertIn('js/weekly-matchup-intelligence-v1.js?v=1.0.0', worker)
         self.assertIn('js/start-sit-intelligence-v1.js?v=1.1.0', worker)
         self.assertIn('js/teamfit-v1.js?v=1.0.0', worker)
@@ -77,10 +77,11 @@ if(nodes.some(node=>node.textContent!==APP_VERSION.label))process.exit(1);
         self.assertIn('js/season-player-registry-v1.js?v=1.0.0', worker)
         self.assertIn('js/nflverse-evidence-adapter-v1.js?v=1.1.0', worker)
         self.assertIn('js/injury-opportunity-intelligence-v1.js?v=1.0.0', worker)
-        self.assertIn('js/faab-intelligence-v1.js?v=1.0.0', worker)
+        self.assertIn('js/faab-intelligence-v1.js?v=1.1.0', worker)
+        self.assertIn('js/waiver-transaction-quality-v1.js?v=1.0.0', worker)
         self.assertIn('js/discovery-breakout-radar-v1.js?v=1.0.1', worker)
         self.assertIn('js/weekly-command-center-v1.js?v=1.1.0', worker)
-        self.assertIn('js/app.js?v=4.4.11', worker)
+        self.assertIn('js/app.js?v=4.4.11.1', worker)
         self.assertIn('data/season_evidence/nflverse_participation_latest.json', worker)
         self.assertIn('data/rankings/fantasyland_draftday_2026-09-02.normalized.json', worker)
         self.assertIn('data/rankings/flock_draftday_2026-09-02.normalized.json', worker)
