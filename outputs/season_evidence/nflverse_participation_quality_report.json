@@ -1,0 +1,52 @@
+{
+  "recordsReceived": 1320,
+  "recordsAccepted": 1317,
+  "recordsRejected": 3,
+  "playersResolved": 522,
+  "existingCanonicalMatches": 222,
+  "existingSeasonRegistryMatches": 267,
+  "newSeasonIdentitiesCreated": 33,
+  "unresolvedPlayers": 3,
+  "ambiguousIdentities": 0,
+  "duplicateRecords": 0,
+  "conflicts": 0,
+  "unsupportedPositions": 0,
+  "reasons": {
+    "identityUnresolved": 3
+  },
+  "familyCoverage": {
+    "role": 1317,
+    "matchup": 1317,
+    "routes": 0
+  },
+  "rejected": [
+    {
+      "pfrPlayerId": "WhitCo05",
+      "gameId": "2025_16_LA_SEA",
+      "reason": "PFR_ID_UNRESOLVED"
+    },
+    {
+      "pfrPlayerId": "WhitCo05",
+      "gameId": "2025_17_SEA_CAR",
+      "reason": "PFR_ID_UNRESOLVED"
+    },
+    {
+      "pfrPlayerId": "CartNa00",
+      "gameId": "2025_18_NO_ATL",
+      "reason": "PFR_ID_UNRESOLVED"
+    }
+  ],
+  "provider": "nflverse",
+  "season": 2025,
+  "weeks": [
+    16,
+    17,
+    18
+  ],
+  "currentSeason": 2026,
+  "evidenceStatus": "HISTORICAL_STALE",
+  "generatedAt": "2026-09-02T12:00:00.000Z",
+  "providerUpdatedAt": "2026-02-09T13:39:50.000Z",
+  "recommendationAuthority": false,
+  "transactionAuthority": false
+}

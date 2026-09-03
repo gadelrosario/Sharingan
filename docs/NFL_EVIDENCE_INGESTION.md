@@ -1,12 +1,14 @@
 # NFL Evidence Ingestion
 
-Jōnin 4.4.9 uses nflverse weekly player stats as its first real, provider-neutral NFL evidence feed. The data is retrieved from the official `nflverse-data` GitHub release, licensed CC BY 4.0, and normalized locally before Fantasy HQ opens it.
+Jōnin 4.4.9 uses nflverse weekly player stats as its first real, provider-neutral NFL evidence feed. Jōnin 4.4.10.1 adds the separate nflverse snap-count dataset to the same normalized `SeasonEvidenceStore`. Both datasets are retrieved from official `nflverse-data` GitHub releases, licensed CC BY 4.0, and normalized locally before Fantasy HQ opens them.
 
 ## Coverage
 
 The first adapter supplies stable GSIS identity, season/week/game context, targets, target share, carries, derived touches/opportunities, receptions, rushing/receiving yards, touchdowns, PPR fantasy production, opponent, and source provenance.
 
-It intentionally does **not** supply snaps, routes, in-season participation, injuries, practice reports, depth charts, projections, odds, implied totals, expert rankings, Yahoo ownership, availability, FAAB, or transactions. Missing families remain `MISSING`, `UNKNOWN`, or `NOT COVERED`; they are never converted to zero or healthy.
+The weekly player-stat adapter intentionally does **not** supply snaps or routes. The snap-count adapter supplies offensive snaps and offensive snap share, but not routes, route participation, pass-play participation, or target rate per route. Missing families remain `MISSING`, `UNKNOWN`, or `NOT COVERED`; they are never converted to zero or healthy.
+
+See [PARTICIPATION_EVIDENCE.md](PARTICIPATION_EVIDENCE.md) for the participation provider audit, identity crosswalk, freshness rules, and exact limitations.
 
 ## Refresh
 

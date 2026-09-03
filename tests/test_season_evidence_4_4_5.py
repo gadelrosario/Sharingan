@@ -19,7 +19,7 @@ class SeasonEvidence445Tests(unittest.TestCase):
         html = (ROOT / 'index.html').read_text(encoding='utf-8')
         worker = (ROOT / 'service-worker.js').read_text(encoding='utf-8')
         self.assertLess(html.index('js/season-evidence-v1.js'), html.index('js/app.js'))
-        self.assertIn("'./js/season-evidence-v1.js?v=1.1.0'", worker)
+        self.assertIn("'./js/season-evidence-v1.js?v=1.2.0'", worker)
         self.assertIn("'./tests/fixtures/season_evidence_4_4_5.json'", worker)
 
     def test_shadow_authority_and_domain_firewalls_are_explicit(self):

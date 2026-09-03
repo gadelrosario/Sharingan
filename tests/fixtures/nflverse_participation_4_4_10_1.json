@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "nflverse-snap-counts-csv-1",
+  "provider": "nflverse",
+  "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv",
+  "playerDirectoryUrl": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+  "season": 2025,
+  "currentSeason": 2026,
+  "retrievedAt": "2026-09-02T12:00:00.000Z",
+  "providerUpdatedAt": "2026-02-15T12:00:00.000Z",
+  "players": [
+    {"id": "p-route", "name": "Structural Role", "pos": "WR", "team": "SEA"},
+    {"id": "p-spike", "name": "Touchdown Spike", "pos": "WR", "team": "TB"}
+  ],
+  "gsisMappings": [
+    {"canonicalPlayerId": "p-route", "gsisId": "00-0000001", "matchConfidence": "HIGH"},
+    {"canonicalPlayerId": "p-spike", "gsisId": "00-0000002", "matchConfidence": "HIGH"}
+  ],
+  "playerDirectoryRows": [
+    {"gsis_id": "00-0000001", "pfr_id": "RoleSt00", "display_name": "Structural Role", "position": "WR", "latest_team": "SEA"},
+    {"gsis_id": "00-0000002", "pfr_id": "SpikTo00", "display_name": "Touchdown Spike", "position": "WR", "latest_team": "TB"},
+    {"gsis_id": "00-0000003", "pfr_id": "NewSe00", "display_name": "Season Only Runner", "position": "RB", "latest_team": "LAC"},
+    {"gsis_id": "00-0000004", "pfr_id": "AmbiGu00", "display_name": "Ambiguous One", "position": "WR", "latest_team": "NYG"},
+    {"gsis_id": "00-0000005", "pfr_id": "AmbiGu00", "display_name": "Ambiguous Two", "position": "WR", "latest_team": "NYG"}
+  ],
+  "rows": [
+    {"game_id":"2025_01_SF_SEA","pfr_game_id":"202509070sea","season":"2025","game_type":"REG","week":"1","player":"Structural Role","pfr_player_id":"RoleSt00","position":"WR","team":"SEA","opponent":"SF","offense_snaps":"20","offense_pct":"0.30"},
+    {"game_id":"2025_02_SEA_PIT","pfr_game_id":"202509140pit","season":"2025","game_type":"REG","week":"2","player":"Structural Role","pfr_player_id":"RoleSt00","position":"WR","team":"SEA","opponent":"PIT","offense_snaps":"40","offense_pct":"0.60"},
+    {"game_id":"2025_03_NO_SEA","pfr_game_id":"202509210sea","season":"2025","game_type":"REG","week":"3","player":"Structural Role","pfr_player_id":"RoleSt00","position":"WR","team":"SEA","opponent":"NO","offense_snaps":"60","offense_pct":"0.85"},
+    {"game_id":"2025_01_TB_ATL","pfr_game_id":"202509070atl","season":"2025","game_type":"REG","week":"1","player":"Touchdown Spike","pfr_player_id":"SpikTo00","position":"WR","team":"TB","opponent":"ATL","offense_snaps":"18","offense_pct":"0.28"},
+    {"game_id":"2025_02_TB_HOU","pfr_game_id":"202509150hou","season":"2025","game_type":"REG","week":"2","player":"Touchdown Spike","pfr_player_id":"SpikTo00","position":"WR","team":"TB","opponent":"HOU","offense_snaps":"18","offense_pct":"0.28"},
+    {"game_id":"2025_03_NYJ_TB","pfr_game_id":"202509210tb0","season":"2025","game_type":"REG","week":"3","player":"Touchdown Spike","pfr_player_id":"SpikTo00","position":"WR","team":"TB","opponent":"NYJ","offense_snaps":"18","offense_pct":"0.28"},
+    {"game_id":"2025_03_DEN_LAC","pfr_game_id":"202509210lac","season":"2025","game_type":"REG","week":"3","player":"Season Only Runner","pfr_player_id":"NewSe00","position":"RB","team":"LAC","opponent":"DEN","offense_snaps":"0","offense_pct":"0"},
+    {"game_id":"2025_03_NYG_KC","pfr_game_id":"202509210nyg","season":"2025","game_type":"REG","week":"3","player":"Ambiguous One","pfr_player_id":"AmbiGu00","position":"WR","team":"NYG","opponent":"KC","offense_snaps":"12","offense_pct":"0.20"},
+    {"game_id":"2025_03_BUF_MIA","pfr_game_id":"202509210buf","season":"2025","game_type":"REG","week":"3","player":"Unknown Player","pfr_player_id":"MissIn00","position":"WR","team":"BUF","opponent":"MIA","offense_snaps":"12","offense_pct":"0.20"},
+    {"game_id":"2025_03_CLE_GB","pfr_game_id":"202509210cle","season":"2025","game_type":"REG","week":"3","player":"Bad Snaps","pfr_player_id":"RoleSt00","position":"WR","team":"SEA","opponent":"CLE","offense_snaps":"-1","offense_pct":"0.20"},
+    {"game_id":"2025_03_NO_SEA","pfr_game_id":"202509210sea","season":"2025","game_type":"REG","week":"3","player":"Structural Role","pfr_player_id":"RoleSt00","position":"WR","team":"SEA","opponent":"NO","offense_snaps":"60","offense_pct":"0.85"}
+  ]
+}
