@@ -34,7 +34,7 @@ class WaiverIntelligenceTests(unittest.TestCase):
         for contract in ('seasonWaiverEvaluation', 'seasonWaiverRow', 'renderSeasonWaivers', 'SHARINGAN WAIVER PICK', 'CHIDORI ALERT', 'FAAB: Not yet scored'):
             self.assertIn(contract, app)
         self.assertLess(html.index('js/waiver-transaction-quality-v1.js?v=1.0.0'), html.index('js/waiver-intelligence-v1.js?v=1.1.0'))
-        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.1.0'), html.index('js/app.js?v=4.4.11.1'))
+        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.1.0'), html.index('js/app.js?v=4.4.11.2'))
         self.assertIn("'./js/waiver-transaction-quality-v1.js?v=1.0.0'", worker)
         self.assertIn("'./js/waiver-intelligence-v1.js?v=1.1.0'", worker)
         self.assertIn('.seasonWaiverDecisionRow', css)
@@ -44,8 +44,9 @@ class WaiverIntelligenceTests(unittest.TestCase):
         app = (ROOT / 'js/app.js').read_text()
         css = (ROOT / 'css/app.css').read_text()
         engine = (ROOT / 'js/waiver-intelligence-v1.js').read_text()
-        for contract in ('seasonWaiverRecommendationCards', 'seasonWaiverDecisionCard', 'seasonWaiverRosterImpact', 'seasonWaiverTimingCopy', 'PRIMARY DECISIONS', 'WATCHLIST / MONITOR', 'OTHER CANDIDATES', "kind:'waiver'", 'DECISION ANALYSIS'):
+        for contract in ('seasonWaiverRecommendationCards', 'seasonWaiverDecisionCard', 'seasonWaiverRosterImpact', 'seasonWaiverTimingCopy', 'PRIMARY DECISIONS', 'WATCHLIST / MONITOR', 'OTHER CANDIDATES', 'DECISION ANALYSIS'):
             self.assertIn(contract, app)
+        self.assertRegex(app, r"kind:\s*'waiver'")
         self.assertIn('used.has(pair.canonicalPlayerId)', app)
         self.assertIn('disclosedIds', app)
         for selector in ('.seasonDecisionHero', '.seasonDecisionCard', '.seasonDecisionGrid', '.seasonRosterImpact', '.seasonDecisionPhoto'):

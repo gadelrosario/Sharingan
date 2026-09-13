@@ -1,0 +1,49 @@
+{
+  "schema": "fantasy-hq-season-command-center-fixture-1",
+  "asOf": "2026-09-10T18:00:00Z",
+  "reviewLabel": "REVIEW FIXTURE — NOT LIVE YAHOO DATA",
+  "projectionLabel": "REVIEW FIXTURE PROJECTION",
+  "dropEvidenceDefaults": {
+    "starter": {"sourceValue":82,"role":82,"opportunity":82,"upside":82,"risk":40,"replaceability":25,"acquisitionCost":0,"confidence":90},
+    "bench": {"sourceValue":22,"role":25,"opportunity":25,"upside":28,"risk":40,"replaceability":85,"acquisitionCost":0,"confidence":90}
+  },
+  "profile": {
+    "id": "straight-outta-downey-review",
+    "displayName": "Straight Outta Downey — Review",
+    "actualTeams": 10,
+    "userDraftSlot": 6,
+    "settings": {
+      "scoring": "full-ppr",
+      "passingTdPoints": 6,
+      "rosterSlots": ["QB", "RB", "WR", "WR2", "TE", "FLEX", "FLEX2", "K", "DST", "BN", "BN2", "BN3", "BN4", "BN5", "BN6", "IR"],
+      "irSlots": 1
+    }
+  },
+  "lineupConsequence": {"injuredPlayerId":"21","replacementPlayerId":"83","replacementSlot":"FLEX","nextOptionPlayerId":"56"},
+  "roster": [
+    {"canonicalPlayerId":"64","name":"Jayden Daniels","position":"QB","sourceTeam":"WAS","rosterSlot":"QB","projection":22.05},
+    {"canonicalPlayerId":"2","name":"Bijan Robinson","position":"RB","sourceTeam":"ATL","rosterSlot":"RB","projection":21.03},
+    {"canonicalPlayerId":"54","name":"Bucky Irving","position":"RB","sourceTeam":"TB","rosterSlot":"FLEX","projection":13.51},
+    {"canonicalPlayerId":"170","name":"MarShawn Lloyd","position":"RB","sourceTeam":"GB","rosterSlot":"BN","projection":6.42},
+    {"canonicalPlayerId":"93","name":"J.K. Dobbins","position":"RB","sourceTeam":"DEN","rosterSlot":"BN","projection":8.14},
+    {"canonicalPlayerId":"88","name":"Rachaad White","position":"RB","sourceTeam":"WAS","rosterSlot":"BN","projection":7.26},
+    {"canonicalPlayerId":"21","name":"A.J. Brown","position":"WR","sourceTeam":"NE","rosterSlot":"WR","projection":0,"injuryStatus":"OUT"},
+    {"canonicalPlayerId":"18","name":"Drake London","position":"WR","sourceTeam":"ATL","rosterSlot":"WR2","projection":16.49},
+    {"canonicalPlayerId":"24","name":"Rashee Rice","position":"WR","sourceTeam":"KC","rosterSlot":"FLEX2","projection":13.09},
+    {"canonicalPlayerId":"56","name":"Carnell Tate","position":"WR","sourceTeam":"TEN","rosterSlot":"BN","projection":7.18},
+    {"canonicalPlayerId":"83","name":"Jordan Addison","position":"WR","sourceTeam":"MIN","rosterSlot":"BN","projection":10.99},
+    {"canonicalPlayerId":"113","name":"Jakobi Meyers","position":"WR","sourceTeam":"JAX","rosterSlot":"BN","projection":10.44},
+    {"canonicalPlayerId":"99","name":"Harold Fannin Jr.","position":"TE","sourceTeam":"CLE","rosterSlot":"TE","projection":10.81},
+    {"canonicalPlayerId":"219","name":"Ka'imi Fairbairn","position":"K","sourceTeam":"HOU","rosterSlot":"K","projection":7.29},
+    {"canonicalPlayerId":"195","name":"Los Angeles Chargers D/ST","position":"DST","sourceTeam":"LAC","rosterSlot":"DST","projection":8.92},
+    {"canonicalPlayerId":"68","name":"Jordyn Tyson","position":"WR","sourceTeam":"NO","rosterSlot":"IR","projection":0,"injuryStatus":"IR"}
+  ],
+  "available": [
+    {"canonicalPlayerId":"174","name":"Tre Tucker","position":"WR","sourceTeam":"LV","projection":11.0,"reviewLabel":"Short-term volume","availability":"FREE AGENT","identity":{"status":"MATCHED","canonicalPlayerId":"174"},"waiverEvidence":{"sourceValue":82,"role":88,"opportunity":90,"upside":79,"risk":28,"acquisitionCost":18,"confidence":92,"roleSource":"Review fixture","opportunitySource":"Review fixture","rankingSource":"Review fixture","availabilitySource":"Review fixture"},"discoveryEvidence":[[0.42,0.46,3],[0.58,0.64,6],[0.74,0.79,9]]},
+    {"canonicalPlayerId":"105","name":"Xavier Worthy","position":"WR","sourceTeam":"KC","projection":8.3,"reviewLabel":"Higher ceiling","availability":"FREE AGENT","identity":{"status":"MATCHED","canonicalPlayerId":"105"},"waiverEvidence":{"sourceValue":80,"role":74,"opportunity":76,"upside":91,"risk":38,"acquisitionCost":30,"confidence":88,"roleSource":"Review fixture","opportunitySource":"Review fixture","rankingSource":"Review fixture","availabilitySource":"Review fixture"},"discoveryEvidence":[[0.58,0.61,5],[0.64,0.69,6],[0.71,0.76,8]]},
+    {"canonicalPlayerId":"158","name":"Khalil Shakir","position":"WR","sourceTeam":"BUF","projection":9.5,"reviewLabel":"Steadier role","availability":"FREE AGENT","identity":{"status":"MATCHED","canonicalPlayerId":"158"},"waiverEvidence":{"sourceValue":72,"role":77,"opportunity":71,"upside":70,"risk":30,"acquisitionCost":20,"confidence":84,"roleSource":"Review fixture","opportunitySource":"Review fixture","rankingSource":"Review fixture","availabilitySource":"Review fixture"},"discoveryEvidence":[[0.63,0.68,6],[0.65,0.69,6],[0.68,0.72,7]]},
+    {"canonicalPlayerId":"1000136","name":"Deebo Samuel","position":"WR","sourceTeam":"SF","projection":8.8,"reviewLabel":"Volatile upside","availability":"FREE AGENT","identity":{"status":"MATCHED","canonicalPlayerId":"1000136"},"waiverEvidence":{"sourceValue":68,"role":70,"opportunity":68,"upside":76,"risk":52,"acquisitionCost":24,"confidence":80,"roleSource":"Review fixture","opportunitySource":"Review fixture","rankingSource":"Review fixture","availabilitySource":"Review fixture"},"discoveryEvidence":[[0.66,0.7,7],[0.62,0.66,6],[0.59,0.63,5]]},
+    {"canonicalPlayerId":"119","name":"Romeo Doubs","position":"WR","sourceTeam":"NE","projection":7.6,"reviewLabel":"Depth option","availability":"FREE AGENT","identity":{"status":"MATCHED","canonicalPlayerId":"119"},"waiverEvidence":{"sourceValue":62,"role":68,"opportunity":65,"upside":61,"risk":38,"acquisitionCost":18,"confidence":78,"roleSource":"Review fixture","opportunitySource":"Review fixture","rankingSource":"Review fixture","availabilitySource":"Review fixture"},"discoveryEvidence":[[0.5,0.54,4],[0.53,0.57,4],[0.56,0.6,5]]},
+    {"canonicalPlayerId":"1000146","name":"Jalen Nailor","position":"WR","sourceTeam":"LV","projection":6.9,"reviewLabel":"Longer-shot upside","availability":"FREE AGENT","identity":{"status":"MATCHED","canonicalPlayerId":"1000146"},"waiverEvidence":{"sourceValue":58,"role":61,"opportunity":60,"upside":67,"risk":48,"acquisitionCost":12,"confidence":74,"roleSource":"Review fixture","opportunitySource":"Review fixture","rankingSource":"Review fixture","availabilitySource":"Review fixture"},"discoveryEvidence":[[0.31,0.35,2],[0.4,0.44,3],[0.49,0.53,5]]}
+  ]
+}

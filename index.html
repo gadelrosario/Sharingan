@@ -8,8 +8,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.29"></script>
-<link rel="stylesheet" href="css/app.css?v=4.4.11.1">
+<script src="js/app-version.js?v=1.0.30"></script>
+<link rel="stylesheet" href="css/app.css?v=4.4.11.2">
   </head>
   <body>
     <header>
@@ -288,7 +288,7 @@
           <label class="seasonProfilePicker"><span class="srOnly">Active league profile</span><select id="seasonProfileSelect" onchange="selectSeasonProfile(this.value)"></select></label>
           <div class="seasonWeek"><button type="button" aria-label="Previous week" onclick="changeSeasonWeek(-1)">‹</button><strong id="seasonWeekLabel">Week 1</strong><button type="button" aria-label="Next week" onclick="changeSeasonWeek(1)">›</button></div>
           <div id="seasonSyncPill" class="seasonSyncPill" role="status">Yahoo • Not synced</div>
-          <div class="seasonHeaderActions"><button type="button" onclick="openNotebook()">📝 Notes</button><button type="button" aria-label="Season settings" onclick="showSeasonPage('settings')">⚙</button></div>
+          <div class="seasonHeaderActions"><button id="seasonManualStateButton" type="button" onclick="openSeasonManualState()">✎ Manual update</button><button type="button" onclick="openNotebook()">📝 Notes</button><button type="button" aria-label="Season settings" onclick="showSeasonPage('settings')">⚙</button></div>
         </header>
         <button id="seasonNavToggle" class="seasonNavToggle" type="button" aria-expanded="false" onclick="toggleSeasonNavigation()">☰ Season navigation</button>
         <div class="seasonLayout">
@@ -643,6 +643,7 @@
     <script src="js/yahoo-season-v1.js?v=1.0.0"></script>
     <script src="js/yahoo-sync-v1.js?v=1.0.0"></script>
     <script src="js/season-command-center-v1.js?v=1.1.3"></script>
+    <script src="js/manual-season-state-v1.js?v=1.0.0"></script>
     <script src="js/waiver-transaction-quality-v1.js?v=1.0.0"></script>
     <script src="js/waiver-intelligence-v1.js?v=1.1.0"></script>
     <script src="js/weekly-matchup-intelligence-v1.js?v=1.0.0"></script>
@@ -669,7 +670,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.4.11.1"></script>
+    <script src="js/app.js?v=4.4.11.2"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

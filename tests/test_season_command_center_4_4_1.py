@@ -51,17 +51,18 @@ class SeasonCommandCenterTests(unittest.TestCase):
         self.assertIn('id="primaryDraftModeButton"', html)
         self.assertIn('id="primarySeasonModeButton"', html)
         self.assertIn('id="primaryHeaderProfileSelect"', html)
-        self.assertIn('function selectHeaderLeagueProfile(profileId){selectLeagueProfile(profileId)}', app)
+        compact_app = ''.join(app.split())
+        self.assertIn('functionselectHeaderLeagueProfile(profileId){selectLeagueProfile(profileId);}', compact_app)
         open_mode = app[app.index('async function openSeasonMode()'):app.index('function exitSeasonMode()')]
         self.assertNotIn('seasonAvailable', open_mode)
-        self.assertIn("SeasonCommandCenterV1.saveMode(localStorage,activeLeagueProfile.id,'season')", open_mode)
+        self.assertIn("SeasonCommandCenterV1.saveMode(localStorage, activeLeagueProfile.id, 'season')", open_mode)
 
     def test_draft_return_restores_visible_start_surface(self):
         app = (ROOT / 'js/app.js').read_text()
         exit_mode = app[app.index('function exitSeasonMode()'):app.index('function returnToDraftMode()')]
         self.assertIn("el('setupScreen')?.classList.remove('hidden')", exit_mode)
         self.assertIn("el('primaryDraftModeButton')?.classList.add('active')", exit_mode)
-        self.assertIn("saveMode(localStorage,activeLeagueProfile.id,'draft')", exit_mode)
+        self.assertIn("saveMode(localStorage, activeLeagueProfile.id, 'draft')", exit_mode)
 
 
 if __name__ == '__main__':

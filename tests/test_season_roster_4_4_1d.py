@@ -16,16 +16,17 @@ class SeasonRosterUXTests(unittest.TestCase):
 
     def test_production_views_use_shared_resolution_and_non_live_labels(self):
         app = (ROOT / 'js/app.js').read_text()
-        self.assertIn("model.userTeamResolution?.status!=='RESOLVED'", app)
-        self.assertIn("team.teamKey===model.userTeamResolution?.teamKey", app)
+        compact_app = ''.join(app.split())
+        self.assertIn("model.userTeamResolution?.status!=='RESOLVED'", compact_app)
+        self.assertIn("team.teamKey===model.userTeamResolution?.teamKey", compact_app)
         self.assertIn('Projected lineup from Draft Snapshot', app)
         self.assertIn('Current Yahoo lineup unavailable until sync', app)
-        self.assertIn("seasonPage==='team'", app)
-        self.assertIn("seasonPage==='matchup'", app)
+        self.assertIn("seasonPage==='team'", compact_app)
+        self.assertIn("seasonPage==='matchup'", compact_app)
         self.assertIn('MY TEAM', app)
-        self.assertIn("seasonLineupSection(card,'STARTERS',model.lineup.starters,model,{compact:true})", app)
-        self.assertIn("seasonLineupSection(card,'BENCH',model.lineup.bench,model,{compact:true})", app)
-        self.assertNotIn("filter(row=>row.player).slice(0,6)", app)
+        self.assertIn("seasonLineupSection(card,'STARTERS',model.lineup.starters,model,{compact:true})", compact_app)
+        self.assertIn("seasonLineupSection(card,'BENCH',model.lineup.bench,model,{compact:true})", compact_app)
+        self.assertNotIn("filter(row=>row.player).slice(0,6)", compact_app)
 
     def test_no_recommendation_authority_changed(self):
         source = (ROOT / 'js/season-command-center-v1.js').read_text().lower()

@@ -26,7 +26,7 @@ class WaiverTransactionQualityTests(unittest.TestCase):
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         self.assertIn("seasonWaiverContext", app)
         self.assertIn("Net roster effect:", app)
-        self.assertIn("summary.textContent='Detailed analysis'", app)
+        self.assertRegex(app, r"summary\.textContent\s*=\s*['\"]Detailed analysis['\"]")
         self.assertIn("transaction.valueEfficiency", app)
         self.assertLess(
             html.index("js/waiver-transaction-quality-v1.js?v=1.0.0"),
