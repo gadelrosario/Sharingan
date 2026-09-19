@@ -28,7 +28,7 @@ class SeasonCommandCenterTests(unittest.TestCase):
         html = (ROOT / 'index.html').read_text()
         worker = (ROOT / 'service-worker.js').read_text()
         self.assertLess(html.index('js/season-command-center-v1.js'), html.index('js/app.js'))
-        self.assertIn("'./js/season-command-center-v1.js?v=1.1.4'", worker)
+        self.assertIn("'./js/season-command-center-v1.js?v=1.1.6-projection-semantics'", worker)
 
     def test_draft_authority_is_not_imported_into_season_module(self):
         source = (ROOT / 'js/season-command-center-v1.js').read_text().lower()
@@ -39,7 +39,8 @@ class SeasonCommandCenterTests(unittest.TestCase):
         html = (ROOT / 'index.html').read_text()
         css = (ROOT / 'css/app.css').read_text()
         self.assertIn('aria-label="Season navigation"', html)
-        self.assertIn('aria-expanded="false"', html)
+        self.assertIn('aria-current', (ROOT / 'js/app.js').read_text())
+        self.assertIn('class="seasonTopNavigation"', html)
         self.assertIn('@media(max-width:1100px)', css)
         self.assertIn('@media(max-width:720px)', css)
         self.assertIn('overflow:hidden', css)

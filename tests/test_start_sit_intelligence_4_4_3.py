@@ -21,13 +21,15 @@ class StartSitIntelligence443Tests(unittest.TestCase):
     def test_browser_integration_is_progressive_and_fail_closed(self):
         app = (ROOT / 'js/app.js').read_text(encoding='utf-8')
         html = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn("startsit: '⚡ Start/Sit'", app)
+        self.assertIn("showSeasonPage('startsit')", app)
         self.assertIn("showSeasonPage('startsit')", html)
         self.assertIn('renderSeasonStartSit', app)
         self.assertIn('INSUFFICIENT_VALIDATED_SEASON_DATA', app)
         self.assertIn('View Analysis', app)
         self.assertIn("kind:'start-sit'", app)
-        self.assertIn('WHY FANTASY HQ PREFERS', app)
+        self.assertIn('WHY FANTASY HQ SUPPORTS', app)
+        self.assertIn('WHY FANTASY HQ IS HOLDING', app)
+        self.assertIn('WHAT TO WATCH BEFORE CHANGING', app)
         self.assertIn('SHOW ADVANCED EVIDENCE', app)
 
     def test_default_cards_do_not_dump_internal_components(self):

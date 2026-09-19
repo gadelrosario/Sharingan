@@ -1,0 +1,46 @@
+{
+  "fetchedAt": "2026-09-18T18:00:00Z",
+  "profile": {
+    "id": "live-shape",
+    "actualTeams": 2,
+    "settings": {
+      "teams": 2,
+      "scoring": "half",
+      "rosterSlots": ["QB", "RB", "WR", "TE", "FLEX", "K", "DST", "BN"]
+    }
+  },
+  "canonicalPlayers": [
+    {"playerId": "fhq-user-wr", "name": "User Receiver", "position": "WR", "team": "AAA", "externalIds": {"yahoo": "101"}},
+    {"playerId": "fhq-user-rb", "name": "User Runner", "position": "RB", "team": "BBB", "externalIds": {"yahoo": "102"}},
+    {"playerId": "fhq-user-bench", "name": "Bench Receiver", "position": "WR", "team": "CCC", "externalIds": {"yahoo": "103"}},
+    {"playerId": "fhq-opp-wr", "name": "Opponent Receiver", "position": "WR", "team": "DDD", "externalIds": {"yahoo": "201"}}
+  ],
+  "bundle": {
+    "leagueKey": "nfl.l.sanitized",
+    "fetchedAt": "2026-09-18T18:00:00Z",
+    "league": {"leagues": [{"leagueKey": "nfl.l.sanitized", "name": "Sanitized League", "season": 2026, "gameCode": "nfl", "teamCount": 2, "currentWeek": 2}]},
+    "settings": {"settingsNormalized": {"teamCount": 2, "scoringType": "half-ppr", "rosterSlots": ["QB", "RB", "WR", "TE", "FLEX", "K", "DST", "BN"]}},
+    "teams": {"teams": [
+      {"teamKey": "nfl.l.sanitized.t.1", "name": "User Team", "isUser": true},
+      {"teamKey": "nfl.l.sanitized.t.2", "name": "Opponent Team"}
+    ]},
+    "teamRosters": {
+      "nfl.l.sanitized.t.1": {"players": [
+        {"player": [[{"player_key": "nfl.p.101"}, {"player_id": "101"}, {"name": {"full": "User Receiver"}}, {"display_position": "WR"}, {"editorial_team_abbr": "AAA"}, {"eligible_positions": [{"position": "WR"}, {"position": "W/R/T"}]}, {"status": "Q"}, {"opponent_team_abbr": "EEE"}, {"game_start": "2026-09-20T17:00:00Z"}, {"game_status": "pregame"}], {"selected_position": [{"coverage_type": "week", "week": "2"}, {"position": "WR"}]}, {"player_projected_points": {"total": "17.25"}}]},
+        {"player": [[{"player_key": "nfl.p.102"}, {"player_id": "102"}, {"name": {"full": "User Runner"}}, {"display_position": "RB"}, {"editorial_team_abbr": "BBB"}], {"selected_position": [{"coverage_type": "week", "week": "2"}, {"position": "W/R/T"}]}, {"player_projected_points": {"total": "0"}}]},
+        {"player": [[{"player_key": "nfl.p.103"}, {"player_id": "103"}, {"name": {"full": "Bench Receiver"}}, {"display_position": "WR"}, {"editorial_team_abbr": "CCC"}], {"selected_position": [{"coverage_type": "week", "week": "2"}, {"position": "BN"}]}, {"player_projected_points": {"total": "50"}}]}
+      ]},
+      "nfl.l.sanitized.t.2": {"players": [
+        {"player": [[{"player_key": "nfl.p.201"}, {"player_id": "201"}, {"name": {"full": "Opponent Receiver"}}, {"display_position": "WR"}, {"editorial_team_abbr": "DDD"}], {"selected_position": [{"coverage_type": "week", "week": "2"}, {"position": "WR"}]}, {"player_projected_points": {"total": "21.5"}}]}
+      ]}
+    },
+    "standings": {"standings": [{"teamKey": "nfl.l.sanitized.t.1", "wins": 1, "losses": 0, "rank": 1, "pointsFor": 120, "pointsAgainst": 90}]},
+    "matchups": {"week": 2, "matchups": [{"week": 2, "status": "midevent", "teams": [
+      {"teamKey": "nfl.l.sanitized.t.1", "actualPoints": 0, "projectedPoints": 101.5, "winProbability": 0.45},
+      {"teamKey": "nfl.l.sanitized.t.2", "actualPoints": 31.25, "projectedPoints": 110.75, "winProbability": 0.55}
+    ]}]},
+    "players": {"players": []},
+    "transactions": {"transactions": []},
+    "errors": {}
+  }
+}

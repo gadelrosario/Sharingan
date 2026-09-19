@@ -8,8 +8,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
-<script src="js/app-version.js?v=1.0.30"></script>
-<link rel="stylesheet" href="css/app.css?v=4.4.11.3">
+<script src="js/app-version.js?v=1.0.31"></script>
+<link rel="stylesheet" href="css/app.css?v=4.4.11.4-correction-2">
   </head>
   <body>
     <header>
@@ -284,16 +284,20 @@
       <section id="seasonScreen" class="seasonScreen hidden" aria-label="Fantasy HQ Season Command Center">
         <header class="seasonHeader">
           <div class="seasonBrand"><span class="seasonBrandMark" aria-hidden="true">◉</span><div><strong>FANTASY HQ</strong><small>SHARINGAN • <span data-app-version></span></small></div></div>
-          <div class="seasonModeSwitch" role="group" aria-label="Fantasy HQ mode"><button type="button" onclick="exitSeasonMode()">DRAFT MODE</button><button type="button" class="active" aria-current="page">SEASON MODE</button></div>
+          <nav id="seasonNavigation" class="seasonTopNavigation" aria-label="Season navigation"></nav>
+          <div class="seasonHeaderActions"><button type="button" onclick="exitSeasonMode()">Draft Mode</button><button id="seasonManualStateButton" type="button" onclick="openSeasonManualState()">✎ Manual</button><button type="button" onclick="openNotebook()">📝 Notes</button><button type="button" aria-label="Season settings" onclick="showSeasonPage('settings')">⚙</button></div>
+        </header>
+        <section id="seasonOperationalBar" class="seasonOperationalBar" aria-label="Week and data freshness">
           <label class="seasonProfilePicker"><span class="srOnly">Active league profile</span><select id="seasonProfileSelect" onchange="selectSeasonProfile(this.value)"></select></label>
           <div class="seasonWeek"><button type="button" aria-label="Previous week" onclick="changeSeasonWeek(-1)">‹</button><strong id="seasonWeekLabel">Week 1</strong><button type="button" aria-label="Next week" onclick="changeSeasonWeek(1)">›</button></div>
           <div id="seasonSyncPill" class="seasonSyncPill" role="status">Yahoo • Not synced</div>
-          <div class="seasonHeaderActions"><button id="seasonManualStateButton" type="button" onclick="openSeasonManualState()">✎ Manual update</button><button type="button" onclick="openNotebook()">📝 Notes</button><button type="button" aria-label="Season settings" onclick="showSeasonPage('settings')">⚙</button></div>
-        </header>
-        <button id="seasonNavToggle" class="seasonNavToggle" type="button" aria-expanded="false" onclick="toggleSeasonNavigation()">☰ Season navigation</button>
+          <div class="seasonOperationalFact"><small>LAST UPDATED</small><strong id="seasonLastUpdated">Unavailable</strong></div>
+          <button id="seasonOperationalSync" class="seasonOperationalSync" type="button" onclick="syncYahooLeagueNow()">↻ Sync Now</button>
+          <div class="seasonOperationalFact"><small>NEXT UPDATE</small><strong id="seasonNextUpdate">User-triggered</strong></div>
+          <div class="seasonOperationalFact seasonDecisionWindow"><small>NFL DECISION WINDOW</small><strong id="seasonDecisionWindow">Kickoff data unavailable</strong></div>
+        </section>
         <div class="seasonLayout">
-          <aside id="seasonSidebar" class="seasonSidebar" aria-label="Season navigation">
-            <nav id="seasonNavigation"></nav>
+          <aside id="seasonSidebar" class="seasonSidebar" aria-label="Season context">
             <section id="seasonLeagueSnapshot" class="seasonSidebarCard"></section>
             <section class="seasonSidebarCard"><b>QUICK ACTIONS</b><button type="button" onclick="showSeasonComingSoon('Compare Players')">Compare Players</button><button type="button" onclick="showSeasonPage('trades')">Trade Analyzer</button><button type="button" onclick="showSeasonPage('startsit')">Start/Sit Assistant</button><button type="button" onclick="showSeasonPage('waivers')">View Waivers</button></section>
             <section class="seasonSidebarCard seasonModesLegend"><b>FLIGHT CONTROL MODES</b><span><i class="discovery"></i>Discovery <small>Weeks 1–3</small></span><span><i class="optimization"></i>Optimization <small>Weeks 4–12</small></span><span><i class="playoff"></i>Playoff Push <small>Weeks 13–16</small></span><span><i class="win"></i>Win-or-Go-Home <small>Playoffs</small></span></section>
@@ -640,14 +644,15 @@
     <script src="js/draft-session-v1.js?v=1.3.0"></script>
     <script src="js/draft-workflow-v1.js?v=1.3.0"></script>
     <script src="js/league-profiles-v1.js?v=1.1.0"></script>
-    <script src="js/yahoo-season-v1.js?v=1.1.0"></script>
+    <script src="js/yahoo-season-v1.js?v=1.1.1-projection-semantics"></script>
     <script src="js/yahoo-sync-v1.js?v=1.1.0"></script>
-    <script src="js/season-command-center-v1.js?v=1.1.4"></script>
+    <script src="js/season-command-center-v1.js?v=1.1.6-projection-semantics"></script>
+    <script src="js/season-home-v3.js?v=1.0.2"></script>
     <script src="js/manual-season-state-v1.js?v=1.0.0"></script>
     <script src="js/waiver-transaction-quality-v1.js?v=1.0.0"></script>
     <script src="js/waiver-intelligence-v1.js?v=1.1.0"></script>
     <script src="js/weekly-matchup-intelligence-v1.js?v=1.0.0"></script>
-    <script src="js/start-sit-intelligence-v1.js?v=1.2.0"></script>
+    <script src="js/start-sit-intelligence-v1.js?v=1.2.1"></script>
     <script src="js/teamfit-v1.js?v=1.0.0"></script>
     <script src="js/season-evidence-v1.js?v=1.2.0"></script>
     <script src="js/season-player-registry-v1.js?v=1.0.0"></script>
@@ -655,7 +660,7 @@
     <script src="js/injury-opportunity-intelligence-v1.js?v=1.0.0"></script>
     <script src="js/discovery-breakout-radar-v1.js?v=1.0.1"></script>
     <script src="js/faab-intelligence-v1.js?v=1.1.0"></script>
-    <script src="js/weekly-command-center-v1.js?v=1.1.0"></script>
+    <script src="js/weekly-command-center-v1.js?v=1.1.2"></script>
     <script src="js/jonin-decision-intelligence-v1.js?v=1.0.3"></script>
     <script src="js/draft-grading-engine-v1.js?v=1.0.0"></script>
     <script src="js/command-center-v1.js?v=1.1.0"></script>
@@ -670,7 +675,7 @@
     <script src="js/draft-psychology-engine-v1.js?v=1.0.0"></script>
     <script src="tests/command-center-tests.js?v=1.0.0"></script>
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
-    <script src="js/app.js?v=4.4.11.3-season-live-1"></script>
+    <script src="js/app.js?v=4.4.11.4-season-home-v3-5-projection-semantics"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

@@ -23,15 +23,16 @@ class SeasonPlayerRegistry449Tests(unittest.TestCase):
     def test_browser_registry_is_season_scoped(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertIn("seasonPlayerRegistry.evidencePlayers()", source)
-        self.assertIn("evidencePlayers=[...players,...registryPlayers]", source)
-        self.assertIn("importPayload(artifact,{players:evidencePlayers})", source)
+        compact = "".join(source.split())
+        self.assertIn("evidencePlayers=[...players,...registryPlayers]", compact)
+        self.assertIn("importPayload(artifact,{players:evidencePlayers})", compact)
         self.assertNotIn("players.push(...seasonPlayerRegistry", source)
         self.assertNotIn("players=players.concat(seasonPlayerRegistry", source)
 
     def test_draft_search_and_recommendations_still_use_draft_players(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertIn("function available() {\n  return players.filter", source)
-        self.assertIn("const availablePlayers=available()", source)
+        self.assertIn("constavailablePlayers=available()", "".join(source.split()))
         self.assertNotIn("seasonPlayerRegistry.evidencePlayers().filter(recommendationEligible", source)
 
     def test_registry_artifact_is_profile_independent_and_shadow_only(self):
@@ -49,8 +50,8 @@ class SeasonPlayerRegistry449Tests(unittest.TestCase):
 
     def test_demo_path_never_loads_registry(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        demo_segment = source.split("const [evidenceResponse,intelligenceResponse,discoveryResponse,matchupResponse]", 1)[1].split("function seasonStateForActiveProfile", 1)[0]
-        self.assertIn("seasonPlayerRegistry=null", demo_segment)
+        demo_segment = source.split("const [evidenceResponse, intelligenceResponse, discoveryResponse, matchupResponse]", 1)[1].split("function seasonStateForActiveProfile", 1)[0]
+        self.assertIn("seasonPlayerRegistry=null", "".join(demo_segment.split()))
 
     def test_registry_module_precedes_adapter_and_app(self):
         html = (ROOT / "index.html").read_text(encoding="utf-8")

@@ -5724,3 +5724,113 @@ body:has(#appScreen:not(.hidden))>.draftActionBar{display:none!important}
 /* Yahoo matchup facts retain each score and projection with its owning team. */
 .seasonYahooMatchupSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:8px 0}.seasonYahooMatchupSummary>span{min-width:0;padding:6px 7px;border:1px solid #1b2a40;border-radius:6px;background:#07111e}.seasonYahooMatchupSummary small,.seasonYahooMatchupSummary strong{display:block}.seasonYahooMatchupSummary small{color:#7f8da1;font-size:8px}.seasonYahooMatchupSummary strong{margin-top:2px;overflow:hidden;color:#dce7f5;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
 @media(max-width:720px){.seasonYahooMatchupSummary{grid-template-columns:1fr}.seasonYahooMatchupSummary strong{white-space:normal}}
+
+/* Season Mode Weekly Command Center V3 — matchup-first, evidence-aware layout. */
+body.seasonModeActive .shell{max-width:none;padding:0 14px 18px}
+.seasonHeader{grid-template-columns:auto minmax(520px,1fr) auto;min-height:58px;padding:7px 12px}
+.seasonBrand{min-width:205px}.seasonTopNavigation{display:flex;align-self:stretch;justify-content:center;min-width:0;overflow:hidden}.seasonTopNavigation button{min-width:0;padding:0 15px;border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:#aab5c5;font-size:10px;white-space:nowrap}.seasonTopNavigation button:hover,.seasonTopNavigation button.active{border-color:#9b62f2;color:#eadcff;background:linear-gradient(180deg,transparent,rgba(124,58,237,.08))}.seasonHeaderActions{justify-content:flex-end;min-width:250px}.seasonHeaderActions button{min-height:34px;padding:5px 10px}
+.seasonOperationalBar{display:grid;grid-template-columns:minmax(175px,.8fr) auto minmax(175px,.8fr) minmax(135px,.7fr) auto minmax(130px,.55fr) minmax(220px,1fr);align-items:center;gap:8px;margin:10px 0;padding:8px 10px;border:1px solid #1d2c41;border-radius:10px;background:linear-gradient(100deg,rgba(7,17,30,.98),rgba(5,11,20,.98))}.seasonOperationalBar .seasonProfilePicker select{max-width:none;min-height:38px}.seasonOperationalBar .seasonWeek{min-height:36px}.seasonOperationalBar .seasonSyncPill{padding:8px 10px}.seasonOperationalFact{min-width:0;padding:0 8px;border-left:1px solid #1d2c41}.seasonOperationalFact small,.seasonOperationalFact strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.seasonOperationalFact small{color:#718096;font-size:7px;font-weight:900;letter-spacing:.07em}.seasonOperationalFact strong{margin-top:3px;color:#dce7f5;font-size:9px}.seasonOperationalBar[data-freshness="STALE"] .seasonOperationalFact strong{color:#fca5a5}.seasonOperationalBar[data-freshness="AGING"] .seasonOperationalFact strong{color:#fcd34d}.seasonOperationalSync{min-height:35px;border:1px solid #563693;border-radius:7px;background:linear-gradient(135deg,#382061,#1d1436);color:#d9c4ff;font-size:10px;font-weight:800}.seasonDecisionWindow strong{color:#7dd3fc}
+.seasonLayout{display:block;min-height:calc(100vh - 135px)}.seasonSidebar{display:none}.seasonContent{padding:2px 8px 14px}
+.seasonV3Outlook{display:grid;grid-template-columns:minmax(190px,1.15fr) repeat(6,minmax(95px,.75fr)) minmax(155px,.9fr);align-items:stretch;margin-bottom:10px;overflow:hidden;border:1px solid #21344e;border-radius:10px;background:linear-gradient(90deg,#0b1728,#07111d)}.seasonV3OutlookTitle,.seasonV3OutlookMetric{display:flex;min-width:0;flex-direction:column;justify-content:center;padding:10px 14px;border-right:1px solid #21344e}.seasonV3OutlookTitle small,.seasonV3OutlookMetric small{color:#b386f3;font-size:8px;font-weight:900;letter-spacing:.07em}.seasonV3OutlookTitle strong{margin-top:3px;color:#9aa9bc;font-size:9px}.seasonV3OutlookMetric strong{margin-top:3px;overflow:hidden;color:#f1f5f9;font-size:16px;text-overflow:ellipsis;white-space:nowrap}.seasonV3OutlookMetric span{margin-top:2px;overflow:hidden;color:#8090a4;font-size:7px;text-overflow:ellipsis;white-space:nowrap}.seasonV3OutlookMetric.unavailable strong{color:#637084}.seasonV3Outlook>.seasonTextButton{align-self:center;margin:8px;border:0;background:transparent;color:#c695ff}
+.seasonV3Dashboard{display:grid;grid-template-columns:minmax(390px,.88fr) minmax(560px,1.12fr);align-items:start;gap:10px}.seasonV3RosterColumn,.seasonV3DecisionColumn{display:grid;min-width:0;gap:10px}.seasonV3RosterColumn .seasonRosterSummary{margin:0}.seasonV3Matchup{min-width:0}.seasonV3MatchupHero{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;padding:10px 2px}.seasonV3MatchupTeam{display:grid;justify-items:center;min-width:0;text-align:center}.seasonV3MatchupTeam small{color:#8492a6;font-size:8px;font-weight:800}.seasonV3MatchupTeam strong{max-width:100%;overflow:hidden;color:#f4f7fb;font-size:14px;text-overflow:ellipsis;white-space:nowrap}.seasonV3MatchupTeam span{color:#91a0b4;font-size:8px}.seasonV3MatchupTeam b{margin-top:3px;color:#fff;font-size:23px}.seasonV3Versus{display:grid;width:38px;height:38px;place-items:center;border:1px solid #33435b;border-radius:50%;color:#bac5d5;font-size:10px}.seasonV3PositionBattle{padding-top:9px;border-top:1px solid #1a283a}.seasonV3PositionBattle h3{margin:0 0 7px;color:#a889da;font-size:9px;letter-spacing:.06em}.seasonV3BattleGrid{display:grid;grid-template-columns:repeat(7,minmax(58px,1fr));gap:5px}.seasonV3Battle{display:grid;justify-items:center;gap:2px;min-width:0;padding:7px 4px;border:1px solid #243147;border-radius:7px;background:#07111e}.seasonV3Battle b{color:#d6dfeb;font-size:8px}.seasonV3Battle strong{color:#e8eef7;font-size:10px;white-space:nowrap}.seasonV3Battle small{color:#7f8da0;font-size:7px;text-transform:uppercase}.seasonV3Battle.you{border-color:#236348}.seasonV3Battle.you small{color:#4ade80}.seasonV3Battle.opponent{border-color:#70323c}.seasonV3Battle.opponent small{color:#fb7185}.seasonV3WeeklyRead{margin-top:9px;padding:9px 11px;border:1px solid #453166;border-radius:8px;background:linear-gradient(110deg,rgba(52,31,91,.35),rgba(8,14,24,.82))}.seasonV3WeeklyRead b{color:#c49afa;font-size:9px}.seasonV3WeeklyRead p{margin:4px 0 0;color:#cbd4e0;font-size:10px;line-height:1.4}
+.seasonV3DecisionGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.seasonV3Decision{display:grid;grid-template-columns:36px minmax(0,1fr);align-content:start;gap:5px 8px;min-width:0;padding:9px;border:1px solid #28364b;border-radius:8px;background:linear-gradient(145deg,#0c1726,#070d16)}.seasonV3Decision>small{grid-column:1/-1;color:#a47bdc;font-size:7px;font-weight:900;letter-spacing:.06em}.seasonV3Decision>.seasonLineupPhoto{grid-row:2/5;width:34px;height:34px}.seasonV3Decision>strong,.seasonV3Decision>span,.seasonV3Decision>em{min-width:0;overflow-wrap:anywhere}.seasonV3Decision>strong{color:#f5f7fa;font-size:11px}.seasonV3Decision>span{color:#aeb9c8;font-size:8px;line-height:1.35}.seasonV3Decision>em{color:#7dd3fc;font-size:7px;font-style:normal;font-weight:800}.seasonV3Decision>.seasonMiniButton{grid-column:1/-1;margin-top:3px}.seasonV3Decision.critical,.seasonV3Decision.high{border-color:#2a7858}.seasonV3Lower{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:10px;margin-top:10px}.seasonV3Swing>.seasonMatchupIntelligenceCard{margin-top:7px}.seasonV3Improvement{display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;gap:2px 8px;padding:7px 0;border-bottom:1px solid #1a2637}.seasonV3Improvement>.seasonLineupPhoto{grid-row:1/4;width:30px;height:30px}.seasonV3Improvement strong{font-size:10px}.seasonV3Improvement span,.seasonV3Improvement p{margin:0;color:#8e9bae;font-size:8px}.seasonV3Improvement p{grid-column:2/-1;line-height:1.35}.seasonV3Improvement>.seasonBadge{grid-column:3;grid-row:1/3}
+@media(max-width:1180px){.seasonHeader{grid-template-columns:auto minmax(400px,1fr) auto}.seasonTopNavigation button{padding:0 9px}.seasonOperationalBar{grid-template-columns:minmax(160px,1fr) auto minmax(160px,1fr) auto auto}.seasonOperationalFact:nth-of-type(2),.seasonDecisionWindow{display:none}.seasonV3Outlook{grid-template-columns:minmax(170px,1fr) repeat(3,minmax(90px,.7fr)) minmax(135px,.8fr)}.seasonV3OutlookMetric:nth-of-type(n+5){display:none}.seasonV3Dashboard{grid-template-columns:minmax(330px,.8fr) minmax(470px,1.2fr)}}
+@media(max-width:900px){.seasonHeader{grid-template-columns:auto 1fr auto}.seasonTopNavigation{justify-content:flex-start;overflow-x:auto}.seasonHeaderActions{min-width:0}.seasonHeaderActions button:nth-child(2),.seasonHeaderActions button:nth-child(3){display:none}.seasonOperationalBar{grid-template-columns:minmax(145px,1fr) auto minmax(150px,1fr) auto}.seasonOperationalFact,.seasonOperationalSync{display:none}.seasonV3Dashboard{grid-template-columns:1fr}.seasonV3DecisionColumn{grid-row:1}.seasonV3RosterColumn{grid-row:2}.seasonV3Outlook{grid-template-columns:minmax(145px,1fr) repeat(3,minmax(82px,.7fr))}.seasonV3Outlook>.seasonTextButton{display:none}.seasonV3Lower{grid-template-columns:1fr}}
+@media(max-width:620px){body.seasonModeActive .shell{padding:0 8px 12px}.seasonHeader{position:sticky;grid-template-columns:1fr auto;min-height:52px;padding:6px 8px}.seasonBrand{min-width:0}.seasonBrand strong{font-size:14px}.seasonBrand small{font-size:7px}.seasonTopNavigation{grid-column:1/-1;grid-row:2;justify-content:flex-start;min-height:35px}.seasonTopNavigation button{flex:0 0 auto;padding:0 12px}.seasonHeaderActions{grid-column:2;grid-row:1}.seasonHeaderActions button:not(:last-child){display:none}.seasonOperationalBar{grid-template-columns:minmax(0,1fr) auto;gap:6px;margin:7px 0;padding:6px}.seasonOperationalBar .seasonProfilePicker{grid-column:1}.seasonOperationalBar .seasonWeek{grid-column:2}.seasonOperationalBar .seasonSyncPill{grid-column:1/-1;grid-row:2}.seasonContent{padding:2px 0 10px}.seasonV3Outlook{grid-template-columns:1fr repeat(2,minmax(72px,.65fr));overflow-x:hidden}.seasonV3OutlookTitle{padding:8px}.seasonV3OutlookMetric{padding:8px}.seasonV3OutlookMetric:nth-of-type(n+4){display:none}.seasonV3OutlookMetric strong{font-size:14px}.seasonV3MatchupHero{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);gap:5px}.seasonV3MatchupTeam strong{font-size:11px}.seasonV3MatchupTeam b{font-size:18px}.seasonV3Versus{width:28px;height:28px}.seasonV3BattleGrid{grid-template-columns:repeat(4,minmax(58px,1fr));overflow-x:auto;padding-bottom:3px}.seasonV3DecisionGrid{grid-template-columns:1fr}.seasonV3Decision{grid-template-columns:34px minmax(0,1fr)}.seasonV3Lower{grid-template-columns:1fr}.seasonV3Dashboard,.seasonV3RosterColumn,.seasonV3DecisionColumn,.seasonV3Matchup,.seasonV3Decisions{max-width:100%;overflow:hidden}}
+
+/* Jōnin 4.4.11.4 correction: comfortable desktop density without changing V3 structure. */
+@media(min-width:901px){
+  .seasonV3Outlook{margin-bottom:14px}
+  .seasonV3OutlookTitle,.seasonV3OutlookMetric{padding:12px 15px}
+  .seasonV3OutlookTitle small,.seasonV3OutlookMetric small{font-size:9px}
+  .seasonV3OutlookTitle strong{font-size:10px}
+  .seasonV3OutlookMetric strong{font-size:18px}
+  .seasonV3OutlookMetric span{font-size:8px}
+  .seasonV3Dashboard,.seasonV3RosterColumn,.seasonV3DecisionColumn{gap:14px}
+  .seasonV3Dashboard .seasonPanel{padding:15px}
+  .seasonV3RosterColumn .seasonLineupRow{min-height:44px;padding:6px 5px}
+  .seasonV3RosterColumn .seasonLineupIdentity strong{font-size:12px}
+  .seasonV3RosterColumn .seasonLineupIdentity small,.seasonV3RosterColumn .seasonLineupSchedule small{font-size:9px}
+  .seasonV3RosterColumn .seasonLineupSchedule b{font-size:10px}
+  .seasonV3MatchupHero{padding:14px 4px}
+  .seasonV3MatchupTeam strong{font-size:16px}
+  .seasonV3MatchupTeam b{font-size:30px}
+  .seasonV3MatchupTeam small{font-size:9px}
+  .seasonV3MatchupTeam em{margin-top:3px;color:#c4a7f5;font-size:11px;font-style:normal;font-weight:800}
+  .seasonV3PositionBattle{padding-top:12px}
+  .seasonV3PositionBattle h3{font-size:10px}
+  .seasonV3Battle{gap:3px;padding:10px 5px}
+  .seasonV3Battle b{font-size:9px}
+  .seasonV3Battle strong{font-size:12px}
+  .seasonV3Battle small{font-size:8px}
+  .seasonV3WeeklyRead{margin-top:12px;padding:11px 13px}
+  .seasonV3WeeklyRead b{font-size:10px}
+  .seasonV3WeeklyRead p{font-size:12px}
+  .seasonV3DecisionGrid{gap:10px}
+  .seasonV3Decision{padding:11px}
+  .seasonV3Decision:first-child{border-width:2px;box-shadow:0 10px 28px rgba(0,0,0,.18)}
+  .seasonV3Decision:first-child>strong{font-size:13px}
+  .seasonV3Decision>span{font-size:10px}
+  .seasonV3Decision>em{font-size:8px}
+  .seasonV3Lower{gap:14px;margin-top:14px}
+}
+.seasonV3MatchupTeam em{color:#a98bd5;font-style:normal}
+
+/* Jōnin 4.4.11.4 final polish — Draft-family canvas, semantic landmarks, and adaptive decisions. */
+body.seasonModeActive{
+  --season-v3-canvas:#090813;
+  --season-v3-panel:#0b0a14;
+  --season-v3-panel-raised:#130d1d;
+  --season-v3-line:#43215d;
+  --season-v3-violet:#a855f7;
+  --season-v3-gold:#fdb927;
+  --season-v3-positive:#4ade80;
+  --season-v3-negative:#fb7185;
+  --season-v3-caution:#fbbf24;
+  --season-v3-source:#67d5e7;
+  --season-v3-muted:#9a91a4;
+  background:radial-gradient(circle at 50% 0,rgba(85,31,123,.16),transparent 34%),var(--season-v3-canvas);
+}
+body.seasonModeActive .seasonContent{color:#f5f0f8}
+body.seasonModeActive .seasonPanel,
+body.seasonModeActive .seasonV3Outlook{border-color:var(--season-v3-line);background:linear-gradient(145deg,var(--season-v3-panel-raised),var(--season-v3-panel) 62%);box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+.seasonV3OutlookTitle,.seasonV3OutlookMetric{border-color:#34203f}
+.seasonV3LandmarkTitle,.seasonV3LandmarkHeader h2,.seasonV3WeeklyRead>b{color:var(--season-v3-gold)!important}
+.seasonV3LandmarkIcon{display:inline-block;margin-right:7px;color:var(--season-v3-gold);font-weight:900}
+.seasonV3ActionHeader h2,.seasonV3SecondaryHeader h2{color:#fff}
+.seasonV3ActionHeader .seasonTextButton,.seasonV3SecondaryHeader .seasonTextButton,.seasonV3LandmarkHeader .seasonTextButton{color:#fff}
+.seasonV3ActionHeader .seasonTextButton:hover,.seasonV3ActionHeader .seasonTextButton:focus-visible,.seasonV3SecondaryHeader .seasonTextButton:hover,.seasonV3SecondaryHeader .seasonTextButton:focus-visible,.seasonV3LandmarkHeader .seasonTextButton:hover,.seasonV3LandmarkHeader .seasonTextButton:focus-visible{color:#fff;text-decoration:underline;outline:2px solid var(--season-v3-violet);outline-offset:2px}
+.seasonV3OutlookTitle small,.seasonV3OutlookMetric small{color:#d8cce0}.seasonV3OutlookMetric span{color:var(--season-v3-muted)}
+.seasonV3MatchupHero{border-radius:8px;background:radial-gradient(circle at 50% 50%,rgba(101,48,139,.13),transparent 58%)}
+.seasonV3MatchupMetrics{display:grid;grid-template-columns:repeat(2,minmax(64px,1fr));gap:7px;width:min(100%,190px);margin-top:7px}
+.seasonV3MatchupMetrics>span{display:grid;gap:2px;padding:6px;border:1px solid #342742;border-radius:7px;background:rgba(7,6,12,.58)}
+.seasonV3MatchupMetrics small{color:#aaa0b1;font-size:7px;letter-spacing:.08em}
+.seasonV3MatchupMetrics b{margin:0;color:#fff;font-size:15px;line-height:1.05}
+.seasonV3MatchupMetrics.pregame .seasonV3ProjectedScore{border-color:#644086;background:rgba(72,35,98,.24)}
+.seasonV3MatchupMetrics.pregame .seasonV3ProjectedScore b{font-size:20px}
+.seasonV3MatchupMetrics.live .seasonV3ActualScore{border-color:#39705e;background:rgba(28,88,67,.18)}
+.seasonV3MatchupMetrics.live .seasonV3ActualScore b{font-size:20px}
+.seasonV3PositionBattle{border-color:#302139}.seasonV3PositionBattle h3{color:#fff}
+.seasonV3Battle{border-color:#30283a;background:#0a0810}
+.seasonV3BattleUnavailable{margin:0 0 7px;color:var(--season-v3-muted);font-size:9px}
+.seasonV3PositionBattle.unavailable .seasonV3BattleGrid{display:flex;gap:5px}
+.seasonV3PositionBattle.unavailable .seasonV3Battle{display:flex;flex:1 1 0;justify-content:center;align-items:center;gap:4px;min-width:0;padding:5px;background:rgba(10,8,16,.58);border-color:#29232f}
+.seasonV3PositionBattle.unavailable .seasonV3Battle strong{font-size:0}.seasonV3PositionBattle.unavailable .seasonV3Battle strong::after{content:'—';font-size:10px}.seasonV3PositionBattle.unavailable .seasonV3Battle small{display:none}
+.seasonV3WeeklyRead{border-color:#67468c;background:linear-gradient(110deg,rgba(67,31,91,.4),rgba(11,8,20,.88))}
+.seasonV3WeeklyRead p{color:#eee7f2}.seasonV3WeeklyRead p::first-line{font-weight:750;color:#fff}
+.seasonV3DecisionGrid.count-0,.seasonV3DecisionGrid.count-1{grid-template-columns:1fr}.seasonV3DecisionGrid.count-2{grid-template-columns:repeat(2,minmax(0,1fr))}.seasonV3DecisionGrid.count-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.seasonV3Decision{border-color:#3a2b48;background:linear-gradient(145deg,#15101f,#0a0810)}
+.seasonV3DecisionGrid.count-1 .seasonV3Decision{grid-template-columns:48px minmax(0,1fr);padding:15px}.seasonV3DecisionGrid.count-1 .seasonV3Decision>.seasonLineupPhoto{width:46px;height:46px}.seasonV3DecisionGrid.count-1 .seasonV3Decision>strong{font-size:15px}
+.seasonV3Decision.critical,.seasonV3Decision.high{border-color:#32765a}.seasonV3Decision.medium{border-color:#755527}.seasonV3Decision>em{color:var(--season-v3-source)}
+.seasonV3HoldState{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(230px,.7fr) auto;align-items:center;gap:18px;width:100%;padding:16px;border:1px solid #286649;border-radius:10px;background:linear-gradient(120deg,rgba(20,73,53,.23),rgba(19,13,29,.9) 58%,#0b0911)}
+.seasonV3HoldCopy{display:grid;grid-template-columns:34px minmax(0,1fr);gap:2px 10px;min-width:0}.seasonV3HoldCheck{grid-row:1/5;display:grid;place-items:center;width:32px;height:32px;border:1px solid #3c946b;border-radius:50%;background:rgba(44,132,92,.18);color:var(--season-v3-positive);font-size:19px;font-weight:900}.seasonV3HoldCopy small{color:#86e8b3;font-size:8px;font-weight:900;letter-spacing:.09em}.seasonV3HoldCopy h3{margin:2px 0;color:#fff;font-size:18px}.seasonV3HoldCopy p{margin:0;color:#c6d2cb;font-size:10px;line-height:1.4}
+.seasonV3HoldFacts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 9px;padding-left:16px;border-left:1px solid #315240}.seasonV3HoldFacts span{color:#8f9d95;font-size:7px;font-weight:900;letter-spacing:.07em}.seasonV3HoldFacts strong{color:#e7eee9;font-size:9px;line-height:1.35}.seasonV3HoldState>.seasonMiniButton{color:#fff}
+.seasonV3SecondaryHeader+.seasonMatchupIntelligenceCard .seasonBadge.green,.seasonV3Improvement>.seasonBadge.green{color:var(--season-v3-positive)}
+.seasonV3Lower .seasonTextButton{color:#fff}
+@media(max-width:900px){.seasonV3RosterColumn{grid-row:1}.seasonV3DecisionColumn{grid-row:2}}
+@media(max-width:620px){
+  .seasonV3MatchupMetrics{grid-template-columns:1fr;gap:4px}.seasonV3MatchupMetrics>span{padding:4px}.seasonV3MatchupMetrics b,.seasonV3MatchupMetrics.pregame .seasonV3ProjectedScore b,.seasonV3MatchupMetrics.live .seasonV3ActualScore b{font-size:14px}
+  .seasonV3PositionBattle.unavailable .seasonV3BattleGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}.seasonV3PositionBattle.unavailable .seasonV3Battle{min-width:0}
+  .seasonV3DecisionGrid.count-2,.seasonV3DecisionGrid.count-3{grid-template-columns:1fr}
+  .seasonV3HoldState{grid-template-columns:1fr;gap:11px;padding:13px}.seasonV3HoldFacts{padding:9px 0 0;border-top:1px solid #315240;border-left:0}.seasonV3HoldState>.seasonMiniButton{width:100%}
+}

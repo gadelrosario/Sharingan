@@ -42,7 +42,7 @@ class SeasonEvidence445Tests(unittest.TestCase):
         self.assertIn('@media(max-width:900px)', css)
         self.assertIn('@media(max-width:520px)', css)
         self.assertIn("document.createElement('details')", app)
-        self.assertIn("summary.textContent='Show evidence provenance'", app)
+        self.assertRegex(app, r"summary\.textContent\s*=\s*'Show evidence provenance'")
 
 
 if __name__ == '__main__':

@@ -6283,24 +6283,31 @@ function renderSeasonNavigation() {
   if (!nav) return;
   nav.innerHTML = '';
   const labels = {
-    home: '⌂ Season Home',
-    team: '♙ My Team',
-    waivers: '♧ Waiver Wire',
-    startsit: '⚡ Start/Sit',
-    matchup: '▦ Matchup',
-    discovery: '✦ Discovery Radar',
-    radar: '◉ League Radar',
-    trades: '⇄ Trades',
-    history: '◷ Moves & History',
-    players: '♧ Players',
-    settings: '⚙ Settings',
+    home: 'Season Home',
+    team: 'My Team',
+    matchup: 'Matchup',
+    players: 'Players',
+    waivers: 'Waivers',
+    trades: 'Trades',
+    radar: 'League',
   };
-  SeasonCommandCenterV1.PAGES.forEach(page => {
+  ['home', 'team', 'matchup', 'players', 'waivers', 'trades', 'radar'].forEach(page => {
     const button = seasonButton(labels[page], () => showSeasonPage(page));
     button.classList.toggle('active', seasonPage === page);
     button.setAttribute('aria-current', seasonPage === page ? 'page' : 'false');
     nav.appendChild(button);
   });
+}
+function renderSeasonOperationalBar(model) {
+  const v3 = window.FantasyHQSeasonHomeV3,
+    fresh = v3?.freshness({ fetchedAt: model?.snapshot?.fetchedAt, lastSuccessfulSyncAt: model?.lastSuccessfulSyncAt }) || { state: 'UNKNOWN', label: 'Update time unavailable' },
+    playersInLineup = [...(model?.lineup?.starters || []), ...(model?.lineup?.bench || [])].map(row => row.player).filter(Boolean),
+    windowState = v3?.decisionWindow(playersInLineup) || { label: 'Kickoff times unavailable', nextKickoff: null };
+  safeText('seasonLastUpdated', fresh.label);
+  safeText('seasonNextUpdate', 'User-triggered sync');
+  safeText('seasonDecisionWindow', windowState.nextKickoff ? `${windowState.label} • ${new Date(windowState.nextKickoff).toLocaleString([], { weekday: 'short', hour: 'numeric', minute: '2-digit' })}` : windowState.label);
+  const bar = el('seasonOperationalBar');
+  if (bar) bar.dataset.freshness = fresh.state;
 }
 function renderSeasonSidebar(model) {
   const box = el('seasonLeagueSnapshot');
@@ -7154,7 +7161,7 @@ function seasonMatchupCard(model, { full = false } = {}) {
       summary = seasonEl('div', 'seasonYahooMatchupSummary');
     [
       ['Yahoo score', `${value(model.homeMatchup.userActualPoints)} – ${value(model.homeMatchup.opponentActualPoints)}`],
-      ['Yahoo projected', `${value(model.homeMatchup.userProjectedPoints)} – ${value(model.homeMatchup.opponentProjectedPoints)}`],
+      [model.homeMatchup.phase === 'FINAL' ? 'Yahoo projection' : model.homeMatchup.phase === 'LIVE' ? 'Yahoo weekly lineup projection' : 'Yahoo projected final', model.homeMatchup.phase === 'FINAL' ? 'Closed — final score authoritative' : model.homeMatchup.phase === 'LIVE' ? `${value(model.homeMatchup.userWeeklyProjectedPoints)} – ${value(model.homeMatchup.opponentWeeklyProjectedPoints)} • current projected final unavailable from API` : `${value(model.homeMatchup.userCurrentProjectedFinal)} – ${value(model.homeMatchup.opponentCurrentProjectedFinal)}`],
       ['Yahoo win probability', `${probability(model.homeMatchup.userWinProbability)} – ${probability(model.homeMatchup.opponentWinProbability)}`],
       ['Matchup status', status],
     ].forEach(([label, text]) => {
@@ -7799,6 +7806,54 @@ function renderSeasonWaivers(model, content) {
   content.append(controls, other);
   refresh();
 }
+function seasonEvidenceRating(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? Math.max(0, Math.min(100, number <= 1 ? number * 100 : number)) : null;
+}
+function seasonStartSitEvidenceFor(player, model) {
+  const id = String(player?.identity?.canonicalPlayerId || player?.canonicalPlayerId || player?.playerId || ''),
+    store = seasonEvidenceStore;
+  if (!id || !store) return player?.startSitEvidence || null;
+  const role = store.latest(id, 'role'), opportunity = store.latest(id, 'opportunity'), injury = store.latest(id, 'injury'), environment = store.latest(id, 'teamEnvironment'), matchup = store.latest(id, 'matchup'), observations = store.observations(id), weeks = new Set(observations.filter(row => row.week != null).map(row => `${row.season}:${row.week}`)), sampleSize = weeks.size,
+    roleValue = role?.value || {}, opportunityValue = opportunity?.value || {}, injuryValue = injury?.value || {}, environmentValue = environment?.value || {}, matchupValue = matchup?.value || {},
+    roleRating = seasonEvidenceRating(roleValue.offensiveSnapShare ?? roleValue.snapShare ?? roleValue.routeParticipation ?? roleValue.roleStability),
+    opportunityRating = seasonEvidenceRating(opportunityValue.targetShare ?? opportunityValue.rushShare),
+    freshnessValues = [role?.freshness, opportunity?.freshness, injury?.freshness, matchup?.freshness].filter(value => value && value !== 'UNKNOWN'),
+    freshness = freshnessValues.includes('STALE') ? 'STALE' : freshnessValues.includes('AGING') ? 'AGING' : freshnessValues.includes('FRESH') ? 'FRESH' : 'UNKNOWN',
+    confidence = sampleSize >= 3 ? 78 : sampleSize === 2 ? 68 : sampleSize === 1 ? 58 : null;
+  if (![roleRating, opportunityRating, roleValue.roleStability, matchupValue.positionEnvironment, environmentValue.offenseQuality].some(value => value != null) && !injuryValue.status) return player?.startSitEvidence || null;
+  return {
+    role: roleRating,
+    opportunity: opportunityRating,
+    recentUsage: null,
+    roleStability: seasonEvidenceRating(roleValue.roleStability),
+    matchup: seasonEvidenceRating(matchupValue.positionEnvironment),
+    floor: null,
+    upside: null,
+    volatility: null,
+    scoringFit: null,
+    offense: seasonEvidenceRating(environmentValue.offenseQuality),
+    projection: null,
+    injuryUncertainty: seasonEvidenceRating(injuryValue.gameStatusUncertainty),
+    workloadUncertainty: seasonEvidenceRating(injuryValue.estimatedWorkloadLimitation),
+    confidence: freshness === 'AGING' && confidence !== null ? Math.max(0, confidence - 10) : confidence,
+    freshness,
+    injuryStatus: player?.injuryStatus || injuryValue.status || null,
+    sampleSize,
+    roleSource: role?.provenance?.source || null,
+    opportunitySource: opportunity?.provenance?.source || null,
+    matchupSource: matchup?.provenance?.source || null,
+    injurySource: injury?.provenance?.source || null,
+  };
+}
+function seasonStartSitModel(model) {
+  const enrich = player => {
+    if (!player) return player;
+    const game = window.FantasyHQSeasonHomeV3?.gameState(player) || { state: 'UNKNOWN', locked: Boolean(player.locked) };
+    return { ...player, startSitEvidence: seasonStartSitEvidenceFor(player, model) || player.startSitEvidence, gameState: game.state, locked: game.locked };
+  }, mapRows = rows => (rows || []).map(row => ({ ...row, player: enrich(row.player), locked: row.locked || window.FantasyHQSeasonHomeV3?.gameState(row.player)?.locked === true }));
+  return { ...model, roster: (model?.roster || []).map(enrich), lineup: model?.lineup ? { ...model.lineup, starters: mapRows(model.lineup.starters), bench: mapRows(model.lineup.bench), ir: mapRows(model.lineup.ir) } : model?.lineup };
+}
 function seasonStartSitEvaluation(model) {
   const matchupByPlayer = Object.fromEntries(
       seasonMatchupAssessments(model).map(value => [value.playerId, value])
@@ -7814,9 +7869,10 @@ function seasonStartSitEvaluation(model) {
               new Date().getUTCFullYear()
           ),
         };
+  const evidenceModel = seasonStartSitModel(matchupModel);
   return window.StartSitIntelligenceV1
     ? StartSitIntelligenceV1.evaluate({
-        model: matchupModel,
+        model: evidenceModel,
         profile: seasonProfileForModel(model),
         matchupByPlayer,
       })
@@ -7837,13 +7893,27 @@ function seasonStartSitSignal(intelligence) {
   if (intelligence?.signals?.sharinganWatch) return { label: 'SHARINGAN WATCH', tone: 'orange' };
   return { label: 'SHARINGAN HOLD', tone: 'neutral' };
 }
+function seasonStartSitVerdict(decision) {
+  const verdict = String(decision?.verdict || '').toUpperCase();
+  if (['ACTION', 'HOLD', 'WATCH', 'SUPPRESSED'].includes(verdict)) return verdict;
+  if (decision?.state === 'WAIT' && decision?.monitorableCondition?.informationEvent) return 'WATCH';
+  if (['WAIT', 'TOSS_UP'].includes(decision?.state)) return 'HOLD';
+  return decision?.preferred && decision?.starter && decision.preferred !== decision.starter ? 'ACTION' : 'HOLD';
+}
+function seasonStartSitHeadline(decision) {
+  const verdict = seasonStartSitVerdict(decision), starter = decision?.starter?.name || 'current starter', candidate = decision?.alternative?.name || 'alternative';
+  if (verdict === 'ACTION') return `Start ${decision?.preferred?.name || candidate} over ${decision?.other?.name || starter}`;
+  if (verdict === 'WATCH') return `Watch ${decision?.monitorableCondition?.playerName || starter} status`;
+  if (verdict === 'SUPPRESSED') return 'Lineup comparison unavailable';
+  return `Hold ${starter}`;
+}
 function seasonStartSitInstruction(decision) {
   if (!decision) return 'No legal lineup comparison is available.';
-  if (decision.state === 'WAIT')
-    return `Currently prefer ${decision.preferred?.name || decision.starter?.name}, but wait before locking the ${decision.lineupSlot} slot.`;
-  if (decision.state === 'TOSS_UP')
-    return `${decision.starter?.name} and ${decision.alternative?.name} remain effectively even for ${decision.lineupSlot}.`;
-  return `Start ${decision.preferred?.name || 'the preferred player'} over ${decision.other?.name || 'the alternative'} at ${decision.lineupSlot}.`;
+  const verdict = seasonStartSitVerdict(decision), starter = decision.starter?.name || 'The current starter', candidate = decision.alternative?.name || 'the alternative';
+  if (verdict === 'ACTION') return `${seasonStartSitHeadline(decision)} at ${decision.lineupSlot}.`;
+  if (verdict === 'WATCH') return `${seasonStartSitHeadline(decision)}. Keep ${starter} in the lineup unless the validated status condition changes.`;
+  if (verdict === 'SUPPRESSED') return 'This comparison cannot produce a legal supported lineup action.';
+  return `${starter} remains the supported starter. Current evidence does not justify replacing ${starter} with ${candidate}.`;
 }
 function openSeasonStartSitAnalysis(decision, model) {
   const player = decision?.preferred || decision?.starter;
@@ -7937,7 +8007,11 @@ function openSeasonStartSitAnalysis(decision, model) {
     detail = seasonDecisionAnalysisShell({
       kind:'start-sit',
       title: 'DECISION ANALYSIS',
-      heading: `WHY FANTASY HQ PREFERS ${preferredName.toUpperCase()} OVER ${otherName.toUpperCase()}`,
+      heading: seasonStartSitVerdict(decision) === 'ACTION'
+        ? `WHY FANTASY HQ SUPPORTS ${preferredName.toUpperCase()} OVER ${otherName.toUpperCase()}`
+        : seasonStartSitVerdict(decision) === 'WATCH'
+          ? `WHAT TO WATCH BEFORE CHANGING ${decision.lineupSlot}`
+          : `WHY FANTASY HQ IS HOLDING ${String(decision.starter?.name || 'THE CURRENT STARTER').toUpperCase()}`,
       summary: decision.reason,
       takeaways,
       teamFit: fit,
@@ -7949,6 +8023,7 @@ function openSeasonStartSitAnalysis(decision, model) {
 }
 function seasonStartSitFlightHero(model, intelligence) {
   const decision = intelligence?.primary,
+    verdict = seasonStartSitVerdict(decision),
     signal = seasonStartSitSignal(intelligence),
     hero = seasonEl(
       'section',
@@ -7970,14 +8045,14 @@ function seasonStartSitFlightHero(model, intelligence) {
       'h1',
       '',
       decision
-        ? `${decision.state.replaceAll('_', ' ')} — ${decision.lineupSlot} DECISION`
+        ? `${verdict} — ${decision.lineupSlot} DECISION`
         : 'WAIT — LINEUP EVIDENCE NEEDED'
     ),
     seasonEl(
       'h2',
       'seasonFlightTarget',
       decision
-        ? `Preferred: ${decision.preferred?.name || decision.starter?.name} over ${decision.other?.name || decision.alternative?.name}`
+        ? seasonStartSitHeadline(decision)
         : 'No authoritative lineup recommendation'
     ),
     seasonEl(
@@ -7993,8 +8068,10 @@ function seasonStartSitFlightHero(model, intelligence) {
     seasonEl(
       'strong',
       '',
-      decision?.state === 'WAIT'
+      verdict === 'WATCH'
         ? 'MONITOR'
+        : verdict === 'HOLD'
+          ? 'HOLD'
         : decision?.timingState === 'LOCK_WINDOW'
           ? 'ACT NOW'
           : 'PROVISIONAL'
@@ -8018,7 +8095,8 @@ function seasonStartSitFlightHero(model, intelligence) {
   return hero;
 }
 function seasonStartSitCard(decision, model, { identity = 'PRIMARY DECISION' } = {}) {
-  const player = decision.preferred || decision.starter,
+  const verdict = seasonStartSitVerdict(decision),
+    player = verdict === 'ACTION' ? decision.preferred || decision.starter : decision.starter || decision.preferred,
     card = seasonEl('article', `seasonStartSitCard action-${String(decision.state).toLowerCase()}`),
     visual = seasonEl('div', 'seasonStartSitVisual'),
     photo = seasonPlayerPhoto(player),
@@ -8065,7 +8143,7 @@ function seasonStartSitRow(decision, model) {
     seasonEl(
       'strong',
       '',
-      `${decision.preferred?.name || decision.starter?.name} over ${decision.other?.name || decision.alternative?.name}`
+      seasonStartSitHeadline(decision)
     ),
     seasonEl('small', '', `${decision.lineupSlot} • ${decision.reason}`)
   );
@@ -8203,6 +8281,7 @@ async function renderSeasonCommandCenter() {
     sync.textContent = seasonSyncLabel(model);
     sync.className = `seasonSyncPill ${model.demo ? 'demo' : model.stale ? 'stale' : model.status === 'PARTIAL' ? 'partial' : 'current'}`;
   }
+  renderSeasonOperationalBar(model);
   const content = el('seasonContent');
   if (!content) return;
   content.innerHTML = '';
@@ -8606,6 +8685,7 @@ async function syncYahooLeagueNow() {
       archives: yahooArchiveLinkageInputs(),
     });
     renderYahooSeasonState();
+    if (!el('seasonScreen')?.classList.contains('hidden')) await renderSeasonCommandCenter();
   } catch (error) {
     renderYahooSeasonState();
     alert(`Yahoo sync did not replace the previous snapshot: ${error.message}`);
@@ -9285,6 +9365,7 @@ function seasonWeeklyCommandInput(model) {
     teamFitByPlayer,
     injuryOpportunity,
     discovery: seasonDiscoveryResults(model).slice(0, 8),
+    matchupComparison: model?.matchupComparison || null,
     waiverWindow: model?.snapshot?.waiverWindow || 'BEFORE_WAIVERS',
     waiverInformationEvent: model?.snapshot?.waiverInformationEvent || null,
     startSitWindow: model?.snapshot?.startSitWindow || null,
@@ -9343,14 +9424,12 @@ function seasonWeeklyHero(plan) {
     eyebrow,
     seasonEl('h1', '', `${seasonWeeklyPostureLabel(primary)} — ${seasonWeeklyTypeLabel(primary)}`)
   );
-  if (primary?.playerName)
+  if (primary?.playerName || primary?.headline)
     copy.appendChild(
       seasonEl(
         'h2',
         'seasonFlightTarget',
-        primary.secondaryPlayerName
-          ? `${primary.playerName} vs ${primary.secondaryPlayerName}`
-          : primary.playerName
+        seasonDecisionHeadline(primary)
       )
     );
   copy.append(
@@ -9393,7 +9472,7 @@ function seasonWeeklyQueueRow(item, index) {
       .filter(Boolean)
       .join(' • ');
   copy.append(
-    seasonEl('strong', '', item.playerName || seasonWeeklyTypeLabel(item)),
+    seasonEl('strong', '', seasonDecisionHeadline(item)),
     seasonEl('small', 'seasonWeeklyReason', item.reason)
   );
   if (timing) copy.appendChild(seasonEl('small', 'seasonWeeklyTiming', timing));
@@ -10144,7 +10223,8 @@ seasonMatchupCard = function (model, { full = false } = {}) {
 function seasonDecisionAction(item) {
   if (item?.type === 'WAIVER_ACTION') return 'ADD';
   if (item?.type === 'START_SIT_ACTION') return 'START';
-  if (item?.type === 'START_SIT_WAIT') return 'WAIT';
+  if (['START_SIT_WAIT', 'START_SIT_WATCH'].includes(item?.type)) return 'WATCH';
+  if (item?.type === 'START_SIT_HOLD') return 'HOLD';
   if (item?.type === 'INJURY_MONITOR') return 'MONITOR';
   return seasonWeeklyPostureLabel(item);
 }
@@ -10160,7 +10240,8 @@ function seasonDecisionAuthorityLabel(item, model) {
 function seasonWeeklyStatusSummary(plan, model) {
   const strip = seasonEl('section', 'seasonWeeklyStatusStrip'),
     startSit = seasonStartSitEvaluation(model),
-    startIssue = startSit?.primary ? 1 : 0,
+    startSitRecommendation = seasonLineupDecision(startSit),
+    startIssue = startSitRecommendation.status === 'NO_CHANGE' ? 0 : 1,
     irUsed = model?.groups?.ir?.length,
     configuredIr = Number((model.reviewProfile || activeLeagueProfile)?.settings?.irSlots),
     hasConfirmedIrLimit = Number.isFinite(configuredIr) && configuredIr > 0,
@@ -10196,8 +10277,10 @@ function seasonDecisionPlayer(model, item) {
 function seasonNaturalDecisionReason(item) {
   if (!item) return 'No move needs attention right now.';
   if (item.type === 'NO_ACTION') return item.reason || 'Your current roster does not have an evidence-supported upgrade in the available Yahoo player pool.';
-  if (item.posture === 'WAIT' || item.type === 'START_SIT_WAIT')
-    return 'Interesting option, but the current evidence does not support making the move yet.';
+  if (['START_SIT_WAIT', 'START_SIT_WATCH', 'START_SIT_HOLD'].includes(item.type))
+    return item.reason || 'The current lineup decision remains unchanged.';
+  if (item.posture === 'WAIT')
+    return item.reason || 'Interesting option, but the current evidence does not support making the move yet.';
   if (item.type === 'WAIVER_ACTION') {
     const consequence = item?.sourceDecisions?.find(source => source.engine === 'Waiver Intelligence')?.decision?.rosterConsequence;
     return consequence?.dropPlayerName
@@ -10215,10 +10298,23 @@ function seasonReviewProjection(player, model) {
 }
 function seasonDecisionPosture(item) {
   if (item?.type === 'WAIVER_ACTION' && item?.posture === 'ACT_NOW') return 'ADD';
-  if (item?.posture === 'WAIT' || item?.type === 'START_SIT_WAIT') return 'WATCH';
+  if (item?.type === 'START_SIT_HOLD' || item?.verdict === 'HOLD') return 'HOLD';
+  if (item?.posture === 'WAIT' || ['START_SIT_WAIT', 'START_SIT_WATCH'].includes(item?.type)) return 'WATCH';
   if (item?.posture === 'IGNORE') return 'IGNORE';
   if (item?.type === 'START_SIT_ACTION') return 'START';
   return seasonDecisionAction(item);
+}
+function seasonDecisionHeadline(item) {
+  if (!item) return 'No move needs attention';
+  if (item.headline) return item.headline;
+  if (item.type === 'NO_ACTION') return 'Your lineup looks good';
+  if (item.type === 'START_SIT_ACTION' && item.actionSupported === true && item.secondaryPlayerName)
+    return `Start ${item.playerName} over ${item.secondaryPlayerName}`;
+  if (['START_SIT_WAIT', 'START_SIT_WATCH'].includes(item.type))
+    return `Watch ${item.currentPlayerName || item.playerName || 'lineup'} status`;
+  if (item.type === 'START_SIT_HOLD')
+    return `Hold ${item.currentPlayerName || item.playerName || 'current starter'}`;
+  return item.playerName || seasonWeeklyTypeLabel(item);
 }
 function seasonCompactWeeklyStatus(plan, model) {
   const primary = plan?.primaryAction,
@@ -10234,7 +10330,7 @@ function seasonCompactWeeklyStatus(plan, model) {
     seasonEl(
       'strong',
       '',
-      injured ? `${injured.name} is unavailable` : primary?.playerName || seasonWeeklyTypeLabel(primary)
+      injured ? `${injured.name} is unavailable` : seasonDecisionHeadline(primary)
     ),
     seasonEl(
       'p',
@@ -10291,7 +10387,7 @@ function seasonWeeklyPrimaryDecision(plan, model) {
     : '';
   copy.append(
     eyebrow,
-    seasonEl('h2', '', primary?.playerName || seasonWeeklyTypeLabel(primary)),
+    seasonEl('h2', '', seasonDecisionHeadline(primary)),
     identity,
     seasonEl('h3', 'seasonWeeklyActionLine', `${seasonDecisionPosture(primary)}${primary?.posture === 'WAIT' ? ' — DO NOT ADD YET' : ''}`),
     seasonEl('p', 'seasonWeeklyPrimaryWhy', seasonNaturalDecisionReason(primary))
@@ -10358,10 +10454,163 @@ function seasonConsolidateHome(model, content) {
   const preview = content.querySelector('.seasonDiscoveryPreview');
   preview?.classList.add('seasonRosterOpportunities');
 }
-const seasonHomeRenderer44112 = renderSeasonHome;
+function seasonV3MetricValue(metric) {
+  if (metric.value === null || metric.value === undefined || metric.value === '') return '—';
+  if (['playoffOdds', 'championshipEquity'].includes(metric.key)) return `${Math.round(Number(metric.value) * (Number(metric.value) <= 1 ? 100 : 1))}%`;
+  return String(metric.value);
+}
+function seasonV3LandmarkHeader(title, icon, action, className) {
+  const head = seasonSectionHeader(title, action), heading = head.querySelector('h2');
+  head.classList.add('seasonV3LandmarkHeader');
+  if (className) head.classList.add(className);
+  const mark = seasonEl('span', 'seasonV3LandmarkIcon', icon);
+  mark.setAttribute('aria-hidden', 'true');
+  heading?.prepend(mark);
+  return head;
+}
+function seasonV3Outlook(model) {
+  const panel = seasonEl('section', 'seasonV3Outlook'),
+    heading = seasonEl('div', 'seasonV3OutlookTitle'),
+    teamFit = seasonTeamFitSummary(model),
+    metrics = window.FantasyHQSeasonHomeV3?.outlook({ ...model, teamFitSummary: teamFit }) || [];
+  const title = seasonEl('small', 'seasonV3LandmarkTitle', 'SEASON OUTLOOK');
+  title.prepend(seasonEl('span', 'seasonV3LandmarkIcon', '▥'));
+  heading.append(title, seasonEl('strong', '', 'Your season at a glance'));
+  panel.appendChild(heading);
+  metrics.forEach(metric => {
+    const item = seasonEl('div', `seasonV3OutlookMetric${metric.value == null ? ' unavailable' : ''}`);
+    item.append(seasonEl('small', '', metric.label), seasonEl('strong', '', seasonV3MetricValue(metric)), seasonEl('span', '', metric.source || 'Not yet scored'));
+    panel.appendChild(item);
+  });
+  panel.appendChild(seasonButton('View League Analytics →', () => showSeasonPage('radar'), 'seasonTextButton'));
+  return panel;
+}
+function seasonV3PositionBattle(model) {
+  const comparisonReady = model?.matchupComparison?.narrativeAllowed === true,
+    battles = window.FantasyHQSeasonHomeV3?.positionBattle(comparisonReady ? model?.lineup?.starters || [] : [], comparisonReady ? model?.opponentLineup?.starters || [] : []) || [],
+    wrap = seasonEl('section', 'seasonV3PositionBattle');
+  wrap.appendChild(seasonEl('h3', '', 'POSITION BATTLE'));
+  const unavailable = battles.every(battle => battle.evidence !== 'SUPPORTED');
+  if (unavailable) {
+    wrap.classList.add('unavailable');
+    wrap.appendChild(seasonEl('p', 'seasonV3BattleUnavailable', 'Player-level matchup evidence unavailable.'));
+  }
+  const grid = seasonEl('div', 'seasonV3BattleGrid');
+  battles.forEach(battle => {
+    const item = seasonEl('article', `seasonV3Battle ${String(battle.state).toLowerCase()}`), value = battle.evidence === 'SUPPORTED' ? `${battle.userProjection.toFixed(1)} vs ${battle.opponentProjection.toFixed(1)}` : '— vs —';
+    item.append(seasonEl('b', '', battle.position), seasonEl('strong', '', value), seasonEl('small', '', battle.state === 'UNAVAILABLE' ? 'Insufficient data' : battle.state === 'YOU' ? 'You' : battle.state === 'OPPONENT' ? 'Opponent' : 'Too close'));
+    grid.appendChild(item);
+  });
+  wrap.appendChild(grid);
+  return { node: wrap, battles };
+}
+function seasonV3Matchup(model) {
+  const panel = seasonEl('section', 'seasonPanel seasonV3Matchup'),
+    head = seasonV3LandmarkHeader(`WEEK ${model.week} MATCHUP`, '◉', seasonButton('View Full Matchup →', () => showSeasonPage('matchup'), 'seasonTextButton'), 'seasonV3MatchupHeading'),
+    hero = seasonEl('div', 'seasonV3MatchupHero'),
+    home = seasonEl('article', 'seasonV3MatchupTeam'), away = seasonEl('article', 'seasonV3MatchupTeam'),
+    facts = model.homeMatchup || {}, comparison = model.matchupComparison || {}, value = number => number == null ? '—' : Number(number).toFixed(2),
+    opponentStanding = (model.snapshot?.standings || []).find(row => String(row.teamKey) === String(facts.opponentTeamKey)),
+    projectionComplete = comparison.projectionStatus === 'COMPLETE',
+    live = facts.phase === 'LIVE', final = facts.phase === 'FINAL',
+    matchupMetrics = (actual, projected) => {
+      const metrics = seasonEl('div', `seasonV3MatchupMetrics${live ? ' live' : ' pregame'}`), actualBox = seasonEl('span', 'seasonV3ActualScore'), projectedBox = seasonEl('span', 'seasonV3ProjectedScore');
+      actualBox.append(seasonEl('small', '', 'ACTUAL'), seasonEl('b', '', value(actual)));
+      projectedBox.append(seasonEl('small', '', final ? 'PROJECTION CLOSED' : live && !projectionComplete ? 'CURRENT OUTLOOK UNAVAILABLE' : live ? 'CURRENT PROJECTED FINAL' : 'PROJECTED FINAL'), seasonEl('b', '', final ? '—' : projectionComplete ? value(projected) : '—'));
+      metrics.append(actualBox, projectedBox);
+      return metrics;
+    };
+  home.append(seasonEl('small', '', 'MY TEAM'), seasonEl('strong', '', model.userTeam?.name || 'My Team'), seasonEl('span', '', seasonFormatRecord(model.standing)), matchupMetrics(comparison.userActualPoints, comparison.userProjectedPoints));
+  away.append(seasonEl('small', '', 'OPPONENT'), seasonEl('strong', '', model.opponent?.name || 'Opponent unavailable'), seasonEl('span', '', seasonFormatRecord(opponentStanding)), matchupMetrics(comparison.opponentActualPoints, comparison.opponentProjectedPoints));
+  hero.append(home, seasonEl('span', 'seasonV3Versus', 'VS'), away);
+  panel.append(head, hero);
+  if (live && !projectionComplete && (comparison.userWeeklyProjectedPoints != null || comparison.opponentWeeklyProjectedPoints != null)) panel.appendChild(seasonEl('p', 'seasonTrustNote', `Yahoo weekly lineup projection: ${value(comparison.userWeeklyProjectedPoints)} – ${value(comparison.opponentWeeklyProjectedPoints)}. Yahoo API does not expose the live projected final shown in Yahoo Fantasy.`));
+  const battle = seasonV3PositionBattle(model), read = window.FantasyHQSeasonHomeV3?.weeklyRead(comparison, battle.battles);
+  panel.appendChild(battle.node);
+  const weeklyRead = seasonEl('section', 'seasonV3WeeklyRead');
+  const weeklyTitle = seasonEl('b', '', 'FANTASY HQ WEEKLY READ');
+  weeklyTitle.prepend(seasonEl('span', 'seasonV3LandmarkIcon', '▤'));
+  weeklyRead.append(weeklyTitle, seasonEl('p', '', read?.supported ? read.text : read?.reason || 'Yahoo matchup projection is currently incomplete.'));
+  panel.appendChild(weeklyRead);
+  return panel;
+}
+function seasonV3DecisionCard(item, model, index) {
+  const card = seasonEl('article', `seasonV3Decision ${String(item?.priority || 'informational').toLowerCase()}`), player = seasonDecisionPlayer(model, item), confidence = window.FantasyHQSeasonHomeV3?.confidenceLabel(item?.confidence, player?.startSitEvidence?.sampleSize);
+  card.append(seasonEl('small', '', `${index + 1} • ${item?.type === 'NO_ACTION' ? 'LINEUP STATUS' : seasonDecisionPosture(item)}`));
+  if (player) card.append(seasonPlayerPhoto(player));
+  card.append(seasonEl('strong', '', seasonDecisionHeadline(item)), seasonEl('span', '', item?.type === 'NO_ACTION' ? 'No supported lineup change improves your starters right now.' : seasonNaturalDecisionReason(item)), seasonEl('em', '', `${confidence || 'UNSCORED'} CONFIDENCE • ${String(item?.decisionWindow || 'NO_DEADLINE').replaceAll('_', ' ')}`));
+  if (item?.deepLink && item.deepLink !== 'home') card.appendChild(seasonButton('View Details →', () => seasonWeeklyDeepLink(item), 'seasonMiniButton'));
+  return card;
+}
+function seasonV3HoldState(item) {
+  const hold = seasonEl('article', 'seasonV3HoldState'), copy = seasonEl('div', 'seasonV3HoldCopy'), status = seasonEl('div', 'seasonV3HoldFacts');
+  copy.append(
+    seasonEl('span', 'seasonV3HoldCheck', '✓'),
+    seasonEl('small', '', 'HOLD • LINEUP HEALTHY'),
+    seasonEl('h3', '', 'YOUR LINEUP LOOKS GOOD'),
+    seasonEl('p', '', 'No supported lineup change improves your starters right now.')
+  );
+  status.append(seasonEl('span', '', 'CURRENT STATUS'), seasonEl('strong', '', 'No immediate action'));
+  const reason = String(item?.reason || '').trim();
+  if (reason) status.append(seasonEl('span', '', 'WHY HOLDING'), seasonEl('strong', '', reason));
+  hold.append(copy, status, seasonButton('View Details →', () => showSeasonPage('startsit'), 'seasonMiniButton'));
+  return hold;
+}
+function seasonV3Decisions(plan, model) {
+  const panel = seasonEl('section', 'seasonPanel seasonV3Decisions'), presentation = window.FantasyHQSeasonHomeV3?.decisionPresentation(plan) || { kind: 'QUEUE', count: 0, items: [] }, isHold = presentation.kind === 'HOLD', items = presentation.items;
+  const header = seasonSectionHeader('WHAT SHOULD I DO?', seasonButton('View All Recommendations →', () => showSeasonPage('startsit'), 'seasonTextButton'));
+  header.classList.add('seasonV3ActionHeader');
+  panel.appendChild(header);
+  const grid = seasonEl('div', `seasonV3DecisionGrid count-${presentation.count}`);
+  if (isHold) grid.appendChild(seasonV3HoldState(plan.primaryAction));
+  else items.forEach((item, index) => grid.appendChild(seasonV3DecisionCard(item, model, index)));
+  panel.appendChild(grid);
+  return panel;
+}
+function seasonV3SwingPlayers(model) {
+  if (!seasonInjuryOpportunityEngine || !seasonEvidenceStore) return null;
+  const ids = [...new Set([...(model.roster || []), ...(model.opponent?.roster || [])].map(player => String(player?.identity?.canonicalPlayerId || player?.canonicalPlayerId || '')).filter(Boolean))], results = seasonInjuryOpportunityEngine.evaluateAll(ids, { phase: String(model?.phase?.key || 'DISCOVERY').toUpperCase(), limit: 12 }).filter(result => ['ACT', 'WATCH'].includes(result.timingState) && ['FRESH', 'AGING'].includes(result.freshness) && result.primarySignal !== 'NO_MATERIAL_SIGNAL').slice(0, 4);
+  if (!results.length) return null;
+  const panel = seasonEl('section', 'seasonPanel seasonV3Swing');
+  const head = seasonSectionHeader('MATCHUP SWING PLAYERS');
+  head.classList.add('seasonV3SecondaryHeader');
+  panel.appendChild(head);
+  results.forEach(result => panel.appendChild(seasonIntelligenceCard(result, model)));
+  return panel;
+}
+function seasonV3RosterImprovements(model) {
+  const intelligence = seasonWaiverEvaluation(model), pairs = (intelligence?.pairs || []).filter(pair => pair.eligible !== false && pair.player?.availabilityState?.actionable !== false).slice(0, 3);
+  if (!pairs.length) return null;
+  const panel = seasonEl('section', 'seasonPanel seasonV3Improvements');
+  const head = seasonSectionHeader('ROSTER IMPROVEMENTS', seasonButton('View Waivers →', () => showSeasonPage('waivers'), 'seasonTextButton'));
+  head.classList.add('seasonV3SecondaryHeader');
+  panel.appendChild(head);
+  pairs.forEach(pair => {
+    const row = seasonEl('article', 'seasonV3Improvement');
+    row.append(seasonPlayerPhoto(pair.player), seasonEl('strong', '', pair.player?.name || 'Unresolved player'), seasonEl('span', '', `${pair.player?.position || '—'} • ${pair.player?.sourceTeam || 'Team unavailable'}`), seasonEl('p', '', pair.drop?.player?.name ? `Add for ${pair.drop.player.name} only if the validated upgrade clears the transaction threshold.` : 'No acceptable drop is currently supported.'));
+    const faab = seasonFaabEvaluation(model, pair);
+    row.appendChild(seasonStatusBadge(faab?.authority === 'PRODUCTION' && faab?.label ? faab.label : 'FAAB not scored', faab?.authority === 'PRODUCTION' ? 'green' : 'neutral'));
+    panel.appendChild(row);
+  });
+  return panel;
+}
 renderSeasonHome = function (model, content) {
-  seasonHomeRenderer44112(model, content);
-  seasonConsolidateHome(model, content);
+  const plan = seasonWeeklyPlan(model), dashboard = seasonEl('section', 'seasonV3Dashboard'), left = seasonEl('div', 'seasonV3RosterColumn'), right = seasonEl('div', 'seasonV3DecisionColumn'), roster = seasonRosterCard(model);
+  content.appendChild(seasonV3Outlook(model));
+  const rosterHead = roster.querySelector('.seasonSectionHeader'), rosterTitle = rosterHead?.querySelector('h2');
+  rosterHead?.classList.add('seasonV3LandmarkHeader', 'seasonV3RosterHeading');
+  const rosterMark = seasonEl('span', 'seasonV3LandmarkIcon', '◈');
+  rosterMark.setAttribute('aria-hidden', 'true');
+  rosterTitle?.prepend(rosterMark);
+  left.appendChild(roster);
+  right.append(seasonV3Matchup(model), seasonV3Decisions(plan, model));
+  dashboard.append(left, right);
+  content.appendChild(dashboard);
+  const lower = seasonEl('section', 'seasonV3Lower'), swing = seasonV3SwingPlayers(model), improvements = seasonV3RosterImprovements(model);
+  if (swing) lower.appendChild(swing);
+  if (improvements) lower.appendChild(improvements);
+  if (lower.childElementCount) content.appendChild(lower);
+  if (model.draftSnapshot) content.appendChild(seasonDraftLeagueRosters(model));
 };
 
 function seasonManualPlayerOptions(model) {
@@ -10423,12 +10672,18 @@ function seasonLineupDecision(intelligence) {
 }
 function seasonLineupPosture(recommendation, decision) {
   if (recommendation?.status === 'NO_CHANGE') return 'NO CHANGE';
-  if (!decision || decision.state === 'WAIT') return 'WAIT';
-  if (decision.state === 'TOSS_UP') return 'TOSS-UP';
+  const verdict = seasonStartSitVerdict(decision);
+  if (!decision || verdict === 'HOLD') return 'HOLD';
+  if (verdict === 'WATCH') return 'WATCH';
+  if (verdict === 'SUPPRESSED') return 'SUPPRESSED';
   return decision.edge >= 11 ? 'START' : 'LEAN START';
 }
 function seasonLineupWhy(decision) {
   if (!decision) return 'The current lineup is already the strongest supported legal combination.';
+  const verdict = seasonStartSitVerdict(decision);
+  if (verdict === 'HOLD') return seasonStartSitInstruction(decision);
+  if (verdict === 'WATCH') return decision.timingReason || seasonStartSitInstruction(decision);
+  if (verdict === 'SUPPRESSED') return 'No legal supported lineup action is available.';
   const starterStatus = String(decision.starter?.injuryStatus || '').toUpperCase();
   if (['OUT', 'IR', 'PUP', 'NFI'].includes(starterStatus)) return `${decision.starter.name} is unavailable, and ${decision.preferred?.name || decision.alternative?.name} is the best supported legal replacement.`;
   const preferred = decision.preferred === decision.starter ? decision.scores?.starter : decision.scores?.alternative,
@@ -10450,7 +10705,7 @@ function openSeasonStartSitComparison(decision, model) {
   const content = el('scanContent');
   if (!content || !decision) return;
   content.innerHTML = '';
-  const recommendation = { status: ['TOSS_UP', 'WAIT'].includes(decision.state) ? 'MONITOR' : 'CHANGE' }, preferred = decision.preferred || decision.starter, other = decision.other || decision.alternative, pair = seasonEl('div', 'seasonLineupComparePair');
+  const verdict = seasonStartSitVerdict(decision), recommendation = { status: verdict === 'ACTION' ? 'CHANGE' : verdict === 'WATCH' ? 'MONITOR' : 'NO_CHANGE' }, preferred = verdict === 'ACTION' ? decision.preferred || decision.alternative : decision.starter, other = verdict === 'ACTION' ? decision.other || decision.starter : decision.alternative, pair = seasonEl('div', 'seasonLineupComparePair');
   content.append(seasonSectionHeader('START/SIT COMPARISON', seasonButton('Close', () => closeScan(), 'seasonTextButton')));
   [preferred, other].forEach((player, index) => {
     const side = seasonEl('article', `seasonLineupCompareSide${index === 0 ? ' preferred' : ''}`), projection = seasonLineupProjection(player, model);
@@ -10458,7 +10713,7 @@ function openSeasonStartSitComparison(decision, model) {
     pair.appendChild(side);
   });
   const pick = seasonEl('section', 'seasonLineupFantasyPick');
-  pick.append(seasonEl('small', '', 'FANTASY HQ PICK'), seasonEl('h1', '', preferred?.name || 'Wait'), seasonStatusBadge(seasonLineupPosture(recommendation, decision), seasonStartSitTone(decision.state)), seasonEl('p', '', seasonLineupWhy(decision)));
+  pick.append(seasonEl('small', '', verdict === 'ACTION' ? 'FANTASY HQ PICK' : 'FANTASY HQ DECISION'), seasonEl('h1', '', seasonStartSitHeadline(decision)), seasonStatusBadge(seasonLineupPosture(recommendation, decision), seasonStartSitTone(decision.state)), seasonEl('p', '', seasonLineupWhy(decision)));
   const projection = seasonLineupProjectionCopy(decision, model);
   if (projection) pick.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : 'Projection'}: ${projection}`));
   const details = document.createElement('details'), summary = document.createElement('summary'), body = seasonEl('div', 'seasonLineupEvidenceDetails');
@@ -10471,8 +10726,8 @@ function seasonLineupOptimizerCard(model, intelligence, { compact = false } = {}
   card.appendChild(seasonSectionHeader('WEEKLY LINEUP OPTIMIZER'));
   if (!intelligence || intelligence.status === 'INSUFFICIENT_VALIDATED_SEASON_DATA') { card.append(seasonEl('h2', '', 'LINEUP EVIDENCE NEEDED'), seasonEl('p', '', intelligence?.reason || 'Current lineup evidence is unavailable.')); return card; }
   if (recommendation.status === 'NO_CHANGE') { card.append(seasonStatusBadge('NO CHANGE', 'green'), seasonEl('h2', '', 'LINEUP LOOKS GOOD'), seasonEl('p', '', 'No supported legal change improves the current lineup.')); return card; }
-  const preferred = decision?.preferred || decision?.alternative, other = decision?.other || decision?.starter;
-  card.append(seasonStatusBadge(posture, seasonStartSitTone(decision?.state)), seasonEl('h2', '', recommendation.status === 'CHANGE' ? '1 LINEUP CHANGE' : 'CLOSE DECISION'), seasonEl('h3', '', `${preferred?.name || 'Wait'} → ${decision?.lineupSlot || 'lineup'}`), seasonEl('p', 'seasonLineupSit', `${other?.name || 'Current starter'} → ${recommendation.status === 'CHANGE' ? 'Bench' : 'comparison'}`), seasonEl('p', 'seasonLineupWhy', seasonLineupWhy(decision)));
+  const verdict = seasonStartSitVerdict(decision), preferred = verdict === 'ACTION' ? decision?.preferred || decision?.alternative : decision?.starter, other = verdict === 'ACTION' ? decision?.other || decision?.starter : decision?.alternative;
+  card.append(seasonStatusBadge(posture, seasonStartSitTone(decision?.state)), seasonEl('h2', '', recommendation.status === 'CHANGE' ? '1 LINEUP CHANGE' : recommendation.status === 'MONITOR' ? 'STATUS TO WATCH' : 'HOLD CURRENT LINEUP'), seasonEl('h3', '', seasonStartSitHeadline(decision)), seasonEl('p', 'seasonLineupSit', verdict === 'ACTION' ? `${other?.name || 'Current starter'} → Bench` : `${other?.name || 'Alternative'} remains the comparison`), seasonEl('p', 'seasonLineupWhy', seasonLineupWhy(decision)));
   const projection = seasonLineupProjectionCopy(decision, model);
   if (projection) card.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : 'Projection'}: ${projection}`));
   card.appendChild(seasonButton('View comparison', () => openSeasonStartSitComparison(decision, model), 'seasonMiniButton'));
@@ -10494,7 +10749,7 @@ renderSeasonHome = function (model, content) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_4_11_3_season_live_intelligence')
+      .register('./service-worker.js?v=jonin_4_4_11_4_projection_semantics')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );
