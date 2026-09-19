@@ -6427,24 +6427,47 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
         : 'No eligible player assigned'
     )
   );
-  const schedule = seasonEl('span', 'seasonLineupSchedule');
+  const weekEvidence = player?.currentWeek || null,
+    gameEvidence = weekEvidence?.game || null,
+    schedule = seasonEl('span', 'seasonLineupSchedule');
   schedule.append(
     seasonEl('b', '', player?.opponent || player?.nextOpponent || '—'),
-    seasonEl('small', '', player?.gameTime || player?.gameStart || '—')
+    seasonEl(
+      'small',
+      '',
+      gameEvidence?.state && gameEvidence.state !== 'UNKNOWN'
+        ? `${gameEvidence.state.replaceAll('_', ' ')}${gameEvidence.kickoff ? ` • ${new Date(gameEvidence.kickoff).toLocaleString([], { weekday: 'short', hour: 'numeric', minute: '2-digit' })}` : ''}`
+        : player?.gameTime || player?.gameStart || 'Game time unavailable'
+    )
   );
-  const hasProjection =
-      player?.projection !== null &&
-      player?.projection !== undefined &&
-      String(player.projection).trim() !== '' &&
-      Number.isFinite(Number(player.projection)),
+  const actual = weekEvidence?.actual?.value,
+    hasActual = actual !== null && actual !== undefined && Number.isFinite(Number(actual)),
+    hasProjection =
+      weekEvidence?.projection?.supported === true &&
+      weekEvidence.projection.value !== null &&
+      Number.isFinite(Number(weekEvidence.projection.value)),
     projection = seasonEl(
       'span',
       'seasonLineupProjection',
-      hasProjection ? String(player.projection) : '—'
+      gameEvidence?.state === 'FINAL' && hasActual
+        ? `${Number(actual).toFixed(2)} ACT`
+        : hasProjection
+          ? `${Number(weekEvidence.projection.value).toFixed(2)} PROJ`
+          : '—'
     ),
     status = seasonEl('span', 'seasonLineupStatus');
-  if (player?.injuryStatus) status.appendChild(seasonStatusBadge(player.injuryStatus, 'orange'));
-  else status.appendChild(seasonEl('span', 'seasonFutureStatus', '—'));
+  if (gameEvidence?.state === 'LIVE') status.appendChild(seasonStatusBadge('LIVE • LOCKED', 'red'));
+  else if (gameEvidence?.locked) status.appendChild(seasonStatusBadge('LOCKED', 'neutral'));
+  else if (gameEvidence?.state === 'PRE_GAME')
+    status.appendChild(seasonStatusBadge('CHANGEABLE', 'green'));
+  if (weekEvidence?.injury?.current && !['ACTIVE', 'HEALTHY', 'UNKNOWN'].includes(weekEvidence.injury.status))
+    status.appendChild(seasonStatusBadge(weekEvidence.injury.status, 'orange'));
+  if (!status.childElementCount) status.appendChild(seasonEl('span', 'seasonFutureStatus', '—'));
+  projection.title = hasActual && gameEvidence?.state === 'FINAL'
+    ? 'Authoritative Yahoo actual points'
+    : hasProjection
+      ? `${weekEvidence.projection.source} • ${weekEvidence.projection.freshness}`
+      : weekEvidence?.projection?.reason || 'Projection unavailable';
   const origin = seasonEl(
     'span',
     'seasonRosterOrigin',
@@ -8237,6 +8260,32 @@ function renderSeasonShellPage(model, content, page) {
   }
   content.appendChild(panel);
 }
+function seasonApplyCurrentWeekEvidence(model) {
+  if (!window.FantasyHQCurrentWeekEvidenceV1 || !model?.snapshot) return model;
+  try {
+    return FantasyHQCurrentWeekEvidenceV1.build({
+      model,
+      evidenceStore: seasonEvidenceStore,
+      injurySnapshot: window.__injurySnapshot || null,
+      now: Date.now(),
+    });
+  } catch (error) {
+    console.warn(
+      'Optional current-week evidence enrichment failed; authoritative Yahoo season state remains available:',
+      error
+    );
+    return {
+      ...model,
+      currentWeekEvidence: {
+        schema: 'fantasy-hq-current-week-evidence-1',
+        sourceAuthority: 'UNKNOWN',
+        status: 'UNAVAILABLE',
+        reason: error?.message || 'Current-week evidence could not be normalized.',
+        recommendationAuthority: false,
+      },
+    };
+  }
+}
 async function renderSeasonCommandCenter() {
   if (!window.SeasonCommandCenterV1 || !activeLeagueProfile) return;
   const resolution = await seasonStateForActiveProfile(),
@@ -8270,7 +8319,8 @@ async function renderSeasonCommandCenter() {
           phase: SeasonCommandCenterV1.phaseForWeek(seasonWeekOverride),
         }
       : baseModel,
-    model = seasonApplyManualState(modelBeforeManual);
+    manualModel = seasonApplyManualState(modelBeforeManual),
+    model = seasonApplyCurrentWeekEvidence(manualModel);
   seasonLastRenderedModel = model;
   renderSeasonProfileOptions();
   renderSeasonNavigation();
@@ -8676,9 +8726,31 @@ function confirmYahooLeagueMapping() {
   }
 }
 async function syncYahooLeagueNow() {
+  const controller = getYahooSyncController(),
+    current = activeLeagueProfile ? controller.read(activeLeagueProfile.id) : null,
+    buttons = [el('yahooSyncBtn'), el('seasonOperationalSync')].filter(Boolean),
+    pill = el('seasonSyncPill');
+  if (!current?.mapping?.explicitlyConfirmed) {
+    const message = 'Confirm the Yahoo league mapping for this profile before syncing.';
+    safeText('syncStatusText', message);
+    if (pill) {
+      pill.textContent = 'Yahoo • Mapping required';
+      pill.className = 'seasonSyncPill stale';
+      pill.title = message;
+    }
+    return;
+  }
+  buttons.forEach(button => {
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+  });
+  if (pill) {
+    pill.textContent = 'Yahoo • Syncing…';
+    pill.className = 'seasonSyncPill partial';
+  }
   try {
     safeText('syncStatusText', 'Syncing the confirmed Yahoo league read-only…');
-    await getYahooSyncController().sync({
+    await controller.sync({
       profile: activeLeagueProfile,
       canonicalPlayers: players,
       aliases: {},
@@ -8688,7 +8760,18 @@ async function syncYahooLeagueNow() {
     if (!el('seasonScreen')?.classList.contains('hidden')) await renderSeasonCommandCenter();
   } catch (error) {
     renderYahooSeasonState();
-    alert(`Yahoo sync did not replace the previous snapshot: ${error.message}`);
+    const message = `Yahoo sync failed safely: ${error.message}`;
+    safeText('syncStatusText', message);
+    if (pill) {
+      pill.textContent = 'Yahoo • Sync failed';
+      pill.className = 'seasonSyncPill stale';
+      pill.title = message;
+    }
+  } finally {
+    buttons.forEach(button => {
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+    });
   }
 }
 async function disconnectYahoo() {
@@ -10486,10 +10569,21 @@ function seasonV3Outlook(model) {
   return panel;
 }
 function seasonV3PositionBattle(model) {
-  const comparisonReady = model?.matchupComparison?.narrativeAllowed === true,
+  const currentOutlookReady =
+      model?.currentWeekEvidence?.userOutlook?.status === 'AVAILABLE' &&
+      model?.currentWeekEvidence?.opponentOutlook?.status === 'AVAILABLE',
+    comparisonReady = model?.matchupComparison?.narrativeAllowed === true || currentOutlookReady,
     battles = window.FantasyHQSeasonHomeV3?.positionBattle(comparisonReady ? model?.lineup?.starters || [] : [], comparisonReady ? model?.opponentLineup?.starters || [] : []) || [],
     wrap = seasonEl('section', 'seasonV3PositionBattle');
   wrap.appendChild(seasonEl('h3', '', 'POSITION BATTLE'));
+  if (currentOutlookReady)
+    wrap.appendChild(
+      seasonEl(
+        'p',
+        'seasonV3BattleBasis',
+        'Current-outlook basis: completed starters use actuals; unstarted starters use supported projections.'
+      )
+    );
   const unavailable = battles.every(battle => battle.evidence !== 'SUPPORTED');
   if (unavailable) {
     wrap.classList.add('unavailable');
@@ -10524,13 +10618,55 @@ function seasonV3Matchup(model) {
   away.append(seasonEl('small', '', 'OPPONENT'), seasonEl('strong', '', model.opponent?.name || 'Opponent unavailable'), seasonEl('span', '', seasonFormatRecord(opponentStanding)), matchupMetrics(comparison.opponentActualPoints, comparison.opponentProjectedPoints));
   hero.append(home, seasonEl('span', 'seasonV3Versus', 'VS'), away);
   panel.append(head, hero);
+  const currentEvidence = model.currentWeekEvidence,
+    userOutlook = currentEvidence?.userOutlook,
+    opponentOutlook = currentEvidence?.opponentOutlook,
+    outlook = seasonEl(
+      'section',
+      `seasonV3CurrentOutlook ${userOutlook?.status === 'AVAILABLE' && opponentOutlook?.status === 'AVAILABLE' ? 'available' : 'unavailable'}`
+    );
+  outlook.appendChild(seasonEl('b', '', 'FANTASY HQ CURRENT OUTLOOK'));
+  if (userOutlook?.status === 'AVAILABLE' && opponentOutlook?.status === 'AVAILABLE') {
+    outlook.append(
+      seasonEl('strong', '', `${value(userOutlook.value)} – ${value(opponentOutlook.value)}`),
+      seasonEl(
+        'span',
+        '',
+        'Completed starters use Yahoo actual points; unstarted starters use supported current projections.'
+      )
+    );
+  } else {
+    outlook.append(
+      seasonEl('strong', '', 'Unavailable'),
+      seasonEl(
+        'span',
+        '',
+        userOutlook?.reason ||
+          'At least one starter lacks a semantically safe actual-or-projection component.'
+      )
+    );
+  }
+  panel.appendChild(outlook);
   if (live && !projectionComplete && (comparison.userWeeklyProjectedPoints != null || comparison.opponentWeeklyProjectedPoints != null)) panel.appendChild(seasonEl('p', 'seasonTrustNote', `Yahoo weekly lineup projection: ${value(comparison.userWeeklyProjectedPoints)} – ${value(comparison.opponentWeeklyProjectedPoints)}. Yahoo API does not expose the live projected final shown in Yahoo Fantasy.`));
-  const battle = seasonV3PositionBattle(model), read = window.FantasyHQSeasonHomeV3?.weeklyRead(comparison, battle.battles);
+  const battle = seasonV3PositionBattle(model),
+    read = window.FantasyHQSeasonHomeV3?.weeklyRead(comparison, battle.battles),
+    currentRead = currentEvidence?.weeklyRead;
   panel.appendChild(battle.node);
   const weeklyRead = seasonEl('section', 'seasonV3WeeklyRead');
   const weeklyTitle = seasonEl('b', '', 'FANTASY HQ WEEKLY READ');
   weeklyTitle.prepend(seasonEl('span', 'seasonV3LandmarkIcon', '▤'));
-  weeklyRead.append(weeklyTitle, seasonEl('p', '', read?.supported ? read.text : read?.reason || 'Yahoo matchup projection is currently incomplete.'));
+  weeklyRead.append(
+    weeklyTitle,
+    seasonEl(
+      'p',
+      '',
+      currentRead?.supported
+        ? currentRead.text
+        : read?.supported
+          ? read.text
+          : read?.reason || 'Yahoo matchup projection is currently incomplete.'
+    )
+  );
   panel.appendChild(weeklyRead);
   return panel;
 }
@@ -10749,7 +10885,7 @@ renderSeasonHome = function (model, content) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_4_11_4_projection_semantics')
+      .register('./service-worker.js?v=jonin_4_4_12_week_2_readiness_2')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

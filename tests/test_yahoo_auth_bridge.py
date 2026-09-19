@@ -255,6 +255,23 @@ class YahooBridgeTests(unittest.TestCase):
         self.assertIn("users;use_login=1/games;game_keys=nfl/leagues", seen[0].full_url)
         self.assertNotIn("seasons=", seen[0].full_url)
 
+    def test_league_bundle_requests_week_scoped_current_rosters(self):
+        resources = []
+
+        class FakeFantasy:
+            def get(self, resource):
+                resources.append(resource)
+                if resource == "league/470.l.test":
+                    return {"league": {"current_week": "2"}}
+                if resource == "league/470.l.test/teams":
+                    return {"teams": [{"team_key": "470.l.test.t.1"}]}
+                return {}
+
+        bundle = bridge.YahooFantasyClient.league_bundle(FakeFantasy(), "470.l.test")
+        self.assertIn("team/470.l.test.t.1/roster;week=2", resources)
+        self.assertIn("league/470.l.test/scoreboard;week=2", resources)
+        self.assertEqual(bundle["errors"], {})
+
     def test_401_is_invalid_or_expired_and_preserves_token_for_diagnosis(self):
         store = bridge.TokenStore(self.path)
         store.write({"access_token": "revoked", "refresh_token": "revoked", "expires_at": 9999})

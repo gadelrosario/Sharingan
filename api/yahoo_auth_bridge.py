@@ -459,7 +459,10 @@ class YahooFantasyClient:
                 continue
             try:
                 safe_team = urllib.parse.quote(str(team_key), safe=".")
-                payload["teamRosters"][str(team_key)] = self.get(f"team/{safe_team}/roster")
+                roster_resource = f"team/{safe_team}/roster"
+                if current_week is not None:
+                    roster_resource += f";week={current_week}"
+                payload["teamRosters"][str(team_key)] = self.get(roster_resource)
             except Exception as exc:
                 errors[f"roster:{team_key}"] = _safe_error(exc)
         payload["players"] = {"pages": []}

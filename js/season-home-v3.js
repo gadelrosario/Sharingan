@@ -9,7 +9,7 @@
   const clean=value=>String(value??'').trim();
   const freeze=value=>Object.freeze(value);
   const normalizePosition=value=>{const text=clean(value).toUpperCase().replace(/[^A-Z]/g,'');return text==='DEF'||text==='DEFENSE'||text==='DST'?'DST':text;};
-  const projection=player=>finite(player?.projection??player?.projectedPoints??player?.yahooProjection);
+  const projection=player=>finite(player?.currentWeek?.outlookContribution?.value??player?.projection??player?.projectedPoints??player?.yahooProjection);
   function freshness({fetchedAt,lastSuccessfulSyncAt,now=Date.now()}={}){
     const stamp=Date.parse(lastSuccessfulSyncAt||fetchedAt||'');
     if(!Number.isFinite(stamp))return freeze({state:'UNKNOWN',ageMinutes:null,label:'Update time unavailable'});

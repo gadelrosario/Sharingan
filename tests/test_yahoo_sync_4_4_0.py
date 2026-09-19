@@ -18,7 +18,7 @@ class YahooSyncFoundationTests(unittest.TestCase):
         self.run_node('tests/yahoo-season-4-4-0-tests.js', 21)
 
     def test_sync_controller_contracts(self):
-        self.run_node('tests/yahoo-sync-4-4-0-tests.js', 7)
+        self.run_node('tests/yahoo-sync-4-4-0-tests.js', 8)
 
     def test_modules_load_before_app_and_are_cached(self):
         html = (ROOT / 'index.html').read_text()
@@ -26,14 +26,26 @@ class YahooSyncFoundationTests(unittest.TestCase):
         self.assertLess(html.index('js/yahoo-season-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/yahoo-sync-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/season-command-center-v1.js'), html.index('js/app.js'))
-        self.assertIn("'./js/yahoo-season-v1.js?v=1.1.1-projection-semantics'", worker)
-        self.assertIn("'./js/yahoo-sync-v1.js?v=1.1.0'", worker)
+        self.assertIn("'./js/yahoo-season-v1.js?v=1.2.0-current-week'", worker)
+        self.assertIn("'./js/yahoo-sync-v1.js?v=1.1.1'", worker)
         self.assertIn("'./js/season-command-center-v1.js?v=1.1.6-projection-semantics'", worker)
 
     def test_browser_transport_targets_https_local_bridge(self):
         source = (ROOT / 'js/yahoo-sync-v1.js').read_text()
         self.assertIn("DEFAULT_BRIDGE='https://localhost:8787'", source)
         self.assertNotIn("DEFAULT_BRIDGE='http://", source)
+
+    def test_sync_requires_explicit_mapping_and_fails_inline(self):
+        source = (ROOT / 'js/app.js').read_text(encoding='utf-8')
+        sync = source.split('async function syncYahooLeagueNow()', 1)[1].split(
+            'async function disconnectYahoo()', 1
+        )[0]
+        self.assertIn('current?.mapping?.explicitlyConfirmed', sync)
+        self.assertIn('Yahoo • Mapping required', sync)
+        self.assertIn('Yahoo • Sync failed', sync)
+        self.assertIn("button.setAttribute('aria-busy', 'true')", sync)
+        self.assertIn("button.removeAttribute('aria-busy')", sync)
+        self.assertNotIn('alert(', sync)
 
     def test_no_recommendation_or_scoring_authority(self):
         source = ((ROOT / 'js/yahoo-season-v1.js').read_text() + (ROOT / 'js/yahoo-sync-v1.js').read_text()).lower()

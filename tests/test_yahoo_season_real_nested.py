@@ -20,7 +20,7 @@ class YahooSeasonRealNestedTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         payload = json.loads(result.stdout)
         self.assertEqual(payload['failCount'], 0)
-        self.assertEqual(payload['passCount'], 17)
+        self.assertEqual(payload['passCount'], 18)
 
     def test_fixture_is_sanitized_and_does_not_contain_oauth_material(self):
         fixture = (ROOT / 'tests/fixtures/yahoo/real_nested_season_2026_sanitized.json').read_text(encoding='utf-8')

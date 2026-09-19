@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "fantasy-hq-current-week-evidence-fixture-1",
+  "asOf": "2026-09-13T16:00:00.000Z",
+  "season": 2026,
+  "week": 2,
+  "scoringFormat": "half-ppr",
+  "fetchedAt": "2026-09-13T15:55:00.000Z",
+  "players": [
+    {"canonicalPlayerId":"thu-pregame","name":"Thursday Pregame","position":"WR","sourceTeam":"BUF","rosterSlot":"WR","opponent":"MIA","gameStart":"2026-09-17T00:15:00.000Z","gameStatus":"preevent","projection":12.5,"identity":{"status":"MATCHED","canonicalPlayerId":"thu-pregame"}},
+    {"canonicalPlayerId":"thu-final","name":"Thursday Final","position":"RB","sourceTeam":"MIA","rosterSlot":"RB","opponent":"BUF","gameStart":"2026-09-11T00:15:00.000Z","gameStatus":"final","projection":15,"actualPoints":18.25,"identity":{"status":"MATCHED","canonicalPlayerId":"thu-final"}},
+    {"canonicalPlayerId":"sun-early","name":"Sunday Early","position":"WR","sourceTeam":"NYJ","rosterSlot":"WR","opponent":"NE","gameStart":"2026-09-13T17:00:00.000Z","gameStatus":"scheduled","projection":10,"identity":{"status":"MATCHED","canonicalPlayerId":"sun-early"}},
+    {"canonicalPlayerId":"sun-live","name":"Sunday Live","position":"RB","sourceTeam":"KC","rosterSlot":"FLEX","opponent":"LV","gameStart":"2026-09-13T17:00:00.000Z","gameStatus":"midevent","projection":14,"actualPoints":6,"identity":{"status":"MATCHED","canonicalPlayerId":"sun-live"}},
+    {"canonicalPlayerId":"sun-late","name":"Sunday Afternoon","position":"TE","sourceTeam":"SF","rosterSlot":"TE","opponent":"SEA","gameStart":"2026-09-13T20:25:00.000Z","gameStatus":"preevent","projection":8,"identity":{"status":"MATCHED","canonicalPlayerId":"sun-late"}},
+    {"canonicalPlayerId":"questionable","name":"Questionable Player","position":"QB","sourceTeam":"DAL","rosterSlot":"QB","opponent":"PHI","gameStart":"2026-09-14T00:20:00.000Z","gameStatus":"preevent","projection":19,"injuryStatus":"QUESTIONABLE","identity":{"status":"MATCHED","canonicalPlayerId":"questionable"}},
+    {"canonicalPlayerId":"missing-projection","name":"Missing Projection","position":"K","sourceTeam":"LAR","rosterSlot":"K","opponent":"ARI","gameStart":"2026-09-13T20:25:00.000Z","gameStatus":"preevent","identity":{"status":"MATCHED","canonicalPlayerId":"missing-projection"}},
+    {"canonicalPlayerId":"stale-projection","name":"Stale Projection","position":"DST","sourceTeam":"BAL","rosterSlot":"DST","opponent":"CLE","gameStart":"2026-09-13T17:00:00.000Z","gameStatus":"preevent","projection":7,"projectionFetchedAt":"2026-09-10T00:00:00.000Z","identity":{"status":"MATCHED","canonicalPlayerId":"stale-projection"}},
+    {"canonicalPlayerId":"zero-projection","name":"Zero Projection","position":"WR","sourceTeam":"DEN","rosterSlot":"BN","opponent":"LAC","gameStart":"2026-09-13T20:25:00.000Z","gameStatus":"preevent","projection":0,"identity":{"status":"MATCHED","canonicalPlayerId":"zero-projection"}},
+    {"canonicalPlayerId":"missing-opponent","name":"Missing Opponent","position":"RB","sourceTeam":"TEN","rosterSlot":"BN","gameStart":"2026-09-14T00:20:00.000Z","gameStatus":"preevent","projection":9,"identity":{"status":"MATCHED","canonicalPlayerId":"missing-opponent"}},
+    {"canonicalPlayerId":"team-change","name":"Team Change","position":"WR","sourceTeam":"PIT","rosterSlot":"BN","opponent":"CIN","gameStatus":"preevent","projection":9,"identity":{"status":"MATCHED","canonicalPlayerId":"team-change","canonicalTeam":"CHI","sourceTeam":"PIT"}},
+    {"name":"Identity Mismatch","position":"WR","sourceTeam":"ATL","rosterSlot":"BN","identity":{"status":"UNRESOLVED"}},
+    {"name":"Ambiguous Player","position":"RB","sourceTeam":"NYG","rosterSlot":"BN","identity":{"status":"AMBIGUOUS"}}
+  ],
+  "injuries": [
+    {"playerId":"questionable","status":"QUESTIONABLE","lastUpdated":"2026-09-13T14:00:00.000Z","sourcePlayerId":"s-questionable"}
+  ],
+  "usage": {
+    "sun-early": [
+      {"week":1,"snapShare":0.45,"routes":20,"targets":4,"opportunities":4}
+    ],
+    "team-change": [
+      {"week":1,"snapShare":0.42,"routes":18,"targets":3,"opportunities":3},
+      {"week":2,"snapShare":0.58,"routes":25,"targets":6,"opportunities":6}
+    ],
+    "thu-pregame": [
+      {"week":1,"snapShare":0.45,"routes":20,"targets":4,"opportunities":4},
+      {"week":2,"snapShare":0.60,"routes":27,"targets":7,"opportunities":7},
+      {"week":3,"snapShare":0.75,"routes":34,"targets":10,"opportunities":10}
+    ]
+  },
+  "profiles": [
+    {"id":"profile-half","scoring":"half-ppr"},
+    {"id":"profile-full","scoring":"full-ppr"}
+  ],
+  "contractCases": [
+    "thursday-pregame",
+    "thursday-completed",
+    "sunday-early-pregame",
+    "sunday-live",
+    "sunday-afternoon-pregame",
+    "injury-designation",
+    "missing-projection",
+    "stale-projection",
+    "zero-projection",
+    "missing-opponent",
+    "identity-mismatch",
+    "team-change",
+    "ambiguous-identity",
+    "one-game-usage",
+    "two-game-developing-usage",
+    "multi-week-rising-usage",
+    "missing-usage-provider",
+    "projection-provider-unavailable",
+    "yahoo-survives-enrichment-gap",
+    "multi-profile-isolation",
+    "scoring-format-mismatch",
+    "actual-replaces-projection",
+    "actual-projection-no-double-count",
+    "locked-player",
+    "healthy-no-injury-concern",
+    "injured-player-attention",
+    "safe-current-outlook",
+    "incomplete-current-outlook",
+    "weekly-read-grounded",
+    "recommendation-authority-firewall"
+  ]
+}
