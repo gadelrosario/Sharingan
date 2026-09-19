@@ -26,9 +26,9 @@ class YahooSyncFoundationTests(unittest.TestCase):
         self.assertLess(html.index('js/yahoo-season-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/yahoo-sync-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/season-command-center-v1.js'), html.index('js/app.js'))
-        self.assertIn("'./js/yahoo-season-v1.js?v=1.0.0'", worker)
-        self.assertIn("'./js/yahoo-sync-v1.js?v=1.0.0'", worker)
-        self.assertIn("'./js/season-command-center-v1.js?v=1.1.3'", worker)
+        self.assertIn("'./js/yahoo-season-v1.js?v=1.1.0'", worker)
+        self.assertIn("'./js/yahoo-sync-v1.js?v=1.1.0'", worker)
+        self.assertIn("'./js/season-command-center-v1.js?v=1.1.4'", worker)
 
     def test_browser_transport_targets_https_local_bridge(self):
         source = (ROOT / 'js/yahoo-sync-v1.js').read_text()

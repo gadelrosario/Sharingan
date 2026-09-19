@@ -5854,6 +5854,19 @@ function seasonReviewSnapshot(fixture) {
         canonicalPlayerId: String(player.canonicalPlayerId),
       },
       projectionSource: fixture.projectionLabel,
+      startSitEvidence: fixture.lineupReview?.evidence?.[String(player.canonicalPlayerId)]
+        ? {
+            ...fixture.lineupReview.evidence[String(player.canonicalPlayerId)],
+            freshness: 'CURRENT',
+            roleSource: fixture.lineupReview.label,
+            opportunitySource: fixture.lineupReview.label,
+            usageSource: fixture.lineupReview.label,
+            matchupSource: fixture.lineupReview.label,
+            projectionSource: fixture.projectionLabel,
+            injurySource: fixture.lineupReview.label,
+            fetchedAt: fixture.asOf,
+          }
+        : undefined,
       waiverEvidence: {
         ...(String(player.rosterSlot).toUpperCase() === 'BN'
           ? fixture.dropEvidenceDefaults.bench
@@ -5920,10 +5933,13 @@ function seasonReviewSnapshot(fixture) {
     seasonMode: { status: 'REVIEW_FIXTURE', fantasyWeek: 1, phase: 'in-season' },
     weeklyPhase: 'WAIVER_WINDOW',
     waiverWindow: 'BEFORE_WAIVERS',
+    startSitWindow: 'BEFORE_SUNDAY_INACTIVES',
+    startSitContext: { timingState: fixture.lineupReview?.timingState || 'MID_WEEK' },
     reviewFixture: {
       label: fixture.reviewLabel,
       projectionLabel: fixture.projectionLabel,
       lineupConsequence: fixture.lineupConsequence,
+      lineupReview: fixture.lineupReview,
     },
   };
 }
@@ -6247,8 +6263,8 @@ function seasonSyncLabel(model) {
   return 'Yahoo • Not synced';
 }
 function seasonFormatRecord(standing) {
-  if (!standing) return 'Not provided';
-  return `${standing.wins ?? 0}-${standing.losses ?? 0}${standing.ties ? `-${standing.ties}` : ''}`;
+  if (!standing || standing.wins == null || standing.losses == null) return 'Not provided';
+  return `${standing.wins}-${standing.losses}${standing.ties ? `-${standing.ties}` : ''}`;
 }
 function renderSeasonProfileOptions() {
   const select = el('seasonProfileSelect');
@@ -6311,14 +6327,14 @@ function renderSeasonSidebar(model) {
         ['Archive', 'Immutable'],
       ]
     : [
-        ['Record', seasonFormatRecord(model.standing)],
+        ['Record', model.homeStanding?.record ?? 'Not provided'],
         [
           'PF / PA',
-          model.standing?.pointsFor != null
-            ? `${model.standing.pointsFor} / Not provided`
+          model.homeStanding?.pointsFor != null || model.homeStanding?.pointsAgainst != null
+            ? `${model.homeStanding?.pointsFor ?? 'Not provided'} / ${model.homeStanding?.pointsAgainst ?? 'Not provided'}`
             : 'Not provided',
         ],
-        ['Standing', model.standing?.rank ? `#${model.standing.rank}` : 'Not provided'],
+        ['Standing', model.homeStanding?.rank != null ? `#${model.homeStanding.rank}` : 'Not provided'],
         ['Projection', 'Not provided'],
         ['Champ. Odds', 'Not yet scored'],
         ['Power Ranking', 'Not yet scored'],
@@ -6581,12 +6597,19 @@ function seasonWaiverContext(model, player) {
     injury = null;
   }
   try {
+    const availabilityState = player?.availabilityState?.status || player?.availability || 'UNKNOWN',
+      yahooAuthoritative =
+        !model?.demo &&
+        !model?.draftSnapshot &&
+        !model?.stale &&
+        !model?.syncError &&
+        model?.snapshot?.provider === 'Yahoo';
     const result = seasonDiscoveryEngine?.evaluate(player, {
       profileId: seasonProfileForModel(model)?.id || model?.profileId,
       phase: String(model?.phase?.key || model?.phase || 'DISCOVERY').toUpperCase(),
       scoringFormat: seasonProfileForModel(model)?.settings?.scoring || model?.scoringFormat,
-      yahooAuthoritative: false,
-      yahooAvailabilityState: 'UNKNOWN',
+      yahooAuthoritative,
+      yahooAvailabilityState: availabilityState,
       teamFit,
     });
     discovery = result
@@ -7087,7 +7110,7 @@ function seasonMatchupCard(model, { full = false } = {}) {
   const card = seasonEl('section', 'seasonPanel seasonMatchupPanel seasonLineupMatchup');
   card.append(
     seasonSectionHeader(
-      `MATCHUP — WEEK ${model.week}`,
+      `WEEKLY MATCHUP OVERVIEW — WEEK ${model.week}`,
       full
         ? null
         : seasonButton('View details ›', () => showSeasonPage('matchup'), 'seasonTextButton')
@@ -7122,6 +7145,25 @@ function seasonMatchupCard(model, { full = false } = {}) {
         : 'Yahoo lineup assignments are authoritative'
     )
   );
+  if (model.homeMatchup?.supported) {
+    const value = number => number == null ? 'Not provided' : Number(number).toFixed(2),
+      probability = number => number == null ? 'Not provided' : `${Math.round(Number(number) * 100)}%`,
+      status = String(model.homeMatchup.status || '').toLowerCase() === 'midevent'
+        ? 'In progress'
+        : model.homeMatchup.status || 'Status unavailable',
+      summary = seasonEl('div', 'seasonYahooMatchupSummary');
+    [
+      ['Yahoo score', `${value(model.homeMatchup.userActualPoints)} – ${value(model.homeMatchup.opponentActualPoints)}`],
+      ['Yahoo projected', `${value(model.homeMatchup.userProjectedPoints)} – ${value(model.homeMatchup.opponentProjectedPoints)}`],
+      ['Yahoo win probability', `${probability(model.homeMatchup.userWinProbability)} – ${probability(model.homeMatchup.opponentWinProbability)}`],
+      ['Matchup status', status],
+    ].forEach(([label, text]) => {
+      const item = seasonEl('span');
+      item.append(seasonEl('small', '', label), seasonEl('strong', '', text));
+      summary.appendChild(item);
+    });
+    card.appendChild(summary);
+  }
   const left = model.lineup?.starters || [],
     right = model.opponentLineup?.starters || [],
     rightBySlot = new Map();
@@ -7893,7 +7935,7 @@ function openSeasonStartSitAnalysis(decision, model) {
       ['Projection source', preferredScore?.provenance?.projectionSource],
     ],
     detail = seasonDecisionAnalysisShell({
-      kind: 'start-sit',
+      kind:'start-sit',
       title: 'DECISION ANALYSIS',
       heading: `WHY FANTASY HQ PREFERS ${preferredName.toUpperCase()} OVER ${otherName.toUpperCase()}`,
       summary: decision.reason,
@@ -8132,11 +8174,15 @@ async function renderSeasonCommandCenter() {
           lineup: builtModel.lineup
             ? {
                 ...builtModel.lineup,
-                authoritative: false,
+                authoritative: true,
                 label: 'Projected lineup from Review Fixture',
                 notice: 'NOT LIVE YAHOO DATA',
               }
             : null,
+          phase: {
+            key: state.snapshot.reviewFixture?.lineupReview?.phase || 'optimization',
+            label: 'Optimization Mode',
+          },
         }
       : builtModel,
     modelBeforeManual = seasonWeekOverride
@@ -8224,6 +8270,7 @@ async function renderSeasonCommandCenter() {
   }
   if (seasonPage === 'home') renderSeasonHome(model, content);
   else if (seasonPage === 'team') {
+    const lineupIntelligence = seasonStartSitEvaluation(model);
     content.append(
       seasonPageIntro(
         'My Team',
@@ -8233,6 +8280,7 @@ async function renderSeasonCommandCenter() {
           ? 'Draft-origin roster snapshot. Current Yahoo ownership is not yet known.'
           : 'Yahoo is current roster truth. Linked draft origin remains immutable history.'
       ),
+      seasonLineupOptimizerCard(model, lineupIntelligence, { compact: true }),
       seasonRosterCard(model, { full: true }),
       seasonTeamFitOverview(model)
     );
@@ -8443,15 +8491,16 @@ function renderYahooSeasonState() {
     return;
   }
   overview.innerHTML = '';
-  const userTeam = snapshot.teams?.find(team => team.teamKey === snapshot.userTeamKey),
+  const snapshotMatchups = window.SeasonCommandCenterV1?.getSnapshotMatchups?.(snapshot) || [],
+    userTeam = snapshot.teams?.find(team => team.teamKey === snapshot.userTeamKey),
     userStanding = snapshot.standings?.find(row => row.teamKey === snapshot.userTeamKey),
     standingText = userStanding?.rank
       ? `Rank ${userStanding.rank}`
       : snapshot.standings?.length
         ? 'Available'
         : 'Not provided',
-    matchupText = snapshot.matchups?.matchups?.length
-      ? `Week ${snapshot.matchups.week || snapshot.league?.currentWeek || 'current'}`
+    matchupText = snapshotMatchups.length
+      ? `Week ${snapshot.matchups?.week || snapshotMatchups[0]?.week || snapshot.league?.currentWeek || 'current'}`
       : 'Not provided',
     facts = [
       ['Mode', 'Season Mode'],
@@ -8940,24 +8989,35 @@ function seasonIntelligenceLabel(result) {
   if (result.primarySignal.startsWith('INJURY_')) return 'INJURY WATCH';
   return 'NFL SIGNAL';
 }
-function seasonIntelligencePlayer(result) {
+function seasonYahooPlayerForId(model, id) {
+  const target = String(id || ''), identify = player => String(
+    player?.identity?.canonicalPlayerId || player?.canonicalPlayerId || player?.playerId || player?.id || ''
+  );
+  if (!target) return null;
+  return [...(model?.roster || []), ...(model?.available || []), ...(model?.teams || []).flatMap(team => team.roster || [])]
+    .find(player => identify(player) === target) || null;
+}
+function seasonIntelligencePlayer(result, model) {
+  const current = seasonYahooPlayerForId(model, result.playerId);
   return {
     canonicalPlayerId: result.playerId,
     playerId: result.playerId,
-    name: result.playerName,
-    position: result.position,
-    sourceTeam: result.team,
+    name: current?.name || result.playerName,
+    position: current?.position || result.position,
+    sourceTeam: current?.sourceTeam || result.team,
+    availabilityState: current?.availabilityState || null,
   };
 }
 function seasonIntelligenceCard(result, model) {
   const card = seasonEl('article', 'seasonNflIntelligenceCard'),
     head = seasonEl('div', 'seasonNflIntelligenceHead'),
-    identity = seasonEl('div');
+    identity = seasonEl('div'),
+    current = seasonIntelligencePlayer(result, model);
   card.dataset.playerId = result.playerId || '';
   identity.append(
     seasonEl('small', 'seasonNflSignalLabel', seasonIntelligenceLabel(result)),
-    seasonEl('strong', '', result.playerName || 'Unresolved player'),
-    seasonEl('span', '', `${result.position || '—'} • ${result.team || 'Team unknown'}`)
+    seasonEl('strong', '', current.name || 'Unresolved player'),
+    seasonEl('span', '', `${current.position || '—'} • ${current.sourceTeam || 'Team unknown'}`)
   );
   head.append(identity, seasonStatusBadge(result.timingState, seasonIntelligenceTone(result)));
   card.append(
@@ -8970,7 +9030,7 @@ function seasonIntelligenceCard(result, model) {
     ),
     seasonButton(
       'View Analysis',
-      () => openSeasonPlayerDetails(seasonIntelligencePlayer(result), model),
+      () => openSeasonPlayerDetails(current, model),
       'seasonMiniButton'
     )
   );
@@ -8980,18 +9040,24 @@ function seasonNflIntelligenceSurface(model) {
   const section = seasonEl('section', 'seasonPanel seasonNflIntelligence'),
     head = seasonSectionHeader('ROLE & OPPORTUNITY WATCH'),
     ids = seasonEvidenceStore ? [...seasonEvidenceStore.byPlayer.keys()] : [],
-    results =
+    results = (
       seasonInjuryOpportunityEngine?.evaluateAll(ids, {
         phase: String(model?.phase || 'DISCOVERY').toUpperCase(),
-        limit: 4,
-      }) || [];
+        limit: 12,
+      }) || []
+    ).filter(result =>
+        ['ACT', 'WATCH'].includes(result.timingState) &&
+        ['FRESH', 'AGING'].includes(result.freshness) &&
+        result.primarySignal !== 'NO_MATERIAL_SIGNAL' &&
+        result.supportingEvidenceIds.length >= 2
+      ).slice(0, 4);
   head.appendChild(seasonStatusBadge('SHADOW NFL CONTEXT', 'blue'));
   section.appendChild(head);
   if (!results.length) {
     section.appendChild(
       seasonEmpty(
-        'No persistent NFL signal is available',
-        'Normalized role, opportunity, injury, and relationship evidence is required.'
+        'No meaningful new league signals',
+        'No validated role, opportunity, injury, or depth-chart change has cleared the evidence threshold since the previous observation.'
       )
     );
     return section;
@@ -9182,7 +9248,10 @@ openSeasonPlayerDetails = function (player, model) {
 
 function seasonWeeklyCommandInput(model) {
   const waiver = seasonWaiverEvaluation(model),
-    startSit = seasonStartSitEvaluation(model),
+    startSitEvaluation = seasonStartSitEvaluation(model),
+    startSit = startSitEvaluation?.recommendation
+      ? { ...startSitEvaluation, primary: startSitEvaluation.recommendation.primary }
+      : startSitEvaluation,
     teamFit = seasonTeamFitSummary(model),
     pairs = waiver?.pairs || [],
     faabByPlayer = {},
@@ -9219,6 +9288,7 @@ function seasonWeeklyCommandInput(model) {
     waiverWindow: model?.snapshot?.waiverWindow || 'BEFORE_WAIVERS',
     waiverInformationEvent: model?.snapshot?.waiverInformationEvent || null,
     startSitWindow: model?.snapshot?.startSitWindow || null,
+    requireActionablePrimary: true,
     actionLimit: 3,
     watchLimit: 3,
     holdLimit: 3,
@@ -9468,7 +9538,7 @@ function seasonDiscoveryYahooState(model, id) {
     ],
     teams = model?.teams || model?.snapshot?.teams || [],
     match = list =>
-      list.find(player => (player.canonicalPlayerId || player.playerId || player.id) === id);
+      list.find(player => String(player?.identity?.canonicalPlayerId || player?.canonicalPlayerId || player?.playerId || player?.id || '') === String(id));
   const availablePlayer = match(available);
   if (availablePlayer)
     return availablePlayer.availability || availablePlayer.ownership || 'AVAILABLE';
@@ -9491,7 +9561,7 @@ function seasonDiscoveryResults(model) {
       !model?.syncError &&
       model?.snapshot?.provider === 'Yahoo';
   return seasonDiscoveryEngine.evaluateAll(ids, id => {
-    const player = seasonDiscoveryPlayer(id),
+    const player = seasonYahooPlayerForId(model, id) || seasonDiscoveryPlayer(id),
       pair = seasonWaiverPairForPlayer(model, player);
     let fit = null;
     try {
@@ -10064,9 +10134,11 @@ function renderSeasonMatchupIntelligence(model, content) {
 }
 const seasonLineupMatchupCard4411 = seasonMatchupCard;
 seasonMatchupCard = function (model, { full = false } = {}) {
-  return full
-    ? seasonMatchupIntelligenceSurface(model, { full: true })
-    : seasonMatchupIntelligenceSurface(model);
+  const yahoo = seasonLineupMatchupCard4411(model, { full });
+  if (!full) return yahoo;
+  const wrap = seasonEl('section', 'seasonMatchupCombinedSurface');
+  wrap.append(yahoo, seasonMatchupIntelligenceSurface(model, { full: true }));
+  return wrap;
 };
 
 function seasonDecisionAction(item) {
@@ -10123,11 +10195,15 @@ function seasonDecisionPlayer(model, item) {
 }
 function seasonNaturalDecisionReason(item) {
   if (!item) return 'No move needs attention right now.';
-  if (item.type === 'NO_ACTION') return 'Your current lineup does not need an immediate move.';
+  if (item.type === 'NO_ACTION') return item.reason || 'Your current roster does not have an evidence-supported upgrade in the available Yahoo player pool.';
   if (item.posture === 'WAIT' || item.type === 'START_SIT_WAIT')
     return 'Interesting option, but the current evidence does not support making the move yet.';
-  if (item.type === 'WAIVER_ACTION')
-    return 'This move improves the roster enough to act before the waiver window closes.';
+  if (item.type === 'WAIVER_ACTION') {
+    const consequence = item?.sourceDecisions?.find(source => source.engine === 'Waiver Intelligence')?.decision?.rosterConsequence;
+    return consequence?.dropPlayerName
+      ? `Add ${consequence.addPlayerName || item.playerName} and drop ${consequence.dropPlayerName}; the validated upgrade clears the roster-action threshold.`
+      : 'This move improves the roster enough to act before the waiver window closes.';
+  }
   if (item.type === 'START_SIT_ACTION') return 'This is the stronger lineup choice for the week.';
   if (item.type === 'INJURY_MONITOR') return 'Monitor the injury update before locking the lineup.';
   return 'Keep this decision on the weekly checklist.';
@@ -10334,10 +10410,91 @@ async function openSeasonManualState() {
   render(); el('scanModal')?.classList.remove('hidden');
 }
 
+/* Start/Sit Decision Experience. Presentation consumes the
+   existing Start/Sit scores; the optimizer remains deterministic and profile-scoped. */
+function seasonLineupProjection(player, model) {
+  const value = Number(player?.projection), trusted = model?.reviewMode || (
+    model?.snapshot?.provider === 'Yahoo' && !model?.stale && !model?.syncError
+  );
+  return trusted && Number.isFinite(value) ? value : null;
+}
+function seasonLineupDecision(intelligence) {
+  return intelligence?.recommendation || { status: intelligence?.primary ? 'MONITOR' : 'NO_CHANGE', primary: intelligence?.primary || null, changes: [], closeDecisions: intelligence?.watches || [], projectedDelta: 0 };
+}
+function seasonLineupPosture(recommendation, decision) {
+  if (recommendation?.status === 'NO_CHANGE') return 'NO CHANGE';
+  if (!decision || decision.state === 'WAIT') return 'WAIT';
+  if (decision.state === 'TOSS_UP') return 'TOSS-UP';
+  return decision.edge >= 11 ? 'START' : 'LEAN START';
+}
+function seasonLineupWhy(decision) {
+  if (!decision) return 'The current lineup is already the strongest supported legal combination.';
+  const starterStatus = String(decision.starter?.injuryStatus || '').toUpperCase();
+  if (['OUT', 'IR', 'PUP', 'NFI'].includes(starterStatus)) return `${decision.starter.name} is unavailable, and ${decision.preferred?.name || decision.alternative?.name} is the best supported legal replacement.`;
+  const preferred = decision.preferred === decision.starter ? decision.scores?.starter : decision.scores?.alternative,
+    other = decision.preferred === decision.starter ? decision.scores?.alternative : decision.scores?.starter,
+    labels = { role: 'more secure role', opportunity: 'stronger opportunity', floor: 'safer weekly floor', upside: 'higher weekly ceiling', matchup: 'better matchup' },
+    driver = Object.keys(labels).map(key => [key, (preferred?.dimensions?.[key] ?? -Infinity) - (other?.dimensions?.[key] ?? -Infinity)]).filter(([, delta]) => Number.isFinite(delta)).sort((a, b) => b[1] - a[1])[0]?.[0];
+  if (decision.state === 'WAIT') return 'Wait for the next injury or workload update before changing the lineup.';
+  if (decision.state === 'TOSS_UP') return `${decision.starter.name} and ${decision.alternative.name} are effectively even; use ${decision.preferred?.name || decision.starter.name} as the bounded lean.`;
+  return `${decision.preferred?.name || decision.starter.name} has the ${labels[driver] || 'stronger weekly profile'}.`;
+}
+function seasonLineupProjectionCopy(decision, model) {
+  if (!decision) return null;
+  const preferred = seasonLineupProjection(decision.preferred, model), other = seasonLineupProjection(decision.other, model);
+  if (preferred === null || other === null) return null;
+  const delta = preferred - other;
+  return `${preferred.toFixed(2)} vs ${other.toFixed(2)}${Math.abs(delta) > .004 ? ` • ${delta > 0 ? '+' : ''}${delta.toFixed(2)} pts` : ''}`;
+}
+function openSeasonStartSitComparison(decision, model) {
+  const content = el('scanContent');
+  if (!content || !decision) return;
+  content.innerHTML = '';
+  const recommendation = { status: ['TOSS_UP', 'WAIT'].includes(decision.state) ? 'MONITOR' : 'CHANGE' }, preferred = decision.preferred || decision.starter, other = decision.other || decision.alternative, pair = seasonEl('div', 'seasonLineupComparePair');
+  content.append(seasonSectionHeader('START/SIT COMPARISON', seasonButton('Close', () => closeScan(), 'seasonTextButton')));
+  [preferred, other].forEach((player, index) => {
+    const side = seasonEl('article', `seasonLineupCompareSide${index === 0 ? ' preferred' : ''}`), projection = seasonLineupProjection(player, model);
+    side.append(seasonPlayerPhoto(player), seasonEl('h2', '', player?.name || 'Unresolved player'), seasonEl('p', '', `${player?.position || '—'} • ${player?.sourceTeam || 'Team unavailable'}`), seasonEl('strong', '', projection === null ? 'Projection unavailable' : `${projection.toFixed(2)} projected points`), seasonEl('span', '', player?.injuryStatus ? `Status: ${player.injuryStatus}` : 'No current injury designation'));
+    pair.appendChild(side);
+  });
+  const pick = seasonEl('section', 'seasonLineupFantasyPick');
+  pick.append(seasonEl('small', '', 'FANTASY HQ PICK'), seasonEl('h1', '', preferred?.name || 'Wait'), seasonStatusBadge(seasonLineupPosture(recommendation, decision), seasonStartSitTone(decision.state)), seasonEl('p', '', seasonLineupWhy(decision)));
+  const projection = seasonLineupProjectionCopy(decision, model);
+  if (projection) pick.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : 'Projection'}: ${projection}`));
+  const details = document.createElement('details'), summary = document.createElement('summary'), body = seasonEl('div', 'seasonLineupEvidenceDetails');
+  details.className = 'seasonAnalysisDisclosure'; summary.textContent = 'View analysis';
+  body.append(seasonEl('p', '', decision.reason), seasonEl('p', '', decision.timingReason), seasonEl('p', '', `Evidence coverage: ${Math.round((decision.evidenceCoverage || 0) * 100)}%`));
+  details.append(summary, body); pick.appendChild(details); content.append(pair, pick); el('scanModal')?.classList.remove('hidden');
+}
+function seasonLineupOptimizerCard(model, intelligence, { compact = false } = {}) {
+  const recommendation = seasonLineupDecision(intelligence), decision = recommendation.primary, card = seasonEl('section', `seasonPanel seasonLineupOptimizer${compact ? ' compact' : ''} status-${recommendation.status.toLowerCase()}`), posture = seasonLineupPosture(recommendation, decision);
+  card.appendChild(seasonSectionHeader('WEEKLY LINEUP OPTIMIZER'));
+  if (!intelligence || intelligence.status === 'INSUFFICIENT_VALIDATED_SEASON_DATA') { card.append(seasonEl('h2', '', 'LINEUP EVIDENCE NEEDED'), seasonEl('p', '', intelligence?.reason || 'Current lineup evidence is unavailable.')); return card; }
+  if (recommendation.status === 'NO_CHANGE') { card.append(seasonStatusBadge('NO CHANGE', 'green'), seasonEl('h2', '', 'LINEUP LOOKS GOOD'), seasonEl('p', '', 'No supported legal change improves the current lineup.')); return card; }
+  const preferred = decision?.preferred || decision?.alternative, other = decision?.other || decision?.starter;
+  card.append(seasonStatusBadge(posture, seasonStartSitTone(decision?.state)), seasonEl('h2', '', recommendation.status === 'CHANGE' ? '1 LINEUP CHANGE' : 'CLOSE DECISION'), seasonEl('h3', '', `${preferred?.name || 'Wait'} → ${decision?.lineupSlot || 'lineup'}`), seasonEl('p', 'seasonLineupSit', `${other?.name || 'Current starter'} → ${recommendation.status === 'CHANGE' ? 'Bench' : 'comparison'}`), seasonEl('p', 'seasonLineupWhy', seasonLineupWhy(decision)));
+  const projection = seasonLineupProjectionCopy(decision, model);
+  if (projection) card.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : 'Projection'}: ${projection}`));
+  card.appendChild(seasonButton('View comparison', () => openSeasonStartSitComparison(decision, model), 'seasonMiniButton'));
+  return card;
+}
+renderSeasonStartSit = function (model, content) {
+  const intelligence = seasonStartSitEvaluation(model), recommendation = seasonLineupDecision(intelligence);
+  content.append(seasonPageIntro('Weekly Lineup Optimizer', 'One legal weekly lineup answer, with close calls and supporting evidence available on demand.'), seasonLineupOptimizerCard(model, intelligence));
+  if (recommendation.closeDecisions?.length) { const close = seasonEl('section', 'seasonPanel seasonLineupCloseDecisions'); close.appendChild(seasonSectionHeader('CLOSE DECISIONS TO MONITOR')); recommendation.closeDecisions.slice(0, 3).forEach(decision => close.appendChild(seasonStartSitRow(decision, model))); content.appendChild(close); }
+  content.appendChild(seasonRosterCard(model, { full: true }));
+};
+const seasonHomeRenderer44113 = renderSeasonHome;
+renderSeasonHome = function (model, content) {
+  seasonHomeRenderer44113(model, content);
+  const intelligence = seasonStartSitEvaluation(model), primaryType = seasonLastWeeklyPlan?.primaryAction?.type || '';
+  if (!primaryType.startsWith('START_SIT')) { const anchor = content.querySelector('.seasonLineupConsequence') || content.querySelector('.seasonWeeklyPrimaryDecision'); anchor?.insertAdjacentElement('afterend', seasonLineupOptimizerCard(model, intelligence, { compact: true })); }
+};
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_4_11_2_season_command_center')
+      .register('./service-worker.js?v=jonin_4_4_11_3_season_live_intelligence')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

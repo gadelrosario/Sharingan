@@ -424,21 +424,35 @@ class YahooFantasyClient:
 
     def league_bundle(self, league_key: str) -> dict[str, Any]:
         safe_key = urllib.parse.quote(league_key, safe=".")
+        payload: dict[str, Any] = {"leagueKey": league_key, "fetchedAt": _iso_now()}
+        errors: dict[str, str] = {}
+        try:
+            payload["league"] = self.get(f"league/{safe_key}")
+        except Exception as exc:
+            errors["league"] = _safe_error(exc)
         resources = {
-            "league": f"league/{safe_key}",
             "settings": f"league/{safe_key}/settings",
             "teams": f"league/{safe_key}/teams",
             "transactions": f"league/{safe_key}/transactions;count=50",
             "standings": f"league/{safe_key}/standings",
-            "matchups": f"league/{safe_key}/scoreboard",
         }
-        payload: dict[str, Any] = {"leagueKey": league_key, "fetchedAt": _iso_now()}
-        errors: dict[str, str] = {}
         for name, resource in resources.items():
             try:
                 payload[name] = self.get(resource)
             except Exception as exc:  # preserve successful subsystems
                 errors[name] = _safe_error(exc)
+        current_weeks = _find_scalar_values(payload.get("league"), "current_week")
+        current_week = next(
+            (int(value) for value in current_weeks if str(value).isdigit() and int(value) > 0),
+            None,
+        )
+        scoreboard_resource = f"league/{safe_key}/scoreboard"
+        if current_week is not None:
+            scoreboard_resource += f";week={current_week}"
+        try:
+            payload["matchups"] = self.get(scoreboard_resource)
+        except Exception as exc:
+            errors["matchups"] = _safe_error(exc)
         payload["teamRosters"] = {}
         for team_key in sorted(set(_find_scalar_values(payload.get("teams"), "team_key"))):
             if not team_key:

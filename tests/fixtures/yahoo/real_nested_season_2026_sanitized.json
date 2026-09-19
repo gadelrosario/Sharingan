@@ -1,0 +1,73 @@
+{
+  "discovery": {
+    "fantasy_content": {
+      "users": {
+        "0": {
+          "user": {
+            "games": {
+              "0": {
+                "game": [
+                  { "game_key": "470", "code": "nfl", "season": "2026" },
+                  { "leagues": {
+                    "0": { "league": [ { "league_key": "470.l.164770", "league_id": "164770", "name": "SQUAAA! ROYAL RUMBLE 2026-2027", "num_teams": 10, "draft_status": "postdraft", "current_week": "2", "season": "2026", "game_code": "nfl" } ] },
+                    "1": { "league": [ { "league_key": "470.l.385832", "league_id": "385832", "name": "Sanitized League Two", "num_teams": "10", "draft_status": "postdraft", "current_week": 2, "season": 2026, "game_code": "nfl" } ] },
+                    "2": { "league": [ { "league_key": "470.l.1469342", "league_id": "1469342", "name": "Sanitized League Three", "num_teams": 12, "draft_status": "postdraft", "current_week": "2", "season": "2026", "game_code": "nfl" } ] },
+                    "3": { "league": [ { "league_key": "470.l.1528653", "league_id": "1528653", "name": "Sanitized League Four", "num_teams": 10, "draft_status": "postdraft", "current_week": 2, "season": 2026, "game_code": "nfl" } ] },
+                    "count": 4
+                  } }
+                ]
+              },
+              "count": 1
+            }
+          }
+        },
+        "count": 1
+      }
+    }
+  },
+  "standings": {
+    "fantasy_content": {
+      "league": [
+        { "league_key": "470.l.164770", "name": "Sanitized Regression League", "num_teams": 10 },
+        { "standings": [ { "teams": {
+          "0": { "team": [ [ { "team_key": "470.l.164770.t.9" }, { "name": "Team 9" } ], { "team_points": { "total": "188.83" } }, { "team_standings": { "rank": "1", "playoff_seed": "1", "outcome_totals": { "wins": "1", "losses": 0, "ties": 0, "percentage": "1.000" }, "streak": { "type": "win", "value": "1" }, "points_for": "188.83", "points_against": 116.58 } } ] },
+          "1": { "team": [ [ { "team_key": "470.l.164770.t.3" }, { "name": "Team 3" } ], { "team_points": { "total": "175.59" } }, { "team_standings": { "rank": "2", "playoff_seed": "2", "outcome_totals": { "wins": "1", "losses": 0, "ties": 0, "percentage": "1.000" }, "points_for": "175.59", "points_against": "102.20" } } ] },
+          "2": { "team": [ [ { "team_key": "470.l.164770.t.7" }, { "name": "Team 7" } ], { "team_points": { "total": "170.57" } }, { "team_standings": { "rank": "3", "playoff_seed": "3", "outcome_totals": { "wins": "1", "losses": 0, "ties": 0, "percentage": "1.000" }, "points_for": "170.57", "points_against": "125.90" } } ] },
+          "3": { "team": [ [ { "team_key": "470.l.164770.t.4" }, { "name": "Team 4" } ], { "team_points": { "total": "162.04" } }, { "team_standings": { "rank": "4", "playoff_seed": "4", "outcome_totals": { "wins": "1", "losses": 0, "ties": 0, "percentage": "1.000" }, "points_for": "162.04", "points_against": "137.09" } } ] },
+          "4": { "team": [ [ { "team_key": "470.l.164770.t.6" }, { "name": "Team 6" } ], { "team_points": { "total": "138.48" } }, { "team_standings": { "rank": "5", "playoff_seed": "5", "outcome_totals": { "wins": "1", "losses": 0, "ties": 0, "percentage": "1.000" }, "points_for": "138.48", "points_against": "141.30" } } ] },
+          "5": { "team": [ [ { "team_key": "470.l.164770.t.11" }, { "name": "Team 11" } ], { "team_points": { "total": "141.30" } }, { "team_standings": { "rank": "6", "playoff_seed": "6", "outcome_totals": { "wins": 0, "losses": "1", "ties": 0, "percentage": ".000" }, "points_for": "141.30", "points_against": "138.48" } } ] },
+          "6": { "team": [ [ { "team_key": "470.l.164770.t.1" }, { "name": "Team 1" } ], { "team_points": { "total": "137.09" } }, { "team_standings": { "rank": "7", "playoff_seed": "7", "outcome_totals": { "wins": 0, "losses": "1", "ties": 0, "percentage": ".000" }, "points_for": "137.09", "points_against": "162.04" } } ] },
+          "7": { "team": [ [ { "team_key": "470.l.164770.t.8" }, { "name": "Team 8" } ], { "team_points": { "total": "125.90" } }, { "team_standings": { "rank": "8", "playoff_seed": "8", "outcome_totals": { "wins": 0, "losses": "1", "ties": 0, "percentage": ".000" }, "points_for": "125.90", "points_against": "170.57" } } ] },
+          "8": { "team": [ [ { "team_key": "470.l.164770.t.2" }, { "name": "User Team" }, { "managers": [ { "manager": { "is_current_login": "1" } } ] } ], { "team_points": { "coverage_type": "season", "season": "2026", "total": "116.58" } }, { "team_standings": { "rank": "9", "playoff_seed": "9", "outcome_totals": { "wins": 0, "losses": "1", "ties": 0, "percentage": ".000" }, "streak": { "type": "loss", "value": "1" }, "points_for": "116.58", "points_against": 188.83 } } ] },
+          "9": { "team": [ [ { "team_key": "470.l.164770.t.5" }, { "name": "Team 5" } ], { "team_points": { "total": "102.20" } }, { "team_standings": { "rank": "10", "playoff_seed": "10", "outcome_totals": { "wins": 0, "losses": "1", "ties": 0, "percentage": ".000" }, "points_for": "102.20", "points_against": "175.59" } } ] },
+          "count": 10
+        } } ] }
+      ]
+    }
+  },
+  "matchups": {
+    "fantasy_content": {
+      "league": [
+        { "league_key": "470.l.164770", "name": "Sanitized Regression League" },
+        { "scoreboard": { "week": 2, "0": { "matchups": {
+          "0": { "matchup": { "week": "2", "week_start": "2026-09-17", "week_end": "2026-09-21", "status": "midevent", "is_playoffs": "0", "is_consolation": "0", "is_matchup_of_the_week": "0", "0": { "teams": {
+            "0": { "team": [ [ { "team_key": "470.l.164770.t.1" } ], { "win_probability": 0.52, "team_points": { "total": "0.00" }, "team_projected_points": { "total": "136.89" } } ] },
+            "1": { "team": [ [ { "team_key": "470.l.164770.t.9" } ], { "win_probability": 0.48, "team_points": { "total": "0.00" }, "team_projected_points": { "total": "134.40" } } ] }, "count": 2 } } } },
+          "1": { "matchup": { "week": "2", "week_start": "2026-09-17", "week_end": "2026-09-21", "status": "midevent", "is_playoffs": "0", "is_consolation": "0", "is_matchup_of_the_week": "1", "0": { "teams": {
+            "0": { "team": [ [ { "team_key": "470.l.164770.t.2" } ], { "win_probability": 0.22, "team_points": { "total": "0.00" }, "team_projected_points": { "total": "144.54" } } ] },
+            "1": { "team": [ [ { "team_key": "470.l.164770.t.7" } ], { "win_probability": 0.78, "team_points": { "total": "91.90" }, "team_projected_points": { "total": "139.57" } } ] }, "count": 2 } } } },
+          "2": { "matchup": { "week": "2", "status": "midevent", "0": { "teams": {
+            "0": { "team": [ [ { "team_key": "470.l.164770.t.3" } ], { "win_probability": 0.55, "team_points": { "total": "0.00" }, "team_projected_points": { "total": "140.54" } } ] },
+            "1": { "team": [ [ { "team_key": "470.l.164770.t.8" } ], { "win_probability": 0.45, "team_points": { "total": "4.50" }, "team_projected_points": { "total": "140.95" } } ] }, "count": 2 } } } },
+          "3": { "matchup": { "week": "2", "status": "midevent", "0": { "teams": {
+            "0": { "team": [ [ { "team_key": "470.l.164770.t.4" } ], { "win_probability": 0.38, "team_points": { "total": "-0.10" }, "team_projected_points": { "total": "140.13" } } ] },
+            "1": { "team": [ [ { "team_key": "470.l.164770.t.5" } ], { "win_probability": 0.62, "team_points": { "total": "7.31" }, "team_projected_points": { "total": "142.41" } } ] }, "count": 2 } } } },
+          "4": { "matchup": { "week": "2", "status": "midevent", "0": { "teams": {
+            "0": { "team": [ [ { "team_key": "470.l.164770.t.6" } ], { "win_probability": 0.51, "team_points": { "total": "42.10" }, "team_projected_points": { "total": "130.71" } } ] },
+            "1": { "team": [ [ { "team_key": "470.l.164770.t.11" } ], { "win_probability": 0.49, "team_points": { "total": "0.00" }, "team_projected_points": { "total": "132.20" } } ] }, "count": 2 } } } },
+          "count": 5
+        } } } }
+      ]
+    }
+  }
+}

@@ -21,7 +21,7 @@ class StartSitIntelligence443Tests(unittest.TestCase):
     def test_browser_integration_is_progressive_and_fail_closed(self):
         app = (ROOT / 'js/app.js').read_text(encoding='utf-8')
         html = (ROOT / 'index.html').read_text(encoding='utf-8')
-        self.assertIn("startsit:'⚡ Start/Sit'", app)
+        self.assertIn("startsit: '⚡ Start/Sit'", app)
         self.assertIn("showSeasonPage('startsit')", html)
         self.assertIn('renderSeasonStartSit', app)
         self.assertIn('INSUFFICIENT_VALIDATED_SEASON_DATA', app)

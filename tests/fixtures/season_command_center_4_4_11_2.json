@@ -20,6 +20,30 @@
     }
   },
   "lineupConsequence": {"injuredPlayerId":"21","replacementPlayerId":"83","replacementSlot":"FLEX","nextOptionPlayerId":"56"},
+  "lineupReview": {
+    "timingState": "LOCK_WINDOW",
+    "phase": "optimization",
+    "scenario": "injured-starter",
+    "label": "REVIEW FIXTURE LINEUP EVIDENCE",
+    "evidence": {
+      "64":{"role":91,"opportunity":92,"recentUsage":90,"roleStability":92,"matchup":84,"floor":90,"upside":94,"volatility":22,"scoringFit":94,"offense":90,"projection":91,"injuryUncertainty":0,"workloadUncertainty":4,"confidence":95},
+      "2":{"role":94,"opportunity":95,"recentUsage":92,"roleStability":94,"matchup":84,"floor":92,"upside":95,"volatility":20,"scoringFit":95,"offense":89,"projection":94,"injuryUncertainty":0,"workloadUncertainty":3,"confidence":96},
+      "54":{"role":81,"opportunity":82,"recentUsage":80,"roleStability":80,"matchup":77,"floor":79,"upside":84,"volatility":31,"scoringFit":84,"offense":80,"projection":82,"injuryUncertainty":0,"workloadUncertainty":10,"confidence":90},
+      "170":{"role":54,"opportunity":52,"recentUsage":50,"roleStability":50,"matchup":65,"floor":49,"upside":68,"volatility":54,"scoringFit":58,"offense":72,"projection":52,"injuryUncertainty":0,"workloadUncertainty":34,"confidence":78},
+      "93":{"role":80,"opportunity":80,"recentUsage":78,"roleStability":78,"matchup":78,"floor":76,"upside":85,"volatility":35,"scoringFit":79,"offense":79,"projection":80,"injuryUncertainty":0,"workloadUncertainty":11,"confidence":89},
+      "88":{"role":62,"opportunity":61,"recentUsage":60,"roleStability":66,"matchup":69,"floor":65,"upside":63,"volatility":42,"scoringFit":71,"offense":70,"projection":63,"injuryUncertainty":0,"workloadUncertainty":22,"confidence":83},
+      "21":{"role":45,"opportunity":20,"recentUsage":82,"roleStability":72,"matchup":75,"floor":20,"upside":58,"volatility":70,"scoringFit":82,"offense":78,"projection":0,"injuryUncertainty":100,"workloadUncertainty":100,"confidence":96,"injuryStatus":"OUT"},
+      "18":{"role":88,"opportunity":88,"recentUsage":86,"roleStability":89,"matchup":82,"floor":87,"upside":91,"volatility":25,"scoringFit":92,"offense":86,"projection":90,"injuryUncertainty":0,"workloadUncertainty":5,"confidence":94},
+      "24":{"role":84,"opportunity":85,"recentUsage":82,"roleStability":82,"matchup":79,"floor":80,"upside":89,"volatility":31,"scoringFit":91,"offense":90,"projection":85,"injuryUncertainty":0,"workloadUncertainty":8,"confidence":92},
+      "56":{"role":72,"opportunity":71,"recentUsage":69,"roleStability":70,"matchup":73,"floor":69,"upside":77,"volatility":39,"scoringFit":76,"offense":72,"projection":72,"injuryUncertainty":0,"workloadUncertainty":17,"confidence":86},
+      "83":{"role":78,"opportunity":79,"recentUsage":76,"roleStability":79,"matchup":76,"floor":77,"upside":82,"volatility":34,"scoringFit":82,"offense":79,"projection":79,"injuryUncertainty":0,"workloadUncertainty":11,"confidence":90},
+      "113":{"role":76,"opportunity":75,"recentUsage":74,"roleStability":81,"matchup":71,"floor":78,"upside":72,"volatility":29,"scoringFit":81,"offense":73,"projection":76,"injuryUncertainty":0,"workloadUncertainty":9,"confidence":89},
+      "99":{"role":77,"opportunity":78,"recentUsage":75,"roleStability":75,"matchup":74,"floor":73,"upside":84,"volatility":36,"scoringFit":83,"offense":75,"projection":78,"injuryUncertainty":0,"workloadUncertainty":14,"confidence":88},
+      "219":{"role":70,"opportunity":70,"recentUsage":70,"roleStability":86,"matchup":72,"floor":70,"upside":72,"volatility":28,"scoringFit":70,"offense":82,"projection":70,"injuryUncertainty":0,"workloadUncertainty":2,"confidence":90},
+      "195":{"role":72,"opportunity":72,"recentUsage":70,"roleStability":75,"matchup":78,"floor":71,"upside":79,"volatility":38,"scoringFit":72,"offense":72,"projection":74,"injuryUncertainty":0,"workloadUncertainty":5,"confidence":87},
+      "68":{"role":0,"opportunity":0,"recentUsage":0,"roleStability":0,"matchup":0,"floor":0,"upside":0,"volatility":100,"scoringFit":0,"offense":70,"projection":0,"injuryUncertainty":100,"workloadUncertainty":100,"confidence":96,"injuryStatus":"IR"}
+    }
+  },
   "roster": [
     {"canonicalPlayerId":"64","name":"Jayden Daniels","position":"QB","sourceTeam":"WAS","rosterSlot":"QB","projection":22.05},
     {"canonicalPlayerId":"2","name":"Bijan Robinson","position":"RB","sourceTeam":"ATL","rosterSlot":"RB","projection":21.03},

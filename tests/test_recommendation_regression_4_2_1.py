@@ -24,14 +24,14 @@ class RecommendationRegression421Tests(unittest.TestCase):
         render=app.split('function renderRecommendation()',1)[1].split('function boardControlState',1)[0]
         self.assertIn('const primary = recs[0]',render)
         self.assertIn('displayed = selected || primary',render)
-        self.assertIn('updateDraftDecisionChrome(model,displayed,primary)',render)
-        self.assertIn("DOM.recordPickBtn.dataset.playerId=displayed?.id??''",app)
+        self.assertIn('updateDraftDecisionChrome(model, displayed, primary)',render)
+        self.assertIn("DOM.recordPickBtn.dataset.playerId = displayed?.id ?? ''",app)
 
     def test_version_and_cache_are_4_3(self):
         html=(ROOT/'index.html').read_text(encoding='utf-8')
         worker=(ROOT/'service-worker.js').read_text(encoding='utf-8')
         self.assertIn('<small data-app-version></small>',html)
-        self.assertIn('js/app.js?v=4.3.12',html)
-        self.assertIn("fantasy-hq-jonin-4-3-12",worker)
+        self.assertIn('js/app.js?v=4.4.11.3-season-live-1',html)
+        self.assertIn("fantasy-hq-jonin-4-4-11-3-start-sit-season-live-intelligence",worker)
 
 if __name__=='__main__': unittest.main()
