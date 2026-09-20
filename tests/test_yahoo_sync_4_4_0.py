@@ -18,7 +18,7 @@ class YahooSyncFoundationTests(unittest.TestCase):
         self.run_node('tests/yahoo-season-4-4-0-tests.js', 21)
 
     def test_sync_controller_contracts(self):
-        self.run_node('tests/yahoo-sync-4-4-0-tests.js', 8)
+        self.run_node('tests/yahoo-sync-4-4-0-tests.js', 13)
 
     def test_modules_load_before_app_and_are_cached(self):
         html = (ROOT / 'index.html').read_text()
@@ -26,8 +26,8 @@ class YahooSyncFoundationTests(unittest.TestCase):
         self.assertLess(html.index('js/yahoo-season-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/yahoo-sync-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/season-command-center-v1.js'), html.index('js/app.js'))
-        self.assertIn("'./js/yahoo-season-v1.js?v=1.2.0-current-week'", worker)
-        self.assertIn("'./js/yahoo-sync-v1.js?v=1.1.1'", worker)
+        self.assertIn("'./js/yahoo-season-v1.js?v=1.3.0-live-player'", worker)
+        self.assertIn("'./js/yahoo-sync-v1.js?v=1.2.2-response-contract'", worker)
         self.assertIn("'./js/season-command-center-v1.js?v=1.1.6-projection-semantics'", worker)
 
     def test_browser_transport_targets_https_local_bridge(self):

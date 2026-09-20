@@ -1,7 +1,7 @@
 {
   "schemaVersion": "fantasy-hq-season-player-registry-1",
-  "generatedAt": "2026-09-02T12:00:00.000Z",
-  "sourceArtifact": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv",
+  "generatedAt": "2026-09-19T14:31:29.263Z",
+  "sourceArtifact": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.csv",
   "profileIndependent": true,
   "recommendationAuthority": false,
   "draftAuthority": false,
@@ -527,6 +527,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0031235",
+      "canonicalPlayerId": "fhq_season_gsis_00_0031235",
+      "name": "Odell Beckham Jr.",
+      "normalizedName": "odell beckham jr",
+      "position": "WR",
+      "teamAtObservation": "NYG",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0031235",
+        "gsisId": "00-0031235",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DAL_NYG:00-0031235"
+      },
+      "externalIds": {
+        "nflverse": "00-0031235"
+      },
+      "gsisId": "00-0031235",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NYG",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0031236",
       "canonicalPlayerId": "fhq_season_gsis_00_0031236",
       "name": "Brandin Cooks",
@@ -678,6 +730,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0031595",
+      "canonicalPlayerId": "fhq_season_gsis_00_0031595",
+      "name": "Michael Burton",
+      "normalizedName": "michael burton",
+      "position": "FB",
+      "teamAtObservation": "CLE",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0031595",
+        "gsisId": "00-0031595",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CLE_JAX:00-0031595"
+      },
+      "externalIds": {
+        "nflverse": "00-0031595"
+      },
+      "gsisId": "00-0031595",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": false,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CLE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "FB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -1307,6 +1411,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0032950",
+      "canonicalPlayerId": "fhq_season_gsis_00_0032950",
+      "name": "Carson Wentz",
+      "normalizedName": "carson wentz",
+      "position": "QB",
+      "teamAtObservation": "MIN",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0032950",
+        "gsisId": "00-0032950",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_GB_MIN:00-0032950"
+      },
+      "externalIds": {
+        "nflverse": "00-0032950"
+      },
+      "gsisId": "00-0032950",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIN",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "QB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0032951",
       "canonicalPlayerId": "fhq_season_gsis_00_0032951",
       "name": "Laquon Treadwell",
@@ -1827,6 +1983,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0033537",
+      "canonicalPlayerId": "fhq_season_gsis_00_0033537",
+      "name": "Deshaun Watson",
+      "normalizedName": "deshaun watson",
+      "position": "QB",
+      "teamAtObservation": "CLE",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0033537",
+        "gsisId": "00-0033537",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CLE_JAX:00-0033537"
+      },
+      "externalIds": {
+        "nflverse": "00-0033537"
+      },
+      "gsisId": "00-0033537",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CLE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "QB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0033555",
       "canonicalPlayerId": "fhq_season_gsis_00_0033555",
       "name": "Mack Hollins",
@@ -1926,6 +2134,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-18T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0033662",
+      "canonicalPlayerId": "fhq_season_gsis_00_0033662",
+      "name": "Cooper Rush",
+      "normalizedName": "cooper rush",
+      "position": "QB",
+      "teamAtObservation": "ATL",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0033662",
+        "gsisId": "00-0033662",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ATL_PIT:00-0033662"
+      },
+      "externalIds": {
+        "nflverse": "00-0033662"
+      },
+      "gsisId": "00-0033662",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "ATL",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "QB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -2919,6 +3179,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0034419",
+      "canonicalPlayerId": "fhq_season_gsis_00_0034419",
+      "name": "Braxton Berrios",
+      "normalizedName": "braxton berrios",
+      "position": "WR",
+      "teamAtObservation": "NYG",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0034419",
+        "gsisId": "00-0034419",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DAL_NYG:00-0034419"
+      },
+      "externalIds": {
+        "nflverse": "00-0034419"
+      },
+      "gsisId": "00-0034419",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NYG",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0034613",
       "canonicalPlayerId": "fhq_season_gsis_00_0034613",
       "name": "Tanner Hudson",
@@ -3174,6 +3486,110 @@
           "season": 2025,
           "week": 17,
           "observedAt": "2025-12-28T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0034837",
+      "canonicalPlayerId": "fhq_season_gsis_00_0034837",
+      "name": "Calvin Ridley",
+      "normalizedName": "calvin ridley",
+      "position": "WR",
+      "teamAtObservation": "TEN",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0034837",
+        "gsisId": "00-0034837",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NYJ_TEN:00-0034837"
+      },
+      "externalIds": {
+        "nflverse": "00-0034837"
+      },
+      "gsisId": "00-0034837",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "TEN",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0034854",
+      "canonicalPlayerId": "fhq_season_gsis_00_0034854",
+      "name": "KhaDarel Hodge",
+      "normalizedName": "khadarel hodge",
+      "position": "WR",
+      "teamAtObservation": "SF",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-10T23:59:59.000Z",
+      "lastSeenAt": "2026-09-10T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0034854",
+        "gsisId": "00-0034854",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_SF_LA:00-0034854"
+      },
+      "externalIds": {
+        "nflverse": "00-0034854"
+      },
+      "gsisId": "00-0034854",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "SF",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-10T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-10T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -3855,6 +4271,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0035345",
+      "canonicalPlayerId": "fhq_season_gsis_00_0035345",
+      "name": "Chris Myarick",
+      "normalizedName": "chris myarick",
+      "position": "TE",
+      "teamAtObservation": "LV",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0035345",
+        "gsisId": "00-0035345",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0035345"
+      },
+      "externalIds": {
+        "nflverse": "00-0035345"
+      },
+      "gsisId": "00-0035345",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "LV",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0035359",
       "canonicalPlayerId": "fhq_season_gsis_00_0035359",
       "name": "David Sills",
@@ -3954,6 +4422,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0035500",
+      "canonicalPlayerId": "fhq_season_gsis_00_0035500",
+      "name": "Greg Dortch",
+      "normalizedName": "greg dortch",
+      "position": "WR",
+      "teamAtObservation": "BUF",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0035500",
+        "gsisId": "00-0035500",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BUF_HOU:00-0035500"
+      },
+      "externalIds": {
+        "nflverse": "00-0035500"
+      },
+      "gsisId": "00-0035500",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "BUF",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -4370,6 +4890,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0035704",
+      "canonicalPlayerId": "fhq_season_gsis_00_0035704",
+      "name": "Drew Lock",
+      "normalizedName": "drew lock",
+      "position": "QB",
+      "teamAtObservation": "SEA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-09T23:59:59.000Z",
+      "lastSeenAt": "2026-09-09T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0035704",
+        "gsisId": "00-0035704",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NE_SEA:00-0035704"
+      },
+      "externalIds": {
+        "nflverse": "00-0035704"
+      },
+      "gsisId": "00-0035704",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "SEA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "QB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -5935,6 +6507,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0036646",
+      "canonicalPlayerId": "fhq_season_gsis_00_0036646",
+      "name": "Simi Fehoko",
+      "normalizedName": "simi fehoko",
+      "position": "WR",
+      "teamAtObservation": "ARI",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0036646",
+        "gsisId": "00-0036646",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ARI_LAC:00-0036646"
+      },
+      "externalIds": {
+        "nflverse": "00-0036646"
+      },
+      "gsisId": "00-0036646",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "ARI",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0036679",
       "canonicalPlayerId": "fhq_season_gsis_00_0036679",
       "name": "Shane Buechele",
@@ -6086,6 +6710,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0036754",
+      "canonicalPlayerId": "fhq_season_gsis_00_0036754",
+      "name": "Brock Wright",
+      "normalizedName": "brock wright",
+      "position": "TE",
+      "teamAtObservation": "DET",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0036754",
+        "gsisId": "00-0036754",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NO_DET:00-0036754"
+      },
+      "externalIds": {
+        "nflverse": "00-0036754"
+      },
+      "gsisId": "00-0036754",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "DET",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -6715,6 +7391,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0036945",
+      "canonicalPlayerId": "fhq_season_gsis_00_0036945",
+      "name": "Justin Fields",
+      "normalizedName": "justin fields",
+      "position": "QB",
+      "teamAtObservation": "KC",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-14T23:59:59.000Z",
+      "lastSeenAt": "2026-09-14T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0036945",
+        "gsisId": "00-0036945",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DEN_KC:00-0036945"
+      },
+      "externalIds": {
+        "nflverse": "00-0036945"
+      },
+      "gsisId": "00-0036945",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "KC",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "QB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0036959",
       "canonicalPlayerId": "fhq_season_gsis_00_0036959",
       "name": "Michael Bandy",
@@ -6866,6 +7594,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0037004",
+      "canonicalPlayerId": "fhq_season_gsis_00_0037004",
+      "name": "Hunter Long",
+      "normalizedName": "hunter long",
+      "position": "TE",
+      "teamAtObservation": "ARI",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0037004",
+        "gsisId": "00-0037004",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ARI_LAC:00-0037004"
+      },
+      "externalIds": {
+        "nflverse": "00-0037004"
+      },
+      "gsisId": "00-0037004",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "ARI",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -7599,6 +8379,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0037157",
+      "canonicalPlayerId": "fhq_season_gsis_00_0037157",
+      "name": "Zonovan Knight",
+      "normalizedName": "zonovan knight",
+      "position": "RB",
+      "teamAtObservation": "ARI",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0037157",
+        "gsisId": "00-0037157",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ARI_LAC:00-0037157"
+      },
+      "externalIds": {
+        "nflverse": "00-0037157"
+      },
+      "gsisId": "00-0037157",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "ARI",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0037231",
       "canonicalPlayerId": "fhq_season_gsis_00_0037231",
       "name": "Kevin Austin Jr.",
@@ -8015,6 +8847,110 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0037311",
+      "canonicalPlayerId": "fhq_season_gsis_00_0037311",
+      "name": "Ko Kieft",
+      "normalizedName": "ko kieft",
+      "position": "TE",
+      "teamAtObservation": "TB",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0037311",
+        "gsisId": "00-0037311",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_TB_CIN:00-0037311"
+      },
+      "externalIds": {
+        "nflverse": "00-0037311"
+      },
+      "gsisId": "00-0037311",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "TB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0037317",
+      "canonicalPlayerId": "fhq_season_gsis_00_0037317",
+      "name": "Nick Muse",
+      "normalizedName": "nick muse",
+      "position": "TE",
+      "teamAtObservation": "ATL",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0037317",
+        "gsisId": "00-0037317",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ATL_PIT:00-0037317"
+      },
+      "externalIds": {
+        "nflverse": "00-0037317"
+      },
+      "gsisId": "00-0037317",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "ATL",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0037324",
       "canonicalPlayerId": "fhq_season_gsis_00_0037324",
       "name": "Chris Oladokun",
@@ -8062,6 +8998,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0037380",
+      "canonicalPlayerId": "fhq_season_gsis_00_0037380",
+      "name": "Kaden Davis",
+      "normalizedName": "kaden davis",
+      "position": "WR",
+      "teamAtObservation": "CHI",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0037380",
+        "gsisId": "00-0037380",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CHI_CAR:00-0037380"
+      },
+      "externalIds": {
+        "nflverse": "00-0037380"
+      },
+      "gsisId": "00-0037380",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CHI",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -8166,6 +9154,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0037524",
+      "canonicalPlayerId": "fhq_season_gsis_00_0037524",
+      "name": "Tay Martin",
+      "normalizedName": "tay martin",
+      "position": "WR",
+      "teamAtObservation": "DET",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0037524",
+        "gsisId": "00-0037524",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NO_DET:00-0037524"
+      },
+      "externalIds": {
+        "nflverse": "00-0037524"
+      },
+      "gsisId": "00-0037524",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "DET",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -8530,6 +9570,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-20T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0037745",
+      "canonicalPlayerId": "fhq_season_gsis_00_0037745",
+      "name": "Velus Jones Jr.",
+      "normalizedName": "velus jones jr",
+      "position": "RB",
+      "teamAtObservation": "SEA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-09T23:59:59.000Z",
+      "lastSeenAt": "2026-09-09T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0037745",
+        "gsisId": "00-0037745",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NE_SEA:00-0037745"
+      },
+      "externalIds": {
+        "nflverse": "00-0037745"
+      },
+      "gsisId": "00-0037745",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "SEA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -9466,6 +10558,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-18T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0038489",
+      "canonicalPlayerId": "fhq_season_gsis_00_0038489",
+      "name": "Ben VanSumeren",
+      "normalizedName": "ben vansumeren",
+      "position": "RB",
+      "teamAtObservation": "KC",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-14T23:59:59.000Z",
+      "lastSeenAt": "2026-09-14T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0038489",
+        "gsisId": "00-0038489",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DEN_KC:00-0038489"
+      },
+      "externalIds": {
+        "nflverse": "00-0038489"
+      },
+      "gsisId": "00-0038489",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "KC",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -10563,6 +11707,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0038728",
+      "canonicalPlayerId": "fhq_season_gsis_00_0038728",
+      "name": "Jared Wayne",
+      "normalizedName": "jared wayne",
+      "position": "WR",
+      "teamAtObservation": "HOU",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0038728",
+        "gsisId": "00-0038728",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BUF_HOU:00-0038728"
+      },
+      "externalIds": {
+        "nflverse": "00-0038728"
+      },
+      "gsisId": "00-0038728",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "HOU",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0038738",
       "canonicalPlayerId": "fhq_season_gsis_00_0038738",
       "name": "Hunter Luepke",
@@ -10766,6 +11962,58 @@
           "season": 2025,
           "week": 17,
           "observedAt": "2025-12-25T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0038824",
+      "canonicalPlayerId": "fhq_season_gsis_00_0038824",
+      "name": "Ryan Miller",
+      "normalizedName": "ryan miller",
+      "position": "WR",
+      "teamAtObservation": "MIA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0038824",
+        "gsisId": "00-0038824",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0038824"
+      },
+      "externalIds": {
+        "nflverse": "00-0038824"
+      },
+      "gsisId": "00-0038824",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -11291,6 +12539,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0039107",
+      "canonicalPlayerId": "fhq_season_gsis_00_0039107",
+      "name": "Stetson Bennett",
+      "normalizedName": "stetson bennett",
+      "position": "QB",
+      "teamAtObservation": "LA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-10T23:59:59.000Z",
+      "lastSeenAt": "2026-09-10T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0039107",
+        "gsisId": "00-0039107",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_SF_LA:00-0039107"
+      },
+      "externalIds": {
+        "nflverse": "00-0039107"
+      },
+      "gsisId": "00-0039107",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "LA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-10T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "QB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-10T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0039229",
       "canonicalPlayerId": "fhq_season_gsis_00_0039229",
       "name": "Charlie Smyth",
@@ -11338,6 +12638,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0039299",
+      "canonicalPlayerId": "fhq_season_gsis_00_0039299",
+      "name": "George Holani",
+      "normalizedName": "george holani",
+      "position": "RB",
+      "teamAtObservation": "SEA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-09T23:59:59.000Z",
+      "lastSeenAt": "2026-09-09T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0039299",
+        "gsisId": "00-0039299",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NE_SEA:00-0039299"
+      },
+      "externalIds": {
+        "nflverse": "00-0039299"
+      },
+      "gsisId": "00-0039299",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "SEA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -11494,6 +12846,58 @@
           "season": 2025,
           "week": 17,
           "observedAt": "2025-12-25T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0039365",
+      "canonicalPlayerId": "fhq_season_gsis_00_0039365",
+      "name": "Jacob Cowing",
+      "normalizedName": "jacob cowing",
+      "position": "WR",
+      "teamAtObservation": "SF",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-10T23:59:59.000Z",
+      "lastSeenAt": "2026-09-10T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0039365",
+        "gsisId": "00-0039365",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_SF_LA:00-0039365"
+      },
+      "externalIds": {
+        "nflverse": "00-0039365"
+      },
+      "gsisId": "00-0039365",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "SF",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-10T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-10T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -11858,6 +13262,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0039471",
+      "canonicalPlayerId": "fhq_season_gsis_00_0039471",
+      "name": "Frank Gore Jr.",
+      "normalizedName": "frank gore jr",
+      "position": "RB",
+      "teamAtObservation": "BUF",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0039471",
+        "gsisId": "00-0039471",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BUF_HOU:00-0039471"
+      },
+      "externalIds": {
+        "nflverse": "00-0039471"
+      },
+      "gsisId": "00-0039471",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "BUF",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -12799,6 +14255,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0039814",
+      "canonicalPlayerId": "fhq_season_gsis_00_0039814",
+      "name": "Erick All",
+      "normalizedName": "erick all",
+      "position": "TE",
+      "teamAtObservation": "CIN",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0039814",
+        "gsisId": "00-0039814",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_TB_CIN:00-0039814"
+      },
+      "externalIds": {
+        "nflverse": "00-0039814"
+      },
+      "gsisId": "00-0039814",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CIN",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0039824",
       "canonicalPlayerId": "fhq_season_gsis_00_0039824",
       "name": "Jared Wiley",
@@ -13319,6 +14827,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0040081",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040081",
+      "name": "Jake Briningstool",
+      "normalizedName": "jake briningstool",
+      "position": "TE",
+      "teamAtObservation": "KC",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-14T23:59:59.000Z",
+      "lastSeenAt": "2026-09-14T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040081",
+        "gsisId": "00-0040081",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DEN_KC:00-0040081"
+      },
+      "externalIds": {
+        "nflverse": "00-0040081"
+      },
+      "gsisId": "00-0040081",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "KC",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0040120",
       "canonicalPlayerId": "fhq_season_gsis_00_0040120",
       "name": "Jimmy Holiday",
@@ -13470,6 +15030,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040142",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040142",
+      "name": "Kaleb Johnson",
+      "normalizedName": "kaleb johnson",
+      "position": "RB",
+      "teamAtObservation": "GB",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040142",
+        "gsisId": "00-0040142",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_GB_MIN:00-0040142"
+      },
+      "externalIds": {
+        "nflverse": "00-0040142"
+      },
+      "gsisId": "00-0040142",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "GB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -13990,6 +15602,58 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040215",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040215",
+      "name": "Gavin Bartholomew",
+      "normalizedName": "gavin bartholomew",
+      "position": "TE",
+      "teamAtObservation": "MIN",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040215",
+        "gsisId": "00-0040215",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_GB_MIN:00-0040215"
+      },
+      "externalIds": {
+        "nflverse": "00-0040215"
+      },
+      "gsisId": "00-0040215",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIN",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -14567,6 +16231,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0040390",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040390",
+      "name": "Jackson Meeks",
+      "normalizedName": "jackson meeks",
+      "position": "TE",
+      "teamAtObservation": "DET",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040390",
+        "gsisId": "00-0040390",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NO_DET:00-0040390"
+      },
+      "externalIds": {
+        "nflverse": "00-0040390"
+      },
+      "gsisId": "00-0040390",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "DET",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0040398",
       "canonicalPlayerId": "fhq_season_gsis_00_0040398",
       "name": "Brady Cook",
@@ -14666,6 +16382,58 @@
           "season": 2025,
           "week": 18,
           "observedAt": "2026-01-04T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040429",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040429",
+      "name": "Josh Williams",
+      "normalizedName": "josh williams",
+      "position": "RB",
+      "teamAtObservation": "TB",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040429",
+        "gsisId": "00-0040429",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_TB_CIN:00-0040429"
+      },
+      "externalIds": {
+        "nflverse": "00-0040429"
+      },
+      "gsisId": "00-0040429",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "TB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -15243,6 +17011,58 @@
       "positionConflict": false
     },
     {
+      "seasonPlayerId": "fhq_season_gsis_00_0040568",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040568",
+      "name": "Lan Larison",
+      "normalizedName": "lan larison",
+      "position": "RB",
+      "teamAtObservation": "NE",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-09T23:59:59.000Z",
+      "lastSeenAt": "2026-09-09T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040568",
+        "gsisId": "00-0040568",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NE_SEA:00-0040568"
+      },
+      "externalIds": {
+        "nflverse": "00-0040568"
+      },
+      "gsisId": "00-0040568",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
       "seasonPlayerId": "fhq_season_gsis_00_0040581",
       "canonicalPlayerId": "fhq_season_gsis_00_0040581",
       "name": "Dont'e Thornton Jr.",
@@ -15394,6 +17214,110 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-18T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040598",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040598",
+      "name": "Mark Redman",
+      "normalizedName": "mark redman",
+      "position": "TE",
+      "teamAtObservation": "GB",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040598",
+        "gsisId": "00-0040598",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_GB_MIN:00-0040598"
+      },
+      "externalIds": {
+        "nflverse": "00-0040598"
+      },
+      "gsisId": "00-0040598",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "GB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040621",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040621",
+      "name": "Montorie Foster Jr",
+      "normalizedName": "montorie foster jr",
+      "position": "WR",
+      "teamAtObservation": "SEA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-09T23:59:59.000Z",
+      "lastSeenAt": "2026-09-09T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040621",
+        "gsisId": "00-0040621",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NE_SEA:00-0040621"
+      },
+      "externalIds": {
+        "nflverse": "00-0040621"
+      },
+      "gsisId": "00-0040621",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "SEA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
         }
       ],
       "positionConflict": false
@@ -15758,6 +17682,2034 @@
           "season": 2025,
           "week": 16,
           "observedAt": "2025-12-21T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040785",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040785",
+      "name": "Dohnte Meyers",
+      "normalizedName": "dohnte meyers",
+      "position": "WR",
+      "teamAtObservation": "CIN",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040785",
+        "gsisId": "00-0040785",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_TB_CIN:00-0040785"
+      },
+      "externalIds": {
+        "nflverse": "00-0040785"
+      },
+      "gsisId": "00-0040785",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CIN",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040870",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040870",
+      "name": "Ja'Kobi Lane",
+      "normalizedName": "jakobi lane",
+      "position": "WR",
+      "teamAtObservation": "BAL",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040870",
+        "gsisId": "00-0040870",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BAL_IND:00-0040870"
+      },
+      "externalIds": {
+        "nflverse": "00-0040870"
+      },
+      "gsisId": "00-0040870",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "BAL",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040878",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040878",
+      "name": "Mike Washington Jr.",
+      "normalizedName": "mike washington jr",
+      "position": "RB",
+      "teamAtObservation": "LV",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040878",
+        "gsisId": "00-0040878",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0040878"
+      },
+      "externalIds": {
+        "nflverse": "00-0040878"
+      },
+      "gsisId": "00-0040878",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "LV",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040879",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040879",
+      "name": "Matthew Hibner",
+      "normalizedName": "matthew hibner",
+      "position": "TE",
+      "teamAtObservation": "BAL",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040879",
+        "gsisId": "00-0040879",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BAL_IND:00-0040879"
+      },
+      "externalIds": {
+        "nflverse": "00-0040879"
+      },
+      "gsisId": "00-0040879",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "BAL",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040887",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040887",
+      "name": "Josh Cuevas",
+      "normalizedName": "josh cuevas",
+      "position": "TE",
+      "teamAtObservation": "BAL",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040887",
+        "gsisId": "00-0040887",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BAL_IND:00-0040887"
+      },
+      "externalIds": {
+        "nflverse": "00-0040887"
+      },
+      "gsisId": "00-0040887",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "BAL",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040890",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040890",
+      "name": "Cyrus Allen",
+      "normalizedName": "cyrus allen",
+      "position": "WR",
+      "teamAtObservation": "KC",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-14T23:59:59.000Z",
+      "lastSeenAt": "2026-09-14T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040890",
+        "gsisId": "00-0040890",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DEN_KC:00-0040890"
+      },
+      "externalIds": {
+        "nflverse": "00-0040890"
+      },
+      "gsisId": "00-0040890",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "KC",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040894",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040894",
+      "name": "Malik Benson",
+      "normalizedName": "malik benson",
+      "position": "WR",
+      "teamAtObservation": "LV",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040894",
+        "gsisId": "00-0040894",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0040894"
+      },
+      "externalIds": {
+        "nflverse": "00-0040894"
+      },
+      "gsisId": "00-0040894",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "LV",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0040899",
+      "canonicalPlayerId": "fhq_season_gsis_00_0040899",
+      "name": "Trey Smack",
+      "normalizedName": "trey smack",
+      "position": "K",
+      "teamAtObservation": "GB",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0040899",
+        "gsisId": "00-0040899",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_GB_MIN:00-0040899"
+      },
+      "externalIds": {
+        "nflverse": "00-0040899"
+      },
+      "gsisId": "00-0040899",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "GB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "K",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041013",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041013",
+      "name": "Emmett Johnson",
+      "normalizedName": "emmett johnson",
+      "position": "RB",
+      "teamAtObservation": "KC",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-14T23:59:59.000Z",
+      "lastSeenAt": "2026-09-14T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041013",
+        "gsisId": "00-0041013",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DEN_KC:00-0041013"
+      },
+      "externalIds": {
+        "nflverse": "00-0041013"
+      },
+      "gsisId": "00-0041013",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "KC",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-14T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041042",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041042",
+      "name": "Malachi Fields",
+      "normalizedName": "malachi fields",
+      "position": "WR",
+      "teamAtObservation": "NYG",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041042",
+        "gsisId": "00-0041042",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DAL_NYG:00-0041042"
+      },
+      "externalIds": {
+        "nflverse": "00-0041042"
+      },
+      "gsisId": "00-0041042",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NYG",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041048",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041048",
+      "name": "Ted Hurst III",
+      "normalizedName": "ted hurst iii",
+      "position": "WR",
+      "teamAtObservation": "TB",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041048",
+        "gsisId": "00-0041048",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_TB_CIN:00-0041048"
+      },
+      "externalIds": {
+        "nflverse": "00-0041048"
+      },
+      "gsisId": "00-0041048",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "TB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041051",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041051",
+      "name": "Zavion Thomas",
+      "normalizedName": "zavion thomas",
+      "position": "WR",
+      "teamAtObservation": "CHI",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041051",
+        "gsisId": "00-0041051",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CHI_CAR:00-0041051"
+      },
+      "externalIds": {
+        "nflverse": "00-0041051"
+      },
+      "gsisId": "00-0041051",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CHI",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041067",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041067",
+      "name": "Bryce Lance",
+      "normalizedName": "bryce lance",
+      "position": "WR",
+      "teamAtObservation": "NO",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041067",
+        "gsisId": "00-0041067",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NO_DET:00-0041067"
+      },
+      "externalIds": {
+        "nflverse": "00-0041067"
+      },
+      "gsisId": "00-0041067",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NO",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041069",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041069",
+      "name": "Colbie Young",
+      "normalizedName": "colbie young",
+      "position": "WR",
+      "teamAtObservation": "CIN",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041069",
+        "gsisId": "00-0041069",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_TB_CIN:00-0041069"
+      },
+      "externalIds": {
+        "nflverse": "00-0041069"
+      },
+      "gsisId": "00-0041069",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CIN",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041081",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041081",
+      "name": "Max Bredeson",
+      "normalizedName": "max bredeson",
+      "position": "FB",
+      "teamAtObservation": "MIN",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041081",
+        "gsisId": "00-0041081",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_GB_MIN:00-0041081"
+      },
+      "externalIds": {
+        "nflverse": "00-0041081"
+      },
+      "gsisId": "00-0041081",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": false,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIN",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "FB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041094",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041094",
+      "name": "Bauer Sharp",
+      "normalizedName": "bauer sharp",
+      "position": "TE",
+      "teamAtObservation": "TB",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041094",
+        "gsisId": "00-0041094",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_TB_CIN:00-0041094"
+      },
+      "externalIds": {
+        "nflverse": "00-0041094"
+      },
+      "gsisId": "00-0041094",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "TB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041099",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041099",
+      "name": "Barion Brown",
+      "normalizedName": "barion brown",
+      "position": "WR",
+      "teamAtObservation": "NO",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041099",
+        "gsisId": "00-0041099",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NO_DET:00-0041099"
+      },
+      "externalIds": {
+        "nflverse": "00-0041099"
+      },
+      "gsisId": "00-0041099",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NO",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041100",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041100",
+      "name": "Josh Cameron",
+      "normalizedName": "josh cameron",
+      "position": "WR",
+      "teamAtObservation": "JAX",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041100",
+        "gsisId": "00-0041100",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CLE_JAX:00-0041100"
+      },
+      "externalIds": {
+        "nflverse": "00-0041100"
+      },
+      "gsisId": "00-0041100",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "JAX",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041106",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041106",
+      "name": "CJ Williams",
+      "normalizedName": "cj williams",
+      "position": "WR",
+      "teamAtObservation": "JAX",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041106",
+        "gsisId": "00-0041106",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CLE_JAX:00-0041106"
+      },
+      "externalIds": {
+        "nflverse": "00-0041106"
+      },
+      "gsisId": "00-0041106",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "JAX",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041125",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041125",
+      "name": "Seth McGowan",
+      "normalizedName": "seth mcgowan",
+      "position": "RB",
+      "teamAtObservation": "IND",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041125",
+        "gsisId": "00-0041125",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BAL_IND:00-0041125"
+      },
+      "externalIds": {
+        "nflverse": "00-0041125"
+      },
+      "gsisId": "00-0041125",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "IND",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041131",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041131",
+      "name": "Carsen Ryan",
+      "normalizedName": "carsen ryan",
+      "position": "TE",
+      "teamAtObservation": "CLE",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041131",
+        "gsisId": "00-0041131",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CLE_JAX:00-0041131"
+      },
+      "externalIds": {
+        "nflverse": "00-0041131"
+      },
+      "gsisId": "00-0041131",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CLE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041132",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041132",
+      "name": "Deion Burks",
+      "normalizedName": "deion burks",
+      "position": "WR",
+      "teamAtObservation": "IND",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041132",
+        "gsisId": "00-0041132",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BAL_IND:00-0041132"
+      },
+      "externalIds": {
+        "nflverse": "00-0041132"
+      },
+      "gsisId": "00-0041132",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "IND",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041145",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041145",
+      "name": "Dominic Zvada",
+      "normalizedName": "dominic zvada",
+      "position": "K",
+      "teamAtObservation": "NYG",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041145",
+        "gsisId": "00-0041145",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_DAL_NYG:00-0041145"
+      },
+      "externalIds": {
+        "nflverse": "00-0041145"
+      },
+      "gsisId": "00-0041145",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NYG",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "K",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041182",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041182",
+      "name": "Drew Stevens",
+      "normalizedName": "drew stevens",
+      "position": "K",
+      "teamAtObservation": "WAS",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041182",
+        "gsisId": "00-0041182",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_WAS_PHI:00-0041182"
+      },
+      "externalIds": {
+        "nflverse": "00-0041182"
+      },
+      "gsisId": "00-0041182",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "WAS",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "K",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041314",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041314",
+      "name": "Tanner Arkin",
+      "normalizedName": "tanner arkin",
+      "position": "TE",
+      "teamAtObservation": "NE",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-09T23:59:59.000Z",
+      "lastSeenAt": "2026-09-09T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041314",
+        "gsisId": "00-0041314",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NE_SEA:00-0041314"
+      },
+      "externalIds": {
+        "nflverse": "00-0041314"
+      },
+      "gsisId": "00-0041314",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041326",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041326",
+      "name": "CJ Donaldson",
+      "normalizedName": "cj donaldson",
+      "position": "RB",
+      "teamAtObservation": "NO",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041326",
+        "gsisId": "00-0041326",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NO_DET:00-0041326"
+      },
+      "externalIds": {
+        "nflverse": "00-0041326"
+      },
+      "gsisId": "00-0041326",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NO",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041395",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041395",
+      "name": "Eli Raridon",
+      "normalizedName": "eli raridon",
+      "position": "TE",
+      "teamAtObservation": "NE",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-09T23:59:59.000Z",
+      "lastSeenAt": "2026-09-09T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041395",
+        "gsisId": "00-0041395",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_NE_SEA:00-0041395"
+      },
+      "externalIds": {
+        "nflverse": "00-0041395"
+      },
+      "gsisId": "00-0041395",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "NE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-09T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041397",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041397",
+      "name": "Kaden Wetjen",
+      "normalizedName": "kaden wetjen",
+      "position": "WR",
+      "teamAtObservation": "PIT",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041397",
+        "gsisId": "00-0041397",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ATL_PIT:00-0041397"
+      },
+      "externalIds": {
+        "nflverse": "00-0041397"
+      },
+      "gsisId": "00-0041397",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "PIT",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041398",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041398",
+      "name": "Riley Nowakowski",
+      "normalizedName": "riley nowakowski",
+      "position": "FB",
+      "teamAtObservation": "PIT",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041398",
+        "gsisId": "00-0041398",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ATL_PIT:00-0041398"
+      },
+      "externalIds": {
+        "nflverse": "00-0041398"
+      },
+      "gsisId": "00-0041398",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": false,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "PIT",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "FB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041436",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041436",
+      "name": "DJ Herman",
+      "normalizedName": "dj herman",
+      "position": "FB",
+      "teamAtObservation": "MIA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041436",
+        "gsisId": "00-0041436",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0041436"
+      },
+      "externalIds": {
+        "nflverse": "00-0041436"
+      },
+      "gsisId": "00-0041436",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": false,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "FB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041472",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041472",
+      "name": "Marlin Klein",
+      "normalizedName": "marlin klein",
+      "position": "TE",
+      "teamAtObservation": "HOU",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041472",
+        "gsisId": "00-0041472",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_BUF_HOU:00-0041472"
+      },
+      "externalIds": {
+        "nflverse": "00-0041472"
+      },
+      "gsisId": "00-0041472",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "HOU",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041490",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041490",
+      "name": "Eli Heidenreich",
+      "normalizedName": "eli heidenreich",
+      "position": "RB",
+      "teamAtObservation": "PIT",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041490",
+        "gsisId": "00-0041490",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ATL_PIT:00-0041490"
+      },
+      "externalIds": {
+        "nflverse": "00-0041490"
+      },
+      "gsisId": "00-0041490",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "PIT",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "RB",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041503",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041503",
+      "name": "Nate Boerkircher",
+      "normalizedName": "nate boerkircher",
+      "position": "TE",
+      "teamAtObservation": "JAX",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041503",
+        "gsisId": "00-0041503",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CLE_JAX:00-0041503"
+      },
+      "externalIds": {
+        "nflverse": "00-0041503"
+      },
+      "gsisId": "00-0041503",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "JAX",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041523",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041523",
+      "name": "Caleb Douglas",
+      "normalizedName": "caleb douglas",
+      "position": "WR",
+      "teamAtObservation": "MIA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041523",
+        "gsisId": "00-0041523",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0041523"
+      },
+      "externalIds": {
+        "nflverse": "00-0041523"
+      },
+      "gsisId": "00-0041523",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041524",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041524",
+      "name": "Will Kacmarek",
+      "normalizedName": "will kacmarek",
+      "position": "TE",
+      "teamAtObservation": "MIA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041524",
+        "gsisId": "00-0041524",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0041524"
+      },
+      "externalIds": {
+        "nflverse": "00-0041524"
+      },
+      "gsisId": "00-0041524",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041529",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041529",
+      "name": "Kevin Coleman Jr.",
+      "normalizedName": "kevin coleman jr",
+      "position": "WR",
+      "teamAtObservation": "MIA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:27.744Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041529",
+        "gsisId": "00-0041529",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0041529"
+      },
+      "externalIds": {
+        "nflverse": "00-0041529"
+      },
+      "gsisId": "00-0041529",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041550",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041550",
+      "name": "Brenen Thompson",
+      "normalizedName": "brenen thompson",
+      "position": "WR",
+      "teamAtObservation": "LAC",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041550",
+        "gsisId": "00-0041550",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_ARI_LAC:00-0041550"
+      },
+      "externalIds": {
+        "nflverse": "00-0041550"
+      },
+      "gsisId": "00-0041550",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "LAC",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "WR",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041558",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041558",
+      "name": "Sam Roush",
+      "normalizedName": "sam roush",
+      "position": "TE",
+      "teamAtObservation": "CHI",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041558",
+        "gsisId": "00-0041558",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_CHI_CAR:00-0041558"
+      },
+      "externalIds": {
+        "nflverse": "00-0041558"
+      },
+      "gsisId": "00-0041558",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "CHI",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "positionConflict": false
+    },
+    {
+      "seasonPlayerId": "fhq_season_gsis_00_0041579",
+      "canonicalPlayerId": "fhq_season_gsis_00_0041579",
+      "name": "Seydou Traore",
+      "normalizedName": "seydou traore",
+      "position": "TE",
+      "teamAtObservation": "MIA",
+      "seasonDiscovered": 2026,
+      "weekDiscovered": 1,
+      "firstSeenAt": "2026-09-13T23:59:59.000Z",
+      "lastSeenAt": "2026-09-13T23:59:59.000Z",
+      "discoveredAt": "2026-09-19T14:31:29.263Z",
+      "discoveryProvenance": {
+        "provider": "nflverse",
+        "providerPlayerId": "00-0041579",
+        "gsisId": "00-0041579",
+        "source": "nflverse weekly player stats",
+        "sourceRecordId": "2026_01_MIA_LV:00-0041579"
+      },
+      "externalIds": {
+        "nflverse": "00-0041579"
+      },
+      "gsisId": "00-0041579",
+      "identityConfidence": "HIGH",
+      "identityMethod": "stable-gsis-auto-discovery",
+      "reviewState": "AUTO_VERIFIED",
+      "draftUniverseMember": false,
+      "seasonUniverseMember": true,
+      "draftEligible": false,
+      "recommendationEligible": false,
+      "fantasyPositionEligible": true,
+      "draftRank": null,
+      "draftTier": null,
+      "yahooAvailability": null,
+      "observedTeams": [
+        {
+          "team": "MIA",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
+        }
+      ],
+      "observedPositions": [
+        {
+          "position": "TE",
+          "season": 2026,
+          "week": 1,
+          "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
       "positionConflict": false

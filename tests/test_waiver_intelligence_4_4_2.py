@@ -34,7 +34,7 @@ class WaiverIntelligenceTests(unittest.TestCase):
         for contract in ('seasonWaiverEvaluation', 'seasonWaiverRow', 'renderSeasonWaivers', 'SHARINGAN WAIVER PICK', 'CHIDORI ALERT', 'FAAB: Not yet scored'):
             self.assertIn(contract, app)
         self.assertLess(html.index('js/waiver-transaction-quality-v1.js?v=1.0.0'), html.index('js/waiver-intelligence-v1.js?v=1.1.0'))
-        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.1.0'), html.index('js/app.js?v=4.4.12-week-2-readiness-2'))
+        self.assertLess(html.index('js/waiver-intelligence-v1.js?v=1.1.0'), html.index('js/app.js?v=4.4.13-live-player-intelligence-1'))
         self.assertIn("'./js/waiver-transaction-quality-v1.js?v=1.0.0'", worker)
         self.assertIn("'./js/waiver-intelligence-v1.js?v=1.1.0'", worker)
         self.assertIn('.seasonWaiverDecisionRow', css)

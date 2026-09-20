@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import argparse
 import base64
+import csv
+import io
 import re
 import json
 import os
@@ -18,14 +20,17 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from dataclasses import dataclass
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable
+from zoneinfo import ZoneInfo
 
 AUTH_URL = "https://api.login.yahoo.com/oauth2/request_auth"
 TOKEN_URL = "https://api.login.yahoo.com/oauth2/get_token"
 FANTASY_ROOT = "https://fantasysports.yahooapis.com/fantasy/v2"
+NFLVERSE_SCHEDULE_URL = "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
 
 
 def _load_local_env(path: Path) -> None:
@@ -50,6 +55,15 @@ class YahooConfig:
     token_store: Path = Path.home() / ".fantasyhq" / "yahoo_tokens.json"
     tls_cert_file: Path = Path(".certs/yahoo-localhost.pem")
     tls_key_file: Path = Path(".certs/yahoo-localhost-key.pem")
+
+    def allows_origin(self, origin: str) -> bool:
+        """Allow only the configured app and the two documented local frontends."""
+        value = str(origin or "").rstrip("/")
+        return value in {
+            self.allowed_origin.rstrip("/"),
+            "http://127.0.0.1:8000",
+            "http://localhost:8000",
+        }
 
     @classmethod
     def from_env(cls) -> "YahooConfig":
@@ -307,11 +321,86 @@ class YahooFantasyRequestError(RuntimeError):
         self.reconnect_required = reconnect_required
 
 
+class NflverseScheduleClient:
+    """Small, public, fail-soft NFL schedule adapter shared by every league profile."""
+
+    def __init__(self, opener: Callable[..., Any] = urllib.request.urlopen,
+                 clock: Callable[[], float] = time.time, timeout_seconds: int = 10,
+                 cache_seconds: int = 900):
+        self.opener, self.clock = opener, clock
+        self.timeout_seconds, self.cache_seconds = timeout_seconds, cache_seconds
+        self._cache: dict[tuple[int, int], tuple[float, dict[str, Any]]] = {}
+
+    @staticmethod
+    def _number(value: Any) -> int | None:
+        text = str(value or "").strip()
+        try:
+            return int(text) if text else None
+        except ValueError:
+            return None
+
+    @staticmethod
+    def _kickoff(row: dict[str, str]) -> str | None:
+        gameday, gametime = row.get("gameday", "").strip(), row.get("gametime", "").strip()
+        if not gameday or not gametime:
+            return None
+        try:
+            local = datetime.strptime(f"{gameday} {gametime}", "%Y-%m-%d %H:%M").replace(
+                tzinfo=ZoneInfo("America/New_York")
+            )
+            return local.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+        except ValueError:
+            return None
+
+    def week(self, season: int, week: int) -> dict[str, Any]:
+        key, now = (int(season), int(week)), self.clock()
+        cached = self._cache.get(key)
+        if cached and now - cached[0] <= self.cache_seconds:
+            return cached[1]
+        request = urllib.request.Request(
+            NFLVERSE_SCHEDULE_URL,
+            headers={"Accept": "text/csv", "User-Agent": "FantasyHQ-Jonin-4.4.13"},
+            method="GET",
+        )
+        with self.opener(request, timeout=self.timeout_seconds) as response:
+            raw = response.read().decode("utf-8")
+        rows = [row for row in csv.DictReader(io.StringIO(raw))
+                if row.get("season") == str(key[0])
+                and row.get("game_type", "").upper() == "REG"
+                and row.get("week") == str(key[1])]
+        if not rows:
+            raise ValueError("nflverse returned no schedule rows for the requested week")
+        games = []
+        for row in rows:
+            kickoff = self._kickoff(row)
+            home_score, away_score = self._number(row.get("home_score")), self._number(row.get("away_score"))
+            final = home_score is not None and away_score is not None and row.get("result", "").strip() != ""
+            kickoff_time = datetime.fromisoformat(kickoff.replace("Z", "+00:00")).timestamp() if kickoff else None
+            state = "FINAL" if final else "PRE_GAME" if kickoff_time is not None and now < kickoff_time else "LOCKED_UNKNOWN" if kickoff_time is not None else "UNKNOWN"
+            games.append({
+                "gameId": row.get("game_id") or None,
+                "season": key[0], "week": key[1], "kickoff": kickoff,
+                "homeTeam": row.get("home_team") or None, "awayTeam": row.get("away_team") or None,
+                "homeScore": home_score, "awayScore": away_score,
+                "state": state, "locked": state != "PRE_GAME",
+            })
+        value = {
+            "schema": "fantasy-hq-nfl-live-week-1", "provider": "nflverse",
+            "source": "nflverse schedules", "sourceUrl": NFLVERSE_SCHEDULE_URL,
+            "license": "CC-BY-4.0", "season": key[0], "week": key[1],
+            "fetchedAt": _iso_now(), "games": games, "recommendationAuthority": False,
+        }
+        self._cache[key] = (now, value)
+        return value
+
+
 class YahooFantasyClient:
     def __init__(self, oauth: YahooOAuthClient, opener: Callable[..., Any] = urllib.request.urlopen,
-                 logger: Callable[[str], None] | None = None):
+                 logger: Callable[[str], None] | None = None,
+                 schedule_client: NflverseScheduleClient | None = None):
         self.oauth, self.opener = oauth, opener
         self.logger = logger or getattr(oauth, "logger", print)
+        self.schedule_client = schedule_client
 
     def _log(self, event: str, **fields: Any) -> None:
         rendered = " ".join(f"{key}={str(value).lower() if isinstance(value, bool) else value}" for key, value in fields.items())
@@ -446,6 +535,8 @@ class YahooFantasyClient:
             (int(value) for value in current_weeks if str(value).isdigit() and int(value) > 0),
             None,
         )
+        seasons = _find_scalar_values(payload.get("league"), "season")
+        season = next((int(value) for value in seasons if str(value).isdigit()), None)
         scoreboard_resource = f"league/{safe_key}/scoreboard"
         if current_week is not None:
             scoreboard_resource += f";week={current_week}"
@@ -461,7 +552,7 @@ class YahooFantasyClient:
                 safe_team = urllib.parse.quote(str(team_key), safe=".")
                 roster_resource = f"team/{safe_team}/roster"
                 if current_week is not None:
-                    roster_resource += f";week={current_week}"
+                    roster_resource += f";week={current_week}/players/stats;type=week;week={current_week}"
                 payload["teamRosters"][str(team_key)] = self.get(roster_resource)
             except Exception as exc:
                 errors[f"roster:{team_key}"] = _safe_error(exc)
@@ -474,6 +565,12 @@ class YahooFantasyClient:
             except Exception as exc:
                 errors[f"players:{start}"] = _safe_error(exc)
                 break
+        schedule_client = getattr(self, "schedule_client", None)
+        if schedule_client and season is not None and current_week is not None:
+            try:
+                payload["liveWeek"] = schedule_client.week(season, current_week)
+            except Exception:
+                errors["liveWeek"] = "NFL schedule enrichment is unavailable; Yahoo data remains available"
         payload["errors"] = errors
         return payload
 
@@ -531,12 +628,34 @@ def make_handler(
 
         def _cors(self) -> None:
             origin = self.headers.get("Origin", "").rstrip("/")
-            if origin and origin == config.allowed_origin:
+            if origin and config.allows_origin(origin):
                 self.send_header("Access-Control-Allow-Origin", origin)
                 self.send_header("Vary", "Origin")
 
-        def _json(self, status: int, payload: dict[str, Any]) -> None:
-            body = json.dumps(payload, separators=(",", ":")).encode()
+        def _json(self, status: int, payload: dict[str, Any], diagnostic_event: str | None = None) -> None:
+            origin = self.headers.get("Origin", "").rstrip("/")
+            cors_origin = origin if origin and config.allows_origin(origin) else None
+            try:
+                body = json.dumps(payload, separators=(",", ":"), allow_nan=False).encode()
+            except (TypeError, ValueError) as exc:
+                if diagnostic_event:
+                    print(
+                        f"[Yahoo Bridge] {diagnostic_event} status={status} serialization=failed "
+                        f"exception={type(exc).__name__} origin={origin or 'none'} cors={cors_origin or 'none'}"
+                    )
+                raise
+            if diagnostic_event:
+                keys = sorted(payload) if isinstance(payload, dict) else []
+                sentinels = ",".join(
+                    f"{key}:{str(key in payload).lower()}"
+                    for key in ("leagueKey", "fetchedAt", "teamRosters", "players", "errors")
+                ) if isinstance(payload, dict) else "none"
+                print(
+                    f"[Yahoo Bridge] {diagnostic_event} status={status} content_type=application/json "
+                    f"bytes={len(body)} top_level={type(payload).__name__} keys={','.join(keys)} "
+                    f"sentinels={sentinels} serialization=success origin={origin or 'none'} "
+                    f"cors={cors_origin or 'none'}"
+                )
             self.send_response(status)
             self._cors()
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -591,7 +710,7 @@ def make_handler(
                     if not league_key or not all(ch.isalnum() or ch in ".-_" for ch in league_key):
                         self._json(400, {"error": "A valid Yahoo league key is required"})
                     else:
-                        self._json(200, fantasy.league_bundle(league_key))
+                        self._json(200, fantasy.league_bundle(league_key), "sync_response")
                 else:
                     self._json(404, {"error": "Not found"})
             except YahooFantasyRequestError as exc:
@@ -613,7 +732,7 @@ def make_handler(
         def do_POST(self) -> None:  # noqa: N802
             parsed = urllib.parse.urlsplit(self.path)
             origin = self.headers.get("Origin", "").rstrip("/")
-            if origin and origin != config.allowed_origin:
+            if origin and not config.allows_origin(origin):
                 self._json(403, {"error": "Origin is not allowed"})
                 return
             if parsed.path == "/api/yahoo/disconnect":
@@ -643,7 +762,7 @@ def main() -> int:
         return 2
     store = TokenStore(config.token_store)
     oauth = YahooOAuthClient(config, store)
-    fantasy = YahooFantasyClient(oauth)
+    fantasy = YahooFantasyClient(oauth, schedule_client=NflverseScheduleClient())
     server = ThreadingHTTPServer((args.host, args.port), make_handler(config, oauth, fantasy, OAuthStateStore()))
     server.socket = tls_context.wrap_socket(server.socket, server_side=True)
     print(f"Fantasy HQ Yahoo bridge listening on https://{args.host}:{args.port} (configured={config.ready})")

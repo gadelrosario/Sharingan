@@ -1,9 +1,9 @@
-const CACHE = 'fantasy-hq-jonin-4-4-12-week-2-readiness-remap-2026-09-19';
+const CACHE = 'fantasy-hq-jonin-4-4-13-live-player-intelligence-response-contract-2026-09-19';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.4.12-week-2-readiness-1',
-  './js/app-version.js?v=1.0.32',
+  './css/app.css?v=4.4.13-live-player-intelligence-1',
+  './js/app-version.js?v=1.0.33',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
   './js/draft-math-v1.js?v=1.1.0',
@@ -20,11 +20,12 @@ const ASSETS = [
   './js/draft-session-v1.js?v=1.3.0',
   './js/draft-workflow-v1.js?v=1.3.0',
   './js/league-profiles-v1.js?v=1.1.0',
-  './js/yahoo-season-v1.js?v=1.2.0-current-week',
-  './js/yahoo-sync-v1.js?v=1.1.1',
+  './js/yahoo-season-v1.js?v=1.3.0-live-player',
+  './js/yahoo-sync-v1.js?v=1.2.2-response-contract',
   './js/season-command-center-v1.js?v=1.1.6-projection-semantics',
   './js/season-home-v3.js?v=1.1.0-current-week',
-  './js/season-current-week-evidence-v1.js?v=1.0.1',
+  './js/nfl-live-week-v1.js?v=1.0.0',
+  './js/season-current-week-evidence-v1.js?v=1.1.0',
   './js/manual-season-state-v1.js?v=1.0.0',
   './js/waiver-transaction-quality-v1.js?v=1.0.0',
   './js/waiver-intelligence-v1.js?v=1.1.0',
@@ -49,7 +50,7 @@ const ASSETS = [
   './js/player-photo-v1.js?v=1.0.0',
   './js/premium-player-card-v1.js?v=1.1.0',
   './js/draft-psychology-engine-v1.js?v=1.0.0',
-  './js/app.js?v=4.4.12-week-2-readiness-2',
+  './js/app.js?v=4.4.13-live-player-intelligence-1',
   './tests/fixtures/season_command_center_4_4_11_2.json',
   './tests/fixtures/season_evidence_4_4_5.json',
   './tests/fixtures/injury_opportunity_4_4_6.json',
@@ -95,8 +96,12 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  const protocol = new URL(event.request.url).protocol;
+  const requestUrl = new URL(event.request.url);
+  const protocol = requestUrl.protocol;
   if (protocol !== 'http:' && protocol !== 'https:') return;
+  // Cross-origin API failures must reach their caller. Returning the app shell
+  // would disguise a network/CORS failure as a successful HTML response.
+  if (requestUrl.origin !== self.location.origin) return;
   event.respondWith(
     fetch(event.request)
       .then(response => {

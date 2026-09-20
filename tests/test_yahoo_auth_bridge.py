@@ -75,6 +75,19 @@ class YahooBridgeTests(unittest.TestCase):
         self.assertEqual(config.tls_cert_file, pathlib.Path(".certs/yahoo-localhost.pem"))
         self.assertEqual(config.tls_key_file, pathlib.Path(".certs/yahoo-localhost-key.pem"))
 
+    def test_cors_allows_configured_and_documented_local_frontends_only(self):
+        hosted = bridge.YahooConfig(
+            client_id="client",
+            client_secret="secret",
+            redirect_uri="https://localhost:8787/api/yahoo/callback",
+            allowed_origin="https://gadelrosario.github.io/Sharingan/",
+        )
+        self.assertTrue(hosted.allows_origin("https://gadelrosario.github.io/Sharingan"))
+        self.assertTrue(hosted.allows_origin("http://127.0.0.1:8000"))
+        self.assertTrue(hosted.allows_origin("http://localhost:8000/"))
+        self.assertFalse(hosted.allows_origin("http://127.0.0.1:8001"))
+        self.assertFalse(hosted.allows_origin("https://example.test"))
+
     def test_tls_context_requires_certificate_and_enforces_tls_1_2(self):
         with self.assertRaises(FileNotFoundError):
             bridge.create_tls_context(self.config)
@@ -268,9 +281,51 @@ class YahooBridgeTests(unittest.TestCase):
                 return {}
 
         bundle = bridge.YahooFantasyClient.league_bundle(FakeFantasy(), "470.l.test")
-        self.assertIn("team/470.l.test.t.1/roster;week=2", resources)
+        self.assertIn("team/470.l.test.t.1/roster;week=2/players/stats;type=week;week=2", resources)
         self.assertIn("league/470.l.test/scoreboard;week=2", resources)
         self.assertEqual(bundle["errors"], {})
+
+    def test_nflverse_schedule_is_timezone_safe_cached_and_bounded(self):
+        seen = []
+        csv_text = (
+            "game_id,season,game_type,week,gameday,gametime,home_team,away_team,home_score,away_score,result\n"
+            "2026_02_BUF_NYJ,2026,REG,2,2026-09-13,13:00,NYJ,BUF,,,\n"
+            "2026_02_WAS_GB,2026,REG,2,2026-09-10,20:20,GB,WAS,27,18,9\n"
+        )
+
+        def opener(request, timeout):
+            seen.append((request, timeout))
+            return Response(csv_text.encode(), raw=True)
+
+        client = bridge.NflverseScheduleClient(opener=opener, clock=lambda: 1789300800, timeout_seconds=7)
+        first = client.week(2026, 2)
+        second = client.week(2026, 2)
+        self.assertIs(first, second)
+        self.assertEqual(len(seen), 1)
+        self.assertEqual(seen[0][1], 7)
+        self.assertEqual(first["games"][0]["kickoff"], "2026-09-13T17:00:00Z")
+        self.assertEqual(first["games"][1]["state"], "FINAL")
+        self.assertFalse(first["recommendationAuthority"])
+
+    def test_schedule_failure_is_fail_soft_for_yahoo_bundle(self):
+        class FailedSchedule:
+            def week(self, season, week):
+                raise TimeoutError("bounded timeout")
+
+        class FakeFantasy:
+            schedule_client = FailedSchedule()
+
+            def get(self, resource):
+                if resource == "league/470.l.test":
+                    return {"league": {"current_week": "2", "season": "2026"}}
+                if resource == "league/470.l.test/teams":
+                    return {"teams": []}
+                return {}
+
+        bundle = bridge.YahooFantasyClient.league_bundle(FakeFantasy(), "470.l.test")
+        self.assertNotIn("liveWeek", bundle)
+        self.assertIn("liveWeek", bundle["errors"])
+        self.assertIn("league", bundle)
 
     def test_401_is_invalid_or_expired_and_preserves_token_for_diagnosis(self):
         store = bridge.TokenStore(self.path)

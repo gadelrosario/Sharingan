@@ -8750,9 +8750,14 @@ async function syncYahooLeagueNow() {
   }
   try {
     safeText('syncStatusText', 'Syncing the confirmed Yahoo league read-only…');
+    if (pill) delete pill.dataset.syncDiagnostic;
+    await ensureSeasonEvidenceStore();
+    const seasonIdentityPlayers = seasonPlayerRegistry
+      ? [...players, ...seasonPlayerRegistry.evidencePlayers()]
+      : players;
     await controller.sync({
       profile: activeLeagueProfile,
-      canonicalPlayers: players,
+      canonicalPlayers: seasonIdentityPlayers,
       aliases: {},
       archives: yahooArchiveLinkageInputs(),
     });
@@ -8766,6 +8771,9 @@ async function syncYahooLeagueNow() {
       pill.textContent = 'Yahoo • Sync failed';
       pill.className = 'seasonSyncPill stale';
       pill.title = message;
+      if (error?.responseMetadata) {
+        pill.dataset.syncDiagnostic = JSON.stringify(error.responseMetadata);
+      }
     }
   } finally {
     buttons.forEach(button => {
@@ -10885,7 +10893,7 @@ renderSeasonHome = function (model, content) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_4_12_week_2_readiness_2')
+      .register('./service-worker.js?v=jonin_4_4_13_response_contract_1')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

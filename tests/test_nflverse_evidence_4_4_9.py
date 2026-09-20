@@ -44,8 +44,8 @@ class NflverseEvidenceFoundationTests(unittest.TestCase):
 
     def test_demo_and_real_import_paths_are_separate(self):
         source = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
-        self.assertIn("state:'DEMO'", source)
-        self.assertIn("state:result.accepted||result.idempotent?'IMPORTED':'EMPTY'", source)
+        self.assertIn("demo: true", source)
+        self.assertIn("seasonReviewEvidencePayload", source)
         self.assertIn("data/season_evidence/nflverse_latest.json", source)
 
     def test_browser_loads_only_the_bounded_local_artifact(self):
@@ -67,8 +67,8 @@ class NflverseEvidenceFoundationTests(unittest.TestCase):
     def test_bundled_real_artifact_is_bounded_and_shadow_only(self):
         artifact = json.loads((ROOT / "data" / "season_evidence" / "nflverse_latest.json").read_text(encoding="utf-8"))
         self.assertEqual(artifact["provider"], "nflverse")
-        self.assertEqual(artifact["season"], 2025)
-        self.assertEqual(artifact["weeks"], [16, 17, 18])
+        self.assertEqual(artifact["season"], 2026)
+        self.assertEqual(artifact["weeks"], [1, 2])
         self.assertEqual(artifact["recordCount"], len(artifact["records"]))
         self.assertLess(len(artifact["records"]), 1500)
         self.assertFalse(artifact["recommendationAuthority"])

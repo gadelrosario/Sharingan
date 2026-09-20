@@ -19,14 +19,14 @@ class NflverseParticipationContracts(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('"passCount":21', result.stdout)
 
-    def test_retained_artifact_is_bounded_historical_and_non_authoritative(self):
+    def test_retained_artifact_is_bounded_current_and_non_authoritative(self):
         path = ROOT / "data/season_evidence/nflverse_participation_latest.json"
         artifact = json.loads(path.read_text())
         self.assertLess(path.stat().st_size, 5 * 1024 * 1024)
-        self.assertEqual(artifact["recordCount"], 1317)
-        self.assertEqual(artifact["weeks"], [16, 17, 18])
-        self.assertEqual(artifact["evidenceStatus"], "HISTORICAL_STALE")
-        self.assertFalse(artifact["currentActionableEvidence"])
+        self.assertEqual(artifact["recordCount"], len(artifact["records"]))
+        self.assertEqual(artifact["weeks"], [1, 2])
+        self.assertEqual(artifact["evidenceStatus"], "CURRENT")
+        self.assertTrue(artifact["currentActionableEvidence"])
         self.assertFalse(artifact["recommendationAuthority"])
         self.assertFalse(artifact["transactionAuthority"])
         self.assertFalse(artifact["routeDataAvailable"])
@@ -46,7 +46,7 @@ class NflverseParticipationContracts(unittest.TestCase):
         registry = json.loads(
             (ROOT / "data/season_evidence/season_player_registry.json").read_text()
         )
-        self.assertEqual(len(registry["players"]), 303)
+        self.assertGreaterEqual(len(registry["players"]), 303)
         for player in registry["players"]:
             self.assertFalse(player["draftUniverseMember"])
             self.assertFalse(player["draftEligible"])

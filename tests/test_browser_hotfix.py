@@ -43,7 +43,7 @@ const nodes=Object.fromEntries(ids.map(id=>[id,new Node(id)]));
 const errors=[],rejections=[],alerts=[];
 const document={getElementById:id=>nodes[id]||null,createElement:()=>new Node(),querySelector:()=>new Node(),querySelectorAll:()=>[],activeElement:null,body:new Node('body')};
 const window={FantasyHQAppVersion:{phase:'Jōnin',milestone:'3.7',label:'Jōnin 3.7'},addEventListener:(type,fn)=>{if(type==='error')window.onError=fn;if(type==='unhandledrejection')window.onRejection=fn},location:{search:''},scrollTo(){}};
-const context={window,document,navigator:{},fetch:async()=>({ok:true,json:async()=>playerData}),console:{log(){},warn(){},error(...x){errors.push(x.join(' '))}},alert:message=>alerts.push(message),performance:{now:()=>0},requestAnimationFrame:fn=>fn(),setTimeout,clearTimeout,URL,URLSearchParams,Blob,localStorage:{getItem:()=>null,setItem(){}},Math,Date,Map,Set,Object,Array,String,Number,Boolean,JSON,Promise,Error};
+const context={window,document,location:window.location,navigator:{},fetch:async()=>({ok:true,json:async()=>playerData}),console:{log(){},warn(){},error(...x){errors.push(x.join(' '))}},alert:message=>alerts.push(message),performance:{now:()=>0},requestAnimationFrame:fn=>fn(),setTimeout,clearTimeout,URL,URLSearchParams,Blob,localStorage:{getItem:()=>null,setItem(){}},Math,Date,Map,Set,Object,Array,String,Number,Boolean,JSON,Promise,Error};
 window.window=window;Object.assign(window,{document,navigator:context.navigator});vm.createContext(context);
 vm.runInContext(fs.readFileSync('js/app.js','utf8'),context,{filename:'js/app.js'});
 setTimeout(()=>{
@@ -78,15 +78,16 @@ setTimeout(()=>{
         self.assertRegex(source, r"caches\.match\(['\"]\./index\.html['\"]\)")
         command = r"""
 const fs=require('fs'),vm=require('vm'),handlers={},puts=[];
-const self={addEventListener:(type,handler)=>handlers[type]=handler,skipWaiting(){},clients:{claim(){}}};
+const self={location:{origin:'http://example.test'},addEventListener:(type,handler)=>handlers[type]=handler,skipWaiting(){},clients:{claim(){}}};
 const caches={open:async()=>({addAll:async()=>{},put:async request=>puts.push(request.url)}),keys:async()=>[],delete:async()=>{},match:async()=>null};
 const fetch=async request=>({clone:()=>({}),url:request.url});
 vm.runInNewContext(fs.readFileSync('service-worker.js','utf8'),{self,caches,fetch,URL,Promise});
 async function exercise(url){let responsePromise=null;handlers.fetch({request:{method:'GET',url},respondWith:value=>responsePromise=value});if(responsePromise)await responsePromise;await new Promise(resolve=>setTimeout(resolve,0));return Boolean(responsePromise)}
 (async()=>{
  for(const url of ['chrome-extension://abc/file.js','data:text/plain,hello','blob:https://example.test/id'])if(await exercise(url))throw new Error('unsupported protocol intercepted: '+url);
- for(const url of ['http://example.test/app.js','https://example.test/app.js'])if(!(await exercise(url)))throw new Error('web protocol not intercepted: '+url);
- if(puts.length!==2||!puts.some(x=>x.startsWith('http:'))||!puts.some(x=>x.startsWith('https:')))throw new Error('web assets were not cached normally');
+ if(!(await exercise('http://example.test/app.js')))throw new Error('same-origin web asset was not intercepted');
+ for(const url of ['https://example.test/app.js','https://localhost:8787/api/yahoo/sync'])if(await exercise(url))throw new Error('cross-origin request was intercepted: '+url);
+ if(puts.length!==1||puts[0]!=='http://example.test/app.js')throw new Error('same-origin asset was not cached normally');
 })().catch(error=>{console.error(error);process.exitCode=1});
 """
         result = subprocess.run([str(NODE), "-e", command], cwd=ROOT, text=True, capture_output=True, check=False)
