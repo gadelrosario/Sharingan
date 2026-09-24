@@ -18122,7 +18122,9 @@
         "sourceRecordId": "2026_01_DEN_KC:00-0041013"
       },
       "externalIds": {
-        "nflverse": "00-0041013"
+        "nflverse": "00-0041013",
+        "sleeper": "13337",
+        "yahoo": "42796"
       },
       "gsisId": "00-0041013",
       "identityConfidence": "HIGH",

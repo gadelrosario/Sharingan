@@ -5755,6 +5755,9 @@ let yahooSyncController = null,
   seasonPage = 'home',
   seasonWeekOverride = null,
   seasonSelectedPlayer = null;
+let seasonProjectionAdapter = null,
+  seasonProjectionRequests = new Map(),
+  seasonProjectionStatus = null;
 const seasonDemoEnabled = () => new URLSearchParams(location.search).get('seasonDemo') === '1';
 const seasonReviewKey = () => new URLSearchParams(location.search).get('seasonReview') || '';
 const seasonReviewEnabled = () => seasonReviewKey() === 'straight-outta-downey';
@@ -6452,7 +6455,7 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
       gameEvidence?.state === 'FINAL' && hasActual
         ? `${Number(actual).toFixed(2)} ACT`
         : hasProjection
-          ? `${Number(weekEvidence.projection.value).toFixed(2)} PROJ`
+          ? `${Number(weekEvidence.projection.value).toFixed(2)} ${weekEvidence.projection.projectionType === 'SLEEPER_HALF_PPR_ESTIMATE' ? 'EST' : 'PROJ'}`
           : '—'
     ),
     status = seasonEl('span', 'seasonLineupStatus');
@@ -6466,7 +6469,7 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
   projection.title = hasActual && gameEvidence?.state === 'FINAL'
     ? 'Authoritative Yahoo actual points'
     : hasProjection
-      ? `${weekEvidence.projection.source} • ${weekEvidence.projection.freshness}`
+      ? `${weekEvidence.projection.label || weekEvidence.projection.source} • ${weekEvidence.projection.freshness}`
       : weekEvidence?.projection?.reason || 'Projection unavailable';
   const origin = seasonEl(
     'span',
@@ -7843,8 +7846,9 @@ function seasonStartSitEvidenceFor(player, model) {
     opportunityRating = seasonEvidenceRating(opportunityValue.targetShare ?? opportunityValue.rushShare),
     freshnessValues = [role?.freshness, opportunity?.freshness, injury?.freshness, matchup?.freshness].filter(value => value && value !== 'UNKNOWN'),
     freshness = freshnessValues.includes('STALE') ? 'STALE' : freshnessValues.includes('AGING') ? 'AGING' : freshnessValues.includes('FRESH') ? 'FRESH' : 'UNKNOWN',
-    confidence = sampleSize >= 3 ? 78 : sampleSize === 2 ? 68 : sampleSize === 1 ? 58 : null;
-  if (![roleRating, opportunityRating, roleValue.roleStability, matchupValue.positionEnvironment, environmentValue.offenseQuality].some(value => value != null) && !injuryValue.status) return player?.startSitEvidence || null;
+    confidence = sampleSize >= 3 ? 78 : sampleSize === 2 ? 68 : sampleSize === 1 ? 58 : null,
+    projectionRating = player?.currentWeek?.projection?.supported === true ? seasonEvidenceRating(player?.projectionRating) : null;
+  if (![roleRating, opportunityRating, roleValue.roleStability, matchupValue.positionEnvironment, environmentValue.offenseQuality, projectionRating].some(value => value != null) && !injuryValue.status) return player?.startSitEvidence || null;
   return {
     role: roleRating,
     opportunity: opportunityRating,
@@ -7856,7 +7860,7 @@ function seasonStartSitEvidenceFor(player, model) {
     volatility: null,
     scoringFit: null,
     offense: seasonEvidenceRating(environmentValue.offenseQuality),
-    projection: null,
+    projection: projectionRating,
     injuryUncertainty: seasonEvidenceRating(injuryValue.gameStatusUncertainty),
     workloadUncertainty: seasonEvidenceRating(injuryValue.estimatedWorkloadLimitation),
     confidence: freshness === 'AGING' && confidence !== null ? Math.max(0, confidence - 10) : confidence,
@@ -7867,6 +7871,9 @@ function seasonStartSitEvidenceFor(player, model) {
     opportunitySource: opportunity?.provenance?.source || null,
     matchupSource: matchup?.provenance?.source || null,
     injurySource: injury?.provenance?.source || null,
+    projectionSource: player?.currentWeek?.projection?.source || null,
+    projectionType: player?.projectionType || null,
+    fetchedAt: player?.currentWeek?.projection?.fetchedAt || null,
   };
 }
 function seasonStartSitModel(model) {
@@ -8286,6 +8293,25 @@ function seasonApplyCurrentWeekEvidence(model) {
     };
   }
 }
+async function seasonApplyProjectionEvidence(model) {
+  if (!window.FantasyHQSleeperProjectionV1 || model?.demo || model?.reviewMode || model?.draftSnapshot || model?.snapshot?.provider !== 'Yahoo') return model;
+  const season = Number(model?.snapshot?.league?.season || model?.snapshot?.season), week = Number(model?.week);
+  if (!Number.isInteger(season) || !Number.isInteger(week) || week < 1) return model;
+  try {
+    if (!seasonProjectionAdapter) seasonProjectionAdapter = FantasyHQSleeperProjectionV1.createAdapter({ storage: localStorage });
+    const key = `${season}:${week}`;
+    if (!seasonProjectionRequests.has(key)) {
+      const registryPlayers = seasonPlayerRegistry?.evidencePlayers?.() || [], identityPlayers = [...players, ...registryPlayers];
+      seasonProjectionRequests.set(key, seasonProjectionAdapter.refresh({ season, week, players: identityPlayers, injuryRecords: window.__injurySnapshot?.records || [], settings: model.snapshot.settings || {} }));
+    }
+    seasonProjectionStatus = await seasonProjectionRequests.get(key);
+    return seasonProjectionStatus?.snapshot ? FantasyHQSleeperProjectionV1.enrichModel(model, seasonProjectionStatus.snapshot) : { ...model, projectionStatus: seasonProjectionStatus };
+  } catch (error) {
+    console.warn('Optional Sleeper projection evidence is unavailable; Yahoo Season Mode remains available:', error);
+    seasonProjectionStatus = { status: 'UNAVAILABLE', error: error?.message || String(error) };
+    return { ...model, projectionStatus: seasonProjectionStatus };
+  }
+}
 async function renderSeasonCommandCenter() {
   if (!window.SeasonCommandCenterV1 || !activeLeagueProfile) return;
   const resolution = await seasonStateForActiveProfile(),
@@ -8312,13 +8338,14 @@ async function renderSeasonCommandCenter() {
           },
         }
       : builtModel,
+    projectedModel = await seasonApplyProjectionEvidence(baseModel),
     modelBeforeManual = seasonWeekOverride
       ? {
-          ...baseModel,
+          ...projectedModel,
           week: seasonWeekOverride,
           phase: SeasonCommandCenterV1.phaseForWeek(seasonWeekOverride),
         }
-      : baseModel,
+      : projectedModel,
     manualModel = seasonApplyManualState(modelBeforeManual),
     model = seasonApplyCurrentWeekEvidence(manualModel);
   seasonLastRenderedModel = model;
@@ -8761,6 +8788,7 @@ async function syncYahooLeagueNow() {
       aliases: {},
       archives: yahooArchiveLinkageInputs(),
     });
+    seasonProjectionRequests.clear();
     renderYahooSeasonState();
     if (!el('seasonScreen')?.classList.contains('hidden')) await renderSeasonCommandCenter();
   } catch (error) {
@@ -10843,7 +10871,8 @@ function seasonLineupProjectionCopy(decision, model) {
   const preferred = seasonLineupProjection(decision.preferred, model), other = seasonLineupProjection(decision.other, model);
   if (preferred === null || other === null) return null;
   const delta = preferred - other;
-  return `${preferred.toFixed(2)} vs ${other.toFixed(2)}${Math.abs(delta) > .004 ? ` • ${delta > 0 ? '+' : ''}${delta.toFixed(2)} pts` : ''}`;
+  const labels = [decision.preferred?.projectionLabel, decision.other?.projectionLabel].filter(Boolean), label = labels.length && labels.every(value => value === labels[0]) ? labels[0] : 'Projection';
+  return { label, text: `${preferred.toFixed(2)} vs ${other.toFixed(2)}${Math.abs(delta) > .004 ? ` • ${delta > 0 ? '+' : ''}${delta.toFixed(2)} pts` : ''}` };
 }
 function openSeasonStartSitComparison(decision, model) {
   const content = el('scanContent');
@@ -10859,7 +10888,7 @@ function openSeasonStartSitComparison(decision, model) {
   const pick = seasonEl('section', 'seasonLineupFantasyPick');
   pick.append(seasonEl('small', '', verdict === 'ACTION' ? 'FANTASY HQ PICK' : 'FANTASY HQ DECISION'), seasonEl('h1', '', seasonStartSitHeadline(decision)), seasonStatusBadge(seasonLineupPosture(recommendation, decision), seasonStartSitTone(decision.state)), seasonEl('p', '', seasonLineupWhy(decision)));
   const projection = seasonLineupProjectionCopy(decision, model);
-  if (projection) pick.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : 'Projection'}: ${projection}`));
+  if (projection) pick.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : projection.label}: ${projection.text}`));
   const details = document.createElement('details'), summary = document.createElement('summary'), body = seasonEl('div', 'seasonLineupEvidenceDetails');
   details.className = 'seasonAnalysisDisclosure'; summary.textContent = 'View analysis';
   body.append(seasonEl('p', '', decision.reason), seasonEl('p', '', decision.timingReason), seasonEl('p', '', `Evidence coverage: ${Math.round((decision.evidenceCoverage || 0) * 100)}%`));
@@ -10873,7 +10902,7 @@ function seasonLineupOptimizerCard(model, intelligence, { compact = false } = {}
   const verdict = seasonStartSitVerdict(decision), preferred = verdict === 'ACTION' ? decision?.preferred || decision?.alternative : decision?.starter, other = verdict === 'ACTION' ? decision?.other || decision?.starter : decision?.alternative;
   card.append(seasonStatusBadge(posture, seasonStartSitTone(decision?.state)), seasonEl('h2', '', recommendation.status === 'CHANGE' ? '1 LINEUP CHANGE' : recommendation.status === 'MONITOR' ? 'STATUS TO WATCH' : 'HOLD CURRENT LINEUP'), seasonEl('h3', '', seasonStartSitHeadline(decision)), seasonEl('p', 'seasonLineupSit', verdict === 'ACTION' ? `${other?.name || 'Current starter'} → Bench` : `${other?.name || 'Alternative'} remains the comparison`), seasonEl('p', 'seasonLineupWhy', seasonLineupWhy(decision)));
   const projection = seasonLineupProjectionCopy(decision, model);
-  if (projection) card.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : 'Projection'}: ${projection}`));
+  if (projection) card.appendChild(seasonEl('strong', 'seasonLineupProjectionDelta', `${model.reviewMode ? 'Review fixture projection' : projection.label}: ${projection.text}`));
   card.appendChild(seasonButton('View comparison', () => openSeasonStartSitComparison(decision, model), 'seasonMiniButton'));
   return card;
 }
@@ -10893,7 +10922,7 @@ renderSeasonHome = function (model, content) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_4_13_response_contract_1')
+      .register('./service-worker.js?v=jonin_4_4_14_sleeper_projection_1')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );

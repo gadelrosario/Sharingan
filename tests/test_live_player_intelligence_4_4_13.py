@@ -18,8 +18,9 @@ class LivePlayerIntelligenceTests(unittest.TestCase):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         worker = (ROOT / "service-worker.js").read_text(encoding="utf-8")
         for source in (html, worker):
-            self.assertLess(source.index("js/nfl-live-week-v1.js?v=1.0.0"), source.index("js/season-current-week-evidence-v1.js?v=1.1.0"))
-            self.assertLess(source.index("js/season-current-week-evidence-v1.js?v=1.1.0"), source.index("js/app.js?v=4.4.13-live-player-intelligence-1"))
+            self.assertLess(source.index("js/nfl-live-week-v1.js?v=1.0.0"), source.index("js/sleeper-projection-adapter-v1.js?v=1.0.0"))
+            self.assertLess(source.index("js/sleeper-projection-adapter-v1.js?v=1.0.0"), source.index("js/season-current-week-evidence-v1.js?v=1.2.0"))
+            self.assertLess(source.index("js/season-current-week-evidence-v1.js?v=1.2.0"), source.index("js/app.js?v=4.4.14-sleeper-projection-1"))
 
 
 if __name__ == "__main__":

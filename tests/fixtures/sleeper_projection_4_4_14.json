@@ -1,0 +1,22 @@
+{
+  "season": 2026,
+  "week": 2,
+  "fetchedAt": "2026-09-20T12:00:00.000Z",
+  "players": [
+    {"id":"q","canonicalId":"q","name":"Fixture QB","pos":"QB","team":"BUF","externalIds":{"sleeper":"sq"}},
+    {"id":"r","canonicalId":"r","name":"Fixture RB","pos":"RB","team":"DET","externalIds":{"sleeper":"sr"}},
+    {"id":"w","canonicalId":"w","name":"Fixture WR","pos":"WR","team":"SEA","externalIds":{"sleeper":"sw"}},
+    {"id":"t","canonicalId":"t","name":"Fixture TE","pos":"TE","team":"KC","externalIds":{"sleeper":"st"}},
+    {"id":"k","canonicalId":"k","name":"Fixture K","pos":"K","team":"HOU","externalIds":{"sleeper":"sk"}},
+    {"id":"d","canonicalId":"d","name":"Los Angeles Chargers D/ST","pos":"DST","team":"LAC"},
+    {"seasonPlayerId":"fhq_season_gsis_00_0041013","canonicalPlayerId":"fhq_season_gsis_00_0041013","name":"Emmett Johnson","position":"RB","teamAtObservation":"KC","externalIds":{"sleeper":"13337","yahoo":"42796"}}
+  ],
+  "rows": {
+    "QB":{"player_id":"sq","season":"2026","week":2,"season_type":"regular","game_id":"gq","team":"BUF","opponent":"MIA","updated_at":1789905600000,"last_modified":1789905600000,"player":{"first_name":"Fixture","last_name":"QB","position":"QB"},"stats":{"pass_cmp":22,"pass_yd":270,"pass_td":2,"pass_int":1,"rush_yd":30,"pts_std":20,"pts_half_ppr":20,"pts_ppr":20}},
+    "RB":{"player_id":"sr","season":"2026","week":2,"season_type":"regular","game_id":"gr","team":"DET","opponent":"CHI","updated_at":1789905600000,"last_modified":1789905600000,"player":{"first_name":"Fixture","last_name":"RB","position":"RB"},"stats":{"rush_yd":80,"rush_td":1,"rec":4,"rec_yd":25,"pts_std":16.5,"pts_half_ppr":18.5,"pts_ppr":20.5}},
+    "WR":{"player_id":"sw","season":"2026","week":2,"season_type":"regular","game_id":"gw","team":"SEA","opponent":"SF","updated_at":1789905600000,"last_modified":1789905600000,"player":{"first_name":"Fixture","last_name":"WR","position":"WR"},"stats":{"rec":6,"rec_yd":90,"rec_td":1,"pts_std":15,"pts_half_ppr":18,"pts_ppr":21}},
+    "TE":{"player_id":"st","season":"2026","week":2,"season_type":"regular","game_id":"gt","team":"KC","opponent":"LV","updated_at":1789905600000,"last_modified":1789905600000,"player":{"first_name":"Fixture","last_name":"TE","position":"TE"},"stats":{"rec":5,"rec_yd":60,"pts_std":6,"pts_half_ppr":8.5,"pts_ppr":11}},
+    "K":{"player_id":"sk","season":"2026","week":2,"season_type":"regular","game_id":"gk","team":"HOU","opponent":"IND","updated_at":1789905600000,"last_modified":1789905600000,"player":{"first_name":"Fixture","last_name":"K","position":"K"},"stats":{"fgm_20_29":1,"fgm_40_49":1,"fgm_yds":68,"xpm":2,"pts_std":9,"pts_half_ppr":9,"pts_ppr":9}},
+    "DEF":{"player_id":"LAC","season":"2026","week":2,"season_type":"regular","game_id":"gd","team":"LAC","opponent":"DEN","updated_at":1789905600000,"last_modified":1789905600000,"player":{"first_name":"Los Angeles","last_name":"Chargers","position":"DEF"},"stats":{"sack":3,"int":1,"fum_rec":1,"pts_allow":17,"pts_std":8,"pts_half_ppr":8,"pts_ppr":8}}
+  }
+}

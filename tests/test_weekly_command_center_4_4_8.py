@@ -71,7 +71,7 @@ class WeeklyCommandCenter448Tests(unittest.TestCase):
         self.assertIn(".seasonWeeklyIgnoreDisclosure summary:focus-visible", css)
         self.assertIn(".seasonHomeWaiver.seasonTrackedByFlight .seasonHomeDecisionReason", css)
         self.assertIn("css/app.css?v=4.4.13-live-player-intelligence-1", html)
-        self.assertIn("js/app.js?v=4.4.13-live-player-intelligence-1", html)
+        self.assertIn("js/app.js?v=4.4.14-sleeper-projection-1", html)
 
 
 if __name__ == "__main__":

@@ -26,7 +26,7 @@ class YahooSyncFoundationTests(unittest.TestCase):
         self.assertLess(html.index('js/yahoo-season-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/yahoo-sync-v1.js'), html.index('js/app.js'))
         self.assertLess(html.index('js/season-command-center-v1.js'), html.index('js/app.js'))
-        self.assertIn("'./js/yahoo-season-v1.js?v=1.3.0-live-player'", worker)
+        self.assertIn("'./js/yahoo-season-v1.js?v=1.4.0-scoring-table'", worker)
         self.assertIn("'./js/yahoo-sync-v1.js?v=1.2.2-response-contract'", worker)
         self.assertIn("'./js/season-command-center-v1.js?v=1.1.6-projection-semantics'", worker)
 

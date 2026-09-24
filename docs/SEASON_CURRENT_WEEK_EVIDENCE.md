@@ -33,7 +33,7 @@ The value is unavailable when a starter is live without a trustworthy live expec
 
 ## Known limitations
 
-- No external projection feed was added in 4.4.12. Yahoo player projections are used only when present in the current snapshot.
+- Jōnin 4.4.14 adds an isolated Sleeper weekly-projection adapter. Safely custom-scored values are labeled `Fantasy HQ Projection`; otherwise a current `pts_half_ppr` fallback is labeled `Sleeper Estimate`. Yahoo remains authoritative for roster, lineup, opponent, actual points, and game state. See `SLEEPER_PROJECTION_INTELLIGENCE_4_4_14.md`.
 - Historical nflverse participation/usage artifacts remain context-only and may be stale for the current season.
 - Opponent defensive matchup grades, weather, betting markets, and live expected-final scores are unavailable unless an authoritative provider supplies them.
 - Current-season usage trends require multiple completed games; one-game samples are labeled insufficient and two-game samples developing.
