@@ -5841,3 +5841,26 @@ body.seasonModeActive .seasonV3Outlook{border-color:var(--season-v3-line);backgr
 .seasonV3BattleBasis{margin:.1rem 0 .45rem;color:#aaa4bc;font-size:.68rem;line-height:1.3}
 .seasonLineupProjection{white-space:nowrap}.seasonLineupStatus{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:3px}
 @media(max-width:620px){.seasonV3CurrentOutlook{grid-template-columns:1fr auto}.seasonV3CurrentOutlook span{grid-column:1/-1}}
+
+/* 4.4.15: bounded Season lineup preview workspace. */
+.seasonWorkspaceControls { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 8px; }
+.seasonWorkspaceControls [aria-pressed="true"] { background:#513750; border-color:#aa80a5; color:#fff; }
+.seasonLineupWorkspace .seasonV3Dashboard { align-items:start; }
+.seasonWorkspaceRoster, .seasonWorkspaceMatchup { min-width:0; }
+.seasonWorkspaceRow { display:grid; grid-template-columns:44px minmax(0,1fr) minmax(90px,auto); gap:10px; padding:12px 8px; border-bottom:1px solid rgba(255,255,255,.08); align-items:center; }
+.seasonWorkspaceRow.legal { background:rgba(117,78,112,.24); outline:1px solid #997194; }
+.seasonWorkspaceRow.selected { background:rgba(117,78,112,.3); }
+.seasonWorkspacePlayer, .seasonWorkspaceAction { display:flex; flex-direction:column; gap:5px; min-width:0; }
+.seasonWorkspacePlayer strong { overflow-wrap:anywhere; font-size:14px; }
+.seasonWorkspacePlayer small, .seasonWorkspaceAction small { color:#b9b0bf; font-size:11px; line-height:1.45; }
+.seasonWorkspaceEvidence { color:#d2bacf !important; }
+.seasonWorkspaceAction { max-width:135px; align-items:flex-start; }
+.seasonWorkspaceAction button { min-height:36px; }
+.seasonLineupWorkspace button:disabled { opacity:.45; cursor:not-allowed; }
+.seasonWorkspacePair { display:grid; grid-template-columns:40px minmax(0,1fr) minmax(0,1fr); gap:12px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.08); }
+.seasonWorkspacePair > b { color:#b99cb5; font-size:12px; }
+.seasonWorkspaceImpact { display:flex; flex-direction:column; gap:7px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.08); }
+.seasonWorkspaceImpact small { color:#b9b0bf; }
+.seasonLineupWorkspace .seasonV3CurrentOutlook strong { display:block; }
+@media(max-width:850px) { .seasonLineupWorkspace .seasonV3Dashboard { grid-template-columns:1fr; } }
+@media(max-width:420px) { .seasonWorkspaceRow { grid-template-columns:32px minmax(0,1fr); } .seasonWorkspaceAction { grid-column:2; max-width:none; } .seasonWorkspacePair { gap:7px; grid-template-columns:32px minmax(0,1fr) minmax(0,1fr); } }

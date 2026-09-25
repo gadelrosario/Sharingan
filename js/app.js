@@ -8788,6 +8788,7 @@ async function syncYahooLeagueNow() {
       aliases: {},
       archives: yahooArchiveLinkageInputs(),
     });
+    clearSeasonLineupPreviewAfterSync(activeLeagueProfile.id);
     seasonProjectionRequests.clear();
     renderYahooSeasonState();
     if (!el('seasonScreen')?.classList.contains('hidden')) await renderSeasonCommandCenter();
@@ -10767,6 +10768,11 @@ function seasonV3RosterImprovements(model) {
   return panel;
 }
 renderSeasonHome = function (model, content) {
+  if (model?.lineup?.authoritative && model.sourceLabel === 'Yahoo' && !model.manualAuthority && !model.demo && !model.reviewMode) {
+    content.appendChild(seasonV3Outlook(model));
+    renderSeasonLineupWorkspace(model, content);
+    return;
+  }
   const plan = seasonWeeklyPlan(model), dashboard = seasonEl('section', 'seasonV3Dashboard'), left = seasonEl('div', 'seasonV3RosterColumn'), right = seasonEl('div', 'seasonV3DecisionColumn'), roster = seasonRosterCard(model);
   content.appendChild(seasonV3Outlook(model));
   const rosterHead = roster.querySelector('.seasonSectionHeader'), rosterTitle = rosterHead?.querySelector('h2');
@@ -10922,7 +10928,7 @@ renderSeasonHome = function (model, content) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker
-      .register('./service-worker.js?v=jonin_4_4_14_sleeper_projection_1')
+      .register('./service-worker.js?v=jonin_4_4_15_lineup_workspace_1')
       .then(reg => reg.update())
       .catch(err => console.warn('Service worker update skipped', err))
   );
