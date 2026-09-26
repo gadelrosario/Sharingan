@@ -1,0 +1,33 @@
+'use strict';
+const assert=require('node:assert/strict'),I=require('../js/nba-identity-v1'),Y=require('../js/yahoo-nba-v1');
+const tests=[],test=(n,f)=>tests.push([n,f]);
+const create=(id,extra={})=>I.create({sport:'nba',authority:'yahoo',providerIds:{yahoo:id},name:'Example',...extra});
+const game={code:'nba',game_key:'478',season:'2026'};
+const raw=id=>[[{player_id:id},{player_key:`478.p.${id}`},{editorial_player_key:`nba.p.${id}`},{name:{full:'Sample Player'}},{editorial_team_abbr:'bos'},{eligible_positions:[{position:'PG'},{position:'SG'}]}]];
+const page=players=>({fantasy_content:{game:[game,{players:Object.fromEntries(players.map((p,i)=>[i,{player:p}]))}]}});
+test('canonical IDs stable and provider namespaced',()=>{assert.equal(create('100').canonicalId,'nba:yahoo:100');assert.notEqual(I.providerKey('nba','100'),I.providerKey('yahoo','100'));assert.deepEqual(create('100'),create('100'));});
+test('raw IDs missing sport and unsupported providers rejected',()=>{assert.throws(()=>create(''));assert.throws(()=>create('100',{sport:'nfl'}));assert.throws(()=>I.providerKey('other','100'));});
+test('unique registry and exact provider match',()=>{const r=I.index([create('1'),create('2')]);assert.equal(r.errors.length,0);assert.equal(I.match({sport:'nba',providerIds:{yahoo:'2'}},r).player.canonicalId,'nba:yahoo:2');});
+test('duplicate canonical IDs fail closed',()=>{const r=I.index([create('1'),create('1')]);assert.ok(r.errors.length);assert.equal(I.match({sport:'nba',providerIds:{yahoo:'1'}},r).status,'AMBIGUOUS');});
+test('cross-provider collisions detected',()=>{const r=I.index([create('1',{providerIds:{yahoo:'1',nba:'9'}}),create('2',{providerIds:{yahoo:'2',nba:'9'}})]);assert.ok(r.errors.some(e=>e.includes('nba:nba:9')));});
+test('contradictory provider matches fail closed',()=>{const r=I.index([create('1',{providerIds:{yahoo:'1',nba:'9'}}),create('2',{providerIds:{yahoo:'2',nba:'8'}})]);assert.equal(I.match({sport:'nba',providerIds:{yahoo:'1',nba:'8'}},r).status,'AMBIGUOUS');});
+test('names and unverified new provider IDs cannot merge players',()=>{const r=I.index([create('1')]);for(const q of [{name:'Example'},{providerIds:{yahoo:'1',nba:'9'}}])assert.equal(I.match({sport:'nba',...q},r).status,'UNRESOLVED');});
+test('NFL input cannot contaminate NBA registry',()=>{assert.equal(I.match({sport:'nfl',providerIds:{yahoo:'1'}},I.index([create('1')])).status,'UNRESOLVED');assert.throws(()=>I.index([{...create('1'),sport:'nfl'}]));});
+test('Yahoo page preserves team position source keys and uncertainty',()=>{const p=Y.gamePlayers(page([raw('100')])).players[0];assert.equal(p.team,'BOS');assert.deepEqual(p.positions,['PG','SG']);assert.equal(p.yahooPlayerKey,'478.p.100');assert.equal(p.yahooEditorialPlayerKey,'nba.p.100');assert.equal(p.yahooPlayerId,'100');assert.equal(p.canonicalId,'nba:yahoo:100');assert.equal(p.active,null);assert.equal(p.ownership,'UNKNOWN');});
+test('different Yahoo season keys preserve canonical player ID',()=>{const a=Y.player(raw('100'),game),b=Y.player([[{...Object.assign({},...raw('100')[0]),player_key:'479.p.100'}]],{...game,game_key:'479'});assert.equal(a.canonicalId,b.canonicalId);assert.notEqual(a.yahooPlayerKey,b.yahooPlayerKey);});
+test('NBA player parser rejects NFL metadata and editorial keys',()=>{assert.throws(()=>Y.player(raw('100'),{...game,code:'nfl'}));const r=raw('100');r[0][2].editorial_player_key='nfl.p.100';assert.throws(()=>Y.player(r,game));});
+test('all supplied page records normalized without top-N truncation',()=>{const r=Y.gamePlayers(page(Array.from({length:150},(_,i)=>raw(String(i+1)))));assert.equal(r.players.length,150);assert.equal(r.players.find(p=>p.yahooPlayerId==='150').canonicalId,'nba:yahoo:150');assert.equal(r.coverage,'PAGE_ONLY');});
+test('duplicate page identity rejected',()=>assert.throws(()=>Y.gamePlayers(page([raw('1'),raw('1')]))));
+test('categories retained without inventing points scoring or a roster',()=>{const payload={fantasy_content:{league:[{league_key:'478.l.1',draft_status:'predraft',scoring_type:'head'},{settings:[{roster_positions:[{roster_position:{position:'Util',count:3}}],stat_categories:{stats:[{stat:{stat_id:5,display_name:'FG%',enabled:'1'}}]}}]}]}};const r=Y.leagueSettings(payload,game);assert.equal(r.profileKey,'nba:yahoo:478.l.1');assert.deepEqual(r.rosterSlots,[{position:'UTIL',count:3}]);assert.equal(r.categories[0].label,'FG%');assert.equal(r.draftStatus,'predraft');assert.equal(r.scoringType,'head');assert.throws(()=>Y.leagueSettings(payload,{...game,game_key:'470'}));});
+test('all NBA roster slots preserve eligibility and reject NFL slots',()=>{
+ const settings=slots=>({fantasy_content:{league:[{league_key:'478.l.1'},{settings:[{roster_positions:slots.map(([position,count])=>({roster_position:{position,count}}))}]}]}});
+ const slots=['PG','SG','G','SF','PF','F','C','Util','BN','IL','IL+'];
+ assert.deepEqual(Y.leagueSettings(settings(slots.map(p=>[p,1])),game).rosterSlots.map(r=>r.position),slots.map(p=>p.toUpperCase()));
+ for(const invalid of [['WR',1],['IR',1],['C',null],['C',''],['C',-1],['C',1.5]])assert.throws(()=>Y.leagueSettings(settings([invalid]),game));
+});
+test('NBA canonical ID does not overlap the current NFL catalog',()=>{
+ const catalog=require('../data/players.json'),rows=Array.isArray(catalog)?catalog:catalog.players;
+ const nfl=new Set(rows.map(p=>String(p.canonicalPlayerId||p.playerId||p.id)));
+ for(const row of rows)assert.equal(nfl.has(create(String(row.id)).canonicalId),false);
+});
+let failed=0;for(const [name,fn] of tests){try{fn();console.log('PASS',name);}catch(e){failed++;console.error('FAIL',name,e);}}console.log(`${tests.length-failed}/${tests.length} passed`);if(failed)process.exit(1);

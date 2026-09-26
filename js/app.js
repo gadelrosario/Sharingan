@@ -6228,7 +6228,10 @@ async function seasonStateForActiveProfile() {
       },
     };
   }
-  const live = currentYahooSeasonState(),
+  const storedLive = currentYahooSeasonState(),
+    live = storedLive?.snapshot?.provider === 'Yahoo'
+      ? { ...storedLive, snapshot: FantasyHQYahooSeason.reidentifySnapshot(storedLive.snapshot, [...players, ...(seasonPlayerRegistry?.evidencePlayers?.() || [])]) }
+      : storedLive,
     demo = seasonDemoEnabled() ? await loadSeasonDemo() : null;
   return SeasonCommandCenterV1.resolveSeasonState({
     live,
@@ -6451,7 +6454,7 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
       Number.isFinite(Number(weekEvidence.projection.value)),
     projection = seasonEl(
       'span',
-      'seasonLineupProjection',
+      `seasonLineupProjection ${seasonPointSemanticClass(weekEvidence)}`,
       gameEvidence?.state === 'FINAL' && hasActual
         ? `${Number(actual).toFixed(2)} ACT`
         : hasProjection

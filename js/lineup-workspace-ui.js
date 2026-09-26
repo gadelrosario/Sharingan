@@ -1,4 +1,11 @@
 /* Season-only, in-memory preview UI. No storage writes or provider requests. */
+// Color only evidence safe for this game state; mixed totals keep their own styling.
+function seasonPointSemanticClass(week) {
+  const valid = evidence => evidence?.supported === true && typeof evidence.value === 'number' && Number.isFinite(evidence.value);
+  if (week?.game?.state === 'FINAL' && valid(week.actual)) return 'seasonPointsActual';
+  if (week?.game?.state === 'PRE_GAME' && valid(week.projection)) return 'seasonPointsProjected';
+  return '';
+}
 let seasonLineupPreviewState = null;
 let seasonLineupPreviewCleanup = () => {};
 function clearSeasonLineupPreviewAfterSync(profileId) {
@@ -75,7 +82,15 @@ function renderSeasonLineupWorkspace(model, content) {
       if (!player) return box;
       const p = player.currentWeek?.projection, g = player.currentWeek?.game, actual = player.currentWeek?.actual;
       box.appendChild(seasonEl('small', '', `${player.position || '—'} • ${player.sourceTeam || '—'} • ${player.opponent || 'Opponent unavailable'}`));
-      box.appendChild(seasonEl('small', 'seasonWorkspaceEvidence', g?.state === 'FINAL' && actual?.supported ? `${money(actual.value)} • Yahoo actual` : p?.supported ? `${money(p.value)} • ${p.label || p.source} • ${p.freshness}` : `Projection unavailable • ${p?.reason || 'Missing evidence'}`));
+      const evidenceLine = seasonEl('small', 'seasonWorkspaceEvidence');
+      if (g?.state === 'FINAL' && actual?.supported || p?.supported) {
+        const settled = g?.state === 'FINAL' && actual?.supported;
+        evidenceLine.append(
+          seasonEl('span', `seasonPointValue ${seasonPointSemanticClass(player.currentWeek)}`, money(settled ? actual.value : p.value)),
+          seasonEl('span', '', settled ? ' • Yahoo actual' : ` • ${p.label || p.source} • ${p.freshness}`)
+        );
+      } else evidenceLine.textContent = `Projection unavailable • ${p?.reason || 'Missing evidence'}`;
+      box.appendChild(evidenceLine);
       box.appendChild(seasonEl('small', '', `${g?.state || 'UNKNOWN'}${player.injuryStatus ? ` • ${player.injuryStatus}` : ''}`));
       return box;
     };

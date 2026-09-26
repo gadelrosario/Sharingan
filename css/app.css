@@ -5864,3 +5864,8 @@ body.seasonModeActive .seasonV3Outlook{border-color:var(--season-v3-line);backgr
 .seasonLineupWorkspace .seasonV3CurrentOutlook strong { display:block; }
 @media(max-width:850px) { .seasonLineupWorkspace .seasonV3Dashboard { grid-template-columns:1fr; } }
 @media(max-width:420px) { .seasonWorkspaceRow { grid-template-columns:32px minmax(0,1fr); } .seasonWorkspaceAction { grid-column:2; max-width:none; } .seasonWorkspacePair { gap:7px; grid-template-columns:32px minmax(0,1fr) minmax(0,1fr); } }
+
+/* Settled actuals and supported unstarted estimates retain their text provenance. */
+body.seasonModeActive { --season-points-actual:var(--season-v3-gold); --season-points-projected:#4da3ff; }
+body.seasonModeActive .seasonPointsActual { color:var(--season-points-actual) !important; }
+body.seasonModeActive .seasonPointsProjected { color:var(--season-points-projected) !important; }

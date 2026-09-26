@@ -39,4 +39,31 @@ test('detached workspace cancels callbacks without repaint',()=>{
  click('Custom Preview');assert.equal(timers.size,1);host.isConnected=false;
  const scheduled=[...timers.values()][0];scheduled.fn();assert.equal(timers.size,0);
 });
+test('supported unstarted projection is electric-blue semantic state',()=>assert.equal(context.seasonPointSemanticClass(a.currentWeek),'seasonPointsProjected'));
+test('completed actual wins over retained projection',()=>assert.equal(context.seasonPointSemanticClass({...a.currentWeek,game:{state:'FINAL'},actual:{supported:true,value:0}}),'seasonPointsActual'));
+test('live unknown and unsupported evidence remain neutral',()=>{
+ for(const state of ['LIVE','UNKNOWN','FINAL'])assert.equal(context.seasonPointSemanticClass({...a.currentWeek,game:{state}}),'');
+ for(const value of [null,undefined,NaN,Infinity,'12'])assert.equal(context.seasonPointSemanticClass({...a.currentWeek,projection:{supported:true,value}}),'');
+ assert.equal(context.seasonPointSemanticClass({...a.currentWeek,projection:{supported:false,value:10}}),'');
+});
+test('workspace rows carry the projection class with provenance',()=>{
+ clock=Date.parse('2098-12-31T23:59:59Z');const root5=el('main');context.renderSeasonLineupWorkspace(model,root5);
+ assert.ok(all(root5).some(n=>n.className==='seasonWorkspaceEvidence'&&n.children.some(c=>c.className?.includes('seasonPointsProjected')&&c.textContent==='10.00')&&text(n).includes('Sleeper Estimate')));
+});
+test('rendered completed actual retains label and never receives projected class',()=>{
+ const done={...a,currentWeek:{...a.currentWeek,game:{state:'FINAL',locked:true},actual:{supported:true,value:25.4}}};
+ const finished={...model,profileId:'completed-semantic-test',roster:[done,b],lineup:{...model.lineup,starters:[{slot:'WR',player:done}]}};
+ const root6=el('main');context.renderSeasonLineupWorkspace(finished,root6);
+ const actual=all(root6).find(n=>n.className?.includes('seasonPointValue')&&n.textContent==='25.40');assert.match(text(root6),/Yahoo actual/);assert.ok(actual);assert.match(actual.className,/seasonPointsActual/);assert.doesNotMatch(actual.className,/seasonPointsProjected/);
+ const css=fs.readFileSync('css/app.css','utf8');assert.match(css,/seasonPointsActual\s*\{[^}]*var\(--season-points-actual\)/);assert.match(css,/seasonPointsProjected\s*\{[^}]*var\(--season-points-projected\)/);
+});
+test('visible live unknown and unsupported numbers never receive settled or forecast classes',()=>{
+ for(const state of ['LIVE','UNKNOWN','PRE_GAME']){
+  const unsafe={...a,currentWeek:{...a.currentWeek,game:{state,locked:state==='LIVE'},projection:{...a.currentWeek.projection,supported:state!=='PRE_GAME'}}};
+  const root7=el('main');context.renderSeasonLineupWorkspace({...model,profileId:'unsafe-'+state,roster:[unsafe,b],lineup:{...model.lineup,starters:[{slot:'WR',player:unsafe}]},opponentLineup:{starters:[]}},root7);
+  const row=all(root7).find(n=>n.className==='seasonWorkspacePlayer'&&text(n).includes('Alpha'));assert.ok(row);
+  assert.ok(all(row).every(n=>!n.className?.includes('seasonPointsActual')&&!n.className?.includes('seasonPointsProjected')));
+  if(state==='PRE_GAME')assert.match(text(row),/Projection unavailable/);
+ }
+});
 let failures=0;for(const [name,fn] of tests){try{fn();console.log('PASS',name);}catch(e){failures++;console.error('FAIL',name,e);}}console.log(`${tests.length-failures}/${tests.length} passed`);if(failures)process.exit(1);
