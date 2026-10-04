@@ -6678,6 +6678,26 @@ function seasonWaiverContext(model, player) {
 function seasonWaiverEvaluation(model) {
   if (model.waiverIntelligence) return model.waiverIntelligence;
   if (!window.FantasyHQWaiverIntelligence) return null;
+  if (model.snapshot?.provider === 'Yahoo' && !model.demo && !model.reviewMode) {
+    const attach = player => {
+      const id = player.identity?.canonicalPlayerId;
+      const currentWeekWaiverUsage = (seasonEvidenceStore?.observations(id) || []).filter(row =>
+        row.canonicalPlayerId === id && Number(row.season) === Number(model.snapshot.league?.season) &&
+        Number(row.week) > 0 && Number(row.week) < Number(model.week)
+      ).map(row => ({
+        canonicalPlayerId: id, season: row.season, week: row.week,
+        observedAt: row.observedAt, fetchedAt: row.fetchedAt, sample: 'ONE_WEEK_OBSERVATION',
+        freshness: FantasyHQCurrentWeekEvidenceV1.freshness('usage', row.observedAt),
+        role: row.role, opportunity: row.opportunity, production: row.production, relationship: row.relationship,
+        provenance: row.provenance,
+      }));
+      return { ...player, currentWeekWaiverUsage };
+    };
+    return FantasyHQWaiverIntelligence.evaluate({
+      model: { ...model, available: (model.available || []).map(attach), roster: (model.roster || []).map(attach) },
+      profile: activeLeagueProfile, horizon: 'CURRENT_WEEK',
+    });
+  }
   const contextByPlayer = Object.fromEntries(
     (model.available || []).map(player => [
       player.identity?.canonicalPlayerId ||
@@ -6730,7 +6750,7 @@ function seasonFaabBudget(model) {
   };
 }
 function seasonFaabEvaluation(model, pair) {
-  if (!window.FantasyHQFAABIntelligenceV1 || !pair) return null;
+  if (!window.FantasyHQFAABIntelligenceV1 || !pair || pair.horizon === 'CURRENT_WEEK') return null;
   const player = pair.player,
     fit = seasonTeamFitCandidate(model, player),
     injury =
@@ -7064,9 +7084,55 @@ function seasonWaiverRow(pair, model) {
   );
   return row;
 }
+function seasonCurrentWeekWaiverCards(intelligence) {
+  const container = seasonEl('div', 'seasonDecisionGrid');
+  const positions = new Set(), selected = [];
+  for (const pair of intelligence.comparisons || []) {
+    if (positions.has(pair.candidate.position)) continue;
+    positions.add(pair.candidate.position); selected.push(pair);
+    if (selected.length === 3) break;
+  }
+  if (!selected.length) return seasonCurrentWeekWaiverCard(intelligence);
+  selected.forEach(pair => container.appendChild(seasonCurrentWeekWaiverCard({ ...intelligence, action: pair.action, comparisons: [pair] })));
+  return container;
+}
+function seasonCurrentWeekWaiverCard(intelligence) {
+  const card = seasonEl('section', 'seasonPanel seasonWaiverPanel');
+  card.append(seasonSectionHeader('CURRENT WEEK COMPARISON'), seasonStatusBadge(intelligence.action, 'neutral'));
+  const pair = intelligence.comparisons[0];
+  if (!pair) { card.append(seasonEl('p', 'seasonTrustNote', intelligence.reason)); return card; }
+  const c = pair.candidateProjection, r = pair.rosterProjection;
+  card.append(
+    seasonEl('h3', '', `${pair.candidate.name} vs ${pair.rosterPlayer.name}`),
+    seasonEl('p', '', `Yahoo: ${pair.yahooStatus} • CURRENT WEEK ${c.week} • Bench comparison`),
+    seasonEl('p', '', `${pair.candidate.name}: ${c.value.toFixed(2)} • ${pair.rosterPlayer.name}: ${r.value.toFixed(2)} • Difference: ${pair.difference > 0 ? '+' : ''}${pair.difference.toFixed(2)}`),
+    seasonEl('p', 'seasonTrustNote', `${c.label || c.source} • ${c.scoringFormat} • Candidate ${c.freshness}, ${c.fetchedAt} • Roster ${r.freshness}, ${r.fetchedAt}. Weekly estimates are not rest-of-season values.`),
+    seasonEl('p', '', `Injury evidence: candidate ${pair.injury.candidate.status}; roster ${pair.injury.roster.status}. UNKNOWN does not mean healthy.`),
+    seasonEl('p', '', `Optional evidence: ${pair.optionalEvidence ? 'observed context listed below' : 'unavailable with complete dated provenance; not used'}. Missing: ${pair.missingEvidence.join('; ')}. Long-term drop value: UNKNOWN.`),
+    seasonEl('p', '', `Transaction protection: ${pair.transactionProtection.state}. ${pair.transactionProtection.reasons.join(' ')}`),
+    seasonEl('p', '', `Roster structure: ${pair.transaction.legalStructure ? 'same-position bench replacement preserves eligibility' : 'unresolved; transaction blocked'}. Positional depth after drop/replacement: ${pair.transactionProtection.structure?.depthAfterDrop ?? 'unknown'}/${pair.transactionProtection.structure?.depthAfterReplacement ?? 'unknown'}. Bye coverage: ${pair.transactionProtection.structure?.byeWeek ?? 'unknown'} / candidate ${pair.transactionProtection.structure?.candidateByeWeek ?? 'unknown'}.`),
+    seasonEl('p', 'seasonHomeDecisionReason', pair.reason),
+    seasonEl('p', 'seasonTrustNote', 'ADD not authorized. FAAB blocked: permanent drop valuation unavailable.')
+  );
+  if (pair.optionalEvidence) {
+    for (const [side, rows] of Object.entries(pair.optionalEvidence)) {
+      for (const row of rows || []) {
+        const values = [
+          ['offensive snaps', row.role?.offensiveSnaps], ['snap share', row.role?.offensiveSnapShare ?? row.role?.snapShare],
+          ['carries', row.opportunity?.carries], ['targets', row.opportunity?.targets],
+          ['target share', row.opportunity?.targetShare], ['opportunities', row.opportunity?.opportunities],
+          ['recent fantasy points', row.production?.fantasyPoints],
+        ].filter(([, value]) => value != null).map(([label, value]) => `${label}: ${value}`);
+        card.appendChild(seasonEl('p', 'seasonTrustNote', `${side} observed context • Week ${row.week} • ${row.observedAt} • ${row.freshness} • ${row.provenance.provider}/${row.provenance.source} • ${row.sample}: ${values.join(', ') || 'Listed metrics unavailable'}. Context only; no valuation inferred.`));
+      }
+    }
+  }
+  return card;
+}
 function seasonWaiverCard(model, { full = false } = {}) {
   const intelligence = seasonWaiverEvaluation(model),
     card = seasonEl('section', 'seasonPanel seasonWaiverPanel seasonHomeWaiver');
+  if (intelligence?.horizon === 'CURRENT_WEEK') return seasonCurrentWeekWaiverCards(intelligence);
   card.append(
     seasonSectionHeader(
       'WAIVER INTELLIGENCE',
@@ -7746,6 +7812,7 @@ function renderSeasonPlayers(model, content) {
 }
 function renderSeasonWaivers(model, content) {
   const intelligence = model.waiverIntelligence;
+  if (intelligence?.horizon === 'CURRENT_WEEK') { content.appendChild(seasonCurrentWeekWaiverCards(intelligence)); return; }
   content.append(
     seasonPageIntro(
       'Waiver Intelligence',

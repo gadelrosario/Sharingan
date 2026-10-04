@@ -1,0 +1,71 @@
+'use strict';
+const assert = require('node:assert/strict');
+const Waiver = require('../js/waiver-intelligence-v1.js');
+const now = Date.parse('2026-10-03T12:00:00Z'), stamp = new Date(now).toISOString();
+function fixture() {
+  const player = (id, value, slot) => ({name:id,position:'RB',canonicalPlayerId:id,yahooPlayerId:id,sourcePlayerKey:`461.p.${id}`,rosterSlot:slot,eligiblePositions:['RB','FLEX'],identity:{status:'MATCHED',canonicalPlayerId:id},projectionProvenance:{canonicalPlayerId:id,season:2026,week:4,recommendationAuthority:true,scoringCompatibility:{status:'EXACT'}},availabilityState:{actionable:true},currentWeek:{identity:{safe:true,canonicalPlayerId:id},season:2026,week:4,projection:{supported:true,value,week:4,source:'FANTASY_HQ_PROJECTION',scoringFormat:'HALF_PPR',projectionType:'CUSTOM_SCORING',freshness:'CURRENT',fetchedAt:stamp},game:{state:'PRE_GAME',actionable:true,locked:false,updatedAt:stamp,kickoff:'2026-10-04T17:00:00Z'},injury:{status:'UNKNOWN',rawStatus:'UNKNOWN'}}});
+  const candidate=player('101',12,'BN'),bench=player('202',8,'BN');
+  const model={profileId:'profile',week:4,scoring:'HALF_PPR',userTeamResolution:{status:'RESOLVED',teamKey:'461.l.1.t.1'},available:[candidate],roster:[bench],snapshot:{provider:'Yahoo',profileId:'profile',fetchedAt:stamp,league:{leagueKey:'461.l.1',season:2026,currentWeek:4},userTeamKey:'461.l.1.t.1',datasets:{players:{status:'CURRENT'}},availablePlayers:[candidate],teams:[{roster:[bench]}],currentRoster:{yahooTeamKey:'461.l.1.t.1',yahooLeagueKey:'461.l.1',roster:[{canonicalPlayerId:'202',yahooPlayerId:'202',yahooPlayerKey:'461.p.202',rosterSlot:'BN'}]},ownership:{valid:true,ownership:{'101':{status:'FREE_AGENT',teamKey:null,sourcePlayerId:'101'},'202':{status:'ROSTERED_BY_USER',teamKey:'461.l.1.t.1',sourcePlayerId:'202'}}}}};
+  return {model,profile:{id:'profile'},horizon:'CURRENT_WEEK',now};
+}
+let passed=0;
+function test(name,fn){fn();passed++;console.log(`PASS ${name}`);}
+function run(change){const f=fixture();if(change)change(f.model,f);return Waiver.evaluate(f);}
+const insufficient=change=>assert.equal(run(change).status,'INSUFFICIENT_EVIDENCE');
+test('FREE_AGENT/current bench reaches explicit CURRENT_WEEK',()=>{const r=run();assert.equal(r.horizon,'CURRENT_WEEK');assert.equal(r.status,'EVALUATED');assert.equal(r.comparisons.length,1);});
+test('Yahoo ownership overrides available label',()=>insufficient(m=>{m.snapshot.ownership.ownership['101'].status='UNKNOWN';}));
+test('rostered candidate denied despite stale free-agent entry',()=>insufficient(m=>m.snapshot.teams[0].roster.push(m.available[0])));
+test('unresolved canonical fails closed',()=>insufficient(m=>{m.available[0].identity.status='UNRESOLVED';}));
+test('conflicting canonical fails closed',()=>insufficient(m=>{m.available[0].canonicalPlayerId='other';}));
+test('stale projection fails closed',()=>insufficient(m=>{m.available[0].currentWeek.projection.fetchedAt='2026-09-30T00:00:00Z';}));
+test('incompatible scoring fails closed',()=>insufficient(m=>{m.available[0].currentWeek.projection.scoringFormat='STANDARD';}));
+test('missing projection fails closed',()=>insufficient(m=>{m.available[0].currentWeek.projection.value=null;}));
+test('explicit zero remains zero',()=>{const r=run(m=>{m.available[0].currentWeek.projection.value=0;});assert.equal(r.comparisons[0].candidateProjection.value,0);assert.equal(r.action,'HOLD');});
+test('positive projection does not authorize ADD',()=>{const r=run();assert.notEqual(r.action,'ADD');assert.deepEqual(r.pairs,[]);assert.equal(r.comparisons[0].score,undefined);});
+test('positive weekly evidence WATCH with long-term UNKNOWN',()=>{const r=run();assert.equal(r.action,'WATCH');assert.equal(r.comparisons[0].longTermDropValue,'UNKNOWN');});
+test('evaluated HOLD differs from insufficient',()=>{const r=run(m=>{m.available[0].currentWeek.projection.value=7;});assert.equal(r.status,'EVALUATED');assert.equal(r.action,'HOLD');assert.equal(r.comparisons[0].difference,-1);});
+test('missing usage remains null',()=>assert.equal(run().comparisons[0].optionalEvidence,null));
+test('UNKNOWN injury preserved',()=>assert.equal(run().comparisons[0].injury.candidate.status,'UNKNOWN'));
+test('FAAB blocked with no numeric acquisition score',()=>{const r=run();assert.equal(r.faab.authority,'BLOCKED');assert.equal(r.faab.output,null);assert.equal(r.comparisons[0].faab.authority,'BLOCKED');assert.equal(r.comparisons[0].dimensions,undefined);});
+test('default invocation retains legacy contract',()=>{const f=fixture();delete f.horizon;const r=Waiver.evaluate(f);assert.equal(r.status,'INSUFFICIENT_VALIDATED_SEASON_DATA');assert.equal(r.action,'HOLD');assert.equal(r.horizon,undefined);});
+test('snapshot freshness enforced',()=>insufficient(m=>{m.snapshot.fetchedAt='2026-10-03T10:00:00Z';}));
+test('wrong selected profile denied',()=>insufficient((m,f)=>{f.profile.id='other';}));
+test('Yahoo roster membership required',()=>insufficient(m=>{m.snapshot.currentRoster.roster=[];}));
+test('starters excluded',()=>insufficient(m=>{m.roster[0].rosterSlot='RB';}));
+test('OUT and IR never overridden by projection',()=>{for(const status of ['OUT','IR'])insufficient(m=>{m.available[0].currentWeek.injury.rawStatus=status;});});
+test('kickoff locks stale open comparison',()=>insufficient(m=>{m.available[0].currentWeek.game.kickoff='2026-10-03T11:59:00Z';}));
+test('shared flex label cannot compare different positions',()=>insufficient(m=>{m.available[0].position='WR';}));
+test('Yahoo key mismatch denied',()=>insufficient(m=>{m.snapshot.currentRoster.roster[0].yahooPlayerKey='461.p.other';}));
+test('both projections incompatible with selected league fail closed',()=>insufficient(m=>{m.scoring='STANDARD';}));
+test('partial custom scoring rejected',()=>insufficient(m=>{m.available[0].projectionProvenance.scoringCompatibility.status='PARTIAL';}));
+test('dated optional observations preserved without affecting decision',()=>{const r=run(m=>{m.available[0].currentWeekWaiverUsage=[{canonicalPlayerId:'101',season:2026,week:3,observedAt:stamp,freshness:'CURRENT',sample:'ONE_WEEK_OBSERVATION',opportunity:{carries:0,targets:null},provenance:{provider:'test',source:'observations'}}];});assert.equal(r.comparisons[0].optionalEvidence.candidate[0].opportunity.carries,0);assert.equal(r.comparisons[0].optionalEvidence.candidate[0].opportunity.targets,null);assert.equal(r.action,'WATCH');});
+test('stale optional observations excluded',()=>{const r=run(m=>{m.available[0].currentWeekWaiverUsage=[{canonicalPlayerId:'101',season:2026,week:1,observedAt:'2026-09-01T00:00:00Z',provenance:{provider:'test',source:'observations'}}];});assert.equal(r.comparisons[0].optionalEvidence,null);});
+test('malformed kickoff fails closed',()=>insufficient(m=>{m.available[0].currentWeek.game.kickoff='unknown';}));
+test('conflicting Yahoo season key fails closed',()=>insufficient(m=>{m.available[0].sourcePlayerKey='460.p.101';}));
+test('estimate comparisons retain explicit half-PPR limitations',()=>{const r=run(m=>{m.scoring='STANDARD';for(const p of [...m.available,...m.roster]){p.currentWeek.projection.projectionType='SLEEPER_HALF_PPR_ESTIMATE';p.currentWeek.projection.source='SLEEPER_HALF_PPR_ESTIMATE';p.projectionProvenance.scoringCompatibility.status='PARTIAL';}});assert.equal(r.action,'WATCH');assert.equal(r.comparisons[0].candidateProjection.scoringFormat,'HALF_PPR');});
+test('FAAB engine rejects current-week evidence even with budget',()=>{const FAAB=require('../js/faab-intelligence-v1.js'),pair=run().comparisons[0];const result=FAAB.evaluate({waiverDecision:{...pair,player:pair.candidate},league:{available:true,availabilityCurrent:true,rosterCurrent:true},budget:{authoritative:true,current:true,startingBudget:100,remainingBudget:100}});assert.equal(result.authority,'BLOCKED');assert.equal(result.bidRange.target,null);});
+function protection(change){const f=fixture();if(change)change(f.model,f);return Waiver.transactionProtection({player:f.model.roster[0],candidate:f.model.available[0],...f});}
+test('unknown future consequence remains unresolved at zero',()=>{const r=protection(m=>{m.roster[0].currentWeek.projection.value=0;});assert.equal(r.state,'UNRESOLVED');assert.equal(r.removalAuthorized,false);});
+test('low projection protects rather than authorizes removal',()=>{const r=protection(m=>{m.roster[0].currentWeek.projection.value=.01;});assert.equal(r.state,'PROTECTED');});
+test('bench status and missing optional evidence cannot authorize removal',()=>{const r=protection(m=>{m.roster[0].currentWeek.projection=null;});assert.equal(r.state,'UNRESOLVED');});
+test('unknown injury does not unlock removal',()=>{const r=run();assert.equal(r.comparisons[0].injury.roster.status,'UNKNOWN');assert.equal(r.comparisons[0].transaction.addAuthorized,false);});
+test('conflicting identity leaves protection unresolved',()=>assert.equal(protection(m=>{m.roster[0].identity.status='CONFLICTED';}).state,'UNRESOLVED'));
+test('stale snapshot leaves protection unresolved',()=>assert.equal(protection(m=>{m.snapshot.fetchedAt='2026-09-01T00:00:00Z';}).state,'UNRESOLVED'));
+test('locked player protected',()=>assert.equal(protection(m=>{m.roster[0].currentWeek.game.locked=true;}).state,'PROTECTED'));
+test('starter assignment protects',()=>{const r=protection(m=>{m.roster[0].rosterSlot='RB';});assert.equal(r.state,'PROTECTED');assert.ok(r.reasons.some(s=>s.includes('starter')));});
+test('IR assignment protects',()=>assert.equal(protection(m=>{m.roster[0].rosterSlot='IR';}).state,'PROTECTED'));
+test('affirmative participation protects even with zero projection',()=>{const r=protection(m=>{m.roster[0].currentWeek.projection.value=0;m.roster[0].currentWeekWaiverUsage=[{canonicalPlayerId:'202',season:2026,week:3,observedAt:stamp,role:{offensiveSnaps:20},provenance:{provider:'test',source:'observation'}}];});assert.equal(r.state,'PROTECTED');});
+test('stale participation cannot become affirmative protection',()=>{const r=protection(m=>{m.roster[0].currentWeek.projection.value=0;m.roster[0].currentWeekWaiverUsage=[{canonicalPlayerId:'202',season:2026,week:3,observedAt:'2026-09-01T00:00:00Z',role:{offensiveSnaps:20},provenance:{provider:'test',source:'observation'}}];});assert.equal(r.state,'UNRESOLVED');});
+test('loss of eligibility blocks transaction structure',()=>{const r=run(m=>{m.snapshot.settings={rosterSlots:['RB','BN']};m.available[0].eligiblePositions=['RB'];});assert.equal(r.comparisons[0].transaction.legalStructure,false);assert.equal(r.comparisons[0].transaction.addAuthorized,false);});
+test('legal same-position replacement still lacks removal authority',()=>{const r=run(m=>{m.snapshot.settings={rosterSlots:['RB','BN']};});assert.equal(r.comparisons[0].transaction.legalStructure,true);assert.equal(r.action,'WATCH');});
+test('unsupported REMOVABLE claims are not accepted',()=>{const r=run(m=>{m.roster[0].transactionProtection={state:'REMOVABLE',removalAuthorized:true};m.roster[0].dropApproved=true;m.roster[0].waiverEvidence={sourceValue:0,upside:0,role:0};});assert.notEqual(r.comparisons[0].transactionProtection.state,'REMOVABLE');assert.equal(r.comparisons[0].transaction.addAuthorized,false);});
+test('REMOVABLE positive branch explicitly unavailable without existing source',()=>{const r=protection();assert.equal(Waiver.PROTECTION.REMOVABLE,'REMOVABLE');assert.equal(r.removableContract.status,'UNSUPPORTED_BY_EXISTING_SOURCES');});
+test('dynamic profile league team preserved',()=>{const r=run((m,f)=>{m.profileId=m.snapshot.profileId=f.profile.id='second';m.snapshot.league.leagueKey='461.l.99';m.snapshot.userTeamKey=m.userTeamResolution.teamKey=m.snapshot.currentRoster.yahooTeamKey='461.l.99.t.3';m.snapshot.currentRoster.yahooLeagueKey='461.l.99';m.snapshot.ownership.ownership['202'].teamKey='461.l.99.t.3';});assert.equal(r.status,'EVALUATED');assert.equal(r.context.profileId,'second');assert.equal(r.context.teamKey,'461.l.99.t.3');});
+test('app shows representative distinct-position comparisons',()=>{
+  const fs=require('node:fs'),vm=require('node:vm'),source=fs.readFileSync(require.resolve('../js/app.js'),'utf8');
+  const fn=source.slice(source.indexOf('function seasonCurrentWeekWaiverCards('),source.indexOf('function seasonCurrentWeekWaiverCard('));
+  const ctx={seasonEl:()=>({children:[],appendChild(value){this.children.push(value);}}),seasonCurrentWeekWaiverCard:r=>r.comparisons[0]};vm.createContext(ctx);vm.runInContext(fn,ctx);
+  const comparisons=['RB','RB','TE','WR','QB'].map((position,i)=>({candidate:{position,name:'Player '+i},action:'WATCH'}));
+  const out=ctx.seasonCurrentWeekWaiverCards({comparisons});assert.deepEqual(Array.from(out.children,p=>p.candidate.position),['RB','TE','WR']);
+});
+console.log(`${passed} current-week contract tests passed`);

@@ -77,7 +77,115 @@
     }).sort((a,b)=>(b.netGain??-999)-(a.netGain??-999)||b.score-a.score||clean(a.canonicalPlayerId).localeCompare(clean(b.canonicalPlayerId)));
   }
   function insufficientResult(reason,model,need,candidates=[],drops=[]){return Object.freeze({status:'INSUFFICIENT_VALIDATED_SEASON_DATA',action:ACTION.HOLD,timing:Object.freeze({action:ACTION.HOLD,headline:'WAIVER DATA NEEDED',reason}),reason,need,candidates:Object.freeze(candidates),drops:Object.freeze(drops),pairs:Object.freeze([]),signals:Object.freeze({sharinganPick:null,sharinganWatch:null,sharinganHold:true,chidori:null}),faab:faabContract(model),provenance:Object.freeze({seasonSource:model?.sourceLabel||null,profileId:model?.profileId||null})});}
-  function evaluate({model,profile,contextByPlayer={}}={}){
+  const PROTECTION=Object.freeze({PROTECTED:'PROTECTED',UNRESOLVED:'UNRESOLVED',REMOVABLE:'REMOVABLE'});
+  function transactionProtection({player,candidate,model,profile,now=Date.now()}={}){
+    const reasons=[], missing=['Affirmative evidence resolving future removal consequence'];
+    const id=identityId(player),slot=starterSlot(player?.rosterSlot),e=player?.currentWeek;
+    const fresh=(stamp,max)=>{const age=now-Date.parse(stamp||'');return Number.isFinite(age)&&age>=0&&age<=max;};
+    const result=state=>({state,reasons,missingEvidence:missing,longTermDropValue:'UNKNOWN',removalAuthorized:false,
+      // No existing production source supplies affirmative removal authority.
+      removableContract:{status:'UNSUPPORTED_BY_EXISTING_SOURCES',requires:'Affirmative, current, identity/profile/transaction-bound evidence that material future removal cost is resolved; structural legality alone is insufficient.'}});
+    if(!id||!e?.identity?.safe||e.identity.canonicalPlayerId!==id||!['MATCHED','ALIAS_MATCH','ARCHIVE_RECORDED'].includes(identityStatus(player))||
+      (player.canonicalPlayerId&&player.canonicalPlayerId!==id)||!fresh(model?.snapshot?.fetchedAt,30*60000)){
+      reasons.push('Identity or current Yahoo authority is unresolved.');return result(PROTECTION.UNRESOLVED);
+    }
+    if(slot==='IR'){reasons.push('Current Yahoo IR assignment protects the roster player.');}
+    else if(slot&&slot!=='BN'){reasons.push('Active starter assignment protects the roster player.');}
+    if(e.game?.locked||player.locked||['LIVE','FINAL','LOCKED_UNKNOWN'].includes(e.game?.state)||Date.parse(e.game?.kickoff||'')<=now)reasons.push('Game lock prevents removal.');
+    if([e.injury?.status,e.injury?.rawStatus,player.injuryStatus].some(v=>['IR','OUT','O','PUP','NFI'].includes(clean(v).toUpperCase())))reasons.push('Explicit injury/reserve status requires protection, not a discard assumption.');
+    const slots=configuredSlots(model,profile),pos=position(player.position),remaining=(model?.roster||[]).filter(p=>identityId(p)!==id&&position(p.position)===pos&&starterSlot(p.rosterSlot)!=='IR');
+    const required=slots.filter(s=>s===pos).length;
+    if(slots.length&&remaining.length<required)reasons.push('Removing this player would lose required positional coverage before replacement.');
+    if(e.projection?.supported&&finite(e.projection.value)>0&&fresh(e.projection.fetchedAt,24*3600000))reasons.push('Supported positive current-week usefulness remains on the roster.');
+    const observed=(player.currentWeekWaiverUsage||[]).filter(r=>r.canonicalPlayerId===id&&Number(r.season)===Number(model?.snapshot?.league?.season)&&Number(r.week)>0&&Number(r.week)<Number(model?.week)&&r.provenance?.source&&r.provenance?.provider&&fresh(r.observedAt,16*86400000));
+    if(observed.some(r=>[r.role?.offensiveSnaps,r.role?.offensiveSnapShare,r.role?.snapShare,r.opportunity?.carries,r.opportunity?.targets,r.opportunity?.opportunities].some(v=>finite(v)>0)))reasons.push('Observed recent participation/opportunity is affirmative protection evidence.');
+    if(observed.some(r=>r.relationship?.validated===true&&r.relationship.relatedCanonicalPlayerId))reasons.push('Explicit sourced player relationship requires preserving its unresolved opportunity value.');
+    if(!reasons.length)reasons.push('Bench assignment, low/zero projection and missing evidence do not establish safe removal.');
+    const protectedEvidence=reasons.length&& !reasons[0].startsWith('Bench assignment');
+    const output=result(protectedEvidence?PROTECTION.PROTECTED:PROTECTION.UNRESOLVED);
+    output.structure={position:pos,requiredStarters:slots.length?required:null,depthAfterDrop:remaining.length,
+      depthAfterReplacement:remaining.length+(candidate&&position(candidate.position)===pos?1:0),
+      injuryUnknown:remaining.filter(p=>!p.currentWeek?.injury?.status||p.currentWeek.injury.status==='UNKNOWN').length,
+      byeWeek:player.byeWeek??null,candidateByeWeek:candidate?.byeWeek??null};
+    return output;
+  }
+  function currentWeekTransaction({candidate,rosterPlayer,model,profile,now,difference}={}){
+    const protection=transactionProtection({player:rosterPlayer,candidate,model,profile,now});
+    const eligibility=(rosterPlayer.eligiblePositions||[]).filter(p=>!['BN','IR'].includes(p));
+    const legalStructure=starterSlot(rosterPlayer.rosterSlot)==='BN'&&position(candidate.position)===position(rosterPlayer.position)&&eligibility.length>0&&eligibility.every(p=>(candidate.eligiblePositions||[]).includes(p))&&configuredSlots(model,profile).length>0;
+    const missing=[...protection.missingEvidence,...(!legalStructure?['Confirmed roster construction preserving eligibility']:[])];
+    // No additive quality, drop-cost score or unverified REMOVABLE input is accepted.
+    return {protection,legalStructure,missingEvidence:missing,addAuthorized:false,action:difference>0?'WATCH':'HOLD',
+      reason:difference>0?`Supported weekly projection is higher, but removal is ${protection.state}: ${protection.reasons.join(' ')} Future removal consequence remains unresolved. WATCH means monitor, not add.`:'Supported weekly projection does not establish an improvement over this bench player. HOLD applies only to this current-week comparison.'};
+  }
+  // Weekly evidence is a comparison, never a rated acquisition/drop decision.
+  function evaluateCurrentWeek({model,profile,now=Date.now()}={}){
+    const snapshot=model?.snapshot, comparisons=[], rejected=[];
+    const base={horizon:'CURRENT_WEEK',context:{profileId:model?.profileId||null,leagueKey:snapshot?.league?.leagueKey||null,teamKey:snapshot?.userTeamKey||null,season:snapshot?.league?.season||null,week:model?.week||null,yahooFetchedAt:snapshot?.fetchedAt||null},pairs:[],longTermDropValue:'UNKNOWN',faab:{authority:'BLOCKED',output:null,reason:'Permanent drop valuation unavailable.'}};
+    const insufficient=reason=>({...base,status:'INSUFFICIENT_EVIDENCE',action:'INSUFFICIENT_EVIDENCE',reason,comparisons,rejected});
+    const ageOk=(stamp,max)=>{const age=now-Date.parse(stamp||'');return Number.isFinite(age)&&age>=0&&age<=max;};
+    if(!trustworthy(model).ok||snapshot?.provider!=='Yahoo'||model.demo||model.draftSnapshot||
+      !profile?.id||profile.id!==model.profileId||snapshot.profileId!==profile.id||
+      !snapshot.league?.leagueKey||!snapshot.league?.season||Number(snapshot.league.currentWeek)!==Number(model.week)||
+      !snapshot.userTeamKey||snapshot.userTeamKey!==model.userTeamResolution?.teamKey||
+      !ageOk(snapshot.fetchedAt,30*60000))return insufficient('Current selected Yahoo profile, league, team, week and availability are required.');
+    const ownership=snapshot.ownership.ownership||{}, roster=snapshot.currentRoster;
+    const format=value=>{const v=clean(value).toUpperCase().replace(/[^A-Z0-9]/g,'');return v.includes('HALF')?'HALF_PPR':v.includes('FULL')||v==='PPR'?'FULL_PPR':v.includes('STANDARD')||v.includes('NONPPR')?'STANDARD':v;};
+    const usage=player=>{
+      const rows=(player.currentWeekWaiverUsage||[]).filter(row=>row.canonicalPlayerId===identityId(player)&&Number(row.season)===Number(snapshot.league.season)&&Number(row.week)>0&&Number(row.week)<Number(model.week)&&row.provenance?.provider&&row.provenance?.source&&ageOk(row.observedAt,16*86400000));
+      return rows.length?rows:null;
+    };
+    if(roster?.yahooTeamKey!==snapshot.userTeamKey||roster?.yahooLeagueKey!==snapshot.league.leagueKey)return insufficient('Current Yahoo roster membership is unavailable.');
+    const validate=(player,isCandidate)=>{
+      const id=identityId(player),e=player.currentWeek,p=e?.projection,owner=ownership[id];
+      if(!id||!['MATCHED','ALIAS_MATCH','ARCHIVE_RECORDED'].includes(identityStatus(player))||
+        !player.yahooPlayerId||player.sourcePlayerKey!==`${snapshot.league.leagueKey.split('.')[0]}.p.${player.yahooPlayerId}`||!e?.identity?.safe||e.identity.canonicalPlayerId!==id||
+        (player.canonicalPlayerId&&player.canonicalPlayerId!==id)||
+        (player.projectionCanonicalPlayerId&&player.projectionCanonicalPlayerId!==id)||
+        !owner||String(owner.sourcePlayerId)!==String(player.yahooPlayerId))return 'Identity unresolved or conflicting.';
+      if(isCandidate){
+        if(owner.teamKey||!['FREE_AGENT','WAIVERS'].includes(owner.status)||player.availabilityState?.actionable!==true||
+          (snapshot.teams||[]).some(t=>(t.roster||[]).some(r=>identityId(r)===id||String(r.yahooPlayerId)===String(player.yahooPlayerId))))return 'Yahoo does not confirm availability.';
+        if(!(snapshot.availablePlayers||[]).some(r=>identityId(r)===id&&r.sourcePlayerKey===player.sourcePlayerKey))return 'Player absent from current Yahoo available pool.';
+      }else if(owner.status!=='ROSTERED_BY_USER'||owner.teamKey!==snapshot.userTeamKey||starterSlot(player.rosterSlot)!=='BN'||
+        !(roster.roster||[]).some(r=>r.canonicalPlayerId===id&&String(r.yahooPlayerId)===String(player.yahooPlayerId)&&r.yahooPlayerKey===player.sourcePlayerKey&&starterSlot(r.rosterSlot)==='BN'))return 'Eligible current Yahoo bench membership unavailable.';
+      if(!player.eligiblePositions?.length||Number(e.season)!==Number(snapshot.league.season)||Number(e.week)!==Number(model.week))return 'Eligibility or current season/week unresolved.';
+      if(!p?.supported||finite(p.value)===null||Number(p.week)!==Number(model.week)||!p.source||!p.scoringFormat||
+        !['CURRENT','AGING'].includes(p.freshness)||!ageOk(p.fetchedAt,24*3600000)||player.projectionProvenance?.recommendationAuthority===false)return 'Compatible fresh weekly projection unavailable.';
+      const provenance=player.projectionProvenance;
+      if(provenance&&((provenance.canonicalPlayerId&&provenance.canonicalPlayerId!==id)||Number(provenance.season)!==Number(snapshot.league.season)||Number(provenance.week)!==Number(model.week)))return 'Projection provenance conflicts with identity or season/week.';
+      const estimate=p.projectionType==='SLEEPER_HALF_PPR_ESTIMATE';
+      if(estimate ? p.scoringFormat!=='HALF_PPR' : format(p.scoringFormat)!==format(model.scoring))return 'Projection scoring basis is incompatible.';
+      if(p.projectionType==='CUSTOM_SCORING'&&provenance?.scoringCompatibility?.status!=='EXACT')return 'Exact league scoring compatibility unavailable.';
+      const g=e.game;
+      if(g?.state!=='PRE_GAME'||g.actionable!==true||g.locked||!ageOk(g.updatedAt,60*60000)||
+        !Number.isFinite(Date.parse(g.kickoff||''))||Date.parse(g.kickoff)<=now)return 'Current game/action legality unavailable or locked.';
+      if([e.injury?.status,e.injury?.rawStatus,player.injuryStatus].some(v=>['OUT','IR','O','INJURED_RESERVE'].includes(clean(v).toUpperCase())))return 'Out/IR injury evidence prevents weekly comparison.';
+      return null;
+    };
+    const candidates=(model.available||[]).filter(p=>{const reason=validate(p,true);if(reason)rejected.push({name:p.name,reason});return !reason;});
+    const bench=(model.roster||[]).filter(p=>{const reason=validate(p,false);return !reason;});
+    const protections=(model.roster||[]).map(player=>({canonicalPlayerId:identityId(player),name:player.name,...transactionProtection({player,model,profile,now})}));
+    for(const candidate of candidates)for(const rosterPlayer of bench){
+      // Same football position prevents shared BN/FLEX labels from creating false substitutes.
+      if(position(candidate.position)!==position(rosterPlayer.position)||!candidate.eligiblePositions.some(v=>rosterPlayer.eligiblePositions.includes(v)&&!['BN','IR'].includes(v)))continue;
+      const c=candidate.currentWeek,r=rosterPlayer.currentWeek;
+      if(c.projection.scoringFormat!==r.projection.scoringFormat||c.projection.source!==r.projection.source||c.projection.projectionType!==r.projection.projectionType)continue;
+      const difference=Math.round((c.projection.value-r.projection.value)*100)/100,action=difference>0?'WATCH':'HOLD',candidateUsage=usage(candidate),rosterUsage=usage(rosterPlayer);
+      const transaction=currentWeekTransaction({candidate,rosterPlayer,model,profile,now,difference});
+      comparisons.push({transaction,transactionProtection:transaction.protection,horizon:'CURRENT_WEEK',candidate,rosterPlayer,yahooStatus:ownership[identityId(candidate)].status,
+        candidateProjection:{...c.projection,provenance:candidate.projectionProvenance||null},rosterProjection:{...r.projection,provenance:rosterPlayer.projectionProvenance||null},difference,
+        injury:{candidate:c.injury||{status:'UNKNOWN'},roster:r.injury||{status:'UNKNOWN'}},optionalEvidence:candidateUsage||rosterUsage?{candidate:candidateUsage,roster:rosterUsage}:null,
+        missingEvidence:[...(!candidateUsage?['Candidate observed usage with dated provenance']:[]),...(!rosterUsage?['Roster observed usage with dated provenance']:[]),...transaction.missingEvidence],longTermDropValue:'UNKNOWN',action,
+        reason:transaction.reason,
+        faab:{authority:'BLOCKED',output:null}});
+    }
+    comparisons.sort((a,b)=>b.difference-a.difference||a.candidate.name.localeCompare(b.candidate.name)||a.rosterPlayer.name.localeCompare(b.rosterPlayer.name));
+    if(!comparisons.length)return insufficient('No same-position candidate/bench pair has current Yahoo authority, legal game state and compatible weekly projections.');
+    return {...base,status:'EVALUATED',action:comparisons[0].action,reason:comparisons[0].reason,comparisons,rejected,protections};
+  }
+  function evaluate({model,profile,contextByPlayer={},horizon,now}={}){
+    if(horizon==='CURRENT_WEEK')return evaluateCurrentWeek({model,profile,now});
     const gate=trustworthy(model),phase=model?.phase?.key||'discovery',need=assessRosterNeed(model||{},profile||{});
     if(!gate.ok)return insufficientResult(gate.reason,model,need);
     if(!need.slots.length||!Array.isArray(model.roster)||!model.roster.length)return insufficientResult('Roster state or league starting requirements are incomplete.',model,need);
@@ -88,5 +196,5 @@
     const actionable=pairs.filter(pair=>pair.action!=='HOLD'&&pair.drop),fallbackPlan=Object.freeze([...actionable.slice(0,2).map((pair,index)=>Object.freeze({priority:index+1,addPlayerId:pair.canonicalPlayerId,dropPlayerId:pair.drop.canonicalPlayerId,action:pair.action,bid:null,advisoryOnly:true})),Object.freeze({priority:Math.min(3,actionable.length+1),action:'HOLD',advisoryOnly:true})]);
     return Object.freeze({status:'EVALUATED',action,timing:Object.freeze({action,headline:action===ACTION.ACT?'CLEAR ROSTER UPGRADE':action===ACTION.WAIT?'MONITOR THE WAIVER WINDOW':'NO MOVE CLEARS THE BAR',reason:top?.reason||'No available move has sufficient validated evidence.'}),reason:top?.reason||null,need,candidates:Object.freeze(candidates),drops:Object.freeze(drops),pairs:Object.freeze(pairs),fallbackPlan,signals:Object.freeze({sharinganPick,sharinganWatch,sharinganHold:!sharinganPick&&!sharinganWatch,chidori}),faab:faabContract(model),provenance:Object.freeze({seasonSource:model.manualAuthority?.complete?'USER_CONFIRMED':model.sourceLabel,profileId:model.profileId,availabilitySource:model.manualAuthority?.complete?'USER_CONFIRMED':'Yahoo',evaluatedAt:null})});
   }
-  return Object.freeze({ACTION,NEED,DROP,TIERS,configuredSlots,trustworthy,assessRosterNeed,evaluateDrop,evaluateCandidate,estimateCompetition,faabContract,pairCandidates,evaluate});
+  return Object.freeze({ACTION,NEED,DROP,TIERS,configuredSlots,trustworthy,assessRosterNeed,evaluateDrop,evaluateCandidate,estimateCompetition,faabContract,pairCandidates,PROTECTION,transactionProtection,currentWeekTransaction,evaluateCurrentWeek,evaluate});
 });
