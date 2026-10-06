@@ -1,7 +1,7 @@
 /* NBA-only identity boundary. No fetching, ranking, storage or NFL fallback. */
 (function(root,factory){const api=factory();if(typeof module!=='undefined'&&module.exports)module.exports=api;root.FantasyHQNBAIdentityV1=api;})(typeof window!=='undefined'?window:globalThis,function(){
   'use strict';
-  const providers=new Set(['yahoo','nba','sleeper','balldontlie']);
+  const providers=new Set(['yahoo','nba','sleeper','balldontlie','espn']);
   const clean=value=>value==null?'':String(value).trim();
   function providerKey(provider,id){
     const value=clean(id);

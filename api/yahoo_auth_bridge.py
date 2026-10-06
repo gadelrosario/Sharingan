@@ -619,6 +619,9 @@ def make_handler(
     fantasy: YahooFantasyClient,
     states: OAuthStateStore,
 ):
+    # NBA state is separate from NFL snapshots and fetched only on explicit selection.
+    nba_leagues = []
+    nba_cache = {}
     class YahooBridgeHandler(BaseHTTPRequestHandler):
         server_version = "FantasyHQYahooBridge/1.0"
 
@@ -702,6 +705,30 @@ def make_handler(
                     else:
                         oauth.exchange_code(code)
                         self._redirect(f"{config.app_url.rstrip('/')}?yahoo=connected")
+                elif parsed.path == "/api/yahoo/nba/leagues":
+                    try:
+                        from . import yahoo_nba
+                    except ImportError:
+                        import yahoo_nba
+                    if not nba_leagues:
+                        nba_leagues.extend(yahoo_nba.discover(fantasy))
+                    self._json(200, {"leagues": nba_leagues})
+                elif parsed.path == "/api/yahoo/nba/snapshot":
+                    try:
+                        from . import yahoo_nba
+                    except ImportError:
+                        import yahoo_nba
+                    key = query.get("league_key", [""])[0]
+                    selected = next((row for row in nba_leagues if row["leagueKey"] == key), None)
+                    if not selected:
+                        self._json(400, {"error": "Select a discovered NBA league first"})
+                    else:
+                        if key not in nba_cache or query.get("refresh") == ["1"]:
+                            nba_cache[key] = yahoo_nba.bundle(fantasy, selected)
+                        self._json(200, nba_cache[key])
+                elif parsed.path == "/api/nba/statistics":
+                    cache = Path(os.environ.get("NBA_SNAPSHOT_CACHE", str(Path.home() / ".fantasyhq/nba/sportsdataverse-2026.json")))
+                    self._json(200, json.loads(cache.read_text()) if cache.exists() else {"snapshot": None, "refresh": {"status": "UNAVAILABLE", "error": "No strictly accepted SportsDataverse snapshot. Statistics remain unavailable."}})
                 elif parsed.path == "/api/yahoo/leagues":
                     season = int(query.get("season", ["2026"])[0])
                     self._json(200, {"fetchedAt": _iso_now(), "season": season, "raw": fantasy.discover_leagues(season)})
