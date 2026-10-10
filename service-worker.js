@@ -1,8 +1,8 @@
-const CACHE = 'fantasy-hq-jonin-4-4-15-lineup-workspace-2026-09-24-identity-repair-points-2';
+const CACHE = 'fantasy-hq-jonin-4-4-15-lineup-workspace-2026-09-24-identity-repair-points-2-nba-usability-1';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.4.15-lineup-workspace-1-points-2',
+  './css/app.css?v=4.4.15-nba-usability-1',
   './js/app-version.js?v=1.0.35',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
@@ -53,7 +53,17 @@ const ASSETS = [
   './js/draft-psychology-engine-v1.js?v=1.0.0',
   './js/lineup-preview-v1.js?v=1.0.1',
   './js/lineup-workspace-ui.js?v=1.0.3',
-  './js/app.js?v=4.4.15-lineup-workspace-1-identity-1-points-2',
+  './js/app.js?v=4.4.15-lineup-workspace-1-identity-1-points-2-nba-parity-1',
+  './js/nba-identity-v1.js',
+  './js/yahoo-nba-v1.js?v=points-1',
+  './js/nba-season-foundation-v1.js',
+  './js/nba-active-league-v1.js?v=1',
+  './js/nba-draft-intelligence-v1.js?v=coverage-1',
+  './js/nba-draft-view-v1.js?v=1',
+  './js/nba-draft-ui.js?v=usability-1',
+  './js/draft-presentation-v1.js?v=1',
+  './js/nba-season-ui.js?v=points-1',
+
   './tests/fixtures/season_command_center_4_4_11_2.json',
   './tests/fixtures/season_evidence_4_4_5.json',
   './tests/fixtures/injury_opportunity_4_4_6.json',

@@ -10,7 +10,7 @@
     <link rel="icon" href="icons/icon.svg" />
     <title>Gerard Fantasy HQ</title>
 <script src="js/app-version.js?v=1.0.35"></script>
-<link rel="stylesheet" href="css/app.css?v=4.4.15-lineup-workspace-1-points-2">
+<link rel="stylesheet" href="css/app.css?v=4.4.15-nba-usability-1">
   </head>
   <body>
     <header>
@@ -21,7 +21,7 @@
         </div>
         <div id="primaryProductModeSwitch" class="primaryProductModeSwitch" role="group" aria-label="Fantasy HQ product mode">
           <button id="primaryDraftModeButton" type="button" class="active" aria-current="page" onclick="returnToDraftMode()">DRAFT</button>
-          <button type="button" onclick="FantasyHQNBASeasonUI.open()">NBA</button>
+          <button type="button" onclick="FantasyHQNBASeasonUI.open()">NBA</button><button type="button" onclick="FantasyHQNBADraftUI.open()">NBA Draft</button>
           <button id="primarySeasonModeButton" type="button" onclick="openSeasonMode()">SEASON</button>
         </div>
         <label class="primaryHeaderProfile"><span>League</span><select id="primaryHeaderProfileSelect" aria-label="Active league profile" onchange="selectHeaderLeagueProfile(this.value)"></select></label>
@@ -287,7 +287,7 @@
         <header class="seasonHeader">
           <div class="seasonBrand"><span class="seasonBrandMark" aria-hidden="true">◉</span><div><strong>FANTASY HQ</strong><small>SHARINGAN • <span data-app-version></span></small></div></div>
           <nav id="seasonNavigation" class="seasonTopNavigation" aria-label="Season navigation"></nav>
-          <div class="seasonHeaderActions"><button type="button" onclick="FantasyHQNBASeasonUI.open()">NBA</button><button type="button" onclick="exitSeasonMode()">Draft Mode</button><button id="seasonManualStateButton" type="button" onclick="openSeasonManualState()">✎ Manual</button><button type="button" onclick="openNotebook()">📝 Notes</button><button type="button" aria-label="Season settings" onclick="showSeasonPage('settings')">⚙</button></div>
+          <div class="seasonHeaderActions"><button type="button" onclick="FantasyHQNBASeasonUI.open()">NBA</button><button type="button" onclick="FantasyHQNBADraftUI.open()">NBA Draft</button><button type="button" onclick="exitSeasonMode()">Draft Mode</button><button id="seasonManualStateButton" type="button" onclick="openSeasonManualState()">✎ Manual</button><button type="button" onclick="openNotebook()">📝 Notes</button><button type="button" aria-label="Season settings" onclick="showSeasonPage('settings')">⚙</button></div>
         </header>
         <section id="seasonOperationalBar" class="seasonOperationalBar" aria-label="Week and data freshness">
           <label class="seasonProfilePicker"><span class="srOnly">Active league profile</span><select id="seasonProfileSelect" onchange="selectSeasonProfile(this.value)"></select></label>
@@ -682,11 +682,16 @@
     <script src="tests/manual-mock-draft.js?v=1.0.0"></script>
     <script src="js/lineup-preview-v1.js?v=1.0.1"></script>
     <script src="js/lineup-workspace-ui.js?v=1.0.3"></script>
-    <script src="js/app.js?v=4.4.15-lineup-workspace-1-identity-1-points-2"></script>
+    <script src="js/draft-presentation-v1.js?v=1"></script>
+    <script src="js/app.js?v=4.4.15-lineup-workspace-1-identity-1-points-2-nba-parity-1"></script>
     <script src="js/nba-identity-v1.js"></script>
-    <script src="js/yahoo-nba-v1.js"></script>
+    <script src="js/yahoo-nba-v1.js?v=points-1"></script>
     <script src="js/nba-season-foundation-v1.js"></script>
-    <script src="js/nba-season-ui.js"></script>
+    <script src="js/nba-active-league-v1.js?v=1"></script>
+    <script src="js/nba-draft-intelligence-v1.js?v=coverage-1"></script>
+    <script src="js/nba-draft-view-v1.js?v=1"></script>
+    <script src="js/nba-draft-ui.js?v=usability-1"></script>
+    <script src="js/nba-season-ui.js?v=points-1"></script>
 
     <div id="roomScanSheet" class="bottomSheet hidden" onclick="closeRoomScan(event)">
       <div class="bottomSheetPanel" onclick="event.stopPropagation()">

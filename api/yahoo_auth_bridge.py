@@ -622,6 +622,13 @@ def make_handler(
     # NBA state is separate from NFL snapshots and fetched only on explicit selection.
     nba_leagues = []
     nba_cache = {}
+    # Optional private local Yahoo bundle supports offline draft rehearsal; never credentials.
+    nba_bundle_path = os.environ.get("NBA_BUNDLE_CACHE")
+    if nba_bundle_path and Path(nba_bundle_path).exists():
+        cached = json.loads(Path(nba_bundle_path).read_text())
+        if cached.get("sport") == "nba" and cached.get("coverage") == "COMPLETE":
+            nba_leagues.append(cached["selection"])
+            nba_cache[cached["selection"]["leagueKey"]] = cached
     class YahooBridgeHandler(BaseHTTPRequestHandler):
         server_version = "FantasyHQYahooBridge/1.0"
 
@@ -705,13 +712,25 @@ def make_handler(
                     else:
                         oauth.exchange_code(code)
                         self._redirect(f"{config.app_url.rstrip('/')}?yahoo=connected")
+                elif parsed.path == "/api/yahoo/nba/active":
+                    active_path = Path(os.environ.get("NBA_ACTIVE_LEAGUE", str(Path.home() / ".fantasyhq/nba/active-league.json")))
+                    if not active_path.exists():
+                        self._json(409, {"error": "No verified primary NBA league configured"})
+                    else:
+                        active = json.loads(active_path.read_text())
+                        selected = next((r for r in nba_leagues if r["leagueKey"] == active.get("leagueKey") and str(r["game"]["season"]) == str(active.get("season")) and r["game"]["code"] == "nba" and r["name"] == active.get("name")), None)
+                        if not selected or selected["leagueKey"] not in nba_cache:
+                            self._json(409, {"error": "Primary NBA league has no verified cached bundle; discover and refresh it first"})
+                        else:
+                            self._json(200, {"selection": active, "bundle": nba_cache[selected["leagueKey"]]})
                 elif parsed.path == "/api/yahoo/nba/leagues":
                     try:
                         from . import yahoo_nba
                     except ImportError:
                         import yahoo_nba
-                    if not nba_leagues:
-                        nba_leagues.extend(yahoo_nba.discover(fantasy))
+                    if not nba_leagues or query.get("refresh") == ["1"]:
+                        discovered = yahoo_nba.discover(fantasy)
+                        nba_leagues[:] = discovered
                     self._json(200, {"leagues": nba_leagues})
                 elif parsed.path == "/api/yahoo/nba/snapshot":
                     try:
@@ -726,6 +745,9 @@ def make_handler(
                         if key not in nba_cache or query.get("refresh") == ["1"]:
                             nba_cache[key] = yahoo_nba.bundle(fantasy, selected)
                         self._json(200, nba_cache[key])
+                elif parsed.path == "/api/nba/draft-evidence":
+                    cache = Path(os.environ.get("NBA_DRAFT_CACHE", str(Path.home() / ".fantasyhq/nba/draft-evidence-2026.json")))
+                    self._json(200, json.loads(cache.read_text()) if cache.exists() else {"error": "No draft evidence snapshot. Import a permitted current preseason snapshot."})
                 elif parsed.path == "/api/nba/statistics":
                     cache = Path(os.environ.get("NBA_SNAPSHOT_CACHE", str(Path.home() / ".fantasyhq/nba/sportsdataverse-2026.json")))
                     self._json(200, json.loads(cache.read_text()) if cache.exists() else {"snapshot": None, "refresh": {"status": "UNAVAILABLE", "error": "No strictly accepted SportsDataverse snapshot. Statistics remain unavailable."}})

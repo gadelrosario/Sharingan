@@ -3437,7 +3437,7 @@ function liveTeamTrackerMarkup() {
     bench = [...(state.bench || []), ...(state.overflow || [])]
       .map(row => rowMarkup(row, true))
       .join('');
-  return `<table class="liveTeamTable"><thead><tr><th>SLOT</th><th>PLAYER</th><th>NFL</th><th>TIER</th><th>BYE</th></tr></thead><tbody><tr class="trackerSection"><th colspan="5">STARTERS</th></tr>${starters}<tr class="trackerSection"><th colspan="5">BENCH</th></tr>${bench || '<tr class="emptyTrackerRow"><td>BN</td><td>Empty</td><td>—</td><td>—</td><td>—</td></tr>'}</tbody></table>`;
+  return DraftPresentationV1.trackerTable({starters,bench});
 }
 function renderWaitMeter() {
   let snap = getIntelligenceSnapshot(),
@@ -4370,7 +4370,7 @@ function decisionCardMarkup(model, { recommended = false } = {}) {
     label = recommended ? 'RECOMMENDED PICK' : 'PLAYER VIEW',
     portrait = card.imageUrl || `assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`,
     stage = sharinganStage(p);
-  return `<article class="compactFightCard ${recommended ? 'recommendedDecision' : 'playerViewDecision'} stage-${safeInsightText(stage.key)}" data-selected-player-id="${safeInsightText(p.id)}" aria-live="polite"><div class="fightPlayerVisual"><img src="${safeInsightText(portrait)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl || 'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl || 'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage ?? 1)}" data-player-name="${safeInsightText(p.name)}" alt="Portrait of ${safeInsightText(p.name)}" onerror="handlePlayerPortraitError(this)"><span aria-hidden="true">${safeInsightText(positionKey(p))}</span></div><div class="fightPlayerContent"><div class="fightPlayerLabel">${label}</div><h2>${safeInsightText(p.name)}</h2><p>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team || 'Team unavailable')} ${injuryBadgeMarkup(p)}</p><div class="fightMetrics"><span><small>TIER</small><b>${safeInsightText(tier)}</b></span><span><small>MAMBA SCORE</small><b>♛ ${safeInsightText(score)}</b></span></div><div class="sharinganStage stage-${safeInsightText(stage.key)}">${sharinganIconMarkup(stage.key)}<span>${safeInsightText(stage.label)} • ${safeInsightText(stage.meaning)}</span></div><div class="fightTags">${tags.map(tag => `<span title="${safeInsightText(tag.label)}"><i aria-hidden="true">${tag.icon}</i>${safeInsightText(tag.label)}</span>`).join('')}</div>${confidenceIndicator(confidence)}${recommended ? '' : `<button type="button" class="returnRecommendation" onclick="selectCandidate(${snapshotRecommendations()[0]?.id})">Return to top recommendation</button>`}</div></article>`;
+  return DraftPresentationV1.fightCard({p,card,score,tier,confidence,tags,label,portrait,stage,recommended,position:positionKey(p),injury:injuryBadgeMarkup(p),stageIcon:sharinganIconMarkup(stage.key),confidenceMarkup:confidenceIndicator(confidence),returnId:snapshotRecommendations()[0]?.id,safeInsightText});
 }
 function recommendationCategoryLabels(models) {
   if (!window.RecommendationArchetypesV1) {
@@ -4436,7 +4436,7 @@ function alternativeDecisionMarkup(model, rank, categoryLabel) {
     tags = compactStrategyTags(model).slice(0, 4),
     active = selectedCandidateId === p.id || (!selectedCandidateId && rank === 1),
     portrait = card.imageUrl || `assets/player-placeholders/${positionKey(p).toLowerCase()}.svg`;
-  return `<article class="recommendationPlayerCard ${active ? 'active' : ''}" data-testid="recommendation-card-${safeInsightText(p.id)}" data-player-id="${safeInsightText(p.id)}"><span class="recommendationCategory">${safeInsightText(categoryLabel)}</span><span class="recommendationRank">${rank}</span><div class="recommendationPortrait"><img src="${safeInsightText(portrait)}" loading="lazy" decoding="async" data-position-fallback="${safeInsightText(card.positionFallbackUrl || 'assets/player-placeholders/generic.svg')}" data-generic-fallback="${safeInsightText(card.genericFallbackUrl || 'assets/player-placeholders/generic.svg')}" data-fallback-stage="${safeInsightText(card.fallbackStage ?? 1)}" data-player-name="${safeInsightText(p.name)}" alt="" onerror="handlePlayerPortraitError(this)"></div><div class="recommendationCardIdentity"><b>${safeInsightText(p.name)}</b><small>${safeInsightText(positionKey(p))} • ${safeInsightText(p.team || '—')}</small><span>Tier ${safeInsightText(tier)} • ♛ ${safeInsightText(score)}</span></div><div class="recommendationIcons">${tags.map(tag => `<i title="${safeInsightText(tag.label)}" aria-label="${safeInsightText(tag.label)}">${tag.icon}</i>`).join('')}</div><div class="recommendationStars" aria-label="${safeInsightText(confidence)} confidence">${'★'.repeat(Math.max(1, Math.min(5, Math.round(confidence / 20))))}${'☆'.repeat(5 - Math.max(1, Math.min(5, Math.round(confidence / 20))))}</div><div class="recommendationActions"><button type="button" class="viewRecommendation" aria-pressed="${active}" onclick="viewRecommendationPlayer(${p.id})">View</button><button type="button" class="draftRecommendation" onclick="draftRecommendationPlayer(${p.id})">Draft</button></div></article>`;
+  return DraftPresentationV1.alternative({p,card,tier,score,confidence,tags,active,portrait,rank,categoryLabel,position:positionKey(p),safeInsightText});
 }
 function appendExclusionControl(container, player) {
   if (!container || !player) return;
@@ -5584,38 +5584,7 @@ function renderPlayers() {
         const rankLabel =
           displayedRank == null || displayedRank === 9999 ? '—' : `#${displayedRank}`;
 
-        return `
-          <div class="playerRow fast" data-player-id="${player.id}">
-            <div class="meta">${rankLabel}</div>
-
-            <button type="button" class="searchResultPlayer" onclick="selectCandidate(${player.id})">
-              ${playerPhotoMarkup(player, 'searchResultPhoto', true)}
-              <span class="searchResultIdentity">
-              <b
-                class="scanLink"
-              >
-                ${safeInsightText(player.name)}
-              </b>
-
-              <div class="meta">
-                ${positionKey(player)}
-                • ${safeInsightText(player.team || '—')}
-                • Decision Tier ${decisionTier}
-                ${injuryBadgeMarkup(player)}
-              </div>
-              </span>
-            </button>
-
-            ${isRecommendationExcluded(player.id) ? `<button type="button" class="excludedSearchBadge" onclick="restoreRecommendationPlayer('${safeInsightText(player.id)}')">Excluded · Restore</button>` : ''}
-
-            <button
-              class="autoPickBtn"
-              onclick="recordCurrentPick(${player.id})"
-            >
-              ${ownerLabel}
-            </button>
-          </div>
-        `;
+        return DraftPresentationV1.playerRow({player,rankLabel,decisionTier,ownerLabel,position:positionKey(player),photo:playerPhotoMarkup(player,'searchResultPhoto',true),injury:injuryBadgeMarkup(player),excluded:isRecommendationExcluded(player.id)?`<button type="button" class="excludedSearchBadge" onclick="restoreRecommendationPlayer('${safeInsightText(player.id)}')">Excluded · Restore</button>`:'',safeInsightText});
       })
       .join('') ||
     `
