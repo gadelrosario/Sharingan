@@ -9,8 +9,11 @@ function verify(data){const m=data.bundle?root.FantasyHQYahooNBAV1.normalizeBund
  return {selection:s,model:m};
 }
 async function resolve(){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),5000);let payload;
- try{const r=await fetch('https://localhost:8788/api/yahoo/nba/active',{cache:'no-store',signal:controller.signal});if(!r.ok)throw Error('Primary NBA league unavailable');payload=await r.json();const active=verify(payload);await cachePut(KEY+':'+active.selection.season+':'+active.selection.leagueKey,active);localStorage.setItem(KEY,JSON.stringify(active.selection));return active;}
- catch(error){let cached;try{cached=JSON.parse(localStorage.getItem(KEY)||'null');}catch{}if(cached?.leagueKey){const saved=await cacheGet(KEY+':'+cached.season+':'+cached.leagueKey);if(saved)return verify(saved);}throw error;}finally{clearTimeout(timer);}
+ try{const r=await fetch('https://localhost:8788/api/yahoo/nba/active',{cache:'no-store',signal:controller.signal});if(!r.ok)throw Error('Primary NBA league unavailable');payload=await r.json();}
+ catch(error){let cached;try{cached=JSON.parse(localStorage.getItem(KEY)||'null');}catch{}if(cached?.leagueKey){const saved=await cacheGet(KEY+':'+cached.season+':'+cached.leagueKey);if(saved)return {...verify(saved),cacheStatus:'OFFLINE CACHED YAHOO SNAPSHOT'};}throw error;}finally{clearTimeout(timer);}
+ // A received identity conflict must not silently select an older cached league.
+ const active=verify(payload);await cachePut(KEY+':'+active.selection.season+':'+active.selection.leagueKey,active);localStorage.setItem(KEY,JSON.stringify(active.selection));return {...active,cacheStatus:'CACHED YAHOO SNAPSHOT'};
 }
+
 root.FantasyHQNBAActiveV1={resolve,cacheGet,cachePut};
 })(window);

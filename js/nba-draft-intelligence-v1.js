@@ -83,10 +83,16 @@
   function restore(board,value){
     if(!value||value.version!==1||value.key!==board.key||!Array.isArray(value.picks))throw Error('Draft save belongs to another league/season/team');
     const ids=new Set();for(const p of value.picks){if(!['ME','OTHER'].includes(p.owner)||ids.has(p.id)||!board.players.some(r=>r.canonicalId===p.id))throw Error('Invalid or duplicate saved pick');ids.add(p.id);}
+    const roster=value.picks.filter(p=>p.owner==='ME').map(p=>board.players.find(r=>r.canonicalId===p.id));
+    if(!assignment(roster,board.model.settings).legal)throw Error('Saved roster has no legal slot assignment');
     return {version:1,key:board.key,picks:value.picks.map(p=>({id:p.id,owner:p.owner}))};
   }
   function pick(board,state,id,owner){
     restore(board,state);if(!['ME','OTHER'].includes(owner)||!board.players.some(p=>p.canonicalId===id)||state.picks.some(p=>p.id===id))throw Error('Invalid or already drafted player');
+    const player=board.players.find(p=>p.canonicalId===id);
+    if(['ROSTERED','WAIVERS'].includes(player.ownership))throw Error('Player unavailable in Yahoo snapshot');
+    const roster=state.picks.filter(p=>p.owner==='ME').map(p=>board.players.find(r=>r.canonicalId===p.id));
+    if(owner==='ME'&&!assignment([...roster,player],board.model.settings).legal)throw Error('No legal roster slot remains for this player');
     return {...state,picks:[...state.picks,{id,owner}]};
   }
   const undo=state=>({...state,picks:state.picks.slice(0,-1)});
@@ -107,7 +113,7 @@
     const fresh=board.source&&(now-Date.parse(board.source.sourceDate))/86400000<=21;
     const rated=fresh?available.filter(p=>p.value!==null).sort((a,b)=>b.value-a.value||a.canonicalId.localeCompare(b.canonicalId)):[];
     const health=p=>{const days=(now-Date.parse(p.ownershipFetchedAt||board.model.fetchedAt))/86400000;return days<=1&&p.fantasyStatus?p.fantasyStatus:'UNKNOWN';};
-    const eligible=rated.filter(p=>!['INJ','O','OUT','SUSP'].includes(health(p))&&assignment([...roster,p],board.model.settings).legal);
+    const eligible=rated.filter(p=>!['INJ','O','OUT','SUSP','NA'].includes(health(p))&&assignment([...roster,p],board.model.settings).legal);
     const topRated=rated[0]||null,top=eligible[0]||null;
     function fit(p){
       if(!roster.length||!complete)return 0;
@@ -176,7 +182,7 @@
     const health=p=>(now-Date.parse(p.ownershipFetchedAt||board.model.fetchedAt))/86400000<=1&&p.fantasyStatus?p.fantasyStatus:'UNKNOWN';
     const rated=fresh?available.filter(p=>p.value!==null).sort((a,b)=>b.value-a.value||a.canonicalId.localeCompare(b.canonicalId)):[];
     const slots=assignment(roster,board.model.settings),starters=a=>a.slots.filter(s=>s.position!=='BN'&&s.player).length;
-    const eligible=rated.filter(p=>!['INJ','O','OUT','SUSP'].includes(health(p))&&assignment([...roster,p],board.model.settings).legal);
+    const eligible=rated.filter(p=>!['INJ','O','OUT','SUSP','NA'].includes(health(p))&&assignment([...roster,p],board.model.settings).legal);
     const top=eligible[0]||null,pool=top?eligible.filter(p=>p.tier===top.tier):[];
     const fit=p=>starters(assignment([...roster,p],board.model.settings))-starters(slots);
     const bestFit=pool.slice().sort((a,b)=>fit(b)-fit(a)||b.value-a.value)[0]||null;

@@ -1,8 +1,8 @@
-const CACHE = 'fantasy-hq-jonin-4-4-15-lineup-workspace-2026-09-24-identity-repair-points-2-nba-usability-1';
+const CACHE = 'fantasy-hq-jonin-4-4-15-lineup-workspace-2026-09-24-identity-repair-points-2-nba-readiness-1';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=4.4.15-nba-usability-1',
+  './css/app.css?v=4.4.15-nba-readiness-1',
   './js/app-version.js?v=1.0.35',
   './js/player-tier-contract.js?v=1.0.0',
   './js/specialist-rankings-v1.js?v=1.0.0',
@@ -57,10 +57,10 @@ const ASSETS = [
   './js/nba-identity-v1.js',
   './js/yahoo-nba-v1.js?v=points-1',
   './js/nba-season-foundation-v1.js',
-  './js/nba-active-league-v1.js?v=1',
-  './js/nba-draft-intelligence-v1.js?v=coverage-1',
+  './js/nba-active-league-v1.js?v=readiness-1',
+  './js/nba-draft-intelligence-v1.js?v=readiness-1',
   './js/nba-draft-view-v1.js?v=1',
-  './js/nba-draft-ui.js?v=usability-1',
+  './js/nba-draft-ui.js?v=readiness-1',
   './js/draft-presentation-v1.js?v=1',
   './js/nba-season-ui.js?v=points-1',
 

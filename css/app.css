@@ -5924,7 +5924,7 @@ body.seasonModeActive .seasonPointsProjected { color:var(--season-points-project
 #nba-appScreen.nbaDraftCompact .nbaRowMetrics{display:flex;flex-direction:column;gap:3px;font-size:11px}
 #nba-appScreen.nbaDraftCompact .nbaRowMetrics small{font-size:9px;color:var(--muted)}
 #nba-appScreen.nbaDraftCompact .nbaRowActions{display:flex;gap:3px}
-#nba-appScreen.nbaDraftCompact .nbaRowActions button{display:inline-flex!important;align-items:center;justify-content:center;padding:4px 6px;min-height:36px;font-size:10px;width:auto}
+#nba-appScreen.nbaDraftCompact .nbaRowActions button{display:inline-flex!important;align-items:center;justify-content:center;padding:4px 6px;min-height:40px;font-size:10px;width:auto}
 #nba-appScreen.nbaDraftCompact .draftBoardNotesRow{margin-top:10px}
 #nba-appScreen.nbaDraftCompact .fullBoardCard{min-height:0;height:auto;padding:10px 12px}
 #nba-appScreen.nbaDraftCompact .fullBoardCard .sectionHeader{margin-bottom:4px;flex-wrap:wrap;gap:6px}
