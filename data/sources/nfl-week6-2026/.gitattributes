@@ -1,0 +1,2 @@
+# Preserve the supplied CSV bytes (and their provenance hashes), including CRLF.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -655,6 +655,21 @@ async function loadChampionshipEquityProductionSnapshot() {
   window.__championshipEquityProductionSnapshot = report;
   return report;
 }
+let nflExpertRankings = null;
+async function loadNFLExpertRankings() {
+  if (!window.NFLExpertRankingsV1) return;
+  try {
+    const response = await fetch('data/rankings/nfl-user-week6-2026.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Expert snapshot returned ${response.status}`);
+    nflExpertRankings = NFLExpertRankingsV1.create(await response.json());
+  } catch (error) {
+    nflExpertRankings = null;
+    console.warn('Optional user NFL expert rankings unavailable; weekly evidence unchanged:', error);
+  }
+}
+function seasonExpertRankingSummary(player, model) {
+  return nflExpertRankings?.summary(player, model) || null;
+}
 async function init() {
   try {
     const response = await fetch('data/players.json?v=jonin_3_2', { cache: 'no-store' });
@@ -688,6 +703,7 @@ async function init() {
     } catch (specialistError) {
       console.warn('Optional specialist ranking snapshot could not load:', specialistError);
     }
+    await loadNFLExpertRankings();
     await initializeInjuryFeed();
     buildPlayerSearchIndex();
     if (DOM.poolStatus)
@@ -6402,6 +6418,8 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
         : 'No eligible player assigned'
     )
   );
+  const expertSummary = seasonExpertRankingSummary(player, model);
+  if (expertSummary) identity.appendChild(seasonEl('small', '', expertSummary));
   const weekEvidence = player?.currentWeek || null,
     gameEvidence = weekEvidence?.game || null,
     schedule = seasonEl('span', 'seasonLineupSchedule');
@@ -6571,6 +6589,8 @@ function seasonAvailableRow(player, model) {
     seasonEl('strong', '', player.name || 'Unknown player'),
     seasonEl('small', '', `${player.position || '—'} • ${player.sourceTeam || 'Team unavailable'}`)
   );
+  const expertSummary = seasonExpertRankingSummary(player, model);
+  if (expertSummary) main.appendChild(seasonEl('small', '', expertSummary));
   row.append(
     main,
     seasonStatusBadge(player.availability, player.availability === 'WAIVER' ? 'orange' : 'green'),
@@ -7762,20 +7782,36 @@ function renderSeasonPlayers(model, content) {
   const check = document.createElement('input');
   check.type = 'checkbox';
   injured.append(check, document.createTextNode(' Injured/status only'));
-  controls.append(search, pos, availability, injured);
+  const expertOrder = document.createElement('select');
+  expertOrder.setAttribute('aria-label', 'Supplemental expert ranking order');
+  [['default', 'Current order'], ['expert', 'User Week 6 expert order (scope unknown)']].forEach(([value, label]) => {
+    const option = document.createElement('option'); option.value = value; option.textContent = label;
+    expertOrder.appendChild(option);
+  });
+  expertOrder.disabled = !nflExpertRankings;
+  controls.append(search, pos, availability, injured, expertOrder);
   const list = seasonEl('section', 'seasonPanel');
   const refresh = () => {
     list.innerHTML = '';
-    SeasonCommandCenterV1.filterPlayers(model.available, {
+    const filtered = SeasonCommandCenterV1.filterPlayers(model.available, {
       query: search.value,
       positionFilter: pos.value,
       availability: availability.value,
       injured: check.checked,
-    }).forEach(player => list.appendChild(seasonAvailableRow(player, model)));
+    });
+    // Explicit browsing order only. Never reorder engine decisions or compare cross-position ranks.
+    if (expertOrder.value === 'expert') filtered.sort((a, b) => {
+      const score = player => {
+        const ranks = nflExpertRankings?.lookup(player, model);
+        return (pos.value === 'ALL' ? ranks?.overall?.overallRank : ranks?.positional?.positionRank) ?? Infinity;
+      };
+      return score(a) - score(b);
+    });
+    filtered.forEach(player => list.appendChild(seasonAvailableRow(player, model)));
     if (!list.children.length)
       list.appendChild(seasonEmpty('No matching players', 'Change filters or refresh Yahoo.'));
   };
-  [search, pos, availability, check].forEach(node => node.addEventListener('input', refresh));
+  [search, pos, availability, check, expertOrder].forEach(node => node.addEventListener('input', refresh));
   content.append(controls, list);
   refresh();
 }
@@ -8615,6 +8651,7 @@ function openSeasonPlayerDetails(player, model) {
     seasonAnalysisFactGrid(overview, 'seasonPlayerOverview'),
     seasonAnalysisDisclosure('SHOW PLAYER RECORD & CONTEXT', context, 'seasonPlayerContext')
   );
+  if (nflExpertRankings) content.appendChild(seasonAnalysisDisclosure('USER EXPERT RANKINGS — SUPPLEMENTAL CONTEXT', nflExpertRankings.facts(player, model), 'seasonPlayerContext'));
   el('scanModal')?.classList.remove('hidden');
 }
 function getYahooSyncController() {
@@ -10928,6 +10965,8 @@ function openSeasonStartSitComparison(decision, model) {
   [preferred, other].forEach((player, index) => {
     const side = seasonEl('article', `seasonLineupCompareSide${index === 0 ? ' preferred' : ''}`), projection = seasonLineupProjection(player, model);
     side.append(seasonPlayerPhoto(player), seasonEl('h2', '', player?.name || 'Unresolved player'), seasonEl('p', '', `${player?.position || '—'} • ${player?.sourceTeam || 'Team unavailable'}`), seasonEl('strong', '', projection === null ? 'Projection unavailable' : `${projection.toFixed(2)} projected points`), seasonEl('span', '', player?.injuryStatus ? `Status: ${player.injuryStatus}` : 'No current injury designation'));
+    const expertSummary = seasonExpertRankingSummary(player, model);
+    if (expertSummary) side.appendChild(seasonEl('small', '', expertSummary));
     pair.appendChild(side);
   });
   const pick = seasonEl('section', 'seasonLineupFantasyPick');

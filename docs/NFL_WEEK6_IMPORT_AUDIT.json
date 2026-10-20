@@ -1,0 +1,1278 @@
+{
+  "snapshotId": "user-nfl-2026-week6-v1",
+  "policy": "Unique normalized name + position through existing resolver where source IDs are absent; existing approved aliases only. Duplicate source identities quarantine all rows. Provider IDs come only from existing canonical evidence. Team disagreements preserved, not repaired. Conflicting ranks remain independent. Unknown scope/scoring prevents automatic valuation, projection or transaction influence.",
+  "rowsByDataset": {
+    "Overall": 365,
+    "QB": 53,
+    "RB": 108,
+    "WR": 147,
+    "TE": 57,
+    "K": 38,
+    "DST": 32
+  },
+  "matched": 717,
+  "uniqueCanonicalIds": 392,
+  "providerCoverage": {
+    "yahoo": 2,
+    "sleeper": 502
+  },
+  "ambiguous": [
+    {
+      "dataset": "Overall",
+      "rank": 216,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 334,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    },
+    {
+      "dataset": "WR",
+      "rank": 89,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    },
+    {
+      "dataset": "WR",
+      "rank": 132,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    }
+  ],
+  "unmatched": [
+    {
+      "dataset": "Overall",
+      "rank": 2,
+      "name": "Kenneth Walker",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 45,
+      "name": "Luther Burden",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 57,
+      "name": "DJ Moore",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 82,
+      "name": "Travis Etienne",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 85,
+      "name": "KC Concepcion",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 113,
+      "name": "Marvin Harrison",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 119,
+      "name": "Harold Fannin",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 138,
+      "name": "Austin Ekeler",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 141,
+      "name": "Brian Robinson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 147,
+      "name": "Michael Pittman",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 164,
+      "name": "Brian Thomas",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 186,
+      "name": "Pierre Strong",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 187,
+      "name": "Michael Penix",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 193,
+      "name": "Ted Hurst",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 202,
+      "name": "Tyreek Hill",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 212,
+      "name": "Oronde Gadsden",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 239,
+      "name": "Jameis Winston",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 248,
+      "name": "Calvin Austin",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 251,
+      "name": "Luke McCaffrey",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 255,
+      "name": "Skyler Bell",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 256,
+      "name": "Jalon Daniels",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 260,
+      "name": "Demond Claiborne",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 261,
+      "name": "Tory Horton",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 280,
+      "name": "James Conner",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 287,
+      "name": "Joshua Palmer",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 290,
+      "name": "Anthony Richardson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 297,
+      "name": "Trey Benson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 305,
+      "name": "Carson Beck",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 321,
+      "name": "Oscar Delp",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 326,
+      "name": "Devin Neal",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 329,
+      "name": "Jarquez Hunter",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 330,
+      "name": "Justin Joly",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 331,
+      "name": "Marvin Mims",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 332,
+      "name": "Jerome Ford",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 335,
+      "name": "Drew Allar",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 338,
+      "name": "Cade Klubnik",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 341,
+      "name": "Ty Simpson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 365,
+      "name": "Tyrod Taylor",
+      "reason": "truncated-source-position"
+    },
+    {
+      "dataset": "QB",
+      "rank": 26,
+      "name": "Michael Penix",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 31,
+      "name": "Jameis Winston",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 33,
+      "name": "Jalon Daniels",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 39,
+      "name": "Anthony Richardson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 43,
+      "name": "Carson Beck",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 47,
+      "name": "Drew Allar",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 48,
+      "name": "Cade Klubnik",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 49,
+      "name": "Ty Simpson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "QB",
+      "rank": 53,
+      "name": "Tyrod Taylor",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 2,
+      "name": "Kenneth Walker",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 30,
+      "name": "Travis Etienne",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 49,
+      "name": "Austin Ekeler",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 51,
+      "name": "Brian Robinson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 62,
+      "name": "Pierre Strong",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 84,
+      "name": "Demond Claiborne",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 91,
+      "name": "James Conner",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 94,
+      "name": "Trey Benson",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 100,
+      "name": "Devin Neal",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 102,
+      "name": "Jarquez Hunter",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "RB",
+      "rank": 103,
+      "name": "Jerome Ford",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 23,
+      "name": "Luther Burden",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 28,
+      "name": "DJ Moore",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 38,
+      "name": "KC Concepcion",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 46,
+      "name": "Marvin Harrison",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 61,
+      "name": "Michael Pittman",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 65,
+      "name": "Brian Thomas",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 77,
+      "name": "Ted Hurst",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 81,
+      "name": "Tyreek Hill",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 102,
+      "name": "Calvin Austin",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 103,
+      "name": "Luke McCaffrey",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 104,
+      "name": "Skyler Bell",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 107,
+      "name": "Tory Horton",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 116,
+      "name": "Joshua Palmer",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "WR",
+      "rank": 131,
+      "name": "Marvin Mims",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "TE",
+      "rank": 15,
+      "name": "Harold Fannin",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "TE",
+      "rank": 30,
+      "name": "Oronde Gadsden",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "TE",
+      "rank": 44,
+      "name": "Oscar Delp",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "TE",
+      "rank": 50,
+      "name": "Justin Joly",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "K",
+      "rank": 3,
+      "name": "Mike Meyer",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "K",
+      "rank": 6,
+      "name": "Andrew Mevis",
+      "reason": "no-stable-identity-match"
+    },
+    {
+      "dataset": "K",
+      "rank": 13,
+      "name": "Jose Borregales",
+      "reason": "no-stable-identity-match"
+    }
+  ],
+  "duplicates": [
+    {
+      "dataset": "Overall",
+      "rank": 216,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 334,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    },
+    {
+      "dataset": "WR",
+      "rank": 89,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    },
+    {
+      "dataset": "WR",
+      "rank": 132,
+      "name": "Kyle Williams",
+      "reason": "duplicate-source-name-position"
+    }
+  ],
+  "conflicts": [
+    {
+      "dataset": "TE",
+      "rank": 3,
+      "name": "George Kittle",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 4,
+      "positionalDatasetRank": 3
+    },
+    {
+      "dataset": "TE",
+      "rank": 4,
+      "name": "Isaiah Likely",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 3,
+      "positionalDatasetRank": 4
+    },
+    {
+      "dataset": "TE",
+      "rank": 7,
+      "name": "Travis Kelce",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 8,
+      "positionalDatasetRank": 7
+    },
+    {
+      "dataset": "TE",
+      "rank": 8,
+      "name": "Dalton Kincaid",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 9,
+      "positionalDatasetRank": 8
+    },
+    {
+      "dataset": "TE",
+      "rank": 9,
+      "name": "Tucker Kraft",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 10,
+      "positionalDatasetRank": 9
+    },
+    {
+      "dataset": "TE",
+      "rank": 10,
+      "name": "Dallas Goedert",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 11,
+      "positionalDatasetRank": 10
+    },
+    {
+      "dataset": "TE",
+      "rank": 11,
+      "name": "Colston Loveland",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 7,
+      "positionalDatasetRank": 11
+    },
+    {
+      "dataset": "TE",
+      "rank": 12,
+      "name": "Brenton Strange",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 15,
+      "positionalDatasetRank": 12
+    },
+    {
+      "dataset": "TE",
+      "rank": 13,
+      "name": "Juwan Johnson",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 12,
+      "positionalDatasetRank": 13
+    },
+    {
+      "dataset": "TE",
+      "rank": 14,
+      "name": "Pat Freiermuth",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 17,
+      "positionalDatasetRank": 14
+    },
+    {
+      "dataset": "TE",
+      "rank": 16,
+      "name": "Kyle Pitts",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 14,
+      "positionalDatasetRank": 16
+    },
+    {
+      "dataset": "TE",
+      "rank": 17,
+      "name": "T.J. Hockenson",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 18,
+      "positionalDatasetRank": 17
+    },
+    {
+      "dataset": "TE",
+      "rank": 18,
+      "name": "Chig Okonkwo",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 22,
+      "positionalDatasetRank": 18
+    },
+    {
+      "dataset": "TE",
+      "rank": 20,
+      "name": "Michael Mayer",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 26,
+      "positionalDatasetRank": 20
+    },
+    {
+      "dataset": "TE",
+      "rank": 21,
+      "name": "Mike Gesicki",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 24,
+      "positionalDatasetRank": 21
+    },
+    {
+      "dataset": "TE",
+      "rank": 22,
+      "name": "Jake Ferguson",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 23,
+      "positionalDatasetRank": 22
+    },
+    {
+      "dataset": "TE",
+      "rank": 23,
+      "name": "Hunter Henry",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 21,
+      "positionalDatasetRank": 23
+    },
+    {
+      "dataset": "TE",
+      "rank": 24,
+      "name": "Kenyon Sadiq",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 16,
+      "positionalDatasetRank": 24
+    },
+    {
+      "dataset": "TE",
+      "rank": 25,
+      "name": "Mark Andrews",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 20,
+      "positionalDatasetRank": 25
+    },
+    {
+      "dataset": "TE",
+      "rank": 26,
+      "name": "Terrance Ferguson",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 25,
+      "positionalDatasetRank": 26
+    },
+    {
+      "dataset": "TE",
+      "rank": 27,
+      "name": "Colby Parkinson",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 37,
+      "positionalDatasetRank": 27
+    },
+    {
+      "dataset": "TE",
+      "rank": 28,
+      "name": "Noah Fant",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 45,
+      "positionalDatasetRank": 28
+    },
+    {
+      "dataset": "TE",
+      "rank": 29,
+      "name": "Tyler Higbee",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 28,
+      "positionalDatasetRank": 29
+    },
+    {
+      "dataset": "TE",
+      "rank": 31,
+      "name": "David Njoku",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 41,
+      "positionalDatasetRank": 31
+    },
+    {
+      "dataset": "TE",
+      "rank": 32,
+      "name": "Cade Otton",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 33,
+      "positionalDatasetRank": 32
+    },
+    {
+      "dataset": "TE",
+      "rank": 33,
+      "name": "Cole Kmet",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 40,
+      "positionalDatasetRank": 33
+    },
+    {
+      "dataset": "TE",
+      "rank": 34,
+      "name": "AJ Barner",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 27,
+      "positionalDatasetRank": 34
+    },
+    {
+      "dataset": "TE",
+      "rank": 35,
+      "name": "Eli Raridon",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 31,
+      "positionalDatasetRank": 35
+    },
+    {
+      "dataset": "TE",
+      "rank": 36,
+      "name": "Gunnar Helm",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 34,
+      "positionalDatasetRank": 36
+    },
+    {
+      "dataset": "TE",
+      "rank": 37,
+      "name": "Evan Engram",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 36,
+      "positionalDatasetRank": 37
+    },
+    {
+      "dataset": "TE",
+      "rank": 38,
+      "name": "Max Klare",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 42,
+      "positionalDatasetRank": 38
+    },
+    {
+      "dataset": "TE",
+      "rank": 39,
+      "name": "Theo Johnson",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 44,
+      "positionalDatasetRank": 39
+    },
+    {
+      "dataset": "TE",
+      "rank": 40,
+      "name": "Eli Stowers",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 38,
+      "positionalDatasetRank": 40
+    },
+    {
+      "dataset": "TE",
+      "rank": 41,
+      "name": "Jake Tonges",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 46,
+      "positionalDatasetRank": 41
+    },
+    {
+      "dataset": "TE",
+      "rank": 42,
+      "name": "Greg Dulcich",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 35,
+      "positionalDatasetRank": 42
+    },
+    {
+      "dataset": "TE",
+      "rank": 45,
+      "name": "Darnell Washington",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 39,
+      "positionalDatasetRank": 45
+    },
+    {
+      "dataset": "TE",
+      "rank": 46,
+      "name": "Elijah Arroyo",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 47,
+      "positionalDatasetRank": 46
+    },
+    {
+      "dataset": "TE",
+      "rank": 47,
+      "name": "Noah Gray",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 50,
+      "positionalDatasetRank": 47
+    },
+    {
+      "dataset": "TE",
+      "rank": 48,
+      "name": "Ja'Tavion Sanders",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 49,
+      "positionalDatasetRank": 48
+    },
+    {
+      "dataset": "TE",
+      "rank": 49,
+      "name": "Dawson Knox",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 48,
+      "positionalDatasetRank": 49
+    },
+    {
+      "dataset": "TE",
+      "rank": 51,
+      "name": "Darren Waller",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 30,
+      "positionalDatasetRank": 51
+    },
+    {
+      "dataset": "TE",
+      "rank": 52,
+      "name": "Luke Musgrave",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 55,
+      "positionalDatasetRank": 52
+    },
+    {
+      "dataset": "TE",
+      "rank": 53,
+      "name": "Luke Schoonmaker",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 54,
+      "positionalDatasetRank": 53
+    },
+    {
+      "dataset": "TE",
+      "rank": 54,
+      "name": "Mo Alie-Cox",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 56,
+      "positionalDatasetRank": 54
+    },
+    {
+      "dataset": "TE",
+      "rank": 55,
+      "name": "Taysom Hill",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 57,
+      "positionalDatasetRank": 55
+    },
+    {
+      "dataset": "TE",
+      "rank": 56,
+      "name": "Charlie Kolar",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 32,
+      "positionalDatasetRank": 56
+    },
+    {
+      "dataset": "TE",
+      "rank": 57,
+      "name": "Zach Ertz",
+      "reason": "normalized-name-position",
+      "overallPositionRank": 53,
+      "positionalDatasetRank": 57
+    }
+  ],
+  "missingStatistics": {
+    "Overall": {
+      "fantasyPoints": 23,
+      "team": 9,
+      "played": 23,
+      "snapPercentage": 52,
+      "positionalFinish": 23,
+      "overallFinish": 23
+    },
+    "QB": {
+      "fantasyPoints": 53,
+      "team": 53,
+      "played": 53,
+      "snapPercentage": 53,
+      "positionalFinish": 53,
+      "overallFinish": 53
+    },
+    "RB": {
+      "fantasyPoints": 108,
+      "team": 108,
+      "played": 108,
+      "snapPercentage": 108,
+      "positionalFinish": 108,
+      "overallFinish": 108
+    },
+    "WR": {
+      "fantasyPoints": 147,
+      "team": 147,
+      "played": 147,
+      "snapPercentage": 147,
+      "positionalFinish": 147,
+      "overallFinish": 147
+    },
+    "TE": {
+      "fantasyPoints": 57,
+      "team": 57,
+      "played": 57,
+      "snapPercentage": 57,
+      "positionalFinish": 57,
+      "overallFinish": 57
+    },
+    "K": {
+      "fantasyPoints": 38,
+      "team": 38,
+      "played": 38,
+      "snapPercentage": 38,
+      "positionalFinish": 38,
+      "overallFinish": 38
+    },
+    "DST": {
+      "fantasyPoints": 32,
+      "team": 32,
+      "played": 32,
+      "snapPercentage": 32,
+      "positionalFinish": 32,
+      "overallFinish": 32
+    }
+  },
+  "teamDisagreements": [
+    {
+      "dataset": "Overall",
+      "rank": 63,
+      "name": "Stefon Diggs",
+      "reason": "normalized-name-position",
+      "sourceTeam": "WAS",
+      "canonicalTeam": "FA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 121,
+      "name": "Keenan Allen",
+      "reason": "normalized-name-position",
+      "sourceTeam": "IND",
+      "canonicalTeam": "LAC"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 135,
+      "name": "Kenneth Gainwell",
+      "reason": "normalized-name-position",
+      "sourceTeam": "TB",
+      "canonicalTeam": "PIT"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 140,
+      "name": "Kirk Cousins",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LV",
+      "canonicalTeam": "ATL"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 143,
+      "name": "Dameon Pierce",
+      "reason": "normalized-name-position",
+      "sourceTeam": "PHI",
+      "canonicalTeam": "KC"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 170,
+      "name": "Chig Okonkwo",
+      "reason": "normalized-name-position",
+      "sourceTeam": "WAS",
+      "canonicalTeam": "TEN"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 178,
+      "name": "Kalif Raymond",
+      "reason": "normalized-name-position",
+      "sourceTeam": "CHI",
+      "canonicalTeam": "DET"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 184,
+      "name": "Najee Harris",
+      "reason": "normalized-name-position",
+      "sourceTeam": "NYG",
+      "canonicalTeam": "LAC"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 195,
+      "name": "Kayshon Boutte",
+      "reason": "normalized-name-position",
+      "sourceTeam": "HOU",
+      "canonicalTeam": "NE"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 201,
+      "name": "Tyler Higbee",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LAR",
+      "canonicalTeam": "LA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 205,
+      "name": "Tyler Goodson",
+      "reason": "normalized-name-position",
+      "sourceTeam": "DAL",
+      "canonicalTeam": "IND"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 214,
+      "name": "Darren Waller",
+      "reason": "normalized-name-position",
+      "sourceTeam": "CAR",
+      "canonicalTeam": "MIA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 229,
+      "name": "Charlie Kolar",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LAC",
+      "canonicalTeam": "BAL"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 249,
+      "name": "DeeJay Dallas",
+      "reason": "normalized-name-position",
+      "sourceTeam": "MIN",
+      "canonicalTeam": "JAX"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 254,
+      "name": "Kaytron Allen",
+      "reason": "normalized-name-position",
+      "sourceTeam": "MIA",
+      "canonicalTeam": "WAS"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 257,
+      "name": "Christian Kirk",
+      "reason": "normalized-name-position",
+      "sourceTeam": "SF",
+      "canonicalTeam": "HOU"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 263,
+      "name": "Colby Parkinson",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LAR",
+      "canonicalTeam": "LA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 265,
+      "name": "Konata Mumpfield",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LAR",
+      "canonicalTeam": "LA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 267,
+      "name": "Jaydon Blue",
+      "reason": "normalized-name-position",
+      "sourceTeam": "PHI",
+      "canonicalTeam": "DAL"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 279,
+      "name": "J.J. McCarthy",
+      "reason": "normalized-name-position",
+      "sourceTeam": "NYG",
+      "canonicalTeam": "MIN"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 292,
+      "name": "Jaleel McLaughlin",
+      "reason": "normalized-name-position",
+      "sourceTeam": "CLE",
+      "canonicalTeam": "DEN"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 293,
+      "name": "Cedric Tillman",
+      "reason": "normalized-name-position",
+      "sourceTeam": "NO",
+      "canonicalTeam": "CLE"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 299,
+      "name": "Hollywood Brown",
+      "reason": "normalized-name-position",
+      "sourceTeam": "PHI",
+      "canonicalTeam": "KC"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 307,
+      "name": "Noah Fant",
+      "reason": "normalized-name-position",
+      "sourceTeam": "NO",
+      "canonicalTeam": "CIN"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 309,
+      "name": "Emari Demercado",
+      "reason": "normalized-name-position",
+      "sourceTeam": "DAL",
+      "canonicalTeam": "ARI"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 314,
+      "name": "Jahan Dotson",
+      "reason": "normalized-name-position",
+      "sourceTeam": "ATL",
+      "canonicalTeam": "PHI"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 317,
+      "name": "Olamide Zaccheaus",
+      "reason": "normalized-name-position",
+      "sourceTeam": "ATL",
+      "canonicalTeam": "CHI"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 333,
+      "name": "Zach Ertz",
+      "reason": "normalized-name-position",
+      "sourceTeam": "PHI",
+      "canonicalTeam": "WAS"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 336,
+      "name": "Tutu Atwell",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LAR",
+      "canonicalTeam": "LA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 339,
+      "name": "Audric Estime",
+      "reason": "normalized-name-position",
+      "sourceTeam": "CLE",
+      "canonicalTeam": "NO"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 342,
+      "name": "Jordan Whittington",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LAR",
+      "canonicalTeam": "LA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 348,
+      "name": "Nick Westbrook-Ikhine",
+      "reason": "normalized-name-position",
+      "sourceTeam": "IND",
+      "canonicalTeam": "MIA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 353,
+      "name": "Dyami Brown",
+      "reason": "normalized-name-position",
+      "sourceTeam": "WAS",
+      "canonicalTeam": "JAX"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 355,
+      "name": "Theo Wease Jr.",
+      "reason": "normalized-name-position",
+      "sourceTeam": "LAC",
+      "canonicalTeam": "MIA"
+    },
+    {
+      "dataset": "Overall",
+      "rank": 363,
+      "name": "Gardner Minshew",
+      "reason": "normalized-name-position",
+      "sourceTeam": "ARI",
+      "canonicalTeam": "KC"
+    }
+  ],
+  "incomplete": [
+    {
+      "dataset": "Overall",
+      "rank": 365,
+      "name": "Tyrod Taylor",
+      "reason": "truncated-source-position"
+    }
+  ],
+  "unavailable": [
+    "Source snapshot date, ranking horizon and scoring format are unspecified.",
+    "Six positional files omit all auxiliary statistics, tiers, movement and individual expert columns. TE Avery Huffman, Expert Average and Zach Savage remain independently null. RB rushing/receiving RYDS columns are absent, not inferred.",
+    "README reports incomplete final source rows in QB/RB/TE/K/DEF. All provided rank/name rows are retained; absent columns or later rows cannot be reconstructed."
+  ]
+}
