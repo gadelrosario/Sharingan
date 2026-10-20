@@ -1,6 +1,6 @@
 {
-  "snapshotId": "user-nfl-2026-week6-v1",
-  "policy": "Unique normalized name + position through existing resolver where source IDs are absent; existing approved aliases only. Duplicate source identities quarantine all rows. Provider IDs come only from existing canonical evidence. Team disagreements preserved, not repaired. Conflicting ranks remain independent. Unknown scope/scoring prevents automatic valuation, projection or transaction influence.",
+  "snapshotId": "user-nfl-2026-week6-v2",
+  "policy": "Unique normalized name + position through existing resolver where source IDs are absent; existing approved aliases only. Duplicate source identities quarantine all rows. Provider IDs come only from existing canonical evidence. Team disagreements preserved, not repaired. Conflicting ranks remain independent. User-confirmed current expert consensus supports ordinal comparisons and equal-evidence waiver tie breaks. Unknown scoring prevents numeric value conversion; no projection or transaction authority.",
   "rowsByDataset": {
     "Overall": 365,
     "QB": 53,
@@ -1271,7 +1271,7 @@
     }
   ],
   "unavailable": [
-    "Source snapshot date, ranking horizon and scoring format are unspecified.",
+    "Exact source snapshot date and scoring format are unspecified; user confirmed current expert consensus as of 2026 Week 6, not weekly matchup or explicit ROS rankings.",
     "Six positional files omit all auxiliary statistics, tiers, movement and individual expert columns. TE Avery Huffman, Expert Average and Zach Savage remain independently null. RB rushing/receiving RYDS columns are absent, not inferred.",
     "README reports incomplete final source rows in QB/RB/TE/K/DEF. All provided rank/name rows are retained; absent columns or later rows cannot be reconstructed."
   ]

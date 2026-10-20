@@ -11,7 +11,7 @@ const blankStats = () => ({fantasyPoints:null,team:null,played:null,snapPercenta
 const base = (dataset, file, name, position) => ({
   dataset, sourceFile:file, sourceName:name, position, overallRank:null, positionRank:null,
   tier:null, movement:null, expertRankings:{expertAverage:null,averyHuffman:null,zachSavage:null},
-  statistics:blankStats(), auxiliaryStatistics:null, scope:'unknown', scoringFormat:'unknown',
+  statistics:blankStats(), auxiliaryStatistics:null, scope:'current_expert_consensus', scoringFormat:'unknown',
   weeklyProjectedPoints:null, restOfSeasonValue:null,
 });
 function parseOverall(text) {
@@ -95,9 +95,9 @@ function build() {
   const players=[...catalog,...new SeasonPlayerRegistry({canonicalPlayers:catalog,artifact:require('../data/season_evidence/season_player_registry.json')}).evidencePlayers()];
   const aliases=Object.fromEntries(require('../data/rankings/draftday_identity_aliases_2026-08-23.json').map(a=>[a.sourceName,a.canonicalPlayerId]));
   const records=resolve(raw,players,require('../data/injuries_2026.json').records,aliases);
-  const snapshot={schema:'fantasy-hq-nfl-expert-snapshot-1',snapshotId:'user-nfl-2026-week6-v1',sport:'nfl',season:2026,throughWeek:6,
-    source:'User-provided Week 6 ranking transfer package',sourceSnapshotDate:null,scope:'unknown',scoringFormat:'unknown',
-    independentlyVerified:false,usage:'Supplemental comparison context only; no weekly projection or ROS authority.',
+  const snapshot={schema:'fantasy-hq-nfl-expert-snapshot-1',snapshotId:'user-nfl-2026-week6-v2',sport:'nfl',season:2026,throughWeek:6,asOf:{season:2026,week:6},scopeProvenance:'User clarification 2026-10-20: current expert consensus as of Week 6; not matchup rankings or explicit ROS rankings.',
+    source:'User-provided Week 6 ranking transfer package',sourceSnapshotDate:null,scope:'current_expert_consensus',scoringFormat:'unknown',
+    independentlyVerified:false,usage:'Supplemental ordinal consensus evidence; existing weekly evidence remains primary; no rank-to-points or ROS authority.',
     sources,records};
   const reference=r=>({dataset:r.dataset,rank:r.overallRank??r.positionRank,name:r.sourceName,reason:r.identity.reason});
   const conflicts=records.filter(r=>r.dataset!=='Overall'&&r.identity.canonicalPlayerId).flatMap(r=>{
@@ -105,7 +105,7 @@ function build() {
     return overall&&overall.positionRank!==r.positionRank?[{...reference(r),overallPositionRank:overall.positionRank,positionalDatasetRank:r.positionRank}]:[];
   });
   const audit={snapshotId:snapshot.snapshotId,
-    policy:'Unique normalized name + position through existing resolver where source IDs are absent; existing approved aliases only. Duplicate source identities quarantine all rows. Provider IDs come only from existing canonical evidence. Team disagreements preserved, not repaired. Conflicting ranks remain independent. Unknown scope/scoring prevents automatic valuation, projection or transaction influence.',
+    policy:'Unique normalized name + position through existing resolver where source IDs are absent; existing approved aliases only. Duplicate source identities quarantine all rows. Provider IDs come only from existing canonical evidence. Team disagreements preserved, not repaired. Conflicting ranks remain independent. User-confirmed current expert consensus supports ordinal comparisons and equal-evidence waiver tie breaks. Unknown scoring prevents numeric value conversion; no projection or transaction authority.',
     rowsByDataset:Object.fromEntries(DATASETS.map(d=>[d,records.filter(r=>r.dataset===d).length])),
     matched:records.filter(r=>r.identity.canonicalPlayerId).length,
     uniqueCanonicalIds:new Set(records.map(r=>r.identity.canonicalPlayerId).filter(Boolean)).size,
@@ -117,7 +117,7 @@ function build() {
     missingStatistics:Object.fromEntries(DATASETS.map(d=>[d,Object.fromEntries(Object.keys(blankStats()).map(k=>[k,records.filter(r=>r.dataset===d&&r.statistics[k]===null).length]))])),
     teamDisagreements:records.filter(r=>r.identity.teamDisagreement).map(r=>({...reference(r),sourceTeam:r.statistics.team,canonicalTeam:r.identity.canonicalTeam})),
     incomplete:records.filter(r=>r.completeness==='truncated').map(reference),
-    unavailable:['Source snapshot date, ranking horizon and scoring format are unspecified.','Six positional files omit all auxiliary statistics, tiers, movement and individual expert columns. TE Avery Huffman, Expert Average and Zach Savage remain independently null. RB rushing/receiving RYDS columns are absent, not inferred.','README reports incomplete final source rows in QB/RB/TE/K/DEF. All provided rank/name rows are retained; absent columns or later rows cannot be reconstructed.']};
+    unavailable:['Exact source snapshot date and scoring format are unspecified; user confirmed current expert consensus as of 2026 Week 6, not weekly matchup or explicit ROS rankings.','Six positional files omit all auxiliary statistics, tiers, movement and individual expert columns. TE Avery Huffman, Expert Average and Zach Savage remain independently null. RB rushing/receiving RYDS columns are absent, not inferred.','README reports incomplete final source rows in QB/RB/TE/K/DEF. All provided rank/name rows are retained; absent columns or later rows cannot be reconstructed.']};
   return {snapshot,audit};
 }
 if(require.main===module) {

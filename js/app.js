@@ -6682,10 +6682,11 @@ function seasonWaiverEvaluation(model) {
       }));
       return { ...player, currentWeekWaiverUsage };
     };
-    return FantasyHQWaiverIntelligence.evaluate({
+    const evaluated = FantasyHQWaiverIntelligence.evaluate({
       model: { ...model, available: (model.available || []).map(attach), roster: (model.roster || []).map(attach) },
       profile: activeLeagueProfile, horizon: 'CURRENT_WEEK',
     });
+    return nflExpertRankings?.supplementWaivers(evaluated, model) || evaluated;
   }
   const contextByPlayer = Object.fromEntries(
     (model.available || []).map(player => [
@@ -7103,6 +7104,7 @@ function seasonCurrentWeekWaiverCard(intelligence) {
     seasonEl('p', 'seasonHomeDecisionReason', pair.reason),
     seasonEl('p', 'seasonTrustNote', 'ADD not authorized. FAAB blocked: permanent drop valuation unavailable.')
   );
+  if (pair.expertConsensus) card.appendChild(seasonEl('p', 'seasonTrustNote', `Consensus valuation context: ${pair.expertConsensus.reason}`));
   if (pair.optionalEvidence) {
     for (const [side, rows] of Object.entries(pair.optionalEvidence)) {
       for (const row of rows || []) {
@@ -7633,6 +7635,33 @@ function seasonTeamFitSummaryCard(model) {
   card.appendChild(grid);
   return card;
 }
+function seasonConsensusComparisonPanel(model, purpose = 'roster') {
+  const panel = seasonEl('section', 'seasonPanel');
+  panel.appendChild(seasonSectionHeader(purpose === 'trade' ? 'TRADE COMPARISON — CONSENSUS SIGNAL' : 'ROSTER VALUATION — CONSENSUS SIGNAL'));
+  panel.appendChild(seasonEl('p', 'seasonTrustNote', 'Current expert consensus as of 2026 Week 6. Supplemental ordinal evidence; scoring unknown. No rank-to-points conversion, ROS projection, package valuation or transaction authorization.'));
+  const left = model.roster || [], right = purpose === 'trade'
+    ? (model.snapshot?.teams || []).filter(team => team.teamKey !== model.snapshot?.userTeamKey).flatMap(team => team.roster || [])
+    : left;
+  if (!nflExpertRankings || !left.length || !right.length) {
+    panel.appendChild(seasonEmpty('Comparison unavailable', 'A current roster, comparison players and the local consensus snapshot are required.'));
+    return panel;
+  }
+  const controls = seasonEl('div', 'seasonPlayerFilters'), output = seasonEl('p', 'seasonTrustNote');
+  const select = (label, rows) => {
+    const node = document.createElement('select'); node.setAttribute('aria-label', label);
+    rows.forEach((player, index) => { const option = document.createElement('option'); option.value = String(index); option.textContent = `${player.name} • ${player.position || player.pos || 'Unknown position'}`; node.appendChild(option); });
+    return node;
+  };
+  const own = select('Consensus comparison roster player', left), other = select('Consensus comparison other player', right);
+  if (purpose === 'roster' && right.length > 1) other.value = '1';
+  const refresh = () => {
+    const a = left[Number(own.value)], b = right[Number(other.value)], signal = nflExpertRankings.compare(a, b, model);
+    const preference = signal.preference === 'LEFT' ? a.name : signal.preference === 'RIGHT' ? b.name : null;
+    output.textContent = `${preference ? `Consensus favors ${preference}. ` : ''}${signal.reason}`;
+  };
+  own.addEventListener('input', refresh); other.addEventListener('input', refresh);
+  controls.append(own, other); panel.append(controls, output); refresh(); return panel;
+}
 function seasonTeamFitOverview(model) {
   const summary = seasonTeamFitSummary(model),
     panel = seasonEl('section', 'seasonPanel seasonTeamFitOverview');
@@ -7784,7 +7813,7 @@ function renderSeasonPlayers(model, content) {
   injured.append(check, document.createTextNode(' Injured/status only'));
   const expertOrder = document.createElement('select');
   expertOrder.setAttribute('aria-label', 'Supplemental expert ranking order');
-  [['default', 'Current order'], ['expert', 'User Week 6 expert order (scope unknown)']].forEach(([value, label]) => {
+  [['default', 'Current order'], ['expert', 'User consensus order (as of Week 6)']].forEach(([value, label]) => {
     const option = document.createElement('option'); option.value = value; option.textContent = label;
     expertOrder.appendChild(option);
   });
@@ -8308,6 +8337,7 @@ function renderSeasonStartSit(model, content) {
   content.appendChild(seasonRosterCard(model, { full: true }));
 }
 function renderSeasonShellPage(model, content, page) {
+  if (page === 'trades') { content.append(seasonConsensusComparisonPanel(model, 'trade')); return; }
   const shells = {
     trades: [
       'TRADE ANALYZER',
@@ -8513,7 +8543,8 @@ async function renderSeasonCommandCenter() {
       ),
       seasonLineupOptimizerCard(model, lineupIntelligence, { compact: true }),
       seasonRosterCard(model, { full: true }),
-      seasonTeamFitOverview(model)
+      seasonTeamFitOverview(model),
+      seasonConsensusComparisonPanel(model)
     );
   } else if (seasonPage === 'waivers' || seasonPage === 'players')
     renderSeasonPlayers(model, content);
