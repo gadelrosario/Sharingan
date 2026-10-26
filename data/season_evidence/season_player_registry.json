@@ -8398,7 +8398,10 @@
         "sourceRecordId": "2026_01_ARI_LAC:00-0037157"
       },
       "externalIds": {
-        "nflverse": "00-0037157"
+        "nflverse": "00-0037157",
+        "yahoo": "34357",
+        "sleeper": "8122",
+        "gsis": "00-0037157"
       },
       "gsisId": "00-0037157",
       "identityConfidence": "HIGH",
@@ -8428,7 +8431,21 @@
           "observedAt": "2026-09-13T23:59:59.000Z"
         }
       ],
-      "positionConflict": false
+      "positionConflict": false,
+      "externalIdentityEvidence": {
+        "verifiedOn": "2026-10-25",
+        "method": "corroborated-yahoo-sleeper-gsis-crosswalk",
+        "sources": [
+          "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_2025.csv",
+          "https://raw.githubusercontent.com/dynastyprocess/data/master/files/db_playerids.csv"
+        ],
+        "providerIds": {
+          "yahoo": "34357",
+          "sleeper": "8122",
+          "gsis": "00-0037157"
+        },
+        "scope": "identity-only; historical roster does not establish current team, availability, or projection"
+      }
     },
     {
       "seasonPlayerId": "fhq_season_gsis_00_0037231",

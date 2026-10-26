@@ -3862,7 +3862,26 @@
     "fantasylandSource": "Fantasyland",
     "fantasylandHostPlatform": "Flock Fantasy",
     "fantasylandSnapshotDate": "2026-08-08",
-    "fantasylandProvenance": "Transcribed from screenshots supplied by the user. sourceTeam preserves the team label displayed by the source and is NOT a canonical-team correction."
+    "fantasylandProvenance": "Transcribed from screenshots supplied by the user. sourceTeam preserves the team label displayed by the source and is NOT a canonical-team correction.",
+    "externalIds": {
+      "yahoo": "30994",
+      "sleeper": "4983",
+      "gsis": "00-0034827"
+    },
+    "externalIdentityEvidence": {
+      "verifiedOn": "2026-10-25",
+      "method": "corroborated-yahoo-sleeper-gsis-crosswalk",
+      "sources": [
+        "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_2025.csv",
+        "https://raw.githubusercontent.com/dynastyprocess/data/master/files/db_playerids.csv"
+      ],
+      "providerIds": {
+        "yahoo": "30994",
+        "sleeper": "4983",
+        "gsis": "00-0034827"
+      },
+      "scope": "identity-only; historical roster does not establish current team, availability, or projection"
+    }
   },
   {
     "id": 62,
