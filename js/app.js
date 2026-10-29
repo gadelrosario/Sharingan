@@ -8443,14 +8443,8 @@ async function renderSeasonCommandCenter() {
           },
         }
       : builtModel,
-    projectedModel = await seasonApplyProjectionEvidence(baseModel),
-    modelBeforeManual = seasonWeekOverride
-      ? {
-          ...projectedModel,
-          week: seasonWeekOverride,
-          phase: SeasonCommandCenterV1.phaseForWeek(seasonWeekOverride),
-        }
-      : projectedModel,
+    selectedModel = seasonWeekOverride ? SeasonCommandCenterV1.selectWeek(baseModel, seasonWeekOverride) : baseModel,
+    modelBeforeManual = await seasonApplyProjectionEvidence(selectedModel),
     manualModel = seasonApplyManualState(modelBeforeManual),
     model = seasonApplyCurrentWeekEvidence(manualModel);
   seasonLastRenderedModel = model;
@@ -8467,6 +8461,7 @@ async function renderSeasonCommandCenter() {
   const content = el('seasonContent');
   if (!content) return;
   content.innerHTML = '';
+  if (model.planningWeek) content.appendChild(seasonEl('p', 'seasonTrustNote', model.planningWeek.reason));
   if (seasonDevelopmentDiagnosticsEnabled()) {
     const diagnosticText = seasonSourceDiagnosticText(diagnostic);
     console.info('[Fantasy HQ Season Source]', diagnostic);
@@ -8890,6 +8885,7 @@ async function syncYahooLeagueNow() {
       ? [...players, ...seasonPlayerRegistry.evidencePlayers()]
       : players;
     await controller.sync({
+      week: seasonWeekOverride || current?.snapshot?.weekContext?.requestedWeek || null,
       profile: activeLeagueProfile,
       canonicalPlayers: seasonIdentityPlayers,
       aliases: {},

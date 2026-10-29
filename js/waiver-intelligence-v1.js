@@ -126,7 +126,7 @@
     const ageOk=(stamp,max)=>{const age=now-Date.parse(stamp||'');return Number.isFinite(age)&&age>=0&&age<=max;};
     if(!trustworthy(model).ok||snapshot?.provider!=='Yahoo'||model.demo||model.draftSnapshot||
       !profile?.id||profile.id!==model.profileId||snapshot.profileId!==profile.id||
-      !snapshot.league?.leagueKey||!snapshot.league?.season||Number(snapshot.league.currentWeek)!==Number(model.week)||
+      !snapshot.league?.leagueKey||!snapshot.league?.season||Number(snapshot.weekContext?.verified?snapshot.weekContext.selectedWeek:snapshot.league.currentWeek)!==Number(model.week)||
       !snapshot.userTeamKey||snapshot.userTeamKey!==model.userTeamResolution?.teamKey||
       !ageOk(snapshot.fetchedAt,30*60000))return insufficient('Current selected Yahoo profile, league, team, week and availability are required.');
     const ownership=snapshot.ownership.ownership||{}, roster=snapshot.currentRoster;

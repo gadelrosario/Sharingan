@@ -13,6 +13,8 @@ function test(name,fn){fn();passed++;console.log(`PASS ${name}`);}
 function run(change){const f=fixture();if(change)change(f.model,f);return Waiver.evaluate(f);}
 const insufficient=change=>assert.equal(run(change).status,'INSUFFICIENT_EVIDENCE');
 test('FREE_AGENT/current bench reaches explicit CURRENT_WEEK',()=>{const r=run();assert.equal(r.horizon,'CURRENT_WEEK');assert.equal(r.status,'EVALUATED');assert.equal(r.comparisons.length,1);});
+test('verified selected-week ownership can evaluate despite different current week',()=>{const r=run(m=>{m.snapshot.league.currentWeek=3;m.snapshot.weekContext={verified:true,selectedWeek:4};});assert.equal(r.status,'EVALUATED');});
+test('unverified selected-week ownership remains withheld',()=>insufficient(m=>{m.snapshot.league.currentWeek=3;m.snapshot.weekContext={verified:false,selectedWeek:4};}));
 test('Yahoo ownership overrides available label',()=>insufficient(m=>{m.snapshot.ownership.ownership['101'].status='UNKNOWN';}));
 test('rostered candidate denied despite stale free-agent entry',()=>insufficient(m=>m.snapshot.teams[0].roster.push(m.available[0])));
 test('unresolved canonical fails closed',()=>insufficient(m=>{m.available[0].identity.status='UNRESOLVED';}));

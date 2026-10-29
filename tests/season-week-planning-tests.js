@@ -1,0 +1,13 @@
+'use strict';
+const assert=require('node:assert/strict'),S=require('../js/season-command-center-v1'),E=require('../js/season-current-week-evidence-v1'),SS=require('../js/start-sit-intelligence-v1');
+const fixture=require('./fixtures/yahoo/season_command_center_demo.json');
+const snapshot=JSON.parse(JSON.stringify(fixture));snapshot.provider='Yahoo';snapshot.fetchedAt=new Date().toISOString();snapshot.league.currentWeek=7;snapshot.seasonMode={fantasyWeek:7};
+for(const t of snapshot.teams)for(const p of t.roster)Object.assign(p,{actualPoints:22,projection:17,projectionWeek:7,gameStatus:'FINAL',locked:true,opponent:'OLD'});
+const model=S.buildModel({state:{snapshot},profile:{id:'week-planning'}}),before=JSON.stringify(model),next=S.selectWeek(model,8);let n=0;const test=(name,fn)=>{fn();console.log('PASS '+name);n++;};
+test('selected week has no prior-week score, opponent, projection or lock',()=>{assert.equal(next.week,8);for(const p of next.roster){for(const k of ['actualPoints','projection','gameStatus','locked','opponent'])assert.equal(p[k],null);}assert.equal(next.opponent,null);assert.equal(next.snapshot.liveWeek,null);});
+test('source stays immutable and returning to current week uses original evidence',()=>{assert.equal(JSON.stringify(model),before);assert.equal(S.selectWeek(model,7),model);});
+test('ownership identity and injury evidence remain available',()=>{assert.equal(next.roster.length,model.roster.length);assert.deepEqual(next.roster.map(p=>p.identity),model.roster.map(p=>p.identity));assert.deepEqual(next.roster.map(p=>p.injuryStatus),model.roster.map(p=>p.injuryStatus));});
+test('unverified future lineup cannot authorize swaps',()=>{assert.equal(next.lineup.authoritative,false);assert.equal(SS.trustworthy(next).ok,false);assert.match(next.planningWeek.reason,/game-lock evidence/);});
+test('missing future schedule remains UNKNOWN rather than prior-week FINAL or BYE',()=>{const enriched=E.build({model:next});for(const p of enriched.roster){assert.equal(p.currentWeek.game.state,'UNKNOWN');assert.equal(p.currentWeek.game.actionable,false);assert.equal(p.currentWeek.actual.supported,false);}});
+test('supported selected-week estimate can display without authorizing game state',()=>{const p={...next.roster[0],projection:18,projectionSource:'SLEEPER_HALF_PPR_ESTIMATE',projectionType:'SLEEPER_HALF_PPR_ESTIMATE',projectionWeek:8,projectionFetchedAt:snapshot.fetchedAt,projectionScoringFormat:'HALF_PPR'};const e=E.build({model:{...next,roster:[p]}}).roster[0].currentWeek;assert.equal(e.projection.supported,true);assert.equal(e.game.actionable,false);});
+console.log(`${n}/${n} passed`);

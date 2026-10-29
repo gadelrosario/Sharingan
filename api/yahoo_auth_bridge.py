@@ -511,7 +511,9 @@ class YahooFantasyClient:
         _ = int(season)
         return self.get("users;use_login=1/games;game_keys=nfl/leagues")
 
-    def league_bundle(self, league_key: str) -> dict[str, Any]:
+    def league_bundle(self, league_key: str, week: int | None = None) -> dict[str, Any]:
+        if week is not None and (type(week) is not int or not 1 <= week <= 18):
+            raise ValueError("NFL week must be an integer from 1 to 18")
         safe_key = urllib.parse.quote(league_key, safe=".")
         payload: dict[str, Any] = {"leagueKey": league_key, "fetchedAt": _iso_now()}
         errors: dict[str, str] = {}
@@ -535,6 +537,8 @@ class YahooFantasyClient:
             (int(value) for value in current_weeks if str(value).isdigit() and int(value) > 0),
             None,
         )
+        yahoo_current_week = current_week
+        current_week = week if week is not None else current_week
         seasons = _find_scalar_values(payload.get("league"), "season")
         season = next((int(value) for value in seasons if str(value).isdigit()), None)
         scoreboard_resource = f"league/{safe_key}/scoreboard"
@@ -542,6 +546,8 @@ class YahooFantasyClient:
             scoreboard_resource += f";week={current_week}"
         try:
             payload["matchups"] = self.get(scoreboard_resource)
+            if week is not None:
+                _verify_resource_week(payload["matchups"], week, "scoreboard")
         except Exception as exc:
             errors["matchups"] = _safe_error(exc)
         payload["teamRosters"] = {}
@@ -554,6 +560,8 @@ class YahooFantasyClient:
                 if current_week is not None:
                     roster_resource += f";week={current_week}/players/stats;type=week;week={current_week}"
                 payload["teamRosters"][str(team_key)] = self.get(roster_resource)
+                if week is not None:
+                    _verify_resource_week(payload["teamRosters"][str(team_key)], week, "roster")
             except Exception as exc:
                 errors[f"roster:{team_key}"] = _safe_error(exc)
         payload["players"] = {"pages": []}
@@ -571,8 +579,24 @@ class YahooFantasyClient:
                 payload["liveWeek"] = schedule_client.week(season, current_week)
             except Exception:
                 errors["liveWeek"] = "NFL schedule enrichment is unavailable; Yahoo data remains available"
+        if week is not None and (not payload["teamRosters"] or any(k == "matchups" or k == "teams" or k.startswith("roster:") for k in errors)):
+            raise ValueError("Selected-week Yahoo evidence rejected: " + "; ".join(f"{k}: {v}" for k, v in errors.items() if k == "matchups" or k == "teams" or k.startswith("roster:")))
+        payload["weekContext"] = {"requestedWeek": week, "selectedWeek": current_week, "yahooCurrentWeek": yahoo_current_week, "verified": week is not None}
         payload["errors"] = errors
         return payload
+
+
+def _verify_resource_week(payload, week, label):
+    # Bye-week metadata is not the response's roster/stat coverage week.
+    def coverage_values(value):
+        if isinstance(value, list):
+            return [week_value for item in value for week_value in coverage_values(item)]
+        if isinstance(value, dict):
+            return [week_value for key, item in value.items() if key != "bye_weeks" for week_value in ([item] if key == "week" and not isinstance(item, (dict, list)) else coverage_values(item))]
+        return []
+    values = coverage_values(payload)
+    if not values or any(str(value) != str(week) for value in values):
+        raise ValueError(f"{label} response does not confirm requested week {week}")
 
 
 def _iso_now() -> str:
@@ -759,7 +783,11 @@ def make_handler(
                     if not league_key or not all(ch.isalnum() or ch in ".-_" for ch in league_key):
                         self._json(400, {"error": "A valid Yahoo league key is required"})
                     else:
-                        self._json(200, fantasy.league_bundle(league_key), "sync_response")
+                        week_text = query.get("week", [None])[0]
+                        if week_text is not None and (not week_text.isdigit() or not 1 <= int(week_text) <= 18):
+                            self._json(400, {"error": "NFL week must be an integer from 1 to 18"})
+                            return
+                        self._json(200, fantasy.league_bundle(league_key, week=int(week_text)) if week_text is not None else fantasy.league_bundle(league_key), "sync_response")
                 else:
                     self._json(404, {"error": "Not found"})
             except YahooFantasyRequestError as exc:

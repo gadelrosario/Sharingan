@@ -285,6 +285,29 @@ class YahooBridgeTests(unittest.TestCase):
         self.assertIn("league/470.l.test/scoreboard;week=2", resources)
         self.assertEqual(bundle["errors"], {})
 
+    def test_selected_week_resources_and_provenance(self):
+        resources = []
+        class FakeFantasy:
+            def get(self, resource):
+                resources.append(resource)
+                if resource == "league/470.l.test": return {"league": {"current_week": "7", "season": "2026"}}
+                if resource.endswith("/teams"): return {"teams": [{"team_key": "470.l.test.t.1"}]}
+                if "scoreboard" in resource or "roster" in resource: return {"week": "8"}
+                return {}
+        bundle = bridge.YahooFantasyClient.league_bundle(FakeFantasy(), "470.l.test", week=8)
+        self.assertIn("league/470.l.test/scoreboard;week=8", resources)
+        self.assertIn("team/470.l.test.t.1/roster;week=8/players/stats;type=week;week=8", resources)
+        self.assertEqual(bundle["weekContext"], {"requestedWeek": 8, "selectedWeek": 8, "yahooCurrentWeek": 7, "verified": True})
+
+    def test_selected_week_ignores_unrelated_bye_week(self):
+        bridge._verify_resource_week({"roster": {"week": 8, "players": [{"bye_weeks": {"week": 10}, "selected_position": {"week": 8}}]}}, 8, "roster")
+
+    def test_selected_week_rejects_wrong_missing_and_invalid_week(self):
+        for payload in ({}, {"week": 7}, {"week": 8, "nested": {"week": 7}}):
+            with self.assertRaises(ValueError): bridge._verify_resource_week(payload, 8, "roster")
+        for week in (0, 19, "8", True):
+            with self.assertRaises(ValueError): bridge.YahooFantasyClient.league_bundle(None, "470.l.test", week=week)
+
     def test_nflverse_schedule_is_timezone_safe_cached_and_bounded(self):
         seen = []
         csv_text = (
