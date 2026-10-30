@@ -1,0 +1,32 @@
+'use strict';
+// Presentation tests use synthetic evidence; no provider or storage access.
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const V=require('../js/season-home-v3');
+class Node {
+ constructor(tag,cls='',text=''){this.tagName=tag.toUpperCase();this.className=cls;this.textContent=text;this.children=[];this.attrs={};this.events={};this.dataset={};this.classList={add:c=>this.className+=' '+c,toggle:(c,on)=>{if(on)this.className+=' '+c;}};}
+ append(...nodes){for(const n of nodes){n.parent=this;this.children.push(n);}} appendChild(n){this.append(n);return n;}
+ setAttribute(k,v){this.attrs[k]=v;} addEventListener(k,f){this.events[k]=f;}
+ querySelector(selector){if(selector.includes(' ')){const [first,...rest]=selector.split(' ');return this.querySelector(first)?.querySelector(rest.join(' '));}return all(this).slice(1).find(n=>selector.startsWith('.')?n.className.split(' ').includes(selector.slice(1)):n.tagName.toLowerCase()===selector);}
+ remove(){if(this.parent)this.parent.children=this.parent.children.filter(n=>n!==this);}
+ get childElementCount(){return this.children.length;}
+}
+const all=n=>[n,...n.children.flatMap(all)],text=n=>all(n).map(x=>x.textContent).join(' '),el=(...a)=>new Node(...a);
+const app=fs.readFileSync('js/app.js','utf8');
+function extract(name){const start=app.indexOf('function '+name+'('),next=app.slice(start+1).search(/\n(?:async )?function /);return app.slice(start,next<0?undefined:start+1+next);}
+let page=null,preview=0,detail=null;
+const c={window:{FantasyHQSeasonHomeV3:V},seasonPage:'home',seasonEl:el,seasonPlayerPhoto:()=>el('span','seasonLineupPhoto'),seasonExpertRankingSummary:()=>null,seasonPointSemanticClass:()=>'',seasonStatusBadge:(label)=>el('span','seasonBadge',label),openSeasonPlayerDetails:p=>detail=p,seasonButton:(label,fn,cls)=>{const n=el('button',cls,label);n.events.click=fn;return n;},seasonSectionHeader:label=>{const h=el('header','seasonSectionHeader');h.append(el('h2','',label));return h;},seasonEmpty:(a,b)=>el('p','',a+' '+b),showSeasonPage:p=>page=p,exitSeasonMode:()=>page='draft',seasonV3Matchup:()=>{const n=el('section','seasonV3Matchup');n.append(el('section','seasonV3PositionBattle'),el('section','seasonV3WeeklyRead'));return n;},seasonWeeklyPlan:()=>({}),seasonV3Decisions:()=>el('section','actions'),seasonWeeklyCommandInput:()=>({}),renderSeasonLineupWorkspace:(m,n)=>{preview++;n.append(el('section','seasonLineupWorkspace'));}};
+vm.createContext(c);for(const name of ['seasonLineupRow','seasonLineupSection','seasonRosterCard'])vm.runInContext(extract(name),c);
+const start=app.indexOf('renderSeasonHome = function',app.indexOf('// NFL home presentation only.'));
+vm.runInContext(app.slice(start,app.indexOf("\nif ('serviceWorker'",start)),c);
+const p={name:'Synthetic Starter',position:'WR',sourceTeam:'TEST',currentWeek:{game:{state:'LIVE',locked:true},projection:{supported:true,value:12,label:'Fixture estimate',freshness:'CURRENT'},actual:{supported:true,value:5},injury:{current:true,status:'OUT'}}};
+const m={sourceLabel:'Yahoo',week:6,userTeam:{name:'Fixture Team'},userTeamResolution:{status:'RESOLVED'},lineup:{authoritative:true,starters:[{slot:'FLEX',player:p},{slot:'WR',player:p},{slot:'QB',player:null}],bench:[],ir:[]},roster:[p],matchupComparison:{projectionStatus:'COMPLETE',narrativeAllowed:true,userProjectedPoints:100,opponentProjectedPoints:90},homeMatchup:{phase:'LIVE'}};
+let count=0;function test(name,fn){fn();count++;console.log('PASS '+name);}
+test('home order is matchup priority lineup tools, without mutating snapshot',()=>{const before=JSON.stringify(m),root=el('main');c.renderSeasonHome(m,root);assert.deepEqual(root.children[0].children.map(n=>n.className),['seasonPanel seasonV3Matchup'.replace('seasonPanel ',''),'seasonHybridActions','seasonPanel seasonRosterPanel seasonFullRoster','seasonPanel seasonHybridTools']);assert.equal(JSON.stringify(m),before);assert.equal(preview,0);});
+test('preview mounts lazily and only once behind original Yahoo gate',()=>{const root=el('main');c.renderSeasonHome(m,root);const d=root.querySelector('.seasonHybridPreview');d.open=true;d.events.toggle();d.events.toggle();assert.equal(preview,1);const stale=el('main');c.renderSeasonHome({...m,draftSnapshot:true,lineup:{...m.lineup,authoritative:false}},stale);assert.equal(stale.querySelector('.seasonHybridPreview'),undefined);});
+test('tools retain original navigation and separate Draft workflow',()=>{const root=el('main');c.renderSeasonHome(m,root);for(const [label,target] of [['Start/Sit','startsit'],['Waivers','waivers'],['Settings','settings'],['Draft Mode','draft']]){all(root).find(n=>n.textContent===label).events.click();assert.equal(page,target);}});
+test('live actual and supported projection retain independent labels colors and provenance',()=>{const row=c.seasonLineupRow({slot:'WR',player:p},m);assert.match(text(row),/12.00 PROJ/);assert.match(text(row),/5.00 ACT/);assert.equal(row.querySelector('.seasonPointsProjected').title,'Fixture estimate • CURRENT');assert.ok(row.querySelector('.seasonPointsActual'));row.events.click();assert.equal(detail,p);});
+test('missing evidence is unavailable and empty slots are explicit',()=>{const row=c.seasonLineupRow({slot:'QB',player:null},m);assert.match(text(row),/Open slot/);assert.match(text(row),/— PROJ/);assert.equal(row.querySelector('.seasonPointsActual'),undefined);});
+test('Yahoo-style display ordering does not rewrite source assignments',()=>{const root=el('section');c.seasonLineupSection(root,'STARTERS',m.lineup.starters,m);assert.deepEqual(root.children.filter(n=>n.querySelector('.seasonLineupSlot')).map(n=>n.querySelector('.seasonLineupSlot').textContent),['QB','WR','FLEX']);assert.equal(m.lineup.starters[0].slot,'FLEX');});
+test('stale matchup cannot claim a projected differential',()=>{const root=el('main');c.renderSeasonHome({...m,stale:true},root);assert.match(text(root),/Projected differential unavailable/);assert.doesNotMatch(text(root),/\+10.00/);});
+test('verified injury review remains visible without transaction authority',()=>{const alert={id:'a',category:'INJURY',actionable:false,severity:'HIGH',evidence:[{source:'Yahoo'}]};assert.equal(V.priorityAlerts([alert],{status:'CURRENT'}).length,1);assert.equal(alert.actionable,false);});
+console.log(count+'/'+count+' passed');

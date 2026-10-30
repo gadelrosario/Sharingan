@@ -6284,6 +6284,7 @@ function renderSeasonNavigation() {
   };
   ['home', 'team', 'matchup', 'players', 'waivers', 'trades', 'radar'].forEach(page => {
     const button = seasonButton(labels[page], () => showSeasonPage(page));
+    button.dataset.seasonPage = page;
     button.classList.toggle('active', seasonPage === page);
     button.setAttribute('aria-current', seasonPage === page ? 'page' : 'false');
     nav.appendChild(button);
@@ -6419,7 +6420,7 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
     )
   );
   const expertSummary = seasonExpertRankingSummary(player, model);
-  if (expertSummary) identity.appendChild(seasonEl('small', '', expertSummary));
+  if (expertSummary && seasonPage !== 'home') identity.appendChild(seasonEl('small', '', expertSummary));
   const weekEvidence = player?.currentWeek || null,
     gameEvidence = weekEvidence?.game || null,
     schedule = seasonEl('span', 'seasonLineupSchedule');
@@ -6428,9 +6429,7 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
     seasonEl(
       'small',
       '',
-      gameEvidence?.state && gameEvidence.state !== 'UNKNOWN'
-        ? `${gameEvidence.state.replaceAll('_', ' ')}${gameEvidence.kickoff ? ` • ${new Date(gameEvidence.kickoff).toLocaleString([], { weekday: 'short', hour: 'numeric', minute: '2-digit' })}` : ''}`
-        : player?.gameTime || player?.gameStart || 'Game time unavailable'
+      window.FantasyHQSeasonHomeV3.gameLabel(gameEvidence || {}, player?.gameTime || player?.gameStart)
     )
   );
   const actual = weekEvidence?.actual?.value,
@@ -6466,12 +6465,30 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
     'seasonRosterOrigin',
     player?.draftOrigin ? `Drafted ${player.draftOrigin}` : '—'
   );
-  row.append(identity, schedule, projection, status, origin);
+  if (seasonPage === 'home') {
+    row.classList.add('seasonHybridPlayer');
+    const injury = weekEvidence?.injury;
+    const context = window.FantasyHQSeasonHomeV3.rosterContext(player, model);
+    if (context) identity.appendChild(seasonEl('small', 'seasonHybridRowContext', context));
+    const unavailable = injury?.current && ['OUT','IR','INJ','SUSP','NA'].includes(injury.status);
+    row.classList.toggle('problem', !player || Boolean(unavailable));
+    row.classList.toggle('attention', injury?.current && ['Q','QUESTIONABLE','DOUBTFUL','D'].includes(injury.status));
+    const scores = seasonEl('span', 'seasonHybridScores');
+    const projected = seasonEl('span', 'seasonPointsProjected', hasProjection ? `${Number(weekEvidence.projection.value).toFixed(2)} ${weekEvidence.projection.projectionType === 'SLEEPER_HALF_PPR_ESTIMATE' ? 'EST' : 'PROJ'}` : '— PROJ');
+    projected.title = hasProjection ? `${weekEvidence.projection.label || weekEvidence.projection.source} • ${weekEvidence.projection.freshness}` : 'Supported projection unavailable';
+    scores.appendChild(projected);
+    if (hasActual && weekEvidence.actual.supported && ['LIVE','FINAL'].includes(gameEvidence?.state)) scores.appendChild(seasonEl('span', 'seasonPointsActual', `${Number(actual).toFixed(2)} ACT`));
+    if (player?.locked && !gameEvidence?.locked) status.appendChild(seasonStatusBadge('LOCKED', 'neutral'));
+    if (gameEvidence?.state === 'BYE' || (player?.byeWeek != null && Number(player.byeWeek) === Number(model.week))) status.appendChild(seasonStatusBadge('BYE', 'orange'));
+    if (injury?.current && ['HEALTHY','ACTIVE'].includes(injury.status)) status.appendChild(seasonStatusBadge('READY', 'green'));
+    row.append(identity, schedule, scores, status);
+  } else row.append(identity, schedule, projection, status, origin);
   return row;
 }
 function seasonLineupSection(card, title, rows, model, { compact = false } = {}) {
   card.appendChild(seasonEl('h3', 'seasonRosterGroup', title));
-  if (rows.length) rows.forEach(row => card.appendChild(seasonLineupRow(row, model, { compact })));
+  const ordered = seasonPage === 'home' && title === 'STARTERS' ? rows.slice().sort((a,b) => { const order=['QB','RB','WR','TE','FLEX','SUPERFLEX','K','DST']; const rank=r=>{const i=order.indexOf(window.FantasyHQSeasonHomeV3.normalizePosition(r.slot));return i<0?99:i;};return rank(a)-rank(b); }) : rows;
+  if (ordered.length) ordered.forEach(row => card.appendChild(seasonLineupRow(row, model, { compact })));
   else card.appendChild(seasonEl('p', 'seasonMuted', `No ${title.toLowerCase()} slots supplied.`));
 }
 function seasonRosterCard(model, { full = false } = {}) {
@@ -8458,6 +8475,10 @@ async function renderSeasonCommandCenter() {
     sync.className = `seasonSyncPill ${model.demo ? 'demo' : model.stale ? 'stale' : model.status === 'PARTIAL' ? 'partial' : 'current'}`;
   }
   renderSeasonOperationalBar(model);
+  el('seasonScreen')?.classList.toggle('seasonHybridHome', seasonPage === 'home');
+  let teamLabel = el('seasonHybridTeam');
+  if (!teamLabel) { teamLabel = seasonEl('strong', 'seasonHybridTeam'); teamLabel.id = 'seasonHybridTeam'; el('seasonOperationalBar')?.prepend(teamLabel); }
+  teamLabel.textContent = model.userTeam?.name || 'Team unresolved';
   const content = el('seasonContent');
   if (!content) return;
   content.innerHTML = '';
@@ -8465,7 +8486,7 @@ async function renderSeasonCommandCenter() {
   if (seasonDevelopmentDiagnosticsEnabled()) {
     const diagnosticText = seasonSourceDiagnosticText(diagnostic);
     console.info('[Fantasy HQ Season Source]', diagnostic);
-    content.appendChild(seasonEl('div', 'seasonSourceDiagnostic', diagnosticText));
+    const sourceDetails = seasonEl('details', 'seasonSourceDiagnostic'); sourceDetails.append(seasonEl('summary', '', 'Data source details'), seasonEl('p', '', diagnosticText)); content.appendChild(sourceDetails);
   }
   if (model.reviewMode) {
     const banner = seasonEl(
@@ -10743,14 +10764,15 @@ function seasonV3Matchup(model) {
     head = seasonV3LandmarkHeader(`WEEK ${model.week} MATCHUP`, '◉', seasonButton('View Full Matchup →', () => showSeasonPage('matchup'), 'seasonTextButton'), 'seasonV3MatchupHeading'),
     hero = seasonEl('div', 'seasonV3MatchupHero'),
     home = seasonEl('article', 'seasonV3MatchupTeam'), away = seasonEl('article', 'seasonV3MatchupTeam'),
-    facts = model.homeMatchup || {}, comparison = model.matchupComparison || {}, value = number => number == null ? '—' : Number(number).toFixed(2),
+    facts = model.homeMatchup || {}, comparison = model.matchupComparison || {}, value = number => window.FantasyHQSeasonHomeV3.finite(number) === null ? '—' : Number(number).toFixed(2),
     opponentStanding = (model.snapshot?.standings || []).find(row => String(row.teamKey) === String(facts.opponentTeamKey)),
-    projectionComplete = comparison.projectionStatus === 'COMPLETE',
+    projectionComplete = comparison.projectionStatus === 'COMPLETE' && comparison.narrativeAllowed === true && !model.stale && !model.syncError,
     live = facts.phase === 'LIVE', final = facts.phase === 'FINAL',
     matchupMetrics = (actual, projected) => {
       const metrics = seasonEl('div', `seasonV3MatchupMetrics${live ? ' live' : ' pregame'}`), actualBox = seasonEl('span', 'seasonV3ActualScore'), projectedBox = seasonEl('span', 'seasonV3ProjectedScore');
       actualBox.append(seasonEl('small', '', 'ACTUAL'), seasonEl('b', '', value(actual)));
-      projectedBox.append(seasonEl('small', '', final ? 'PROJECTION CLOSED' : live && !projectionComplete ? 'CURRENT OUTLOOK UNAVAILABLE' : live ? 'CURRENT PROJECTED FINAL' : 'PROJECTED FINAL'), seasonEl('b', '', final ? '—' : projectionComplete ? value(projected) : '—'));
+      projectedBox.append(seasonEl('small', '', final ? 'PROJECTION CLOSED' : live && !projectionComplete ? 'CURRENT OUTLOOK UNAVAILABLE' : live ? 'CURRENT PROJECTED FINAL' : 'PROJECTED FINAL'), seasonEl('b', '', final ? '—' : value(window.FantasyHQSeasonHomeV3.matchupProjection(model, projected))));
+      if (!final && (!projectionComplete || window.FantasyHQSeasonHomeV3.finite(projected) === null)) projectedBox.appendChild(seasonEl('span', 'seasonHybridScoreUnavailable', 'Awaiting verified projection'));
       metrics.append(actualBox, projectedBox);
       return metrics;
     };
@@ -10814,7 +10836,7 @@ function seasonV3DecisionCard(item, model, index) {
   const card = seasonEl('article', `seasonV3Decision ${String(item?.priority || 'informational').toLowerCase()}`), player = seasonDecisionPlayer(model, item), confidence = window.FantasyHQSeasonHomeV3?.confidenceLabel(item?.confidence, player?.startSitEvidence?.sampleSize);
   card.append(seasonEl('small', '', `${index + 1} • ${item?.type === 'NO_ACTION' ? 'LINEUP STATUS' : seasonDecisionPosture(item)}`));
   if (player) card.append(seasonPlayerPhoto(player));
-  card.append(seasonEl('strong', '', seasonDecisionHeadline(item)), seasonEl('span', '', item?.type === 'NO_ACTION' ? 'No supported lineup change improves your starters right now.' : seasonNaturalDecisionReason(item)), seasonEl('em', '', `${confidence || 'UNSCORED'} CONFIDENCE • ${String(item?.decisionWindow || 'NO_DEADLINE').replaceAll('_', ' ')}`));
+  card.append(seasonEl('strong', '', seasonDecisionHeadline(item)), seasonEl('span', '', item?.type === 'NO_ACTION' ? 'No supported lineup change was identified. Review available evidence before making a decision.' : seasonNaturalDecisionReason(item)), seasonEl('em', '', `${confidence || 'UNSCORED'} CONFIDENCE • ${String(item?.decisionWindow || 'NO_DEADLINE').replaceAll('_', ' ')}`));
   if (item?.deepLink && item.deepLink !== 'home') card.appendChild(seasonButton('View Details →', () => seasonWeeklyDeepLink(item), 'seasonMiniButton'));
   return card;
 }
@@ -10822,9 +10844,9 @@ function seasonV3HoldState(item) {
   const hold = seasonEl('article', 'seasonV3HoldState'), copy = seasonEl('div', 'seasonV3HoldCopy'), status = seasonEl('div', 'seasonV3HoldFacts');
   copy.append(
     seasonEl('span', 'seasonV3HoldCheck', '✓'),
-    seasonEl('small', '', 'HOLD • LINEUP HEALTHY'),
-    seasonEl('h3', '', 'YOUR LINEUP LOOKS GOOD'),
-    seasonEl('p', '', 'No supported lineup change improves your starters right now.')
+    seasonEl('small', '', 'HOLD • REVIEW EVIDENCE'),
+    seasonEl('h3', '', 'NO VERIFIED LINEUP CHANGE'),
+    seasonEl('p', '', 'No supported lineup change was identified. Review available evidence before making a decision.')
   );
   status.append(seasonEl('span', '', 'CURRENT STATUS'), seasonEl('strong', '', 'No immediate action'));
   const reason = String(item?.reason || '').trim();
@@ -11009,7 +11031,7 @@ function seasonLineupOptimizerCard(model, intelligence, { compact = false } = {}
   const recommendation = seasonLineupDecision(intelligence), decision = recommendation.primary, card = seasonEl('section', `seasonPanel seasonLineupOptimizer${compact ? ' compact' : ''} status-${recommendation.status.toLowerCase()}`), posture = seasonLineupPosture(recommendation, decision);
   card.appendChild(seasonSectionHeader('WEEKLY LINEUP OPTIMIZER'));
   if (!intelligence || intelligence.status === 'INSUFFICIENT_VALIDATED_SEASON_DATA') { card.append(seasonEl('h2', '', 'LINEUP EVIDENCE NEEDED'), seasonEl('p', '', intelligence?.reason || 'Current lineup evidence is unavailable.')); return card; }
-  if (recommendation.status === 'NO_CHANGE') { card.append(seasonStatusBadge('NO CHANGE', 'green'), seasonEl('h2', '', 'LINEUP LOOKS GOOD'), seasonEl('p', '', 'No supported legal change improves the current lineup.')); return card; }
+  if (recommendation.status === 'NO_CHANGE') { card.append(seasonStatusBadge('NO CHANGE', 'green'), seasonEl('h2', '', 'NO VERIFIED LINEUP CHANGE'), seasonEl('p', '', 'No supported legal change was identified. Missing evidence is not proof that the lineup is optimal.')); return card; }
   const verdict = seasonStartSitVerdict(decision), preferred = verdict === 'ACTION' ? decision?.preferred || decision?.alternative : decision?.starter, other = verdict === 'ACTION' ? decision?.other || decision?.starter : decision?.alternative;
   card.append(seasonStatusBadge(posture, seasonStartSitTone(decision?.state)), seasonEl('h2', '', recommendation.status === 'CHANGE' ? '1 LINEUP CHANGE' : recommendation.status === 'MONITOR' ? 'STATUS TO WATCH' : 'HOLD CURRENT LINEUP'), seasonEl('h3', '', seasonStartSitHeadline(decision)), seasonEl('p', 'seasonLineupSit', verdict === 'ACTION' ? `${other?.name || 'Current starter'} → Bench` : `${other?.name || 'Alternative'} remains the comparison`), seasonEl('p', 'seasonLineupWhy', seasonLineupWhy(decision)));
   const projection = seasonLineupProjectionCopy(decision, model);
@@ -11023,11 +11045,40 @@ renderSeasonStartSit = function (model, content) {
   if (recommendation.closeDecisions?.length) { const close = seasonEl('section', 'seasonPanel seasonLineupCloseDecisions'); close.appendChild(seasonSectionHeader('CLOSE DECISIONS TO MONITOR')); recommendation.closeDecisions.slice(0, 3).forEach(decision => close.appendChild(seasonStartSitRow(decision, model))); content.appendChild(close); }
   content.appendChild(seasonRosterCard(model, { full: true }));
 };
-const seasonHomeRenderer44113 = renderSeasonHome;
+// NFL home presentation only. Existing engines, snapshot authority and preview gates remain unchanged.
 renderSeasonHome = function (model, content) {
-  seasonHomeRenderer44113(model, content);
-  const intelligence = seasonStartSitEvaluation(model), primaryType = seasonLastWeeklyPlan?.primaryAction?.type || '';
-  if (!primaryType.startsWith('START_SIT')) { const anchor = content.querySelector('.seasonLineupConsequence') || content.querySelector('.seasonWeeklyPrimaryDecision'); anchor?.insertAdjacentElement('afterend', seasonLineupOptimizerCard(model, intelligence, { compact: true })); }
+  const home = seasonEl('div', 'seasonHybridCommand');
+  const matchup = seasonV3Matchup(model);
+  matchup.querySelector('.seasonV3PositionBattle')?.remove();
+  matchup.querySelector('.seasonV3WeeklyRead')?.remove();
+  const unavailableOutlook = matchup.querySelector('.seasonV3CurrentOutlook.unavailable');
+  if (unavailableOutlook) { const disclosure = seasonEl('details', 'seasonHybridOutlookDetails'); disclosure.appendChild(seasonEl('summary', '', 'Current outlook unavailable — why?')); disclosure.appendChild(unavailableOutlook); matchup.appendChild(disclosure); }
+  const comparison = model.matchupComparison || {}, number = window.FantasyHQSeasonHomeV3.finite;
+  const left = number(comparison.userProjectedPoints), right = number(comparison.opponentProjectedPoints);
+  const supported = comparison.projectionStatus === 'COMPLETE' && comparison.narrativeAllowed === true && !model.stale && !model.syncError;
+  matchup.appendChild(seasonEl('p', 'seasonHybridDifferential',
+    `${!model.homeMatchup?.phase || model.homeMatchup.phase === 'UNKNOWN' ? 'Matchup status unavailable' : model.homeMatchup.phase} • ${supported && left !== null && right !== null ? `Projected differential ${left - right >= 0 ? '+' : ''}${(left - right).toFixed(2)} pts` : 'Projected differential unavailable'}`));
+  home.appendChild(matchup);
+  const actions = seasonEl('div', 'seasonHybridActions');
+  home.appendChild(actions);
+  const roster = seasonRosterCard(model, { full: true });
+  roster.querySelector('.seasonSectionHeader h2').textContent = 'YOUR LINEUP';
+  home.appendChild(roster);
+  const tools = seasonEl('section', 'seasonPanel seasonHybridTools');
+  tools.appendChild(seasonSectionHeader('TOOLS'));
+  const nav = seasonEl('nav', 'seasonHybridToolNav'); nav.setAttribute('aria-label', 'Season analysis tools');
+  [['Start/Sit','startsit'],['Waivers','waivers'],['Trade Analyzer','trades'],['Player Comparison','players'],['League Intelligence','radar'],['Settings','settings']].forEach(([label,page]) => nav.appendChild(seasonButton(label, () => showSeasonPage(page), 'seasonMiniButton')));
+  nav.appendChild(seasonButton('Draft Mode', () => exitSeasonMode(), 'seasonTextButton'));
+  tools.appendChild(nav);
+  if (model.lineup?.authoritative && model.sourceLabel === 'Yahoo' && !model.manualAuthority && !model.demo && !model.reviewMode) {
+    const preview = seasonEl('details', 'seasonHybridPreview');
+    preview.appendChild(seasonEl('summary', '', 'Lineup preview • local only, Yahoo unchanged'));
+    preview.addEventListener('toggle', () => { if (preview.open && !preview.querySelector('.seasonLineupWorkspace')) renderSeasonLineupWorkspace(model, preview); });
+    tools.appendChild(preview);
+  }
+  home.appendChild(tools); content.appendChild(home);
+  actions.appendChild(seasonV3Decisions(seasonWeeklyPlan(model), model));
+  if (!actions.childElementCount) actions.appendChild(seasonEmpty('Analysis unavailable', 'A resolved league snapshot is required before lineup readiness can be evaluated.'));
 };
 
 if ('serviceWorker' in navigator) {

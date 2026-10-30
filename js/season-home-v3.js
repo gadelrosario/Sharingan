@@ -76,10 +76,48 @@
     if(states.some(row=>row.state.locked))return freeze({state:'ACTIVE_GAMES',nextKickoff:null,playerId:null,label:'Some roster players are locked'});
     return freeze({state:'UNKNOWN',nextKickoff:null,playerId:null,label:'Kickoff times unavailable'});
   }
+  // Presentation selection only: consume existing lifecycle/authority decisions.
+  function priorityAlerts(alerts=[],state={}){
+    if(!['CURRENT','PARTIAL'].includes(state.status))return [];
+    const urgency={CRITICAL:0,HIGH:1,MEDIUM:2},seen=new Set();
+    return alerts.filter(a=>(a.actionable===true || (a.evidence?.length > 0 && (a.category==='INJURY' || String(a.issue).includes(':unavailable:') || String(a.issue).includes(':engine:WAIVER'))))&&!a.staleWarning&&urgency[a.severity]!==undefined)
+      .sort((a,b)=>urgency[a.severity]-urgency[b.severity])
+      .filter(a=>{const key=a.issue||a.id;if(!key||seen.has(key))return false;seen.add(key);return true;}).slice(0,3);
+  }
+  // Display-only helpers; never infer kickoff or change lineup eligibility.
+  function kickoffLabel(raw, options={}) {
+    const input=clean(raw);
+    if(!input)return 'Kickoff unavailable';
+    if(/^(TBD|TBA)$/i.test(input))return 'Kickoff TBD';
+    if(!/^\d{4}-\d{2}-\d{2}T/.test(input))return /^(Sun|Mon|Tue|Wed|Thu|Fri|Sat)\b.*\d.*(AM|PM)/i.test(input)?input:'Kickoff unavailable';
+    const date=new Date(input);
+    if(!Number.isFinite(date.getTime()))return 'Kickoff unavailable';
+    return new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short',...options}).format(date);
+  }
+  function gameLabel(game={}, fallback=null) {
+    const label=({LIVE:'Live',FINAL:'Final',BYE:'Bye week',POSTPONED:'Postponed',CANCELED:'Canceled',CANCELLED:'Canceled',LOCKED_UNKNOWN:'Lineup locked · game status unavailable'})[game.state];
+    if(label)return label;
+    const kickoff=kickoffLabel(game.kickoff||game.startTime||fallback);
+    return game.locked?'Lineup locked · '+kickoff:kickoff;
+  }
+  function rosterContext(player, model={}) {
+    if(!player||model.stale||model.syncError)return '';
+    const evidence=player.currentWeek,injury=evidence?.injury;
+    const labels={OUT:'Out',IR:'On injured reserve',INJ:'Injured',SUSP:'Suspended',NA:'Unavailable',Q:'Questionable',QUESTIONABLE:'Questionable',D:'Doubtful',DOUBTFUL:'Doubtful'};
+    if(injury?.current&&labels[injury.status])return labels[injury.status]+' · Review availability';
+    if(evidence?.game?.state==='BYE')return 'Bye week · No game scheduled';
+    if(evidence?.game?.state==='FINAL')return 'Final · Lineup locked';
+    if(evidence?.game?.state==='LIVE')return 'Live · Lineup locked';
+    return '';
+  }
+  function matchupProjection(model={}, value) {
+    const c=model.matchupComparison||{};
+    return c.projectionStatus==='COMPLETE'&&c.narrativeAllowed===true&&!model.stale&&!model.syncError?finite(value):null;
+  }
   function decisionPresentation(plan={}){
     const supported=[...(plan.actionQueue||[]),...(plan.watchQueue||[]).filter(item=>['CRITICAL','HIGH','MEDIUM'].includes(item?.priority))],seen=new Set(),items=supported.filter(item=>item?.id&&!seen.has(item.id)&&seen.add(item.id)).slice(0,3),hold=!items.length&&plan.primaryAction?.type==='NO_ACTION';
     const visible=hold?[]:items.length?items:[plan.primaryAction].filter(Boolean);
     return freeze({kind:hold?'HOLD':'QUEUE',count:hold?0:visible.length,items:freeze(visible.slice()),primaryAction:plan.primaryAction||null});
   }
-  return freeze({POSITIONS,finite,normalizePosition,projection,freshness,gameState,positionBattle,weeklyRead,outlook,confidenceLabel,decisionWindow,decisionPresentation});
+  return freeze({POSITIONS,finite,normalizePosition,projection,freshness,gameState,positionBattle,weeklyRead,outlook,confidenceLabel,decisionWindow,priorityAlerts,kickoffLabel,gameLabel,rosterContext,matchupProjection,decisionPresentation});
 });
