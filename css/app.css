@@ -5966,6 +5966,15 @@ body.seasonModeActive .seasonPointsProjected { color:var(--season-points-project
 #nba-appScreen.nbaDraftCompact .searchPanel{height:560px!important}
 #nba-appScreen.nbaDraftCompact .fightTags span{font-size:9px;padding:4px}
 }
+/* NFL Action Center reuses Season cards and controls. */
+.nflProactive{margin-bottom:12px;overflow-wrap:anywhere}
+.nflProactive .seasonV3Decision{display:block;margin-top:8px;padding:12px;min-width:0}
+.nflProactive .seasonV3Decision h3{font-size:15px;line-height:1.35;margin:8px 0}
+.nflProactive .seasonV3Decision p{line-height:1.5}
+.nflProactiveControls{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.nflProactiveControls button,.nflProactive summary{min-height:40px}
+.nflProactive .seasonSectionHeader{flex-wrap:wrap;gap:8px}
+
 /* NFL Hybrid Command Center, Pass 1. Scoped away from Draft and NBA. */
 #seasonScreen.seasonHybridHome{--hybrid-blue:#4DA3FF;--hybrid-gold:#FDB927;--hybrid-line:#303342}
 .seasonHybridHome .seasonHeader{padding:12px 20px;box-shadow:none;background:#15121e;gap:12px}

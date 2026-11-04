@@ -12,7 +12,7 @@
   const evidenceOf=player=>player?.startSitEvidence||player?.seasonEvidence?.startSit||player?.raw?.startSitEvidence||{};
   const legal=(player,target)=>{const pos=position(player?.position),dest=slot(target);if(dest==='FLEX')return['RB','WR','TE'].includes(pos);return pos===dest;};
   const locked=row=>row?.locked===true||row?.player?.locked===true;
-  const unavailable=player=>['OUT','IR','PUP','NFI'].includes(clean(player?.injuryStatus||evidenceOf(player).injuryStatus).toUpperCase())||player?.ineligible===true||player?.locked===true;
+  const unavailable=player=>['O','OUT','IR','INJURED_RESERVE','PUP','NFI','SUSP','SUSPENDED'].includes(clean(player?.injuryStatus||evidenceOf(player).injuryStatus).toUpperCase())||player?.ineligible===true||player?.locked===true;
   const projectionOf=player=>finite(player?.projection);
   const scoringKey=value=>{const text=clean(value).toLowerCase();if(text.includes('full')||text==='ppr')return'full-ppr';if(text.includes('half'))return'half-ppr';if(text.includes('standard')||text.includes('non'))return'standard';return text||'unknown';};
   const field=(evidence,key)=>finite(evidence?.[key]);

@@ -7094,7 +7094,9 @@ function seasonWaiverRow(pair, model) {
 function seasonCurrentWeekWaiverCards(intelligence) {
   const container = seasonEl('div', 'seasonDecisionGrid');
   const positions = new Set(), selected = [];
-  for (const pair of intelligence.comparisons || []) {
+  const strongestBench = new Map();
+  for (const pair of intelligence.comparisons || []) { const id=pair.candidate.identity?.canonicalPlayerId||pair.candidate.canonicalPlayerId||pair.candidate; const old=strongestBench.get(id); if(!old||pair.difference<old.difference)strongestBench.set(id,pair); }
+  for (const pair of [...strongestBench.values()].sort((a,b)=>(b.benefit?.priority||0)-(a.benefit?.priority||0)||b.difference-a.difference)) {
     if (positions.has(pair.candidate.position)) continue;
     positions.add(pair.candidate.position); selected.push(pair);
     if (selected.length === 3) break;
@@ -7105,7 +7107,7 @@ function seasonCurrentWeekWaiverCards(intelligence) {
 }
 function seasonCurrentWeekWaiverCard(intelligence) {
   const card = seasonEl('section', 'seasonPanel seasonWaiverPanel');
-  card.append(seasonSectionHeader('CURRENT WEEK COMPARISON'), seasonStatusBadge(intelligence.action, 'neutral'));
+  card.append(seasonSectionHeader('CURRENT WEEK COMPARISON'), seasonStatusBadge(intelligence.comparisons[0]?.benefit?.classification || intelligence.action, 'neutral'));
   const pair = intelligence.comparisons[0];
   if (!pair) { card.append(seasonEl('p', 'seasonTrustNote', intelligence.reason)); return card; }
   const c = pair.candidateProjection, r = pair.rosterProjection;
@@ -7118,7 +7120,7 @@ function seasonCurrentWeekWaiverCard(intelligence) {
     seasonEl('p', '', `Optional evidence: ${pair.optionalEvidence ? 'observed context listed below' : 'unavailable with complete dated provenance; not used'}. Missing: ${pair.missingEvidence.join('; ')}. Long-term drop value: UNKNOWN.`),
     seasonEl('p', '', `Transaction protection: ${pair.transactionProtection.state}. ${pair.transactionProtection.reasons.join(' ')}`),
     seasonEl('p', '', `Roster structure: ${pair.transaction.legalStructure ? 'same-position bench replacement preserves eligibility' : 'unresolved; transaction blocked'}. Positional depth after drop/replacement: ${pair.transactionProtection.structure?.depthAfterDrop ?? 'unknown'}/${pair.transactionProtection.structure?.depthAfterReplacement ?? 'unknown'}. Bye coverage: ${pair.transactionProtection.structure?.byeWeek ?? 'unknown'} / candidate ${pair.transactionProtection.structure?.candidateByeWeek ?? 'unknown'}.`),
-    seasonEl('p', 'seasonHomeDecisionReason', pair.reason),
+    seasonEl('p', 'seasonHomeDecisionReason', `${pair.benefit?.reason || ''} ${pair.reason}`),
     seasonEl('p', 'seasonTrustNote', 'ADD not authorized. FAAB blocked: permanent drop valuation unavailable.')
   );
   if (pair.expertConsensus) card.appendChild(seasonEl('p', 'seasonTrustNote', `Consensus valuation context: ${pair.expertConsensus.reason}`));
@@ -8465,6 +8467,7 @@ async function renderSeasonCommandCenter() {
     manualModel = seasonApplyManualState(modelBeforeManual),
     model = seasonApplyCurrentWeekEvidence(manualModel);
   seasonLastRenderedModel = model;
+  if (window.NFLSeasonProactiveV1) NFLSeasonProactiveV1.analyze(model, seasonWeeklyCommandInput(model));
   renderSeasonProfileOptions();
   renderSeasonNavigation();
   renderSeasonSidebar(model);
@@ -8877,7 +8880,8 @@ function confirmYahooLeagueMapping() {
 }
 async function syncYahooLeagueNow() {
   const controller = getYahooSyncController(),
-    current = activeLeagueProfile ? controller.read(activeLeagueProfile.id) : null,
+    syncProfile = activeLeagueProfile,
+    current = syncProfile ? controller.read(syncProfile.id) : null,
     buttons = [el('yahooSyncBtn'), el('seasonOperationalSync')].filter(Boolean),
     pill = el('seasonSyncPill');
   if (!current?.mapping?.explicitlyConfirmed) {
@@ -8907,15 +8911,24 @@ async function syncYahooLeagueNow() {
       : players;
     await controller.sync({
       week: seasonWeekOverride || current?.snapshot?.weekContext?.requestedWeek || null,
-      profile: activeLeagueProfile,
+      profile: syncProfile,
       canonicalPlayers: seasonIdentityPlayers,
       aliases: {},
       archives: yahooArchiveLinkageInputs(),
     });
-    clearSeasonLineupPreviewAfterSync(activeLeagueProfile.id);
+    clearSeasonLineupPreviewAfterSync(syncProfile.id);
+    // Analyze the newly reconciled snapshot even when Home is not visible.
+    if (window.NFLSeasonProactiveV1 && window.SeasonCommandCenterV1) {
+      const syncedModel = SeasonCommandCenterV1.buildModel({state:controller.read(syncProfile.id),profile:syncProfile,demo:false});
+      NFLSeasonProactiveV1.analyze(syncedModel, seasonWeeklyCommandInput(syncedModel));
+    }
+    if (activeLeagueProfile?.id !== syncProfile.id) return;
     seasonProjectionRequests.clear();
     renderYahooSeasonState();
-    if (!el('seasonScreen')?.classList.contains('hidden')) await renderSeasonCommandCenter();
+    if (!el('seasonScreen')?.classList.contains('hidden')) {
+      seasonPage = 'home';
+      await renderSeasonCommandCenter();
+    }
   } catch (error) {
     renderYahooSeasonState();
     const message = `Yahoo sync failed safely: ${error.message}`;
@@ -10836,31 +10849,31 @@ function seasonV3DecisionCard(item, model, index) {
   const card = seasonEl('article', `seasonV3Decision ${String(item?.priority || 'informational').toLowerCase()}`), player = seasonDecisionPlayer(model, item), confidence = window.FantasyHQSeasonHomeV3?.confidenceLabel(item?.confidence, player?.startSitEvidence?.sampleSize);
   card.append(seasonEl('small', '', `${index + 1} • ${item?.type === 'NO_ACTION' ? 'LINEUP STATUS' : seasonDecisionPosture(item)}`));
   if (player) card.append(seasonPlayerPhoto(player));
-  card.append(seasonEl('strong', '', seasonDecisionHeadline(item)), seasonEl('span', '', item?.type === 'NO_ACTION' ? 'No supported lineup change was identified. Review available evidence before making a decision.' : seasonNaturalDecisionReason(item)), seasonEl('em', '', `${confidence || 'UNSCORED'} CONFIDENCE • ${String(item?.decisionWindow || 'NO_DEADLINE').replaceAll('_', ' ')}`));
+  card.append(seasonEl('strong', '', seasonDecisionHeadline(item)), seasonEl('span', '', item?.type === 'NO_ACTION' ? 'No verified lineup action is available. View Report distinguishes no opportunity from insufficient evidence.' : seasonNaturalDecisionReason(item)), seasonEl('em', '', `${confidence || 'UNSCORED'} CONFIDENCE • ${String(item?.decisionWindow || 'NO_DEADLINE').replaceAll('_', ' ')}`));
   if (item?.deepLink && item.deepLink !== 'home') card.appendChild(seasonButton('View Details →', () => seasonWeeklyDeepLink(item), 'seasonMiniButton'));
   return card;
 }
-function seasonV3HoldState(item) {
+function seasonV3HoldState(item, model) {
   const hold = seasonEl('article', 'seasonV3HoldState'), copy = seasonEl('div', 'seasonV3HoldCopy'), status = seasonEl('div', 'seasonV3HoldFacts');
   copy.append(
     seasonEl('span', 'seasonV3HoldCheck', '✓'),
-    seasonEl('small', '', 'HOLD • REVIEW EVIDENCE'),
-    seasonEl('h3', '', 'NO VERIFIED LINEUP CHANGE'),
-    seasonEl('p', '', 'No supported lineup change was identified. Review available evidence before making a decision.')
+    seasonEl('small', '', 'NO VERIFIED ACTION'),
+    seasonEl('h3', '', 'REVIEW ANALYSIS COVERAGE'),
+    seasonEl('p', '', 'No verified lineup action is available. View Report distinguishes no opportunity from insufficient evidence.')
   );
   status.append(seasonEl('span', '', 'CURRENT STATUS'), seasonEl('strong', '', 'No immediate action'));
-  const reason = String(item?.reason || '').trim();
+  const reason = window.NFLSeasonProactiveV1?.get(model)?.reason || 'Open the report for roster freshness, lineup comparison, injury, bye and waiver coverage.';
   if (reason) status.append(seasonEl('span', '', 'WHY HOLDING'), seasonEl('strong', '', reason));
-  hold.append(copy, status, seasonButton('View Details →', () => showSeasonPage('startsit'), 'seasonMiniButton'));
+  hold.append(copy, status, seasonButton('View Report →', () => window.NFLProactiveUIV1?.openReport(), 'seasonMiniButton'));
   return hold;
 }
 function seasonV3Decisions(plan, model) {
   const panel = seasonEl('section', 'seasonPanel seasonV3Decisions'), presentation = window.FantasyHQSeasonHomeV3?.decisionPresentation(plan) || { kind: 'QUEUE', count: 0, items: [] }, isHold = presentation.kind === 'HOLD', items = presentation.items;
-  const header = seasonSectionHeader('WHAT SHOULD I DO?', seasonButton('View All Recommendations →', () => showSeasonPage('startsit'), 'seasonTextButton'));
+  const header = seasonSectionHeader('WHAT SHOULD I DO?', seasonButton('View Report →', () => window.NFLProactiveUIV1?.openReport(), 'seasonTextButton'));
   header.classList.add('seasonV3ActionHeader');
   panel.appendChild(header);
   const grid = seasonEl('div', `seasonV3DecisionGrid count-${presentation.count}`);
-  if (isHold) grid.appendChild(seasonV3HoldState(plan.primaryAction));
+  if (isHold) grid.appendChild(seasonV3HoldState(plan.primaryAction, model));
   else items.forEach((item, index) => grid.appendChild(seasonV3DecisionCard(item, model, index)));
   panel.appendChild(grid);
   return panel;
@@ -11030,8 +11043,15 @@ function openSeasonStartSitComparison(decision, model) {
 function seasonLineupOptimizerCard(model, intelligence, { compact = false } = {}) {
   const recommendation = seasonLineupDecision(intelligence), decision = recommendation.primary, card = seasonEl('section', `seasonPanel seasonLineupOptimizer${compact ? ' compact' : ''} status-${recommendation.status.toLowerCase()}`), posture = seasonLineupPosture(recommendation, decision);
   card.appendChild(seasonSectionHeader('WEEKLY LINEUP OPTIMIZER'));
+  const readiness = window.NFLSeasonProactiveV1?.lineupReadiness(model, intelligence);
+  if (readiness && readiness.status !== 'COMPLETE' && !model.reviewMode && !model.demo) {
+    card.append(seasonStatusBadge(readiness.status === 'BLOCKED' ? 'ANALYSIS BLOCKED' : 'PARTIAL EVALUATION', 'orange'), seasonEl('h2', '', 'LINEUP NOT FULLY EVALUATED'), seasonEl('p', '', readiness.reason));
+    for (const comparison of readiness.comparisons.slice(0,3)) card.appendChild(seasonButton(`Verified comparison: ${comparison.starter.name} / ${comparison.alternative.name}`, () => openSeasonStartSitComparison(comparison, model), 'seasonMiniButton'));
+    return card;
+  }
+
   if (!intelligence || intelligence.status === 'INSUFFICIENT_VALIDATED_SEASON_DATA') { card.append(seasonEl('h2', '', 'LINEUP EVIDENCE NEEDED'), seasonEl('p', '', intelligence?.reason || 'Current lineup evidence is unavailable.')); return card; }
-  if (recommendation.status === 'NO_CHANGE') { card.append(seasonStatusBadge('NO CHANGE', 'green'), seasonEl('h2', '', 'NO VERIFIED LINEUP CHANGE'), seasonEl('p', '', 'No supported legal change was identified. Missing evidence is not proof that the lineup is optimal.')); return card; }
+  if (recommendation.status === 'NO_CHANGE') { const evaluated=(intelligence?.decisions||[]).some(d=>d.evidenceCoverage>0); card.append(seasonStatusBadge(evaluated?'NO SUPPORTED CHANGE':'LIMITED EVIDENCE', 'neutral'), seasonEl('h2', '', evaluated?'NO VERIFIED IMPROVEMENT':'LINEUP NOT FULLY EVALUATED'), seasonEl('p', '', intelligence?.reason || (evaluated?'No supported legal change improves the current lineup.':'A displayed projection alone is insufficient; legal comparison, scoring and game-lock evidence are required.'))); return card; }
   const verdict = seasonStartSitVerdict(decision), preferred = verdict === 'ACTION' ? decision?.preferred || decision?.alternative : decision?.starter, other = verdict === 'ACTION' ? decision?.other || decision?.starter : decision?.alternative;
   card.append(seasonStatusBadge(posture, seasonStartSitTone(decision?.state)), seasonEl('h2', '', recommendation.status === 'CHANGE' ? '1 LINEUP CHANGE' : recommendation.status === 'MONITOR' ? 'STATUS TO WATCH' : 'HOLD CURRENT LINEUP'), seasonEl('h3', '', seasonStartSitHeadline(decision)), seasonEl('p', 'seasonLineupSit', verdict === 'ACTION' ? `${other?.name || 'Current starter'} → Bench` : `${other?.name || 'Alternative'} remains the comparison`), seasonEl('p', 'seasonLineupWhy', seasonLineupWhy(decision)));
   const projection = seasonLineupProjectionCopy(decision, model);
@@ -11042,7 +11062,7 @@ function seasonLineupOptimizerCard(model, intelligence, { compact = false } = {}
 renderSeasonStartSit = function (model, content) {
   const intelligence = seasonStartSitEvaluation(model), recommendation = seasonLineupDecision(intelligence);
   content.append(seasonPageIntro('Weekly Lineup Optimizer', 'One legal weekly lineup answer, with close calls and supporting evidence available on demand.'), seasonLineupOptimizerCard(model, intelligence));
-  if (recommendation.closeDecisions?.length) { const close = seasonEl('section', 'seasonPanel seasonLineupCloseDecisions'); close.appendChild(seasonSectionHeader('CLOSE DECISIONS TO MONITOR')); recommendation.closeDecisions.slice(0, 3).forEach(decision => close.appendChild(seasonStartSitRow(decision, model))); content.appendChild(close); }
+  if (recommendation.closeDecisions?.length && (!window.NFLSeasonProactiveV1 || NFLSeasonProactiveV1.lineupReadiness(model,intelligence).status === 'COMPLETE')) { const close = seasonEl('section', 'seasonPanel seasonLineupCloseDecisions'); close.appendChild(seasonSectionHeader('CLOSE DECISIONS TO MONITOR')); recommendation.closeDecisions.slice(0, 3).forEach(decision => close.appendChild(seasonStartSitRow(decision, model))); content.appendChild(close); }
   content.appendChild(seasonRosterCard(model, { full: true }));
 };
 // NFL home presentation only. Existing engines, snapshot authority and preview gates remain unchanged.
@@ -11077,7 +11097,8 @@ renderSeasonHome = function (model, content) {
     tools.appendChild(preview);
   }
   home.appendChild(tools); content.appendChild(home);
-  actions.appendChild(seasonV3Decisions(seasonWeeklyPlan(model), model));
+  if (window.NFLProactiveUIV1) NFLProactiveUIV1.render({model, engineInput:seasonWeeklyCommandInput(model), initialState:window.NFLSeasonProactiveV1?.get(model), content:actions, navigate:showSeasonPage, compact:true});
+  else actions.appendChild(seasonV3Decisions(seasonWeeklyPlan(model), model));
   if (!actions.childElementCount) actions.appendChild(seasonEmpty('Analysis unavailable', 'A resolved league snapshot is required before lineup readiness can be evaluated.'));
 };
 

@@ -119,6 +119,22 @@
       reason:difference>0?`Supported weekly projection is higher, but removal is ${protection.state}: ${protection.reasons.join(' ')} Future removal consequence remains unresolved. WATCH means monitor, not add.`:'Supported weekly projection does not establish an improvement over this bench player. HOLD applies only to this current-week comparison.'};
   }
   // Weekly evidence is a comparison, never a rated acquisition/drop decision.
+  function weeklyBenefit(comparison,model){
+    const numeric=value=>(typeof value==='number'||typeof value==='string'&&value.trim()!=='')&&Number.isFinite(Number(value));
+    const projection=comparison?.rosterProjection;
+    if(!projection||typeof projection!=='object'||Array.isArray(projection)||!numeric(projection.value)||Number(projection.value)<=0||!numeric(comparison?.difference)||!comparison?.candidate){
+      return {classification:'NO ACTION',confidence:'PROJECTION-BASED / CONDITIONAL',horizon:'CURRENT_WEEK',reason:'Valid positive roster projection and finite comparison evidence required; no materiality signal.',need:false,priority:0};
+    }
+    const pos=position(comparison.candidate.position),roster=(model.roster||[]).filter(p=>position(p.position)===pos),status=p=>clean(p.currentWeek?.injury?.rawStatus||p.injuryStatus).toUpperCase(),out=p=>['O','OUT','IR','PUP','SUSP'].includes(status(p)),uncertain=p=>out(p)||['Q','D','QUESTIONABLE','DOUBTFUL'].includes(status(p));
+    const starters=roster.filter(p=>!['BN','IR'].includes(starterSlot(p.rosterSlot))),bench=roster.filter(p=>starterSlot(p.rosterSlot)==='BN'&&!uncertain(p));
+    const exposed=starters.filter(uncertain),absent=starters.filter(out),upcoming=starters.filter(p=>Number(p.byeWeek)>Number(model.week)&&Number(p.byeWeek)<=Number(model.week)+3);
+    const shortage=upcoming.some(p=>upcoming.filter(r=>Number(r.byeWeek)===Number(p.byeWeek)).length>bench.filter(b=>Number(b.byeWeek)>0&&Number(b.byeWeek)!==Number(p.byeWeek)).length);
+    const edge=comparison.difference,baseline=Math.max(1,Number(comparison.rosterProjection.value)),meaningful=edge>=2&&edge/baseline>=.2,strong=edge>=4&&edge/baseline>=.3,need=exposed.length>0||(shortage&&Number(comparison.candidate.byeWeek)>0&&upcoming.every(p=>Number(p.byeWeek)!==Number(comparison.candidate.byeWeek)));
+    const classification=strong&&need&&!uncertain(comparison.candidate)?'PRIORITY TARGET':meaningful?'WATCHLIST':'NO ACTION';
+    return {classification,confidence:'PROJECTION-BASED / CONDITIONAL',horizon:'CURRENT_WEEK',
+      reason:`${meaningful?'Material weekly comparison':'Below materiality bar (at least 2 points and 20%)'}. ${absent.length} unavailable and ${exposed.length-absent.length} questionable/doubtful ${pos} starters; ${bench.length} non-questionable same-position bench options. ${shortage?'Upcoming bye coverage needs review.':'No verified uncovered same-position bye identified.'} Future candidate availability and rest-of-season value are unverified.`,
+      need,priority:classification==='PRIORITY TARGET'?2:classification==='WATCHLIST'?1:0};
+  }
   function evaluateCurrentWeek({model,profile,now=Date.now()}={}){
     const snapshot=model?.snapshot, comparisons=[], rejected=[];
     const base={horizon:'CURRENT_WEEK',context:{profileId:model?.profileId||null,leagueKey:snapshot?.league?.leagueKey||null,teamKey:snapshot?.userTeamKey||null,season:snapshot?.league?.season||null,week:model?.week||null,yahooFetchedAt:snapshot?.fetchedAt||null},pairs:[],longTermDropValue:'UNKNOWN',faab:{authority:'BLOCKED',output:null,reason:'Permanent drop valuation unavailable.'}};
@@ -180,7 +196,8 @@
         reason:transaction.reason,
         faab:{authority:'BLOCKED',output:null}});
     }
-    comparisons.sort((a,b)=>b.difference-a.difference||a.candidate.name.localeCompare(b.candidate.name)||a.rosterPlayer.name.localeCompare(b.rosterPlayer.name));
+    for(const c of comparisons)c.benefit=weeklyBenefit(c,model);
+    comparisons.sort((a,b)=>b.benefit.priority-a.benefit.priority||b.difference-a.difference||a.candidate.name.localeCompare(b.candidate.name)||a.rosterPlayer.name.localeCompare(b.rosterPlayer.name));
     if(!comparisons.length)return insufficient('No same-position candidate/bench pair has current Yahoo authority, legal game state and compatible weekly projections.');
     return {...base,status:'EVALUATED',action:comparisons[0].action,reason:comparisons[0].reason,comparisons,rejected,protections};
   }
@@ -196,5 +213,5 @@
     const actionable=pairs.filter(pair=>pair.action!=='HOLD'&&pair.drop),fallbackPlan=Object.freeze([...actionable.slice(0,2).map((pair,index)=>Object.freeze({priority:index+1,addPlayerId:pair.canonicalPlayerId,dropPlayerId:pair.drop.canonicalPlayerId,action:pair.action,bid:null,advisoryOnly:true})),Object.freeze({priority:Math.min(3,actionable.length+1),action:'HOLD',advisoryOnly:true})]);
     return Object.freeze({status:'EVALUATED',action,timing:Object.freeze({action,headline:action===ACTION.ACT?'CLEAR ROSTER UPGRADE':action===ACTION.WAIT?'MONITOR THE WAIVER WINDOW':'NO MOVE CLEARS THE BAR',reason:top?.reason||'No available move has sufficient validated evidence.'}),reason:top?.reason||null,need,candidates:Object.freeze(candidates),drops:Object.freeze(drops),pairs:Object.freeze(pairs),fallbackPlan,signals:Object.freeze({sharinganPick,sharinganWatch,sharinganHold:!sharinganPick&&!sharinganWatch,chidori}),faab:faabContract(model),provenance:Object.freeze({seasonSource:model.manualAuthority?.complete?'USER_CONFIRMED':model.sourceLabel,profileId:model.profileId,availabilitySource:model.manualAuthority?.complete?'USER_CONFIRMED':'Yahoo',evaluatedAt:null})});
   }
-  return Object.freeze({ACTION,NEED,DROP,TIERS,configuredSlots,trustworthy,assessRosterNeed,evaluateDrop,evaluateCandidate,estimateCompetition,faabContract,pairCandidates,PROTECTION,transactionProtection,currentWeekTransaction,evaluateCurrentWeek,evaluate});
+  return Object.freeze({ACTION,NEED,DROP,TIERS,configuredSlots,trustworthy,assessRosterNeed,evaluateDrop,evaluateCandidate,estimateCompetition,faabContract,pairCandidates,PROTECTION,transactionProtection,currentWeekTransaction,weeklyBenefit,evaluateCurrentWeek,evaluate});
 });

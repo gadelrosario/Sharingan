@@ -1,0 +1,18 @@
+'use strict';
+const assert=require('node:assert/strict'),P=require('../js/nfl-season-proactive-v1'),F=require('./fixtures/nfl-proactive-scenarios');
+let n=0;const test=(name,fn)=>{fn();console.log('PASS '+name);n++;};
+const player=(id,position)=>({name:id,position,rosterSlot:position,identity:{status:'MATCHED',canonicalPlayerId:id},currentWeek:{projection:{supported:true,value:12}}});
+const a=player('a','QB'),b=player('b','QB'),gap={name:'Quarantined RB',position:'RB',rosterSlot:'FLEX',yahooPlayerId:'34357',identity:{status:'UNRESOLVED',reason:'no-stable-identity-match'}};
+const d={starter:a,alternative:b,lineupSlot:'QB',state:'START',evidenceCoverage:1,scores:{starter:{score:10},alternative:{score:15}}};
+const model={roster:[a,b,gap],lineup:{starters:[{slot:'QB',player:a},{slot:'FLEX',player:gap}]}};
+test('exact identity diagnostic contains source ID and slot',()=>{assert.match(P.identityReport(model),/34357/);assert.match(P.identityReport(model),/FLEX/);});
+test('unrelated verified comparison remains visible',()=>{assert.equal(P.safeComparisons(model,{decisions:[d]}).length,1);assert.equal(P.lineupReadiness(model,{decisions:[d]}).status,'PARTIAL');});
+test('unresolved eligible competitor withholds comparison',()=>{assert.equal(P.safeComparisons({...model,roster:[a,b,{...gap,position:'QB'}]},{decisions:[d]}).length,0);});
+test('unresolved flexible competitor cannot be ignored',()=>{assert.equal(P.safeComparisons(model,{decisions:[{...d,lineupSlot:'SUPERFLEX'}]}).length,0);});
+test('unresolved participant never enters safe comparisons',()=>{assert.equal(P.safeComparisons(model,{decisions:[{...d,alternative:gap}]}).length,0);});
+test('missing evidence and wait decisions are not verified',()=>{for(const bad of [{...d,scores:{}},{...d,state:'WAIT'},{...d,evidenceCoverage:0}])assert.equal(P.safeComparisons(model,{decisions:[bad]}).length,0);});
+test('stale model blocks otherwise safe comparison',()=>{const r=P.lineupReadiness({...model,stale:true},{decisions:[d]});assert.equal(r.status,'BLOCKED');assert.equal(r.comparisons.length,0);});
+test('complete evaluation requires supported starter evidence',()=>{const m={roster:[a,b],lineup:{starters:[{player:a}]}};assert.equal(P.lineupReadiness(m,{decisions:[d]}).status,'COMPLETE');assert.equal(P.lineupReadiness({...m,lineup:{starters:[{player:{...a,currentWeek:{}}}]}},{decisions:[d]}).status,'PARTIAL');});
+test('partial analysis never promotes unrelated roster alerts',()=>{const m=F.model('partial-safety');m.snapshot.league.gameCode='nfl';m.snapshot.settings={scoringType:'head',rosterSlots:[{position:'RB',count:2}]};m.roster.push(gap);const before=JSON.stringify(m);const state=P.analyze(m,{},F.now);assert.equal(state.status,'PARTIAL');assert.equal(state.alerts.length,0);assert.equal(JSON.stringify(m),before);});
+test('unsupported eligible bench prevents complete evaluation',()=>{const missing=player('missing','QB');missing.currentWeek={};const m={roster:[a,b,missing],lineup:{starters:[{player:a}],bench:[{player:missing}]}};assert.equal(P.lineupReadiness(m,{decisions:[d]}).status,'PARTIAL');});
+console.log(`${n}/${n} passed`);
