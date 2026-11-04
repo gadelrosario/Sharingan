@@ -6450,8 +6450,15 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
     status = seasonEl('span', 'seasonLineupStatus');
   if (gameEvidence?.state === 'LIVE') status.appendChild(seasonStatusBadge('LIVE • LOCKED', 'red'));
   else if (gameEvidence?.locked) status.appendChild(seasonStatusBadge('LOCKED', 'neutral'));
-  else if (gameEvidence?.state === 'PRE_GAME')
-    status.appendChild(seasonStatusBadge('CHANGEABLE', 'green'));
+  else if (gameEvidence?.state === 'PRE_GAME') {
+    const unlocked = seasonStatusBadge('CHANGEABLE', 'green');
+    if (seasonPage === 'home') {
+      unlocked.classList.add('seasonLockAvailable');
+      unlocked.setAttribute('aria-label', 'Lineup unlocked; changes remain subject to eligibility checks');
+      unlocked.title = 'Lineup unlocked; changes remain subject to eligibility checks';
+    }
+    status.appendChild(unlocked);
+  }
   if (weekEvidence?.injury?.current && !['ACTIVE', 'HEALTHY', 'UNKNOWN'].includes(weekEvidence.injury.status))
     status.appendChild(seasonStatusBadge(weekEvidence.injury.status, 'orange'));
   if (!status.childElementCount) status.appendChild(seasonEl('span', 'seasonFutureStatus', '—'));
@@ -6478,6 +6485,7 @@ function seasonLineupRow(lineupRow, model, { compact = false } = {}) {
     projected.title = hasProjection ? `${weekEvidence.projection.label || weekEvidence.projection.source} • ${weekEvidence.projection.freshness}` : 'Supported projection unavailable';
     scores.appendChild(projected);
     if (hasActual && weekEvidence.actual.supported && ['LIVE','FINAL'].includes(gameEvidence?.state)) scores.appendChild(seasonEl('span', 'seasonPointsActual', `${Number(actual).toFixed(2)} ACT`));
+    else scores.appendChild(seasonEl('span', 'seasonPointsActual seasonActualUnavailable', '— ACT'));
     if (player?.locked && !gameEvidence?.locked) status.appendChild(seasonStatusBadge('LOCKED', 'neutral'));
     if (gameEvidence?.state === 'BYE' || (player?.byeWeek != null && Number(player.byeWeek) === Number(model.week))) status.appendChild(seasonStatusBadge('BYE', 'orange'));
     if (injury?.current && ['HEALTHY','ACTIVE'].includes(injury.status)) status.appendChild(seasonStatusBadge('READY', 'green'));
@@ -10781,18 +10789,33 @@ function seasonV3Matchup(model) {
     opponentStanding = (model.snapshot?.standings || []).find(row => String(row.teamKey) === String(facts.opponentTeamKey)),
     projectionComplete = comparison.projectionStatus === 'COMPLETE' && comparison.narrativeAllowed === true && !model.stale && !model.syncError,
     live = facts.phase === 'LIVE', final = facts.phase === 'FINAL',
-    matchupMetrics = (actual, projected) => {
+    matchupMetrics = (actual, projected, weekly) => {
       const metrics = seasonEl('div', `seasonV3MatchupMetrics${live ? ' live' : ' pregame'}`), actualBox = seasonEl('span', 'seasonV3ActualScore'), projectedBox = seasonEl('span', 'seasonV3ProjectedScore');
       actualBox.append(seasonEl('small', '', 'ACTUAL'), seasonEl('b', '', value(actual)));
+      if (seasonPage === 'home' && window.FantasyHQSeasonHomeV3.finite(actual) === null) actualBox.classList.add('seasonScoreMissing');
+      if (seasonPage === 'home') {
+        projectedBox.append(seasonEl('small', '', 'YAHOO WEEKLY PROJECTION'), seasonEl('b', '', value(weekly)));
+        if (window.FantasyHQSeasonHomeV3.finite(weekly) === null) {projectedBox.classList.add('seasonScoreMissing');projectedBox.appendChild(seasonEl('span', 'seasonHybridScoreUnavailable', 'Not available'));}
+      } else {
       projectedBox.append(seasonEl('small', '', final ? 'PROJECTION CLOSED' : live && !projectionComplete ? 'CURRENT OUTLOOK UNAVAILABLE' : live ? 'CURRENT PROJECTED FINAL' : 'PROJECTED FINAL'), seasonEl('b', '', final ? '—' : value(window.FantasyHQSeasonHomeV3.matchupProjection(model, projected))));
       if (!final && (!projectionComplete || window.FantasyHQSeasonHomeV3.finite(projected) === null)) projectedBox.appendChild(seasonEl('span', 'seasonHybridScoreUnavailable', 'Awaiting verified projection'));
+      }
       metrics.append(actualBox, projectedBox);
       return metrics;
     };
-  home.append(seasonEl('small', '', 'MY TEAM'), seasonEl('strong', '', model.userTeam?.name || 'My Team'), seasonEl('span', '', seasonFormatRecord(model.standing)), matchupMetrics(comparison.userActualPoints, comparison.userProjectedPoints));
-  away.append(seasonEl('small', '', 'OPPONENT'), seasonEl('strong', '', model.opponent?.name || 'Opponent unavailable'), seasonEl('span', '', seasonFormatRecord(opponentStanding)), matchupMetrics(comparison.opponentActualPoints, comparison.opponentProjectedPoints));
+  home.append(seasonEl('small', '', 'MY TEAM'), seasonEl('strong', '', model.userTeam?.name || 'My Team'), seasonEl('span', '', seasonFormatRecord(model.standing)), matchupMetrics(comparison.userActualPoints, comparison.userProjectedPoints, comparison.userWeeklyProjectedPoints));
+  away.append(seasonEl('small', '', 'OPPONENT'), seasonEl('strong', '', model.opponent?.name || 'Opponent unavailable'), seasonEl('span', '', seasonFormatRecord(opponentStanding)), matchupMetrics(comparison.opponentActualPoints, comparison.opponentProjectedPoints, comparison.opponentWeeklyProjectedPoints));
   hero.append(home, seasonEl('span', 'seasonV3Versus', 'VS'), away);
   panel.append(head, hero);
+  if (seasonPage === 'home') {
+    for (const [side, name] of [[home, model.userTeam?.name], [away, model.opponent?.name]]) {
+      const identity = seasonEl('span', 'seasonTeamMonogram', String(name || '?').trim().split(/\s+/).slice(0,2).map(part=>part[0]).join('').toUpperCase());
+      identity.setAttribute('aria-hidden', 'true'); side.prepend(identity);
+    }
+    panel.appendChild(seasonEl('p', 'seasonScoreProvenance', 'Yahoo weekly lineup projections • not live projected-final totals'));
+    const stamp = model.lastSuccessfulSyncAt || model.snapshot?.fetchedAt;
+    panel.appendChild(seasonEl('p', 'seasonScoreSnapshot', stamp ? 'Snapshot: ' + window.FantasyHQSeasonHomeV3.kickoffLabel(stamp) + ' • scores and roster are as of this snapshot' : 'Snapshot time unavailable • verify freshness before making a decision'));
+  }
   const currentEvidence = model.currentWeekEvidence,
     userOutlook = currentEvidence?.userOutlook,
     opponentOutlook = currentEvidence?.opponentOutlook,
@@ -10822,7 +10845,7 @@ function seasonV3Matchup(model) {
     );
   }
   panel.appendChild(outlook);
-  if (live && !projectionComplete && (comparison.userWeeklyProjectedPoints != null || comparison.opponentWeeklyProjectedPoints != null)) panel.appendChild(seasonEl('p', 'seasonTrustNote', `Yahoo weekly lineup projection: ${value(comparison.userWeeklyProjectedPoints)} – ${value(comparison.opponentWeeklyProjectedPoints)}. Yahoo API does not expose the live projected final shown in Yahoo Fantasy.`));
+  if (seasonPage !== 'home' && live && !projectionComplete && (comparison.userWeeklyProjectedPoints != null || comparison.opponentWeeklyProjectedPoints != null)) panel.appendChild(seasonEl('p', 'seasonTrustNote', `Yahoo weekly lineup projection: ${value(comparison.userWeeklyProjectedPoints)} – ${value(comparison.opponentWeeklyProjectedPoints)}. Yahoo API does not expose the live projected final shown in Yahoo Fantasy.`));
   const battle = seasonV3PositionBattle(model),
     read = window.FantasyHQSeasonHomeV3?.weeklyRead(comparison, battle.battles),
     currentRead = currentEvidence?.weeklyRead;
@@ -11065,11 +11088,16 @@ renderSeasonStartSit = function (model, content) {
   if (recommendation.closeDecisions?.length && (!window.NFLSeasonProactiveV1 || NFLSeasonProactiveV1.lineupReadiness(model,intelligence).status === 'COMPLETE')) { const close = seasonEl('section', 'seasonPanel seasonLineupCloseDecisions'); close.appendChild(seasonSectionHeader('CLOSE DECISIONS TO MONITOR')); recommendation.closeDecisions.slice(0, 3).forEach(decision => close.appendChild(seasonStartSitRow(decision, model))); content.appendChild(close); }
   content.appendChild(seasonRosterCard(model, { full: true }));
 };
+const seasonHomeRenderer44113 = renderSeasonHome;
 // NFL home presentation only. Existing engines, snapshot authority and preview gates remain unchanged.
 renderSeasonHome = function (model, content) {
-  const home = seasonEl('div', 'seasonHybridCommand');
+  const home = seasonEl('div', 'seasonHybridCommand seasonPremiumHome');
+  const main = seasonEl('div', 'seasonPremiumMain'), rail = seasonEl('aside', 'seasonPremiumRail');
+  rail.setAttribute('aria-label', 'Fantasy HQ intelligence and tools');
+  home.append(main, rail);
   const matchup = seasonV3Matchup(model);
-  matchup.querySelector('.seasonV3PositionBattle')?.remove();
+  const breakdown = matchup.querySelector('.seasonV3PositionBattle');
+  breakdown?.remove();
   matchup.querySelector('.seasonV3WeeklyRead')?.remove();
   const unavailableOutlook = matchup.querySelector('.seasonV3CurrentOutlook.unavailable');
   if (unavailableOutlook) { const disclosure = seasonEl('details', 'seasonHybridOutlookDetails'); disclosure.appendChild(seasonEl('summary', '', 'Current outlook unavailable — why?')); disclosure.appendChild(unavailableOutlook); matchup.appendChild(disclosure); }
@@ -11078,16 +11106,32 @@ renderSeasonHome = function (model, content) {
   const supported = comparison.projectionStatus === 'COMPLETE' && comparison.narrativeAllowed === true && !model.stale && !model.syncError;
   matchup.appendChild(seasonEl('p', 'seasonHybridDifferential',
     `${!model.homeMatchup?.phase || model.homeMatchup.phase === 'UNKNOWN' ? 'Matchup status unavailable' : model.homeMatchup.phase} • ${supported && left !== null && right !== null ? `Projected differential ${left - right >= 0 ? '+' : ''}${(left - right).toFixed(2)} pts` : 'Projected differential unavailable'}`));
-  home.appendChild(matchup);
+  main.appendChild(matchup);
   const actions = seasonEl('div', 'seasonHybridActions');
-  home.appendChild(actions);
+  rail.appendChild(actions);
   const roster = seasonRosterCard(model, { full: true });
-  roster.querySelector('.seasonSectionHeader h2').textContent = 'YOUR LINEUP';
-  home.appendChild(roster);
+  roster.querySelector('.seasonSectionHeader h2').textContent = 'Your Starting Lineup';
+  const bench = seasonEl('section', 'seasonPanel seasonRosterPanel seasonPremiumBench');
+  bench.appendChild(seasonSectionHeader('Bench & Reserve'));
+  let benchStarted = false;
+  for (const child of [...roster.children]) {
+    if (child.className === 'seasonRosterGroup' && child.textContent === 'BENCH') benchStarted = true;
+    if (benchStarted) bench.appendChild(child);
+  }
+  const columns = () => { const node = seasonEl('div','seasonRosterColumns'); node.setAttribute('aria-hidden','true'); for (const label of ['POS','PLAYER','MATCHUP / STATUS','PROJ','ACTUAL']) node.appendChild(seasonEl('span','',label)); return node; };
+  const firstGroup = roster.querySelector('.seasonRosterGroup');
+  if (firstGroup) firstGroup.before(columns());
+  const benchGroup = bench.querySelector('.seasonRosterGroup');
+  if (benchGroup) benchGroup.before(columns());
+  roster.appendChild(seasonEl('p', 'seasonTrustNote seasonLockLegend', '○ Unlocked · Injury, bye and lock restrictions still apply.'));
+  main.appendChild(roster);
+  const lower = seasonEl('div','seasonPremiumLower'); lower.appendChild(bench);
+  if (breakdown) { const panel = seasonEl('section','seasonPanel seasonPremiumBreakdown'); panel.appendChild(seasonSectionHeader('Matchup Breakdown')); panel.appendChild(breakdown); lower.appendChild(panel); }
+  main.appendChild(lower);
   const tools = seasonEl('section', 'seasonPanel seasonHybridTools');
-  tools.appendChild(seasonSectionHeader('TOOLS'));
+  tools.appendChild(seasonSectionHeader('Tools & Quick Links'));
   const nav = seasonEl('nav', 'seasonHybridToolNav'); nav.setAttribute('aria-label', 'Season analysis tools');
-  [['Start/Sit','startsit'],['Waivers','waivers'],['Trade Analyzer','trades'],['Player Comparison','players'],['League Intelligence','radar'],['Settings','settings']].forEach(([label,page]) => nav.appendChild(seasonButton(label, () => showSeasonPage(page), 'seasonMiniButton')));
+  [['Start/Sit Assistant','startsit'],['Waivers','waivers'],['Trade Analyzer','trades'],['Player Comparison','players'],['League Intelligence','radar'],['Settings','settings']].forEach(([label,page]) => nav.appendChild(seasonButton(label, () => showSeasonPage(page), 'seasonMiniButton')));
   nav.appendChild(seasonButton('Draft Mode', () => exitSeasonMode(), 'seasonTextButton'));
   tools.appendChild(nav);
   if (model.lineup?.authoritative && model.sourceLabel === 'Yahoo' && !model.manualAuthority && !model.demo && !model.reviewMode) {
@@ -11096,8 +11140,8 @@ renderSeasonHome = function (model, content) {
     preview.addEventListener('toggle', () => { if (preview.open && !preview.querySelector('.seasonLineupWorkspace')) renderSeasonLineupWorkspace(model, preview); });
     tools.appendChild(preview);
   }
-  home.appendChild(tools); content.appendChild(home);
-  if (window.NFLProactiveUIV1) NFLProactiveUIV1.render({model, engineInput:seasonWeeklyCommandInput(model), initialState:window.NFLSeasonProactiveV1?.get(model), content:actions, navigate:showSeasonPage, compact:true});
+  const additional = seasonEl('div','seasonPremiumAdditional');rail.appendChild(additional);rail.appendChild(tools); content.appendChild(home);
+  if (window.NFLProactiveUIV1) NFLProactiveUIV1.render({model, engineInput:seasonWeeklyCommandInput(model), initialState:window.NFLSeasonProactiveV1?.get(model), content:actions, navigate:showSeasonPage, compact:true, playerPhoto:seasonPlayerPhoto, secondaryContent:additional});
   else actions.appendChild(seasonV3Decisions(seasonWeeklyPlan(model), model));
   if (!actions.childElementCount) actions.appendChild(seasonEmpty('Analysis unavailable', 'A resolved league snapshot is required before lineup readiness can be evaluated.'));
 };

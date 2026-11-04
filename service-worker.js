@@ -1,8 +1,8 @@
-const CACHE = 'fantasy-hq-nfl-foundation-1';
+const CACHE = 'fantasy-hq-premium-season-refinement-2';
 const ASSETS = [
   './',
   './index.html',
-  './css/app.css?v=nfl-foundation-1',
+  './css/app.css?v=premium-season-refinement-2',
   './js/app-version.js?v=1.0.35',
   './js/player-tier-contract.js?v=1.0.0',
   './js/nfl-expert-rankings-v1.js?v=2',
@@ -62,8 +62,8 @@ const ASSETS = [
   './js/nfl-proactive-orchestrator-v1.js?v=nfl-foundation-1',
   './js/nfl-season-proactive-v1.js?v=nfl-foundation-1',
   './js/nfl-proactive-sync-v1.js?v=nfl-foundation-1',
-  './js/nfl-proactive-ui-v1.js?v=nfl-foundation-1',
-  './js/app.js?v=nfl-foundation-1',
+  './js/nfl-proactive-ui-v1.js?v=premium-season-refinement-2',
+  './js/app.js?v=premium-season-refinement-2',
   './js/nba-identity-v1.js',
   './js/yahoo-nba-v1.js?v=points-1',
   './js/nba-season-foundation-v1.js',

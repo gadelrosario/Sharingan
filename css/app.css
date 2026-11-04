@@ -6358,3 +6358,221 @@ body.seasonModeActive:has(#seasonScreen:not(.hidden)){background:#E8EAED}
 #seasonScreen .seasonHybridActions .seasonV3HoldState{display:block;background:#edf0f3;border-color:#d2d6dc;color:#252B35;box-shadow:none}
 #seasonScreen .seasonHybridActions .seasonV3HoldState :is(h3,strong){color:#252B35}
 #seasonScreen .seasonHybridActions .seasonV3HoldState :is(p,small,span){color:#505b68}
+/* Monitoring cards have block content, unlike the older portrait/text decision grid. */
+#seasonScreen .seasonHybridActions .seasonHybridPriority>.seasonV3Decision{display:block;width:100%;min-width:0;box-sizing:border-box;padding:14px 0}
+#seasonScreen .seasonHybridPriority>.seasonV3Decision>:is(strong,h3,p,details,.nflProactiveControls){width:100%;min-width:0;max-width:none;box-sizing:border-box;word-break:normal;overflow-wrap:break-word}
+#seasonScreen .seasonHybridPriority>.seasonV3Decision>h3{font-size:18px;line-height:1.3;letter-spacing:-.015em;margin:8px 0;color:#252B35}
+#seasonScreen .seasonHybridPriority>.seasonV3Decision>strong{display:block;font-size:10px;line-height:1.5}
+#seasonScreen .seasonHybridPriority>.seasonV3Decision>p{font-size:12px;line-height:1.5}
+#seasonScreen .seasonHybridPriority>.seasonV3Decision:first-of-type{border-left:3px solid #D5A23D;padding-left:12px;background:#f5f3ed}
+#seasonScreen .seasonHybridPriority>.seasonV3Decision.critical:first-of-type{border-left-color:#a02f42}
+#seasonScreen .seasonHybridPriority .nflProactiveControls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+#seasonScreen .seasonHybridPriority .nflProactiveControls button{min-width:0;width:100%;min-height:36px;padding:8px 6px;white-space:normal;line-height:1.3;font-size:11px}
+#seasonScreen .seasonHybridPriority .nflProactiveControls button:not(:first-child){background:#edf0f3;color:#34465e;border-color:#d2d6dc}
+#seasonScreen .seasonHybridPriority>.seasonSectionHeader{flex-wrap:wrap;gap:8px}
+#seasonScreen .seasonHybridActions{min-width:0}
+#seasonScreen .seasonHybridCommand .seasonHybridPlayer{grid-template-columns:30px 44px minmax(150px,1fr) minmax(110px,.65fr) 132px 96px;gap:8px;padding:8px 14px}
+#seasonScreen .seasonHybridCommand .seasonLineupIdentity strong{font-size:16px}
+#seasonScreen .seasonHybridCommand .seasonHybridScores{font-size:16px;gap:6px}
+#seasonScreen .seasonHybridCommand .seasonLineupStatus .seasonLockAvailable{font-size:0;background:none;border:0;padding:2px;color:#526078}
+#seasonScreen .seasonHybridCommand .seasonLockAvailable::before{content:'○';font-size:16px;line-height:1}
+#seasonScreen .seasonLockLegend{padding:10px 14px!important}
+#seasonScreen .seasonHybridCommand>.seasonV3Matchup,#seasonScreen .seasonHeader,#seasonScreen .seasonHybridCommand>.seasonRosterPanel>.seasonSectionHeader{background:#17243A}
+#seasonScreen .seasonV3ProjectedScore b,#seasonScreen .seasonV3Matchup .seasonPointsProjected{color:#4DA3FF!important}
+#seasonScreen .seasonHybridCommand .seasonHybridScores .seasonPointsProjected{color:#175d9e!important;background:#e5f0fc}
+@media(max-width:1000px) and (min-width:721px){
+ #seasonScreen .seasonHybridCommand .seasonHybridPlayer{grid-template-columns:28px 40px minmax(125px,1fr) 110px 110px 80px;gap:6px}
+}
+@media(max-width:720px){
+ #seasonScreen .seasonHybridCommand .seasonHybridPlayer{grid-template-columns:25px 38px minmax(0,1fr) 86px;gap:4px 6px;padding:9px}
+ #seasonScreen .seasonHybridCommand .seasonLineupIdentity strong{font-size:14px}
+ #seasonScreen .seasonHybridCommand .seasonHybridScores{font-size:13px}
+ #seasonScreen .seasonHybridPriority>.seasonV3Decision>h3{font-size:17px}
+}
+/* Premium Season Command Center — presentation-only, NFL scope. */
+body.seasonModeActive:has(#seasonScreen:not(.hidden)),#seasonScreen{background:#F3F5F9}
+#seasonScreen{--season-v3-canvas:#F3F5F9;--season-v3-panel:#fff;--season-v3-line:#dfe6ef;--season-points-actual:#946007;--season-points-projected:#1762ac}
+#seasonScreen.seasonHybridHome .seasonContent{max-width:1440px;padding:22px 24px 32px;margin:auto}
+#seasonScreen.seasonHybridHome .seasonHeader{padding:12px 24px;gap:18px;background:linear-gradient(115deg,#10243D,#142e49);border-bottom:1px solid #284765;box-shadow:0 3px 12px #10243d18}
+#seasonScreen .seasonBrandMark{background:#10243D;border-color:#E5485B;color:#E5485B}
+#seasonScreen.seasonHybridHome .seasonBrand strong{font-size:20px;letter-spacing:.04em}
+#seasonScreen.seasonHybridHome .seasonTopNavigation{gap:5px;flex-wrap:wrap}
+#seasonScreen.seasonHybridHome .seasonTopNavigation button{display:block;padding:9px 10px;font-size:12px;border-radius:6px;color:#d4dfec}
+#seasonScreen.seasonHybridHome .seasonTopNavigation button.active{background:#124b80;border-bottom-color:#4DA3FF;color:#fff}
+#seasonScreen.seasonHybridHome .seasonOperationalBar{margin:0;border-radius:0;padding:9px 24px;background:#edf2f8;border:0;border-bottom:1px solid #dce4ef}
+#seasonScreen #seasonOperationalSync{background:#17243A;border-color:#17243A}
+#seasonScreen .seasonPremiumHome{display:grid;grid-template-columns:minmax(0,1.95fr) minmax(330px,1fr);gap:18px;align-items:start}
+#seasonScreen .seasonPremiumMain,#seasonScreen .seasonPremiumRail{display:flex;flex-direction:column;gap:16px;min-width:0}
+#seasonScreen .seasonPremiumHome .seasonPanel{border:1px solid #e1e7ef;background:#fff;border-radius:14px;box-shadow:0 5px 18px #17243a07;padding:16px;min-width:0}
+#seasonScreen .seasonPremiumMain>.seasonV3Matchup{position:relative;overflow:hidden;padding:20px 22px 14px;border:1px solid #183e5c;background:radial-gradient(ellipse at 12% 0%,#1c5073aa,transparent 46%),radial-gradient(ellipse at 100% 100%,#244b7188,transparent 50%),linear-gradient(125deg,#10243D,#061b30 65%,#102b46);box-shadow:0 8px 22px #10243d1c}
+#seasonScreen .seasonPremiumHome .seasonV3Matchup .seasonSectionHeader{padding-bottom:14px;border-bottom:1px solid #ffffff20}
+#seasonScreen .seasonPremiumHome .seasonV3Matchup .seasonSectionHeader h2{font-size:13px;letter-spacing:.1em}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupHero{gap:12px;padding:8px 0;align-items:start}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam{position:relative;min-width:0;text-align:center;padding:6px}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>strong{font-size:22px;min-height:52px;line-height:1.15;letter-spacing:-.025em;overflow-wrap:break-word}
+#seasonScreen .seasonPremiumHome .seasonTeamMonogram{display:flex;align-items:center;justify-content:center;width:60px;height:60px;margin:0 auto 10px;border:1px solid #8abde666;border-radius:50%;background:linear-gradient(140deg,#294e70,#10243D);color:#e5edf7;font-size:22px;font-weight:800;box-shadow:0 4px 12px #0003}
+#seasonScreen .seasonPremiumHome .seasonV3Versus{margin-top:95px;background:#183953;border-color:#32516e;color:#d0deee}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupMetrics{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupMetrics>span{border:0!important;background:none;box-shadow:none;padding:0}
+#seasonScreen .seasonPremiumHome .seasonV3ActualScore{display:flex;flex-direction:column-reverse;gap:5px}
+#seasonScreen .seasonPremiumHome .seasonV3ActualScore b{font-size:48px;line-height:1;letter-spacing:-.04em;color:#FDB927!important}
+#seasonScreen .seasonPremiumHome .seasonV3ProjectedScore{display:flex;flex-direction:column-reverse;gap:4px}
+#seasonScreen .seasonPremiumHome .seasonV3ProjectedScore b{font-size:23px;color:#7dcaff!important;line-height:1.1}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupMetrics small{font-size:9px;color:#d0dcec;letter-spacing:.05em}
+#seasonScreen .seasonPremiumHome .seasonScoreProvenance{padding:10px 12px;margin:12px 0 6px;border:1px solid #a5c5e02b;border-radius:7px;background:#1c3a5566;color:#d5e3f1;font-size:10px;text-align:center;line-height:1.5}
+#seasonScreen .seasonPremiumHome .seasonScoreSnapshot{color:#b9c9da;font-size:10px;line-height:1.5;margin:4px 0 8px;text-align:center}
+#seasonScreen .seasonPremiumHome .seasonHybridDifferential{font-size:10px;padding-top:8px;margin:6px 0 0}
+#seasonScreen .seasonPremiumHome .seasonHybridOutlookDetails{font-size:10px}
+#seasonScreen .seasonPremiumHome .seasonV3CurrentOutlook{background:#18354f;color:#e6eff8}
+#seasonScreen .seasonPremiumMain>.seasonRosterPanel{padding:0;overflow:hidden}
+#seasonScreen .seasonPremiumHome .seasonRosterPanel>.seasonSectionHeader{padding:15px 16px 10px;margin:0;background:#fff}
+#seasonScreen .seasonPremiumHome .seasonRosterPanel>.seasonSectionHeader h2{color:#10243D;font-size:17px;letter-spacing:-.025em;text-transform:none}
+#seasonScreen .seasonPremiumHome .seasonRosterIdentityBar{background:#fff;padding:0 16px 4px;font-size:11px;border:0}
+#seasonScreen .seasonPremiumHome .seasonRosterPanel>.seasonTrustNote{background:#fff;padding:3px 16px 9px;font-size:10px;border:0;margin:0}
+#seasonScreen .seasonPremiumHome .seasonRosterGroup{padding:7px 14px;font-size:9px;background:#f0f4fa;border-color:#e2e8f1}
+#seasonScreen .seasonPremiumHome .seasonRosterColumns{display:grid;grid-template-columns:26px minmax(160px,1fr) 122px 57px 57px;gap:7px;padding:10px 82px 10px 14px;background:#f6f8fc;border-top:1px solid #e4eaf3;color:#50617b;font-size:8px;letter-spacing:.05em}
+#seasonScreen .seasonPremiumHome .seasonHybridPlayer{grid-template-columns:26px 36px minmax(110px,1fr) 122px 114px 60px;gap:7px;padding:7px 12px;min-height:58px;background:#fff;border-bottom-color:#e8edf5}
+#seasonScreen .seasonPremiumHome .seasonHybridPlayer.problem,#seasonScreen .seasonPremiumHome .seasonHybridPlayer.attention{padding-left:12px}
+#seasonScreen .seasonPremiumHome .seasonHybridPlayer>.seasonLineupPhoto{width:36px;height:42px;border-radius:7px;background:#edf2f8;border-color:#e0e6ef}
+#seasonScreen .seasonPremiumHome .seasonLineupIdentity strong{font-size:13px;letter-spacing:-.015em}
+#seasonScreen .seasonPremiumHome .seasonLineupIdentity small{font-size:9px;line-height:1.3}
+#seasonScreen .seasonPremiumHome .seasonLineupSlot{background:#eaf3ff;color:#1762ac;font-size:9px}
+#seasonScreen .seasonPremiumHome .seasonLineupSchedule{padding-left:5px;border:0}
+#seasonScreen .seasonPremiumHome .seasonLineupSchedule small{font-size:9px}
+#seasonScreen .seasonPremiumHome .seasonLineupSchedule b{font-size:10px;color:#45618a}
+#seasonScreen .seasonPremiumHome .seasonHybridScores{display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:12px;text-align:right}
+#seasonScreen .seasonPremiumHome .seasonHybridScores>span{background:transparent!important;padding:3px 0!important;white-space:nowrap}
+#seasonScreen .seasonPremiumHome .seasonHybridScores .seasonPointsProjected{color:#1762ac!important}
+#seasonScreen .seasonPremiumHome .seasonHybridScores .seasonPointsActual{color:#946007!important}
+#seasonScreen .seasonPremiumHome .seasonHybridScores .seasonActualUnavailable{color:#76849a!important;font-weight:400}
+#seasonScreen .seasonPremiumHome .seasonLineupStatus{font-size:9px}
+#seasonScreen .seasonPremiumHome .seasonBadge{font-size:8px;padding:3px 5px}
+#seasonScreen .seasonPremiumHome .seasonHybridRowContext{font-size:9px}
+#seasonScreen .seasonPremiumLower{display:flex;flex-direction:column;gap:16px;min-width:0}
+#seasonScreen .seasonPremiumLower>.seasonPremiumBench{padding:0;overflow:hidden}
+#seasonScreen .seasonPremiumBreakdown .seasonV3PositionBattle{background:none;border:0;padding:0;color:#17243A}
+#seasonScreen .seasonPremiumBreakdown .seasonV3BattleGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;overflow:visible}
+#seasonScreen .seasonPremiumBreakdown .seasonV3Battle{background:#f3f6fa;border-color:#e1e7ef;color:#17243A;box-shadow:none}
+#seasonScreen .seasonPremiumBreakdown .seasonV3Battle :is(b,strong){color:#17243A}
+#seasonScreen .seasonPremiumBreakdown :is(small,p){color:#50617b}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority{padding:16px;background:#fff;border:1px solid #e1e7ef}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonSectionHeader{border:0;margin-bottom:8px;align-items:start}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonSectionHeader h2{font-size:18px;letter-spacing:-.025em;text-transform:none;color:#10243D;line-height:1.2}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision{padding:14px;margin:10px 0;border:1px solid #e0e7ef;border-left:3px solid #4DA3FF;border-radius:10px;background:#f7faff;box-shadow:none}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision.high,#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision.critical{border-color:#f4d5db;border-left:3px solid #DC3545;background:linear-gradient(120deg,#fff6f7,#fffcfd)}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision.medium{border-color:#f2dfb4;border-left:3px solid #F59E0B;background:linear-gradient(120deg,#fffaf0,#fffefb)}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision>strong{font-size:10px;letter-spacing:.025em;color:#994d08;margin-bottom:10px}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision:is(.high,.critical)>strong{color:#b32638}
+#seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision>h3{font-size:14px;line-height:1.35;font-weight:650;letter-spacing:0}
+#seasonScreen .seasonInsightIdentity{display:flex;gap:12px;align-items:center;margin:10px 0;min-width:0}
+#seasonScreen .seasonInsightIdentity>.seasonLineupPhoto{display:block;flex:0 0 66px;width:66px;height:76px;overflow:hidden;border-radius:9px;background:#e6ecf4}
+#seasonScreen .seasonInsightIdentity img{width:100%;height:100%;object-fit:cover;object-position:center top}
+#seasonScreen .seasonInsightIdentityCopy{min-width:0}
+#seasonScreen .seasonInsightIdentityCopy b{display:block;color:#10243D;font-size:18px;line-height:1.2}
+#seasonScreen .seasonInsightIdentityCopy small{display:block;color:#50617b;font-size:11px;margin-top:5px}
+#seasonScreen .seasonPremiumRail .nflProactiveControls button{border-radius:7px;min-height:36px}
+#seasonScreen .seasonPremiumRail .nflProactiveControls button:first-child{background:#10243D;border-color:#10243D}
+#seasonScreen .seasonPremiumRail .nflProactiveControls button:not(:first-child){background:#edf5ff;color:#1762ac;border-color:#dce9f9}
+#seasonScreen .seasonPremiumRail .seasonHybridTools{display:block;padding:16px;background:#fff}
+#seasonScreen .seasonPremiumRail .seasonHybridTools h2{font-size:16px;letter-spacing:-.02em;text-transform:none;color:#10243D}
+#seasonScreen .seasonPremiumRail .seasonHybridToolNav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+#seasonScreen .seasonPremiumRail .seasonHybridToolNav button{min-width:0;min-height:60px;text-align:left;padding:12px;border:1px solid #e0e8f3;background:#f8fbff;color:#17355c;border-radius:9px;white-space:normal;font-size:12px;line-height:1.35}
+#seasonScreen .seasonPremiumRail .seasonHybridToolNav button::before{content:'↗';display:block;color:#1762ac;font-size:17px;margin-bottom:5px}
+#seasonScreen .seasonPremiumRail .seasonHybridPreview{margin-top:14px;font-size:11px}
+@media(max-width:1150px) and (min-width:721px){
+ #seasonScreen .seasonPremiumHome{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:12px}
+ #seasonScreen .seasonPremiumHome .seasonHybridPlayer{grid-template-columns:24px 32px minmax(95px,1fr) 90px 95px;gap:5px}
+ #seasonScreen .seasonPremiumHome .seasonLineupStatus{grid-column:3/6;justify-content:flex-start}
+ #seasonScreen .seasonPremiumHome .seasonRosterColumns{display:none}
+}
+@media(max-width:900px){
+ #seasonScreen .seasonPremiumHome{display:flex;flex-direction:column}
+ #seasonScreen .seasonPremiumMain,#seasonScreen .seasonPremiumRail{display:contents}
+ #seasonScreen .seasonPremiumMain>.seasonV3Matchup{order:0;width:100%;box-sizing:border-box}
+ #seasonScreen .seasonPremiumRail>.seasonHybridActions{order:1;width:100%}
+ #seasonScreen .seasonPremiumMain>.seasonRosterPanel{order:2;width:100%;box-sizing:border-box}
+ #seasonScreen .seasonPremiumLower{order:3;width:100%}
+ #seasonScreen .seasonPremiumRail>.seasonHybridTools{order:4;width:100%;box-sizing:border-box}
+}
+@media(max-width:720px){
+ #seasonScreen.seasonHybridHome .seasonContent{padding:12px 10px 24px}
+ #seasonScreen.seasonHybridHome .seasonHeader{padding:10px 14px;gap:8px}
+ #seasonScreen.seasonHybridHome .seasonBrand strong{font-size:17px}
+ #seasonScreen.seasonHybridHome .seasonTopNavigation{flex-wrap:nowrap;overflow-x:auto;width:100%;gap:3px}
+ #seasonScreen.seasonHybridHome .seasonTopNavigation button{font-size:11px;padding:8px;flex-shrink:0}
+ #seasonScreen.seasonHybridHome .seasonTopNavigation button:is([data-season-page='waivers'],[data-season-page='trades'],[data-season-page='radar']){display:none}
+ #seasonScreen.seasonHybridHome .seasonOperationalBar{padding:8px 12px;gap:7px}
+ #seasonScreen .seasonPremiumMain>.seasonV3Matchup{padding:14px 12px}
+ #seasonScreen .seasonPremiumHome .seasonV3MatchupHero{gap:5px}
+ #seasonScreen .seasonPremiumHome .seasonTeamMonogram{width:44px;height:44px;font-size:16px;margin-bottom:7px}
+ #seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>strong{font-size:16px;min-height:42px}
+ #seasonScreen .seasonPremiumHome .seasonV3Versus{margin-top:73px}
+ #seasonScreen .seasonPremiumHome .seasonV3ActualScore b{font-size:36px}
+ #seasonScreen .seasonPremiumHome .seasonV3ProjectedScore b{font-size:20px}
+ #seasonScreen .seasonPremiumHome .seasonV3MatchupMetrics small{font-size:8px;letter-spacing:0}
+ #seasonScreen .seasonPremiumHome .seasonRosterColumns{display:none}
+ #seasonScreen .seasonPremiumHome .seasonHybridPlayer{grid-template-columns:24px 36px minmax(0,1fr) 94px;gap:4px 6px;padding:9px 8px;min-height:78px}
+ #seasonScreen .seasonPremiumHome .seasonHybridPlayer.problem,#seasonScreen .seasonPremiumHome .seasonHybridPlayer.attention{padding-left:8px}
+ #seasonScreen .seasonPremiumHome .seasonLineupIdentity strong{font-size:14px}
+ #seasonScreen .seasonPremiumHome .seasonLineupSchedule{grid-column:3;grid-row:2;padding:0}
+ #seasonScreen .seasonPremiumHome .seasonLineupSchedule small{font-size:9px;display:block}
+ #seasonScreen .seasonPremiumHome .seasonHybridScores{grid-column:4;grid-row:1;display:flex;flex-direction:column;align-items:flex-end;font-size:12px;gap:2px}
+ #seasonScreen .seasonPremiumHome .seasonLineupStatus{grid-column:4;grid-row:2;justify-content:flex-end}
+ #seasonScreen .seasonPremiumHome .seasonLineupStatus .seasonBadge{overflow-wrap:normal;word-break:normal;font-size:8px;max-width:100%}
+ #seasonScreen .seasonPremiumRail .seasonHybridPriority{padding:13px}
+ #seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonV3Decision{padding:12px}
+ #seasonScreen .seasonPremiumRail .seasonHybridPriority>.seasonSectionHeader h2{font-size:17px}
+ #seasonScreen .seasonPremiumBreakdown .seasonV3BattleGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+/* Keep the score display compact enough to reveal the starting lineup above the fold. */
+#seasonScreen .seasonPremiumHome .seasonV3Matchup .seasonSectionHeader{margin:0 0 8px;padding-bottom:8px;min-height:30px}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam{grid-template-columns:48px minmax(0,1fr);column-gap:10px;align-items:center;text-align:left;justify-items:start}
+#seasonScreen .seasonPremiumHome .seasonTeamMonogram{grid-column:1;grid-row:1/4;width:44px;height:44px;margin:0;font-size:18px}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>small,#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>strong,#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>span:not(.seasonTeamMonogram){grid-column:2}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>strong{min-height:0;font-size:19px;white-space:normal;line-height:1.2}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupMetrics{grid-column:1/-1;justify-self:center;text-align:center;margin-top:12px;gap:6px}
+#seasonScreen .seasonPremiumHome .seasonV3Versus{margin-top:76px}
+#seasonScreen .seasonPremiumHome .seasonScoreProvenance{padding:6px 10px;margin-top:6px}
+@media(max-width:620px){
+ #seasonScreen .seasonPremiumHome .seasonV3MatchupTeam{grid-template-columns:1fr;justify-items:center;text-align:center;padding:0}
+ #seasonScreen .seasonPremiumHome .seasonTeamMonogram{grid-column:1;grid-row:auto;width:36px;height:36px;margin-bottom:5px}
+ #seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>small,#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>strong,#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>span:not(.seasonTeamMonogram){grid-column:1}
+ #seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>strong{font-size:15px;min-height:36px}
+}
+/* Command Center refinement: presentation-only, scoped to the NFL home. */
+#seasonScreen .seasonPremiumHome .seasonScoreMissing{flex-direction:row;align-items:center;justify-content:center;gap:6px;padding:6px!important;background:#ffffff08;border-radius:6px}
+#seasonScreen .seasonPremiumHome .seasonScoreMissing b{font-size:16px!important}
+#seasonScreen .seasonPremiumHome .seasonScoreMissing small{font-size:8px}
+#seasonScreen .seasonPremiumHome .seasonScoreMissing .seasonHybridScoreUnavailable{font-size:10px;color:#d0dcec}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupMetrics{width:min(100%,240px)}
+#seasonScreen .seasonPremiumHome .seasonV3MatchupTeam>strong{font-weight:850;letter-spacing:-.03em}
+#seasonScreen .seasonPremiumHome .seasonHybridPlayer{transition:background-color .15s,box-shadow .15s}
+#seasonScreen .seasonPremiumHome .seasonHybridPlayer:hover{background:#edf4fc;box-shadow:inset 3px 0 #7193b2}
+#seasonScreen .seasonPremiumHome .seasonHybridPlayer:focus-visible{outline:3px solid #155da8;outline-offset:-3px;background:#edf4fc}
+#seasonScreen .seasonPremiumHome .seasonLineupPhoto{border-radius:8px;background:#eaf0f7;box-shadow:0 1px 3px #10243d18}
+#seasonScreen .seasonPremiumHome .seasonHybridPlayer .seasonLineupName{font-size:13px;font-weight:800}
+#seasonScreen .seasonPremiumHome .seasonLineupSlot{border-radius:5px;background:#edf4fc;color:#155da8;font-weight:800}
+#seasonScreen .seasonPremiumHome .seasonFeaturedInsight{box-shadow:0 3px 12px #10243d09}
+#seasonScreen .seasonPremiumHome .seasonInsightPrimary{display:block;width:100%;margin-top:10px;background:#10243D;color:#fff;min-height:38px}
+#seasonScreen .seasonPremiumHome .seasonInsightManagement{margin-top:10px;border-top:1px solid #dce4ef;padding-top:8px}
+#seasonScreen .seasonPremiumHome .seasonInsightManagement summary{font-size:11px}
+#seasonScreen .seasonPremiumHome .seasonAdditionalRecommendations{background:#fff;border:1px solid #dce4ef;border-radius:12px;padding:14px;color:#17243A}
+#seasonScreen .seasonPremiumHome .seasonAdditionalRecommendations>summary{font-size:14px;font-weight:750;cursor:pointer}
+#seasonScreen .seasonPremiumHome .seasonSecondaryInsight{margin-top:10px;border-top:1px solid #e1e7ef;padding-top:10px}
+#seasonScreen .seasonPremiumHome .seasonSecondaryInsight>summary{font-size:12px;line-height:1.5;cursor:pointer;overflow-wrap:break-word}
+#seasonScreen .seasonPremiumHome .seasonSecondaryInsight .seasonV3Decision{margin-top:10px}
+#seasonScreen .seasonPremiumAdditional:empty{display:none}
+#seasonScreen .seasonPremiumHome summary:focus-visible{outline:3px solid #155da8;outline-offset:3px;border-radius:3px}
+@media(max-width:900px){
+ #seasonScreen .seasonPremiumAdditional{order:4}
+ #seasonScreen .seasonPremiumHome .seasonHybridTools{order:5}
+ #seasonScreen .seasonPremiumHome .seasonInsightIdentity{min-height:54px}
+ #seasonScreen .seasonPremiumHome .seasonInsightIdentity .seasonLineupPhoto{width:48px;height:56px}
+ #seasonScreen .seasonPremiumHome .seasonFeaturedInsight{padding:12px}
+}
+@media(prefers-reduced-motion:reduce){#seasonScreen .seasonPremiumHome *,#seasonScreen .seasonPremiumHome *::before{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media(max-width:620px){
+ #seasonScreen .seasonPremiumHome .seasonScoreMissing{flex-wrap:wrap;column-gap:5px;row-gap:2px}
+ #seasonScreen .seasonPremiumHome .seasonScoreMissing small{flex-basis:100%;line-height:1.4}
+ #seasonScreen .seasonPremiumHome .seasonScoreMissing .seasonHybridScoreUnavailable{white-space:nowrap}
+}
